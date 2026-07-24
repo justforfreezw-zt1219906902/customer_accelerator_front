@@ -21,6 +21,8 @@ artifacts follow [Semantic Versioning](https://semver.org/).
   and planned Phase 1 through Phase 8 documents.
 - Normalized Phase 0 section headings while preserving its planned, unexecuted,
   and pending-approval content.
+- Phase 0 input maps for Figma, backend, content, assets, environment,
+  assumptions, constraints, and unresolved decisions.
 
 ## [0.0.1] - 2026-07-24
 

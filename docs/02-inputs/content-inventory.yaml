@@ -1,0 +1,144 @@
+schema_version: 1
+figma_version: 1.0.0
+supported_language_inputs:
+  - EN
+  - DE
+  - CN
+translation_status_values:
+  - unknown
+  - missing
+  - draft
+  - under_review
+  - approved
+  - not_required
+content_items:
+  - id: CONTENT-HEADER
+    name: Header content
+    source: unknown
+    owner: unknown
+    status: pending_source
+    code_destination: src/content/header
+    locked_or_editable: locked
+    preservation_required: true
+    language: [EN, DE, CN]
+    translation_status:
+      EN: unknown
+      DE: unknown
+      CN: unknown
+    figma_version: 1.0.0
+    notes:
+      - Preserve existing approved Header content until a human-approved change exists.
+  - id: CONTENT-FOOTER
+    name: Footer content
+    source: unknown
+    owner: unknown
+    status: pending_source
+    code_destination: src/content/footer
+    locked_or_editable: locked
+    preservation_required: true
+    language: [EN, DE, CN]
+    translation_status:
+      EN: unknown
+      DE: unknown
+      CN: unknown
+    figma_version: 1.0.0
+    notes:
+      - Preserve existing approved Footer content until a human-approved change exists.
+  - id: CONTENT-LANDING
+    name: Landing Page copy
+    source: unknown
+    owner: unknown
+    status: pending_source
+    code_destination: src/content/pages/landing
+    locked_or_editable: editable
+    preservation_required: false
+    language: [EN, DE, CN]
+    translation_status:
+      EN: unknown
+      DE: unknown
+      CN: unknown
+    figma_version: 1.0.0
+    notes: []
+  - id: CONTENT-WHY
+    name: Why mi-goTo copy
+    source: unknown
+    owner: unknown
+    status: pending_source
+    code_destination: src/content/pages/why-mi-goto
+    locked_or_editable: editable
+    preservation_required: false
+    language: [EN, DE, CN]
+    translation_status:
+      EN: unknown
+      DE: unknown
+      CN: unknown
+    figma_version: 1.0.0
+    notes: []
+  - id: CONTENT-CONTACT
+    name: Contact Page copy
+    source: unknown
+    owner: unknown
+    status: pending_source
+    code_destination: src/content/pages/contact
+    locked_or_editable: editable
+    preservation_required: false
+    language: [EN, DE, CN]
+    translation_status:
+      EN: unknown
+      DE: unknown
+      CN: unknown
+    figma_version: 1.0.0
+    notes:
+      - Form fields and behavior require interaction and OpenAPI sources.
+  - id: CONTENT-IMPRINT
+    name: Imprint content
+    source: unknown
+    owner: unknown
+    status: pending_legal_source
+    code_destination: src/content/pages/imprint
+    locked_or_editable: locked
+    preservation_required: false
+    language: [EN, DE, CN]
+    translation_status:
+      EN: unknown
+      DE: unknown
+      CN: unknown
+    figma_version: 1.0.0
+    notes:
+      - Requires authorized human legal review.
+  - id: CONTENT-DATA-PROTECTION
+    name: Data Protection content
+    source: unknown
+    owner: unknown
+    status: pending_legal_source
+    code_destination: src/content/pages/data-protection
+    locked_or_editable: locked
+    preservation_required: false
+    language: [EN, DE, CN]
+    translation_status:
+      EN: unknown
+      DE: unknown
+      CN: unknown
+    figma_version: 1.0.0
+    notes:
+      - Requires authorized human legal review.
+  - id: CONTENT-THANK-YOU
+    name: Thank You Page copy
+    source: unknown
+    owner: unknown
+    status: pending_source
+    code_destination: src/content/pages/thank-you
+    locked_or_editable: editable
+    preservation_required: false
+    language: [EN, DE, CN]
+    translation_status:
+      EN: unknown
+      DE: unknown
+      CN: unknown
+    figma_version: 1.0.0
+    notes:
+      - No expected Figma page has yet been registered for the Thank You Page.
+notes:
+  - Code destinations are planned and do not exist.
+  - Confirm whether CN maps to zh-CN or another locale before implementation.
+

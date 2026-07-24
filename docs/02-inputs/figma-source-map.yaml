@@ -1,0 +1,119 @@
+schema_version: 1
+source:
+  name: mi-goTo Figma Design System
+  type: figma_design_file
+  url: "https://www.figma.com/design/vyr3TvF5lAUOnuuxdW8iRb/prototype?node-id=0-1&p=f&t=AdHvWZgIn8DrsmI6-0"
+  file_key: vyr3TvF5lAUOnuuxdW8iRb
+  entry_node_id: "0:1"
+  figma_version: 1.0.0
+  version_status: initialized_from_project_input
+inspection:
+  status: pending_inspection
+  reviewer: unknown
+  last_reviewed: unknown
+  notes:
+    - Expected page names and code targets are planning inputs.
+    - Page node IDs must be populated only after inspection.
+pages:
+  - page_name: 00 Foundation
+    node_id: unknown
+    figma_version: 1.0.0
+    code_target: governance and brand reference
+    status: pending_inspection
+    reviewer: unknown
+    last_reviewed: unknown
+    notes:
+      - Visual and brand reference only; it does not define backend or interaction contracts.
+  - page_name: 01 Tokens
+    node_id: unknown
+    figma_version: 1.0.0
+    code_target:
+      - src/design-system/tokens
+      - src/design-system/theme
+    status: pending_inspection
+    reviewer: unknown
+    last_reviewed: unknown
+    notes:
+      - Target paths are planned and do not exist.
+  - page_name: 02 Core Components
+    node_id: unknown
+    figma_version: 1.0.0
+    code_target: src/design-system/components/core
+    status: pending_inspection
+    reviewer: unknown
+    last_reviewed: unknown
+    notes:
+      - Core may depend only on Tokens.
+  - page_name: 03 Composite Components
+    node_id: unknown
+    figma_version: 1.0.0
+    code_target: src/design-system/components/composite
+    status: pending_inspection
+    reviewer: unknown
+    last_reviewed: unknown
+    notes:
+      - Composite may depend on Core.
+  - page_name: 04 Product Components
+    node_id: unknown
+    figma_version: 1.0.0
+    code_target: src/components/product
+    status: pending_inspection
+    reviewer: unknown
+    last_reviewed: unknown
+    notes:
+      - Product may depend on Core and Composite.
+  - page_name: 05 Sections
+    node_id: unknown
+    figma_version: 1.0.0
+    code_target: src/components/sections
+    status: pending_inspection
+    reviewer: unknown
+    last_reviewed: unknown
+    notes:
+      - Sections may depend on Core, Composite, and Product.
+  - page_name: 06 Landing Page
+    node_id: unknown
+    figma_version: 1.0.0
+    code_target: src/pages/LandingPage.vue
+    status: pending_inspection
+    reviewer: unknown
+    last_reviewed: unknown
+    notes:
+      - Planned target path only.
+  - page_name: 07 Why Mi-goTo Page
+    node_id: unknown
+    figma_version: 1.0.0
+    code_target: src/pages/WhyMiGotoPage.vue
+    status: pending_inspection
+    reviewer: unknown
+    last_reviewed: unknown
+    notes:
+      - Confirm exact capitalization and page name during inspection.
+  - page_name: 08 Imprint
+    node_id: unknown
+    figma_version: 1.0.0
+    code_target: src/pages/ImprintPage.vue
+    status: pending_inspection
+    reviewer: unknown
+    last_reviewed: unknown
+    notes:
+      - Legal content requires separate human approval.
+  - page_name: 09 Data Protection
+    node_id: unknown
+    figma_version: 1.0.0
+    code_target: src/pages/DataProtectionPage.vue
+    status: pending_inspection
+    reviewer: unknown
+    last_reviewed: unknown
+    notes:
+      - Legal content requires separate human approval.
+  - page_name: 10 Contact Page
+    node_id: unknown
+    figma_version: 1.0.0
+    code_target: src/pages/ContactPage.vue
+    status: pending_inspection
+    reviewer: unknown
+    last_reviewed: unknown
+    notes:
+      - Figma does not define the POST /api/lead contract.
+

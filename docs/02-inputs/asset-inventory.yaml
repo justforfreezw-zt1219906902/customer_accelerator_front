@@ -1,0 +1,61 @@
+schema_version: 1
+inventory_status: pending_inventory
+path_policy: Record a repository path only after the asset exists and is verified.
+categories:
+  - id: logos
+    name: Logos
+    source: unknown
+    owner: unknown
+    license_status: unknown
+    items: []
+  - id: icons
+    name: Icons
+    source: unknown
+    owner: unknown
+    license_status: unknown
+    items: []
+  - id: illustrations
+    name: Illustrations
+    source: unknown
+    owner: unknown
+    license_status: unknown
+    items: []
+  - id: product-previews
+    name: Product previews
+    source: unknown
+    owner: unknown
+    license_status: unknown
+    items: []
+  - id: legal-documents
+    name: Legal documents
+    source: unknown
+    owner: unknown
+    license_status: unknown
+    items: []
+  - id: fonts
+    name: Fonts
+    source: unknown
+    owner: unknown
+    license_status: unknown
+    items: []
+  - id: screenshots
+    name: Screenshots
+    source: unknown
+    owner: unknown
+    license_status: unknown
+    items: []
+required_item_fields:
+  - asset_id
+  - name
+  - source
+  - owner
+  - repository_path
+  - format
+  - license
+  - version
+  - status
+  - last_reviewed
+notes:
+  - No file paths are recorded because no assets have been inventoried.
+  - Presence in Figma does not establish production usage or redistribution rights.
+
