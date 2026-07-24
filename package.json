@@ -1,0 +1,15 @@
+{
+  "name": "mi-goto-frontend-management",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Documentation and governance validation tooling. Phase 1 may extend or replace this configuration.",
+  "type": "module",
+  "scripts": {
+    "validate:version": "node scripts/validate-version.mjs",
+    "validate:docs": "node scripts/validate-docs.mjs",
+    "validate:compatibility": "node scripts/validate-compatibility.mjs",
+    "validate:registries": "node scripts/validate-registries.mjs",
+    "validate:openapi": "node scripts/validate-openapi.mjs",
+    "validate:management": "node scripts/validate-management.mjs"
+  }
+}

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa45ec9b-26dc-40ff-98de-dd81c1a64002" name="更改" comment="docs: define roadmap phase controls and delivery gates">
+    <list default="true" id="fa45ec9b-26dc-40ff-98de-dd81c1a64002" name="更改" comment="docs: establish change issue deviation and incident controls">
       <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +73,7 @@
       <workItem from="1784896239533" duration="3289000" />
       <workItem from="1784900645192" duration="3275000" />
       <workItem from="1784910311579" duration="34000" />
-      <workItem from="1784910382969" duration="1525000" />
+      <workItem from="1784910382969" duration="2776000" />
     </task>
     <task id="LOCAL-00001" summary="docs: initialize project governance structure">
       <option name="closed" value="true" />
@@ -131,7 +131,47 @@
       <option name="project" value="LOCAL" />
       <updated>1784921123964</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="docs: register Figma backend content and environment inputs">
+      <option name="closed" value="true" />
+      <created>1784921305691</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1784921305691</updated>
+    </task>
+    <task id="LOCAL-00009" summary="docs: map Figma design system to frontend architecture">
+      <option name="closed" value="true" />
+      <created>1784921613809</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1784921613809</updated>
+    </task>
+    <task id="LOCAL-00010" summary="docs: document lead API and HubSpot integration contract">
+      <option name="closed" value="true" />
+      <created>1784921844781</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1784921844782</updated>
+    </task>
+    <task id="LOCAL-00011" summary="docs: establish version compatibility and requirement traceability">
+      <option name="closed" value="true" />
+      <created>1784922004913</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1784922004913</updated>
+    </task>
+    <task id="LOCAL-00012" summary="docs: establish change issue deviation and incident controls">
+      <option name="closed" value="true" />
+      <created>1784922251642</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1784922251642</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -144,6 +184,11 @@
     <MESSAGE value="docs: bootstrap governance system in repository root" />
     <MESSAGE value="docs: establish governance and source-of-truth policies" />
     <MESSAGE value="docs: define roadmap phase controls and delivery gates" />
-    <option name="LAST_COMMIT_MESSAGE" value="docs: define roadmap phase controls and delivery gates" />
+    <MESSAGE value="docs: register Figma backend content and environment inputs" />
+    <MESSAGE value="docs: map Figma design system to frontend architecture" />
+    <MESSAGE value="docs: document lead API and HubSpot integration contract" />
+    <MESSAGE value="docs: establish version compatibility and requirement traceability" />
+    <MESSAGE value="docs: establish change issue deviation and incident controls" />
+    <option name="LAST_COMMIT_MESSAGE" value="docs: establish change issue deviation and incident controls" />
   </component>
 </project>

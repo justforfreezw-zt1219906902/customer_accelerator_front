@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-07-24 — Management validation and audit
+
+### Added
+
+- Dependency-free Node.js validation for versions, documentation,
+  compatibility, registries, OpenAPI, and the complete management system
+- Minimal documentation-tooling `package.json`
+- Management-system audit and STEP-010 instruction traceability
+
+### Changed
+
+- Added management readiness metadata to the current state and Phase 0 status
+
+### Constraints preserved
+
+- Phase 0 remains `planned`, unexecuted, and pending human approval
+- Backend `0.0.0` remains an unassigned non-release placeholder
+- No Vue application code, dependency installation, or wrapper directory was
+  created
+
 All notable changes to mi-goTo Frontend are recorded here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versioned
 artifacts follow [Semantic Versioning](https://semver.org/).
