@@ -1,0 +1,26 @@
+schema_version: 1
+active_baseline_id: DS1.0.0_API0.0.0_FE0.0.1
+baselines:
+  - baseline_id: DS1.0.0_API0.0.0_FE0.0.1
+    human_display_name: figma1.00_backend_unassigned
+    figma_semantic_version: 1.0.0
+    backend_semantic_version: 0.0.0
+    backend_version_status: contract_documented_version_unassigned
+    backend_contract_revision: 1
+    frontend_semantic_version: 0.0.1
+    compatibility_status: pending_backend_version_assignment
+    approval_status: not_approved
+    tested_environments: []
+    limitations:
+      - Backend 0.0.0 is a non-release placeholder; the official semantic version is unassigned.
+      - Figma 1.0.0 is an initialized planning input and has not received visual approval.
+      - Frontend application implementation and tests have not started.
+      - Production API URL is unresolved.
+      - Compatibility has not been tested in any environment.
+    effective_date: "2026-07-24"
+    superseded_by: null
+notes:
+  - The active baseline is a planning baseline, not an approved release baseline.
+  - Machine IDs must use DS<figma-version>_API<backend-version>_FE<frontend-version>.
+  - Human display names are aliases and never replace semantic versions.
+

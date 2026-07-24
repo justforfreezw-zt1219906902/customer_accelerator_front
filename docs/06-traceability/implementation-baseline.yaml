@@ -1,0 +1,26 @@
+schema_version: 1
+baseline_id: DS1.0.0_API0.0.0_FE0.0.1
+status: planning
+targeted_versions:
+  figma: 1.0.0
+  backend: 0.0.0
+  backend_version_status: contract_documented_version_unassigned
+  backend_contract_revision: 1
+  frontend: 0.0.1
+implemented_tokens: []
+implemented_components: []
+implemented_sections: []
+implemented_pages: []
+implemented_endpoints: []
+pending_migrations: []
+validation:
+  implementation_started: false
+  tests_run: false
+  build_run: false
+  environments_tested: []
+approval_status: not_approved
+notes:
+  - Empty implementation lists are intentional because application code has not started.
+  - Planned registry entries are not implemented artifacts.
+  - Backend 0.0.0 is a compatibility placeholder, not an assigned semantic version.
+

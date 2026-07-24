@@ -1,0 +1,258 @@
+schema_version: 1
+frontend_planning_version: 0.0.1
+status_values:
+  - planned
+  - blocked
+  - in_progress
+  - implemented
+  - verified
+  - deprecated
+requirements:
+  - requirement_id: REQ-LANDING-001
+    description: Landing Page renders.
+    source:
+      - docs/03-design-system/page-registry.yaml#PAGE-LANDING
+    figma_source:
+      page: 06 Landing Page
+      node_id: unknown
+      status: pending_inspection
+    backend_source: not_applicable
+    planned_frontend_files:
+      - src/pages/LandingPage.vue
+    tests: []
+    status: planned
+    introduced_version: 0.0.1
+    verified_version: null
+    approval: not_approved
+  - requirement_id: REQ-NAV-001
+    description: Header content is preserved.
+    source:
+      - docs/02-inputs/content-inventory.yaml#CONTENT-HEADER
+    figma_source:
+      page: 00 Foundation
+      node_id: unknown
+      status: pending_inspection
+    backend_source: not_applicable
+    planned_frontend_files:
+      - src/content/header
+      - src/design-system/components/composite/AppNavbar.vue
+    tests: []
+    status: planned
+    introduced_version: 0.0.1
+    verified_version: null
+    approval: not_approved
+  - requirement_id: REQ-FOOTER-001
+    description: Footer content is preserved.
+    source:
+      - docs/02-inputs/content-inventory.yaml#CONTENT-FOOTER
+    figma_source:
+      page: 00 Foundation
+      node_id: unknown
+      status: pending_inspection
+    backend_source: not_applicable
+    planned_frontend_files:
+      - src/content/footer
+      - src/design-system/components/composite/AppFooter.vue
+    tests: []
+    status: planned
+    introduced_version: 0.0.1
+    verified_version: null
+    approval: not_approved
+  - requirement_id: REQ-CONTACT-001
+    description: Contact Page contains the confirmed required lead fields.
+    source:
+      - docs/03-design-system/page-registry.yaml#PAGE-CONTACT
+      - docs/05-backend/openapi.yaml#/components/schemas/LeadRequest
+    figma_source:
+      page: 10 Contact Page
+      node_id: unknown
+      status: pending_inspection
+    backend_source:
+      operation: POST /api/lead
+      contract_revision: 1
+      schema: LeadRequest
+    planned_frontend_files:
+      - src/pages/ContactPage.vue
+    tests: []
+    status: planned
+    introduced_version: 0.0.1
+    verified_version: null
+    approval: not_approved
+  - requirement_id: REQ-CONTACT-002
+    description: Contact form validates required fields.
+    source:
+      - docs/05-backend/openapi.yaml#/components/schemas/LeadRequest
+      - docs/05-backend/integration-spec.md
+    figma_source:
+      page: 10 Contact Page
+      node_id: unknown
+      status: pending_inspection
+    backend_source:
+      operation: POST /api/lead
+      contract_revision: 1
+      schema: LeadRequest
+    planned_frontend_files:
+      - src/pages/ContactPage.vue
+    tests: []
+    status: planned
+    introduced_version: 0.0.1
+    verified_version: null
+    approval: not_approved
+  - requirement_id: REQ-CONTACT-003
+    description: Contact form submits POST /api/lead.
+    source:
+      - docs/05-backend/openapi.yaml#/paths/~1api~1lead/post
+      - docs/05-backend/integration-spec.md
+    figma_source: not_applicable
+    backend_source:
+      operation: POST /api/lead
+      contract_revision: 1
+      semantic_version: unassigned
+    planned_frontend_files:
+      - src/services/api
+      - src/pages/ContactPage.vue
+    tests: []
+    status: planned
+    introduced_version: 0.0.1
+    verified_version: null
+    approval: not_approved
+  - requirement_id: REQ-CONTACT-004
+    description: Successful production submission redirects to the Thank You Page.
+    source:
+      - docs/04-frontend/interaction-map.md
+      - docs/05-backend/integration-spec.md
+    figma_source:
+      page: unknown
+      node_id: unknown
+      status: missing_thank_you_design
+    backend_source:
+      operation: POST /api/lead
+      success_status: 200
+      contract_revision: 1
+    planned_frontend_files:
+      - src/pages/ContactPage.vue
+      - src/pages/ThankYouPage.vue
+      - src/router
+    tests: []
+    status: planned
+    introduced_version: 0.0.1
+    verified_version: null
+    approval: not_approved
+  - requirement_id: REQ-CONTACT-005
+    description: Confirmed backend errors are safely displayed.
+    source:
+      - docs/05-backend/error-catalog.yaml
+      - docs/04-frontend/error-handling.md
+    figma_source:
+      page: 10 Contact Page
+      node_id: unknown
+      status: pending_inspection
+    backend_source:
+      operation: POST /api/lead
+      statuses: [400, 500, 502]
+      contract_revision: 1
+    planned_frontend_files:
+      - src/pages/ContactPage.vue
+      - src/services/api
+    tests: []
+    status: planned
+    introduced_version: 0.0.1
+    verified_version: null
+    approval: not_approved
+  - requirement_id: REQ-LEGAL-001
+    description: Imprint Page exists.
+    source:
+      - docs/03-design-system/page-registry.yaml#PAGE-IMPRINT
+      - docs/02-inputs/content-inventory.yaml#CONTENT-IMPRINT
+    figma_source:
+      page: 08 Imprint
+      node_id: unknown
+      status: pending_inspection
+    backend_source: not_applicable
+    planned_frontend_files:
+      - src/pages/ImprintPage.vue
+      - src/content/pages/imprint
+    tests: []
+    status: planned
+    introduced_version: 0.0.1
+    verified_version: null
+    approval: not_approved
+  - requirement_id: REQ-LEGAL-002
+    description: Data Protection Page exists.
+    source:
+      - docs/03-design-system/page-registry.yaml#PAGE-DATA-PROTECTION
+      - docs/02-inputs/content-inventory.yaml#CONTENT-DATA-PROTECTION
+    figma_source:
+      page: 09 Data Protection
+      node_id: unknown
+      status: pending_inspection
+    backend_source: not_applicable
+    planned_frontend_files:
+      - src/pages/DataProtectionPage.vue
+      - src/content/pages/data-protection
+    tests: []
+    status: planned
+    introduced_version: 0.0.1
+    verified_version: null
+    approval: not_approved
+  - requirement_id: REQ-WHY-001
+    description: Why mi-goTo Page exists.
+    source:
+      - docs/03-design-system/page-registry.yaml#PAGE-WHY
+      - docs/02-inputs/content-inventory.yaml#CONTENT-WHY
+    figma_source:
+      page: 07 Why Mi-goTo Page
+      node_id: unknown
+      status: pending_inspection
+    backend_source: not_applicable
+    planned_frontend_files:
+      - src/pages/WhyMiGotoPage.vue
+      - src/content/pages/why-mi-goto
+    tests: []
+    status: planned
+    introduced_version: 0.0.1
+    verified_version: null
+    approval: not_approved
+  - requirement_id: REQ-RESPONSIVE-001
+    description: Pages support responsive layouts.
+    source:
+      - docs/00-governance/source-of-truth-policy.md
+      - docs/04-frontend/accessibility-guidelines.md
+    figma_source:
+      page: all_expected_pages
+      node_id: unknown
+      status: pending_inspection
+    backend_source: not_applicable
+    planned_frontend_files:
+      - src/design-system
+      - src/components
+      - src/pages
+    tests: []
+    status: planned
+    introduced_version: 0.0.1
+    verified_version: null
+    approval: not_approved
+  - requirement_id: REQ-A11Y-001
+    description: Accessibility baseline is met.
+    source:
+      - docs/04-frontend/accessibility-guidelines.md
+      - docs/00-governance/definition-of-done.md
+    figma_source:
+      page: all_expected_pages
+      node_id: unknown
+      status: pending_inspection
+    backend_source: not_applicable
+    planned_frontend_files:
+      - src/design-system
+      - src/components
+      - src/pages
+    tests: []
+    status: planned
+    introduced_version: 0.0.1
+    verified_version: null
+    approval: not_approved
+notes:
+  - Planned frontend files are targets and do not claim implementation.
+  - Empty tests and null verified versions are intentional.
+  - Product/Interaction, content, legal, responsive, and accessibility sources require human confirmation.
+

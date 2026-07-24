@@ -29,6 +29,8 @@ artifacts follow [Semantic Versioning](https://semver.org/).
   interactions, state, content, errors, and accessibility guidance.
 - Backend Contract Revision 1 OpenAPI and supporting API overview, compatibility,
   integration, error, authentication, and change documentation.
+- Compatibility matrix, empty implementation baseline, initial requirements
+  traceability, and release-baseline version-change workflows.
 
 ## [0.0.1] - 2026-07-24
 
