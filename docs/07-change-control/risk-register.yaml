@@ -1,0 +1,137 @@
+schema_version: 1
+probability_values: [low, medium, high]
+impact_values: [low, medium, high, critical]
+status_values: [open, monitoring, mitigated, accepted, closed]
+risks:
+  - risk_id: RISK-2026-001
+    title: Figma and code drift
+    probability: high
+    impact: high
+    owner: design_reviewer
+    mitigation: Maintain versioned Figma mappings, visual review, compatibility analysis, and release baselines.
+    trigger: Implemented visuals no longer match the targeted approved Figma version.
+    status: open
+  - risk_id: RISK-2026-002
+    title: Backend version uncertainty
+    probability: high
+    impact: high
+    owner: backend_owner
+    mitigation: Obtain the official semantic version and keep compatibility pending until assigned.
+    trigger: Integration or release planning requires a backend version while only 0.0.0 is recorded.
+    status: open
+  - risk_id: RISK-2026-003
+    title: API contract drift
+    probability: medium
+    impact: high
+    owner: backend_owner
+    mitigation: Treat OpenAPI as authoritative, version every change, run impact analysis, and test compatibility.
+    trigger: Backend behavior or schemas differ from docs/05-backend/openapi.yaml.
+    status: open
+  - risk_id: RISK-2026-004
+    title: AI modifying unrelated files
+    probability: medium
+    impact: high
+    owner: ai_operator
+    mitigation: Inspect Git status and target files before editing; constrain scope and review final diffs.
+    trigger: An AI task changes a file outside its permitted scope.
+    status: open
+  - risk_id: RISK-2026-005
+    title: AI creating a wrapper directory
+    probability: low
+    impact: high
+    owner: ai_operator
+    mitigation: Confirm the Git root before every structural task and prohibit nested project roots.
+    trigger: A new project directory is created inside the existing repository root.
+    status: open
+  - risk_id: RISK-2026-006
+    title: AI overwriting human documentation
+    probability: medium
+    impact: high
+    owner: ai_operator
+    mitigation: Read existing files, preserve confirmed content, and use targeted edits.
+    trigger: Human-authored content is removed or replaced without review.
+    status: open
+  - risk_id: RISK-2026-007
+    title: Duplicate components
+    probability: medium
+    impact: medium
+    owner: frontend_owner
+    mitigation: Use component registries and search existing layers before creating components.
+    trigger: Multiple components implement the same responsibility or visual pattern.
+    status: open
+  - risk_id: RISK-2026-008
+    title: Upward dependency violations
+    probability: medium
+    impact: high
+    owner: frontend_owner
+    mitigation: Enforce the dependency map with review and planned automated boundary checks.
+    trigger: A lower layer imports a higher layer or a dependency cycle appears.
+    status: open
+  - risk_id: RISK-2026-009
+    title: Hardcoded design values
+    probability: high
+    impact: medium
+    owner: frontend_owner
+    mitigation: Extract tokens first and reject unregistered visual constants during review.
+    trigger: Component or Page styling uses raw values instead of approved tokens.
+    status: open
+  - risk_id: RISK-2026-010
+    title: Missing responsive states
+    probability: high
+    impact: high
+    owner: design_reviewer
+    mitigation: Inspect responsive Figma intent and require viewport acceptance evidence.
+    trigger: A required viewport has no defined or working layout.
+    status: open
+  - risk_id: RISK-2026-011
+    title: Missing accessibility behavior
+    probability: high
+    impact: high
+    owner: accessibility_owner
+    mitigation: Confirm an accessibility baseline and include manual and automated review in every layer.
+    trigger: Keyboard, focus, semantics, contrast, reflow, motion, or announcements are unspecified or fail.
+    status: open
+  - risk_id: RISK-2026-012
+    title: Invalid environment configuration
+    probability: medium
+    impact: high
+    owner: operations_owner
+    mitigation: Validate public configuration and fail safely without environment fallbacks.
+    trigger: Required configuration is missing, malformed, or targets the wrong environment.
+    status: open
+  - risk_id: RISK-2026-013
+    title: CORS failure
+    probability: medium
+    impact: high
+    owner: backend_owner
+    mitigation: Confirm allowed origins and preflight behavior for each environment before integration.
+    trigger: Browser requests to POST /api/lead are blocked by CORS.
+    status: open
+  - risk_id: RISK-2026-014
+    title: HubSpot failure
+    probability: medium
+    impact: high
+    owner: backend_owner
+    mitigation: Define upstream monitoring, safe errors, recovery, retry, and partial-failure behavior.
+    trigger: HubSpot contact or company processing fails or becomes unavailable.
+    status: open
+  - risk_id: RISK-2026-015
+    title: Personal data logging
+    probability: medium
+    impact: critical
+    owner: security_privacy_owner
+    mitigation: Prohibit lead data in client logs and require approved server-side redaction and retention.
+    trigger: Names, emails, owner IDs, HubSpot IDs, or request bodies appear in logs or analytics.
+    status: open
+  - risk_id: RISK-2026-016
+    title: Incomplete legal content
+    probability: high
+    impact: high
+    owner: legal_owner
+    mitigation: Block legal Page approval until authorized content and locale review are recorded.
+    trigger: Imprint or Data Protection content is missing, stale, unapproved, or incorrectly localized.
+    status: open
+notes:
+  - Role-based owners remain placeholders until identifiable humans are assigned.
+  - Open risks are planning inputs, not Issues or Incidents.
+

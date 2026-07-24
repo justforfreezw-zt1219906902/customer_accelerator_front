@@ -31,6 +31,8 @@ artifacts follow [Semantic Versioning](https://semver.org/).
   integration, error, authentication, and change documentation.
 - Compatibility matrix, empty implementation baseline, initial requirements
   traceability, and release-baseline version-change workflows.
+- Change-control classification, initial risk register, deviation log, directory
+  guidance, and reusable governance/review templates.
 
 ## [0.0.1] - 2026-07-24
 
