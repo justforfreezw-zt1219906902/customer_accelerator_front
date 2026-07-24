@@ -1,0 +1,43 @@
+schema_version: 1
+release:
+  release_id: REL-FE-X.Y.Z
+  frontend_version: X.Y.Z
+  status: draft
+  release_date: null
+  human_approval: pending
+artifact:
+  commit: pending
+  artifact_id: pending
+  checksum: pending
+compatibility:
+  baseline_id: pending
+  figma_version: pending
+  backend_api_version: pending
+  backend_contract_revision: pending
+  frontend_version: X.Y.Z
+environment:
+  name: pending
+  configuration_identity: pending
+  secrets_recorded: false
+requirements: []
+change_requests: []
+issues:
+  resolved: []
+  accepted_open: []
+approved_deviations: []
+migrations: []
+test_reports: []
+known_limitations: []
+rollback:
+  last_known_good_release: pending
+  procedure_reference: pending
+  readiness: pending
+approvals:
+  design: pending
+  backend: pending
+  product: pending
+  security_privacy: pending
+  release: pending
+deployment_record: pending
+smoke_test_report: pending
+

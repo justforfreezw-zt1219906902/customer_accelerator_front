@@ -1,0 +1,35 @@
+schema_version: 1
+baseline_id: DS1.0.0_API0.0.0_FE0.0.1
+project_phase: phase-0
+status: planned
+human_approval: pending
+tooling:
+  lint: decision_pending
+  type_checking: decision_pending
+  unit_tests: decision_pending
+  component_tests: decision_pending
+  integration_tests: decision_pending
+  end_to_end_tests: decision_pending
+  visual_regression: decision_pending
+  accessibility_automation: decision_pending
+  responsive_review: decision_pending
+  production_smoke_tests: decision_pending
+results:
+  lint: not_run
+  type_checking: not_run
+  unit_tests: not_run
+  component_tests: not_run
+  integration_tests: not_run
+  end_to_end_tests: not_run
+  visual_regression: not_run
+  accessibility_review: not_run
+  responsive_review: not_run
+  production_smoke_tests: not_run
+test_reports: []
+open_issues: []
+approved_deviations: []
+environments_tested: []
+notes:
+  - Vue Foundation and quality tooling have not been created.
+  - No result is reported as passed.
+
