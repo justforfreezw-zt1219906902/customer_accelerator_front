@@ -2,8 +2,8 @@
 
 ## Status
 
-This is the planned Vue 3 architecture. No application code or `src/` structure
-has been created. Tool and package choices require Phase 1 approval.
+The minimal Vue 3 foundation is implemented and awaiting Phase 1 human review.
+Product layers remain planned and unimplemented.
 
 ## Layered architecture
 
@@ -66,13 +66,19 @@ styles.
 - Code: actual implementation
 - Tests: correctness evidence
 
-## Phase 1 decisions required
+## Phase 1 foundation decisions
 
-- Vue/Vite/TypeScript versions and package manager
-- Router and whether a global state package is needed
-- Test, lint, formatting, build, and accessibility tools
-- Styling and token delivery
+Implemented:
+
+- Vue 3, Vite, strict TypeScript, Vue Router, and npm
+- CSS Variables plus scoped CSS
+- ESLint, Prettier, Vitest, Vue Test Utils, and Playwright
+- No global state package
+- Pinned Node development version and committed npm lockfile
+
+Still required:
+
 - Content and localization format
 - API generation or manual mapping
-- Supported runtime, browsers, and CI
-
+- Supported browsers, CI, and accessibility conformance target
+- Playwright browser binary installation approval

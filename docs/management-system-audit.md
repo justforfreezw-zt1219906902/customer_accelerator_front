@@ -5,23 +5,26 @@
 - Audit date: 2026-07-24
 - Repository root:
   `/Users/zhaowei/WebstormProjects/customer_accelerator_front`
-- Current phase: Phase 0 — Project Audit
-- Phase status: `planned`
+- Current phase: Phase 1 — Vue Foundation
+- Phase status: `approved`
 - Compatibility baseline: `DS1.0.0_API0.0.0_FE0.0.1`
 - Audit scope: management documentation structure and repository-native
   consistency validation
-- Human approval: `pending`
+- Human approval: `approved` by Tom on 2026-07-24
 
 This audit evaluates whether the management documentation system is internally
-consistent and ready to support execution of Phase 0. It does not claim that
-the Phase 0 project audit has been executed or approved.
+consistent and records the approved Phase 0 audit and implemented Phase 1
+foundation. Tom approved Phase 0/task `TASK-P0-001` and Phase 1/task
+`TASK-P1-001` on 2026-07-24.
 
 ## Overall result
 
 The management documentation system is structurally complete and has
-repository-native validation available. Automated management checks pass.
-Phase 0 remains `planned`; execution readiness is conditional on the human
-decisions and authoritative inputs listed below.
+repository-native validation available. Automated management checks pass. The
+Phase 0 and Phase 1 are approved. The Phase 1 foundation has management
+validation, typecheck, lint, unit tests, formatting, build, and dependency
+audit passing. Playwright browser installation and end-to-end execution remain
+pending and were accepted as non-blocking follow-up evidence.
 
 ## Passed checks
 
@@ -33,8 +36,9 @@ decisions and authoritative inputs listed below.
    Interaction Specifications, OpenAPI, content configuration, code, and tests.
 4. **Version consistency:** Figma `1.0.0`, Backend placeholder `0.0.0`, Frontend
    `0.0.1`, and the compatibility ID agree across the current records.
-5. **Phase consistency:** Phase 0 is `planned`; Phases 1–8 are `not_started`;
-   no phase is approved.
+5. **Phase consistency:** Phases 0 and 1 are `approved`, and Phases 2–8 are
+   `not_started`; approval evidence identifies Tom, the reviewed task IDs, and
+   the review date.
 6. **Figma mapping structure:** all eleven expected Figma pages are registered
    with non-invented unknown node IDs and planned targets.
 7. **Backend contract structure:** `POST /api/lead`, its five request fields,
@@ -87,11 +91,12 @@ or human approval.
   approved source.
 - Content, translations, legal text, assets, licenses, and identifiable owners
   remain incomplete.
-- Quality tools for lint, type checking, unit, component, integration,
-  end-to-end, visual-regression, and accessibility automation remain
-  `decision_pending` for Phase 1.
-- No application implementation, build, browser test, environment test,
-  deployment, or production smoke test has occurred.
+- Integration, visual-regression, and accessibility automation remain
+  `decision_pending`; Playwright is configured but its browser binary is not
+  installed.
+- Phase 1 now has a minimal application foundation and successful build; final
+  product implementation, browser execution, deployment, and production smoke
+  testing have not occurred.
 
 ## Failed checks
 
@@ -141,13 +146,13 @@ placeholder and compatibility remains `pending_backend_version_assignment`.
 5. Supply and approve content, translations, legal material, assets, and
    licenses.
 6. Decide Phase 1 tooling and quality standards.
-7. Review Phase 0 entry evidence before authorizing execution.
+7. Resolve or explicitly accept the Phase 1 stack and environment decisions
+   before authorizing Phase 1.
 
-## Recommendation before Phase 0 execution
+## Recommendation before Phase 2 authorization
 
-Use the current documentation system as the control framework for Phase 0.
-Before executing audit tasks that require authoritative conclusions, assign the
-responsible humans and obtain access to the missing sources. Keep Phase 0 at
-`planned` until execution is explicitly assigned. Do not approve or close
-Phase 0 until its acceptance criteria, repository validation, completion
-report, and identifiable human review are all recorded.
+Preserve the Phase 0 and Phase 1 approval evidence. Resolve the Figma inspection
+and Design Token inputs required by the Phase 2 gate before token
+implementation. Retain the supported-browser, CI, accessibility, Playwright
+browser-installation, and IDE tracking decisions as explicit follow-up work.
+Phase approvals do not approve the compatibility baseline.

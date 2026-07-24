@@ -4,12 +4,47 @@
   "private": true,
   "description": "Documentation and governance validation tooling. Phase 1 may extend or replace this configuration.",
   "type": "module",
+  "packageManager": "npm@11.6.0",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "vue-tsc --noEmit -p tsconfig.app.json",
+    "lint": "eslint .",
+    "format": "prettier --write \"src/**/*.{ts,vue,css}\" \"tests/**/*.ts\" \"*.{js,ts,json,html}\"",
+    "test": "vitest run",
+    "test:unit": "vitest run",
+    "test:e2e": "playwright test",
     "validate:version": "node scripts/validate-version.mjs",
     "validate:docs": "node scripts/validate-docs.mjs",
     "validate:compatibility": "node scripts/validate-compatibility.mjs",
     "validate:registries": "node scripts/validate-registries.mjs",
     "validate:openapi": "node scripts/validate-openapi.mjs",
     "validate:management": "node scripts/validate-management.mjs"
+  },
+  "dependencies": {
+    "vue": "^3.5.40",
+    "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^24.13.3",
+    "@vitejs/plugin-vue": "^6.0.8",
+    "@vue/test-utils": "^2.4.11",
+    "eslint": "^9.39.5",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-vue": "^10.10.0",
+    "globals": "^16.5.0",
+    "jsdom": "^26.1.0",
+    "prettier": "^3.9.6",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.65.0",
+    "vite": "^7.3.6",
+    "vitest": "^3.2.7",
+    "vue-tsc": "^3.3.8"
   }
 }

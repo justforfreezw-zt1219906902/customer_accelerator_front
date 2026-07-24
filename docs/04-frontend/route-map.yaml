@@ -1,5 +1,14 @@
 schema_version: 1
 status: planned
+foundation_implementation:
+  path: /
+  component: FoundationPlaceholderPage
+  planned_path: src/pages/FoundationPlaceholderPage.vue
+  status: temporary_implemented
+  replacement: LandingPage
+  notes:
+    - This temporary Phase 1 route proves the router shell.
+    - It does not implement or satisfy the planned Landing Page route.
 routes:
   - path: /
     component: LandingPage
@@ -34,4 +43,3 @@ global_decisions_required:
   - Redirects from the previous website
 notes:
   - Routes are planned product inputs, not implemented behavior.
-

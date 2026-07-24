@@ -1,5 +1,92 @@
 # Changelog
 
+## 2026-07-24 — Phase 1 human approval
+
+### Approved
+
+- Tom approved Phase 1 and `TASK-P1-001` with review notes “good”
+- Recorded the approval under `docs/08-quality/test-reports/`
+
+### Changed
+
+- Updated Phase 1 from `needs_review` to `approved`
+- Advanced the next gate to Phase 2 Design Tokens Authorization
+
+### Evidence preserved
+
+- Playwright browser execution remains pending and is not reported as passed
+- Browser, CI, accessibility, and IDE tracking policies remain follow-up
+  decisions
+- The compatibility baseline remains not approved
+
+## 2026-07-24 — Phase 1 Vue foundation
+
+### Added
+
+- Vue 3, Vite, strict TypeScript, Vue Router, and npm lockfile
+- Minimal RouterView application shell, temporary foundation Page, layout,
+  public environment validation, and base styling
+- ESLint, Prettier, Vitest, Vue Test Utils, and Playwright configuration
+- Unit and end-to-end foundation specifications
+- Phase 1 validation, traceability, and instruction evidence
+
+### Changed
+
+- Advanced the current phase to Phase 1 with status `needs_review`
+- Extended the documentation-only package manifest while preserving all six
+  management validation scripts
+
+### Validation
+
+- Management validation, formatting, typecheck, lint, unit tests, build, and
+  npm security audit passed
+- Playwright browser installation and end-to-end execution remain pending
+
+### Constraints preserved
+
+- No final Product Page, Header, Footer, design-system component, Product
+  Component, Section, contact form, or backend integration was implemented
+- No Pinia dependency or wrapper project directory was created
+
+## 2026-07-24 — Phase 0 human approval
+
+### Approved
+
+- Tom approved Phase 0 and `TASK-P0-001` with the review note “Good”
+- Recorded approval evidence under `docs/08-quality/test-reports/`
+
+### Changed
+
+- Updated Phase 0 from `needs_review` to `approved`
+- Advanced the next gate to Phase 1 Vue Foundation Authorization
+
+### Constraints preserved
+
+- Compatibility remains pending the official Backend API version
+- Phase 1 is not started or authorized by this approval record
+- No application code or dependency was changed
+
+## 2026-07-24 — Phase 0 repository audit
+
+### Audited
+
+- Confirmed the Git repository root, clean starting state, tracked IDE files,
+  package-manager evidence, local Node/npm versions, absent frontend toolchain,
+  absent application paths, and absence of wrapper directories
+- Recorded Phase 1 stack recommendations, alternatives, risks, and blocking
+  human decisions
+
+### Changed
+
+- Moved Phase 0 from `planned` to `needs_review`
+- Recorded completed audit execution while preserving `pending` human approval
+
+### Constraints preserved
+
+- No dependency was installed
+- No Vue or other application code was created or modified
+- No wrapper project directory was created
+
 ## 2026-07-24 — Management validation and audit
 
 ### Added

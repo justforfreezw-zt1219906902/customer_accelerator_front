@@ -2,9 +2,9 @@ schema_version: 1
 project: mi-goTo Frontend
 
 current_phase:
-  id: phase-0
-  name: Project Audit
-  status: planned
+  id: phase-1
+  name: Vue Foundation
+  status: approved
 
 current_task: null
 environment: local
@@ -24,18 +24,47 @@ compatibility:
 
 blockers: []
 next_gate:
-  name: Phase 0 Audit Review
+  name: Phase 2 Design Tokens Authorization
   human_approval_required: true
 
 management_readiness:
   documentation_baseline: complete
   repository_validation: passed
-  phase_0_execution: pending_human_assignment
+  phase_0_execution: approved
   audit_record: docs/management-system-audit.md
   last_validated: "2026-07-24"
 
+phase_0_approval:
+  reviewer: Tom
+  result: APPROVED
+  date: "2026-07-24"
+  reviewed_task: TASK-P0-001
+  notes: Good
+  evidence: docs/08-quality/test-reports/phase-0-task-p0-001-approval-2026-07-24.md
+
+follow_up_decisions:
+  - Decide whether .idea/workspace.xml remains tracked.
+  - Confirm supported browsers, CI environment and accessibility conformance target.
+  - Approve Playwright browser binary installation before end-to-end execution.
+
+phase_1:
+  package_manager: npm@11.6.0
+  node: 24.2.0
+  implementation_status: approved
+  validation_status: passed_except_e2e_pending_browser_installation
+  human_approval: approved
+  approval:
+    reviewer: Tom
+    result: APPROVED
+    date: "2026-07-24"
+    reviewed_task: TASK-P1-001
+    notes: good
+    evidence: docs/08-quality/test-reports/phase-1-task-p1-001-approval-2026-07-24.md
+
 last_updated: "2026-07-24"
 notes:
-  - The Phase 0 audit has not been executed.
+  - The Phase 0 repository audit and TASK-P0-001 were approved by Tom.
   - Backend 0.0.0 is a non-release placeholder pending official version assignment.
-  - Management documentation readiness does not complete or approve Phase 0.
+  - Phase 1 foundation and TASK-P1-001 were approved by Tom.
+  - Pending Playwright and policy decisions were accepted as non-blocking follow-ups.
+  - The compatibility baseline remains not approved.

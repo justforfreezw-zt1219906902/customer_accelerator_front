@@ -4,7 +4,7 @@
 
 ```env
 VITE_API_BASE_URL=http://localhost:8080
-VITE_HUBSPOT_OWNER_ID=
+VITE_HUBSPOT_OWNER_ID=90579791
 VITE_APP_MODE=development
 ```
 
@@ -25,8 +25,8 @@ These are names and non-secret example values only.
 | Variable | Purpose | Current state |
 | --- | --- | --- |
 | `VITE_API_BASE_URL` | Select the backend base URL | Local value supplied; production unresolved |
-| `VITE_HUBSPOT_OWNER_ID` | Provide an approved non-secret owner identifier if the architecture requires it | Value, necessity, and data classification unresolved |
-| `VITE_APP_MODE` | Identify the planned application mode | Local example is `development`; allowed values and validation unresolved |
+| `VITE_HUBSPOT_OWNER_ID` | Provide the supplied public owner identifier | Local value `90579791` supplied; production ownership remains to be confirmed |
+| `VITE_APP_MODE` | Identify the application mode | Local value is `development`; production values remain unresolved |
 
 ## Local
 
@@ -34,6 +34,8 @@ These are names and non-secret example values only.
 - The Go backend must be run separately.
 - Availability, CORS, and endpoint behavior still require validation.
 - Local values belong in an ignored environment file when Phase 1 tooling exists.
+- Phase 1 records the non-secret local values in `.env.development` and
+  `.env.example`.
 
 ## Staging
 
@@ -57,4 +59,3 @@ configuration injection mechanism are required before staging use.
 - Whether a HubSpot owner ID belongs in public client configuration
 - Allowed `VITE_APP_MODE` values and validation timing
 - CORS origins, logging, privacy, retention, monitoring, and incident handling
-

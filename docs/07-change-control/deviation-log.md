@@ -22,9 +22,9 @@ as deviations.
 
 ## Active deviations
 
-None. Frontend implementation has not started and no visual baseline is approved.
+None. The Phase 1 foundation does not implement the Figma visual baseline;
+temporary foundation CSS variables are not registered design tokens.
 
 ## Resolved deviations
 
 None.
-
