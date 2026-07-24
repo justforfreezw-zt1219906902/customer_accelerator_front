@@ -27,6 +27,8 @@ artifacts follow [Semantic Versioning](https://semver.org/).
   and deviation records.
 - Planned Vue 3 layered architecture, source structure, dependencies, routes,
   interactions, state, content, errors, and accessibility guidance.
+- Backend Contract Revision 1 OpenAPI and supporting API overview, compatibility,
+  integration, error, authentication, and change documentation.
 
 ## [0.0.1] - 2026-07-24
 

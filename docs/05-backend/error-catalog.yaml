@@ -1,0 +1,42 @@
+schema_version: 1
+contract_revision: 1
+classification_policy:
+  backend_error_text_is_stable_machine_code: false
+  notes:
+    - Match behavior primarily by HTTP status and confirmed contract context.
+    - Human-readable backend text may change unless a stable code is later added.
+errors:
+  - catalog_id: API-LEAD-400-INVALID-JSON
+    http_status: 400
+    confirmed_example_text: invalid JSON request body
+    backend_machine_code: not_specified
+    frontend_category: invalid_request
+    presentation: recoverable_form_error
+    retry: decision_required
+  - catalog_id: API-LEAD-400-VALIDATION
+    http_status: 400
+    confirmed_example_text: workEmail must be valid
+    backend_machine_code: not_specified
+    frontend_category: validation_error
+    presentation: field_or_form_validation
+    retry: after_user_correction
+  - catalog_id: API-LEAD-500-INTERNAL
+    http_status: 500
+    confirmed_example_text: internal server error
+    backend_machine_code: not_specified
+    frontend_category: server_error
+    presentation: generic_temporary_failure
+    retry: decision_required
+  - catalog_id: API-LEAD-502-HUBSPOT
+    http_status: 502
+    confirmed_example_text: failed to create contact in HubSpot
+    backend_machine_code: not_specified
+    frontend_category: upstream_integration_error
+    presentation: generic_integration_failure
+    retry: decision_required
+unknown_error:
+  frontend_category: unexpected_error
+  presentation: generic_safe_failure
+  logging: sanitized_only
+  retry: decision_required
+

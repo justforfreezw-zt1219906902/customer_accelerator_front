@@ -8,7 +8,7 @@ backend:
   contract_revision: 1
   openapi:
     destination: docs/05-backend/openapi.yaml
-    status: expected_not_verified
+    status: documented_pending_backend_owner_review
   environments:
     local:
       base_url: "http://localhost:8080"
@@ -19,12 +19,16 @@ backend:
   operations:
     - method: POST
       path: /api/lead
-      status: documented_contract_not_inspected
-      request_schema: unknown
-      response_schema: unknown
-      http_status_codes: unknown
+      status: contract_documented
+      request_schema: LeadRequest
+      response_schema: LeadSuccessResponse
+      http_status_codes: [200, 400, 500, 502]
       authentication: unknown
-      errors: unknown
+      errors:
+        - invalid JSON request body
+        - workEmail must be valid
+        - internal server error
+        - failed to create contact in HubSpot
       processing:
         - backend
         - HubSpot
@@ -33,5 +37,5 @@ notes:
   - The official backend semantic version has not been supplied.
   - Compatibility placeholder 0.0.0 is not a backend release.
   - Contract revision 1 must not be interpreted as semantic version 1.0.0.
-  - The OpenAPI destination does not prove that the file is present or authoritative.
-
+  - The OpenAPI contract is now documented at the registered destination.
+  - Backend-owner review and official semantic version assignment remain pending.

@@ -1,0 +1,126 @@
+openapi: 3.1.0
+info:
+  title: mi-goTo Lead API
+  version: 0.0.0
+  description: |
+    Documented backend contract revision 1.
+    The official backend semantic version has not been supplied.
+    The info.version value 0.0.0 is a non-release compatibility placeholder.
+servers:
+  - url: "http://localhost:8080"
+    description: Local Go backend
+  - url: "https://production-url-unresolved.invalid"
+    description: Unresolved placeholder; the production base URL has not been supplied.
+paths:
+  /api/lead:
+    post:
+      operationId: submitLead
+      summary: Submit a lead
+      description: |
+        Creates or updates the contact in HubSpot, ensures the company exists,
+        associates the contact with the company, sends an internal notification
+        email, and returns the HubSpot contact ID.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LeadRequest"
+            example:
+              firstName: John
+              familyName: Doe
+              company: Example Inc
+              workEmail: john@example.com
+              owner: "90579791"
+      responses:
+        "200":
+          description: Lead submitted successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LeadSuccessResponse"
+              example:
+                message: lead submitted successfully
+                hubspot_contact_id: "796484549850"
+        "400":
+          description: Invalid JSON request body or request validation failure
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              examples:
+                invalidJson:
+                  summary: Invalid JSON request
+                  value:
+                    error: invalid JSON request body
+                validationFailure:
+                  summary: Invalid email
+                  value:
+                    error: workEmail must be valid
+        "500":
+          description: Unexpected backend failure
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                error: internal server error
+        "502":
+          description: HubSpot processing failure
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                error: failed to create contact in HubSpot
+components:
+  schemas:
+    LeadRequest:
+      type: object
+      required:
+        - firstName
+        - familyName
+        - company
+        - workEmail
+      properties:
+        firstName:
+          type: string
+          minLength: 1
+          description: Required; cannot be empty.
+        familyName:
+          type: string
+          minLength: 1
+          description: Required; cannot be empty.
+        company:
+          type: string
+          minLength: 1
+          description: Required; cannot be empty.
+        workEmail:
+          type: string
+          format: email
+          minLength: 1
+          description: Required; cannot be empty and must be a valid email address.
+        owner:
+          type: string
+          description: Optional owner identifier.
+    LeadSuccessResponse:
+      type: object
+      required:
+        - message
+        - hubspot_contact_id
+      properties:
+        message:
+          type: string
+          example: lead submitted successfully
+        hubspot_contact_id:
+          type: string
+          example: "796484549850"
+    ErrorResponse:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string
+          description: Human-readable backend error text; not a stable machine error code.
+
