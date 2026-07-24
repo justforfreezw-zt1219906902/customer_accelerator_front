@@ -15,10 +15,11 @@ artifacts follow [Semantic Versioning](https://semver.org/).
 - Environment variable template.
 - Documentation index.
 - Bootstrap instruction record.
+- Governance baseline covering the project charter, independent sources of
+  truth, architecture, ownership, completion, versioning, naming, and AI work.
 
 ## [0.0.1] - 2026-07-24
 
 ### Added
 
 - Initialized the planning baseline for mi-goTo Frontend.
-
