@@ -1,0 +1,182 @@
+:root,
+[data-theme='dark-enterprise'] {
+  color-scheme: dark;
+
+  --color-bg-default: #0c0c18;
+  --color-surface-default: #15151f;
+  --color-surface-elevated: #1f1f2b;
+  --color-card-default: var(--color-surface-elevated);
+  --color-card-highlighted: var(--color-surface-elevated);
+  --color-border-default: #2c2c3a;
+  --color-border-subtle: #22222e;
+  --color-border-brand: var(--color-brand-light);
+  --color-border-amber: var(--color-accent-amber-light);
+  --color-text-primary: #e8e8f0;
+  --color-text-muted: #f5f0e6;
+  --color-text-inverse: #1c1a24;
+  --color-text-on-brand: #ffffff;
+  --color-brand-core: #6c4be6;
+  --color-brand-light: #8e6bff;
+  --color-brand-deep: #4e33b0;
+  --color-brand-tint-50: #eeeafc;
+  --color-brand-tint-200: #c9bcf6;
+  --color-brand-tint-900: #2c1c68;
+  --color-brand-primary: var(--color-brand-light);
+  --color-accent-amber: #e89b2c;
+  --color-accent-amber-light: #f4b65a;
+  --color-accent-amber-deep: #9e6410;
+  --color-state-error: #e5626b;
+  --color-state-error-subtle: #3a1f24;
+  --color-state-disabled: #4a4a58;
+  --color-state-success: #5fd3a2;
+  --color-state-success-subtle: #12362b;
+  --color-focus-ring: var(--color-brand-light);
+  --color-shadow-card: #00000066;
+  --color-shadow-elevated: #00000080;
+  --color-shadow-glow-violet: #8e6bff59;
+  --color-shadow-glow-amber: #e89b2c4d;
+  --color-shadow-focus-ring: #8e6bff80;
+  --color-bg-surface: var(--color-surface-default);
+  --color-bg-elevated: var(--color-surface-elevated);
+  --color-input-background: var(--color-surface-default);
+  --color-input-background-disabled: var(--color-state-disabled);
+  --color-input-border: var(--color-border-default);
+  --color-input-border-hover: var(--color-border-subtle);
+  --color-input-border-focus: var(--color-border-brand);
+  --color-input-border-error: var(--color-state-error);
+  --color-input-placeholder: var(--color-text-muted);
+  --color-input-helper: var(--color-text-muted);
+  --color-input-error-text: var(--color-state-error);
+}
+
+[data-theme='light-impact'] {
+  color-scheme: light;
+
+  --color-bg-default: #f8f6f2;
+  --color-surface-default: #ffffff;
+  --color-surface-elevated: #ffffff;
+  --color-card-default: var(--color-surface-elevated);
+  --color-card-highlighted: var(--color-surface-elevated);
+  --color-border-default: #e8e3db;
+  --color-border-subtle: #efebe3;
+  --color-border-brand: var(--color-brand-primary);
+  --color-border-amber: var(--color-accent-amber-deep);
+  --color-text-primary: #1c1a24;
+  --color-text-muted: #f5f0e6;
+  --color-text-inverse: #f8f6f2;
+  --color-text-on-brand: #ffffff;
+  --color-brand-core: #6c4be6;
+  --color-brand-light: #8e6bff;
+  --color-brand-deep: #4e33b0;
+  --color-brand-tint-50: #eeeafc;
+  --color-brand-tint-200: #c9bcf6;
+  --color-brand-tint-900: #2c1c68;
+  --color-brand-primary: var(--color-brand-deep);
+  --color-accent-amber: #e89b2c;
+  --color-accent-amber-light: #f4b65a;
+  --color-accent-amber-deep: #9e6410;
+  --color-state-error: #c0323c;
+  --color-state-error-subtle: #fbeaea;
+  --color-state-disabled: #c7c2ba;
+  --color-state-success: #147a55;
+  --color-state-success-subtle: #e6f7ef;
+  --color-focus-ring: var(--color-brand-deep);
+  --color-shadow-card: #00000066;
+  --color-shadow-elevated: #00000080;
+  --color-shadow-glow-violet: #8e6bff59;
+  --color-shadow-glow-amber: #e89b2c4d;
+  --color-shadow-focus-ring: #8e6bff80;
+  --color-bg-surface: var(--color-surface-default);
+  --color-bg-elevated: var(--color-surface-elevated);
+  --color-input-background: var(--color-surface-default);
+  --color-input-background-disabled: var(--color-state-disabled);
+  --color-input-border: var(--color-border-default);
+  --color-input-border-hover: var(--color-border-subtle);
+  --color-input-border-focus: var(--color-border-brand);
+  --color-input-border-error: var(--color-state-error);
+  --color-input-placeholder: var(--color-text-muted);
+  --color-input-helper: var(--color-text-muted);
+  --color-input-error-text: var(--color-state-error);
+}
+
+:root {
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-48: 48px;
+  --spacing-64: 64px;
+  --spacing-96: 96px;
+
+  --radius-none: 0;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 999px;
+
+  --opacity-disabled: 0.4;
+  --opacity-hover-overlay: 0.08;
+  --opacity-pressed-overlay: 0.12;
+  --opacity-border-subtle: 0.12;
+  --opacity-glow-ambient: 0.35;
+
+  --motion-duration-fast: 120ms;
+  --motion-duration-base: 200ms;
+  --motion-duration-slow: 320ms;
+
+  --font-family-inter: 'Inter';
+  --font-family-mono: 'JetBrains Mono';
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  --stroke-1: 1px;
+  --stroke-2: 2px;
+
+  --typography-display-hero-font-size: 56px;
+  --typography-display-hero-line-height: 58.24px;
+  --typography-display-hero-letter-spacing: -0.025em;
+  --typography-heading-h1-font-size: 40px;
+  --typography-heading-h1-line-height: 43.2px;
+  --typography-heading-h1-letter-spacing: -0.025em;
+  --typography-heading-h2-font-size: 32px;
+  --typography-heading-h2-line-height: 35.84px;
+  --typography-heading-h2-letter-spacing: -0.02em;
+  --typography-heading-h3-font-size: 24px;
+  --typography-heading-h3-line-height: 28.8px;
+  --typography-heading-h3-letter-spacing: -0.015em;
+  --typography-heading-h4-font-size: 20px;
+  --typography-heading-h4-line-height: 25px;
+  --typography-heading-h4-letter-spacing: -0.01em;
+  --typography-body-lg-font-size: 18px;
+  --typography-body-lg-line-height: 27px;
+  --typography-body-lg-letter-spacing: 0;
+  --typography-body-base-font-size: 16px;
+  --typography-body-base-line-height: 24px;
+  --typography-body-base-letter-spacing: 0;
+  --typography-body-sm-font-size: 14px;
+  --typography-body-sm-line-height: 20.3px;
+  --typography-body-sm-letter-spacing: 0;
+  --typography-label-ui-font-size: 13px;
+  --typography-label-ui-line-height: 16.9px;
+  --typography-label-ui-letter-spacing: 0;
+  --typography-label-button-font-size: 15px;
+  --typography-label-button-line-height: 18px;
+  --typography-label-button-letter-spacing: -0.01em;
+  --typography-label-mono-kicker-font-size: 11px;
+  --typography-label-mono-kicker-line-height: 15.4px;
+  --typography-label-mono-kicker-letter-spacing: 0.2em;
+  --typography-wordmark-font-size: 24px;
+  --typography-wordmark-line-height: 24px;
+  --typography-wordmark-letter-spacing: -0.02em;
+
+  --shadow-card: 0 8px 24px 0 var(--color-shadow-card);
+  --shadow-elevated: 0 16px 40px -4px var(--color-shadow-elevated);
+  --shadow-glow-violet: 0 0 32px 0 var(--color-shadow-glow-violet);
+  --shadow-glow-amber: 0 0 20px 0 var(--color-shadow-glow-amber);
+  --shadow-focus-ring: 0 0 0 3px var(--color-shadow-focus-ring);
+}

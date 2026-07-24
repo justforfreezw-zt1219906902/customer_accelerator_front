@@ -17,28 +17,35 @@ import AppLayout from '../layouts/AppLayout.vue';
 
 <style scoped>
 .foundation-placeholder {
-  width: min(100% - 2rem, 48rem);
-  padding: 3rem;
-  border: 1px solid var(--foundation-border-color);
-  border-radius: var(--foundation-radius);
-  background: var(--foundation-surface-color);
+  width: min(calc(100% - var(--spacing-32)), 48rem);
+  padding: var(--spacing-48);
+  border: var(--stroke-1) solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-elevated);
+  box-shadow: var(--shadow-card);
 }
 
 .foundation-placeholder__eyebrow {
-  color: var(--foundation-muted-color);
-  font-size: 0.875rem;
-  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  font-family: var(--font-family-mono), monospace;
+  font-size: var(--typography-label-mono-kicker-font-size);
+  line-height: var(--typography-label-mono-kicker-line-height);
+  letter-spacing: var(--typography-label-mono-kicker-letter-spacing);
   text-transform: uppercase;
 }
 
 h1 {
-  margin-block: 0.75rem;
-  font-size: clamp(2rem, 6vw, 3.5rem);
-  line-height: 1.05;
+  margin-block: var(--spacing-12);
+  font-size: var(--typography-heading-h1-font-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--typography-heading-h1-line-height);
+  letter-spacing: var(--typography-heading-h1-letter-spacing);
 }
 
 p {
   margin-block: 0;
-  line-height: 1.6;
+  font-size: var(--typography-body-base-font-size);
+  line-height: var(--typography-body-base-line-height);
+  letter-spacing: var(--typography-body-base-letter-spacing);
 }
 </style>

@@ -7,27 +7,27 @@
 | Figma version | `1.0.0` |
 | Figma URL | [mi-goTo Figma design](https://www.figma.com/design/vyr3TvF5lAUOnuuxdW8iRb/prototype?node-id=0-1&p=f&t=AdHvWZgIn8DrsmI6-0) |
 | File key | `vyr3TvF5lAUOnuuxdW8iRb` |
-| Baseline status | `pending_inspection` |
+| Baseline status | `foundation_and_tokens_inspected_needs_human_review` |
 | Human reviewer | Unknown |
 | Capture date | 2026-07-24 |
 | Visual approval | Pending |
 
 ## Expected pages
 
-1. `00 Foundation`
-2. `01 Tokens`
-3. `02 Core Components`
-4. `03 Composite Components`
-5. `04 Product Components`
-6. `05 Sections`
-7. `06 Landing Page`
-8. `07 Why Mi-goTo Page`
-9. `08 Imprint`
-10. `09 Data Protection`
-11. `10 Contact Page`
+1. `00 Foundation` — `0:1`, inspected
+2. `01 Tokens` — `23:2`, inspected
+3. `02 Core Components` — `31:2`, presence verified
+4. `03 Composite Components` — `68:2`, presence verified
+5. `04 Product Components` — `81:2`, presence verified
+6. `05 Sections` — `87:2`, presence verified
+7. `06 Landing Page` — `212:2`, presence verified
+8. `07 Why Mi-goTo Page` — `259:2`, presence verified
+9. `08 Imprint` — `122:2`, presence verified
+10. `09 Data Protection` — `128:2`, presence verified
+11. `10 Contact Page` — `269:2`, presence verified
 
-These are expected planning inputs. Their actual presence, exact names, and node
-IDs have not been verified.
+All expected pages and their node IDs were verified on 2026-07-24. Only the
+Foundation and Tokens pages were inspected in detail for Phase 2.
 
 ## Authority
 
@@ -36,20 +36,25 @@ layout, and responsive design intent. It does not independently control routes,
 interaction behavior, API contracts, content ownership, implementation status,
 tests, or approval.
 
+## Phase 2 findings
+
+- `00 Foundation` primary board frame: `25:2`
+- `01 Tokens` token reference frame: `27:2`
+- 7 variable collections: Color, Spacing, Radius, Opacity, Motion, Font, Stroke
+- Color has `Dark Enterprise` and `Light Impact` modes.
+- 12 text styles and 5 effect styles were confirmed.
+- No Paint Styles or Grid Styles were present.
+
 ## Known unknowns
 
-- Page, Section, component, style, and variable node IDs
-- Actual page names, ordering, and completeness
-- Variable collections, tokens, modes, aliases, and values
+- Detailed component, Section, and Page node inspection beyond pages 00 and 01
 - Component properties, variants, states, and instance behavior
 - Section composition and Page architecture
-- Responsive breakpoints and viewport coverage
-- Typography sources, fonts, assets, and licenses
-- Motion specifications and reduced-motion intent
+- Responsive breakpoints: no breakpoint variable/style was found
+- Font asset delivery and licenses for Inter and JetBrains Mono
+- Motion easing and reduced-motion intent: not specified in the inspected source
 - Accessibility requirements beyond visible design
-- Whether version `1.0.0` is formally assigned and implementation-ready
 - Human design reviewer and review date
 - Thank You Page visual design
 
 No visual approval is claimed by this baseline.
-

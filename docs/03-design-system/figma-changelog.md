@@ -27,7 +27,10 @@ impact, reviewer, review date, and approval evidence.
 
 ### Changed
 
-- None recorded.
+- Phase 2 read-only inspection confirmed seven variable collections, two color
+  modes, twelve text styles, and five effect styles.
+- Token naming normalization and exact code mappings are now recorded in
+  `token-map.yaml`.
 
 ### Deprecated
 
@@ -39,18 +42,18 @@ impact, reviewer, review date, and approval evidence.
 
 ### Breaking Changes
 
-- Unknown because the file has not been inspected against a prior baseline.
+- None identified during the initial extraction. No prior implemented token
+  baseline existed for comparison.
 
 ### Migration Notes
 
-- No code migration applies because frontend implementation has not started.
-- Extract tokens, components, variants, Sections, Pages, responsive intent, and
-  node IDs before treating this version as implementation-ready.
+- The Phase 1 temporary foundation values were replaced with Figma-backed
+  runtime CSS variables.
+- Breakpoints and motion easing require a future confirmed source before use.
 
 ### Affected code layers
 
-- Planned: Tokens, Core, Composite, Product, Sections, and Pages
-- Implemented: none
+- Implemented: Tokens and Theme
+- Planned: Core, Composite, Product, Sections, and Pages
 
 Human visual approval: **pending**
-

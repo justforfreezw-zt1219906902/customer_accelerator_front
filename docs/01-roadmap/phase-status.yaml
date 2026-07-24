@@ -46,11 +46,20 @@ phases:
       unit_tests: passed
       build: passed
       end_to_end_tests: pending_playwright_browser_installation
-      phase_2_entry: pending_authorization
+      phase_2_entry: authorized_and_executed
   - id: phase-2
     name: Design Tokens
-    status: not_started
+    status: needs_review
     human_approval: pending
+    readiness:
+      figma_read_only_inspection: complete
+      token_implementation: complete
+      management_validation: passed
+      typecheck: passed
+      lint: passed
+      unit_tests: passed
+      build: passed
+      visual_review: pending
   - id: phase-3
     name: Core Components
     status: not_started

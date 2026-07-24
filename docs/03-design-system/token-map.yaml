@@ -1,76 +1,96 @@
 schema_version: 1
 source_version: 1.0.0
-status_values:
-  - pending_extraction
-  - mapped
-  - implemented
-  - verified
-  - blocked
+inspection_date: "2026-07-24"
+source_pages:
+  foundation: "0:1"
+  tokens: "23:2"
+status_values: [pending_extraction, mapped, implemented, verified, blocked]
 categories:
   - stable_id: TOKEN-COLOR-001
     category: color
-    figma_token: unknown
-    css_variable: unknown
-    typescript_token: unknown
+    figma_token: "Color collection (VariableCollectionId:24:2; 45 variables)"
+    css_variable: "--color-*"
+    typescript_token: colors
     source_version: 1.0.0
-    status: pending_extraction
+    status: implemented
     notes:
-      - Extract primitive and semantic colors, modes, and contrast constraints.
+      - "Modes: Dark Enterprise (24:0) and Light Impact (24:1)."
+      - Figma aliases remain CSS variable aliases where applicable.
   - stable_id: TOKEN-TYPOGRAPHY-001
     category: typography
-    figma_token: unknown
-    css_variable: unknown
-    typescript_token: unknown
+    figma_token: "Font collection (VariableCollectionId:24:39) and 12 Typography/* text styles"
+    css_variable: "--font-* and --typography-*"
+    typescript_token: "fontFamilies, fontWeights, typography"
     source_version: 1.0.0
-    status: pending_extraction
+    status: implemented
     notes:
-      - Extract families, weights, sizes, line heights, letter spacing, and roles.
+      - Families are Inter and JetBrains Mono; weights are 300, 400, 500, and 600.
+      - Figma percentage letter spacing is normalized to equivalent CSS em values.
   - stable_id: TOKEN-SPACING-001
     category: spacing
-    figma_token: unknown
-    css_variable: unknown
-    typescript_token: unknown
+    figma_token: "Spacing collection (VariableCollectionId:24:35; 4/8/12/16/24/32/48/64/96)"
+    css_variable: "--spacing-*"
+    typescript_token: spacing
     source_version: 1.0.0
-    status: pending_extraction
-    notes:
-      - Extract spacing scale, gaps, layout usage, and responsive behavior.
+    status: implemented
+    notes: [Nine pixel-based values were extracted without interpolation.]
   - stable_id: TOKEN-RADIUS-001
     category: radius
-    figma_token: unknown
-    css_variable: unknown
-    typescript_token: unknown
+    figma_token: "Radius collection (VariableCollectionId:24:36; none/sm/md/lg/xl/full)"
+    css_variable: "--radius-*"
+    typescript_token: radius
     source_version: 1.0.0
-    status: pending_extraction
-    notes:
-      - Extract primitive and semantic corner-radius roles.
+    status: implemented
+    notes: [Six values were extracted; full is 999px exactly as supplied.]
   - stable_id: TOKEN-SHADOW-001
     category: shadows
-    figma_token: unknown
-    css_variable: unknown
-    typescript_token: unknown
+    figma_token: "Effect styles: Shadow/card, Shadow/elevated, Glow/violet, Glow/amber, Focus/ring"
+    css_variable: "--shadow-*"
+    typescript_token: shadows
     source_version: 1.0.0
-    status: pending_extraction
-    notes:
-      - Extract elevation and effect styles with applicable background constraints.
+    status: implemented
+    notes: [Five DROP_SHADOW styles were mapped to their Figma color variables.]
   - stable_id: TOKEN-MOTION-001
     category: motion
-    figma_token: unknown
-    css_variable: unknown
-    typescript_token: unknown
+    figma_token: "Motion collection (VariableCollectionId:24:38; duration/fast, duration/base, duration/slow)"
+    css_variable: "--motion-duration-*"
+    typescript_token: motion
     source_version: 1.0.0
-    status: pending_extraction
+    status: implemented
     notes:
-      - Extract duration and easing only when explicitly specified.
+      - Durations are 120ms, 200ms, and 320ms.
+      - No easing values were found; easing remains unresolved.
   - stable_id: TOKEN-BREAKPOINT-001
     category: breakpoints
     figma_token: unknown
-    css_variable: unknown
-    typescript_token: unknown
+    css_variable: not_created
+    typescript_token: "breakpoints (empty object)"
     source_version: 1.0.0
-    status: pending_extraction
+    status: blocked
     notes:
-      - Extract responsive breakpoints and behavior; do not infer from one viewport.
-notes:
-  - Unknown values are intentional because Figma tokens have not been extracted.
-  - Each real token must receive its own stable mapping and review evidence.
-
+      - No breakpoint variable, style, or approved breakpoint definition was found.
+      - No breakpoint values were invented.
+  - stable_id: TOKEN-OPACITY-001
+    category: opacity
+    figma_token: "Opacity collection (VariableCollectionId:24:37; 5 variables)"
+    css_variable: "--opacity-*"
+    typescript_token: opacity
+    source_version: 1.0.0
+    status: implemented
+    notes: [Extracted because this confirmed Figma collection exists.]
+  - stable_id: TOKEN-STROKE-001
+    category: stroke
+    figma_token: "Stroke collection (VariableCollectionId:29:11; stroke/1 and stroke/2)"
+    css_variable: "--stroke-*"
+    typescript_token: stroke
+    source_version: 1.0.0
+    status: implemented
+    notes: [Extracted because this confirmed Figma collection exists.]
+naming_normalization:
+  - "Figma slash paths become kebab-case CSS variables: color/bg/default -> --color-bg-default."
+  - "TypeScript groups use nested camelCase keys that point to CSS var() references."
+  - "Figma PERCENT letter spacing becomes its mathematically equivalent em value."
+review:
+  automated_validation: passed
+  human_design_review: pending
+  approval: not_approved

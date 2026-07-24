@@ -1,5 +1,24 @@
 # Changelog
 
+## 2026-07-24 — Phase 2 design tokens
+
+### Added
+
+- Figma-backed color, typography, spacing, radius, shadow, motion, opacity, and
+  stroke tokens as runtime CSS variables with TypeScript references
+- Dark Enterprise and Light Impact color modes
+- Token integrity and CSS/TypeScript parity tests
+
+### Changed
+
+- Imported the design-system theme from the application entry
+- Replaced the temporary Phase 1 base stylesheet with reset and global theme files
+- Advanced Phase 2 to `needs_review`
+
+### Unresolved
+
+- Breakpoints, motion easing, font asset delivery/licensing, and human visual approval
+
 ## 2026-07-24 — Phase 1 human approval
 
 ### Approved

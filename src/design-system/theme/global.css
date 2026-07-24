@@ -1,0 +1,11 @@
+:root {
+  color: var(--color-text-primary);
+  background: var(--color-bg-default);
+  font-family: var(--font-family-inter), sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--color-bg-default);
+}

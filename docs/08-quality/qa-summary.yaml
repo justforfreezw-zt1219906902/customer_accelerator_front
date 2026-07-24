@@ -1,15 +1,9 @@
 schema_version: 1
 baseline_id: DS1.0.0_API0.0.0_FE0.0.1
-project_phase: phase-1
-status: approved
-human_approval: approved
-approval:
-  reviewer: Tom
-  result: APPROVED
-  date: "2026-07-24"
-  reviewed_task: TASK-P1-001
-  notes: good
-  evidence: docs/08-quality/test-reports/phase-1-task-p1-001-approval-2026-07-24.md
+project_phase: phase-2
+status: needs_review
+human_approval: pending
+approval: null
 tooling:
   lint: ESLint 9.39.5
   type_checking: TypeScript 5.9.3 and vue-tsc 3.3.8
@@ -32,10 +26,12 @@ results:
   accessibility_review: not_run
   responsive_review: not_run
   production_smoke_tests: not_run
+  token_validation: passed
 test_reports:
   - docs/08-quality/test-reports/phase-0-task-p0-001-approval-2026-07-24.md
   - docs/08-quality/test-reports/phase-1-vue-foundation-2026-07-24.md
   - docs/08-quality/test-reports/phase-1-task-p1-001-approval-2026-07-24.md
+  - docs/08-quality/test-reports/phase-2-design-tokens-2026-07-24.md
 open_issues: []
 approved_deviations: []
 environments_tested: []
@@ -44,3 +40,5 @@ notes:
   - Playwright browser binaries were not installed without explicit permission.
   - Visual, responsive, accessibility, integration and production smoke reviews remain future work.
   - Tom approved Phase 1 with pending evidence preserved as non-passed follow-up work.
+  - Phase 2 token extraction, parity checks, typecheck, lint, unit tests, and build passed.
+  - Phase 2 human visual review remains pending.

@@ -1,8 +1,8 @@
 # Source Directory
 
-The Phase 1 directory boundaries are present directly under the repository
-root. Only foundation files contain implementation; later-layer directories
-remain empty until their phases are authorized.
+The Phase 1 directory boundaries and Phase 2 token/theme implementation are
+present directly under the repository root. Component and Product layers remain
+empty until their phases are authorized.
 
 ```text
 src/
@@ -11,7 +11,6 @@ src/
 │   │   └── environment.ts
 │   └── providers/
 ├── assets/
-│   └── base.css
 ├── components/
 │   ├── product/
 │   └── sections/
@@ -21,7 +20,21 @@ src/
 │   └── pages/
 ├── design-system/
 │   ├── tokens/
+│   │   ├── colors.ts
+│   │   ├── typography.ts
+│   │   ├── spacing.ts
+│   │   ├── radius.ts
+│   │   ├── shadows.ts
+│   │   ├── motion.ts
+│   │   ├── breakpoints.ts
+│   │   ├── opacity.ts
+│   │   ├── stroke.ts
+│   │   └── index.ts
 │   ├── theme/
+│   │   ├── variables.css
+│   │   ├── reset.css
+│   │   ├── global.css
+│   │   └── index.css
 │   └── components/
 │       ├── core/
 │       └── composite/
@@ -45,6 +58,7 @@ tests/
 ├── e2e/
 │   └── foundation.spec.ts
 └── unit/
+    ├── designTokens.spec.ts
     └── FoundationPlaceholderPage.spec.ts
 ```
 
@@ -78,13 +92,11 @@ Prettier, and Playwright configuration, `.nvmrc`, `package.json`, and
 - Pages must not duplicate component styling.
 - Content and assets must be registered before use.
 - API calls must not be embedded in visual components.
-- Empty layer boundaries were explicitly requested for Phase 1; they do not
-  claim implementation.
+- Empty component and Product layer boundaries do not claim implementation.
 
 ## Decisions required
 
 - Generated-code location
-- Final design token formats
 - Content and localization structure
 - Shared layout classification
 - API client generation strategy

@@ -1,13 +1,32 @@
 schema_version: 1
 baseline_id: DS1.0.0_API0.0.0_FE0.0.1
-status: foundation_approved
+status: design_tokens_implemented_needs_review
 targeted_versions:
   figma: 1.0.0
   backend: 0.0.0
   backend_version_status: contract_documented_version_unassigned
   backend_contract_revision: 1
   frontend: 0.0.1
-implemented_tokens: []
+implemented_tokens:
+  - category: color
+    count: 45
+    modes: [Dark Enterprise, Light Impact]
+  - category: spacing
+    count: 9
+  - category: radius
+    count: 6
+  - category: opacity
+    count: 5
+  - category: motion_duration
+    count: 3
+  - category: font
+    count: 6
+  - category: stroke
+    count: 2
+  - category: typography_style
+    count: 12
+  - category: effect_style
+    count: 5
 implemented_components: []
 implemented_sections: []
 implemented_pages: []
@@ -18,7 +37,8 @@ foundation_artifacts:
   - src/router/index.ts
   - src/pages/FoundationPlaceholderPage.vue
   - src/layouts/AppLayout.vue
-  - src/assets/base.css
+  - src/design-system/tokens/index.ts
+  - src/design-system/theme/index.css
   - src/app/configuration/environment.ts
 pending_migrations: []
 validation:
@@ -41,9 +61,15 @@ phase_1_approval:
   reviewed_task: TASK-P1-001
   notes: good
   evidence: docs/08-quality/test-reports/phase-1-task-p1-001-approval-2026-07-24.md
+phase_2:
+  status: needs_review
+  figma_pages: ["00 Foundation (0:1)", "01 Tokens (23:2)"]
+  human_approval: pending
+  evidence: docs/08-quality/test-reports/phase-2-design-tokens-2026-07-24.md
 notes:
-  - Empty token, component, section, Page and endpoint lists remain intentional.
+  - Component, section, Page and endpoint lists remain intentionally empty.
   - Foundation artifacts are application infrastructure, not registered Product Pages or components.
-  - Planned registry entries are not implemented artifacts.
+  - Planned component and Page registry entries are not implemented artifacts.
+  - Breakpoints and motion easing remain unresolved and are not represented as implemented.
   - Backend 0.0.0 is a compatibility placeholder, not an assigned semantic version.
   - Phase 1 is approved; approval_status above applies to the compatibility baseline, which remains not approved.

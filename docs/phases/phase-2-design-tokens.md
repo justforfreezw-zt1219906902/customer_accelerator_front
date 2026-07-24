@@ -1,7 +1,7 @@
 ---
 phase: 2
 name: Design Tokens
-status: not_started
+status: needs_review
 human_approval: pending
 ---
 
@@ -61,8 +61,12 @@ Translate approved Figma foundations into traceable semantic design tokens.
 
 ## Validation
 
-**Planned.** Use Phase 1-approved installed commands plus a token-validation
-workflow only after it is selected and documented.
+- `npm run validate:management` — passed
+- `npm run typecheck` — passed
+- `npm run lint` — passed
+- `npm run test:unit` — passed
+- `npm run build` — passed
+- Human visual/design review — pending
 
 ## Risks
 
@@ -78,7 +82,7 @@ or migrations. Revert unapproved mappings rather than patching consumers.
 
 ## Status
 
-`not_started`
+`needs_review`
 
 ## Human Approval
 
@@ -86,6 +90,19 @@ or migrations. Revert unapproved mappings rather than patching consumers.
 
 ## Completion Report
 
-Not available. It must later list the Figma version, mappings, validation,
-visual evidence, deviations, compatibility impact, and approval.
+Implementation completed on 2026-07-24 against Figma Design System `1.0.0`.
+The Figma pages `00 Foundation` (`0:1`) and `01 Tokens` (`23:2`) were inspected
+read-only. The implementation maps 45 two-mode color variables, 9 spacing
+values, 6 radii, 5 opacity values, 3 motion durations, 6 font values, 2 stroke
+values, 12 text styles, and 5 effect styles to CSS runtime variables and
+TypeScript references.
 
+No breakpoint collection or motion easing specification was present; neither
+was invented. Figma percentage letter spacing was normalized losslessly to CSS
+`em` values (for example, `-2.5%` to `-0.025em`). Figma variable names use `/`;
+code uses semantic kebab-case CSS names and nested camelCase TypeScript keys.
+
+The initial unit check incorrectly treated legitimate light-theme color
+overrides as duplicate declarations. The check was corrected to permit only
+color overrides across theme selectors, after which all required validation
+passed. Human approval and visual review remain pending; no approval is claimed.

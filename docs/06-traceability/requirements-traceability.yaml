@@ -8,6 +8,24 @@ status_values:
   - verified
   - deprecated
 requirements:
+  - requirement_id: REQ-TOKENS-001
+    description: Confirmed Figma 1.0.0 design tokens are exposed through runtime CSS variables and matching TypeScript references.
+    source:
+      - docs/03-design-system/token-map.yaml
+    figma_source:
+      pages: ["00 Foundation", "01 Tokens"]
+      node_ids: ["0:1", "23:2"]
+      status: inspected
+    backend_source: not_applicable
+    planned_frontend_files:
+      - src/design-system/tokens
+      - src/design-system/theme
+    tests:
+      - tests/unit/designTokens.spec.ts
+    status: implemented
+    introduced_version: 0.0.1
+    verified_version: 0.0.1
+    approval: not_approved
   - requirement_id: REQ-LANDING-001
     description: Landing Page renders.
     source:
@@ -255,4 +273,3 @@ notes:
   - Planned frontend files are targets and do not claim implementation.
   - Empty tests and null verified versions are intentional.
   - Product/Interaction, content, legal, responsive, and accessibility sources require human confirmation.
-

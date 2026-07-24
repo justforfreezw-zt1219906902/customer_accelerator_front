@@ -8,112 +8,114 @@ source:
   figma_version: 1.0.0
   version_status: initialized_from_project_input
 inspection:
-  status: pending_inspection
-  reviewer: unknown
-  last_reviewed: unknown
+  status: foundation_and_tokens_inspected_needs_human_review
+  reviewer: Codex_read_only_extraction
+  last_reviewed: "2026-07-24"
   notes:
-    - Expected page names and code targets are planning inputs.
-    - Page node IDs must be populated only after inspection.
+    - All expected page names and page node IDs were verified in the file.
+    - Only 00 Foundation and 01 Tokens were inspected in detail in Phase 2.
+    - Human visual approval remains pending.
 pages:
   - page_name: 00 Foundation
-    node_id: unknown
+    node_id: "0:1"
     figma_version: 1.0.0
     code_target: governance and brand reference
-    status: pending_inspection
-    reviewer: unknown
-    last_reviewed: unknown
+    status: inspected_needs_human_review
+    reviewer: Codex_read_only_extraction
+    last_reviewed: "2026-07-24"
     notes:
       - Visual and brand reference only; it does not define backend or interaction contracts.
+      - Primary board frame: "25:2".
   - page_name: 01 Tokens
-    node_id: unknown
+    node_id: "23:2"
     figma_version: 1.0.0
     code_target:
       - src/design-system/tokens
       - src/design-system/theme
-    status: pending_inspection
-    reviewer: unknown
-    last_reviewed: unknown
+    status: implemented_needs_human_review
+    reviewer: Codex_read_only_extraction
+    last_reviewed: "2026-07-24"
     notes:
-      - Target paths are planned and do not exist.
+      - Token reference frame: "27:2".
+      - Variables, text styles, and effect styles were extracted read-only.
   - page_name: 02 Core Components
-    node_id: unknown
+    node_id: "31:2"
     figma_version: 1.0.0
     code_target: src/design-system/components/core
-    status: pending_inspection
+    status: page_id_verified_pending_inspection
     reviewer: unknown
     last_reviewed: unknown
     notes:
       - Core may depend only on Tokens.
   - page_name: 03 Composite Components
-    node_id: unknown
+    node_id: "68:2"
     figma_version: 1.0.0
     code_target: src/design-system/components/composite
-    status: pending_inspection
+    status: page_id_verified_pending_inspection
     reviewer: unknown
     last_reviewed: unknown
     notes:
       - Composite may depend on Core.
   - page_name: 04 Product Components
-    node_id: unknown
+    node_id: "81:2"
     figma_version: 1.0.0
     code_target: src/components/product
-    status: pending_inspection
+    status: page_id_verified_pending_inspection
     reviewer: unknown
     last_reviewed: unknown
     notes:
       - Product may depend on Core and Composite.
   - page_name: 05 Sections
-    node_id: unknown
+    node_id: "87:2"
     figma_version: 1.0.0
     code_target: src/components/sections
-    status: pending_inspection
+    status: page_id_verified_pending_inspection
     reviewer: unknown
     last_reviewed: unknown
     notes:
       - Sections may depend on Core, Composite, and Product.
   - page_name: 06 Landing Page
-    node_id: unknown
+    node_id: "212:2"
     figma_version: 1.0.0
     code_target: src/pages/LandingPage.vue
-    status: pending_inspection
+    status: page_id_verified_pending_inspection
     reviewer: unknown
     last_reviewed: unknown
     notes:
       - Planned target path only.
   - page_name: 07 Why Mi-goTo Page
-    node_id: unknown
+    node_id: "259:2"
     figma_version: 1.0.0
     code_target: src/pages/WhyMiGotoPage.vue
-    status: pending_inspection
+    status: page_id_verified_pending_inspection
     reviewer: unknown
     last_reviewed: unknown
     notes:
       - Confirm exact capitalization and page name during inspection.
   - page_name: 08 Imprint
-    node_id: unknown
+    node_id: "122:2"
     figma_version: 1.0.0
     code_target: src/pages/ImprintPage.vue
-    status: pending_inspection
+    status: page_id_verified_pending_inspection
     reviewer: unknown
     last_reviewed: unknown
     notes:
       - Legal content requires separate human approval.
   - page_name: 09 Data Protection
-    node_id: unknown
+    node_id: "128:2"
     figma_version: 1.0.0
     code_target: src/pages/DataProtectionPage.vue
-    status: pending_inspection
+    status: page_id_verified_pending_inspection
     reviewer: unknown
     last_reviewed: unknown
     notes:
       - Legal content requires separate human approval.
   - page_name: 10 Contact Page
-    node_id: unknown
+    node_id: "269:2"
     figma_version: 1.0.0
     code_target: src/pages/ContactPage.vue
-    status: pending_inspection
+    status: page_id_verified_pending_inspection
     reviewer: unknown
     last_reviewed: unknown
     notes:
       - Figma does not define the POST /api/lead contract.
-
