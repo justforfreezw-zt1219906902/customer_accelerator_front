@@ -17,6 +17,10 @@ artifacts follow [Semantic Versioning](https://semver.org/).
 - Bootstrap instruction record.
 - Governance baseline covering the project charter, independent sources of
   truth, architecture, ownership, completion, versioning, naming, and AI work.
+- Roadmap, machine-readable current/phase status, milestones, dependency map,
+  and planned Phase 1 through Phase 8 documents.
+- Normalized Phase 0 section headings while preserving its planned, unexecuted,
+  and pending-approval content.
 
 ## [0.0.1] - 2026-07-24
 

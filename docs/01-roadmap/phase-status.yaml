@@ -1,0 +1,78 @@
+schema_version: 1
+allowed_statuses:
+  - not_started
+  - planned
+  - in_progress
+  - blocked
+  - implementation_complete
+  - needs_review
+  - approved
+  - released
+  - deprecated
+
+phases:
+  - id: phase-0
+    name: Project Audit
+    status: planned
+    human_approval: pending
+  - id: phase-1
+    name: Vue Foundation
+    status: not_started
+    human_approval: pending
+  - id: phase-2
+    name: Design Tokens
+    status: not_started
+    human_approval: pending
+  - id: phase-3
+    name: Core Components
+    status: not_started
+    human_approval: pending
+  - id: phase-4
+    name: Composite, Product, and Section Components
+    status: not_started
+    human_approval: pending
+    subphases:
+      - id: phase-4a
+        name: Composite Components
+        status: not_started
+      - id: phase-4b
+        name: Product Components
+        status: not_started
+      - id: phase-4c
+        name: Sections
+        status: not_started
+  - id: phase-5
+    name: Routing and Page Interaction Map
+    status: not_started
+    human_approval: pending
+  - id: phase-6
+    name: Static Pages
+    status: not_started
+    human_approval: pending
+    subphases:
+      - id: phase-6a
+        name: Landing Page
+        status: not_started
+      - id: phase-6b
+        name: Contact Page
+        status: not_started
+      - id: phase-6c
+        name: Data Protection Page
+        status: not_started
+      - id: phase-6d
+        name: Imprint Page
+        status: not_started
+      - id: phase-6e
+        name: Why mi-goTo Page
+        status: not_started
+  - id: phase-7
+    name: Backend Integration
+    status: not_started
+    human_approval: pending
+  - id: phase-8
+    name: QA and Deployment
+    status: not_started
+    human_approval: pending
+
+last_updated: "2026-07-24"
+

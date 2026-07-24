@@ -60,7 +60,7 @@ This document is a plan. It does not claim that the audit has been executed.
   quality, security, and operations owners
 - Resolution or explicit recording of missing authoritative inputs
 
-## Audit Tasks
+## Tasks
 
 1. Register each authoritative source with version, location, owner, and status.
 2. Inspect Figma foundations, tokens, components, pages, responsive states, and
@@ -86,7 +86,7 @@ This document is a plan. It does not claim that the audit has been executed.
 - Phase 1 readiness is assessed with supporting evidence.
 - A human reviewer records approval.
 
-## Validation Approach
+## Validation
 
 During Phase 0, validation is limited to repository structure, Markdown review,
 machine-readable YAML parsing, consistency checks, Git status inspection, and
@@ -109,7 +109,7 @@ only affected records, preserve superseded evidence, document why the baseline
 changed, and return the phase to an appropriate non-approved status when audit
 conclusions become invalid.
 
-## Current Status
+## Status
 
 - Status: **planned**
 - Audit executed: **no**
@@ -124,4 +124,3 @@ conclusions become invalid.
 Not available. Phase 0 has not been executed. The eventual report must identify
 reviewed inputs, findings, gaps, risks, decisions, validation evidence, registry
 updates, readiness recommendation, and the human approval record.
-

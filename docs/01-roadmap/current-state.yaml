@@ -1,0 +1,34 @@
+schema_version: 1
+project: mi-goTo Frontend
+
+current_phase:
+  id: phase-0
+  name: Project Audit
+  status: planned
+
+current_task: null
+environment: local
+
+versions:
+  figma: 1.0.0
+  backend: 0.0.0
+  frontend: 0.0.1
+
+backend:
+  status: contract_documented_version_unassigned
+  contract_revision: 1
+
+compatibility:
+  baseline_id: DS1.0.0_API0.0.0_FE0.0.1
+  status: pending_backend_version_assignment
+
+blockers: []
+next_gate:
+  name: Phase 0 Audit Review
+  human_approval_required: true
+
+last_updated: "2026-07-24"
+notes:
+  - The Phase 0 audit has not been executed.
+  - Backend 0.0.0 is a non-release placeholder pending official version assignment.
+
