@@ -1,0 +1,195 @@
+schema_version: 1
+figma_version: 1.0.0
+components:
+  - component_id: CMP-CORE-001
+    figma_name: AppButton
+    code_name: AppButton
+    planned_path: src/design-system/components/core/AppButton.vue
+    layer: core
+    dependencies: [tokens]
+    variants: []
+    figma_version: 1.0.0
+    implementation_status: not_started
+    design_review_status: pending
+    tests: []
+  - component_id: CMP-CORE-002
+    figma_name: AppInput
+    code_name: AppInput
+    planned_path: src/design-system/components/core/AppInput.vue
+    layer: core
+    dependencies: [tokens]
+    variants: []
+    figma_version: 1.0.0
+    implementation_status: not_started
+    design_review_status: pending
+    tests: []
+  - component_id: CMP-CORE-003
+    figma_name: AppCard
+    code_name: AppCard
+    planned_path: src/design-system/components/core/AppCard.vue
+    layer: core
+    dependencies: [tokens]
+    variants: []
+    figma_version: 1.0.0
+    implementation_status: not_started
+    design_review_status: pending
+    tests: []
+  - component_id: CMP-CORE-004
+    figma_name: AppBadge
+    code_name: AppBadge
+    planned_path: src/design-system/components/core/AppBadge.vue
+    layer: core
+    dependencies: [tokens]
+    variants: []
+    figma_version: 1.0.0
+    implementation_status: not_started
+    design_review_status: pending
+    tests: []
+  - component_id: CMP-CORE-005
+    figma_name: AppSectionContainer
+    code_name: AppSectionContainer
+    planned_path: src/design-system/components/core/AppSectionContainer.vue
+    layer: core
+    dependencies: [tokens]
+    variants: []
+    figma_version: 1.0.0
+    implementation_status: not_started
+    design_review_status: pending
+    tests: []
+  - component_id: CMP-COMPOSITE-001
+    figma_name: AppFormField
+    code_name: AppFormField
+    planned_path: src/design-system/components/composite/AppFormField.vue
+    layer: composite
+    dependencies: [core]
+    variants: []
+    figma_version: 1.0.0
+    implementation_status: not_started
+    design_review_status: pending
+    tests: []
+  - component_id: CMP-COMPOSITE-002
+    figma_name: AppTextarea
+    code_name: AppTextarea
+    planned_path: src/design-system/components/composite/AppTextarea.vue
+    layer: composite
+    dependencies: [core]
+    variants: []
+    figma_version: 1.0.0
+    implementation_status: not_started
+    design_review_status: pending
+    tests: []
+  - component_id: CMP-COMPOSITE-003
+    figma_name: AppSelect
+    code_name: AppSelect
+    planned_path: src/design-system/components/composite/AppSelect.vue
+    layer: composite
+    dependencies: [core]
+    variants: []
+    figma_version: 1.0.0
+    implementation_status: not_started
+    design_review_status: pending
+    tests: []
+  - component_id: CMP-COMPOSITE-004
+    figma_name: AppNavbar
+    code_name: AppNavbar
+    planned_path: src/design-system/components/composite/AppNavbar.vue
+    layer: composite
+    dependencies: [core]
+    variants: []
+    figma_version: 1.0.0
+    implementation_status: not_started
+    design_review_status: pending
+    tests: []
+  - component_id: CMP-COMPOSITE-005
+    figma_name: AppFooter
+    code_name: AppFooter
+    planned_path: src/design-system/components/composite/AppFooter.vue
+    layer: composite
+    dependencies: [core]
+    variants: []
+    figma_version: 1.0.0
+    implementation_status: not_started
+    design_review_status: pending
+    tests: []
+  - component_id: CMP-PRODUCT-001
+    figma_name: ValuePropositionCard
+    code_name: ValuePropositionCard
+    planned_path: src/components/product/ValuePropositionCard.vue
+    layer: product
+    dependencies: [core, composite]
+    variants: []
+    figma_version: 1.0.0
+    implementation_status: not_started
+    design_review_status: pending
+    tests: []
+  - component_id: CMP-PRODUCT-002
+    figma_name: FeatureCard
+    code_name: FeatureCard
+    planned_path: src/components/product/FeatureCard.vue
+    layer: product
+    dependencies: [core, composite]
+    variants: []
+    figma_version: 1.0.0
+    implementation_status: not_started
+    design_review_status: pending
+    tests: []
+  - component_id: CMP-PRODUCT-003
+    figma_name: ProcessStepCard
+    code_name: ProcessStepCard
+    planned_path: src/components/product/ProcessStepCard.vue
+    layer: product
+    dependencies: [core, composite]
+    variants: []
+    figma_version: 1.0.0
+    implementation_status: not_started
+    design_review_status: pending
+    tests: []
+  - component_id: CMP-PRODUCT-004
+    figma_name: TrustMetricCard
+    code_name: TrustMetricCard
+    planned_path: src/components/product/TrustMetricCard.vue
+    layer: product
+    dependencies: [core, composite]
+    variants: []
+    figma_version: 1.0.0
+    implementation_status: not_started
+    design_review_status: pending
+    tests: []
+  - component_id: CMP-PRODUCT-005
+    figma_name: AIInsightPreviewCard
+    code_name: AIInsightPreviewCard
+    planned_path: src/components/product/AIInsightPreviewCard.vue
+    layer: product
+    dependencies: [core, composite]
+    variants: []
+    figma_version: 1.0.0
+    implementation_status: not_started
+    design_review_status: pending
+    tests: []
+  - component_id: CMP-PRODUCT-006
+    figma_name: CustomerProblemCard
+    code_name: CustomerProblemCard
+    planned_path: src/components/product/CustomerProblemCard.vue
+    layer: product
+    dependencies: [core, composite]
+    variants: []
+    figma_version: 1.0.0
+    implementation_status: not_started
+    design_review_status: pending
+    tests: []
+  - component_id: CMP-PRODUCT-007
+    figma_name: LandingCtaPanel
+    code_name: LandingCtaPanel
+    planned_path: src/components/product/LandingCtaPanel.vue
+    layer: product
+    dependencies: [core, composite]
+    variants: []
+    figma_version: 1.0.0
+    implementation_status: not_started
+    design_review_status: pending
+    tests: []
+notes:
+  - Figma names are expected labels and require inspection.
+  - Empty variants and tests mean unknown or not created, not not-applicable.
+  - Planned paths do not exist and do not claim implementation.
+

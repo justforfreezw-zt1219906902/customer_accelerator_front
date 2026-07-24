@@ -1,0 +1,37 @@
+schema_version: 1
+status: planned
+routes:
+  - path: /
+    component: LandingPage
+    planned_path: src/pages/LandingPage.vue
+    status: planned
+  - path: /why-mi-goto
+    component: WhyMiGotoPage
+    planned_path: src/pages/WhyMiGotoPage.vue
+    status: planned
+  - path: /imprint
+    component: ImprintPage
+    planned_path: src/pages/ImprintPage.vue
+    status: planned
+  - path: /data-protection
+    component: DataProtectionPage
+    planned_path: src/pages/DataProtectionPage.vue
+    status: planned
+  - path: /contact
+    component: ContactPage
+    planned_path: src/pages/ContactPage.vue
+    status: planned
+  - path: /thank-you
+    component: ThankYouPage
+    planned_path: src/pages/ThankYouPage.vue
+    status: planned
+global_decisions_required:
+  - Not-found and error route behavior
+  - Locale strategy and locale prefixes
+  - Trailing slash and canonical URL policy
+  - Scroll restoration and anchor focus behavior
+  - Route analytics and consent requirements
+  - Redirects from the previous website
+notes:
+  - Routes are planned product inputs, not implemented behavior.
+

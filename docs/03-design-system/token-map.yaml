@@ -1,0 +1,76 @@
+schema_version: 1
+source_version: 1.0.0
+status_values:
+  - pending_extraction
+  - mapped
+  - implemented
+  - verified
+  - blocked
+categories:
+  - stable_id: TOKEN-COLOR-001
+    category: color
+    figma_token: unknown
+    css_variable: unknown
+    typescript_token: unknown
+    source_version: 1.0.0
+    status: pending_extraction
+    notes:
+      - Extract primitive and semantic colors, modes, and contrast constraints.
+  - stable_id: TOKEN-TYPOGRAPHY-001
+    category: typography
+    figma_token: unknown
+    css_variable: unknown
+    typescript_token: unknown
+    source_version: 1.0.0
+    status: pending_extraction
+    notes:
+      - Extract families, weights, sizes, line heights, letter spacing, and roles.
+  - stable_id: TOKEN-SPACING-001
+    category: spacing
+    figma_token: unknown
+    css_variable: unknown
+    typescript_token: unknown
+    source_version: 1.0.0
+    status: pending_extraction
+    notes:
+      - Extract spacing scale, gaps, layout usage, and responsive behavior.
+  - stable_id: TOKEN-RADIUS-001
+    category: radius
+    figma_token: unknown
+    css_variable: unknown
+    typescript_token: unknown
+    source_version: 1.0.0
+    status: pending_extraction
+    notes:
+      - Extract primitive and semantic corner-radius roles.
+  - stable_id: TOKEN-SHADOW-001
+    category: shadows
+    figma_token: unknown
+    css_variable: unknown
+    typescript_token: unknown
+    source_version: 1.0.0
+    status: pending_extraction
+    notes:
+      - Extract elevation and effect styles with applicable background constraints.
+  - stable_id: TOKEN-MOTION-001
+    category: motion
+    figma_token: unknown
+    css_variable: unknown
+    typescript_token: unknown
+    source_version: 1.0.0
+    status: pending_extraction
+    notes:
+      - Extract duration and easing only when explicitly specified.
+  - stable_id: TOKEN-BREAKPOINT-001
+    category: breakpoints
+    figma_token: unknown
+    css_variable: unknown
+    typescript_token: unknown
+    source_version: 1.0.0
+    status: pending_extraction
+    notes:
+      - Extract responsive breakpoints and behavior; do not infer from one viewport.
+notes:
+  - Unknown values are intentional because Figma tokens have not been extracted.
+  - Each real token must receive its own stable mapping and review evidence.
+

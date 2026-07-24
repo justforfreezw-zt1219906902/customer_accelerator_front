@@ -23,6 +23,10 @@ artifacts follow [Semantic Versioning](https://semver.org/).
   and pending-approval content.
 - Phase 0 input maps for Figma, backend, content, assets, environment,
   assumptions, constraints, and unresolved decisions.
+- Planned Figma baseline, token/component/Section/Page registries, visual review,
+  and deviation records.
+- Planned Vue 3 layered architecture, source structure, dependencies, routes,
+  interactions, state, content, errors, and accessibility guidance.
 
 ## [0.0.1] - 2026-07-24
 

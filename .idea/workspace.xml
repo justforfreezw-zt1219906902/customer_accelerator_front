@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa45ec9b-26dc-40ff-98de-dd81c1a64002" name="更改" comment="docs: bootstrap governance system in repository root">
+    <list default="true" id="fa45ec9b-26dc-40ff-98de-dd81c1a64002" name="更改" comment="docs: define roadmap phase controls and delivery gates">
       <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +73,7 @@
       <workItem from="1784896239533" duration="3289000" />
       <workItem from="1784900645192" duration="3275000" />
       <workItem from="1784910311579" duration="34000" />
-      <workItem from="1784910382969" duration="1034000" />
+      <workItem from="1784910382969" duration="1525000" />
     </task>
     <task id="LOCAL-00001" summary="docs: initialize project governance structure">
       <option name="closed" value="true" />
@@ -115,7 +115,23 @@
       <option name="project" value="LOCAL" />
       <updated>1784920467813</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="docs: establish governance and source-of-truth policies">
+      <option name="closed" value="true" />
+      <created>1784920813377</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1784920813377</updated>
+    </task>
+    <task id="LOCAL-00007" summary="docs: define roadmap phase controls and delivery gates">
+      <option name="closed" value="true" />
+      <created>1784921123964</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1784921123964</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,6 +142,8 @@
     <MESSAGE value="docs: add phased roadmap and delivery gates" />
     <MESSAGE value="docs: register project inputs and external sources" />
     <MESSAGE value="docs: bootstrap governance system in repository root" />
-    <option name="LAST_COMMIT_MESSAGE" value="docs: bootstrap governance system in repository root" />
+    <MESSAGE value="docs: establish governance and source-of-truth policies" />
+    <MESSAGE value="docs: define roadmap phase controls and delivery gates" />
+    <option name="LAST_COMMIT_MESSAGE" value="docs: define roadmap phase controls and delivery gates" />
   </component>
 </project>

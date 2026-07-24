@@ -1,0 +1,71 @@
+schema_version: 1
+figma_version: 1.0.0
+sections:
+  - section_id: SEC-LANDING-001
+    figma_name: HeroSection
+    code_name: HeroSection
+    planned_path: src/components/sections/HeroSection.vue
+    dependencies: [core, composite, product]
+    implementation_status: not_started
+    design_review_status: pending
+    tests: []
+  - section_id: SEC-LANDING-002
+    figma_name: ProblemSection
+    code_name: ProblemSection
+    planned_path: src/components/sections/ProblemSection.vue
+    dependencies: [core, composite, product]
+    implementation_status: not_started
+    design_review_status: pending
+    tests: []
+  - section_id: SEC-LANDING-003
+    figma_name: SolutionOverviewSection
+    code_name: SolutionOverviewSection
+    planned_path: src/components/sections/SolutionOverviewSection.vue
+    dependencies: [core, composite, product]
+    implementation_status: not_started
+    design_review_status: pending
+    tests: []
+  - section_id: SEC-LANDING-004
+    figma_name: FeatureGridSection
+    code_name: FeatureGridSection
+    planned_path: src/components/sections/FeatureGridSection.vue
+    dependencies: [core, composite, product]
+    implementation_status: not_started
+    design_review_status: pending
+    tests: []
+  - section_id: SEC-LANDING-005
+    figma_name: HowItWorksSection
+    code_name: HowItWorksSection
+    planned_path: src/components/sections/HowItWorksSection.vue
+    dependencies: [core, composite, product]
+    implementation_status: not_started
+    design_review_status: pending
+    tests: []
+  - section_id: SEC-LANDING-006
+    figma_name: ProductPreviewSection
+    code_name: ProductPreviewSection
+    planned_path: src/components/sections/ProductPreviewSection.vue
+    dependencies: [core, composite, product]
+    implementation_status: not_started
+    design_review_status: pending
+    tests: []
+  - section_id: SEC-LANDING-007
+    figma_name: PackagesSection
+    code_name: PackagesSection
+    planned_path: src/components/sections/PackagesSection.vue
+    dependencies: [core, composite, product]
+    implementation_status: not_started
+    design_review_status: pending
+    tests: []
+  - section_id: SEC-LANDING-008
+    figma_name: FinalCtaSection
+    code_name: FinalCtaSection
+    planned_path: src/components/sections/FinalCtaSection.vue
+    dependencies: [core, composite, product]
+    implementation_status: not_started
+    design_review_status: pending
+    tests: []
+notes:
+  - Section names, ordering, node IDs, composition, and responsive behavior require Figma inspection.
+  - Planned paths do not exist.
+
