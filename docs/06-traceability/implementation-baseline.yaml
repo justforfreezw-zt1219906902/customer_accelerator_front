@@ -1,6 +1,6 @@
 schema_version: 1
 baseline_id: DS1.0.0_API0.0.0_FE0.0.1
-status: product_components_approved
+status: sections_approved
 targeted_versions:
   figma: 1.0.0
   backend: 0.0.0
@@ -79,7 +79,31 @@ implemented_components:
   - component_id: CMP-PRODUCT-007
     code_name: LandingCtaPanel
     figma_node_id: "82:197"
-implemented_sections: []
+implemented_sections:
+  - section_id: SEC-LANDING-001
+    code_name: HeroSection
+    figma_node_id: "90:543"
+  - section_id: SEC-LANDING-002
+    code_name: ProblemSection
+    figma_node_id: "90:593"
+  - section_id: SEC-LANDING-003
+    code_name: SolutionOverviewSection
+    figma_node_id: "90:691"
+  - section_id: SEC-LANDING-004
+    code_name: FeatureGridSection
+    figma_node_id: "90:833"
+  - section_id: SEC-LANDING-005
+    code_name: HowItWorksSection
+    figma_node_id: "90:903"
+  - section_id: SEC-LANDING-006
+    code_name: ProductPreviewSection
+    figma_node_id: "90:1051"
+  - section_id: SEC-LANDING-007
+    code_name: PackagesSection
+    figma_node_id: "195:714"
+  - section_id: SEC-LANDING-008
+    code_name: FinalCtaSection
+    figma_node_id: "90:1157"
 implemented_pages: []
 implemented_endpoints: []
 foundation_artifacts:
@@ -161,8 +185,22 @@ phase_4b:
     implementation_record_task: TASK-P4B-001
     notes: good
   evidence: docs/08-quality/test-reports/phase-4b-task-p5-001-approval-2026-07-25.md
+phase_4c:
+  status: approved
+  figma_page: "05 Sections (87:2)"
+  implementation_status: complete
+  human_approval: approved
+  approval:
+    reviewer: Tom
+    result: APPROVED
+    date: "2026-07-25"
+    reviewed_task: TASK-P6-001
+    implementation_record_task: TASK-P4C-001
+    notes: good
+    accepted_deviations: [DEV-2026-009]
+  evidence: docs/08-quality/test-reports/phase-4c-task-p6-001-approval-2026-07-25.md
 notes:
-  - Section, Page and endpoint lists remain intentionally empty.
+  - Page and endpoint lists remain intentionally empty.
   - Foundation artifacts are application infrastructure, not registered Product Pages or components.
   - Planned component and Page registry entries are not implemented artifacts.
   - Breakpoints and motion easing remain unresolved and are not represented as implemented.
@@ -171,3 +209,4 @@ notes:
   - Phase 3 Core components and known deviations were approved by Tom.
   - Phase 4A Composite components and known deviations were approved by Tom.
   - Phase 4B Product components and known deviations were approved by Tom.
+  - Phase 4C Sections and DEV-2026-009 were approved by Tom.

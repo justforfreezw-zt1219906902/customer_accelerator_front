@@ -2,70 +2,91 @@ schema_version: 1
 figma_version: 1.0.0
 sections:
   - section_id: SEC-LANDING-001
-    figma_name: HeroSection
+    figma_name: mi-goTo/Hero Section
+    figma_node_id: "90:543"
     code_name: HeroSection
     planned_path: src/components/sections/HeroSection.vue
     dependencies: [core, composite, product]
-    implementation_status: not_started
-    design_review_status: pending
-    tests: []
+    variants: [Default, Compact, With Product Preview, Evidence Perspective]
+    implementation_status: implemented
+    design_review_status: approved
+    tests: [tests/unit/LandingSections.spec.ts]
   - section_id: SEC-LANDING-002
-    figma_name: ProblemSection
+    figma_name: mi-goTo/Problem Section
+    figma_node_id: "90:593"
     code_name: ProblemSection
     planned_path: src/components/sections/ProblemSection.vue
     dependencies: [core, composite, product]
-    implementation_status: not_started
-    design_review_status: pending
-    tests: []
+    variants: [3-card grid, 4-card grid, Split with Quote]
+    implementation_status: implemented
+    design_review_status: approved
+    tests: [tests/unit/LandingSections.spec.ts]
   - section_id: SEC-LANDING-003
-    figma_name: SolutionOverviewSection
+    figma_name: mi-goTo/Solution Overview Section
+    figma_node_id: "90:691"
     code_name: SolutionOverviewSection
     planned_path: src/components/sections/SolutionOverviewSection.vue
     dependencies: [core, composite, product]
-    implementation_status: not_started
-    design_review_status: pending
-    tests: []
+    variants: [Grid, Split layout]
+    implementation_status: implemented
+    design_review_status: approved
+    tests: [tests/unit/LandingSections.spec.ts]
   - section_id: SEC-LANDING-004
-    figma_name: FeatureGridSection
+    figma_name: mi-goTo/Feature Grid Section
+    figma_node_id: "90:833"
     code_name: FeatureGridSection
     planned_path: src/components/sections/FeatureGridSection.vue
     dependencies: [core, composite, product]
-    implementation_status: not_started
-    design_review_status: pending
-    tests: []
+    variants: [3-column grid, 2-column grid, Highlighted first feature]
+    implementation_status: implemented
+    design_review_status: approved
+    tests: [tests/unit/LandingSections.spec.ts]
   - section_id: SEC-LANDING-005
-    figma_name: HowItWorksSection
+    figma_name: mi-goTo/How It Works Section
+    figma_node_id: "90:903"
     code_name: HowItWorksSection
     planned_path: src/components/sections/HowItWorksSection.vue
     dependencies: [core, composite, product]
-    implementation_status: not_started
-    design_review_status: pending
-    tests: []
+    variants: [Horizontal desktop layout, Vertical mobile layout, Five-step method]
+    implementation_status: implemented
+    design_review_status: approved
+    tests: [tests/unit/LandingSections.spec.ts]
   - section_id: SEC-LANDING-006
-    figma_name: ProductPreviewSection
+    figma_name: mi-goTo/Product Preview Section
+    figma_node_id: "90:1051"
     code_name: ProductPreviewSection
     planned_path: src/components/sections/ProductPreviewSection.vue
     dependencies: [core, composite, product]
-    implementation_status: not_started
-    design_review_status: pending
-    tests: []
+    variants: [Dashboard Preview, Insight Cards, Split Preview]
+    implementation_status: implemented
+    design_review_status: approved
+    tests: [tests/unit/LandingSections.spec.ts]
   - section_id: SEC-LANDING-007
-    figma_name: PackagesSection
+    figma_name: mi-goTo/Pricing Section
+    figma_node_id: "195:714"
     code_name: PackagesSection
     planned_path: src/components/sections/PackagesSection.vue
     dependencies: [core, composite, product]
-    implementation_status: not_started
-    design_review_status: pending
-    tests: []
+    variants: [Standard, Featured Center]
+    implementation_status: implemented
+    design_review_status: approved
+    tests: [tests/unit/LandingSections.spec.ts]
+    notes:
+      - The code name follows the approved roadmap and interaction terminology.
+      - Prices and package claims are not part of the component API; supplied content remains independently governed.
   - section_id: SEC-LANDING-008
-    figma_name: FinalCtaSection
+    figma_name: mi-goTo/Final CTA Section
+    figma_node_id: "90:1157"
     code_name: FinalCtaSection
     planned_path: src/components/sections/FinalCtaSection.vue
     dependencies: [core, composite, product]
-    implementation_status: not_started
-    design_review_status: pending
-    tests: []
+    variants: [Primary, Compact, With supporting card]
+    implementation_status: implemented
+    design_review_status: approved
+    tests: [tests/unit/LandingSections.spec.ts]
 notes:
-  - Section names, ordering, node IDs, composition, and responsive behavior require Figma inspection.
-  - Planned paths do not exist.
-
+  - Figma page 05 Sections (87:2) was inspected read-only on 2026-07-25.
+  - All Section content and marketing values are supplied through typed props or slots.
+  - Responsive layout is fluid because the active Figma token baseline has no approved breakpoint values.
+  - Tom approved Phase 4C and TASK-P6-001 on 2026-07-25.
+  - DEV-2026-009 is an accepted known responsive difference.

@@ -1,8 +1,8 @@
 ---
 phase: 4
 name: Composite, Product, and Section Components
-status: in_progress
-human_approval: pending
+status: approved
+human_approval: approved
 ---
 
 # Phase 4: Composite, Product, and Section Components
@@ -24,6 +24,10 @@ AppNavbar, AppFooter, typed default Header/Footer content, and tests.
 
 Phase 4B implementation includes the seven registered Landing Product
 Components, typed external content APIs, and component tests.
+
+Phase 4C implementation includes the eight registered Landing Sections,
+typed content and action inputs, stable anchor IDs, fluid responsive
+composition, and Section tests.
 
 ## Out of Scope
 
@@ -79,6 +83,10 @@ the reviewed implementation and known deviations on 2026-07-25.
 Phase 4B used the same installed validation workflow. Tom approved the reviewed
 Product implementation and known deviations on 2026-07-25.
 
+Phase 4C used management validation, TypeScript typecheck, ESLint, Vitest/Vue
+Test Utils, and the Vite production build. Automated checks passed. Tom
+approved the reviewed Sections and known deviation on 2026-07-25.
+
 ## Risks
 
 - Page behavior leaking into Sections
@@ -93,13 +101,13 @@ layer. Move misplaced responsibility through a reviewed change.
 
 ## Status
 
-Phase 4: `in_progress`
+Phase 4: `approved`
 
-Phase 4A: `approved`; Phase 4B: `approved`; Phase 4C: `not_started`.
+Phase 4A: `approved`; Phase 4B: `approved`; Phase 4C: `approved`.
 
 ## Human Approval
 
-Phase 4 overall: `pending`.
+Phase 4 overall: `approved` after approval of all three subphases.
 
 Phase 4A:
 
@@ -121,6 +129,18 @@ Phase 4B:
 - Notes: good
 - Evidence:
   `docs/08-quality/test-reports/phase-4b-task-p5-001-approval-2026-07-25.md`
+
+Phase 4C:
+
+- Reviewer: Tom
+- Result: `APPROVED`
+- Date: 2026-07-25
+- Reviewed task: `TASK-P6-001`
+- Original execution task: `TASK-P4C-001`
+- Notes: good
+- Accepted deviation: `DEV-2026-009`
+- Evidence:
+  `docs/08-quality/test-reports/phase-4c-task-p6-001-approval-2026-07-25.md`
 
 ## Completion Report
 
@@ -151,4 +171,25 @@ Phase 4B:
   `docs/08-quality/test-reports/phase-4b-product-components-2026-07-25.md`.
 - Tom approved Phase 4B and accepted `DEV-2026-007` and `DEV-2026-008` as
   known differences on 2026-07-25.
-- Phase 4C Sections were not created.
+- Phase 4C authorization was not included in the Phase 4B approval.
+
+### Phase 4C
+
+- Phase 4B approval was confirmed before implementation.
+- Figma page `05 Sections` (`87:2`) was inspected read-only.
+- Implemented the eight authorized Section sets with typed props, slots, and
+  stable IDs.
+- `PackagesSection` maps to Figma `mi-goTo/Pricing Section` (`195:714`);
+  prices and unapproved package claims are intentionally not part of its API.
+- Figma sample statistics and performance claims were not embedded.
+- Sections import only approved Core and Product components; none imports a
+  Page or router.
+- Responsive composition uses fluid, token-bounded grids because Figma 1.0.0
+  has no approved breakpoint tokens.
+- Final CTA defaults to `final-cta`; the provisional `contact` anchor remains a
+  Phase 5 decision and was not treated as approved behavior.
+- Automated evidence is recorded in
+  `docs/08-quality/test-reports/phase-4c-landing-sections-2026-07-25.md`.
+- Tom approved Phase 4C, `TASK-P6-001`, and the known `DEV-2026-009`
+  responsive difference on 2026-07-25.
+- With Phase 4A, 4B, and 4C approved, overall Phase 4 is approved.

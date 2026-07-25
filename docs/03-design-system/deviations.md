@@ -133,6 +133,24 @@ Each deviation must record:
 - Review date: 2026-07-25
 - Next review: Phase 4B human review
 
+### DEV-2026-009 — Fluid Section responsiveness
+
+- Affected Figma: `1.0.0`, Section nodes `90:543`, `90:593`, `90:691`,
+  `90:833`, `90:903`, `90:1051`, `195:714`, `90:1157`
+- Affected frontend: `0.0.1`, `src/components/sections`
+- Difference: Figma provides fixed 1180px specimens and an explicit mobile
+  layout variant only for How It Works. Code uses fluid, token-bounded grids
+  that wrap without an invented breakpoint.
+- Reason: Figma 1.0.0 and the implemented token baseline contain no approved
+  breakpoint values; responsive failure is not acceptable.
+- Impact: Intermediate viewport wrapping is implementation-defined and requires
+  visual review. Content hierarchy, component composition, and named variants
+  remain traceable to Figma.
+- Approval: Approved by Tom on 2026-07-25 for `TASK-P6-001`
+- Owner: Product owner / Tom
+- Review date: 2026-07-25
+- Next review: Phase 4C human review or approval of breakpoint tokens
+
 ## Resolved deviations
 
 None.

@@ -100,3 +100,25 @@ automated evidence cannot create approval.
   - Known deviations `DEV-2026-007` and `DEV-2026-008` were accepted.
   - Approval evidence:
     `docs/08-quality/test-reports/phase-4b-task-p5-001-approval-2026-07-25.md`.
+
+### DR-006 — Phase 4C Landing Sections
+
+- Date: 2026-07-25
+- Human reviewer: Tom
+- Figma version: `1.0.0`
+- Frontend version: `0.0.1`
+- Scope: Section component nodes `90:543`, `90:593`, `90:691`, `90:833`,
+  `90:903`, `90:1051`, `195:714`, `90:1157`
+- Result: `approved`
+- Evidence:
+  `docs/08-quality/test-reports/phase-4c-landing-sections-2026-07-25.md`
+- Notes:
+  - Read-only Figma inspection and automated validation are complete.
+  - `PackagesSection` maps to the Figma Pricing Section; example prices are not
+    embedded.
+  - Responsive layouts require visual review because the token baseline has no
+    approved breakpoints.
+  - Review result supplied by Tom: `APPROVED`; notes: good.
+  - `DEV-2026-009` was accepted as a known responsive difference.
+  - Approval evidence:
+    `docs/08-quality/test-reports/phase-4c-task-p6-001-approval-2026-07-25.md`.

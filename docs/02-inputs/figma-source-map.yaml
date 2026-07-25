@@ -8,7 +8,7 @@ source:
   figma_version: 1.0.0
   version_status: initialized_from_project_input
 inspection:
-  status: product_implementation_approved
+  status: section_implementation_approved
   reviewer: Tom
   last_reviewed: "2026-07-25"
   notes:
@@ -17,7 +17,8 @@ inspection:
     - Tom approved the Phase 2 Figma Tokens scope on 2026-07-24.
     - 02 Core Components was inspected and later approved in Phase 3.
     - 03 Composite Components was inspected read-only and approved for Phase 4A.
-    - 04 Product Components was inspected read-only for Phase 4B; human review is pending.
+    - 04 Product Components was inspected read-only and approved for Phase 4B.
+    - 05 Sections was inspected read-only and approved for Phase 4C.
 pages:
   - page_name: 00 Foundation
     node_id: "0:1"
@@ -83,11 +84,16 @@ pages:
     node_id: "87:2"
     figma_version: 1.0.0
     code_target: src/components/sections
-    status: page_id_verified_pending_inspection
-    reviewer: unknown
-    last_reviewed: unknown
+    status: inspected_implemented_and_approved
+    reviewer: Tom
+    last_reviewed: "2026-07-25"
     notes:
       - Sections may depend on Core, Composite, and Product.
+      - Library canvas node is "90:447".
+      - Authorized component sets are Hero "90:543", Problem "90:593", Solution Overview "90:691", Feature Grid "90:833", How It Works "90:903", Product Preview "90:1051", Pricing "195:714", and Final CTA "90:1157".
+      - Pricing Section maps to the approved code name PackagesSection.
+      - Additional Figma Sections remain outside the authorized Phase 4C inventory.
+      - Tom approved Phase 4C, TASK-P6-001, and DEV-2026-009 on 2026-07-25.
   - page_name: 06 Landing Page
     node_id: "212:2"
     figma_version: 1.0.0

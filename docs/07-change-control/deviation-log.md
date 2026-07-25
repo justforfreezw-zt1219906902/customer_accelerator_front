@@ -154,6 +154,23 @@ as deviations.
 - Next review date: Phase 4B human review
 - Linked record: `PHASE-004B-product-components.md`
 
+### DEV-2026-009 — Fluid Section responsiveness
+
+- Reason: Figma 1.0.0 and the implemented token baseline contain no approved
+  breakpoint values, while Sections must remain responsive.
+- Affected Figma: `1.0.0`, nodes `90:543`, `90:593`, `90:691`, `90:833`,
+  `90:903`, `90:1051`, `195:714`, `90:1157`
+- Affected Frontend: `0.0.1`, `src/components/sections`
+- Impact: Fluid, token-bounded grids define intermediate viewport wrapping;
+  named variants and content hierarchy remain traceable to Figma.
+- Alternatives: Fixed 1180px layouts; unapproved breakpoint media queries.
+- Resolution or expiry: Approved for Phase 4C; revisit after breakpoint approval.
+- Owner: Product owner / Tom
+- Approval: Approved by Tom for `TASK-P6-001` on 2026-07-25
+- Review date: 2026-07-25
+- Next review date: When the breakpoint baseline changes
+- Linked record: `PHASE-004C-sections.md`
+
 ## Resolved deviations
 
 None.

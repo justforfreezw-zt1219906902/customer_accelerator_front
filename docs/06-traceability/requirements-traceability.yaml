@@ -8,6 +8,26 @@ status_values:
   - verified
   - deprecated
 requirements:
+  - requirement_id: REQ-SECTIONS-001
+    description: Authorized Landing Sections compose approved lower layers, expose stable IDs, and accept typed external content without Page coupling.
+    source:
+      - docs/phases/phase-4-composite-product-sections.md
+      - docs/03-design-system/section-registry.yaml
+      - docs/04-frontend/component-dependency-map.yaml
+    figma_source:
+      page: 05 Sections
+      node_id: "87:2"
+      component_node_ids: ["90:543", "90:593", "90:691", "90:833", "90:903", "90:1051", "195:714", "90:1157"]
+      status: inspected
+    backend_source: not_applicable
+    planned_frontend_files:
+      - src/components/sections
+    tests:
+      - tests/unit/LandingSections.spec.ts
+    status: implemented
+    introduced_version: 0.0.1
+    verified_version: 0.0.1
+    approval: approved
   - requirement_id: REQ-PRODUCT-001
     description: Authorized Landing Product components render confirmed Figma variants from typed external content without page coupling.
     source:

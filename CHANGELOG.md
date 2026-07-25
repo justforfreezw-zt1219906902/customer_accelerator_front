@@ -262,6 +262,11 @@ artifacts follow [Semantic Versioning](https://semver.org/).
 
 ### Added
 
+- Phase 4C Landing Sections with typed content contracts, stable anchor IDs,
+  Figma-traceable variants, lower-layer composition, and component tests.
+- Phase 4C Figma mappings, validation evidence, implementation baseline,
+  traceability, design review, and instruction records.
+
 - Initial governance and documentation directory structure.
 - Root project documentation and AI working agreement.
 - Machine-readable version and compatibility baseline.
