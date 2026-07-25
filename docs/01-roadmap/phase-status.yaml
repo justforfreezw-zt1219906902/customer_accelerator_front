@@ -143,8 +143,29 @@ phases:
           design_review: approved
   - id: phase-5
     name: Routing and Page Interaction Map
-    status: not_started
+    status: in_progress
     human_approval: pending
+    subphases:
+      - id: phase-5a
+        name: Product Interaction Specification
+        status: approved
+        human_approval: approved
+        approval:
+          reviewer: Tom
+          result: APPROVED
+          date: "2026-07-25"
+          reviewed_task: TASK-P7-001
+          implementation_record_task: TASK-P5A-001
+          notes: good
+          evidence: docs/08-quality/test-reports/phase-5a-task-p7-001-approval-2026-07-25.md
+          prior_evidence: docs/08-quality/test-reports/phase-5a-task-p6-001-approval-2026-07-25.md
+        readiness:
+          figma_read_only_inspection: complete
+          formal_specification: complete
+          management_validation: passed
+          route_implementation: not_started
+          page_implementation: not_started
+          open_human_decisions: 21
   - id: phase-6
     name: Static Pages
     status: not_started

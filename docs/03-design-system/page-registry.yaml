@@ -4,48 +4,48 @@ pages:
   - page_id: PAGE-LANDING
     name: Landing Page
     figma_page_name: 06 Landing Page
-    figma_node_id: unknown
+    figma_node_id: "212:2"
     code_name: LandingPage
     planned_path: src/pages/LandingPage.vue
     route: /
     implementation_status: not_started
-    design_review_status: pending
+    design_review_status: interaction_inspected_visual_review_pending
   - page_id: PAGE-WHY
     name: Why mi-goTo Page
     figma_page_name: 07 Why Mi-goTo Page
-    figma_node_id: unknown
+    figma_node_id: "259:2"
     code_name: WhyMiGotoPage
     planned_path: src/pages/WhyMiGotoPage.vue
     route: /why-mi-goto
     implementation_status: not_started
-    design_review_status: pending
+    design_review_status: interaction_inspected_visual_review_pending
   - page_id: PAGE-IMPRINT
     name: Imprint Page
     figma_page_name: 08 Imprint
-    figma_node_id: unknown
+    figma_node_id: "122:2"
     code_name: ImprintPage
     planned_path: src/pages/ImprintPage.vue
     route: /imprint
     implementation_status: not_started
-    design_review_status: pending
+    design_review_status: interaction_inspected_legal_review_pending
   - page_id: PAGE-DATA-PROTECTION
     name: Data Protection Page
     figma_page_name: 09 Data Protection
-    figma_node_id: unknown
+    figma_node_id: "128:2"
     code_name: DataProtectionPage
     planned_path: src/pages/DataProtectionPage.vue
     route: /data-protection
     implementation_status: not_started
-    design_review_status: pending
+    design_review_status: interaction_inspected_legal_review_pending
   - page_id: PAGE-CONTACT
     name: Contact Page
     figma_page_name: 10 Contact Page
-    figma_node_id: unknown
+    figma_node_id: "269:2"
     code_name: ContactPage
     planned_path: src/pages/ContactPage.vue
     route: /contact
     implementation_status: not_started
-    design_review_status: pending
+    design_review_status: interaction_inspected_visual_review_pending
   - page_id: PAGE-THANK-YOU
     name: Thank You Page
     figma_page_name: unknown
@@ -58,6 +58,7 @@ pages:
     notes:
       - No expected Figma page or node has been registered.
 notes:
-  - All paths are planned and do not exist.
-  - Page presence, node IDs, responsive design, and visual review are pending.
-
+  - Page paths remain proposed and final Page implementations do not exist.
+  - Five Figma Page nodes were inspected read-only for Phase 5A.
+  - Figma does not define final route or interaction behavior by itself.
+  - Thank You Page has no registered Figma source.

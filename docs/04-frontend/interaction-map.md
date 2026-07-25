@@ -2,78 +2,68 @@
 
 ## Status
 
-All behavior in this document is provisional until approved Product and
-Interaction Specifications exist. Unresolved items are marked
-`decision_required`.
+- Phase 5A status: `approved`
+- Human approval: Tom, 2026-07-25
+- Formal specification:
+  `docs/04-frontend/product-interaction-specification.md`
+- No final routes or Pages were implemented.
 
-## Provisional navigation
+## Proposed navigation
 
-| Label | Destination | Status | Notes |
+| Source | Label | Destination | Status |
 | --- | --- | --- | --- |
-| `THE PROBLEM` | `/#problem` | provisional | `decision_required`: anchor ID, scroll offset, focus, history, and reduced motion |
-| `THE SOLUTION` | `/#solution` | provisional | `decision_required`: anchor ID, scroll offset, focus, history, and reduced motion |
-| `PACKAGES` | `/#packages` | provisional | `decision_required`: anchor ID, Section existence, scroll/focus behavior |
-| `CONTACT` | `/contact` | provisional | `decision_required`: active-state and source tracking |
-| `STRATEGY DISCUSSION` | `/contact` | provisional | `decision_required`: CTA source, query parameters, and analytics |
+| Header | THE PROBLEM | `/#problem` | `proposed_needs_review` |
+| Header | THE SOLUTION | `/#solution` | `proposed_needs_review` |
+| Header | PACKAGES | `/#packages` | `proposed_needs_review` |
+| Header | CONTACT | `/contact` | `proposed_needs_review` |
+| Header/CTA | STRATEGY DISCUSSION | `/contact` | `proposed_needs_review` |
+| Footer | The problem | `/#problem` | `proposed_needs_review` |
+| Footer | Solutions | `/#solution` | `proposed_needs_review` |
+| Footer | Packages | `/#packages` | `proposed_needs_review` |
+| Footer | Contact | `/contact` | `proposed_needs_review` |
+| Footer | Imprint | `/imprint` | `proposed_needs_review` |
+| Footer | Data protection | `/data-protection` | `proposed_needs_review` |
+| Footer | hello@mi-goto.com | `mailto:hello@mi-goto.com` | confirmed content; behavior proposed |
+| Footer | LinkedIn | unknown HTTPS URL | `decision_required` |
 
-## Contact submission
-
-Provisional product flow:
+## Contact state map
 
 ```text
-Landing Page
-→ Contact Page
-→ POST /api/lead
-→ Backend, HubSpot and email processing
-→ Thank You Page
+idle
+→ client validation
+  → invalid: show accessible errors and preserve input
+  → valid: submitting
+      → 200: production /thank-you; development behavior decision required
+      → 400: recoverable form error
+      → 500: generic temporary failure
+      → 502: generic integration failure
+      → network/timeout/unexpected: generic safe failure
 ```
 
-Successful production submit → `/thank-you`.
+Submitting prevents concurrent duplicate requests. Automatic retry is not
+proposed. Exact timeout, manual retry, cancellation, focus, copy, and navigation
+semantics require human approval.
 
-`decision_required`:
+## Locale state
 
-- form fields, validation, consent, and payload;
-- loading, duplicate prevention, timeout, retry, and error behavior;
-- authoritative success status and response;
-- whether navigation uses push, replace, or server redirect;
-- focus movement and accessibility announcements;
-- whether values are preserved after failure or cleared after success;
-- direct access to `/thank-you`;
-- privacy, analytics, spam protection, and data retention.
+EN is proposed as initially active. DE and CN remain visible. The recommended
+interim state is disabled-with-explanation until translations and locale mapping
+are approved. An announced EN fallback is an alternative requiring approval.
 
-## Development submit behavior
+## Figma evidence
 
-`decision_required`:
+- Landing Page: `212:2`
+- Why Mi-goTo Page: `259:2`
+- Imprint: `122:2`
+- Data Protection: `128:2`
+- Contact Page: `269:2`
+- Thank You Page: no registered Figma source
 
-- real local Go backend versus mock transport;
-- whether local success navigates to `/thank-you`;
-- isolation from production HubSpot and email processing;
-- safe test data;
-- simulated validation, loading, error, timeout, and retry states.
+Figma confirms Page structure and visible entry elements. It does not confirm
+the route, anchor, locale, success, error, or analytics behavior in this map.
 
-Development must not silently send real production leads.
+## Decisions
 
-## Language switching
-
-Status: `decision_required` pending final localization decision.
-
-Decisions include:
-
-- whether `CN` maps to `zh-CN`;
-- default language and detection;
-- URL prefixes versus application state;
-- persistence and consent;
-- fallback language and missing translations;
-- whether route, hash, form input, and scroll position are preserved;
-- page language and localized metadata updates.
-
-## Global unresolved behavior
-
-- Not-found route and legacy redirects
-- External-link behavior
-- Sticky navigation and mobile menu interaction
-- Scroll restoration between routes
-- Route and CTA analytics
-- Consent and privacy behavior
-- Error and support escalation
-
+The authoritative decision table is `INT-001` through `INT-021` in the formal
+Product Interaction Specification. The specification is approved; all named
+decisions remain `decision_required`.

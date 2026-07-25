@@ -7,7 +7,7 @@
 | Figma version | `1.0.0` |
 | Figma URL | [mi-goTo Figma design](https://www.figma.com/design/vyr3TvF5lAUOnuuxdW8iRb/prototype?node-id=0-1&p=f&t=AdHvWZgIn8DrsmI6-0) |
 | File key | `vyr3TvF5lAUOnuuxdW8iRb` |
-| Baseline status | `foundation_and_tokens_approved` |
+| Baseline status | `phase_4_approved_phase_5a_pages_inspected` |
 | Human reviewer | Tom |
 | Capture date | 2026-07-24 |
 | Visual approval | Phase 2 token scope approved 2026-07-24 |
@@ -26,8 +26,9 @@
 10. `09 Data Protection` — `128:2`, presence verified
 11. `10 Contact Page` — `269:2`, presence verified
 
-All expected pages and their node IDs were verified on 2026-07-24. Only the
-Foundation and Tokens pages were inspected in detail for Phase 2.
+All expected pages and their node IDs were verified on 2026-07-24. Component,
+Section, and five registered Product Pages were subsequently inspected
+read-only through Phase 5A.
 
 ## Authority
 
@@ -47,9 +48,8 @@ tests, or approval.
 
 ## Known unknowns
 
-- Detailed component, Section, and Page node inspection beyond pages 00 and 01
-- Component properties, variants, states, and instance behavior
-- Section composition and Page architecture
+- Page interaction reactions and mobile Page compositions
+- Contact loading, success, and error-state visuals
 - Responsive breakpoints: no breakpoint variable/style was found
 - Font asset delivery and licenses for Inter and JetBrains Mono
 - Motion easing and reduced-motion intent: not specified in the inspected source

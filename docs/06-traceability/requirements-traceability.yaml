@@ -8,6 +8,27 @@ status_values:
   - verified
   - deprecated
 requirements:
+  - requirement_id: REQ-INTERACTION-001
+    description: Routes, navigation, anchors, locale behavior, mobile navigation, and Contact states are governed by an approved Product Interaction Specification before implementation.
+    source:
+      - docs/04-frontend/product-interaction-specification.md
+      - docs/phases/phase-5-routing-interaction-map.md
+    figma_source:
+      pages: ["06 Landing Page", "07 Why Mi-goTo Page", "08 Imprint", "09 Data Protection", "10 Contact Page"]
+      node_ids: ["212:2", "259:2", "122:2", "128:2", "269:2"]
+      status: inspected_for_structure_not_behavior
+    backend_source:
+      operation: POST /api/lead
+      contract_revision: 1
+    planned_frontend_files:
+      - src/router
+      - src/pages
+      - src/content
+    tests: []
+    status: planned
+    introduced_version: 0.0.1
+    verified_version: null
+    approval: approved
   - requirement_id: REQ-SECTIONS-001
     description: Authorized Landing Sections compose approved lower layers, expose stable IDs, and accept typed external content without Page coupling.
     source:
@@ -123,8 +144,8 @@ requirements:
       - docs/03-design-system/page-registry.yaml#PAGE-LANDING
     figma_source:
       page: 06 Landing Page
-      node_id: unknown
-      status: pending_inspection
+      node_id: "212:2"
+      status: structure_inspected
     backend_source: not_applicable
     planned_frontend_files:
       - src/pages/LandingPage.vue
@@ -176,8 +197,8 @@ requirements:
       - docs/05-backend/openapi.yaml#/components/schemas/LeadRequest
     figma_source:
       page: 10 Contact Page
-      node_id: unknown
-      status: pending_inspection
+      node_id: "269:2"
+      status: structure_inspected
     backend_source:
       operation: POST /api/lead
       contract_revision: 1
@@ -196,8 +217,8 @@ requirements:
       - docs/05-backend/integration-spec.md
     figma_source:
       page: 10 Contact Page
-      node_id: unknown
-      status: pending_inspection
+      node_id: "269:2"
+      status: structure_inspected
     backend_source:
       operation: POST /api/lead
       contract_revision: 1
@@ -256,8 +277,8 @@ requirements:
       - docs/04-frontend/error-handling.md
     figma_source:
       page: 10 Contact Page
-      node_id: unknown
-      status: pending_inspection
+      node_id: "269:2"
+      status: structure_inspected
     backend_source:
       operation: POST /api/lead
       statuses: [400, 500, 502]
@@ -277,8 +298,8 @@ requirements:
       - docs/02-inputs/content-inventory.yaml#CONTENT-IMPRINT
     figma_source:
       page: 08 Imprint
-      node_id: unknown
-      status: pending_inspection
+      node_id: "122:2"
+      status: structure_inspected_legal_review_pending
     backend_source: not_applicable
     planned_frontend_files:
       - src/pages/ImprintPage.vue
@@ -295,8 +316,8 @@ requirements:
       - docs/02-inputs/content-inventory.yaml#CONTENT-DATA-PROTECTION
     figma_source:
       page: 09 Data Protection
-      node_id: unknown
-      status: pending_inspection
+      node_id: "128:2"
+      status: structure_inspected_legal_review_pending
     backend_source: not_applicable
     planned_frontend_files:
       - src/pages/DataProtectionPage.vue
@@ -313,8 +334,8 @@ requirements:
       - docs/02-inputs/content-inventory.yaml#CONTENT-WHY
     figma_source:
       page: 07 Why Mi-goTo Page
-      node_id: unknown
-      status: pending_inspection
+      node_id: "259:2"
+      status: structure_inspected
     backend_source: not_applicable
     planned_frontend_files:
       - src/pages/WhyMiGotoPage.vue

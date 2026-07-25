@@ -1,5 +1,7 @@
 schema_version: 1
-status: planned
+status: specification_approved_decisions_pending
+implementation_status: not_started
+specification: docs/04-frontend/product-interaction-specification.md
 foundation_implementation:
   path: /
   component: FoundationPlaceholderPage
@@ -8,38 +10,62 @@ foundation_implementation:
   replacement: LandingPage
   notes:
     - This temporary Phase 1 route proves the router shell.
-    - It does not implement or satisfy the planned Landing Page route.
+    - It does not implement or satisfy the proposed Landing Page route.
 routes:
   - path: /
     component: LandingPage
     planned_path: src/pages/LandingPage.vue
-    status: planned
+    figma_page_id: "212:2"
+    status: proposed_needs_review
   - path: /why-mi-goto
     component: WhyMiGotoPage
     planned_path: src/pages/WhyMiGotoPage.vue
-    status: planned
+    figma_page_id: "259:2"
+    status: proposed_needs_review
   - path: /imprint
     component: ImprintPage
     planned_path: src/pages/ImprintPage.vue
-    status: planned
+    figma_page_id: "122:2"
+    status: proposed_needs_review
   - path: /data-protection
     component: DataProtectionPage
     planned_path: src/pages/DataProtectionPage.vue
-    status: planned
+    figma_page_id: "128:2"
+    status: proposed_needs_review
   - path: /contact
     component: ContactPage
     planned_path: src/pages/ContactPage.vue
-    status: planned
+    figma_page_id: "269:2"
+    status: proposed_needs_review
   - path: /thank-you
     component: ThankYouPage
     planned_path: src/pages/ThankYouPage.vue
-    status: planned
-global_decisions_required:
-  - Not-found and error route behavior
-  - Locale strategy and locale prefixes
-  - Trailing slash and canonical URL policy
-  - Scroll restoration and anchor focus behavior
-  - Route analytics and consent requirements
-  - Redirects from the previous website
+    figma_page_id: unknown
+    status: proposed_needs_review
+    notes:
+      - No Thank You Page exists in Figma 1.0.0.
+decisions:
+  - id: INT-001
+    topic: route_paths
+    status: decision_required
+  - id: INT-002
+    topic: anchor_scroll_focus_history
+    status: decision_required
+  - id: INT-004
+    topic: unknown_route
+    status: decision_required
+  - id: INT-005
+    topic: canonical_trailing_slash
+    status: decision_required
+  - id: INT-006
+    topic: legacy_redirects
+    status: decision_required
+  - id: INT-008
+    topic: locale_url_strategy
+    status: decision_required
+  - id: INT-019
+    topic: route_analytics_and_consent
+    status: decision_required
 notes:
-  - Routes are planned product inputs, not implemented behavior.
+  - Proposed paths are specification inputs, not implemented behavior.
+  - Final route implementation requires human approval.

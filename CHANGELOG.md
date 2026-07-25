@@ -262,6 +262,15 @@ artifacts follow [Semantic Versioning](https://semver.org/).
 
 ### Added
 
+- Phase 5A Product Interaction Specification covering proposed routes, Header
+  and Footer destinations, anchors, locale behavior, mobile navigation,
+  Contact states, safe errors, and twenty-one human decisions.
+- Human approval record for the Phase 5A specification, preserving the supplied
+  duplicate review task identifier as a documented traceability conflict.
+- Phase 5A approval reconfirmation under unique reviewed task `TASK-P7-001`,
+  while preserving the earlier approval evidence.
+- Read-only Figma Page evidence for Landing, Why mi-goTo, Imprint, Data
+  Protection, and Contact.
 - Phase 4C Landing Sections with typed content contracts, stable anchor IDs,
   Figma-traceable variants, lower-layer composition, and component tests.
 - Phase 4C Figma mappings, validation evidence, implementation baseline,

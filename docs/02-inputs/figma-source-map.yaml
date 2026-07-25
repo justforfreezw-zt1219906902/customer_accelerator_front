@@ -98,44 +98,49 @@ pages:
     node_id: "212:2"
     figma_version: 1.0.0
     code_target: src/pages/LandingPage.vue
-    status: page_id_verified_pending_inspection
-    reviewer: unknown
-    last_reviewed: unknown
+    status: structure_inspected_interaction_spec_needs_review
+    reviewer: Codex
+    last_reviewed: "2026-07-25"
     notes:
-      - Planned target path only.
+      - Desktop frame is "212:3"; Header "212:4"; Footer "212:737".
+      - Figma does not independently define routes or anchor behavior.
   - page_name: 07 Why Mi-goTo Page
     node_id: "259:2"
     figma_version: 1.0.0
     code_target: src/pages/WhyMiGotoPage.vue
-    status: page_id_verified_pending_inspection
-    reviewer: unknown
-    last_reviewed: unknown
+    status: structure_inspected_interaction_spec_needs_review
+    reviewer: Codex
+    last_reviewed: "2026-07-25"
     notes:
-      - Confirm exact capitalization and page name during inspection.
+      - Desktop frame is "259:3"; Header "259:4"; Footer "259:167".
   - page_name: 08 Imprint
     node_id: "122:2"
     figma_version: 1.0.0
     code_target: src/pages/ImprintPage.vue
-    status: page_id_verified_pending_inspection
-    reviewer: unknown
-    last_reviewed: unknown
+    status: structure_inspected_legal_review_pending
+    reviewer: Codex
+    last_reviewed: "2026-07-25"
     notes:
       - Legal content requires separate human approval.
+      - Desktop frame is "122:3"; Header "122:439".
   - page_name: 09 Data Protection
     node_id: "128:2"
     figma_version: 1.0.0
     code_target: src/pages/DataProtectionPage.vue
-    status: page_id_verified_pending_inspection
-    reviewer: unknown
-    last_reviewed: unknown
+    status: structure_inspected_legal_review_pending
+    reviewer: Codex
+    last_reviewed: "2026-07-25"
     notes:
       - Legal content requires separate human approval.
+      - Footer instance is "128:542".
   - page_name: 10 Contact Page
     node_id: "269:2"
     figma_version: 1.0.0
     code_target: src/pages/ContactPage.vue
-    status: page_id_verified_pending_inspection
-    reviewer: unknown
-    last_reviewed: unknown
+    status: structure_inspected_interaction_spec_needs_review
+    reviewer: Codex
+    last_reviewed: "2026-07-25"
     notes:
       - Figma does not define the POST /api/lead contract.
+      - Desktop frame is "269:3"; form panel "269:47"; submit action "269:99".
+      - No loading, success, or error state frame was discovered.

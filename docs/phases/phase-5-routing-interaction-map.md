@@ -1,7 +1,7 @@
 ---
 phase: 5
 name: Routing and Page Interaction Map
-status: not_started
+status: in_progress
 human_approval: pending
 ---
 
@@ -14,6 +14,8 @@ before static Page implementation.
 
 ## Scope
 
+- Phase 5A: Product Interaction Specification and human decisions
+- Later authorized subphase: route skeleton and behavior implementation
 - Routes, paths, names, metadata, navigation, and fallbacks
 - Links, CTA destinations, state transitions, and form behavior
 - Success, error, retry, focus, history, analytics, and accessibility behavior
@@ -68,8 +70,9 @@ before static Page implementation.
 
 ## Validation
 
-**Planned.** Use only Phase 1-approved installed lint, type checking, tests, and
-build commands. Route-specific commands remain planned until tooling exists.
+Phase 5A uses management-document validation because it changes specifications
+only. Typecheck, route tests, and build validation remain required for a later
+implementation task.
 
 ## Risks
 
@@ -85,14 +88,47 @@ compatible redirects and document breaking URL migration impact.
 
 ## Status
 
-`not_started`
+Phase 5 overall: `in_progress`
+
+Phase 5A Product Interaction Specification: `approved`
 
 ## Human Approval
 
-`pending`
+Phase 5 overall: `pending`
+
+Phase 5A:
+
+- Reviewer: Tom
+- Result: `APPROVED`
+- Date: 2026-07-25
+- Current reviewed task supplied: `TASK-P7-001`
+- Original execution task: `TASK-P5A-001`
+- Notes: good
+- Evidence:
+  `docs/08-quality/test-reports/phase-5a-task-p7-001-approval-2026-07-25.md`
+- Prior approval evidence is preserved at
+  `docs/08-quality/test-reports/phase-5a-task-p6-001-approval-2026-07-25.md`.
 
 ## Completion Report
 
-Not available. It must later include route/link/CTA inventories, state coverage,
-validation, unresolved contract items, deviations, and approval.
+### Phase 5A
 
+- Figma pages `06 Landing Page` (`212:2`), `07 Why Mi-goTo Page` (`259:2`),
+  `08 Imprint` (`122:2`), `09 Data Protection` (`128:2`), and
+  `10 Contact Page` (`269:2`) were inspected read-only.
+- A formal Product Interaction Specification records proposed routes, Header
+  and Footer destinations, anchor behavior, locale behavior, mobile navigation,
+  Contact state transitions, safe errors, unknown routes, and external links.
+- Twenty-one human decisions are explicitly recorded.
+- Contact loading, success, and error behavior is not represented in Figma and
+  remains controlled by the interaction specification and OpenAPI.
+- Thank You Page has no Figma source.
+- No route or Page implementation was changed.
+- Tom approved the Phase 5A specification on 2026-07-25.
+- Tom reconfirmed the approval using the unique reviewed task `TASK-P7-001`;
+  the earlier `TASK-P6-001` record remains historical evidence.
+- Approval confirms the specification record; its twenty-one explicitly
+  unresolved decisions still require their named owners before affected
+  implementation.
+- Phase 5 remains `in_progress`; no route or Page implementation is approved by
+  this record.
