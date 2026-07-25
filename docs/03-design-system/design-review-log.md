@@ -49,14 +49,35 @@ automated evidence cannot create approval.
 
 ### DR-003 — Phase 3 Core Components
 
-- Date: 2026-07-24
-- Human reviewer: Pending
+- Date: 2026-07-25
+- Human reviewer: Tom
 - Figma version: `1.0.0`
 - Frontend version: `0.0.1`
 - Scope: Core component nodes `34:60`, `35:26`, `36:22`, `41:42`, `42:66`
-- Result: `pending`
+- Result: `approved`
 - Evidence: `docs/08-quality/test-reports/phase-3-core-components-2026-07-24.md`
 - Deviations: `DEV-2026-001`, `DEV-2026-002`, `DEV-2026-003`
 - Notes:
   - Read-only Figma inspection and automated validation are complete.
-  - No design approval is claimed.
+  - Review notes: good.
+  - Approval evidence:
+    `docs/08-quality/test-reports/phase-3-task-p3-001-approval-2026-07-25.md`.
+
+### DR-004 — Phase 4A Composite Components
+
+- Date: 2026-07-25
+- Human reviewer: Tom
+- Figma version: `1.0.0`
+- Frontend version: `0.0.1`
+- Scope: Composite component nodes `68:213`, `68:329`, `68:389`, `68:432`, `68:517`
+- Result: `approved`
+- Evidence: `docs/08-quality/test-reports/phase-4a-composite-components-2026-07-25.md`
+- Deviations: `DEV-2026-004`, `DEV-2026-005`, `DEV-2026-006`
+- Notes:
+  - Read-only Figma inspection and automated validation are complete.
+  - Preserved Header/Footer content differs from the Figma library's specimen
+    copy because Content Configuration independently controls website copy.
+  - Review result supplied by Tom: `APPROVED`; notes: good.
+  - Known deviations `DEV-2026-004` through `DEV-2026-006` were accepted.
+  - Approval evidence:
+    `docs/08-quality/test-reports/phase-4a-task-p4-001-approval-2026-07-25.md`.

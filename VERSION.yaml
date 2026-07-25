@@ -4,8 +4,8 @@ project:
   name: mi-goTo Frontend
   status: planning
   current_phase:
-    id: phase-3
-    name: Core Components
+    id: phase-4
+    name: Composite, Product, and Section Components
 
 versions:
   figma_design_system: 1.0.0

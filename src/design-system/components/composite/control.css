@@ -1,0 +1,41 @@
+.app-composite-control {
+  width: 100%;
+  min-width: 0;
+  padding: var(--spacing-12) var(--spacing-16);
+  border: var(--stroke-1) solid var(--color-input-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-primary);
+  background: var(--color-input-background);
+  font: inherit;
+  font-size: var(--typography-body-base-font-size);
+  line-height: var(--typography-body-base-line-height);
+  transition:
+    border-color var(--motion-duration-fast),
+    box-shadow var(--motion-duration-fast);
+}
+
+.app-composite-control::placeholder {
+  color: var(--color-input-placeholder);
+}
+
+.app-composite-control:hover:not(:disabled) {
+  border-color: var(--color-input-border-hover);
+}
+
+.app-composite-control:focus-visible {
+  border-color: var(--color-input-border-focus);
+  outline: none;
+  box-shadow: var(--shadow-focus-ring);
+}
+
+.app-composite-control[aria-invalid='true'] {
+  border-color: var(--color-input-border-error);
+  background: var(--color-state-error-subtle);
+  box-shadow: none;
+}
+
+.app-composite-control:disabled {
+  background: var(--color-input-background-disabled);
+  cursor: not-allowed;
+  opacity: var(--opacity-disabled);
+}

@@ -1,5 +1,59 @@
 # Changelog
 
+## 2026-07-25 — Phase 4A human approval
+
+### Approved
+
+- Tom approved Phase 4A Composite Components and `TASK-P4-001` with review
+  notes “good”
+- Accepted `DEV-2026-004` through `DEV-2026-006` as known differences
+
+### Changed
+
+- Updated Phase 4A from `needs_review` to `approved`
+- Advanced the next gate to Phase 4B Product Components Authorization
+
+### Evidence preserved
+
+- All Phase 4A automated validation results remain recorded
+- Phase 4 remains `in_progress`; Phase 4B and Phase 4C remain `not_started`
+
+## 2026-07-25 — Phase 4A Composite Components
+
+### Added
+
+- AppFormField, AppTextarea, AppSelect, AppNavbar, and AppFooter
+- Typed default Header and Footer content configuration
+- Composite component tests and Figma node traceability
+
+### Changed
+
+- Advanced Phase 4 to `in_progress` and Phase 4A to `needs_review`
+- Recorded three pending Figma-to-code deviations
+
+### Status
+
+- Human visual review remains pending
+- Product Components, Sections, Pages, routes, and backend integration were not implemented
+
+## 2026-07-25 — Phase 3 human approval
+
+### Approved
+
+- Tom approved Phase 3 Core Components and `TASK-P3-001` with review notes “good”
+- Approved `DEV-2026-001` through `DEV-2026-003` as known differences
+
+### Changed
+
+- Updated Phase 3 from `needs_review` to `approved`
+- Advanced the next gate to Phase 4A Composite Components Authorization
+
+### Evidence preserved
+
+- All Phase 3 validation results remain recorded
+- Approved deviations remain active and traceable
+- The compatibility baseline remains not approved
+
 ## 2026-07-24 — Phase 3 Core Components
 
 ### Added

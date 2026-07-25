@@ -28,23 +28,23 @@
 | Unit/component tests | Passed — 7 files, 20 tests |
 | Production build | Passed |
 | Core dependency restriction | Passed |
-| Human design review | Pending |
+| Human design review | Approved by Tom on 2026-07-25 |
 
 Tests cover confirmed variants and states, typed props, native semantics,
 disabled behavior, emitted events, focus behavior, accessible attributes,
 slots, and stable rendering.
 
-## Deviations pending review
+## Approved deviations
 
 - `DEV-2026-001`: fluid Section Container sizing
 - `DEV-2026-002`: accessibility focus-visible treatment
 - `DEV-2026-003`: disabled opacity normalization
 
-No deviation is represented as approved.
+Tom approved all three as known differences within `TASK-P3-001`.
 
 ## Excluded Figma components
 
 `Source Attribution Chip` (`167:14`) and the unpublished Avatar review specimen
 were not implemented because they are outside the authorized registry.
 
-Phase 3 is `needs_review`, not approved.
+Phase 3 is approved. Original validation evidence is preserved in full.

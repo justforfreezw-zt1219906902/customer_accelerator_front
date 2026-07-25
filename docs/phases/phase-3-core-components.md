@@ -1,8 +1,8 @@
 ---
 phase: 3
 name: Core Components
-status: needs_review
-human_approval: pending
+status: approved
+human_approval: approved
 ---
 
 # Phase 3: Core Components
@@ -67,7 +67,7 @@ Build accessible reusable primitives that depend only on approved Tokens.
 - `npm run test:unit` — passed; 7 files, 20 tests
 - `npm run build` — passed
 - Read-only Figma inspection and canvas screenshot review — completed
-- Human design review — pending
+- Human design review — approved by Tom on 2026-07-25
 
 ## Risks
 
@@ -83,11 +83,19 @@ public interface; breaking changes require migration and approval.
 
 ## Status
 
-`needs_review`
+`approved`
 
 ## Human Approval
 
-`pending`
+`approved`
+
+- Reviewer: Tom
+- Result: `APPROVED`
+- Date: 2026-07-25
+- Reviewed task: `TASK-P3-001`
+- Notes: good
+- Evidence:
+  `docs/08-quality/test-reports/phase-3-task-p3-001-approval-2026-07-25.md`
 
 ## Completion Report
 
@@ -112,5 +120,6 @@ All components depend only on Vue primitives and approved CSS variables.
 it is not in the authorized Core registry. Automated validation passed.
 
 Three intentional responsive, accessibility, and token-normalization
-differences are recorded as `DEV-2026-001` through `DEV-2026-003`; human review
-is pending. Phase 3 and its design review are not approved.
+differences are recorded as `DEV-2026-001` through `DEV-2026-003`. Tom approved
+Phase 3, `TASK-P3-001`, and the known deviations on 2026-07-25 with the review
+note “good.”

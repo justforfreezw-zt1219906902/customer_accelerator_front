@@ -8,6 +8,29 @@ status_values:
   - verified
   - deprecated
 requirements:
+  - requirement_id: REQ-COMPOSITE-001
+    description: Confirmed Composite components use typed APIs, permitted Core dependencies, and accessible native semantics.
+    source:
+      - docs/phases/phase-4-composite-product-sections.md
+      - docs/03-design-system/component-registry.yaml
+    figma_source:
+      page: 03 Composite Components
+      node_id: "68:2"
+      component_node_ids: ["68:213", "68:329", "68:389", "68:432", "68:517"]
+      status: inspected
+    backend_source: not_applicable
+    planned_frontend_files:
+      - src/design-system/components/composite
+    tests:
+      - tests/unit/AppFormField.spec.ts
+      - tests/unit/AppTextarea.spec.ts
+      - tests/unit/AppSelect.spec.ts
+      - tests/unit/AppNavbar.spec.ts
+      - tests/unit/AppFooter.spec.ts
+    status: implemented
+    introduced_version: 0.0.1
+    verified_version: 0.0.1
+    approval: approved
   - requirement_id: REQ-CORE-001
     description: Approved Core components render with typed APIs, token-only styling dependencies, and accessible native semantics.
     source:
@@ -30,7 +53,7 @@ requirements:
     status: implemented
     introduced_version: 0.0.1
     verified_version: 0.0.1
-    approval: not_approved
+    approval: approved
   - requirement_id: REQ-TOKENS-001
     description: Confirmed Figma 1.0.0 design tokens are exposed through runtime CSS variables and matching TypeScript references.
     source:
@@ -70,35 +93,37 @@ requirements:
     source:
       - docs/02-inputs/content-inventory.yaml#CONTENT-HEADER
     figma_source:
-      page: 00 Foundation
-      node_id: unknown
-      status: pending_inspection
+      page: 03 Composite Components
+      node_id: "68:432"
+      status: inspected
     backend_source: not_applicable
     planned_frontend_files:
       - src/content/header
       - src/design-system/components/composite/AppNavbar.vue
-    tests: []
-    status: planned
+    tests:
+      - tests/unit/AppNavbar.spec.ts
+    status: implemented
     introduced_version: 0.0.1
     verified_version: null
-    approval: not_approved
+    approval: approved
   - requirement_id: REQ-FOOTER-001
     description: Footer content is preserved.
     source:
       - docs/02-inputs/content-inventory.yaml#CONTENT-FOOTER
     figma_source:
-      page: 00 Foundation
-      node_id: unknown
-      status: pending_inspection
+      page: 03 Composite Components
+      node_id: "68:517"
+      status: inspected
     backend_source: not_applicable
     planned_frontend_files:
       - src/content/footer
       - src/design-system/components/composite/AppFooter.vue
-    tests: []
-    status: planned
+    tests:
+      - tests/unit/AppFooter.spec.ts
+    status: implemented
     introduced_version: 0.0.1
     verified_version: null
-    approval: not_approved
+    approval: approved
   - requirement_id: REQ-CONTACT-001
     description: Contact Page contains the confirmed required lead fields.
     source:

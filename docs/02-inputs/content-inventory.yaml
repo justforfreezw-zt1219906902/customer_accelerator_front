@@ -14,36 +14,40 @@ translation_status_values:
 content_items:
   - id: CONTENT-HEADER
     name: Header content
-    source: unknown
-    owner: unknown
-    status: pending_source
+    source: Phase 4A implementation instruction
+    owner: Product owner / Tom
+    status: implemented_default_en_approved
     code_destination: src/content/header
     locked_or_editable: locked
     preservation_required: true
     language: [EN, DE, CN]
     translation_status:
-      EN: unknown
-      DE: unknown
-      CN: unknown
+      EN: approved
+      DE: missing
+      CN: missing
     figma_version: 1.0.0
     notes:
       - Preserve existing approved Header content until a human-approved change exists.
+      - Default typed content is implemented in src/content/header/defaultHeaderContent.ts.
+      - Navigation destinations remain unresolved until Phase 5.
   - id: CONTENT-FOOTER
     name: Footer content
-    source: unknown
-    owner: unknown
-    status: pending_source
+    source: Phase 4A implementation instruction
+    owner: Product owner / Tom
+    status: implemented_default_en_approved
     code_destination: src/content/footer
     locked_or_editable: locked
     preservation_required: true
     language: [EN, DE, CN]
     translation_status:
-      EN: unknown
-      DE: unknown
-      CN: unknown
+      EN: approved
+      DE: missing
+      CN: missing
     figma_version: 1.0.0
     notes:
       - Preserve existing approved Footer content until a human-approved change exists.
+      - Default typed content is implemented in src/content/footer/defaultFooterContent.ts.
+      - LinkedIn and internal destinations remain unresolved until Phase 5.
   - id: CONTENT-LANDING
     name: Landing Page copy
     source: unknown
@@ -139,6 +143,5 @@ content_items:
     notes:
       - No expected Figma page has yet been registered for the Thank You Page.
 notes:
-  - Code destinations are planned and do not exist.
+  - Header and Footer code destinations now exist; all other destinations remain planned.
   - Confirm whether CN maps to zh-CN or another locale before implementation.
-

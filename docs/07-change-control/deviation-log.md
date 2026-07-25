@@ -31,11 +31,11 @@ as deviations.
   `src/design-system/components/core/AppSectionContainer.vue`
 - Impact: Fluid width; approved spacing tokens remain authoritative.
 - Alternatives: Fixed 720px width; unapproved breakpoint media queries.
-- Resolution or expiry: Review during Phase 3; revisit after breakpoint approval.
+- Resolution or expiry: Approved for Phase 3; revisit after breakpoint approval.
 - Owner: Tom
-- Approval: Pending
+- Approval: Approved by Tom for `TASK-P3-001` on 2026-07-25
 - Review date: 2026-07-24
-- Next review date: Phase 3 human design review
+- Next review date: When the breakpoint baseline changes
 - Linked record: `PHASE-003-core-components.md`
 
 ### DEV-2026-002 — Accessibility focus-visible treatment
@@ -45,11 +45,11 @@ as deviations.
 - Affected Frontend: `0.0.1`, `AppButton.vue`, `AppCard.vue`
 - Impact: Token-backed focus ring appears only for keyboard-visible focus.
 - Alternatives: No visible focus; wait for a future Figma focus variant.
-- Resolution or expiry: Review during Phase 3.
+- Resolution or expiry: Approved for Phase 3; revisit if Figma adds focus variants.
 - Owner: Tom
-- Approval: Pending
+- Approval: Approved by Tom for `TASK-P3-001` on 2026-07-25
 - Review date: 2026-07-24
-- Next review date: Phase 3 human design review
+- Next review date: When Figma adds focus variants
 - Linked record: `PHASE-003-core-components.md`
 
 ### DEV-2026-003 — Disabled opacity normalization
@@ -61,12 +61,64 @@ as deviations.
 - Impact: Button and Input disabled states use `0.4` instead of approximately
   `0.58` and `0.56`.
 - Alternatives: Preserve component-local raw opacity values.
-- Resolution or expiry: Review during Phase 3.
+- Resolution or expiry: Approved for Phase 3; revisit when disabled specifications change.
 - Owner: Tom
-- Approval: Pending
+- Approval: Approved by Tom for `TASK-P3-001` on 2026-07-25
 - Review date: 2026-07-24
-- Next review date: Phase 3 human design review
+- Next review date: When Figma disabled states or tokens change
 - Linked record: `PHASE-003-core-components.md`
+
+### DEV-2026-004 — Native Select open-state rendering
+
+- Reason: The approved behavior source does not define a custom listbox
+  interaction model. Native select semantics provide reliable keyboard and
+  assistive-technology behavior.
+- Affected Figma: `1.0.0`, node `68:389`
+- Affected Frontend: `0.0.1`,
+  `src/design-system/components/composite/AppSelect.vue`
+- Impact: Closed states follow the token-backed control treatment; the open
+  option list is rendered by the browser rather than the Figma specimen.
+- Alternatives: Build an unapproved custom listbox; defer the entire Select.
+- Resolution or expiry: Pending human review; revisit when interaction behavior
+  for a custom Select is approved.
+- Owner: Product owner / Tom
+- Approval: Approved by Tom for `TASK-P4-001` on 2026-07-25
+- Review date: 2026-07-25
+- Next review date: Phase 4A human review
+- Linked record: `PHASE-004A-composite-components.md`
+
+### DEV-2026-005 — Text wordmark fallback
+
+- Reason: The Figma Navbar and Footer specimens reference logo rectangles, but
+  no approved logo asset path exists in the asset inventory.
+- Affected Figma: `1.0.0`, nodes `68:432` and `68:517`
+- Affected Frontend: `0.0.1`, `AppNavbar.vue` and `AppFooter.vue`
+- Impact: The preserved `mi-goTo` brand text renders as a typed wordmark until
+  the approved asset is supplied.
+- Alternatives: Invent an asset; omit the brand.
+- Resolution or expiry: Replace with the approved asset after asset review.
+- Owner: Product owner / Tom
+- Approval: Approved by Tom for `TASK-P4-001` on 2026-07-25
+- Review date: 2026-07-25
+- Next review date: Phase 4A human review
+- Linked record: `PHASE-004A-composite-components.md`
+
+### DEV-2026-006 — Explicit mobile Navbar variant
+
+- Reason: Figma defines Desktop and Mobile variants but Figma 1.0.0 does not
+  define a breakpoint token.
+- Affected Figma: `1.0.0`, node `68:432`
+- Affected Frontend: `0.0.1`, `AppNavbar.vue`
+- Impact: Consumers select the mobile variant explicitly; no unapproved
+  viewport threshold is embedded in the component.
+- Alternatives: Invent a breakpoint; make Desktop and Mobile simultaneously
+  responsive through an undocumented threshold.
+- Resolution or expiry: Revisit after breakpoint approval.
+- Owner: Product owner / Tom
+- Approval: Approved by Tom for `TASK-P4-001` on 2026-07-25
+- Review date: 2026-07-25
+- Next review date: When a breakpoint baseline is approved
+- Linked record: `PHASE-004A-composite-components.md`
 
 ## Resolved deviations
 

@@ -1,6 +1,6 @@
 schema_version: 1
 baseline_id: DS1.0.0_API0.0.0_FE0.0.1
-status: core_components_implemented_needs_review
+status: composite_components_approved
 targeted_versions:
   figma: 1.0.0
   backend: 0.0.0
@@ -43,6 +43,21 @@ implemented_components:
   - component_id: CMP-CORE-005
     code_name: AppSectionContainer
     figma_node_id: "42:66"
+  - component_id: CMP-COMPOSITE-001
+    code_name: AppFormField
+    figma_node_id: "68:213"
+  - component_id: CMP-COMPOSITE-002
+    code_name: AppTextarea
+    figma_node_id: "68:329"
+  - component_id: CMP-COMPOSITE-003
+    code_name: AppSelect
+    figma_node_id: "68:389"
+  - component_id: CMP-COMPOSITE-004
+    code_name: AppNavbar
+    figma_node_id: "68:432"
+  - component_id: CMP-COMPOSITE-005
+    code_name: AppFooter
+    figma_node_id: "68:517"
 implemented_sections: []
 implemented_pages: []
 implemented_endpoints: []
@@ -88,11 +103,30 @@ phase_2:
     notes: Good
   evidence: docs/08-quality/test-reports/phase-2-task-p2-001-approval-2026-07-24.md
 phase_3:
-  status: needs_review
+  status: approved
   figma_page: "02 Core Components (31:2)"
   implementation_status: complete
-  human_approval: pending
-  evidence: docs/08-quality/test-reports/phase-3-core-components-2026-07-24.md
+  human_approval: approved
+  approval:
+    reviewer: Tom
+    result: APPROVED
+    date: "2026-07-25"
+    reviewed_task: TASK-P3-001
+    notes: good
+  evidence: docs/08-quality/test-reports/phase-3-task-p3-001-approval-2026-07-25.md
+phase_4a:
+  status: approved
+  figma_page: "03 Composite Components (68:2)"
+  implementation_status: complete
+  human_approval: approved
+  approval:
+    reviewer: Tom
+    result: APPROVED
+    date: "2026-07-25"
+    reviewed_task: TASK-P4-001
+    implementation_record_task: TASK-P4A-001
+    notes: good
+  evidence: docs/08-quality/test-reports/phase-4a-task-p4-001-approval-2026-07-25.md
 notes:
   - Section, Page and endpoint lists remain intentionally empty.
   - Foundation artifacts are application infrastructure, not registered Product Pages or components.
@@ -100,4 +134,5 @@ notes:
   - Breakpoints and motion easing remain unresolved and are not represented as implemented.
   - Backend 0.0.0 is a compatibility placeholder, not an assigned semantic version.
   - Phase 1 is approved; approval_status above applies to the compatibility baseline, which remains not approved.
-  - Phase 3 Core components await human design review.
+  - Phase 3 Core components and known deviations were approved by Tom.
+  - Phase 4A Composite components and known deviations were approved by Tom.

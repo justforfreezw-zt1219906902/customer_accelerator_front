@@ -14,7 +14,7 @@ components:
       state: [Default, Hover, Disabled]
     figma_version: 1.0.0
     implementation_status: implemented
-    design_review_status: needs_review
+    design_review_status: approved
     tests: [tests/unit/AppButton.spec.ts]
   - component_id: CMP-CORE-002
     figma_name: mi-goTo/Input
@@ -27,7 +27,7 @@ components:
       state: [Default, Focus, Error, Disabled]
     figma_version: 1.0.0
     implementation_status: implemented
-    design_review_status: needs_review
+    design_review_status: approved
     tests: [tests/unit/AppInput.spec.ts]
   - component_id: CMP-CORE-003
     figma_name: mi-goTo/Card
@@ -40,7 +40,7 @@ components:
       variant: [Default, Hover, Selected, Glass]
     figma_version: 1.0.0
     implementation_status: implemented
-    design_review_status: needs_review
+    design_review_status: approved
     tests: [tests/unit/AppCard.spec.ts]
   - component_id: CMP-CORE-004
     figma_name: mi-goTo/Badge
@@ -54,7 +54,7 @@ components:
       state: [Default, Hover, Disabled]
     figma_version: 1.0.0
     implementation_status: implemented
-    design_review_status: needs_review
+    design_review_status: approved
     tests: [tests/unit/AppBadge.spec.ts]
   - component_id: CMP-CORE-005
     figma_name: mi-goTo/Section Container
@@ -68,63 +68,77 @@ components:
       divider: [Default, With Top Divider, Without Top Divider]
     figma_version: 1.0.0
     implementation_status: implemented
-    design_review_status: needs_review
+    design_review_status: approved
     tests: [tests/unit/AppSectionContainer.spec.ts]
   - component_id: CMP-COMPOSITE-001
-    figma_name: AppFormField
+    figma_name: mi-goTo/Form Field
+    figma_node_id: "68:213"
     code_name: AppFormField
     planned_path: src/design-system/components/composite/AppFormField.vue
     layer: composite
     dependencies: [core]
-    variants: []
+    variants:
+      required: [False, True]
+      icon: [None, Leading]
+      state: [Default, Hover, Focus, Filled, Error, Disabled, Success]
     figma_version: 1.0.0
-    implementation_status: not_started
-    design_review_status: pending
-    tests: []
+    implementation_status: implemented
+    design_review_status: approved
+    tests: [tests/unit/AppFormField.spec.ts]
   - component_id: CMP-COMPOSITE-002
-    figma_name: AppTextarea
+    figma_name: mi-goTo/Textarea
+    figma_node_id: "68:329"
     code_name: AppTextarea
     planned_path: src/design-system/components/composite/AppTextarea.vue
     layer: composite
     dependencies: [core]
-    variants: []
+    variants:
+      counter: [None, Shown]
+      state: [Default, Hover, Focus, Filled, Near-Limit, Over-Limit, Disabled]
     figma_version: 1.0.0
-    implementation_status: not_started
-    design_review_status: pending
-    tests: []
+    implementation_status: implemented
+    design_review_status: approved
+    tests: [tests/unit/AppTextarea.spec.ts]
   - component_id: CMP-COMPOSITE-003
-    figma_name: AppSelect
+    figma_name: mi-goTo/Select
+    figma_node_id: "68:389"
     code_name: AppSelect
     planned_path: src/design-system/components/composite/AppSelect.vue
     layer: composite
     dependencies: [core]
-    variants: []
+    variants:
+      state: [Default, Focus, Error, Disabled, Open, Selected]
     figma_version: 1.0.0
-    implementation_status: not_started
-    design_review_status: pending
-    tests: []
+    implementation_status: implemented
+    design_review_status: approved
+    tests: [tests/unit/AppSelect.spec.ts]
   - component_id: CMP-COMPOSITE-004
-    figma_name: AppNavbar
+    figma_name: mi-goTo/Navbar
+    figma_node_id: "68:432"
     code_name: AppNavbar
     planned_path: src/design-system/components/composite/AppNavbar.vue
     layer: composite
     dependencies: [core]
-    variants: []
+    variants:
+      variant: [Desktop, Mobile, Transparent, Solid]
     figma_version: 1.0.0
-    implementation_status: not_started
-    design_review_status: pending
-    tests: []
+    implementation_status: implemented
+    design_review_status: approved
+    tests: [tests/unit/AppNavbar.spec.ts]
   - component_id: CMP-COMPOSITE-005
-    figma_name: AppFooter
+    figma_name: mi-goTo/Footer
+    figma_node_id: "68:517"
     code_name: AppFooter
     planned_path: src/design-system/components/composite/AppFooter.vue
     layer: composite
     dependencies: [core]
-    variants: []
+    variants:
+      variant: [Simple, Full]
+      context: [Enterprise-Dark, Impact-Light]
     figma_version: 1.0.0
-    implementation_status: not_started
-    design_review_status: pending
-    tests: []
+    implementation_status: implemented
+    design_review_status: approved
+    tests: [tests/unit/AppFooter.spec.ts]
   - component_id: CMP-PRODUCT-001
     figma_name: ValuePropositionCard
     code_name: ValuePropositionCard
@@ -204,7 +218,10 @@ components:
     tests: []
 notes:
   - Core Figma names and variants were inspected read-only on 2026-07-24.
-  - Composite and Product Figma names remain expected labels pending their phases.
+  - Composite Figma component sets were inspected read-only on 2026-07-25.
+  - Product Figma names remain expected labels pending Phase 4B.
   - Empty variants and tests mean unknown or not created, not not-applicable.
   - Planned Composite and Product paths do not claim implementation.
   - Figma Source Attribution Chip 167:14 is not registered or implemented because it was outside the authorized inventory.
+  - Composite design review was approved by Tom for TASK-P4-001 on 2026-07-25.
+  - Figma contains additional Composite library components outside the Phase 4A authorized inventory.

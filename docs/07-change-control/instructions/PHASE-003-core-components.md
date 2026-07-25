@@ -8,8 +8,8 @@
 - Operator: User-directed Codex task
 - Starting baseline: `DS1.0.0_API0.0.0_FE0.0.1`
 - Starting phase status: `not_started`
-- Resulting phase status: `needs_review`
-- Human approval: `pending`
+- Resulting phase status: `approved`
+- Human approval: `approved`
 - Git commit: `pending`
 
 ## Preconditions
@@ -74,8 +74,17 @@ from Component Sets.
 - `DEV-2026-002`: accessibility focus-visible treatment
 - `DEV-2026-003`: disabled opacity normalization
 
-All three require human review.
+All three were approved by Tom as known Phase 3 differences on 2026-07-25.
 
 ## Human review
 
-Pending. Phase 3 and its design review are not approved.
+- Reviewer: Tom
+- Decision: `APPROVED`
+- Date: 2026-07-25
+- Reviewed task: `TASK-P3-001`
+- Notes: good
+- Evidence:
+  `docs/08-quality/test-reports/phase-3-task-p3-001-approval-2026-07-25.md`
+
+Approval preserves the original automated evidence and does not authorize Phase
+4A implementation.

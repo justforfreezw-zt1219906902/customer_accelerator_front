@@ -8,13 +8,15 @@ source:
   figma_version: 1.0.0
   version_status: initialized_from_project_input
 inspection:
-  status: foundation_and_tokens_approved
+  status: composite_implementation_approved
   reviewer: Tom
-  last_reviewed: "2026-07-24"
+  last_reviewed: "2026-07-25"
   notes:
     - All expected page names and page node IDs were verified in the file.
     - Only 00 Foundation and 01 Tokens were inspected in detail in Phase 2.
     - Tom approved the Phase 2 Figma Tokens scope on 2026-07-24.
+    - 02 Core Components was inspected and later approved in Phase 3.
+    - 03 Composite Components was inspected read-only for Phase 4A; human review is pending.
 pages:
   - page_name: 00 Foundation
     node_id: "0:1"
@@ -42,9 +44,9 @@ pages:
     node_id: "31:2"
     figma_version: 1.0.0
     code_target: src/design-system/components/core
-    status: inspected_and_implemented_needs_human_review
-    reviewer: Codex_read_only_inspection
-    last_reviewed: "2026-07-24"
+    status: inspected_implemented_and_approved
+    reviewer: Tom
+    last_reviewed: "2026-07-25"
     notes:
       - Core may depend only on Tokens.
       - Library canvas node is "31:3".
@@ -54,11 +56,15 @@ pages:
     node_id: "68:2"
     figma_version: 1.0.0
     code_target: src/design-system/components/composite
-    status: page_id_verified_pending_inspection
-    reviewer: unknown
-    last_reviewed: unknown
+    status: inspected_implemented_and_approved
+    reviewer: Tom
+    last_reviewed: "2026-07-25"
     notes:
       - Composite may depend on Core.
+      - Library canvas node is "68:3".
+      - Requested component sets: Form Field "68:213", Textarea "68:329", Select "68:389", Navbar "68:432", Footer "68:517".
+      - Additional Composite library components discovered outside Phase 4A scope remain unimplemented.
+      - Tom approved Phase 4A and TASK-P4-001 on 2026-07-25.
   - page_name: 04 Product Components
     node_id: "81:2"
     figma_version: 1.0.0
