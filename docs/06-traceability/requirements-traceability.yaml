@@ -8,6 +8,31 @@ status_values:
   - verified
   - deprecated
 requirements:
+  - requirement_id: REQ-PRODUCT-001
+    description: Authorized Landing Product components render confirmed Figma variants from typed external content without page coupling.
+    source:
+      - docs/phases/phase-4-composite-product-sections.md
+      - docs/03-design-system/component-registry.yaml
+    figma_source:
+      page: 04 Product Components
+      node_id: "81:2"
+      component_node_ids: ["82:37", "82:66", "82:93", "82:110", "82:149", "82:170", "82:197"]
+      status: inspected
+    backend_source: not_applicable
+    planned_frontend_files:
+      - src/components/product
+    tests:
+      - tests/unit/ValuePropositionCard.spec.ts
+      - tests/unit/FeatureCard.spec.ts
+      - tests/unit/ProcessStepCard.spec.ts
+      - tests/unit/TrustMetricCard.spec.ts
+      - tests/unit/AIInsightPreviewCard.spec.ts
+      - tests/unit/CustomerProblemCard.spec.ts
+      - tests/unit/LandingCtaPanel.spec.ts
+    status: implemented
+    introduced_version: 0.0.1
+    verified_version: 0.0.1
+    approval: approved
   - requirement_id: REQ-COMPOSITE-001
     description: Confirmed Composite components use typed APIs, permitted Core dependencies, and accessible native semantics.
     source:

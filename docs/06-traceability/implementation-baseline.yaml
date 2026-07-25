@@ -1,6 +1,6 @@
 schema_version: 1
 baseline_id: DS1.0.0_API0.0.0_FE0.0.1
-status: composite_components_approved
+status: product_components_approved
 targeted_versions:
   figma: 1.0.0
   backend: 0.0.0
@@ -58,6 +58,27 @@ implemented_components:
   - component_id: CMP-COMPOSITE-005
     code_name: AppFooter
     figma_node_id: "68:517"
+  - component_id: CMP-PRODUCT-001
+    code_name: ValuePropositionCard
+    figma_node_id: "82:37"
+  - component_id: CMP-PRODUCT-002
+    code_name: FeatureCard
+    figma_node_id: "82:66"
+  - component_id: CMP-PRODUCT-003
+    code_name: ProcessStepCard
+    figma_node_id: "82:93"
+  - component_id: CMP-PRODUCT-004
+    code_name: TrustMetricCard
+    figma_node_id: "82:110"
+  - component_id: CMP-PRODUCT-005
+    code_name: AIInsightPreviewCard
+    figma_node_id: "82:149"
+  - component_id: CMP-PRODUCT-006
+    code_name: CustomerProblemCard
+    figma_node_id: "82:170"
+  - component_id: CMP-PRODUCT-007
+    code_name: LandingCtaPanel
+    figma_node_id: "82:197"
 implemented_sections: []
 implemented_pages: []
 implemented_endpoints: []
@@ -127,6 +148,19 @@ phase_4a:
     implementation_record_task: TASK-P4A-001
     notes: good
   evidence: docs/08-quality/test-reports/phase-4a-task-p4-001-approval-2026-07-25.md
+phase_4b:
+  status: approved
+  figma_page: "04 Product Components (81:2)"
+  implementation_status: complete
+  human_approval: approved
+  approval:
+    reviewer: Tom
+    result: APPROVED
+    date: "2026-07-25"
+    reviewed_task: TASK-P5-001
+    implementation_record_task: TASK-P4B-001
+    notes: good
+  evidence: docs/08-quality/test-reports/phase-4b-task-p5-001-approval-2026-07-25.md
 notes:
   - Section, Page and endpoint lists remain intentionally empty.
   - Foundation artifacts are application infrastructure, not registered Product Pages or components.
@@ -136,3 +170,4 @@ notes:
   - Phase 1 is approved; approval_status above applies to the compatibility baseline, which remains not approved.
   - Phase 3 Core components and known deviations were approved by Tom.
   - Phase 4A Composite components and known deviations were approved by Tom.
+  - Phase 4B Product components and known deviations were approved by Tom.

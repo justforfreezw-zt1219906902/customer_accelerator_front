@@ -22,6 +22,9 @@ the approved dependency hierarchy.
 Phase 4A implementation includes AppFormField, AppTextarea, AppSelect,
 AppNavbar, AppFooter, typed default Header/Footer content, and tests.
 
+Phase 4B implementation includes the seven registered Landing Product
+Components, typed external content APIs, and component tests.
+
 ## Out of Scope
 
 - Page and route implementation
@@ -73,6 +76,9 @@ Phase 4A used the installed management validation, TypeScript typecheck, ESLint,
 Vitest/Vue Test Utils component tests, and Vite production build. Tom approved
 the reviewed implementation and known deviations on 2026-07-25.
 
+Phase 4B used the same installed validation workflow. Tom approved the reviewed
+Product implementation and known deviations on 2026-07-25.
+
 ## Risks
 
 - Page behavior leaking into Sections
@@ -89,7 +95,7 @@ layer. Move misplaced responsibility through a reviewed change.
 
 Phase 4: `in_progress`
 
-Phase 4A: `approved`; Phase 4B: `not_started`; Phase 4C: `not_started`.
+Phase 4A: `approved`; Phase 4B: `approved`; Phase 4C: `not_started`.
 
 ## Human Approval
 
@@ -104,6 +110,17 @@ Phase 4A:
 - Notes: good
 - Evidence:
   `docs/08-quality/test-reports/phase-4a-task-p4-001-approval-2026-07-25.md`
+
+Phase 4B:
+
+- Reviewer: Tom
+- Result: `APPROVED`
+- Date: 2026-07-25
+- Reviewed task: `TASK-P5-001`
+- Original execution task: `TASK-P4B-001`
+- Notes: good
+- Evidence:
+  `docs/08-quality/test-reports/phase-4b-task-p5-001-approval-2026-07-25.md`
 
 ## Completion Report
 
@@ -121,3 +138,17 @@ Phase 4A:
 - Tom approved Phase 4A and accepted `DEV-2026-004` through `DEV-2026-006`
   as known differences on 2026-07-25.
 - Phase 4 remains `in_progress`; Phase 4B and Phase 4C are not started.
+
+### Phase 4B
+
+- Figma page `04 Product Components` (`81:2`) was inspected read-only.
+- Implemented only the seven authorized Product component sets.
+- All copy and numeric metrics are externally supplied through typed props or
+  slots; no unsupported marketing claims are embedded.
+- Product code uses Core components and approved CSS variables and has no
+  Section or Page dependencies.
+- Automated evidence is recorded in
+  `docs/08-quality/test-reports/phase-4b-product-components-2026-07-25.md`.
+- Tom approved Phase 4B and accepted `DEV-2026-007` and `DEV-2026-008` as
+  known differences on 2026-07-25.
+- Phase 4C Sections were not created.

@@ -140,88 +140,105 @@ components:
     design_review_status: approved
     tests: [tests/unit/AppFooter.spec.ts]
   - component_id: CMP-PRODUCT-001
-    figma_name: ValuePropositionCard
+    figma_name: mi-goTo/Value Proposition Card
+    figma_node_id: "82:37"
     code_name: ValuePropositionCard
     planned_path: src/components/product/ValuePropositionCard.vue
     layer: product
     dependencies: [core, composite]
-    variants: []
+    variants:
+      variant: [Default, Highlighted, Compact]
     figma_version: 1.0.0
-    implementation_status: not_started
-    design_review_status: pending
-    tests: []
+    implementation_status: implemented
+    design_review_status: approved
+    tests: [tests/unit/ValuePropositionCard.spec.ts]
   - component_id: CMP-PRODUCT-002
-    figma_name: FeatureCard
+    figma_name: mi-goTo/Feature Card
+    figma_node_id: "82:66"
     code_name: FeatureCard
     planned_path: src/components/product/FeatureCard.vue
     layer: product
     dependencies: [core, composite]
-    variants: []
+    variants:
+      variant: [Default, With Icon, Highlighted]
     figma_version: 1.0.0
-    implementation_status: not_started
-    design_review_status: pending
-    tests: []
+    implementation_status: implemented
+    design_review_status: approved
+    tests: [tests/unit/FeatureCard.spec.ts]
   - component_id: CMP-PRODUCT-003
-    figma_name: ProcessStepCard
+    figma_name: mi-goTo/Process Step Card
+    figma_node_id: "82:93"
     code_name: ProcessStepCard
     planned_path: src/components/product/ProcessStepCard.vue
     layer: product
     dependencies: [core, composite]
-    variants: []
+    variants:
+      variant: [Default, Active, Completed]
+      density: [Default, Compact]
     figma_version: 1.0.0
-    implementation_status: not_started
-    design_review_status: pending
-    tests: []
+    implementation_status: implemented
+    design_review_status: approved
+    tests: [tests/unit/ProcessStepCard.spec.ts]
   - component_id: CMP-PRODUCT-004
-    figma_name: TrustMetricCard
+    figma_name: mi-goTo/Trust Metric Card
+    figma_node_id: "82:110"
     code_name: TrustMetricCard
     planned_path: src/components/product/TrustMetricCard.vue
     layer: product
     dependencies: [core, composite]
-    variants: []
+    variants:
+      variant: [Default, Emphasized]
     figma_version: 1.0.0
-    implementation_status: not_started
-    design_review_status: pending
-    tests: []
+    implementation_status: implemented
+    design_review_status: approved
+    tests: [tests/unit/TrustMetricCard.spec.ts]
   - component_id: CMP-PRODUCT-005
-    figma_name: AIInsightPreviewCard
+    figma_name: mi-goTo/AI Insight Preview Card
+    figma_node_id: "82:149"
     code_name: AIInsightPreviewCard
     planned_path: src/components/product/AIInsightPreviewCard.vue
     layer: product
     dependencies: [core, composite]
-    variants: []
+    variants:
+      variant: [Default, High Fit, Medium Fit]
     figma_version: 1.0.0
-    implementation_status: not_started
-    design_review_status: pending
-    tests: []
+    implementation_status: implemented
+    design_review_status: approved
+    tests: [tests/unit/AIInsightPreviewCard.spec.ts]
   - component_id: CMP-PRODUCT-006
-    figma_name: CustomerProblemCard
+    figma_name: mi-goTo/Customer Problem Card
+    figma_node_id: "82:170"
     code_name: CustomerProblemCard
     planned_path: src/components/product/CustomerProblemCard.vue
     layer: product
     dependencies: [core, composite]
-    variants: []
+    variants:
+      variant: [Default, Severe, Compact]
     figma_version: 1.0.0
-    implementation_status: not_started
-    design_review_status: pending
-    tests: []
+    implementation_status: implemented
+    design_review_status: approved
+    tests: [tests/unit/CustomerProblemCard.spec.ts]
   - component_id: CMP-PRODUCT-007
-    figma_name: LandingCtaPanel
+    figma_name: mi-goTo/Landing CTA Panel
+    figma_node_id: "82:197"
     code_name: LandingCtaPanel
     planned_path: src/components/product/LandingCtaPanel.vue
     layer: product
     dependencies: [core, composite]
-    variants: []
+    variants:
+      variant: [Primary, Secondary, Compact]
     figma_version: 1.0.0
-    implementation_status: not_started
-    design_review_status: pending
-    tests: []
+    implementation_status: implemented
+    design_review_status: approved
+    tests: [tests/unit/LandingCtaPanel.spec.ts]
 notes:
   - Core Figma names and variants were inspected read-only on 2026-07-24.
   - Composite Figma component sets were inspected read-only on 2026-07-25.
-  - Product Figma names remain expected labels pending Phase 4B.
+  - Product Figma component sets were inspected read-only on 2026-07-25.
   - Empty variants and tests mean unknown or not created, not not-applicable.
   - Planned Composite and Product paths do not claim implementation.
   - Figma Source Attribution Chip 167:14 is not registered or implemented because it was outside the authorized inventory.
   - Composite design review was approved by Tom for TASK-P4-001 on 2026-07-25.
   - Figma contains additional Composite library components outside the Phase 4A authorized inventory.
+  - Additional Product components found in Figma were not implemented because they are outside the authorized Phase 4B registry.
+  - Product design review was approved by Tom for TASK-P5-001 on 2026-07-25.

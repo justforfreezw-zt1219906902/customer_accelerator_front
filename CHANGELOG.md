@@ -1,5 +1,41 @@
 # Changelog
 
+## 2026-07-25 — Phase 4B human approval
+
+### Approved
+
+- Tom approved Phase 4B Product Components and `TASK-P5-001` with review notes
+  “good”
+- Accepted `DEV-2026-007` and `DEV-2026-008` as known differences
+
+### Changed
+
+- Updated Phase 4B from `needs_review` to `approved`
+- Advanced the next gate to Phase 4C Landing Sections Authorization
+
+### Evidence preserved
+
+- All Phase 4B automated validation results remain recorded
+- Phase 4 remains `in_progress`; Phase 4C remains `not_started`
+
+## 2026-07-25 — Phase 4B Landing Product Components
+
+### Added
+
+- Seven Figma-backed Landing Product components with typed external content APIs
+- Product component barrel exports and seven unit/component test files
+- Product Figma mappings, traceability, validation, and deviation records
+
+### Changed
+
+- Advanced Phase 4B to `needs_review` while keeping Phase 4 `in_progress`
+
+### Constraints preserved
+
+- No Sections, Pages, page-level copy, unsupported marketing claims, Figma
+  writes, or new dependencies
+- Human visual review remains pending
+
 ## 2026-07-25 — Phase 4A human approval
 
 ### Approved

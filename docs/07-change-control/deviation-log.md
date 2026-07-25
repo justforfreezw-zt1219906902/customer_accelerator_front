@@ -120,6 +120,40 @@ as deviations.
 - Next review date: When a breakpoint baseline is approved
 - Linked record: `PHASE-004A-composite-components.md`
 
+### DEV-2026-007 — Product spacing token normalization
+
+- Reason: Figma Product specimens use 14px gaps and CTA padding values of 60px
+  and 36px, which are not present in the approved spacing token set.
+- Affected Figma: `1.0.0`, nodes `82:37`, `82:66`, `82:93`, `82:110`,
+  `82:149`, `82:170`, `82:197`
+- Affected Frontend: `0.0.1`, `src/components/product`
+- Impact: Code uses the nearest approved spacing values: 16px for 14px, 64px
+  for 60px, and 32px for 36px.
+- Alternatives: Embed unapproved raw values; change the approved token baseline.
+- Resolution or expiry: Pending human review; revisit when the spacing baseline changes.
+- Owner: Product owner / Tom
+- Approval: Approved by Tom for `TASK-P5-001` on 2026-07-25
+- Review date: 2026-07-25
+- Next review date: Phase 4B human review
+- Linked record: `PHASE-004B-product-components.md`
+
+### DEV-2026-008 — Fluid Product component widths
+
+- Reason: Reusable Product components must accept responsive parent sizing
+  while Figma library specimens use fixed presentation widths.
+- Affected Figma: `1.0.0`, nodes `82:37`, `82:66`, `82:93`, `82:110`,
+  `82:149`, `82:170`, `82:197`
+- Affected Frontend: `0.0.1`, `src/components/product`
+- Impact: Specimen widths are represented as maximum widths where relevant;
+  cards can shrink within responsive layouts and long copy can wrap safely.
+- Alternatives: Force fixed widths; invent breakpoint-specific widths.
+- Resolution or expiry: Pending human review; revisit after breakpoint approval.
+- Owner: Product owner / Tom
+- Approval: Approved by Tom for `TASK-P5-001` on 2026-07-25
+- Review date: 2026-07-25
+- Next review date: Phase 4B human review
+- Linked record: `PHASE-004B-product-components.md`
+
 ## Resolved deviations
 
 None.

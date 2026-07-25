@@ -81,3 +81,22 @@ automated evidence cannot create approval.
   - Known deviations `DEV-2026-004` through `DEV-2026-006` were accepted.
   - Approval evidence:
     `docs/08-quality/test-reports/phase-4a-task-p4-001-approval-2026-07-25.md`.
+
+### DR-005 — Phase 4B Landing Product Components
+
+- Date: 2026-07-25
+- Human reviewer: Tom
+- Figma version: `1.0.0`
+- Frontend version: `0.0.1`
+- Scope: Product component nodes `82:37`, `82:66`, `82:93`, `82:110`,
+  `82:149`, `82:170`, `82:197`
+- Result: `approved`
+- Evidence: `docs/08-quality/test-reports/phase-4b-product-components-2026-07-25.md`
+- Deviations: `DEV-2026-007`, `DEV-2026-008`
+- Notes:
+  - Read-only Figma inspection and automated validation are complete.
+  - Figma example copy is not embedded because content is externally supplied.
+  - Review result supplied by Tom: `APPROVED`; notes: good.
+  - Known deviations `DEV-2026-007` and `DEV-2026-008` were accepted.
+  - Approval evidence:
+    `docs/08-quality/test-reports/phase-4b-task-p5-001-approval-2026-07-25.md`.

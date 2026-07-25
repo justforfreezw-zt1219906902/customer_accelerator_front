@@ -8,7 +8,7 @@ source:
   figma_version: 1.0.0
   version_status: initialized_from_project_input
 inspection:
-  status: composite_implementation_approved
+  status: product_implementation_approved
   reviewer: Tom
   last_reviewed: "2026-07-25"
   notes:
@@ -16,7 +16,8 @@ inspection:
     - Only 00 Foundation and 01 Tokens were inspected in detail in Phase 2.
     - Tom approved the Phase 2 Figma Tokens scope on 2026-07-24.
     - 02 Core Components was inspected and later approved in Phase 3.
-    - 03 Composite Components was inspected read-only for Phase 4A; human review is pending.
+    - 03 Composite Components was inspected read-only and approved for Phase 4A.
+    - 04 Product Components was inspected read-only for Phase 4B; human review is pending.
 pages:
   - page_name: 00 Foundation
     node_id: "0:1"
@@ -69,11 +70,15 @@ pages:
     node_id: "81:2"
     figma_version: 1.0.0
     code_target: src/components/product
-    status: page_id_verified_pending_inspection
-    reviewer: unknown
-    last_reviewed: unknown
+    status: inspected_implemented_and_approved
+    reviewer: Tom
+    last_reviewed: "2026-07-25"
     notes:
       - Product may depend on Core and Composite.
+      - Library canvas node is "81:3".
+      - Authorized component sets: "82:37", "82:66", "82:93", "82:110", "82:149", "82:170", "82:197".
+      - Additional Product components exist in Figma but remain outside the authorized registry and were not implemented.
+      - Tom approved Phase 4B and TASK-P5-001 on 2026-07-25.
   - page_name: 05 Sections
     node_id: "87:2"
     figma_version: 1.0.0

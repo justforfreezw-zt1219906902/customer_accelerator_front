@@ -105,6 +105,34 @@ Each deviation must record:
 - Review date: 2026-07-25
 - Next review: When a breakpoint baseline is approved
 
+### DEV-2026-007 — Product spacing token normalization
+
+- Affected Figma: `1.0.0`, Product nodes `82:37` through `82:197`
+- Affected frontend: `0.0.1`, `src/components/product`
+- Difference: Un-tokenized 14px, 36px, and 60px spacing values use the nearest
+  approved 16px, 32px, and 64px tokens.
+- Reason: Product components must not introduce unapproved raw design values.
+- Impact: Minor spacing differences with token consistency preserved.
+- Approval: Approved by Tom on 2026-07-25 for `TASK-P5-001`
+- Owner: Product owner / Tom
+- Review date: 2026-07-25
+- Next review: Phase 4B human review
+
+### DEV-2026-008 — Fluid Product component widths
+
+- Affected Figma: `1.0.0`, Product nodes `82:37` through `82:197`
+- Affected frontend: `0.0.1`, `src/components/product`
+- Difference: Fixed library specimen widths become fluid components with
+  optional maximum widths for compact and CTA variants.
+- Reason: Components must fit responsive parent layouts without an invented
+  breakpoint.
+- Impact: Content wraps and components shrink safely; maximum visual proportions
+  remain traceable to Figma.
+- Approval: Approved by Tom on 2026-07-25 for `TASK-P5-001`
+- Owner: Product owner / Tom
+- Review date: 2026-07-25
+- Next review: Phase 4B human review
+
 ## Resolved deviations
 
 None.
