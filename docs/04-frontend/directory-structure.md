@@ -37,6 +37,12 @@ src/
 │   │   └── index.css
 │   └── components/
 │       ├── core/
+│       │   ├── AppButton.vue
+│       │   ├── AppInput.vue
+│       │   ├── AppCard.vue
+│       │   ├── AppBadge.vue
+│       │   ├── AppSectionContainer.vue
+│       │   └── index.ts
 │       └── composite/
 ├── layouts/
 │   └── AppLayout.vue
@@ -58,6 +64,11 @@ tests/
 ├── e2e/
 │   └── foundation.spec.ts
 └── unit/
+    ├── AppButton.spec.ts
+    ├── AppInput.spec.ts
+    ├── AppCard.spec.ts
+    ├── AppBadge.spec.ts
+    ├── AppSectionContainer.spec.ts
     ├── designTokens.spec.ts
     └── FoundationPlaceholderPage.spec.ts
 ```

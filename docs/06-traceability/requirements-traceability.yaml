@@ -8,6 +8,29 @@ status_values:
   - verified
   - deprecated
 requirements:
+  - requirement_id: REQ-CORE-001
+    description: Approved Core components render with typed APIs, token-only styling dependencies, and accessible native semantics.
+    source:
+      - docs/phases/phase-3-core-components.md
+      - docs/03-design-system/component-registry.yaml
+    figma_source:
+      page: 02 Core Components
+      node_id: "31:2"
+      component_node_ids: ["34:60", "35:26", "36:22", "41:42", "42:66"]
+      status: inspected
+    backend_source: not_applicable
+    planned_frontend_files:
+      - src/design-system/components/core
+    tests:
+      - tests/unit/AppButton.spec.ts
+      - tests/unit/AppInput.spec.ts
+      - tests/unit/AppCard.spec.ts
+      - tests/unit/AppBadge.spec.ts
+      - tests/unit/AppSectionContainer.spec.ts
+    status: implemented
+    introduced_version: 0.0.1
+    verified_version: 0.0.1
+    approval: not_approved
   - requirement_id: REQ-TOKENS-001
     description: Confirmed Figma 1.0.0 design tokens are exposed through runtime CSS variables and matching TypeScript references.
     source:
@@ -25,7 +48,7 @@ requirements:
     status: implemented
     introduced_version: 0.0.1
     verified_version: 0.0.1
-    approval: not_approved
+    approval: approved
   - requirement_id: REQ-LANDING-001
     description: Landing Page renders.
     source:

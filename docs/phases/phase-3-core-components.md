@@ -1,7 +1,7 @@
 ---
 phase: 3
 name: Core Components
-status: not_started
+status: needs_review
 human_approval: pending
 ---
 
@@ -61,8 +61,13 @@ Build accessible reusable primitives that depend only on approved Tokens.
 
 ## Validation
 
-**Planned.** Use only Phase 1-approved installed lint, type checking, test,
-build, visual, and accessibility workflows.
+- `npm run validate:management` — passed
+- `npm run typecheck` — passed
+- `npm run lint` — passed
+- `npm run test:unit` — passed; 7 files, 20 tests
+- `npm run build` — passed
+- Read-only Figma inspection and canvas screenshot review — completed
+- Human design review — pending
 
 ## Risks
 
@@ -78,7 +83,7 @@ public interface; breaking changes require migration and approval.
 
 ## Status
 
-`not_started`
+`needs_review`
 
 ## Human Approval
 
@@ -86,6 +91,26 @@ public interface; breaking changes require migration and approval.
 
 ## Completion Report
 
-Not available. It must later enumerate components, mappings, dependency checks,
-validation, deviations, compatibility impact, and design approval.
+Implementation completed on 2026-07-24 against Figma Design System `1.0.0`.
+The `02 Core Components` page (`31:2`) and library canvas (`31:3`) were
+inspected read-only.
 
+Implemented:
+
+- `AppButton` from `mi-goTo/Button` (`34:60`): Primary, Secondary, Ghost; SM,
+  MD, LG; Default, Hover, Disabled. Loading was not implemented because Figma
+  provides no loading state.
+- `AppInput` from `mi-goTo/Input` (`35:26`): Default, Focus, Error, Disabled.
+- `AppCard` from `mi-goTo/Card` (`36:22`): Default, Hover, Selected, Glass.
+- `AppBadge` from `mi-goTo/Badge` (`41:42`): six confirmed types and three
+  states.
+- `AppSectionContainer` from `mi-goTo/Section Container` (`42:66`): four styles
+  and three divider settings.
+
+All components depend only on Vue primitives and approved CSS variables.
+`Source Attribution Chip` (`167:14`) was discovered but not implemented because
+it is not in the authorized Core registry. Automated validation passed.
+
+Three intentional responsive, accessibility, and token-normalization
+differences are recorded as `DEV-2026-001` through `DEV-2026-003`; human review
+is pending. Phase 3 and its design review are not approved.

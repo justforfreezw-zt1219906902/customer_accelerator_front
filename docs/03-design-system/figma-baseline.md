@@ -7,10 +7,10 @@
 | Figma version | `1.0.0` |
 | Figma URL | [mi-goTo Figma design](https://www.figma.com/design/vyr3TvF5lAUOnuuxdW8iRb/prototype?node-id=0-1&p=f&t=AdHvWZgIn8DrsmI6-0) |
 | File key | `vyr3TvF5lAUOnuuxdW8iRb` |
-| Baseline status | `foundation_and_tokens_inspected_needs_human_review` |
-| Human reviewer | Unknown |
+| Baseline status | `foundation_and_tokens_approved` |
+| Human reviewer | Tom |
 | Capture date | 2026-07-24 |
-| Visual approval | Pending |
+| Visual approval | Phase 2 token scope approved 2026-07-24 |
 
 ## Expected pages
 
@@ -57,4 +57,5 @@ tests, or approval.
 - Human design reviewer and review date
 - Thank You Page visual design
 
-No visual approval is claimed by this baseline.
+Tom approved the Phase 2 Figma Tokens scope and `TASK-P2-001` on 2026-07-24.
+This does not approve uninspected component or Page visuals.

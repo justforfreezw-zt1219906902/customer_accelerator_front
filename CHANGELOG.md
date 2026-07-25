@@ -1,5 +1,43 @@
 # Changelog
 
+## 2026-07-24 — Phase 3 Core Components
+
+### Added
+
+- Token-backed AppButton, AppInput, AppCard, AppBadge, and
+  AppSectionContainer components
+- Typed APIs, native accessible semantics, Core barrel exports, and component tests
+- Figma node mappings, Phase 3 validation evidence, and three pending deviations
+
+### Validation
+
+- Management validation, typecheck, ESLint, 20 unit/component tests, and
+  production build passed
+
+### Status
+
+- Phase 3 is `needs_review`
+- Human design review and deviation approval remain pending
+- No Composite, Product, Section, or Page implementation was created
+
+## 2026-07-24 — Phase 2 human approval
+
+### Approved
+
+- Tom approved Phase 2 Figma Tokens and `TASK-P2-001` with review notes “Good”
+- Recorded approval evidence under `docs/08-quality/test-reports/`
+
+### Changed
+
+- Updated Phase 2 from `needs_review` to `approved`
+- Advanced the next gate to Phase 3 Core Components Authorization
+
+### Evidence preserved
+
+- All Phase 2 validation results remain recorded
+- Breakpoint and motion-easing source gaps remain unresolved
+- The compatibility baseline remains not approved
+
 ## 2026-07-24 — Phase 2 design tokens
 
 ### Added

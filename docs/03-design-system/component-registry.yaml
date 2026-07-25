@@ -2,60 +2,74 @@ schema_version: 1
 figma_version: 1.0.0
 components:
   - component_id: CMP-CORE-001
-    figma_name: AppButton
+    figma_name: mi-goTo/Button
+    figma_node_id: "34:60"
     code_name: AppButton
     planned_path: src/design-system/components/core/AppButton.vue
     layer: core
     dependencies: [tokens]
-    variants: []
+    variants:
+      variant: [Primary, Secondary, Ghost]
+      size: [SM, MD, LG]
+      state: [Default, Hover, Disabled]
     figma_version: 1.0.0
-    implementation_status: not_started
-    design_review_status: pending
-    tests: []
+    implementation_status: implemented
+    design_review_status: needs_review
+    tests: [tests/unit/AppButton.spec.ts]
   - component_id: CMP-CORE-002
-    figma_name: AppInput
+    figma_name: mi-goTo/Input
+    figma_node_id: "35:26"
     code_name: AppInput
     planned_path: src/design-system/components/core/AppInput.vue
     layer: core
     dependencies: [tokens]
-    variants: []
+    variants:
+      state: [Default, Focus, Error, Disabled]
     figma_version: 1.0.0
-    implementation_status: not_started
-    design_review_status: pending
-    tests: []
+    implementation_status: implemented
+    design_review_status: needs_review
+    tests: [tests/unit/AppInput.spec.ts]
   - component_id: CMP-CORE-003
-    figma_name: AppCard
+    figma_name: mi-goTo/Card
+    figma_node_id: "36:22"
     code_name: AppCard
     planned_path: src/design-system/components/core/AppCard.vue
     layer: core
     dependencies: [tokens]
-    variants: []
+    variants:
+      variant: [Default, Hover, Selected, Glass]
     figma_version: 1.0.0
-    implementation_status: not_started
-    design_review_status: pending
-    tests: []
+    implementation_status: implemented
+    design_review_status: needs_review
+    tests: [tests/unit/AppCard.spec.ts]
   - component_id: CMP-CORE-004
-    figma_name: AppBadge
+    figma_name: mi-goTo/Badge
+    figma_node_id: "41:42"
     code_name: AppBadge
     planned_path: src/design-system/components/core/AppBadge.vue
     layer: core
     dependencies: [tokens]
-    variants: []
+    variants:
+      type: [Sourced, Insufficient-Data, Signal, Neutral, Source-Amber, Recommended]
+      state: [Default, Hover, Disabled]
     figma_version: 1.0.0
-    implementation_status: not_started
-    design_review_status: pending
-    tests: []
+    implementation_status: implemented
+    design_review_status: needs_review
+    tests: [tests/unit/AppBadge.spec.ts]
   - component_id: CMP-CORE-005
-    figma_name: AppSectionContainer
+    figma_name: mi-goTo/Section Container
+    figma_node_id: "42:66"
     code_name: AppSectionContainer
     planned_path: src/design-system/components/core/AppSectionContainer.vue
     layer: core
     dependencies: [tokens]
-    variants: []
+    variants:
+      style: [Default, Elevated, Light-Context, Bleed]
+      divider: [Default, With Top Divider, Without Top Divider]
     figma_version: 1.0.0
-    implementation_status: not_started
-    design_review_status: pending
-    tests: []
+    implementation_status: implemented
+    design_review_status: needs_review
+    tests: [tests/unit/AppSectionContainer.spec.ts]
   - component_id: CMP-COMPOSITE-001
     figma_name: AppFormField
     code_name: AppFormField
@@ -189,7 +203,8 @@ components:
     design_review_status: pending
     tests: []
 notes:
-  - Figma names are expected labels and require inspection.
+  - Core Figma names and variants were inspected read-only on 2026-07-24.
+  - Composite and Product Figma names remain expected labels pending their phases.
   - Empty variants and tests mean unknown or not created, not not-applicable.
-  - Planned paths do not exist and do not claim implementation.
-
+  - Planned Composite and Product paths do not claim implementation.
+  - Figma Source Attribution Chip 167:14 is not registered or implemented because it was outside the authorized inventory.

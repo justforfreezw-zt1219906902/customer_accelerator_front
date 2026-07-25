@@ -8,20 +8,20 @@ source:
   figma_version: 1.0.0
   version_status: initialized_from_project_input
 inspection:
-  status: foundation_and_tokens_inspected_needs_human_review
-  reviewer: Codex_read_only_extraction
+  status: foundation_and_tokens_approved
+  reviewer: Tom
   last_reviewed: "2026-07-24"
   notes:
     - All expected page names and page node IDs were verified in the file.
     - Only 00 Foundation and 01 Tokens were inspected in detail in Phase 2.
-    - Human visual approval remains pending.
+    - Tom approved the Phase 2 Figma Tokens scope on 2026-07-24.
 pages:
   - page_name: 00 Foundation
     node_id: "0:1"
     figma_version: 1.0.0
     code_target: governance and brand reference
-    status: inspected_needs_human_review
-    reviewer: Codex_read_only_extraction
+    status: inspected_and_approved_for_token_scope
+    reviewer: Tom
     last_reviewed: "2026-07-24"
     notes:
       - Visual and brand reference only; it does not define backend or interaction contracts.
@@ -32,8 +32,8 @@ pages:
     code_target:
       - src/design-system/tokens
       - src/design-system/theme
-    status: implemented_needs_human_review
-    reviewer: Codex_read_only_extraction
+    status: implemented_and_approved
+    reviewer: Tom
     last_reviewed: "2026-07-24"
     notes:
       - Token reference frame: "27:2".
@@ -42,11 +42,14 @@ pages:
     node_id: "31:2"
     figma_version: 1.0.0
     code_target: src/design-system/components/core
-    status: page_id_verified_pending_inspection
-    reviewer: unknown
-    last_reviewed: unknown
+    status: inspected_and_implemented_needs_human_review
+    reviewer: Codex_read_only_inspection
+    last_reviewed: "2026-07-24"
     notes:
       - Core may depend only on Tokens.
+      - Library canvas node is "31:3".
+      - Five registered Core components were inspected and implemented.
+      - Source Attribution Chip "167:14" was discovered but remains outside the authorized Phase 3 inventory.
   - page_name: 03 Composite Components
     node_id: "68:2"
     figma_version: 1.0.0

@@ -49,8 +49,15 @@ phases:
       phase_2_entry: authorized_and_executed
   - id: phase-2
     name: Design Tokens
-    status: needs_review
-    human_approval: pending
+    status: approved
+    human_approval: approved
+    approval:
+      reviewer: Tom
+      result: APPROVED
+      date: "2026-07-24"
+      reviewed_task: TASK-P2-001
+      notes: Good
+      evidence: docs/08-quality/test-reports/phase-2-task-p2-001-approval-2026-07-24.md
     readiness:
       figma_read_only_inspection: complete
       token_implementation: complete
@@ -59,11 +66,21 @@ phases:
       lint: passed
       unit_tests: passed
       build: passed
-      visual_review: pending
+      visual_review: approved
+      phase_3_entry: authorized_and_executed
   - id: phase-3
     name: Core Components
-    status: not_started
+    status: needs_review
     human_approval: pending
+    readiness:
+      figma_read_only_inspection: complete
+      core_implementation: complete
+      management_validation: passed
+      typecheck: passed
+      lint: passed
+      unit_tests: passed
+      build: passed
+      design_review: pending
   - id: phase-4
     name: Composite, Product, and Section Components
     status: not_started

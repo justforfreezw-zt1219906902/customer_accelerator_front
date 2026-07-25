@@ -56,4 +56,6 @@ impact, reviewer, review date, and approval evidence.
 - Implemented: Tokens and Theme
 - Planned: Core, Composite, Product, Sections, and Pages
 
-Human visual approval: **pending**
+Human visual approval for the Phase 2 token scope: **approved by Tom on
+2026-07-24** (`TASK-P2-001`). Uninspected component, Section, and Page visuals
+remain outside this approval.

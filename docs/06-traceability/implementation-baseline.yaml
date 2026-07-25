@@ -1,6 +1,6 @@
 schema_version: 1
 baseline_id: DS1.0.0_API0.0.0_FE0.0.1
-status: design_tokens_implemented_needs_review
+status: core_components_implemented_needs_review
 targeted_versions:
   figma: 1.0.0
   backend: 0.0.0
@@ -27,7 +27,22 @@ implemented_tokens:
     count: 12
   - category: effect_style
     count: 5
-implemented_components: []
+implemented_components:
+  - component_id: CMP-CORE-001
+    code_name: AppButton
+    figma_node_id: "34:60"
+  - component_id: CMP-CORE-002
+    code_name: AppInput
+    figma_node_id: "35:26"
+  - component_id: CMP-CORE-003
+    code_name: AppCard
+    figma_node_id: "36:22"
+  - component_id: CMP-CORE-004
+    code_name: AppBadge
+    figma_node_id: "41:42"
+  - component_id: CMP-CORE-005
+    code_name: AppSectionContainer
+    figma_node_id: "42:66"
 implemented_sections: []
 implemented_pages: []
 implemented_endpoints: []
@@ -62,14 +77,27 @@ phase_1_approval:
   notes: good
   evidence: docs/08-quality/test-reports/phase-1-task-p1-001-approval-2026-07-24.md
 phase_2:
-  status: needs_review
+  status: approved
   figma_pages: ["00 Foundation (0:1)", "01 Tokens (23:2)"]
+  human_approval: approved
+  approval:
+    reviewer: Tom
+    result: APPROVED
+    date: "2026-07-24"
+    reviewed_task: TASK-P2-001
+    notes: Good
+  evidence: docs/08-quality/test-reports/phase-2-task-p2-001-approval-2026-07-24.md
+phase_3:
+  status: needs_review
+  figma_page: "02 Core Components (31:2)"
+  implementation_status: complete
   human_approval: pending
-  evidence: docs/08-quality/test-reports/phase-2-design-tokens-2026-07-24.md
+  evidence: docs/08-quality/test-reports/phase-3-core-components-2026-07-24.md
 notes:
-  - Component, section, Page and endpoint lists remain intentionally empty.
+  - Section, Page and endpoint lists remain intentionally empty.
   - Foundation artifacts are application infrastructure, not registered Product Pages or components.
   - Planned component and Page registry entries are not implemented artifacts.
   - Breakpoints and motion easing remain unresolved and are not represented as implemented.
   - Backend 0.0.0 is a compatibility placeholder, not an assigned semantic version.
   - Phase 1 is approved; approval_status above applies to the compatibility baseline, which remains not approved.
+  - Phase 3 Core components await human design review.
