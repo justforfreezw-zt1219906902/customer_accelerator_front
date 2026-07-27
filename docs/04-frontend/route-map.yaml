@@ -1,7 +1,15 @@
 schema_version: 1
-status: specification_approved_decisions_pending
+status: implementation_ready
 implementation_status: not_started
 specification: docs/04-frontend/product-interaction-specification.md
+decision_review: docs/04-frontend/interaction-decision-review.md
+human_approval:
+  reviewer: Tom
+  date: "2026-07-27"
+  task: TASK-P5A-003
+  source_task: TASK-P5A-002
+  status: approved
+
 foundation_implementation:
   path: /
   component: FoundationPlaceholderPage
@@ -10,62 +18,154 @@ foundation_implementation:
   replacement: LandingPage
   notes:
     - This temporary Phase 1 route proves the router shell.
-    - It does not implement or satisfy the proposed Landing Page route.
+    - It does not implement or satisfy the approved Landing Page route.
+
+route_defaults:
+  access_status: public
+  anchor_behavior: route_then_scroll_focus_target_reduced_motion_safe
+  title_behavior: update_document_title_then_focus_page_heading_or_main
+  canonical_policy: no_trailing_slash
+
 routes:
   - path: /
+    route_name: landing
+    page: Landing Page
     component: LandingPage
     planned_path: src/pages/LandingPage.vue
+    layout: MarketingLayout
+    title: mi-goTo
     figma_page_id: "212:2"
-    status: proposed_needs_review
+    implementation_status: not_started
+    anchor_behavior: supports_same_page_and_cross_route_targets
+    access_status: public
+    human_approval: approved
   - path: /why-mi-goto
+    route_name: why-mi-goto
+    page: Why mi-goTo Page
     component: WhyMiGotoPage
     planned_path: src/pages/WhyMiGotoPage.vue
+    layout: MarketingLayout
+    title: Why mi-goTo | mi-goTo
     figma_page_id: "259:2"
-    status: proposed_needs_review
+    implementation_status: not_started
+    anchor_behavior: cross_route_anchors_navigate_to_landing_then_scroll
+    access_status: public
+    human_approval: approved
   - path: /imprint
+    route_name: imprint
+    page: Imprint Page
     component: ImprintPage
     planned_path: src/pages/ImprintPage.vue
+    layout: LegalLayout
+    title: Imprint | mi-goTo
     figma_page_id: "122:2"
-    status: proposed_needs_review
+    implementation_status: not_started
+    anchor_behavior: internal_anchors_after_stable_legal_headings
+    access_status: public
+    human_approval: approved
   - path: /data-protection
+    route_name: data-protection
+    page: Data Protection Page
     component: DataProtectionPage
     planned_path: src/pages/DataProtectionPage.vue
+    layout: LegalLayout
+    title: Data Protection | mi-goTo
     figma_page_id: "128:2"
-    status: proposed_needs_review
+    implementation_status: not_started
+    anchor_behavior: internal_anchors_after_stable_legal_headings
+    access_status: public
+    human_approval: approved
   - path: /contact
+    route_name: contact
+    page: Contact Page
     component: ContactPage
     planned_path: src/pages/ContactPage.vue
+    layout: MarketingLayout
+    title: Contact | mi-goTo
     figma_page_id: "269:2"
-    status: proposed_needs_review
+    implementation_status: not_started
+    anchor_behavior: cross_route_anchors_navigate_to_landing_then_scroll
+    access_status: public
+    human_approval: approved
   - path: /thank-you
+    route_name: thank-you
+    page: Thank You Page
     component: ThankYouPage
     planned_path: src/pages/ThankYouPage.vue
-    figma_page_id: unknown
-    status: proposed_needs_review
+    layout: MarketingLayout
+    title: Thank You | mi-goTo
+    figma_page_id: not_applicable_no_figma_source
+    implementation_status: not_started
+    anchor_behavior: none
+    access_status: public_refresh_safe
+    human_approval: approved
     notes:
-      - No Thank You Page exists in Figma 1.0.0.
+      - Successful Contact submission uses router replace to this route.
+      - No VITE_APP_MODE branch applies.
+      - Final visual design and copy remain separately reviewable.
+  - path: /:pathMatch(.*)*
+    route_name: not-found
+    page: Not Found
+    component: NotFoundPage
+    planned_path: src/pages/NotFoundPage.vue
+    layout: MarketingLayout
+    title: Page Not Found | mi-goTo
+    figma_page_id: not_applicable_no_figma_source
+    implementation_status: not_started
+    anchor_behavior: none
+    access_status: public_fallback
+    human_approval: approved
+    notes:
+      - Must be accessible and provide a clear route to /.
+      - Final visual design and copy remain separately reviewable.
+
+approved_navigation:
+  header:
+    THE_PROBLEM: /#problem
+    THE_SOLUTION: /#solution
+    PACKAGES: /#packages
+    CONTACT: /contact
+    STRATEGY_DISCUSSION: /contact
+  footer:
+    The_problem: /#problem
+    Solutions: /#solution
+    Packages: /#packages
+    Contact: /contact
+    Imprint: /imprint
+    Data_protection: /data-protection
+    email: mailto:hello@mi-goto.com
+    LinkedIn: non_interactive_until_approved_https_url
+
+language_baseline:
+  active: EN
+  visible_unavailable: [DE, CN]
+  translations_may_be_invented: false
+  localized_routes: explicitly_deferred
+
 decisions:
-  - id: INT-001
-    topic: route_paths
-    status: decision_required
-  - id: INT-002
-    topic: anchor_scroll_focus_history
-    status: decision_required
-  - id: INT-004
-    topic: unknown_route
-    status: decision_required
-  - id: INT-005
-    topic: canonical_trailing_slash
-    status: decision_required
-  - id: INT-006
-    topic: legacy_redirects
-    status: decision_required
-  - id: INT-008
-    topic: locale_url_strategy
-    status: decision_required
-  - id: INT-019
-    topic: route_analytics_and_consent
-    status: decision_required
+  - { id: INT-001, topic: route_paths, status: approved }
+  - { id: INT-002, topic: anchor_scroll_focus_history, status: approved }
+  - { id: INT-003, topic: sticky_header_offset_focus, status: approved }
+  - { id: INT-004, topic: unknown_route, status: approved }
+  - { id: INT-005, topic: canonical_trailing_slash, status: approved }
+  - { id: INT-006, topic: legacy_redirects, status: explicitly_deferred }
+  - { id: INT-007, topic: interim_language_behavior, status: approved }
+  - { id: INT-008, topic: locale_url_strategy, status: explicitly_deferred }
+  - { id: INT-009, topic: linkedin_destination, status: explicitly_deferred }
+  - { id: INT-010, topic: mobile_close_focus, status: approved }
+  - { id: INT-011, topic: contact_validation, status: approved }
+  - { id: INT-012, topic: success_navigation, status: approved }
+  - { id: INT-013, topic: environment_success_behavior, status: approved_with_exception }
+  - { id: INT-014, topic: direct_thank_you_access, status: approved }
+  - { id: INT-015, topic: timeout_cancellation, status: explicitly_deferred }
+  - { id: INT-016, topic: retry_policy, status: approved }
+  - { id: INT-017, topic: navigation_during_submission, status: approved }
+  - { id: INT-018, topic: error_focus_input_preservation, status: approved }
+  - { id: INT-019, topic: route_analytics_and_consent, status: explicitly_deferred }
+  - { id: INT-020, topic: legal_page_anchors, status: approved }
+  - { id: INT-021, topic: contact_privacy_note, status: approved }
+
 notes:
-  - Proposed paths are specification inputs, not implemented behavior.
-  - Final route implementation requires human approval.
+  - Route specifications are implementation-ready but application code remains unchanged.
+  - Deferred items have approved safe baselines and do not block Phase 5B.
+  - External URLs, translations, legacy redirects, timeouts, and analytics must not be invented.

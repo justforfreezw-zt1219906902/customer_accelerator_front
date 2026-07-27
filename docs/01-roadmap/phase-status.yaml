@@ -165,7 +165,36 @@ phases:
           management_validation: passed
           route_implementation: not_started
           page_implementation: not_started
-          open_human_decisions: 21
+          open_human_decisions: 0
+        review_tasks:
+          - id: TASK-P5A-002
+            name: Phase 5 Interaction Decision Review
+            status: approved
+            human_approval: approved
+            reviewer: Tom
+            approval_date: "2026-07-27"
+            evidence: docs/08-quality/test-reports/phase-5-interactions-TASK-P5A-002-approval-2026-07-27.md
+            output: docs/04-frontend/interaction-decision-review.md
+          - id: TASK-P5A-003
+            name: Apply Approved Phase 5 Interaction Decisions
+            status: implementation_complete
+            human_decision_source: TASK-P5A-002 approval by Tom
+            output: docs/04-frontend/route-map.yaml
+            application_code_changes: none
+      - id: phase-5b
+        name: Routing and Shared Page Interaction Infrastructure
+        status: planned
+        human_approval: pending
+        former_blocker: ISSUE-2026-001
+        readiness:
+          product_interaction_specification: approved
+          route_decisions: approved
+          route_map: implementation_ready
+          route_implementation: not_started
+          application_changes: none
+          implementation_permitted: true
+          next_task: TASK-P5B-002
+          next_gate: Phase 5B Implementation Review
   - id: phase-6
     name: Static Pages
     status: not_started
@@ -195,4 +224,4 @@ phases:
     status: not_started
     human_approval: pending
 
-last_updated: "2026-07-25"
+last_updated: "2026-07-27"

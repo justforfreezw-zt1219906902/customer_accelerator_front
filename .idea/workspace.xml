@@ -5,22 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa45ec9b-26dc-40ff-98de-dd81c1a64002" name="更改" comment="chore: validate and audit management documentation system">
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VERSION.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/VERSION.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/01-roadmap/current-state.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/01-roadmap/current-state.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/01-roadmap/phase-status.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/01-roadmap/phase-status.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/02-inputs/environment-inputs.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/02-inputs/environment-inputs.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/04-frontend/architecture.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/04-frontend/architecture.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/04-frontend/directory-structure.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/04-frontend/directory-structure.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/03-design-system/page-registry.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/03-design-system/page-registry.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/04-frontend/interaction-map.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/04-frontend/interaction-map.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/04-frontend/product-interaction-specification.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/04-frontend/product-interaction-specification.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/04-frontend/route-map.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/04-frontend/route-map.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/06-traceability/implementation-baseline.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/06-traceability/implementation-baseline.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/07-change-control/deviation-log.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/07-change-control/deviation-log.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/08-quality/qa-summary.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/08-quality/qa-summary.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/management-system-audit.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/management-system-audit.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/phases/phase-0-project-audit.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/phases/phase-0-project-audit.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/phases/phase-1-vue-foundation.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/phases/phase-1-vue-foundation.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/06-traceability/requirements-traceability.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/06-traceability/requirements-traceability.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/09-release/environment-matrix.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/09-release/environment-matrix.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/phases/phase-5-routing-interaction-map.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/phases/phase-5-routing-interaction-map.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,6 +84,8 @@
       <workItem from="1784900645192" duration="3275000" />
       <workItem from="1784910311579" duration="34000" />
       <workItem from="1784910382969" duration="4459000" />
+      <workItem from="1785142657494" duration="638000" />
+      <workItem from="1785177021836" duration="669000" />
     </task>
     <task id="LOCAL-00001" summary="docs: initialize project governance structure">
       <option name="closed" value="true" />

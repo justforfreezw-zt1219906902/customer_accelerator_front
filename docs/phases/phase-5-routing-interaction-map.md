@@ -92,6 +92,8 @@ Phase 5 overall: `in_progress`
 
 Phase 5A Product Interaction Specification: `approved`
 
+Phase 5B Routing and Shared Page Interaction Infrastructure: `planned`
+
 ## Human Approval
 
 Phase 5 overall: `pending`
@@ -108,6 +110,18 @@ Phase 5A:
   `docs/08-quality/test-reports/phase-5a-task-p7-001-approval-2026-07-25.md`
 - Prior approval evidence is preserved at
   `docs/08-quality/test-reports/phase-5a-task-p6-001-approval-2026-07-25.md`.
+
+Interaction decision approval:
+
+- Reviewer: Tom
+- Result: `APPROVED`
+- Date: 2026-07-27
+- Reviewed task: `TASK-P5A-002`
+- Scope: `INT-001`–`INT-021`
+- Exception: `INT-013` does not use `VITE_APP_MODE`; successful submissions
+  navigate to `/thank-you`.
+- Evidence:
+  `docs/08-quality/test-reports/phase-5-interactions-TASK-P5A-002-approval-2026-07-27.md`
 
 ## Completion Report
 
@@ -128,7 +142,22 @@ Phase 5A:
 - Tom reconfirmed the approval using the unique reviewed task `TASK-P7-001`;
   the earlier `TASK-P6-001` record remains historical evidence.
 - Approval confirms the specification record; its twenty-one explicitly
-  unresolved decisions still require their named owners before affected
-  implementation.
-- Phase 5 remains `in_progress`; no route or Page implementation is approved by
-  this record.
+  named decisions were subsequently resolved by Tom's 2026-07-27 approval.
+- Phase 5 remained `in_progress` after Phase 5A approval; no route or Page
+  implementation was approved by that record.
+
+### Phase 5B
+
+- Execution was requested on 2026-07-25.
+- The original Phase 5B attempt stopped because the route map and decisions
+  were not yet approved.
+- The task stopped before modifying application code.
+- Blocker:
+  `docs/07-change-control/issues/ISSUE-2026-001-phase-5b-approval-gate.md`.
+- Tom approved all interaction decisions on 2026-07-27. The former approval
+  blocker is resolved.
+- `TASK-P5A-003` applied the decisions, set the route map to
+  `implementation_ready`, and registered `TASK-P5B-002` as the next planned
+  implementation task.
+- Phase 5B implementation is permitted, but it is not complete or approved.
+- No application code was changed by the decision-application task.

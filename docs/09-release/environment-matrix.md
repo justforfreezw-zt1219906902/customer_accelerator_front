@@ -4,7 +4,6 @@
 
 ```env
 VITE_API_BASE_URL=http://localhost:8080
-VITE_APP_MODE=development
 ```
 
 - `VITE_HUBSPOT_OWNER_ID` value is unresolved.
@@ -18,7 +17,6 @@ VITE_APP_MODE=development
 | --- | --- |
 | Frontend URL | Unresolved |
 | Backend URL | Unresolved |
-| `VITE_APP_MODE` | Unresolved |
 | HubSpot/email isolation | Unresolved |
 | CORS origins | Unresolved |
 | Monitoring/logging | Unresolved |
@@ -32,7 +30,6 @@ Staging must use non-production data and approved integration isolation.
 | --- | --- |
 | Frontend URL | Unresolved |
 | Backend URL | Unresolved |
-| `VITE_APP_MODE` | Unresolved |
 | `VITE_HUBSPOT_OWNER_ID` | Unresolved; must be confirmed safe for public exposure |
 | CORS origins | Unresolved |
 | Monitoring/logging | Unresolved |
@@ -49,4 +46,5 @@ monitoring, and rollback procedures are approved.
 - Environment configuration must fail safely.
 - Every deployment links environment, release manifest, compatibility baseline,
   test report, and human approval.
-
+- `VITE_APP_MODE` is not required. Confirmed successful Contact submissions use
+  the same `/thank-you` destination in all environments.

@@ -41,12 +41,12 @@ These routes require human approval before implementation.
 
 | Path | Page | Entry behavior | Status |
 | --- | --- | --- | --- |
-| `/` | Landing Page | Canonical marketing entry | `proposed_needs_review` |
-| `/why-mi-goto` | Why mi-goTo Page | Direct entry and future internal link target | `proposed_needs_review` |
-| `/imprint` | Imprint Page | Footer legal entry | `proposed_needs_review` |
-| `/data-protection` | Data Protection Page | Footer legal and Contact privacy-note entry | `proposed_needs_review` |
-| `/contact` | Contact Page | Header, Footer, and CTA entry | `proposed_needs_review` |
-| `/thank-you` | Thank You Page | Successful production submission | `proposed_needs_review`; no Figma source |
+| `/` | Landing Page | Canonical marketing entry | `approved_for_implementation` |
+| `/why-mi-goto` | Why mi-goTo Page | Direct entry and future internal link target | `approved_for_implementation` |
+| `/imprint` | Imprint Page | Footer legal entry | `approved_for_implementation` |
+| `/data-protection` | Data Protection Page | Footer legal and Contact privacy-note entry | `approved_for_implementation` |
+| `/contact` | Contact Page | Header, Footer, and CTA entry | `approved_for_implementation` |
+| `/thank-you` | Thank You Page | Successful submission | `approved_for_implementation`; no Figma source |
 
 Route names, metadata, canonical URL rules, and legacy redirects remain
 implementation inputs for a later approved task.
@@ -170,8 +170,9 @@ approved.
 
 - A confirmed `200` response is the only documented success.
 - Production proposal: navigate to `/thank-you`.
-- Development proposal: behavior is selected by a validated `VITE_APP_MODE`
-  policy; development must not silently submit to production services.
+- Approved behavior: no `VITE_APP_MODE` branch is required. Every confirmed
+  successful submission navigates to `/thank-you`. API base URL configuration
+  continues to control which backend environment receives the request.
 - No lead payload or HubSpot contact ID may be placed in the URL, Page content,
   analytics, or browser logs.
 - The Thank You Page must be refresh-safe and display only generic approved
@@ -216,44 +217,47 @@ proposal requires a human decision and a registry change before implementation.
 
 | ID | Decision | Recommendation | Alternative | Owner | Status |
 | --- | --- | --- | --- | --- | --- |
-| INT-001 | Approve the six proposed route paths | Approve as listed | Supply replacements and migration rules | Product owner / Tom | `decision_required` |
-| INT-002 | Anchor scroll/focus/history behavior | Hash + mount wait + focus + reduced-motion-safe scroll | Browser-default hash only | Product owner / Tom | `decision_required` |
-| INT-003 | Sticky Header offset and focus target | Focus section heading/container with documented offset | No offset/focus management | Product owner / Tom | `decision_required` |
-| INT-004 | Unknown route behavior | Add dedicated Not Found Page | Redirect to `/` | Product owner / Tom | `decision_required` |
-| INT-005 | Trailing slash and canonical URL policy | Canonical paths without trailing slash | Accept both without canonical redirect | Product owner / Tom | `decision_required` |
-| INT-006 | Legacy redirects | Supply previous-site URL inventory first | No redirects | Product owner / Tom | `decision_required` |
-| INT-007 | DE/CN interim behavior | Visible disabled controls | Explicit announced EN fallback | Product owner / Tom | `decision_required` |
-| INT-008 | Locale codes and URL strategy | Decide `CN` mapping before prefixes | Keep locale only in application state | Product/content owner | `decision_required` |
-| INT-009 | Exact LinkedIn destination | Supply approved HTTPS URL | Hide/non-link label | Product owner / Tom | `decision_required` |
-| INT-010 | Mobile close/focus behavior | Close on item, Escape, route change, and outside click; return focus when appropriate | Minimal toggle and Escape only | Product owner / Tom | `decision_required` |
-| INT-011 | Contact validation timing and copy | On blur and submit with accessible summary | Submit-only | Product owner / Tom | `decision_required` |
-| INT-012 | Production success navigation | Router replace to `/thank-you` | Router push | Product owner / Tom | `decision_required` |
-| INT-013 | Development success behavior and allowed `VITE_APP_MODE` values | Explicit development inline success; production redirects | Development redirects too | Product/operations owner | `decision_required` |
-| INT-014 | Direct `/thank-you` access and missing Figma design | Allow generic refresh-safe Page after design/content approval | Guard and redirect to `/contact` | Product owner / Tom | `decision_required` |
-| INT-015 | Timeout threshold and cancellation | Define with backend/operations owner | Browser/network default | Backend and product owners | `decision_required` |
-| INT-016 | Retry policy | No automatic retry; approve explicit manual retry | No retry action | Backend and product owners | `decision_required` |
-| INT-017 | Navigation away during submission | Warn/block only when an active request risks ambiguity | Allow navigation and ignore late result | Product owner / Tom | `decision_required` |
-| INT-018 | Error focus and input preservation | Focus summary/first invalid field and preserve safe input | Inline-only errors | Product owner / Tom | `decision_required` |
-| INT-019 | Route and CTA analytics | No analytics until consent/privacy specification exists | Approve named events and consent rules | Product/privacy owner | `decision_required` |
-| INT-020 | Legal page index links | Use internal accessible anchors matching approved legal headings | Static non-interactive index | Legal/product owner | `decision_required` |
-| INT-021 | Contact privacy-note destination and legal copy | Link to `/data-protection` after legal approval | Plain text note | Legal/product owner | `decision_required` |
+| INT-001 | Approve the six proposed route paths | Approve as listed | Supply replacements and migration rules | Product owner / Tom | `approved` |
+| INT-002 | Anchor scroll/focus/history behavior | Hash + mount wait + focus + reduced-motion-safe scroll | Browser-default hash only | Product owner / Tom | `approved` |
+| INT-003 | Sticky Header offset and focus target | Focus section heading/container with documented offset | No offset/focus management | Product owner / Tom | `approved` |
+| INT-004 | Unknown route behavior | Add dedicated Not Found Page | Redirect to `/` | Product owner / Tom | `approved` |
+| INT-005 | Trailing slash and canonical URL policy | Canonical paths without trailing slash | Accept both without canonical redirect | Product owner / Tom | `approved` |
+| INT-006 | Legacy redirects | Supply previous-site URL inventory first | No redirects | Product owner / Tom | `explicitly_deferred` |
+| INT-007 | DE/CN interim behavior | Visible disabled controls | Explicit announced EN fallback | Product owner / Tom | `approved` |
+| INT-008 | Locale codes and URL strategy | Decide `CN` mapping before prefixes | Keep locale only in application state | Product/content owner | `explicitly_deferred` |
+| INT-009 | Exact LinkedIn destination | Supply approved HTTPS URL | Hide/non-link label | Product owner / Tom | `explicitly_deferred` |
+| INT-010 | Mobile close/focus behavior | Close on item, Escape, route change, and outside click; return focus when appropriate | Minimal toggle and Escape only | Product owner / Tom | `approved` |
+| INT-011 | Contact validation timing and copy | On blur and submit with accessible summary | Submit-only | Product owner / Tom | `approved` |
+| INT-012 | Production success navigation | Router replace to `/thank-you` | Router push | Product owner / Tom | `approved` |
+| INT-013 | Environment-specific success behavior | No `VITE_APP_MODE`; every confirmed success navigates to `/thank-you` | Environment-specific behavior | Product/operations owner | `approved_with_exception` |
+| INT-014 | Direct `/thank-you` access and missing Figma design | Allow generic refresh-safe Page after design/content approval | Guard and redirect to `/contact` | Product owner / Tom | `approved` |
+| INT-015 | Timeout threshold and cancellation | Define with backend/operations owner | Browser/network default | Backend and product owners | `explicitly_deferred` |
+| INT-016 | Retry policy | No automatic retry; approve explicit manual retry | No retry action | Backend and product owners | `approved` |
+| INT-017 | Navigation away during submission | Warn/block only when an active request risks ambiguity | Allow navigation and ignore late result | Product owner / Tom | `approved` |
+| INT-018 | Error focus and input preservation | Focus summary/first invalid field and preserve safe input | Inline-only errors | Product owner / Tom | `approved` |
+| INT-019 | Route and CTA analytics | No analytics until consent/privacy specification exists | Approve named events and consent rules | Product/privacy owner | `explicitly_deferred` |
+| INT-020 | Legal page index links | Use internal accessible anchors matching approved legal headings | Static non-interactive index | Legal/product owner | `approved` |
+| INT-021 | Contact privacy-note destination and legal copy | Link to `/data-protection` after legal approval | Plain text note | Legal/product owner | `approved` |
 
 ## Implementation gate
 
-Phase 5 route or Page implementation must not begin until the affected decisions
-are approved and recorded. Approval may be incremental, but unresolved items
-must remain unimplemented or safely non-interactive.
+The affected decisions were approved and recorded by Tom on 2026-07-27.
+Application implementation still requires a separately authorized Phase 5B
+execution task.
 
 ## Specification approval
 
 Tom approved this Phase 5A specification on 2026-07-25. The approval establishes
-this document as the reviewed behavioral decision framework. It does not change
-the `decision_required` status of `INT-001` through `INT-021`; their named
-owners must still supply or approve the missing decisions before affected
-implementation.
+this document as the reviewed behavioral decision framework. The decisions were
+subsequently approved by Tom on 2026-07-27 as recorded below.
 
 Approval evidence:
 `docs/08-quality/test-reports/phase-5a-task-p7-001-approval-2026-07-25.md`.
 
 The earlier Phase 5A approval evidence using `TASK-P6-001` remains preserved as
 historical traceability.
+
+All `INT-001`–`INT-021` recommendations were explicitly approved by Tom on
+2026-07-27, with the `INT-013` exception that `VITE_APP_MODE` is not required
+and every confirmed successful submission navigates to `/thank-you`. Evidence:
+`docs/08-quality/test-reports/phase-5-interactions-TASK-P5A-002-approval-2026-07-27.md`.

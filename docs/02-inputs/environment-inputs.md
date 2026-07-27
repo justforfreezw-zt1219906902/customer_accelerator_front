@@ -5,7 +5,6 @@
 ```env
 VITE_API_BASE_URL=http://localhost:8080
 VITE_HUBSPOT_OWNER_ID=90579791
-VITE_APP_MODE=development
 ```
 
 These are names and non-secret example values only.
@@ -26,7 +25,6 @@ These are names and non-secret example values only.
 | --- | --- | --- |
 | `VITE_API_BASE_URL` | Select the backend base URL | Local value supplied; production unresolved |
 | `VITE_HUBSPOT_OWNER_ID` | Provide the supplied public owner identifier | Local value `90579791` supplied; production ownership remains to be confirmed |
-| `VITE_APP_MODE` | Identify the application mode | Local value is `development`; production values remain unresolved |
 
 ## Local
 
@@ -57,5 +55,12 @@ configuration injection mechanism are required before staging use.
 - Environment owner and approved secret-management platform
 - Production and staging URLs
 - Whether a HubSpot owner ID belongs in public client configuration
-- Allowed `VITE_APP_MODE` values and validation timing
 - CORS origins, logging, privacy, retention, monitoring, and incident handling
+
+## Superseded input
+
+`VITE_APP_MODE` is not required by the approved Phase 5 interaction behavior.
+Tom approved one success path on 2026-07-27: every confirmed successful Contact
+submission navigates to `/thank-you`. Existing application configuration that
+still reads `VITE_APP_MODE` must be removed only within a separately authorized
+implementation task.

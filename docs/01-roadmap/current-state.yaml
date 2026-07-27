@@ -6,7 +6,11 @@ current_phase:
   name: Routing and Page Interaction Map
   status: in_progress
 
-current_task: null
+current_task:
+  id: TASK-P5B-002
+  name: Phase 5B Routing and Shared Page Interaction Infrastructure
+  status: planned
+  note: Interaction gate is satisfied; implementation has not started.
 environment: local
 
 versions:
@@ -24,7 +28,7 @@ compatibility:
 
 blockers: []
 next_gate:
-  name: Phase 5B Interaction Decision Resolution and Route Implementation Authorization
+  name: Phase 5B Implementation Review
   human_approval_required: true
 
 management_readiness:
@@ -151,7 +155,15 @@ phase_5a:
   implementation_status: not_started
   validation_status: management_validation_passed
   human_approval: approved
-  open_decisions: 21
+  open_decisions: 0
+  decision_review:
+    task_id: TASK-P5A-002
+    status: approved
+    output: docs/04-frontend/interaction-decision-review.md
+    human_approval: approved
+    reviewer: Tom
+    approval_date: "2026-07-27"
+    evidence: docs/08-quality/test-reports/phase-5-interactions-TASK-P5A-002-approval-2026-07-27.md
   approval:
     reviewer: Tom
     result: APPROVED
@@ -162,7 +174,16 @@ phase_5a:
     evidence: docs/08-quality/test-reports/phase-5a-task-p7-001-approval-2026-07-25.md
     prior_evidence: docs/08-quality/test-reports/phase-5a-task-p6-001-approval-2026-07-25.md
 
-last_updated: "2026-07-25"
+phase_5b:
+  implementation_status: planned
+  former_blocker: ISSUE-2026-001
+  application_changes: none
+  route_map_status: implementation_ready
+  unresolved_decisions: 0
+  implementation_permitted: true
+  next_task: TASK-P5B-002
+
+last_updated: "2026-07-27"
 notes:
   - The Phase 0 repository audit and TASK-P0-001 were approved by Tom.
   - Backend 0.0.0 is a non-release placeholder pending official version assignment.
@@ -182,5 +203,8 @@ notes:
   - Phase 4 is approved; Phase 5 requires separate authorization.
   - Phase 5A Product Interaction Specification and supplied TASK-P7-001 review were approved by Tom.
   - The earlier Phase 5A TASK-P6-001 approval remains preserved as historical evidence.
-  - Twenty-one named interaction decisions remain unresolved and gate affected implementation.
+  - All twenty-one named interaction decisions were approved by Tom on 2026-07-27.
   - No final routes or Pages were implemented in Phase 5A.
+  - ISSUE-2026-001 is resolved; Phase 5B remains unimplemented and awaits separate execution authorization.
+  - TASK-P5A-002 and its INT-013 exception were approved without application-code changes.
+  - TASK-P5A-003 applied the approved decisions to specifications, registries and traceability; no application code changed.

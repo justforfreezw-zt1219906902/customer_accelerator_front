@@ -8,6 +8,12 @@ pages:
     code_name: LandingPage
     planned_path: src/pages/LandingPage.vue
     route: /
+    route_name: landing
+    layout: MarketingLayout
+    title: mi-goTo
+    access_status: public
+    route_approval: approved
+    anchor_behavior: supports_same_page_and_cross_route_targets
     implementation_status: not_started
     design_review_status: interaction_inspected_visual_review_pending
   - page_id: PAGE-WHY
@@ -17,6 +23,12 @@ pages:
     code_name: WhyMiGotoPage
     planned_path: src/pages/WhyMiGotoPage.vue
     route: /why-mi-goto
+    route_name: why-mi-goto
+    layout: MarketingLayout
+    title: Why mi-goTo | mi-goTo
+    access_status: public
+    route_approval: approved
+    anchor_behavior: cross_route_anchors_navigate_to_landing_then_scroll
     implementation_status: not_started
     design_review_status: interaction_inspected_visual_review_pending
   - page_id: PAGE-IMPRINT
@@ -26,6 +38,12 @@ pages:
     code_name: ImprintPage
     planned_path: src/pages/ImprintPage.vue
     route: /imprint
+    route_name: imprint
+    layout: LegalLayout
+    title: Imprint | mi-goTo
+    access_status: public
+    route_approval: approved
+    anchor_behavior: internal_anchors_after_stable_legal_headings
     implementation_status: not_started
     design_review_status: interaction_inspected_legal_review_pending
   - page_id: PAGE-DATA-PROTECTION
@@ -35,6 +53,12 @@ pages:
     code_name: DataProtectionPage
     planned_path: src/pages/DataProtectionPage.vue
     route: /data-protection
+    route_name: data-protection
+    layout: LegalLayout
+    title: Data Protection | mi-goTo
+    access_status: public
+    route_approval: approved
+    anchor_behavior: internal_anchors_after_stable_legal_headings
     implementation_status: not_started
     design_review_status: interaction_inspected_legal_review_pending
   - page_id: PAGE-CONTACT
@@ -44,21 +68,51 @@ pages:
     code_name: ContactPage
     planned_path: src/pages/ContactPage.vue
     route: /contact
+    route_name: contact
+    layout: MarketingLayout
+    title: Contact | mi-goTo
+    access_status: public
+    route_approval: approved
+    anchor_behavior: cross_route_anchors_navigate_to_landing_then_scroll
     implementation_status: not_started
     design_review_status: interaction_inspected_visual_review_pending
   - page_id: PAGE-THANK-YOU
     name: Thank You Page
-    figma_page_name: unknown
-    figma_node_id: unknown
+    figma_page_name: not_applicable_no_figma_source
+    figma_node_id: not_applicable_no_figma_source
     code_name: ThankYouPage
     planned_path: src/pages/ThankYouPage.vue
     route: /thank-you
+    route_name: thank-you
+    layout: MarketingLayout
+    title: Thank You | mi-goTo
+    access_status: public_refresh_safe
+    route_approval: approved
+    anchor_behavior: none
     implementation_status: not_started
     design_review_status: pending
     notes:
       - No expected Figma page or node has been registered.
+  - page_id: PAGE-NOT-FOUND
+    name: Not Found
+    figma_page_name: not_applicable
+    figma_node_id: not_applicable
+    code_name: NotFoundPage
+    planned_path: src/pages/NotFoundPage.vue
+    route: "/:pathMatch(.*)*"
+    route_name: not-found
+    layout: MarketingLayout
+    title: Page Not Found | mi-goTo
+    access_status: public_fallback
+    route_approval: approved
+    anchor_behavior: none
+    implementation_status: not_started
+    design_review_status: interaction_approved_visual_review_pending
+    notes:
+      - Accessible fallback behavior is approved.
+      - No Figma source exists; final design and copy remain separately reviewable.
 notes:
-  - Page paths remain proposed and final Page implementations do not exist.
+  - Page paths are approved for implementation; final Page implementations do not exist.
   - Five Figma Page nodes were inspected read-only for Phase 5A.
   - Figma does not define final route or interaction behavior by itself.
   - Thank You Page has no registered Figma source.

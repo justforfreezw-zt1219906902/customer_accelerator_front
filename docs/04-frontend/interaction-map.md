@@ -4,6 +4,9 @@
 
 - Phase 5A status: `approved`
 - Human approval: Tom, 2026-07-25
+- Interaction decisions: approved by Tom, 2026-07-27
+- Route map status: `implementation_ready`
+- Phase 5B implementation status: `planned`
 - Formal specification:
   `docs/04-frontend/product-interaction-specification.md`
 - No final routes or Pages were implemented.
@@ -12,19 +15,19 @@
 
 | Source | Label | Destination | Status |
 | --- | --- | --- | --- |
-| Header | THE PROBLEM | `/#problem` | `proposed_needs_review` |
-| Header | THE SOLUTION | `/#solution` | `proposed_needs_review` |
-| Header | PACKAGES | `/#packages` | `proposed_needs_review` |
-| Header | CONTACT | `/contact` | `proposed_needs_review` |
-| Header/CTA | STRATEGY DISCUSSION | `/contact` | `proposed_needs_review` |
-| Footer | The problem | `/#problem` | `proposed_needs_review` |
-| Footer | Solutions | `/#solution` | `proposed_needs_review` |
-| Footer | Packages | `/#packages` | `proposed_needs_review` |
-| Footer | Contact | `/contact` | `proposed_needs_review` |
-| Footer | Imprint | `/imprint` | `proposed_needs_review` |
-| Footer | Data protection | `/data-protection` | `proposed_needs_review` |
-| Footer | hello@mi-goto.com | `mailto:hello@mi-goto.com` | confirmed content; behavior proposed |
-| Footer | LinkedIn | unknown HTTPS URL | `decision_required` |
+| Header | THE PROBLEM | `/#problem` | `approved` |
+| Header | THE SOLUTION | `/#solution` | `approved` |
+| Header | PACKAGES | `/#packages` | `approved` |
+| Header | CONTACT | `/contact` | `approved` |
+| Header/CTA | STRATEGY DISCUSSION | `/contact` | `approved` |
+| Footer | The problem | `/#problem` | `approved` |
+| Footer | Solutions | `/#solution` | `approved` |
+| Footer | Packages | `/#packages` | `approved` |
+| Footer | Contact | `/contact` | `approved` |
+| Footer | Imprint | `/imprint` | `approved` |
+| Footer | Data protection | `/data-protection` | `approved` |
+| Footer | hello@mi-goto.com | `mailto:hello@mi-goto.com` | `approved` |
+| Footer | LinkedIn | unknown HTTPS URL | `approved_non_interactive_until_url_confirmed` |
 
 ## Contact state map
 
@@ -33,7 +36,7 @@ idle
 → client validation
   → invalid: show accessible errors and preserve input
   → valid: submitting
-      → 200: production /thank-you; development behavior decision required
+      → 200: /thank-you in every environment; no VITE_APP_MODE branch
       → 400: recoverable form error
       → 500: generic temporary failure
       → 502: generic integration failure
@@ -41,14 +44,14 @@ idle
 ```
 
 Submitting prevents concurrent duplicate requests. Automatic retry is not
-proposed. Exact timeout, manual retry, cancellation, focus, copy, and navigation
-semantics require human approval.
+allowed. A numeric timeout is explicitly deferred to backend and operations.
+Approved focus, input preservation, safe error, and navigation behavior is
+recorded in the decision review.
 
 ## Locale state
 
-EN is proposed as initially active. DE and CN remain visible. The recommended
-interim state is disabled-with-explanation until translations and locale mapping
-are approved. An announced EN fallback is an alternative requiring approval.
+EN is the only active initial language. DE and CN remain visible but clearly
+unavailable. No translations or localized routes may be invented.
 
 ## Figma evidence
 
@@ -65,5 +68,5 @@ the route, anchor, locale, success, error, or analytics behavior in this map.
 ## Decisions
 
 The authoritative decision table is `INT-001` through `INT-021` in the formal
-Product Interaction Specification. The specification is approved; all named
-decisions remain `decision_required`.
+Product Interaction Specification. Tom approved all recommended decisions on
+2026-07-27, with the documented `INT-013` exception.

@@ -8,6 +8,96 @@ status_values:
   - verified
   - deprecated
 requirements:
+  - requirement_id: REQ-ROUTE-001
+    description: Approved public routes use the paths, names, layouts, titles, access states, and fallback recorded in the implementation-ready route map.
+    source:
+      - docs/04-frontend/route-map.yaml
+      - docs/04-frontend/interaction-decision-review.md#INT-001
+      - docs/04-frontend/interaction-decision-review.md#INT-004
+    figma_source:
+      pages: ["06 Landing Page", "07 Why Mi-goTo Page", "08 Imprint", "09 Data Protection", "10 Contact Page"]
+      status: structure_inspected_routes_governed_by_interaction_spec
+    backend_source: not_applicable
+    planned_frontend_files:
+      - src/router/routes.ts
+      - src/layouts/MarketingLayout.vue
+      - src/layouts/LegalLayout.vue
+      - src/pages/NotFoundPage.vue
+    tests: []
+    status: planned
+    introduced_version: 0.0.1
+    verified_version: null
+    approval: approved_specification_not_implemented
+  - requirement_id: REQ-ANCHOR-001
+    description: Header and Footer anchor links navigate to the approved Landing section IDs with cross-route mount waiting, visible focus, sticky-Header offset, and reduced-motion-safe scrolling.
+    source:
+      - docs/04-frontend/interaction-map.md
+      - docs/04-frontend/interaction-decision-review.md#INT-002
+      - docs/04-frontend/interaction-decision-review.md#INT-003
+    figma_source:
+      page: 06 Landing Page
+      node_id: "212:2"
+      status: structure_inspected_behavior_human_approved
+    backend_source: not_applicable
+    planned_frontend_files:
+      - src/router/scrollBehavior.ts
+      - src/router/index.ts
+    tests: []
+    status: planned
+    introduced_version: 0.0.1
+    verified_version: null
+    approval: approved_specification_not_implemented
+  - requirement_id: REQ-LANGUAGE-001
+    description: EN is the only active initial language; DE and CN remain visible in the Header but clearly unavailable, and no translations are invented.
+    source:
+      - docs/04-frontend/interaction-decision-review.md#INT-007
+      - docs/04-frontend/interaction-decision-review.md#INT-008
+    figma_source:
+      page: 03 Composite Components
+      node_id: "68:432"
+      status: visible_labels_inspected_behavior_human_approved
+    backend_source: not_applicable
+    planned_frontend_files:
+      - src/content/header
+      - src/design-system/components/composite/AppNavbar.vue
+    tests: []
+    status: planned
+    introduced_version: 0.0.1
+    verified_version: null
+    approval: approved_specification_not_implemented
+  - requirement_id: REQ-NOT-FOUND-001
+    description: Unknown routes render an accessible Not Found state with a clear route to the Landing Page.
+    source:
+      - docs/04-frontend/route-map.yaml
+      - docs/04-frontend/interaction-decision-review.md#INT-004
+    figma_source: not_applicable_no_figma_source
+    backend_source: not_applicable
+    planned_frontend_files:
+      - src/pages/NotFoundPage.vue
+      - src/router/routes.ts
+    tests: []
+    status: planned
+    introduced_version: 0.0.1
+    verified_version: null
+    approval: approved_specification_not_implemented
+  - requirement_id: REQ-EXTERNAL-001
+    description: External URLs are never invented; the LinkedIn label remains non-interactive until an approved HTTPS URL is supplied.
+    source:
+      - docs/04-frontend/interaction-decision-review.md#INT-009
+      - docs/04-frontend/interaction-map.md
+    figma_source:
+      page: 03 Composite Components
+      node_id: "68:517"
+      status: visible_label_inspected_destination_deferred
+    backend_source: not_applicable
+    planned_frontend_files:
+      - src/content/footer
+      - src/design-system/components/composite/AppFooter.vue
+    tests: []
+    status: planned
+    introduced_version: 0.0.1
+    verified_version: null
+    approval: approved_safe_deferred_baseline
   - requirement_id: REQ-INTERACTION-001
     description: Routes, navigation, anchors, locale behavior, mobile navigation, and Contact states are governed by an approved Product Interaction Specification before implementation.
     source:
@@ -249,7 +339,7 @@ requirements:
     verified_version: null
     approval: not_approved
   - requirement_id: REQ-CONTACT-004
-    description: Successful production submission redirects to the Thank You Page.
+    description: Every confirmed successful Contact submission navigates to the Thank You Page without a VITE_APP_MODE branch.
     source:
       - docs/04-frontend/interaction-map.md
       - docs/05-backend/integration-spec.md
@@ -269,7 +359,7 @@ requirements:
     status: planned
     introduced_version: 0.0.1
     verified_version: null
-    approval: not_approved
+    approval: approved_interaction_not_implemented
   - requirement_id: REQ-CONTACT-005
     description: Confirmed backend errors are safely displayed.
     source:
