@@ -1,5 +1,5 @@
 export type HeaderNavigationItemId =
-  'problem' | 'solution' | 'packages' | 'contact';
+  'problem' | 'method' | 'proof' | 'packages' | 'why-mi-goto';
 
 export interface HeaderNavigationItem {
   id: HeaderNavigationItemId;
@@ -28,9 +28,14 @@ export const defaultHeaderContent: HeaderContent = {
   brand: 'mi-goTo',
   navigation: [
     { id: 'problem', label: 'THE PROBLEM', href: '/#problem' },
-    { id: 'solution', label: 'THE SOLUTION', href: '/#solution' },
+    { id: 'method', label: 'THE METHOD', href: '/#method' },
+    { id: 'proof', label: 'PROOF', href: '/#proof' },
     { id: 'packages', label: 'PACKAGES', href: '/#packages' },
-    { id: 'contact', label: 'CONTACT', href: '/contact' },
+    {
+      id: 'why-mi-goto',
+      label: 'WHY MI-GOTO',
+      href: '/why-mi-goto',
+    },
   ],
   languages: [
     {

@@ -16,14 +16,16 @@
 | Source | Label | Destination | Status |
 | --- | --- | --- | --- |
 | Header | THE PROBLEM | `/#problem` | `approved` |
-| Header | THE SOLUTION | `/#solution` | `approved` |
+| Header | THE METHOD | `/#method` | `approved_figma_content_supersession` |
+| Header | PROOF | `/#proof` | `approved_figma_content_supersession` |
 | Header | PACKAGES | `/#packages` | `approved` |
-| Header | CONTACT | `/contact` | `approved` |
+| Header | WHY MI-GOTO | `/why-mi-goto` | `approved_figma_content_supersession` |
 | Header/CTA | STRATEGY DISCUSSION | `/contact` | `approved` |
-| Footer | The problem | `/#problem` | `approved` |
-| Footer | Solutions | `/#solution` | `approved` |
+| Footer | The Problem | `/#problem` | `approved_figma_content_supersession` |
+| Footer | The Method | `/#method` | `approved_figma_content_supersession` |
 | Footer | Packages | `/#packages` | `approved` |
-| Footer | Contact | `/contact` | `approved` |
+| Footer | Team | `/#team` | `approved_figma_content_supersession` |
+| Footer | Why mi-goTo | `/why-mi-goto` | `approved_figma_content_supersession` |
 | Footer | Imprint | `/imprint` | `approved` |
 | Footer | Data protection | `/data-protection` | `approved` |
 | Footer | hello@mi-goto.com | `mailto:hello@mi-goto.com` | `approved` |

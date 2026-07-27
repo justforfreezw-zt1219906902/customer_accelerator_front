@@ -272,6 +272,14 @@ artifacts follow [Semantic Versioning](https://semver.org/).
 
 ### Added
 
+- Phase 6A Landing regression audit, impact matrix, Chromium evidence, and
+  regression tests for the preview fallback, Team/FAQ anchors, and Final CTA.
+- Phase 6A visual-fidelity corrections for shared Header/Footer layout, Hero
+  validation placement, insufficient-data card containment, responsive
+  evidence tests, and exact Figma logo usage.
+- Phase 6A Landing Page composition, approved English content configuration,
+  Team, FAQ, evidence metrics, and Page-level component tests.
+- Phase 6A Figma, registry, traceability, validation, and review evidence.
 - Phase 5A Product Interaction Specification covering proposed routes, Header
   and Footer destinations, anchors, locale behavior, mobile navigation,
   Contact states, safe errors, and twenty-one human decisions.
@@ -285,6 +293,12 @@ artifacts follow [Semantic Versioning](https://semver.org/).
   Figma-traceable variants, lower-layer composition, and component tests.
 - Phase 4C Figma mappings, validation evidence, implementation baseline,
   traceability, design review, and instruction records.
+
+### Changed
+
+- Removed the unapproved Landing preview fallback from the DOM, explicitly
+  bound Team/FAQ anchors, and aligned the Primary Final CTA with Figma
+  `212:716`.
 
 - Initial governance and documentation directory structure.
 - Root project documentation and AI working agreement.

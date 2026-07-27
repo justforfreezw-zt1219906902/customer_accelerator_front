@@ -65,6 +65,12 @@ const headingTag = computed(() => `h${props.intro.headingLevel ?? 2}`);
             {{ option.badgeLabel }}
           </AppBadge>
           <h3>{{ option.name }}</h3>
+          <p v-if="option.price" class="packages-section__price">
+            {{ option.price }}
+            <span v-if="option.priceQualifier">{{
+              option.priceQualifier
+            }}</span>
+          </p>
           <p>{{ option.description }}</p>
           <ul>
             <li v-for="feature in option.features" :key="feature">
@@ -100,10 +106,23 @@ const headingTag = computed(() => `h${props.intro.headingLevel ?? 2}`);
 }
 
 .packages-section__card h3,
+.packages-section__card .packages-section__price,
 .packages-section__card p,
 .packages-section__card ul {
   margin: 0;
   overflow-wrap: anywhere;
+}
+
+.packages-section__price {
+  color: var(--color-text-primary) !important;
+  font-size: var(--typography-heading-h2-font-size);
+  font-weight: var(--font-weight-semibold);
+}
+
+.packages-section__price span {
+  color: var(--color-text-muted);
+  font-size: var(--typography-body-sm-font-size);
+  font-weight: var(--font-weight-regular);
 }
 
 .packages-section__card p,

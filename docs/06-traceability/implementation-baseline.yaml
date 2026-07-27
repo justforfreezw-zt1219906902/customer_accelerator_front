@@ -1,6 +1,6 @@
 schema_version: 1
 baseline_id: DS1.0.0_API0.0.0_FE0.0.1
-status: phase_5_routing_approved
+status: phase_6a_approved
 targeted_versions:
   figma: 1.0.0
   backend: 0.0.0
@@ -8,6 +8,9 @@ targeted_versions:
   backend_contract_revision: 1
   frontend: 0.0.1
 implemented_tokens:
+  - category: layout
+    count: 1
+    source: Figma Landing Header and Footer 1180px content width
   - category: color
     count: 45
     modes: [Dark Enterprise, Light Impact]
@@ -104,7 +107,23 @@ implemented_sections:
   - section_id: SEC-LANDING-008
     code_name: FinalCtaSection
     figma_node_id: "90:1157"
-implemented_pages: []
+  - section_id: SEC-LANDING-009
+    code_name: TeamSection
+    figma_node_id: "212:615"
+  - section_id: SEC-LANDING-010
+    code_name: FAQSection
+    figma_node_id: "212:666"
+  - section_id: SEC-LANDING-011
+    code_name: TrustMetricsSection
+    figma_node_id: "90:1103"
+    page_instance_node_id: "212:384"
+implemented_pages:
+  - page_id: PAGE-LANDING
+    route_name: landing
+    path: /
+    file: src/pages/LandingPage.vue
+    figma_node_id: "212:2"
+    status: approved
 implemented_endpoints: []
 implemented_route_infrastructure:
   - src/router/index.ts
@@ -113,9 +132,6 @@ implemented_route_infrastructure:
   - src/layouts/MarketingLayout.vue
   - src/layouts/LegalLayout.vue
 implemented_route_shells:
-  - route_name: landing
-    path: /
-    file: src/pages/LandingPage.vue
   - route_name: why-mi-goto
     path: /why-mi-goto
     file: src/pages/WhyMiGotoPage.vue
@@ -153,9 +169,40 @@ validation:
   unit_tests: passed
   build: passed
   dependency_audit: passed
-  end_to_end_tests: pending_playwright_browser_installation
+  end_to_end_tests: affected_phase_6a_suite_passed
   environments_tested: []
-approval_status: not_approved
+phase_6a:
+  status: approved
+  task: TASK-P6A-006
+  figma_page: "06 Landing Page (212:2)"
+  desktop_frame: "212:3"
+  implementation_status: approved
+  content_status: approved
+  human_approval: approved
+  tests:
+    files: 23
+    assertions: 74
+    status: passed
+  validation:
+    management: passed
+    typecheck: passed
+    lint: passed
+    unit_tests: passed
+    build: passed
+    end_to_end_tests: 4_passed_chromium
+  visual_fix:
+    issue: ISSUE-2026-003
+    implementation_fix_complete: true
+    human_verification: approved
+    header_footer_shared: true
+    header_footer_fix_complete: true
+    header_footer_fix_status: approved_by_phase_6a_review
+    figma_content_width: 1180px
+    source_authority: active_figma_1.0.0
+    shared_fix_task: TASK-P4A-002
+    landing_regression_task: TASK-P6A-006
+    impact_matrix: docs/06-traceability/phase-6a-regression-impact-matrix.yaml
+approval_status: not_approved_pending_backend_version
 phase_1_approval:
   status: approved
   reviewer: Tom

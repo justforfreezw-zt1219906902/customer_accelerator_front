@@ -53,19 +53,23 @@ const emit = defineEmits<{
 <style scoped>
 .final-cta-section {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(min(100%, calc(var(--spacing-64) * 4)), 1fr)
-  );
-  gap: var(--spacing-28, var(--spacing-24));
-  align-items: center;
-  width: 100%;
+  width: calc(100% - (2 * var(--spacing-48)));
   max-width: 1180px;
   margin-inline: auto;
-  padding: var(--spacing-48) var(--spacing-64);
+  padding: clamp(var(--spacing-24), 4vw, 56px);
+  border: var(--stroke-1) solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  background: var(--color-bg-default);
+  box-shadow: var(--shadow-glow-violet);
 }
 
 .final-cta-section--compact {
   grid-template-columns: 1fr;
+}
+
+@media (max-width: 48rem) {
+  .final-cta-section {
+    width: calc(100% - (2 * var(--spacing-24)));
+  }
 }
 </style>

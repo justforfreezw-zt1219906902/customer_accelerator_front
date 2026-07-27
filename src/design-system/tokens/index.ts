@@ -1,5 +1,6 @@
 export { breakpointSourceStatus, breakpoints } from './breakpoints';
 export { colors } from './colors';
+export { layout } from './layout';
 export { motion } from './motion';
 export { opacity } from './opacity';
 export { radius } from './radius';

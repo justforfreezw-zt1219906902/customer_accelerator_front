@@ -123,15 +123,17 @@ routes:
 approved_navigation:
   header:
     THE_PROBLEM: /#problem
-    THE_SOLUTION: /#solution
+    THE_METHOD: /#method
+    PROOF: /#proof
     PACKAGES: /#packages
-    CONTACT: /contact
+    WHY_MI_GOTO: /why-mi-goto
     STRATEGY_DISCUSSION: /contact
   footer:
-    The_problem: /#problem
-    Solutions: /#solution
+    The_Problem: /#problem
+    The_Method: /#method
     Packages: /#packages
-    Contact: /contact
+    Team: /#team
+    Why_mi_goTo: /why-mi-goto
     Imprint: /imprint
     Data_protection: /data-protection
     email: mailto:hello@mi-goto.com

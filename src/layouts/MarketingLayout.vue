@@ -2,7 +2,9 @@
 import { useRoute, useRouter } from 'vue-router';
 
 import type { FooterLink } from '../content/footer/defaultFooterContent';
+import { footerEn } from '../content/footer/en';
 import type { HeaderNavigationItem } from '../content/header/defaultHeaderContent';
+import { navigationEn } from '../content/navigation/en';
 import { AppFooter, AppNavbar } from '../design-system/components/composite';
 
 const route = useRoute();
@@ -31,6 +33,7 @@ const handleFooterNavigation = (link: FooterLink) => {
       :key="`navbar-${route.fullPath}`"
       variant="solid"
       active-language="en"
+      :content="navigationEn"
       spa-navigation
       @navigate="handleHeaderNavigation"
       @strategy-discussion="navigateInternal('/contact')"
@@ -40,7 +43,11 @@ const handleFooterNavigation = (link: FooterLink) => {
         <RouterView />
       </slot>
     </main>
-    <AppFooter spa-navigation @navigate="handleFooterNavigation" />
+    <AppFooter
+      :content="footerEn"
+      spa-navigation
+      @navigate="handleFooterNavigation"
+    />
   </div>
 </template>
 

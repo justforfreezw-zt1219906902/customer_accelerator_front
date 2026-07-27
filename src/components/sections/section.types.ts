@@ -59,11 +59,33 @@ export interface PreviewInsight {
 
 export interface PackageOption {
   name: string;
+  price?: string;
+  priceQualifier?: string;
   description: string;
   features: string[];
   badgeLabel?: string;
   action?: SectionAction;
   highlighted?: boolean;
+}
+
+export interface TrustMetricItem {
+  value: string;
+  label: string;
+  explanation: string;
+  variant?: 'default' | 'emphasized';
+}
+
+export interface TeamMember {
+  initials: string;
+  name: string;
+  role: string;
+  description: string;
+  highlighted?: boolean;
+}
+
+export interface FAQItem {
+  question: string;
+  answer: string;
 }
 
 export type CardHeadingLevel = ProductHeadingLevel;

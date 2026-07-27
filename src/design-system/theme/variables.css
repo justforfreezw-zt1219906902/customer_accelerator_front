@@ -100,6 +100,8 @@
 }
 
 :root {
+  --content-max-width-landing: 1180px;
+
   --spacing-4: 4px;
   --spacing-8: 8px;
   --spacing-12: 12px;
@@ -133,6 +135,7 @@
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
+  --font-weight-bold: 700;
 
   --stroke-1: 1px;
   --stroke-2: 2px;

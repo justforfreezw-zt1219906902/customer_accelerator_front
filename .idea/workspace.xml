@@ -4,25 +4,55 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa45ec9b-26dc-40ff-98de-dd81c1a64002" name="更改" comment="chore: Product Interaction Specification.">
-      <change beforePath="$PROJECT_DIR$/.env.development" beforeDir="false" afterPath="$PROJECT_DIR$/.env.development" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+    <list default="true" id="fa45ec9b-26dc-40ff-98de-dd81c1a64002" name="更改" comment="chore: Routing and Page Interaction Map">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/01-roadmap/current-state.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/01-roadmap/current-state.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/01-roadmap/phase-status.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/01-roadmap/phase-status.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/02-inputs/asset-inventory.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/02-inputs/asset-inventory.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/02-inputs/content-inventory.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/02-inputs/content-inventory.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/02-inputs/figma-source-map.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/02-inputs/figma-source-map.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/03-design-system/component-registry.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/03-design-system/component-registry.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/03-design-system/deviations.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/03-design-system/deviations.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/03-design-system/figma-baseline.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/03-design-system/figma-baseline.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/03-design-system/page-registry.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/03-design-system/page-registry.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/03-design-system/section-registry.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/03-design-system/section-registry.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/03-design-system/token-map.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/03-design-system/token-map.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/04-frontend/content-architecture.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/04-frontend/content-architecture.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/04-frontend/interaction-decision-review.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/04-frontend/interaction-decision-review.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/04-frontend/interaction-map.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/04-frontend/interaction-map.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/04-frontend/product-interaction-specification.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/04-frontend/product-interaction-specification.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/04-frontend/route-map.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/04-frontend/route-map.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/06-traceability/implementation-baseline.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/06-traceability/implementation-baseline.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/06-traceability/requirements-traceability.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/06-traceability/requirements-traceability.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/07-change-control/instructions/PHASE-005B-routing.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/07-change-control/instructions/PHASE-005B-routing.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/phases/phase-5-routing-interaction-map.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/phases/phase-5-routing-interaction-map.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/configuration/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/configuration/environment.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/07-change-control/deviation-log.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/07-change-control/deviation-log.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/07-change-control/issues/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/07-change-control/issues/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/phases/phase-4-composite-product-sections.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/phases/phase-4-composite-product-sections.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/phases/phase-6-static-pages.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/phases/phase-6-static-pages.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/product/LandingCtaPanel.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/product/LandingCtaPanel.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sections/FinalCtaSection.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/FinalCtaSection.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sections/HeroSection.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/HeroSection.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sections/PackagesSection.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/PackagesSection.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sections/ProductPreviewSection.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/ProductPreviewSection.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sections/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sections/section.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/section.types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/content/footer/defaultFooterContent.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/footer/defaultFooterContent.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/content/header/defaultHeaderContent.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/header/defaultHeaderContent.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/design-system/components/composite/AppFooter.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/design-system/components/composite/AppFooter.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/design-system/components/composite/AppNavbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/design-system/components/composite/AppNavbar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/design-system/components/core/AppSectionContainer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/design-system/components/core/AppSectionContainer.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/design-system/theme/variables.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/design-system/theme/variables.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/design-system/tokens/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/design-system/tokens/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/design-system/tokens/typography.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/design-system/tokens/typography.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/MarketingLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/MarketingLayout.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/LandingPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LandingPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/e2e/foundation.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/AppFooter.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/AppFooter.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/unit/AppNavbar.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/AppNavbar.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/AppSectionContainer.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/AppSectionContainer.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/LandingSections.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/LandingSections.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/Routing.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/Routing.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/designTokens.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/designTokens.spec.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +122,7 @@
       <workItem from="1784910311579" duration="34000" />
       <workItem from="1784910382969" duration="4459000" />
       <workItem from="1785142657494" duration="638000" />
-      <workItem from="1785177021836" duration="1467000" />
+      <workItem from="1785177021836" duration="2994000" />
     </task>
     <task id="LOCAL-00001" summary="docs: initialize project governance structure">
       <option name="closed" value="true" />
@@ -222,7 +252,15 @@
       <option name="project" value="LOCAL" />
       <updated>1785180560788</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="chore: Routing and Page Interaction Map">
+      <option name="closed" value="true" />
+      <created>1785181620485</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1785181620485</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,6 +281,7 @@
     <MESSAGE value="docs: define quality release rollback and operations controls" />
     <MESSAGE value="chore: validate and audit management documentation system" />
     <MESSAGE value="chore: Product Interaction Specification." />
-    <option name="LAST_COMMIT_MESSAGE" value="chore: Product Interaction Specification." />
+    <MESSAGE value="chore: Routing and Page Interaction Map" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: Routing and Page Interaction Map" />
   </component>
 </project>

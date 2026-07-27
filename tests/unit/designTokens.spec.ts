@@ -8,6 +8,7 @@ import {
   colors,
   fontFamilies,
   fontWeights,
+  layout,
   motion,
   opacity,
   radius,
@@ -30,6 +31,7 @@ const tokenGroups = {
   colors,
   fontFamilies,
   fontWeights,
+  layout,
   motion,
   opacity,
   radius,
@@ -90,5 +92,10 @@ describe('design tokens', () => {
 
   it('keeps breakpoints empty until Figma or a human defines them', () => {
     expect(breakpoints).toEqual({});
+  });
+
+  it('maps the Figma-confirmed bold Header/Footer weight', () => {
+    expect(fontWeights.bold).toBe('var(--font-weight-bold)');
+    expect(theme).toContain('--font-weight-bold: 700;');
   });
 });

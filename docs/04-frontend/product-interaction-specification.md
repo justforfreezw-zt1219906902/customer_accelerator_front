@@ -56,9 +56,10 @@ implementation inputs for a later approved task.
 | Label | Proposed destination | Behavior |
 | --- | --- | --- |
 | THE PROBLEM | `/#problem` | Navigate to Landing, then reveal and focus the Problem section |
-| THE SOLUTION | `/#solution` | Navigate to Landing, then reveal and focus the Solution section |
+| THE METHOD | `/#method` | Navigate to Landing, then reveal and focus the Method section |
+| PROOF | `/#proof` | Navigate to Landing, then reveal and focus the Proof section |
 | PACKAGES | `/#packages` | Navigate to Landing, then reveal and focus the Packages section |
-| CONTACT | `/contact` | Open Contact Page |
+| WHY MI-GOTO | `/why-mi-goto` | Open Why mi-goTo Page |
 | STRATEGY DISCUSSION | `/contact` | Open Contact Page without invented tracking parameters |
 
 The preserved Navbar API emits navigation, language, and strategy-discussion
@@ -69,16 +70,22 @@ future implementation scope.
 
 | Label | Proposed destination | Behavior |
 | --- | --- | --- |
-| The problem | `/#problem` | Same anchor behavior as Header |
-| Solutions | `/#solution` | Same anchor behavior as Header |
+| The Problem | `/#problem` | Same anchor behavior as Header |
+| The Method | `/#method` | Same anchor behavior as Header |
 | Packages | `/#packages` | Same anchor behavior as Header |
-| Contact | `/contact` | Open Contact Page |
+| Team | `/#team` | Navigate to Landing, then reveal and focus Team |
+| Why mi-goTo | `/why-mi-goto` | Open Why mi-goTo Page |
 | Imprint | `/imprint` | Open Imprint Page |
 | Data protection | `/data-protection` | Open Data Protection Page |
 | hello@mi-goto.com | `mailto:hello@mi-goto.com` | Invoke the user’s configured mail client in the current context |
 | LinkedIn | exact URL required | Open a supplied HTTPS URL in a new tab with `noopener noreferrer` |
 
 LinkedIn must remain non-navigable until its exact approved URL is supplied.
+
+The visible Header/Footer labels above supersede the former Phase 5 content
+labels under Tom's explicit Figma-authority decision recorded by
+`TASK-P6A-005`. The established route and anchor infrastructure is reused;
+Figma version remains `1.0.0`.
 
 ## Anchor and scroll behavior proposal
 

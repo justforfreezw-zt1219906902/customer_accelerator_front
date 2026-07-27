@@ -78,19 +78,6 @@ Each deviation must record:
 - Review date: 2026-07-25
 - Next review: Phase 4A human review
 
-### DEV-2026-005 — Text wordmark fallback
-
-- Affected Figma: `1.0.0`, Navbar `68:432`, Footer `68:517`
-- Affected frontend: `0.0.1`, `AppNavbar.vue`, `AppFooter.vue`
-- Difference: Code renders the preserved `mi-goTo` text while Figma references
-  a logo asset.
-- Reason: No approved logo asset path is registered.
-- Impact: Brand remains present but is not the final approved lockup.
-- Approval: Approved by Tom on 2026-07-25 for `TASK-P4-001`
-- Owner: Product owner / Tom
-- Review date: 2026-07-25
-- Next review: Phase 4A human review
-
 ### DEV-2026-006 — Explicit mobile Navbar variant
 
 - Affected Figma: `1.0.0`, Navbar `68:432`
@@ -153,4 +140,8 @@ Each deviation must record:
 
 ## Resolved deviations
 
-None.
+### DEV-2026-005 — Text wordmark fallback
+
+Resolved on 2026-07-27. The Figma-derived shared logo asset is implemented in
+the Navbar and Footer, and Tom approved both shared consumers during the final
+`TASK-P6A-006` browser/Figma review.

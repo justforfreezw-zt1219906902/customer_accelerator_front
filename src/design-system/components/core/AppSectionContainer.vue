@@ -3,16 +3,19 @@ import { computed } from 'vue';
 
 type SectionStyle = 'default' | 'elevated' | 'light-context' | 'bleed';
 type Divider = 'default' | 'with-top-divider' | 'without-top-divider';
+type ContentWidth = 'full' | 'landing';
 
 const props = withDefaults(
   defineProps<{
     style?: SectionStyle;
     divider?: Divider;
+    contentWidth?: ContentWidth;
     as?: 'section' | 'div' | 'main' | 'aside';
   }>(),
   {
     style: 'default',
     divider: 'default',
+    contentWidth: 'full',
     as: 'section',
   },
 );
@@ -27,7 +30,10 @@ const showDivider = computed(() => props.divider !== 'without-top-divider');
   <component
     :is="as"
     class="app-section-container"
-    :class="`app-section-container--${style}`"
+    :class="[
+      `app-section-container--${style}`,
+      `app-section-container--content-${contentWidth}`,
+    ]"
     :data-theme="theme"
   >
     <div v-if="showDivider" class="app-section-container__divider" />
@@ -69,5 +75,10 @@ const showDivider = computed(() => props.divider !== 'without-top-divider');
 .app-section-container__content {
   width: 100%;
   min-width: 0;
+}
+
+.app-section-container--content-landing .app-section-container__content {
+  max-width: var(--content-max-width-landing);
+  margin-inline: auto;
 }
 </style>

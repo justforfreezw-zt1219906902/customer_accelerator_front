@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { nextTick, onBeforeUnmount, onMounted, ref } from 'vue';
+import logoLockup from '../../../assets/brand/mi-goto-lockup-light.png';
 import {
   defaultHeaderContent,
   type HeaderContent,
@@ -90,11 +91,24 @@ onBeforeUnmount(() =>
     :class="[`app-navbar--${variant}`, { 'app-navbar--open': menuOpen }]"
     @keydown="handleKeydown"
   >
-    <AppSectionContainer class="app-navbar__container">
-      <span class="app-navbar__brand">{{ content.brand }}</span>
+    <AppSectionContainer
+      as="div"
+      class="app-navbar__container"
+      content-width="landing"
+      divider="without-top-divider"
+    >
+      <span class="app-navbar__brand">
+        <img
+          class="app-navbar__logo"
+          :src="logoLockup"
+          alt=""
+          width="124"
+          height="36"
+        />
+        <span class="app-navbar__brand-text">{{ content.brand }}</span>
+      </span>
 
       <button
-        v-if="variant === 'mobile'"
         ref="menuButton"
         class="app-navbar__menu-button"
         type="button"
@@ -106,11 +120,7 @@ onBeforeUnmount(() =>
         <span aria-hidden="true">☰</span>
       </button>
 
-      <div
-        v-show="variant !== 'mobile' || menuOpen"
-        id="app-navbar-menu"
-        class="app-navbar__menu"
-      >
+      <div id="app-navbar-menu" class="app-navbar__menu">
         <nav class="app-navbar__navigation" aria-label="Primary navigation">
           <component
             :is="item.href ? 'a' : 'button'"
@@ -127,32 +137,35 @@ onBeforeUnmount(() =>
           </component>
         </nav>
 
-        <div class="app-navbar__languages" aria-label="Language selection">
-          <button
-            v-for="language in content.languages"
-            :key="language.code"
-            type="button"
-            class="app-navbar__language"
-            :class="{
-              'app-navbar__language--active': activeLanguage === language.code,
-            }"
-            :aria-pressed="activeLanguage === language.code"
-            :aria-disabled="!language.available"
-            :disabled="!language.available"
-            :title="language.unavailableLabel"
-            @click="handleLanguageChange(language)"
-          >
-            {{ language.label }}
-          </button>
-        </div>
+        <div class="app-navbar__actions">
+          <div class="app-navbar__languages" aria-label="Language selection">
+            <button
+              v-for="language in content.languages"
+              :key="language.code"
+              type="button"
+              class="app-navbar__language"
+              :class="{
+                'app-navbar__language--active':
+                  activeLanguage === language.code,
+              }"
+              :aria-pressed="activeLanguage === language.code"
+              :aria-disabled="!language.available"
+              :disabled="!language.available"
+              :title="language.unavailableLabel"
+              @click="handleLanguageChange(language)"
+            >
+              {{ language.label }}
+            </button>
+          </div>
 
-        <AppButton
-          size="sm"
-          :href="content.strategyDiscussionHref"
-          @click="handleStrategyDiscussion"
-        >
-          {{ content.strategyDiscussionLabel }}
-        </AppButton>
+          <AppButton
+            size="sm"
+            :href="content.strategyDiscussionHref"
+            @click="handleStrategyDiscussion"
+          >
+            {{ content.strategyDiscussionLabel }}
+          </AppButton>
+        </div>
       </div>
     </AppSectionContainer>
   </header>
@@ -161,7 +174,8 @@ onBeforeUnmount(() =>
 <style scoped>
 .app-navbar {
   color: var(--color-text-primary);
-  background: var(--color-bg-surface);
+  border-bottom: var(--stroke-1) solid var(--color-border-subtle);
+  background: var(--color-bg-default);
 }
 
 .app-navbar--transparent {
@@ -170,32 +184,45 @@ onBeforeUnmount(() =>
 
 .app-navbar--desktop,
 .app-navbar--solid {
-  border-radius: var(--radius-lg);
+  border-radius: 0;
 }
 
 .app-navbar__container {
-  display: flex;
-  min-height: 72px;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--spacing-16);
+  padding: 22px clamp(var(--spacing-24), 9vw, 130px);
+  background: transparent;
 }
 
-.app-navbar--mobile .app-navbar__container {
-  min-height: 64px;
-  flex-wrap: wrap;
+.app-navbar__container :deep(.app-section-container__content) {
+  display: flex;
+  min-height: 36px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 34px;
 }
 
 .app-navbar__brand {
-  font-size: var(--typography-wordmark-font-size);
-  font-weight: var(--font-weight-semibold);
-  line-height: var(--typography-wordmark-line-height);
+  display: inline-flex;
+  flex: 0 0 124px;
+}
+
+.app-navbar__logo {
+  display: block;
+  width: 124px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.app-navbar__brand-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 
 .app-navbar__menu {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-24);
+  display: contents;
 }
 
 .app-navbar--mobile .app-navbar__menu {
@@ -206,10 +233,14 @@ onBeforeUnmount(() =>
 }
 
 .app-navbar__navigation,
-.app-navbar__languages {
+.app-navbar__languages,
+.app-navbar__actions {
   display: flex;
   align-items: center;
-  gap: var(--spacing-16);
+}
+
+.app-navbar__navigation {
+  gap: 34px;
 }
 
 .app-navbar--mobile .app-navbar__navigation {
@@ -230,7 +261,10 @@ onBeforeUnmount(() =>
 
 .app-navbar__link {
   padding: var(--spacing-8) 0;
-  font-size: var(--typography-label-ui-font-size);
+  font-size: 12px;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
 }
 
 .app-navbar__link--active,
@@ -247,21 +281,79 @@ onBeforeUnmount(() =>
 }
 
 .app-navbar__languages {
-  gap: var(--spacing-8);
+  gap: 10px;
+}
+
+.app-navbar__actions {
+  flex: 0 0 auto;
+  gap: 22px;
 }
 
 .app-navbar__language {
-  padding: var(--spacing-4);
+  padding: 0;
+  color: var(--color-text-muted);
+  font-size: 12px;
+  font-weight: var(--font-weight-medium);
+  line-height: normal;
 }
 
 .app-navbar__language:disabled {
   color: var(--color-text-muted);
   cursor: not-allowed;
-  opacity: var(--opacity-disabled);
+  opacity: 1;
+}
+
+.app-navbar__language--active {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-bold);
 }
 
 .app-navbar__menu-button {
+  display: none;
   padding: var(--spacing-8);
   font-size: var(--typography-heading-h4-font-size);
+}
+
+@media (max-width: 64rem) {
+  .app-navbar__container {
+    padding: var(--spacing-16) var(--spacing-24);
+  }
+
+  .app-navbar__container :deep(.app-section-container__content) {
+    flex-wrap: wrap;
+    gap: var(--spacing-16);
+  }
+
+  .app-navbar__menu-button {
+    display: inline-flex;
+  }
+
+  .app-navbar__menu {
+    display: none;
+    width: 100%;
+    flex: 0 0 100%;
+    align-items: stretch;
+    flex-direction: column;
+    padding-bottom: var(--spacing-16);
+  }
+
+  .app-navbar--open .app-navbar__menu {
+    display: flex;
+  }
+
+  .app-navbar__navigation {
+    align-items: stretch;
+    flex-direction: column;
+    gap: var(--spacing-8);
+  }
+
+  .app-navbar__languages {
+    justify-content: flex-start;
+  }
+
+  .app-navbar__actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }
 </style>

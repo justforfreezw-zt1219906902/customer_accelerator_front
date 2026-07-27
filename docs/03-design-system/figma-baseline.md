@@ -7,7 +7,7 @@
 | Figma version | `1.0.0` |
 | Figma URL | [mi-goTo Figma design](https://www.figma.com/design/vyr3TvF5lAUOnuuxdW8iRb/prototype?node-id=0-1&p=f&t=AdHvWZgIn8DrsmI6-0) |
 | File key | `vyr3TvF5lAUOnuuxdW8iRb` |
-| Baseline status | `phase_4_approved_phase_5a_pages_inspected` |
+| Baseline status | `phase_6a_visual_fix_needs_review` |
 | Human reviewer | Tom |
 | Capture date | 2026-07-24 |
 | Visual approval | Phase 2 token scope approved 2026-07-24 |
@@ -29,6 +29,17 @@
 All expected pages and their node IDs were verified on 2026-07-24. Component,
 Section, and five registered Product Pages were subsequently inspected
 read-only through Phase 5A.
+
+The `06 Landing Page` desktop frame (`212:3`, 1440 × 8337) and its individual
+Sections were inspected again read-only for `TASK-P6A-003` on 2026-07-27.
+Implementation follows the recorded hierarchy and exact approved English
+content; visual implementation approval remains pending.
+
+`TASK-P6A-004` re-inspected Header `212:4`, Footer `212:737`, Hero `212:22`,
+and Principle `212:375`. The four requested implementation corrections are
+complete. The Figma Header/Footer text conflicts with locked content records,
+so locked content was preserved while non-conflicting visual structure was
+applied. Human browser verification remains pending.
 
 ## Authority
 

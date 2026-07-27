@@ -44,9 +44,10 @@ describe('Phase 5 routing infrastructure', () => {
       ),
     ).toEqual({
       'THE PROBLEM': '/#problem',
-      'THE SOLUTION': '/#solution',
+      'THE METHOD': '/#method',
+      PROOF: '/#proof',
       PACKAGES: '/#packages',
-      CONTACT: '/contact',
+      'WHY MI-GOTO': '/why-mi-goto',
     });
     expect(defaultHeaderContent.strategyDiscussionHref).toBe('/contact');
 
@@ -56,10 +57,11 @@ describe('Phase 5 routing infrastructure', () => {
         .map((item) => [item.label, item.href]),
     );
     expect(footerDestinations).toMatchObject({
-      'The problem': '/#problem',
-      Solutions: '/#solution',
+      'The Problem': '/#problem',
+      'The Method': '/#method',
       Packages: '/#packages',
-      Contact: '/contact',
+      Team: '/#team',
+      'Why mi-goTo': '/why-mi-goto',
       Imprint: '/imprint',
       'Data protection': '/data-protection',
       'hello@mi-goto.com': 'mailto:hello@mi-goto.com',
@@ -101,6 +103,18 @@ describe('Phase 5 routing infrastructure', () => {
     expect(router.resolve('/#solution')).toMatchObject({
       name: routeNames.landing,
       hash: '#solution',
+    });
+    expect(router.resolve('/#method')).toMatchObject({
+      name: routeNames.landing,
+      hash: '#method',
+    });
+    expect(router.resolve('/#proof')).toMatchObject({
+      name: routeNames.landing,
+      hash: '#proof',
+    });
+    expect(router.resolve('/#team')).toMatchObject({
+      name: routeNames.landing,
+      hash: '#team',
     });
     expect(router.resolve('/#packages')).toMatchObject({
       name: routeNames.landing,

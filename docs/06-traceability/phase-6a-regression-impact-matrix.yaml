@@ -1,0 +1,64 @@
+schema_version: 1
+task_id: TASK-P6A-006
+source_issue: ISSUE-2026-003
+figma_version: 1.0.0
+review_status: approved
+items:
+  - file: src/components/sections/ProductPreviewSection.vue
+    component: ProductPreviewSection
+    route: /
+    change: Removed the unapproved generic empty fallback from the rendered DOM.
+    regression_risk: low
+    tests:
+      - tests/unit/LandingSections.spec.ts
+      - tests/unit/LandingPage.spec.ts
+      - tests/e2e/phase-6a-visual-fidelity.spec.ts
+    review_status: approved
+  - file: src/pages/LandingPage.vue
+    component: LandingPage
+    route: /
+    change: Bound the approved Team and FAQ IDs explicitly.
+    regression_risk: low
+    tests:
+      - tests/unit/LandingPage.spec.ts
+      - tests/e2e/phase-6a-visual-fidelity.spec.ts
+    review_status: approved
+  - file: src/components/sections/FinalCtaSection.vue
+    component: FinalCtaSection
+    route: /
+    change: Matched the Primary Final CTA outer boundary, width, padding, radius, background and glow from Figma node 212:716.
+    regression_risk: medium
+    tests:
+      - tests/unit/LandingSections.spec.ts
+      - tests/unit/LandingPage.spec.ts
+      - tests/e2e/phase-6a-visual-fidelity.spec.ts
+    review_status: approved
+  - file: src/components/product/LandingCtaPanel.vue
+    component: LandingCtaPanel
+    route: /
+    change: Matched the Primary panel content alignment, widths, spacing and typography while preserving shared Button composition.
+    regression_risk: medium
+    tests:
+      - tests/unit/LandingCtaPanel.spec.ts
+      - tests/unit/LandingPage.spec.ts
+      - tests/e2e/phase-6a-visual-fidelity.spec.ts
+    review_status: approved
+  - file: src/content/footer/defaultFooterContent.ts
+    component: Footer navigation configuration
+    route: all_marketing_routes
+    change: No code change; confirmed Team remains mapped to /#team.
+    regression_risk: low
+    tests:
+      - tests/unit/AppFooter.spec.ts
+      - tests/unit/Routing.spec.ts
+      - tests/e2e/phase-6a-visual-fidelity.spec.ts
+    review_status: approved_unchanged
+  - file: src/design-system/components/composite/AppFooter.vue
+    component: AppFooter
+    route: all_marketing_routes
+    change: No change; shared Footer visual implementation remained protected.
+    regression_risk: low
+    tests:
+      - tests/unit/AppFooter.spec.ts
+      - tests/e2e/phase-6a-visual-fidelity.spec.ts
+    review_status: approved_unchanged

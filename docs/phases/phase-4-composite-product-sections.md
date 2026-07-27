@@ -144,6 +144,21 @@ Phase 4C:
 
 ## Completion Report
 
+### Shared Header/Footer correction — 2026-07-27
+
+- Task: `TASK-P4A-002`
+- Source Issue: `ISSUE-2026-003`
+- Figma Header: `212:4`
+- Figma Footer: `212:737`
+- Replaced the superseded Header/Footer content baseline with active Figma
+  1.0.0 content.
+- Corrected the shared Composite components, preserving a single source used
+  by Marketing and Legal layouts.
+- Added the Figma-confirmed 700 font-weight semantic token for the active EN
+  state and Footer headings.
+- Status: `needs_review`
+- Human approval: pending
+
 ### Phase 4A
 
 - Figma page `03 Composite Components` (`68:2`) was inspected read-only.

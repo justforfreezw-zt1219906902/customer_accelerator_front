@@ -4,13 +4,13 @@ project: mi-goTo Frontend
 current_phase:
   id: phase-6
   name: Static Pages
-  status: planned
+  status: in_progress
 
 current_task:
-  id: TASK-P6A-001
-  name: Phase 6A Landing Page
+  id: TASK-P6B-001
+  name: Phase 6B Contact Page UI
   status: planned
-  note: Phase 5 is approved; final Landing Page implementation is permitted.
+  note: Phase 6A is approved; Phase 6B is the next permitted static Page task.
 environment: local
 
 versions:
@@ -28,7 +28,7 @@ compatibility:
 
 blockers: []
 next_gate:
-  name: Phase 6A Landing Page Review
+  name: Phase 6B Contact Page UI Review
   human_approval_required: true
 
 management_readiness:
@@ -196,6 +196,40 @@ phase_5b:
     date: "2026-07-27"
     evidence: docs/08-quality/test-reports/TASK-P5B-002-phase-5-approval-2026-07-27.md
 
+phase_6a:
+  implementation_status: approved
+  task: TASK-P6A-006
+  figma_inspection: completed_read_only
+  figma_page: "06 Landing Page (212:2)"
+  desktop_frame: "212:3"
+  content_status: approved
+  validation:
+    management: passed
+    typecheck: passed
+    lint: passed
+    unit_tests: 74_passed
+    build: passed
+    end_to_end_tests: 4_passed_chromium
+  task_status: approved
+  prior_review_result: changes_required
+  human_approval: approved
+  active_blocker: null
+  resolving_task: TASK-P6A-006
+  implementation_fix_complete: true
+  shared_header_footer_fix: implementation_complete
+  shared_header_footer_fix_status: approved_by_phase_6a_review
+  next_task: TASK-P6B-001
+  landing_regression_task: TASK-P6A-006
+  impact_audit: docs/03-design-system/phase-6a-landing-regression-audit.md
+  impact_matrix: docs/06-traceability/phase-6a-regression-impact-matrix.yaml
+  evidence: docs/07-change-control/instructions/TASK-P6A-006-landing-regression-fix.md
+  approval:
+    reviewer: Tom
+    result: APPROVED
+    date: "2026-07-27"
+    reviewed_task: TASK-P6A-006
+    evidence: docs/08-quality/test-reports/TASK-P6A-006-phase-6a-approval-2026-07-27.md
+
 last_updated: "2026-07-27"
 notes:
   - The Phase 0 repository audit and TASK-P0-001 were approved by Tom.
@@ -224,3 +258,20 @@ notes:
   - TASK-P5B-002 implemented approved routing, shared layouts and temporary Page shells.
   - Tom approved TASK-P5B-002, Phase 5B and Phase 5 on 2026-07-27.
   - Current work advances to planned Phase 6A under TASK-P6A-001.
+  - TASK-P6A-001 inspected Figma frame 212:3 read-only and stopped before application changes.
+  - ISSUE-2026-002 formerly blocked Phase 6A until Landing content ownership, marketing claims, prices, and the Team/FAQ scope difference were resolved.
+  - Tom approved the Landing content, commercial details, Team, FAQ, assets, and EN-only language scope under TASK-P6A-002.
+  - ISSUE-2026-002 is resolved; TASK-P6A-003 is the next permitted Landing implementation task.
+  - TASK-P6A-003 implemented the Landing Page and passed management validation, type checking, lint, 66 unit tests, and the production build.
+  - At the TASK-P6A-003 checkpoint, Phase 6A returned to in_progress and was not approved.
+  - Tom reviewed TASK-P6A-004 as CHANGES REQUIRED; its automated evidence remains preserved but implementation_fix_complete is false.
+  - TASK-P6A-005 audited the Figma Header/Footer and unintended Principle fallback without changing application code.
+  - The active Figma 1.0.0 Header/Footer content and presentation are authoritative under Tom's explicit decision.
+  - TASK-P4A-002 implemented the authoritative shared Header/Footer and awaits human review.
+  - Tom rejected TASK-P6A-003 visual fidelity on 2026-07-27 and requested changes.
+  - ISSUE-2026-003 became the active high-priority Phase 6A blocker after the rejected review.
+  - TASK-P6A-004 completed an automated correction, but Tom's browser review returned changes required.
+  - Playwright Chromium is installed; TASK-P6A-006 passed four affected browser tests.
+  - TASK-P6A-006 entered needs_review while ISSUE-2026-003 remained open pending Tom's full browser/Figma review.
+  - Tom approved TASK-P6A-006 and Phase 6A after the final 1440px and 390px browser/Figma review.
+  - ISSUE-2026-003 is resolved; TASK-P6B-001 is the next permitted task.

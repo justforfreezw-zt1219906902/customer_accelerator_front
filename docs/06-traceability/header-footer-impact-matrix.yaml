@@ -1,0 +1,257 @@
+schema_version: 1
+task_id: TASK-P6A-005
+audit_date: "2026-07-27"
+reviewer: Tom
+figma_version: 1.0.0
+frontend_version: 0.0.1
+baseline_id: DS1.0.0_API0.0.0_FE0.0.1
+authority:
+  decision: active_figma_prototype_is_authoritative
+  applies_to:
+    - visible_content
+    - order
+    - hierarchy
+    - layout
+    - width
+    - height
+    - spacing
+    - alignment
+    - typography
+    - responsive_intent
+    - language_presentation
+    - cta_presentation
+summary:
+  confirmed_discrepancies:
+    header: 5
+    footer: 14
+    principle_fallback: 1
+    total: 20
+  unverified_responsive_items: 2
+implementation_result:
+  task_id: TASK-P4A-002
+  status: needs_review
+  corrected_discrepancies:
+    - HF-HEADER-001
+    - HF-HEADER-002
+    - HF-HEADER-003
+    - HF-HEADER-004
+    - HF-HEADER-005
+    - HF-FOOTER-001
+    - HF-FOOTER-002
+    - HF-FOOTER-003
+    - HF-FOOTER-004
+    - HF-FOOTER-005
+    - HF-FOOTER-006
+    - HF-FOOTER-007
+    - HF-FOOTER-008
+    - HF-FOOTER-009
+    - HF-FOOTER-010
+    - HF-FOOTER-011
+    - HF-FOOTER-012
+    - HF-FOOTER-013
+    - HF-FOOTER-014
+  pending_discrepancies: [HF-PREVIEW-001]
+  unverified_items: [HF-HEADER-006, HF-FOOTER-015]
+  note: Discrepancy entries below retain their audit-time status as historical evidence.
+figma_nodes:
+  page: "212:2"
+  desktop_frame: "212:3"
+  header_instance: "212:4"
+  header_component: "105:464"
+  footer_instance: "212:737"
+  footer_component: "105:494"
+  principle_section: "212:375"
+  principle_component: "171:40"
+discrepancies:
+  - id: HF-HEADER-001
+    area: header
+    property: visible_navigation_content
+    figma_expected: [THE PROBLEM, THE METHOD, PROOF, PACKAGES, WHY MI-GOTO]
+    current_code: [THE PROBLEM, THE SOLUTION, PACKAGES, CONTACT]
+    status: confirmed_mismatch
+    correction_task: TASK-P4A-002
+  - id: HF-HEADER-002
+    area: header
+    property: navigation_order_and_count
+    figma_expected: five_items_in_figma_order
+    current_code: four_items_in_legacy_approved_order
+    status: confirmed_mismatch
+    correction_task: TASK-P4A-002
+  - id: HF-HEADER-003
+    area: header
+    property: destination_mapping
+    figma_expected: active_figma_labels_mapped_to_approved_interactions
+    current_code: legacy_labels_and_destinations
+    status: confirmed_mismatch
+    correction_task: TASK-P4A-002
+  - id: HF-HEADER-004
+    area: header
+    property: desktop_hierarchy
+    figma_expected: logo_then_navigation_then_language_and_cta_group
+    current_code: navigation_language_and_cta_combined_in_menu_container
+    status: confirmed_mismatch
+    correction_task: TASK-P4A-002
+  - id: HF-HEADER-005
+    area: header
+    property: language_presentation
+    figma_expected: DE_EN_CN_as_presented_by_figma
+    current_code: EN_active_DE_CN_visibly_unavailable
+    status: confirmed_mismatch
+    correction_task: TASK-P4A-002
+  - id: HF-HEADER-006
+    area: header
+    property: responsive_fidelity
+    figma_expected: no_separate_responsive_frame_found
+    current_code: custom_mobile_menu
+    status: unverified_not_counted
+    correction_task: TASK-P4A-002
+  - id: HF-FOOTER-001
+    area: footer
+    property: brand_statement
+    figma_expected: Technology should understand before it speaks.
+    current_code: ABM-first Revenue Marketing Partner for B2B growth companies.
+    status: confirmed_mismatch
+    correction_task: TASK-P4A-002
+  - id: HF-FOOTER-002
+    area: footer
+    property: navigation_content
+    figma_expected: [The Problem, The Method, Packages, Team, Why mi-goTo]
+    current_code: [The problem, Solutions, Packages, Contact]
+    status: confirmed_mismatch
+    correction_task: TASK-P4A-002
+  - id: HF-FOOTER-003
+    area: footer
+    property: navigation_order_and_count
+    figma_expected: five_items_in_figma_order
+    current_code: four_items_in_legacy_order
+    status: confirmed_mismatch
+    correction_task: TASK-P4A-002
+  - id: HF-FOOTER-004
+    area: footer
+    property: missing_team_link
+    figma_expected: Team
+    current_code: absent
+    status: confirmed_mismatch
+    correction_task: TASK-P4A-002
+  - id: HF-FOOTER-005
+    area: footer
+    property: missing_why_link
+    figma_expected: Why mi-goTo
+    current_code: absent
+    status: confirmed_mismatch
+    correction_task: TASK-P4A-002
+  - id: HF-FOOTER-006
+    area: footer
+    property: bottom_statement
+    figma_expected: Source-grounded ABM intelligence for B2B growth companies
+    current_code: absent
+    status: confirmed_mismatch
+    correction_task: TASK-P4A-002
+  - id: HF-FOOTER-007
+    area: footer
+    property: observed_content_width
+    figma_expected: 1180px_at_1440px_viewport
+    current_code: human_review_reports_excessive_rendered_width
+    status: confirmed_mismatch
+    correction_task: TASK-P4A-002
+  - id: HF-FOOTER-008
+    area: footer
+    property: column_geometry
+    figma_expected: brand_370px_and_three_180px_columns_with_space_between
+    current_code: responsive_grid_does_not_reproduce_reviewed_geometry
+    status: confirmed_mismatch
+    correction_task: TASK-P4A-002
+  - id: HF-FOOTER-009
+    area: footer
+    property: outer_spacing
+    figma_expected: top_76px_bottom_34px_horizontal_130px
+    current_code: fluid_spacing_does_not_match_human_review
+    status: confirmed_mismatch
+    correction_task: TASK-P4A-002
+  - id: HF-FOOTER-010
+    area: footer
+    property: major_vertical_gap
+    figma_expected: 38px
+    current_code: rendered_spacing_failed_human_review
+    status: confirmed_mismatch
+    correction_task: TASK-P4A-002
+  - id: HF-FOOTER-011
+    area: footer
+    property: navigation_link_typography
+    figma_expected: Inter_Medium_14px_20px
+    current_code: does_not_match_reviewed_figma_typography
+    status: confirmed_mismatch
+    correction_task: TASK-P4A-002
+  - id: HF-FOOTER-012
+    area: footer
+    property: column_heading_typography
+    figma_expected: Inter_Bold_12px_16px_tracking_1.2px
+    current_code: does_not_match_reviewed_figma_typography
+    status: confirmed_mismatch
+    correction_task: TASK-P4A-002
+  - id: HF-FOOTER-013
+    area: footer
+    property: legal_link_presentation
+    figma_expected: brand_colored_and_underlined
+    current_code: underline_not_persistently_present
+    status: confirmed_mismatch
+    correction_task: TASK-P4A-002
+  - id: HF-FOOTER-014
+    area: footer
+    property: bottom_row_hierarchy
+    figma_expected: copyright_left_and_statement_right
+    current_code: copyright_only
+    status: confirmed_mismatch
+    correction_task: TASK-P4A-002
+  - id: HF-FOOTER-015
+    area: footer
+    property: responsive_fidelity
+    figma_expected: no_separate_responsive_frame_found
+    current_code: custom_stacking_behavior
+    status: unverified_not_counted
+    correction_task: TASK-P4A-002
+  - id: HF-PREVIEW-001
+    area: principle_fallback
+    property: unexpected_empty_state
+    figma_expected: no_fallback_below_principle_card
+    current_code: Preview content is not available.
+    source_file: src/components/sections/ProductPreviewSection.vue
+    consumer_file: src/pages/LandingPage.vue
+    status: confirmed_mismatch
+    correction_task: TASK-P6A-006
+affected_routes:
+  - path: /
+    page: LandingPage
+    layout_chain: [MarketingLayout]
+  - path: /why-mi-goto
+    page: WhyMiGotoPage
+    layout_chain: [MarketingLayout]
+  - path: /contact
+    page: ContactPage
+    layout_chain: [MarketingLayout]
+  - path: /thank-you
+    page: ThankYouPage
+    layout_chain: [MarketingLayout]
+  - path: /imprint
+    page: ImprintPage
+    layout_chain: [LegalLayout, MarketingLayout]
+  - path: /data-protection
+    page: DataProtectionPage
+    layout_chain: [LegalLayout, MarketingLayout]
+  - path: "/:pathMatch(.*)*"
+    page: NotFoundPage
+    layout_chain: [MarketingLayout]
+tasks:
+  shared_fix:
+    id: TASK-P4A-002
+    status: needs_review
+    implementation: complete
+  landing_regression:
+    id: TASK-P6A-006
+    status: planned
+issue:
+  id: ISSUE-2026-003
+  status: open
+  implementation_fix_complete: false
+  header_footer_fix_complete: true
+  human_approval: pending

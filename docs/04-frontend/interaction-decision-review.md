@@ -16,6 +16,11 @@ Tom explicitly approved all recommended decisions for `INT-001`–`INT-021`,
 subject to the `INT-013` exception below. This approval establishes the
 interaction baseline but does not itself authorize application implementation.
 
+Historical decision labels below are preserved as approval evidence.
+`TASK-P6A-005` later established the active Figma 1.0.0 Header/Footer visible
+content as authoritative; `TASK-P4A-002` maps those superseding labels to the
+existing approved route and anchor infrastructure.
+
 ## Approval exception and additional requirements
 
 - `INT-013`: do not use `VITE_APP_MODE`. Successful Contact submission follows

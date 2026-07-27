@@ -66,10 +66,13 @@ components:
     variants:
       style: [Default, Elevated, Light-Context, Bleed]
       divider: [Default, With Top Divider, Without Top Divider]
+      content_width: [Full, Landing]
     figma_version: 1.0.0
     implementation_status: implemented
     design_review_status: approved
     tests: [tests/unit/AppSectionContainer.spec.ts]
+    notes:
+      - TASK-P6A-004 added the semantic Landing content-width option sourced from the 1180px Figma Header/Footer content area.
   - component_id: CMP-COMPOSITE-001
     figma_name: mi-goTo/Form Field
     figma_node_id: "68:213"
@@ -123,8 +126,17 @@ components:
       variant: [Desktop, Mobile, Transparent, Solid]
     figma_version: 1.0.0
     implementation_status: implemented
-    design_review_status: approved
+    design_review_status: approved_by_phase_6a_review
     tests: [tests/unit/AppNavbar.spec.ts]
+    landing_page_instance_node_id: "212:4"
+    landing_header_component_node_id: "105:464"
+    logo_node_id: "105:452"
+    notes:
+      - TASK-P6A-004 aligns the shared Navbar to the Landing Header layout while preserving locked Header content.
+      - Tom's TASK-P6A-004 review found the result inconsistent with Figma.
+      - Active Figma Header content and presentation are authoritative; see TASK-P6A-005 audit.
+      - TASK-P4A-002 implemented the exact Figma navigation, hierarchy, language presentation, CTA, desktop geometry, and shared responsive menu.
+      - Tom approved the shared Header regression at 1440px and 390px under TASK-P6A-006.
   - component_id: CMP-COMPOSITE-005
     figma_name: mi-goTo/Footer
     figma_node_id: "68:517"
@@ -137,8 +149,17 @@ components:
       context: [Enterprise-Dark, Impact-Light]
     figma_version: 1.0.0
     implementation_status: implemented
-    design_review_status: approved
+    design_review_status: approved_by_phase_6a_review
     tests: [tests/unit/AppFooter.spec.ts]
+    landing_page_instance_node_id: "212:737"
+    landing_footer_component_node_id: "105:494"
+    logo_node_id: "105:474"
+    notes:
+      - TASK-P6A-004 applies the Figma 1180px inner width and shared responsive column structure while preserving locked Footer content.
+      - Tom's TASK-P6A-004 review found the Footer inconsistent and too wide.
+      - Active Figma Footer content and presentation are authoritative; see TASK-P6A-005 audit.
+      - TASK-P4A-002 implemented the exact Figma copy, four-column geometry, 1180px container, 38px structure, divider, bottom row, and responsive stacking.
+      - Tom approved the shared Footer regression at 1440px and 390px under TASK-P6A-006.
   - component_id: CMP-PRODUCT-001
     figma_name: mi-goTo/Value Proposition Card
     figma_node_id: "82:37"

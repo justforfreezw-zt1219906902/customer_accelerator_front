@@ -16,20 +16,26 @@ export interface FooterContent {
   description: string;
   groups: readonly FooterLinkGroup[];
   copyright: string;
+  bottomStatement: string;
 }
 
 export const defaultFooterContent: FooterContent = {
   brand: 'mi-goTo',
-  description: 'ABM-first Revenue Marketing Partner for B2B growth companies.',
+  description: 'Technology should understand before it speaks.',
   groups: [
     {
       id: 'navigation',
       heading: 'NAVIGATION',
       links: [
-        { id: 'problem', label: 'The problem', href: '/#problem' },
-        { id: 'solutions', label: 'Solutions', href: '/#solution' },
+        { id: 'problem', label: 'The Problem', href: '/#problem' },
+        { id: 'method', label: 'The Method', href: '/#method' },
         { id: 'packages', label: 'Packages', href: '/#packages' },
-        { id: 'contact', label: 'Contact', href: '/contact' },
+        { id: 'team', label: 'Team', href: '/#team' },
+        {
+          id: 'why-mi-goto',
+          label: 'Why mi-goTo',
+          href: '/why-mi-goto',
+        },
       ],
     },
     {
@@ -58,4 +64,5 @@ export const defaultFooterContent: FooterContent = {
     },
   ],
   copyright: '© 2026 mi-goTo. All rights reserved.',
+  bottomStatement: 'Source-grounded ABM intelligence for B2B growth companies',
 };

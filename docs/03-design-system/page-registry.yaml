@@ -15,8 +15,32 @@ pages:
     route_approval: approved
     anchor_behavior: supports_same_page_and_cross_route_targets
     implementation_status: implemented
-    implementation_scope: temporary_route_shell_only
-    design_review_status: interaction_inspected_visual_review_pending
+    implementation_scope: phase_6a_final_page
+    design_review_status: approved
+    content_status: approved
+    content_owner: Tom
+    content_approver: Tom
+    content_approval_task: TASK-P6A-002
+    approved_scope:
+      - approved_existing_landing_sections
+      - TeamSection
+      - FAQSection
+      - approved_metrics
+      - commercially_confirmed_prices
+      - approved_qualitative_claims
+    final_page_implementation_status: approved
+    shared_chrome_fix_task: TASK-P4A-002
+    landing_regression_task: TASK-P6A-006
+    tests:
+      - tests/unit/LandingPage.spec.ts
+      - tests/unit/Phase6ASections.spec.ts
+      - tests/e2e/phase-6a-visual-fidelity.spec.ts
+    approval:
+      reviewer: Tom
+      date: "2026-07-27"
+      reviewed_task: TASK-P6A-006
+      viewports: [1440px, 390px]
+      evidence: docs/08-quality/test-reports/TASK-P6A-006-phase-6a-approval-2026-07-27.md
   - page_id: PAGE-WHY
     name: Why mi-goTo Page
     figma_page_name: 07 Why Mi-goTo Page
@@ -119,7 +143,9 @@ pages:
       - Accessible fallback behavior is approved.
       - No Figma source exists; final design and copy remain separately reviewable.
 notes:
-  - Approved routes have temporary accessible shells; final Page implementations do not exist.
+  - Approved non-Landing routes retain temporary accessible shells.
   - Five Figma Page nodes were inspected read-only for Phase 5A.
   - Figma does not define final route or interaction behavior by itself.
   - Thank You Page has no registered Figma source.
+  - PAGE-LANDING content and expanded Team/FAQ scope were approved by Tom on 2026-07-27.
+  - PAGE-LANDING was approved by Tom under TASK-P6A-006 on 2026-07-27.

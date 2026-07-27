@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
 
+import { defaultHeaderContent } from '../../src/content/header/defaultHeaderContent';
 import AppNavbar from '../../src/design-system/components/composite/AppNavbar.vue';
 
 describe('AppNavbar', () => {
@@ -10,9 +11,10 @@ describe('AppNavbar', () => {
     for (const label of [
       'mi-goTo',
       'THE PROBLEM',
-      'THE SOLUTION',
+      'THE METHOD',
+      'PROOF',
       'PACKAGES',
-      'CONTACT',
+      'WHY MI-GOTO',
       'DE',
       'EN',
       'CN',
@@ -20,6 +22,28 @@ describe('AppNavbar', () => {
     ]) {
       expect(wrapper.text()).toContain(label);
     }
+  });
+
+  it('preserves the exact approved item order and landing chrome structure', () => {
+    const wrapper = mount(AppNavbar);
+
+    expect(
+      wrapper.findAll('.app-navbar__link').map((item) => item.text()),
+    ).toEqual(defaultHeaderContent.navigation.map((item) => item.label));
+    expect(wrapper.get('.app-navbar__brand-text').text()).toBe('mi-goTo');
+    expect(wrapper.get('.app-navbar__logo').attributes('width')).toBe('124');
+    expect(
+      wrapper
+        .getComponent({ name: 'AppSectionContainer' })
+        .props('contentWidth'),
+    ).toBe('landing');
+    expect(wrapper.get('.app-button').text()).toBe('STRATEGY DISCUSSION');
+    expect(
+      wrapper
+        .get('.app-navbar__actions')
+        .find('.app-navbar__languages')
+        .exists(),
+    ).toBe(true);
   });
 
   it('supports keyboard-accessible mobile menu behavior', async () => {
@@ -52,6 +76,7 @@ describe('AppNavbar', () => {
     expect(languages[0].attributes('disabled')).toBeDefined();
     expect(languages[1].attributes('disabled')).toBeUndefined();
     expect(languages[2].attributes('disabled')).toBeDefined();
+    expect(languages[1].classes()).toContain('app-navbar__language--active');
 
     await languages[0].trigger('click');
     expect(wrapper.emitted('languageChange')).toBeUndefined();

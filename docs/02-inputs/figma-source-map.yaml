@@ -8,9 +8,9 @@ source:
   figma_version: 1.0.0
   version_status: initialized_from_project_input
 inspection:
-  status: section_implementation_approved
+  status: phase_6a_visual_fix_needs_review
   reviewer: Tom
-  last_reviewed: "2026-07-25"
+  last_reviewed: "2026-07-27"
   notes:
     - All expected page names and page node IDs were verified in the file.
     - Only 00 Foundation and 01 Tokens were inspected in detail in Phase 2.
@@ -19,6 +19,7 @@ inspection:
     - 03 Composite Components was inspected read-only and approved for Phase 4A.
     - 04 Product Components was inspected read-only and approved for Phase 4B.
     - 05 Sections was inspected read-only and approved for Phase 4C.
+    - 06 Landing Page was inspected read-only and implemented for Phase 6A; human visual review remains pending.
 pages:
   - page_name: 00 Foundation
     node_id: "0:1"
@@ -98,11 +99,22 @@ pages:
     node_id: "212:2"
     figma_version: 1.0.0
     code_target: src/pages/LandingPage.vue
-    status: structure_inspected_interaction_spec_needs_review
+    status: implemented_needs_review
     reviewer: Codex
-    last_reviewed: "2026-07-25"
+    last_reviewed: "2026-07-27"
     notes:
       - Desktop frame is "212:3"; Header "212:4"; Footer "212:737".
+      - Header source component is "105:464"; logo "105:452"; navigation "105:453"; language switcher "105:459".
+      - Footer source component is "105:494"; columns "I212:737;105:472"; divider "I212:737;105:490"; bottom row "I212:737;105:491".
+      - Hero "212:22" contains copy "I212:22;197:847", validation data "I212:22;197:856", product stage "I212:22;197:866", Account Intelligence panel "168:41", and insufficient-data row "222:32".
+      - Principle Section "212:375" contains panel "I212:375;194:819" from component "171:40".
+      - Section instances are Hero "212:22", Problem "212:196", Solution "212:240", Method "212:314", Principle "212:375", Evidence Metrics "212:384", Benefits "212:410", Packages "212:454", Team "212:615", FAQ "212:666", and Final CTA "212:716".
+      - Implemented under TASK-P6A-003 from exact Tom-approved English content.
+      - Human visual and implementation approval remains pending.
+      - Tom reviewed TASK-P6A-004 as changes required.
+      - TASK-P6A-005 confirms active Figma 1.0.0 is authoritative for Header/Footer content and presentation.
+      - Shared correction TASK-P4A-002 is implementation complete and needs human review.
+      - Landing regression TASK-P6A-006 remains pending.
       - Figma does not independently define routes or anchor behavior.
   - page_name: 07 Why Mi-goTo Page
     node_id: "259:2"

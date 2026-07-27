@@ -29,4 +29,14 @@ describe('AppSectionContainer', () => {
       false,
     );
   });
+
+  it('supports the semantic Landing content width', () => {
+    const wrapper = mount(AppSectionContainer, {
+      props: { contentWidth: 'landing' },
+    });
+
+    expect(wrapper.classes()).toContain(
+      'app-section-container--content-landing',
+    );
+  });
 });

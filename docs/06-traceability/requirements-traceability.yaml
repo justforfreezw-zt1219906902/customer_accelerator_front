@@ -239,28 +239,63 @@ requirements:
     verified_version: 0.0.1
     approval: approved
   - requirement_id: REQ-LANDING-001
-    description: Landing Page renders.
+    description: Landing Page renders the exact Tom-approved English content and active Figma 1.0.0 hierarchy, including approved Sections, Team, FAQ, metrics, prices, and qualitative claims.
     source:
       - docs/03-design-system/page-registry.yaml#PAGE-LANDING
+      - docs/02-inputs/content-inventory.yaml#CONTENT-LANDING
+      - docs/07-change-control/instructions/TASK-P6A-002-content-approval-and-gate-resolution.md
+      - docs/03-design-system/phase-6a-landing-regression-audit.md
     figma_source:
       page: 06 Landing Page
       node_id: "212:2"
-      status: structure_inspected
+      desktop_frame_node_id: "212:3"
+      section_node_ids: ["212:22", "212:196", "212:240", "212:314", "212:375", "212:384", "212:410", "212:454", "212:615", "212:666", "212:716"]
+      status: content_and_scope_human_approved
     backend_source: not_applicable
     planned_frontend_files:
       - src/pages/LandingPage.vue
-    tests: []
-    status: planned
+    tests:
+      - tests/unit/LandingPage.spec.ts
+      - tests/unit/Phase6ASections.spec.ts
+      - tests/unit/LandingSections.spec.ts
+      - tests/e2e/phase-6a-visual-fidelity.spec.ts
+    status: verified
     introduced_version: 0.0.1
-    verified_version: null
-    approval: not_approved
+    verified_version: 0.0.1
+    approval: approved
+  - requirement_id: REQ-CONTENT-001
+    description: Published Landing metrics, prices, customer-result claims, Team information, and FAQ content match the active Figma 1.0.0 baseline exactly and change only through an approved Change Request.
+    source:
+      - docs/02-inputs/content-inventory.yaml#CONTENT-LANDING
+      - docs/04-frontend/content-architecture.md
+    figma_source:
+      page: 06 Landing Page
+      node_id: "212:2"
+      metric_nodes: ["I212:22;197:858", "I212:22;197:861", "I212:22;197:864", "212:384"]
+      pricing_nodes: ["226:1076", "195:634", "195:659", "195:689"]
+      team_node: "212:615"
+      faq_node: "212:666"
+      status: human_approved_source_restricted
+    backend_source: not_applicable
+    planned_frontend_files:
+      - src/content/landing/en.ts
+      - src/pages/LandingPage.vue
+      - src/components/sections/TeamSection.vue
+      - src/components/sections/FAQSection.vue
+    tests:
+      - tests/unit/LandingPage.spec.ts
+      - tests/unit/Phase6ASections.spec.ts
+    status: implemented
+    introduced_version: 0.0.1
+    verified_version: 0.0.1
+    approval: approved
   - requirement_id: REQ-NAV-001
-    description: Header content is preserved.
+    description: Shared Header matches the active Figma 1.0.0 content and presentation approved by Tom.
     source:
       - docs/02-inputs/content-inventory.yaml#CONTENT-HEADER
     figma_source:
-      page: 03 Composite Components
-      node_id: "68:432"
+      page: 06 Landing Page
+      node_id: "212:4"
       status: inspected
     backend_source: not_applicable
     planned_frontend_files:
@@ -268,17 +303,19 @@ requirements:
       - src/design-system/components/composite/AppNavbar.vue
     tests:
       - tests/unit/AppNavbar.spec.ts
-    status: implemented
+      - tests/unit/LandingPage.spec.ts
+      - tests/e2e/phase-6a-visual-fidelity.spec.ts
+    status: verified
     introduced_version: 0.0.1
-    verified_version: null
-    approval: approved
+    verified_version: 0.0.1
+    approval: approved_by_phase_6a_review
   - requirement_id: REQ-FOOTER-001
-    description: Footer content is preserved.
+    description: Shared Footer matches the active Figma 1.0.0 content, width, hierarchy, and presentation approved by Tom.
     source:
       - docs/02-inputs/content-inventory.yaml#CONTENT-FOOTER
     figma_source:
-      page: 03 Composite Components
-      node_id: "68:517"
+      page: 06 Landing Page
+      node_id: "212:737"
       status: inspected
     backend_source: not_applicable
     planned_frontend_files:
@@ -286,10 +323,12 @@ requirements:
       - src/design-system/components/composite/AppFooter.vue
     tests:
       - tests/unit/AppFooter.spec.ts
-    status: implemented
+      - tests/unit/LandingPage.spec.ts
+      - tests/e2e/phase-6a-visual-fidelity.spec.ts
+    status: verified
     introduced_version: 0.0.1
-    verified_version: null
-    approval: approved
+    verified_version: 0.0.1
+    approval: approved_by_phase_6a_review
   - requirement_id: REQ-CONTACT-001
     description: Contact Page contains the confirmed required lead fields.
     source:
@@ -305,8 +344,10 @@ requirements:
       schema: LeadRequest
     planned_frontend_files:
       - src/pages/ContactPage.vue
-    tests: []
-    status: planned
+    tests:
+      - tests/unit/LandingPage.spec.ts
+      - tests/unit/Phase6ASections.spec.ts
+    status: partially_implemented
     introduced_version: 0.0.1
     verified_version: null
     approval: not_approved
@@ -325,8 +366,10 @@ requirements:
       schema: LeadRequest
     planned_frontend_files:
       - src/pages/ContactPage.vue
-    tests: []
-    status: planned
+    tests:
+      - tests/unit/LandingPage.spec.ts
+      - tests/unit/Phase6ASections.spec.ts
+    status: partially_implemented
     introduced_version: 0.0.1
     verified_version: null
     approval: not_approved

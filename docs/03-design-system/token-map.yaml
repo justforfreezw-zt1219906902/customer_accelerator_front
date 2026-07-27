@@ -26,6 +26,7 @@ categories:
     notes:
       - Families are Inter and JetBrains Mono; weights are 300, 400, 500, and 600.
       - Figma percentage letter spacing is normalized to equivalent CSS em values.
+      - TASK-P4A-002 adds semantic weight 700 because the inspected Header EN state and Footer column headings explicitly use Inter Bold.
   - stable_id: TOKEN-SPACING-001
     category: spacing
     figma_token: "Spacing collection (VariableCollectionId:24:35; 4/8/12/16/24/32/48/64/96)"
@@ -86,6 +87,16 @@ categories:
     source_version: 1.0.0
     status: implemented
     notes: [Extracted because this confirmed Figma collection exists.]
+  - stable_id: TOKEN-LAYOUT-001
+    category: layout
+    figma_token: "Landing content width measured from Header 212:4 and Footer 212:737"
+    css_variable: "--content-max-width-landing"
+    typescript_token: layout.landingContentMaxWidth
+    source_version: 1.0.0
+    status: implemented
+    notes:
+      - The 1180px value is a semantic Page-layout measurement, not a Figma Variable.
+      - Introduced under TASK-P6A-004 to prevent unexplained Footer-specific width hacks.
 naming_normalization:
   - "Figma slash paths become kebab-case CSS variables: color/bg/default -> --color-bg-default."
   - "TypeScript groups use nested camelCase keys that point to CSS var() references."

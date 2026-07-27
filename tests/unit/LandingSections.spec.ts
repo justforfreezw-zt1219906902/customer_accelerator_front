@@ -93,6 +93,30 @@ describe('landing sections', () => {
     );
   });
 
+  it('contains principle copy inside the principle card', () => {
+    const wrapper = mount(ProductPreviewSection, {
+      props: {
+        intro: {
+          eyebrow: 'INSUFFICIENT_DATA',
+          title: 'If we cannot source it, we say so.',
+          description: 'Associated explanatory content.',
+        },
+        insights: [],
+        variant: 'principle-panel',
+      },
+    });
+    const card = wrapper.get('[data-testid="insufficient-data-card"]');
+
+    expect(card.text()).toContain('INSUFFICIENT_DATA');
+    expect(card.text()).toContain('If we cannot source it, we say so.');
+    expect(card.text()).toContain('Associated explanatory content.');
+    expect(
+      wrapper.findAll('[data-testid="insufficient-data-card"]'),
+    ).toHaveLength(1);
+    expect(wrapper.text()).not.toContain('Preview content is not available.');
+    expect(wrapper.find('[role="status"]').exists()).toBe(false);
+  });
+
   it('does not require prices or marketing statistics for packages', async () => {
     const wrapper = mount(PackagesSection, {
       props: {

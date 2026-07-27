@@ -1,13 +1,47 @@
 schema_version: 1
 inventory_status: pending_inventory
 path_policy: Record a repository path only after the asset exists and is verified.
+approvals:
+  - approval_id: ASSET-APPROVAL-P6A-TEAM
+    scope: Phase 6A Team Section
+    owner: Tom
+    approver: Tom
+    approval_date: "2026-07-27"
+    approval_task: TASK-P6A-002
+    publication_permission: confirmed
+    asset_approval: confirmed
+    source: Figma 06 Landing Page
+    figma_version: 1.0.0
+    section_node_id: "212:615"
+    inspected_avatar_nodes:
+      - "I212:615;196:704;192:43"
+      - "I212:615;196:710;192:49"
+      - "I212:615;196:716;192:49"
+      - "I212:615;196:722;192:49"
+    current_baseline_asset_type: text_initials
+    binary_image_nodes: []
+    repository_paths: []
+    notes:
+      - Tom confirmed names, titles, photograph publication permission, and Team asset approval.
+      - Read-only Figma inspection found initials-only avatars and no image fills in the active Team Section.
+      - Phase 6A must reproduce the active Figma baseline and must not invent photograph files or paths.
 categories:
   - id: logos
     name: Logos
-    source: unknown
-    owner: unknown
-    license_status: unknown
-    items: []
+    source: Figma 1.0.0
+    owner: Product owner / Tom
+    license_status: existing_product_brand_asset
+    items:
+      - asset_id: ASSET-LOGO-001
+        name: Original mi-goTo lockup light
+        source: Figma node "105:452"
+        owner: Product owner / Tom
+        repository_path: src/assets/brand/mi-goto-lockup-light.png
+        format: png
+        license: existing_product_brand_asset
+        version: 1.0.0
+        status: implemented
+        last_reviewed: "2026-07-27"
   - id: icons
     name: Icons
     source: unknown
@@ -56,6 +90,6 @@ required_item_fields:
   - status
   - last_reviewed
 notes:
-  - No file paths are recorded because no assets have been inventoried.
+  - Repository paths are recorded only for verified files.
   - Presence in Figma does not establish production usage or redistribution rights.
-
+  - The Phase 6A Team approval is explicit human authorization, but the active Figma baseline currently contains no binary Team photographs.

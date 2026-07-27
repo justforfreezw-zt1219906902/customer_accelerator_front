@@ -10,7 +10,16 @@ sections:
     variants: [Default, Compact, With Product Preview, Evidence Perspective]
     implementation_status: implemented
     design_review_status: approved
-    tests: [tests/unit/LandingSections.spec.ts]
+    page_instance_node_id: "212:22"
+    hero_copy_node_id: "I212:22;197:847"
+    validation_data_node_id: "I212:22;197:856"
+    product_stage_node_id: "I212:22;197:866"
+    account_intelligence_panel_node_id: "168:41"
+    insufficient_data_row_node_id: "222:32"
+    tests: [tests/unit/LandingSections.spec.ts, tests/unit/LandingPage.spec.ts]
+    notes:
+      - TASK-P6A-004 places validation data in the Hero copy before the Account Intelligence panel and contains the Budget Cycle insufficient-data row.
+      - Tom approved the Phase 6A Page instance under TASK-P6A-006.
   - section_id: SEC-LANDING-002
     figma_name: mi-goTo/Problem Section
     figma_node_id: "90:593"
@@ -57,10 +66,16 @@ sections:
     code_name: ProductPreviewSection
     planned_path: src/components/sections/ProductPreviewSection.vue
     dependencies: [core, composite, product]
-    variants: [Dashboard Preview, Insight Cards, Split Preview]
+    variants: [Dashboard Preview, Insight Cards, Split Preview, Principle Panel]
     implementation_status: implemented
     design_review_status: approved
-    tests: [tests/unit/LandingSections.spec.ts]
+    principle_page_node_id: "212:375"
+    principle_panel_node_id: "I212:375;194:819"
+    principle_component_node_id: "171:40"
+    tests: [tests/unit/LandingSections.spec.ts, tests/unit/LandingPage.spec.ts]
+    notes:
+      - TASK-P6A-004 added the Figma-derived Principle Panel variant so all INSUFFICIENT_DATA copy remains inside its intended card.
+      - Tom approved the Principle Page instance under TASK-P6A-006.
   - section_id: SEC-LANDING-007
     figma_name: mi-goTo/Pricing Section
     figma_node_id: "195:714"
@@ -77,16 +92,81 @@ sections:
   - section_id: SEC-LANDING-008
     figma_name: mi-goTo/Final CTA Section
     figma_node_id: "90:1157"
+    page_instance_node_id: "212:716"
     code_name: FinalCtaSection
     planned_path: src/components/sections/FinalCtaSection.vue
     dependencies: [core, composite, product]
     variants: [Primary, Compact, With supporting card]
     implementation_status: implemented
     design_review_status: approved
-    tests: [tests/unit/LandingSections.spec.ts]
+    tests:
+      - tests/unit/LandingSections.spec.ts
+      - tests/unit/LandingPage.spec.ts
+      - tests/e2e/phase-6a-visual-fidelity.spec.ts
+    notes:
+      - Primary Landing instance corrected and approved by Tom under TASK-P6A-006.
+  - section_id: SEC-LANDING-009
+    figma_name: Section / Team / Four Column
+    figma_node_id: "212:615"
+    code_name: TeamSection
+    planned_path: src/components/sections/TeamSection.vue
+    dependencies: [core, composite, product]
+    variants: [Four Column]
+    figma_version: 1.0.0
+    implementation_status: implemented
+    design_review_status: approved
+    content_status: approved
+    content_owner: Tom
+    asset_approval: confirmed
+    publication_permission: confirmed
+    tests: [tests/unit/Phase6ASections.spec.ts]
+    tests_status: passed
+    notes:
+      - The active Figma baseline uses text initials; no binary photograph nodes were found.
+      - Implemented under TASK-P6A-003; final Page-instance review was approved under TASK-P6A-006.
+      - Landing Page binds the unique stable anchor `team` explicitly; shared Footer target is `/#team`.
+      - Tom approved Team anchor and responsive behavior under TASK-P6A-006.
+  - section_id: SEC-LANDING-010
+    figma_name: Section / FAQ / Default
+    figma_node_id: "212:666"
+    code_name: FAQSection
+    planned_path: src/components/sections/FAQSection.vue
+    dependencies: [core, composite, product]
+    variants: [Default]
+    figma_version: 1.0.0
+    implementation_status: implemented
+    design_review_status: approved
+    content_status: approved
+    content_owner: Tom
+    tests: [tests/unit/Phase6ASections.spec.ts]
+    tests_status: passed
+    notes:
+      - Six exact questions and answers are approved from the active Figma instance properties.
+      - No additional FAQ entries may be invented.
+      - Landing Page binds the unique stable anchor `faq` explicitly.
+      - Tom approved FAQ identity and responsive behavior under TASK-P6A-006.
+  - section_id: SEC-LANDING-011
+    figma_name: mi-goTo/Trust Metrics Section
+    figma_node_id: "90:1103"
+    page_instance_node_id: "212:384"
+    code_name: TrustMetricsSection
+    planned_path: src/components/sections/TrustMetricsSection.vue
+    dependencies: [core, composite, product]
+    variants: [Evidence Metrics]
+    figma_version: 1.0.0
+    implementation_status: implemented
+    design_review_status: approved
+    content_status: approved
+    content_owner: Tom
+    tests: [tests/unit/Phase6ASections.spec.ts]
+    tests_status: passed
+    notes:
+      - Registered during Phase 6A because the approved Landing frame contains a dedicated evidence-metrics section.
 notes:
   - Figma page 05 Sections (87:2) was inspected read-only on 2026-07-25.
   - All Section content and marketing values are supplied through typed props or slots.
   - Responsive layout is fluid because the active Figma token baseline has no approved breakpoint values.
   - Tom approved Phase 4C and TASK-P6-001 on 2026-07-25.
   - DEV-2026-009 is an accepted known responsive difference.
+  - Tom approved TeamSection and FAQSection for Phase 6A under TASK-P6A-002 on 2026-07-27.
+  - TeamSection, FAQSection and TrustMetricsSection were implemented under TASK-P6A-003 and approved in the Phase 6A Page review under TASK-P6A-006.

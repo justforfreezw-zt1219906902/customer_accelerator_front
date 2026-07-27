@@ -62,6 +62,13 @@ const headingTag = computed(() => `h${props.intro.headingLevel ?? 1}`);
           {{ secondaryAction.label }}
         </AppButton>
       </div>
+      <div
+        v-if="$slots.validation"
+        class="hero-section__validation"
+        data-testid="hero-validation-data"
+      >
+        <slot name="validation" />
+      </div>
     </div>
     <div
       v-if="$slots.preview"
@@ -128,6 +135,10 @@ const headingTag = computed(() => `h${props.intro.headingLevel ?? 1}`);
   flex-wrap: wrap;
   align-items: center;
   gap: var(--spacing-16);
+}
+
+.hero-section__validation {
+  min-width: 0;
 }
 
 .hero-section__preview {

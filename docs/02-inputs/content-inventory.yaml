@@ -14,11 +14,13 @@ translation_status_values:
 content_items:
   - id: CONTENT-HEADER
     name: Header content
-    source: Phase 4A implementation instruction
+    source: Figma 06 Landing Page Header
+    source_node_id: "212:4"
+    source_component_node_id: "105:464"
     owner: Product owner / Tom
-    status: implemented_default_en_approved
+    status: implemented_from_active_figma_needs_review
     code_destination: src/content/header
-    locked_or_editable: locked
+    locked_or_editable: locked_to_active_figma_1.0.0
     preservation_required: true
     language: [EN, DE, CN]
     translation_status:
@@ -27,16 +29,19 @@ content_items:
       CN: missing
     figma_version: 1.0.0
     notes:
-      - Preserve existing approved Header content until a human-approved change exists.
+      - Tom explicitly confirmed on 2026-07-27 that active Figma controls Header visible content and presentation.
       - Default typed content is implemented in src/content/header/defaultHeaderContent.ts.
-      - Navigation destinations remain unresolved until Phase 5.
+      - Approved Figma order is THE PROBLEM, THE METHOD, PROOF, PACKAGES, WHY MI-GOTO, followed by DE, EN, CN and STRATEGY DISCUSSION.
+      - TASK-P4A-002 superseded the previous Phase 4A Header content baseline without changing Figma version 1.0.0.
   - id: CONTENT-FOOTER
     name: Footer content
-    source: Phase 4A implementation instruction
+    source: Figma 06 Landing Page Footer
+    source_node_id: "212:737"
+    source_component_node_id: "105:494"
     owner: Product owner / Tom
-    status: implemented_default_en_approved
+    status: implemented_from_active_figma_needs_review
     code_destination: src/content/footer
-    locked_or_editable: locked
+    locked_or_editable: locked_to_active_figma_1.0.0
     preservation_required: true
     language: [EN, DE, CN]
     translation_status:
@@ -45,24 +50,70 @@ content_items:
       CN: missing
     figma_version: 1.0.0
     notes:
-      - Preserve existing approved Footer content until a human-approved change exists.
+      - Tom explicitly confirmed on 2026-07-27 that active Figma controls Footer visible content and presentation.
       - Default typed content is implemented in src/content/footer/defaultFooterContent.ts.
-      - LinkedIn and internal destinations remain unresolved until Phase 5.
+      - External LinkedIn URL remains unresolved and must not be invented.
+      - TASK-P4A-002 superseded the previous Phase 4A Footer content baseline without changing Figma version 1.0.0.
   - id: CONTENT-LANDING
     name: Landing Page copy
-    source: unknown
-    owner: unknown
-    status: pending_source
-    code_destination: src/content/pages/landing
-    locked_or_editable: editable
+    source: Figma 06 Landing Page
+    source_version: Figma Design System 1.0.0
+    source_node_id: "212:2"
+    desktop_frame_node_id: "212:3"
+    owner: Tom
+    approver: Tom
+    approval_date: "2026-07-27"
+    approval_task: TASK-P6A-002
+    status: approved
+    code_destination: src/content/landing/en.ts
+    locked_or_editable: locked_to_approved_baseline
     preservation_required: false
     language: [EN, DE, CN]
     translation_status:
-      EN: unknown
-      DE: unknown
-      CN: unknown
+      EN: approved
+      DE: missing
+      CN: missing
     figma_version: 1.0.0
-    notes: []
+    publication_controls:
+      publication_status: approved
+      source_restriction: active_figma_baseline_only
+      pricing_status: commercially_confirmed
+      quantitative_claims_status: approved
+      qualitative_claims_status: approved
+      future_changes_require: approved_change_request
+    approved_content_scope:
+      - headings
+      - paragraphs
+      - navigation_text
+      - CTA_text
+      - feature_descriptions
+      - problem_and_solution_statements
+      - process_descriptions
+      - package_descriptions
+      - FAQ_questions_and_answers
+      - Team_names_and_roles
+      - quantitative_and_qualitative_marketing_content
+    approved_metric_nodes:
+      - "I212:22;197:858"
+      - "I212:22;197:861"
+      - "I212:22;197:864"
+      - "212:384"
+      - "I212:384;197:1289"
+      - "I212:384;197:1293"
+      - "I212:384;197:1297"
+    approved_pricing_nodes:
+      - "226:1076"
+      - "195:634"
+      - "195:659"
+      - "195:689"
+    approved_team_node: "212:615"
+    approved_faq_node: "212:666"
+    notes:
+      - Tom is the authoritative product and content owner for the initial Landing Page release.
+      - Approved values and wording must be copied exactly; no new or strengthened claims may be introduced.
+      - Exact prices, currencies, billing periods, and qualifiers are commercially confirmed.
+      - EN is the only active Frontend 1.0 language; DE and CN remain visible but unavailable.
+      - No translations may be invented.
   - id: CONTENT-WHY
     name: Why mi-goTo copy
     source: unknown
@@ -143,5 +194,5 @@ content_items:
     notes:
       - No expected Figma page has yet been registered for the Thank You Page.
 notes:
-  - Header and Footer code destinations now exist; all other destinations remain planned.
+  - Header and Footer code destinations exist; Landing EN content is approved for implementation under TASK-P6A-002.
   - Confirm whether CN maps to zh-CN or another locale before implementation.

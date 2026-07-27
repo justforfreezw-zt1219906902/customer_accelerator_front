@@ -8,6 +8,7 @@ export const fontWeights = {
   regular: 'var(--font-weight-regular)',
   medium: 'var(--font-weight-medium)',
   semibold: 'var(--font-weight-semibold)',
+  bold: 'var(--font-weight-bold)',
 } as const;
 
 export const typography = {
