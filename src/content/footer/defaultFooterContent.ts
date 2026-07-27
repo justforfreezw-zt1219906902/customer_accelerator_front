@@ -17,6 +17,7 @@ export interface FooterContent {
   groups: readonly FooterLinkGroup[];
   copyright: string;
   bottomStatement: string;
+  compactLinks?: readonly FooterLink[];
 }
 
 export const defaultFooterContent: FooterContent = {

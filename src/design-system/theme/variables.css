@@ -101,6 +101,7 @@
 
 :root {
   --content-max-width-landing: 1180px;
+  --content-padding-contact-desktop: 188px;
 
   --spacing-4: 4px;
   --spacing-8: 8px;

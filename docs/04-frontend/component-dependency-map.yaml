@@ -17,4 +17,7 @@ rules:
 notes:
   - Pages may use shared layout components classified through an approved architecture decision.
   - Cross-cutting router, content, state, and API boundaries must not bypass layer ownership.
-
+  - CR-2026-001 approves MarketingLayout and planned ContactLayout as layout-level composition of shared Composite chrome variants.
+  - ContactLayout may depend on AppNavbar and AppFooter; ContactPage must not duplicate their markup or styling.
+  - Typed Contact variants remain Composite components and may depend only on Core and Tokens.
+  - TASK-P4A-003 implements only the shared typed variants; route and ContactLayout selection remain TASK-P6B-003.

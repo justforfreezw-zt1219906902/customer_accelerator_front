@@ -159,6 +159,21 @@ Phase 4C:
 - Status: `needs_review`
 - Human approval: pending
 
+### Contact Header/Footer variants — 2026-07-28
+
+- Task: `TASK-P4A-003`
+- Change Request: `CR-2026-001`
+- Figma Contact Header: `314:44`
+- Figma Contact Footer: `257:1671`
+- Added typed `contact` variants while retaining Landing as the default.
+- Added exact typed Contact navigation and Footer content sources.
+- Landing code, content, container width, and route destinations remain
+  unchanged.
+- Contact layout/route integration is intentionally deferred to
+  `TASK-P6B-003`.
+- Status: `needs_review`
+- Human approval: pending
+
 ### Phase 4A
 
 - Figma page `03 Composite Components` (`68:2`) was inspected read-only.

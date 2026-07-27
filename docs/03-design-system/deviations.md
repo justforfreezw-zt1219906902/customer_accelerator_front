@@ -138,6 +138,29 @@ Each deviation must record:
 - Review date: 2026-07-25
 - Next review: Phase 4C human review or approval of breakpoint tokens
 
+### DEV-2026-010 — Contact Page shared layout chrome
+
+- Affected Figma: `1.0.0`, Contact Header `314:44`, compact Footer `257:1671`
+- Affected frontend: `0.0.1`, Contact route using `MarketingLayout`
+- Difference: The Contact main content follows frame `269:3`, while global
+  chrome remains the approved shared Header/Footer from the route registry.
+- Reason: Changing route layout or duplicating Page chrome is outside
+  `TASK-P6B-001` and conflicts with the approved shared-layout architecture.
+- Impact: Contact-specific Figma header/footer are not reproduced.
+- Approval: not accepted as final implementation
+- Human disposition: `not_accepted`
+- Decision reason: Contact Page must match its own approved Figma Header and
+  Footer.
+- Superseded by Change Request: `CR-2026-001`
+- Implementation correction complete: `true` under `TASK-P6B-003`
+- Corrected implementation: `/contact` now uses `ContactLayout` with the shared
+  Contact Header and Footer variants.
+- Human verification: `approved` by Tom on 2026-07-28
+- Human reviewer: Tom
+- Owner: Product owner / Tom
+- Review date: 2026-07-28
+- Resolution: corrected implementation approved; historical evidence retained
+
 ## Resolved deviations
 
 ### DEV-2026-005 — Text wordmark fallback

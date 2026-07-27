@@ -8,7 +8,7 @@ source:
   figma_version: 1.0.0
   version_status: initialized_from_project_input
 inspection:
-  status: phase_6a_visual_fix_needs_review
+  status: phase_6b_contact_ui_needs_review
   reviewer: Tom
   last_reviewed: "2026-07-27"
   notes:
@@ -19,7 +19,8 @@ inspection:
     - 03 Composite Components was inspected read-only and approved for Phase 4A.
     - 04 Product Components was inspected read-only and approved for Phase 4B.
     - 05 Sections was inspected read-only and approved for Phase 4C.
-    - 06 Landing Page was inspected read-only and implemented for Phase 6A; human visual review remains pending.
+    - 06 Landing Page was inspected, implemented and approved by Tom under TASK-P6A-006.
+    - 10 Contact Page was inspected read-only and implemented for Phase 6B under TASK-P6B-001; human review remains pending.
 pages:
   - page_name: 00 Foundation
     node_id: "0:1"
@@ -99,8 +100,8 @@ pages:
     node_id: "212:2"
     figma_version: 1.0.0
     code_target: src/pages/LandingPage.vue
-    status: implemented_needs_review
-    reviewer: Codex
+    status: implemented_and_approved
+    reviewer: Tom
     last_reviewed: "2026-07-27"
     notes:
       - Desktop frame is "212:3"; Header "212:4"; Footer "212:737".
@@ -110,11 +111,11 @@ pages:
       - Principle Section "212:375" contains panel "I212:375;194:819" from component "171:40".
       - Section instances are Hero "212:22", Problem "212:196", Solution "212:240", Method "212:314", Principle "212:375", Evidence Metrics "212:384", Benefits "212:410", Packages "212:454", Team "212:615", FAQ "212:666", and Final CTA "212:716".
       - Implemented under TASK-P6A-003 from exact Tom-approved English content.
-      - Human visual and implementation approval remains pending.
+      - Human visual and implementation approval completed under TASK-P6A-006.
       - Tom reviewed TASK-P6A-004 as changes required.
       - TASK-P6A-005 confirms active Figma 1.0.0 is authoritative for Header/Footer content and presentation.
       - Shared correction TASK-P4A-002 is implementation complete and needs human review.
-      - Landing regression TASK-P6A-006 remains pending.
+      - Landing regression TASK-P6A-006 was approved on 2026-07-27.
       - Figma does not independently define routes or anchor behavior.
   - page_name: 07 Why Mi-goTo Page
     node_id: "259:2"
@@ -149,10 +150,14 @@ pages:
     node_id: "269:2"
     figma_version: 1.0.0
     code_target: src/pages/ContactPage.vue
-    status: structure_inspected_interaction_spec_needs_review
+    status: implemented_needs_review
     reviewer: Codex
-    last_reviewed: "2026-07-25"
+    last_reviewed: "2026-07-28"
     notes:
       - Figma does not define the POST /api/lead contract.
       - Desktop frame is "269:3"; form panel "269:47"; submit action "269:99".
+      - Contact Header is "314:44"; Contact compact Footer is "257:1671".
+      - TASK-P4A-003 implemented typed shared component variants for these chrome nodes; ContactLayout integration remains TASK-P6B-003.
       - No loading, success, or error state frame was discovered.
+      - Main content node is "269:18"; trust column "269:19"; direct email "269:44".
+      - TASK-P6B-001 implements the static four-field UI without an API request.

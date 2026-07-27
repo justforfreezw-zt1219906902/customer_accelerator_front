@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
 
+import { contactFooterEn } from '../../src/content/footer/contact.en';
 import { defaultFooterContent } from '../../src/content/footer/defaultFooterContent';
 import AppFooter from '../../src/design-system/components/composite/AppFooter.vue';
 
@@ -28,6 +29,14 @@ describe('AppFooter', () => {
     ]) {
       expect(wrapper.text()).toContain(copy);
     }
+  });
+
+  it('uses the Landing presentation as its explicit default variant', () => {
+    const wrapper = mount(AppFooter);
+
+    expect(wrapper.classes()).toContain('app-footer--landing');
+    expect(wrapper.find('.app-footer__top').exists()).toBe(true);
+    expect(wrapper.find('.app-footer__contact').exists()).toBe(false);
   });
 
   it('renders confirmed links and emits unresolved navigation choices', async () => {
@@ -68,4 +77,47 @@ describe('AppFooter', () => {
       defaultFooterContent.bottomStatement,
     );
   });
+
+  it('renders exact Contact Footer content and order without Landing columns', () => {
+    const wrapper = mount(AppFooter, {
+      props: { variant: 'contact', content: contactFooterEn },
+    });
+
+    expect(wrapper.classes()).toContain('app-footer--contact');
+    expect(wrapper.get('.app-footer__contact').text()).toContain(
+      '© 2026 mi-goTo. All rights reserved.',
+    );
+    expect(
+      wrapper.findAll('.app-footer__contact-link').map((item) => item.text()),
+    ).toEqual(['Home', 'Imprint', 'Data protection']);
+    expect(
+      wrapper
+        .findAll('.app-footer__contact-link')
+        .map((item) => item.attributes('href')),
+    ).toEqual(['/', '/imprint', '/data-protection']);
+    expect(wrapper.find('.app-footer__top').exists()).toBe(false);
+    expect(wrapper.find('.app-footer__divider').exists()).toBe(false);
+    expect(wrapper.find('.app-footer__bottom-statement').exists()).toBe(false);
+  });
+
+  it('emits Contact legal navigation through the shared API', async () => {
+    const wrapper = mount(AppFooter, {
+      props: {
+        variant: 'contact',
+        content: contactFooterEn,
+        spaNavigation: true,
+      },
+    });
+
+    await wrapper.findAll('.app-footer__contact-link')[1].trigger('click');
+
+    expect(wrapper.emitted('navigate')?.[0]).toEqual([
+      contactFooterEn.compactLinks?.[1],
+    ]);
+  });
 });
+
+type FooterProps = InstanceType<typeof AppFooter>['$props'];
+// @ts-expect-error invalid Footer variants must be rejected by TypeScript
+const invalidFooterVariant: FooterProps = { variant: 'invalid' };
+void invalidFooterVariant;

@@ -1,5 +1,5 @@
 export type HeaderNavigationItemId =
-  'problem' | 'method' | 'proof' | 'packages' | 'why-mi-goto';
+  'home' | 'problem' | 'method' | 'proof' | 'packages' | 'why-mi-goto';
 
 export interface HeaderNavigationItem {
   id: HeaderNavigationItemId;

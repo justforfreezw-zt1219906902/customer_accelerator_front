@@ -1,10 +1,12 @@
-import { mount } from '@vue/test-utils';
+import { flushPromises, mount } from '@vue/test-utils';
 import { createMemoryHistory } from 'vue-router';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { RouteLocationNormalized } from 'vue-router';
 
 import { defaultFooterContent } from '../../src/content/footer/defaultFooterContent';
 import { defaultHeaderContent } from '../../src/content/header/defaultHeaderContent';
+import App from '../../src/App.vue';
+import ContactLayout from '../../src/layouts/ContactLayout.vue';
 import MarketingLayout from '../../src/layouts/MarketingLayout.vue';
 import { applyRouteAccessibility, createAppRouter } from '../../src/router';
 import { routeNames } from '../../src/router/routes';
@@ -91,6 +93,55 @@ describe('Phase 5 routing infrastructure', () => {
     await vi.waitFor(() => {
       expect(router.currentRoute.value.name).toBe(routeNames.imprint);
     });
+  });
+
+  it('composes the Contact variants once without Landing chrome', () => {
+    const router = createAppRouter(createMemoryHistory());
+    const wrapper = mount(ContactLayout, {
+      global: { plugins: [router] },
+      slots: {
+        default:
+          '<form class="lead-form"><input name="firstName"><input name="familyName"><input name="company"><input name="workEmail"></form>',
+      },
+    });
+
+    expect(wrapper.findAll('.app-navbar')).toHaveLength(1);
+    expect(wrapper.findAll('.app-footer')).toHaveLength(1);
+    expect(wrapper.get('.app-navbar').classes()).toContain(
+      'app-navbar--contact',
+    );
+    expect(wrapper.get('.app-footer').classes()).toContain(
+      'app-footer--contact',
+    );
+    expect(wrapper.get('.app-navbar').text()).toContain('HOME');
+    expect(wrapper.get('.app-navbar').text()).not.toContain('THE METHOD');
+    expect(wrapper.get('.app-footer').text()).toContain('Data protection');
+    expect(wrapper.get('.app-footer').text()).not.toContain(
+      'Technology should understand before it speaks.',
+    );
+    expect(wrapper.findAll('.lead-form')).toHaveLength(1);
+    expect(wrapper.findAll('input')).toHaveLength(4);
+  });
+
+  it('renders /contact through ContactLayout with title and focus behavior', async () => {
+    const router = createAppRouter(createMemoryHistory());
+    await router.push('/contact');
+    await router.isReady();
+
+    const wrapper = mount(App, {
+      attachTo: document.body,
+      global: { plugins: [router] },
+    });
+    await flushPromises();
+    await applyRouteAccessibility(router.currentRoute.value);
+
+    expect(wrapper.findComponent(ContactLayout).exists()).toBe(true);
+    expect(wrapper.findAll('.app-navbar--contact')).toHaveLength(1);
+    expect(wrapper.findAll('.app-footer--contact')).toHaveLength(1);
+    expect(wrapper.findAll('.lead-form')).toHaveLength(1);
+    expect(wrapper.findAll('input')).toHaveLength(4);
+    expect(document.title).toBe('Contact | mi-goTo');
+    expect(document.activeElement?.id).toBe('contact-page-title');
   });
 
   it('resolves same-page and cross-route anchors to Landing targets', () => {

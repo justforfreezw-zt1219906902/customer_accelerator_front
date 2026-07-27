@@ -344,13 +344,43 @@ requirements:
       schema: LeadRequest
     planned_frontend_files:
       - src/pages/ContactPage.vue
+      - src/components/contact/LeadForm.vue
+      - src/content/contact/en.ts
+      - src/types/lead.ts
     tests:
-      - tests/unit/LandingPage.spec.ts
-      - tests/unit/Phase6ASections.spec.ts
-    status: partially_implemented
+      - tests/unit/ContactPage.spec.ts
+      - tests/unit/LeadForm.spec.ts
+      - tests/e2e/phase-6b-contact-page.spec.ts
+    status: verified
     introduced_version: 0.0.1
-    verified_version: null
-    approval: not_approved
+    verified_version: 0.0.1
+    approval: approved_by_Tom_2026-07-28
+  - requirement_id: REQ-CONTACT-CHROME-001
+    description: Contact Page uses Contact-specific Header and Footer variants through shared component architecture.
+    source:
+      - docs/07-change-control/change-requests/CR-2026-001-contact-page-chrome-variants.md
+      - docs/03-design-system/contact-header-footer-variant-audit.md
+    figma_source:
+      page: 10 Contact Page
+      node_ids: ["314:44", "257:1671"]
+      comparison_node_ids: ["212:4", "212:737"]
+      status: inspected
+    backend_source: not_applicable
+    planned_frontend_files:
+      - src/design-system/components/composite/AppNavbar.vue
+      - src/design-system/components/composite/AppFooter.vue
+      - src/layouts/ContactLayout.vue
+      - src/router/routes.ts
+    tests:
+      - tests/unit/AppNavbar.spec.ts
+      - tests/unit/AppFooter.spec.ts
+      - tests/unit/Routing.spec.ts
+      - tests/e2e/phase-6b-contact-page.spec.ts
+      - tests/e2e/phase-6a-visual-fidelity.spec.ts
+    status: verified
+    introduced_version: 0.0.1
+    verified_version: 0.0.1
+    approval: approved_by_Tom_2026-07-28
   - requirement_id: REQ-CONTACT-002
     description: Contact form validates required fields.
     source:
@@ -365,14 +395,16 @@ requirements:
       contract_revision: 1
       schema: LeadRequest
     planned_frontend_files:
-      - src/pages/ContactPage.vue
+      - src/components/contact/LeadForm.vue
+      - src/utils/leadValidation.ts
     tests:
-      - tests/unit/LandingPage.spec.ts
-      - tests/unit/Phase6ASections.spec.ts
-    status: partially_implemented
+      - tests/unit/LeadValidation.spec.ts
+      - tests/unit/LeadForm.spec.ts
+      - tests/e2e/phase-6b-contact-page.spec.ts
+    status: verified
     introduced_version: 0.0.1
-    verified_version: null
-    approval: not_approved
+    verified_version: 0.0.1
+    approval: approved_by_Tom_2026-07-28
   - requirement_id: REQ-CONTACT-003
     description: Contact form submits POST /api/lead.
     source:

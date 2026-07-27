@@ -123,10 +123,10 @@ components:
     layer: composite
     dependencies: [core]
     variants:
-      variant: [Desktop, Mobile, Transparent, Solid]
+      variant: [Landing, Contact, Desktop, Mobile, Transparent, Solid]
     figma_version: 1.0.0
     implementation_status: implemented
-    design_review_status: approved_by_phase_6a_review
+    design_review_status: landing_approved_contact_needs_review
     tests: [tests/unit/AppNavbar.spec.ts]
     landing_page_instance_node_id: "212:4"
     landing_header_component_node_id: "105:464"
@@ -137,6 +137,10 @@ components:
       - Active Figma Header content and presentation are authoritative; see TASK-P6A-005 audit.
       - TASK-P4A-002 implemented the exact Figma navigation, hierarchy, language presentation, CTA, desktop geometry, and shared responsive menu.
       - Tom approved the shared Header regression at 1440px and 390px under TASK-P6A-006.
+      - CR-2026-001 approves a typed Contact variant based on node 314:44; implementation is pending TASK-P4A-003.
+      - TASK-P4A-003 implemented the typed Contact variant with exact HOME-only content and Figma-confirmed desktop geometry.
+    contact_header_node_id: "314:44"
+    contact_variant_status: implementation_complete_needs_review
   - component_id: CMP-COMPOSITE-005
     figma_name: mi-goTo/Footer
     figma_node_id: "68:517"
@@ -145,11 +149,11 @@ components:
     layer: composite
     dependencies: [core]
     variants:
-      variant: [Simple, Full]
+      variant: [Landing, Contact, Simple, Full]
       context: [Enterprise-Dark, Impact-Light]
     figma_version: 1.0.0
     implementation_status: implemented
-    design_review_status: approved_by_phase_6a_review
+    design_review_status: landing_approved_contact_needs_review
     tests: [tests/unit/AppFooter.spec.ts]
     landing_page_instance_node_id: "212:737"
     landing_footer_component_node_id: "105:494"
@@ -160,6 +164,10 @@ components:
       - Active Figma Footer content and presentation are authoritative; see TASK-P6A-005 audit.
       - TASK-P4A-002 implemented the exact Figma copy, four-column geometry, 1180px container, 38px structure, divider, bottom row, and responsive stacking.
       - Tom approved the shared Footer regression at 1440px and 390px under TASK-P6A-006.
+      - CR-2026-001 approves a typed Contact compact variant based on node 257:1671; implementation is pending TASK-P4A-003.
+      - TASK-P4A-003 implemented the typed Contact compact variant with copyright and Home/Imprint/Data protection links.
+    contact_footer_node_id: "257:1671"
+    contact_variant_status: implementation_complete_needs_review
   - component_id: CMP-PRODUCT-001
     figma_name: mi-goTo/Value Proposition Card
     figma_node_id: "82:37"

@@ -30,16 +30,22 @@ export const routes = [
         meta: { title: 'Why mi-goTo | mi-goTo' },
       },
       {
-        path: 'contact',
-        name: routeNames.contact,
-        component: () => import('../pages/ContactPage.vue'),
-        meta: { title: 'Contact | mi-goTo' },
-      },
-      {
         path: 'thank-you',
         name: routeNames.thankYou,
         component: () => import('../pages/ThankYouPage.vue'),
         meta: { title: 'Thank You | mi-goTo' },
+      },
+    ],
+  },
+  {
+    path: '/contact',
+    component: () => import('../layouts/ContactLayout.vue'),
+    children: [
+      {
+        path: '',
+        name: routeNames.contact,
+        component: () => import('../pages/ContactPage.vue'),
+        meta: { title: 'Contact | mi-goTo' },
       },
     ],
   },

@@ -46,6 +46,26 @@ Route-level composition of Sections and shared Composite/layout components.
 Pages own metadata and approved orchestration but do not duplicate lower-layer
 styles.
 
+### Shared page chrome variants
+
+Page layouts may select typed visual variants of shared Composite chrome when
+the active Figma Page defines a distinct Header or Footer. The approved
+Phase 6B direction is:
+
+```text
+MarketingLayout → AppNavbar (Landing/default) + AppFooter (Landing/full)
+ContactLayout   → AppNavbar (Contact) + AppFooter (Contact compact)
+LegalLayout     → approved legal chrome
+```
+
+`ContactLayout` was implemented under `TASK-P6B-003`. It composes the shared
+Contact variants without duplicating Header or Footer markup, while
+`ContactPage` remains responsible only for Contact content and form UI. Human
+Figma-fidelity approval remains pending.
+`AppNavbar` and `AppFooter` remain shared Composite owners. Pages must not copy
+raw Header/Footer markup, and a Page-specific variant must not change other
+routes implicitly.
+
 ## Cross-cutting boundaries
 
 - Router implements only the approved route and interaction maps.

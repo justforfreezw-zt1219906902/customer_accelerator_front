@@ -97,14 +97,32 @@ pages:
     planned_path: src/pages/ContactPage.vue
     route: /contact
     route_name: contact
-    layout: MarketingLayout
+    layout: ContactLayout
     title: Contact | mi-goTo
     access_status: public
     route_approval: approved
     anchor_behavior: cross_route_anchors_navigate_to_landing_then_scroll
     implementation_status: implemented
-    implementation_scope: temporary_route_shell_only
-    design_review_status: interaction_inspected_visual_review_pending
+    implementation_scope: phase_6b_static_contact_ui
+    design_review_status: approved
+    content_status: approved
+    form_panel_node_id: "269:47"
+    submit_action_node_id: "269:99"
+    api_integration_status: not_started_phase_7
+    current_code_layout: ContactLayout
+    target_layout_status: implemented_approved
+    contact_header_node_id: "314:44"
+    contact_footer_node_id: "257:1671"
+    change_request: CR-2026-001
+    next_component_task: null
+    integration_task: TASK-P6B-003
+    fields: [firstName, familyName, company, workEmail]
+    hidden_configured_fields: [owner]
+    tests:
+      - tests/unit/ContactPage.spec.ts
+      - tests/unit/LeadForm.spec.ts
+      - tests/unit/LeadValidation.spec.ts
+      - tests/e2e/phase-6b-contact-page.spec.ts
   - page_id: PAGE-THANK-YOU
     name: Thank You Page
     figma_page_name: not_applicable_no_figma_source

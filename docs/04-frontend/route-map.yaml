@@ -36,7 +36,7 @@ routes:
     layout: MarketingLayout
     title: mi-goTo
     figma_page_id: "212:2"
-    implementation_status: temporary_shell_implemented
+    implementation_status: implemented_approved
     anchor_behavior: supports_same_page_and_cross_route_targets
     access_status: public
     human_approval: approved
@@ -81,13 +81,21 @@ routes:
     page: Contact Page
     component: ContactPage
     planned_path: src/pages/ContactPage.vue
-    layout: MarketingLayout
+    layout: ContactLayout
     title: Contact | mi-goTo
     figma_page_id: "269:2"
-    implementation_status: temporary_shell_implemented
+    implementation_status: implemented_approved
     anchor_behavior: cross_route_anchors_navigate_to_landing_then_scroll
     access_status: public
     human_approval: approved
+    layout_decision:
+      status: implemented_approved
+      change_request: CR-2026-001
+      reviewer: Tom
+      date: "2026-07-28"
+      current_code_layout: ContactLayout
+      target_layout: ContactLayout
+      implementation_task: TASK-P6B-003
   - path: /thank-you
     route_name: thank-you
     page: Thank You Page

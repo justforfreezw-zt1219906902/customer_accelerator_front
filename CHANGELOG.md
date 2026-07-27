@@ -4,6 +4,10 @@
 
 ### Added
 
+- Typed Contact Header and Footer variants based on Figma nodes `314:44` and
+  `257:1671`, with exact Contact-specific EN content configuration and
+  component regression tests.
+
 - Phase 5B typed route infrastructure, shared Marketing and Legal layouts,
   accessible route title/focus and anchor behavior, unknown-route fallback,
   approved navigation destinations, and temporary Page shells.
@@ -272,6 +276,8 @@ artifacts follow [Semantic Versioning](https://semver.org/).
 
 ### Added
 
+- Phase 6B static Contact Page UI with exact Figma copy, four confirmed lead
+  fields, typed validation, accessible errors, loading protection, and tests.
 - Phase 6A Landing regression audit, impact matrix, Chromium evidence, and
   regression tests for the preview fallback, Team/FAQ anchors, and Final CTA.
 - Phase 6A visual-fidelity corrections for shared Header/Footer layout, Hero
@@ -296,6 +302,11 @@ artifacts follow [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+- Integrated the Figma-approved Contact Header and compact Footer variants
+  through a dedicated shared `ContactLayout`, while preserving Landing and
+  Legal route chrome.
+- Updated `/contact` routing, accessibility focus behavior, and Contact/Landing
+  Chromium regression coverage for `TASK-P6B-003`.
 - Removed the unapproved Landing preview fallback from the DOM, explicitly
   bound Team/FAQ anchors, and aligned the Primary Final CTA with Figma
   `212:716`.

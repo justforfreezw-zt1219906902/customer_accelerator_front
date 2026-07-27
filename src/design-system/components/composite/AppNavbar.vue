@@ -9,7 +9,8 @@ import {
 } from '../../../content/header/defaultHeaderContent';
 import { AppButton, AppSectionContainer } from '../core';
 
-type NavbarVariant = 'desktop' | 'mobile' | 'transparent' | 'solid';
+export type NavbarVariant =
+  'landing' | 'contact' | 'desktop' | 'mobile' | 'transparent' | 'solid';
 
 const props = withDefaults(
   defineProps<{
@@ -21,7 +22,7 @@ const props = withDefaults(
   }>(),
   {
     content: () => defaultHeaderContent,
-    variant: 'desktop',
+    variant: 'landing',
     activeItem: undefined,
     activeLanguage: 'en',
     spaNavigation: false,
@@ -109,6 +110,7 @@ onBeforeUnmount(() =>
       </span>
 
       <button
+        v-if="variant !== 'contact'"
         ref="menuButton"
         class="app-navbar__menu-button"
         type="button"
@@ -120,7 +122,11 @@ onBeforeUnmount(() =>
         <span aria-hidden="true">☰</span>
       </button>
 
-      <div id="app-navbar-menu" class="app-navbar__menu">
+      <div
+        id="app-navbar-menu"
+        class="app-navbar__menu"
+        :class="{ 'app-navbar__menu--contact': variant === 'contact' }"
+      >
         <nav class="app-navbar__navigation" aria-label="Primary navigation">
           <component
             :is="item.href ? 'a' : 'button'"
@@ -137,7 +143,7 @@ onBeforeUnmount(() =>
           </component>
         </nav>
 
-        <div class="app-navbar__actions">
+        <div v-if="variant !== 'contact'" class="app-navbar__actions">
           <div class="app-navbar__languages" aria-label="Language selection">
             <button
               v-for="language in content.languages"
@@ -183,6 +189,7 @@ onBeforeUnmount(() =>
 }
 
 .app-navbar--desktop,
+.app-navbar--landing,
 .app-navbar--solid {
   border-radius: 0;
 }
@@ -190,6 +197,21 @@ onBeforeUnmount(() =>
 .app-navbar__container {
   padding: 22px clamp(var(--spacing-24), 9vw, 130px);
   background: transparent;
+}
+
+.app-navbar--contact .app-navbar__container {
+  padding: 22px var(--content-padding-contact-desktop);
+}
+
+.app-navbar--contact
+  .app-navbar__container
+  :deep(.app-section-container__content) {
+  justify-content: flex-start;
+  gap: var(--spacing-32);
+}
+
+.app-navbar__menu--contact {
+  display: flex;
 }
 
 .app-navbar__container :deep(.app-section-container__content) {
@@ -319,6 +341,10 @@ onBeforeUnmount(() =>
     padding: var(--spacing-16) var(--spacing-24);
   }
 
+  .app-navbar--contact .app-navbar__container {
+    padding: var(--spacing-16) var(--spacing-24);
+  }
+
   .app-navbar__container :deep(.app-section-container__content) {
     flex-wrap: wrap;
     gap: var(--spacing-16);
@@ -335,6 +361,18 @@ onBeforeUnmount(() =>
     align-items: stretch;
     flex-direction: column;
     padding-bottom: var(--spacing-16);
+  }
+
+  .app-navbar__menu--contact {
+    display: flex;
+    width: auto;
+    flex: 0 0 auto;
+    padding: 0;
+  }
+
+  .app-navbar__menu--contact .app-navbar__navigation {
+    flex-direction: row;
+    gap: var(--spacing-32);
   }
 
   .app-navbar--open .app-navbar__menu {

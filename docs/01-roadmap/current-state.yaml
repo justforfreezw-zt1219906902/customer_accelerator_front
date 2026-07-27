@@ -6,11 +6,7 @@ current_phase:
   name: Static Pages
   status: in_progress
 
-current_task:
-  id: TASK-P6B-001
-  name: Phase 6B Contact Page UI
-  status: planned
-  note: Phase 6A is approved; Phase 6B is the next permitted static Page task.
+current_task: null
 environment: local
 
 versions:
@@ -28,7 +24,7 @@ compatibility:
 
 blockers: []
 next_gate:
-  name: Phase 6B Contact Page UI Review
+  name: Phase 6C Data Protection Page Review
   human_approval_required: true
 
 management_readiness:
@@ -230,7 +226,52 @@ phase_6a:
     reviewed_task: TASK-P6A-006
     evidence: docs/08-quality/test-reports/TASK-P6A-006-phase-6a-approval-2026-07-27.md
 
-last_updated: "2026-07-27"
+phase_6b:
+  implementation_status: approved
+  task: TASK-P6B-003
+  figma_inspection: completed_read_only
+  figma_page: "10 Contact Page (269:2)"
+  desktop_frame: "269:3"
+  form_panel: "269:47"
+  api_integration: not_started
+  visible_fields: [firstName, familyName, company, workEmail]
+  owner_field: configured_later_not_user_editable
+  validation:
+    management: passed
+    typecheck: passed
+    lint: passed
+    unit_tests: 88_passed
+    build: passed
+    end_to_end_tests: 6_passed_chromium_landing_and_contact
+  task_status: approved
+  reviewed_task: TASK-P6B-003
+  prior_review_result: changes_required
+  review_result: approved
+  human_reviewer: Tom
+  review_date: "2026-07-28"
+  change_request: CR-2026-001
+  change_request_status: approved
+  deviation: DEV-2026-010
+  deviation_disposition: resolved_by_approved_implementation
+  completed_component_task: TASK-P4A-003
+  contact_header_variant: implementation_complete
+  contact_footer_variant: implementation_complete
+  integration_task: TASK-P6B-003
+  contact_layout: implementation_complete
+  route_integration: implementation_complete
+  human_approval: approved
+  approval:
+    reviewer: Tom
+    result: APPROVED
+    date: "2026-07-28"
+    reviewed_task: TASK-P6B-003
+    notes: good
+    evidence: docs/08-quality/test-reports/TASK-P6B-003-phase-6b-approval-2026-07-28.md
+  next_task: null
+  next_gate: Phase 6C Data Protection Page Review
+  evidence: docs/07-change-control/instructions/TASK-P6B-003-contact-layout-integration.md
+
+last_updated: "2026-07-28"
 notes:
   - The Phase 0 repository audit and TASK-P0-001 were approved by Tom.
   - Backend 0.0.0 is a non-release placeholder pending official version assignment.
@@ -275,3 +316,11 @@ notes:
   - TASK-P6A-006 entered needs_review while ISSUE-2026-003 remained open pending Tom's full browser/Figma review.
   - Tom approved TASK-P6A-006 and Phase 6A after the final 1440px and 390px browser/Figma review.
   - ISSUE-2026-003 is resolved; TASK-P6B-001 is the next permitted task.
+  - TASK-P6B-001 implemented the static Contact UI and client validation without an API request.
+  - Tom reviewed TASK-P6B-001 as CHANGES REQUIRED because Contact must use its own Figma Header and Footer.
+  - CR-2026-001 approves typed shared Contact chrome variants and a planned ContactLayout.
+  - DEV-2026-010 is not accepted as the final implementation.
+  - TASK-P4A-003 and TASK-P6B-003 completed the Contact shared chrome and layout integration.
+  - Phase 6B reached needs_review after TASK-P6B-003 completed the Contact Figma-fidelity correction.
+  - TASK-P4A-003 implemented the typed shared Contact Header/Footer variants used by the approved Contact Page.
+  - Tom approved TASK-P6B-003 and Phase 6B on 2026-07-28; Phase 6C is the next subphase.

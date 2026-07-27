@@ -155,6 +155,34 @@ as deviations.
 - Next review date: When the breakpoint baseline changes
 - Linked record: `PHASE-004C-sections.md`
 
+### DEV-2026-010 — Contact Page shared layout chrome
+
+- Reason: The approved Page Registry and routing architecture assign
+  `MarketingLayout` to `/contact`, while Figma desktop frame `269:3` contains a
+  Contact-specific HOME header and compact editorial footer.
+- Affected Figma: `1.0.0`, nodes `314:44` and `257:1671`
+- Affected Frontend: `0.0.1`, `src/pages/ContactPage.vue` as a child of
+  `src/layouts/MarketingLayout.vue`
+- Impact: The Contact main content and form match Figma, but the Page continues
+  to use the approved shared Header and Footer rather than Figma's special
+  chrome.
+- Alternatives: Change the Contact route layout; duplicate chrome inside the
+  Page; preserve the approved shared route architecture.
+- Resolution or expiry: Implementation correction completed by
+  `TASK-P6B-003` and approved by Tom on 2026-07-28.
+- Owner: Product owner / Tom
+- Approval: approved corrected implementation
+- Review date: 2026-07-28
+- Human disposition: `not_accepted`
+- Decision reason: Contact Page must match its own approved Figma Header and
+  Footer.
+- Superseded by Change Request: `CR-2026-001`
+- Implementation correction complete: `true`
+- Correcting task: `TASK-P6B-003`
+- Human reviewer: Tom
+- Next review date: none; resolved history retained
+- Linked record: `PHASE-006B-contact-page-ui.md`
+
 ## Resolved deviations
 
 ### DEV-2026-005 — Text wordmark fallback

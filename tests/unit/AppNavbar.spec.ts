@@ -2,6 +2,7 @@ import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
 
 import { defaultHeaderContent } from '../../src/content/header/defaultHeaderContent';
+import { contactNavigationEn } from '../../src/content/navigation/contact.en';
 import AppNavbar from '../../src/design-system/components/composite/AppNavbar.vue';
 
 describe('AppNavbar', () => {
@@ -22,6 +23,15 @@ describe('AppNavbar', () => {
     ]) {
       expect(wrapper.text()).toContain(label);
     }
+  });
+
+  it('uses the Landing presentation as its explicit default variant', () => {
+    const wrapper = mount(AppNavbar);
+
+    expect(wrapper.classes()).toContain('app-navbar--landing');
+    expect(
+      wrapper.findAll('.app-navbar__link').map((item) => item.text()),
+    ).toEqual(defaultHeaderContent.navigation.map((item) => item.label));
   });
 
   it('preserves the exact approved item order and landing chrome structure', () => {
@@ -81,4 +91,41 @@ describe('AppNavbar', () => {
     await languages[0].trigger('click');
     expect(wrapper.emitted('languageChange')).toBeUndefined();
   });
+
+  it('renders the exact Contact Header content and order without Landing actions', () => {
+    const wrapper = mount(AppNavbar, {
+      props: { variant: 'contact', content: contactNavigationEn },
+    });
+
+    expect(wrapper.classes()).toContain('app-navbar--contact');
+    expect(wrapper.get('.app-navbar__brand-text').text()).toBe('mi-goTo');
+    expect(
+      wrapper.findAll('.app-navbar__link').map((item) => item.text()),
+    ).toEqual(['HOME']);
+    expect(wrapper.get('.app-navbar__link').attributes('href')).toBe('/');
+    expect(wrapper.find('.app-navbar__languages').exists()).toBe(false);
+    expect(wrapper.find('.app-navbar__actions').exists()).toBe(false);
+    expect(wrapper.find('.app-navbar__menu-button').exists()).toBe(false);
+  });
+
+  it('emits Contact HOME navigation through the shared API', async () => {
+    const wrapper = mount(AppNavbar, {
+      props: {
+        variant: 'contact',
+        content: contactNavigationEn,
+        spaNavigation: true,
+      },
+    });
+
+    await wrapper.get('.app-navbar__link').trigger('click');
+
+    expect(wrapper.emitted('navigate')?.[0]).toEqual([
+      contactNavigationEn.navigation[0],
+    ]);
+  });
 });
+
+type NavbarProps = InstanceType<typeof AppNavbar>['$props'];
+// @ts-expect-error invalid Navbar variants must be rejected by TypeScript
+const invalidNavbarVariant: NavbarProps = { variant: 'invalid' };
+void invalidNavbarVariant;

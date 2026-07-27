@@ -101,7 +101,8 @@ the last approved content and mapping; preserve a legal-content audit trail.
 Phase 6: `in_progress`
 
 - Phase 6A: `approved`
-- Phases 6B–6E: `not_started`
+- Phase 6B: `approved`
+- Phases 6C–6E: `not_started`
 
 Phase 6A was opened under `TASK-P6A-001` on 2026-07-27. The required Figma
 Landing Page was inspected read-only, but implementation stopped before code
@@ -146,11 +147,34 @@ Tom approved `TASK-P6A-006` and Phase 6A on 2026-07-27 after completing the
 full 1440px and 390px browser/Figma review. `ISSUE-2026-003` is resolved.
 Phase 6 remains `in_progress`; Phase 6B Contact Page is next.
 
+`TASK-P6B-001` implemented the Contact Page static UI from Figma `269:3`.
+The Page contains only the four confirmed visible fields, accessible
+client-side validation, loading/double-submit infrastructure, and no backend
+request. Tom reviewed the visual result as `CHANGES REQUIRED` on 2026-07-28:
+the Contact Page must use its own Figma Header `314:44` and Footer `257:1671`
+rather than the Landing presentation.
+
+`CR-2026-001` approves Contact-specific typed variants in the shared
+`AppNavbar` and `AppFooter`, followed by a planned `ContactLayout`. Landing
+chrome remains unchanged. `DEV-2026-010` is retained as evidence but was not
+accepted as the final result. `TASK-P4A-003` is next; `TASK-P6B-003` will
+integrate the approved variants. Phase 6B is `in_progress`.
+
+`TASK-P4A-003` implemented the approved shared Contact Header and Footer
+variants. `TASK-P6B-003` then implemented `ContactLayout`, assigned `/contact`
+to it, and preserved the Contact form behavior without API calls. Automated
+unit, Chromium, build, management, and regression evidence passes. Tom approved
+`TASK-P6B-003` and Phase 6B on 2026-07-28.
+
 ## Human Approval
 
 Phase 6A: `approved` by Tom on 2026-07-27.
 
 Phase 6 overall: `pending`; Phases 6B–6E remain.
+
+Phase 6B implementation approval: `approved` by Tom on 2026-07-28 for
+`TASK-P6B-003`. The prior `TASK-P6B-002` changes-required result remains
+preserved as decision history.
 
 ## Completion Report
 
@@ -311,4 +335,67 @@ stopped at the content approval gate.
 - Phase 6: remains in progress
 - Next task: `TASK-P6B-001`
 - Next Gate: Phase 6B Contact Page UI Review
+- Application code modified by this approval task: none
+
+### Phase 6B Contact Page UI — 2026-07-28
+
+- Task: `TASK-P6B-001`
+- Figma Page: `10 Contact Page` (`269:2`)
+- Desktop frame: `269:3`
+- Main content: `269:18`
+- Trust column: `269:19`
+- Form panel: `269:47`
+- Submit action: `269:99`
+- Implemented exact Figma English Contact copy through typed configuration.
+- Implemented visible fields `firstName`, `familyName`, `company`, and
+  `workEmail`; no owner, website, phone, or message input is exposed.
+- `owner` remains an optional future configured value; it is not in form state.
+- Added required/email validation, accessible field associations and summary,
+  submitting state, and duplicate-submit prevention.
+- No API request, form-data logging, success routing, or backend error handling
+  was implemented.
+- Validation: typecheck, lint, 80 unit/component tests, build, and six
+  Playwright Chromium tests passed; two Chromium tests cover Contact desktop
+  and mobile.
+- Human approval: pending.
+- Phase 6B: `needs_review`.
+- Phase 6: remains `in_progress`.
+
+### Phase 6B Contact Layout Integration — 2026-07-28
+
+- Task: `TASK-P6B-003`
+- Figma composition: Header `314:44` → main `269:18` / form `269:47` →
+  Footer `257:1671`
+- Added `ContactLayout` using the shared Contact variants of `AppNavbar` and
+  `AppFooter`; no Page-level chrome was duplicated.
+- Assigned `/contact` to `ContactLayout`; Landing and Legal layout assignments
+  remain unchanged.
+- Preserved the four-field Contact form, validation, loading protection, and
+  no-API behavior.
+- Validation: management suite, documentation, version, compatibility,
+  registries, OpenAPI, typecheck, ESLint, 88 unit/component tests, six
+  Playwright Chromium tests, production build, and Git diff check.
+- Browser evidence targets: Contact Header, form, Footer, and full Page at
+  1440px and 390px; Landing and Legal shared-layout regression.
+- Human approval: pending.
+- Phase 6B: `needs_review`.
+- Next Gate: Phase 6B Contact Figma Fidelity Review.
+
+### Phase 6B Contact Page approval — 2026-07-28
+
+- Reviewed task: `TASK-P6B-003`
+- Reviewer: Tom
+- Result: `APPROVED`
+- Review notes: `good`
+- Approved scope: Contact static UI, shared Contact Header/Footer variants,
+  `ContactLayout`, `/contact` layout assignment, accessibility behavior, and
+  Landing/Legal regression protection
+- Preserved evidence: 88 unit/component tests, six Playwright Chromium tests,
+  management validation, documentation/version/compatibility/registry/OpenAPI
+  validation, typecheck, ESLint, production build, and Git diff check
+- `DEV-2026-010`: resolved by the approved corrected implementation
+- `CR-2026-001`: implementation approved
+- Phase 6B: `approved`
+- Phase 6: remains `in_progress`
+- Next Gate: Phase 6C Data Protection Page Review
 - Application code modified by this approval task: none

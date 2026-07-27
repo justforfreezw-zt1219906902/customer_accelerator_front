@@ -298,9 +298,68 @@ phases:
             evidence: docs/07-change-control/instructions/TASK-P6A-006-landing-regression-fix.md
       - id: phase-6b
         name: Contact Page
-        status: planned
-        next_task: TASK-P6B-001
-        next_gate: Phase 6B Contact Page UI Review
+        status: approved
+        current_task: TASK-P6B-003
+        next_task: null
+        integration_task: TASK-P6B-003
+        next_gate: Phase 6C Data Protection Page Review
+        human_approval: approved
+        approval:
+          reviewer: Tom
+          result: APPROVED
+          date: "2026-07-28"
+          reviewed_task: TASK-P6B-003
+          notes: good
+          evidence: docs/08-quality/test-reports/TASK-P6B-003-phase-6b-approval-2026-07-28.md
+        readiness:
+          figma_read_only_inspection: complete
+          static_contact_ui: complete
+          backend_api_calls: not_started
+          typecheck: passed
+          lint: passed
+          unit_tests: 88_passed
+          build: passed
+          end_to_end_tests: 6_passed_chromium_landing_and_contact
+        tasks:
+          - id: TASK-P6B-001
+            name: Contact Page User Interface
+            status: needs_review
+            review_result: changes_required
+            reviewer: Tom
+            review_date: "2026-07-28"
+            human_approval: pending
+            evidence: docs/07-change-control/instructions/PHASE-006B-contact-page-ui.md
+          - id: TASK-P6B-002
+            name: Contact Chrome Human Review and Decision
+            status: needs_review
+            reviewed_task: TASK-P6B-001
+            review_result: changes_required
+            reviewer: Tom
+            review_date: "2026-07-28"
+            change_request: CR-2026-001
+            deviation_disposition: DEV-2026-010_not_accepted
+            application_code_changes: none
+            evidence: docs/07-change-control/instructions/TASK-P6B-002-contact-chrome-decision.md
+          - id: TASK-P4A-003
+            name: Contact Header and Footer Shared Variants
+            status: needs_review
+            change_request: CR-2026-001
+            contact_header_variant: implementation_complete
+            contact_footer_variant: implementation_complete
+            human_approval: pending
+            evidence: docs/07-change-control/instructions/TASK-P4A-003-contact-header-footer-variants.md
+            next_gate: Contact Header and Footer Variant Review
+          - id: TASK-P6B-003
+            name: Contact Layout and Route Integration
+            status: approved
+            depends_on: TASK-P4A-003
+            change_request: CR-2026-001
+            implementation_correction_complete: true
+            human_approval: approved
+            reviewer: Tom
+            approval_date: "2026-07-28"
+            review_notes: good
+            evidence: docs/07-change-control/instructions/TASK-P6B-003-contact-layout-integration.md
       - id: phase-6c
         name: Data Protection Page
         status: not_started
@@ -319,4 +378,4 @@ phases:
     status: not_started
     human_approval: pending
 
-last_updated: "2026-07-27"
+last_updated: "2026-07-28"

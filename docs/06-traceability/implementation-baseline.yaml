@@ -1,6 +1,6 @@
 schema_version: 1
 baseline_id: DS1.0.0_API0.0.0_FE0.0.1
-status: phase_6a_approved
+status: phase_6b_contact_ui_needs_review
 targeted_versions:
   figma: 1.0.0
   backend: 0.0.0
@@ -124,6 +124,12 @@ implemented_pages:
     file: src/pages/LandingPage.vue
     figma_node_id: "212:2"
     status: approved
+  - page_id: PAGE-CONTACT
+    route_name: contact
+    path: /contact
+    file: src/pages/ContactPage.vue
+    figma_node_id: "269:2"
+    status: needs_review
 implemented_endpoints: []
 implemented_route_infrastructure:
   - src/router/index.ts
@@ -141,9 +147,6 @@ implemented_route_shells:
   - route_name: data-protection
     path: /data-protection
     file: src/pages/DataProtectionPage.vue
-  - route_name: contact
-    path: /contact
-    file: src/pages/ContactPage.vue
   - route_name: thank-you
     path: /thank-you
     file: src/pages/ThankYouPage.vue
@@ -169,7 +172,7 @@ validation:
   unit_tests: passed
   build: passed
   dependency_audit: passed
-  end_to_end_tests: affected_phase_6a_suite_passed
+  end_to_end_tests: phase_6a_and_phase_6b_suites_passed
   environments_tested: []
 phase_6a:
   status: approved
@@ -202,6 +205,48 @@ phase_6a:
     shared_fix_task: TASK-P4A-002
     landing_regression_task: TASK-P6A-006
     impact_matrix: docs/06-traceability/phase-6a-regression-impact-matrix.yaml
+phase_6b:
+  status: approved
+  task: TASK-P6B-003
+  figma_page: "10 Contact Page (269:2)"
+  desktop_frame: "269:3"
+  form_panel: "269:47"
+  implementation_status: static_ui_complete
+  human_approval: approved
+  approval:
+    reviewer: Tom
+    date: "2026-07-28"
+    reviewed_task: TASK-P6B-003
+    evidence: docs/08-quality/test-reports/TASK-P6B-003-phase-6b-approval-2026-07-28.md
+  implemented_files:
+    - src/pages/ContactPage.vue
+    - src/components/contact/LeadForm.vue
+    - src/content/contact/en.ts
+    - src/types/lead.ts
+    - src/utils/leadValidation.ts
+    - src/content/navigation/contact.en.ts
+    - src/content/footer/contact.en.ts
+    - src/design-system/components/composite/AppNavbar.vue
+    - src/design-system/components/composite/AppFooter.vue
+    - src/layouts/ContactLayout.vue
+    - src/router/routes.ts
+  contact_chrome:
+    change_request: CR-2026-001
+    header_node: "314:44"
+    footer_node: "257:1671"
+    shared_variants: implementation_complete_needs_review
+    layout_integration: approved
+  api_calls: []
+  tests:
+    files: 26
+    assertions: 88
+    status: passed
+  validation:
+    typecheck: passed
+    lint: passed
+    unit_tests: passed
+    build: passed
+    end_to_end_tests: 6_passed_chromium_landing_and_contact
 approval_status: not_approved_pending_backend_version
 phase_1_approval:
   status: approved

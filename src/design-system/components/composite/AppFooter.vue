@@ -7,7 +7,7 @@ import {
 import logoLockup from '../../../assets/brand/mi-goto-lockup-light.png';
 import { AppSectionContainer } from '../core';
 
-type FooterVariant = 'simple' | 'full';
+export type FooterVariant = 'landing' | 'contact' | 'simple' | 'full';
 type FooterContext = 'enterprise-dark' | 'impact-light';
 
 const props = withDefaults(
@@ -19,7 +19,7 @@ const props = withDefaults(
   }>(),
   {
     content: () => defaultFooterContent,
-    variant: 'full',
+    variant: 'landing',
     context: 'enterprise-dark',
     spaNavigation: false,
   },
@@ -51,7 +51,7 @@ const handleNavigation = (event: MouseEvent, link: FooterLink) => {
       content-width="landing"
       divider="without-top-divider"
     >
-      <div class="app-footer__top">
+      <div v-if="variant !== 'contact'" class="app-footer__top">
         <div class="app-footer__identity">
           <strong class="app-footer__brand">
             <img
@@ -66,7 +66,10 @@ const handleNavigation = (event: MouseEvent, link: FooterLink) => {
           <p class="app-footer__description">{{ content.description }}</p>
         </div>
 
-        <div v-if="variant === 'full'" class="app-footer__groups">
+        <div
+          v-if="variant === 'landing' || variant === 'full'"
+          class="app-footer__groups"
+        >
           <section
             v-for="group in content.groups"
             :key="group.id"
@@ -96,13 +99,30 @@ const handleNavigation = (event: MouseEvent, link: FooterLink) => {
         </div>
       </div>
 
-      <div class="app-footer__divider" />
+      <div v-if="variant !== 'contact'" class="app-footer__divider" />
 
-      <div class="app-footer__bottom">
+      <div v-if="variant !== 'contact'" class="app-footer__bottom">
         <span>{{ content.copyright }}</span>
         <span class="app-footer__bottom-statement">
           {{ content.bottomStatement }}
         </span>
+      </div>
+
+      <div v-else class="app-footer__contact">
+        <span>{{ content.copyright }}</span>
+        <nav aria-label="Footer navigation">
+          <ul class="app-footer__contact-links">
+            <li v-for="link in content.compactLinks ?? []" :key="link.id">
+              <a
+                class="app-footer__contact-link"
+                :href="link.href"
+                @click="handleNavigation($event, link)"
+              >
+                {{ link.label }}
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </AppSectionContainer>
   </footer>
@@ -119,6 +139,54 @@ const handleNavigation = (event: MouseEvent, link: FooterLink) => {
   gap: 38px;
   padding: 76px clamp(var(--spacing-24), 9vw, 130px) 34px;
   background: var(--color-bg-surface);
+}
+
+.app-footer--contact .app-footer__container {
+  min-height: 120px;
+  padding: var(--spacing-32) var(--content-padding-contact-desktop);
+}
+
+.app-footer--contact
+  .app-footer__container
+  :deep(.app-section-container__content) {
+  display: block;
+}
+
+.app-footer__contact {
+  display: flex;
+  min-height: 56px;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--color-text-muted);
+  font-family: var(--font-family-inter), sans-serif;
+  font-size: 13px;
+  font-weight: var(--font-weight-regular);
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.app-footer__contact-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.app-footer__contact-link {
+  color: var(--color-brand-light);
+  text-decoration: none;
+}
+
+.app-footer__contact-link:hover {
+  color: var(--color-text-primary);
+}
+
+.app-footer__contact-link:focus-visible {
+  border-radius: var(--radius-sm);
+  outline: none;
+  box-shadow: var(--shadow-focus-ring);
 }
 
 .app-footer__container :deep(.app-section-container__content) {
@@ -252,6 +320,22 @@ const handleNavigation = (event: MouseEvent, link: FooterLink) => {
 @media (max-width: 64rem) {
   .app-footer__container {
     padding: var(--spacing-48) var(--spacing-24) var(--spacing-32);
+  }
+
+  .app-footer--contact .app-footer__container {
+    min-height: auto;
+    padding: var(--spacing-32) var(--spacing-24);
+  }
+
+  .app-footer__contact {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: var(--spacing-24);
+    white-space: normal;
+  }
+
+  .app-footer__contact-links {
+    flex-wrap: wrap;
   }
 
   .app-footer__top {

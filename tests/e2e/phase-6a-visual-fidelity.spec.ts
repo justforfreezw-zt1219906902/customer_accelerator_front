@@ -84,13 +84,12 @@ test('captures shared Header and Footer mobile evidence', async ({
   });
 });
 
-test('uses one corrected shared Header and Footer across every consumer', async ({
+test('uses the approved Landing Header and Footer across default consumers', async ({
   page,
 }) => {
   for (const path of [
     '/',
     '/why-mi-goto',
-    '/contact',
     '/thank-you',
     '/imprint',
     '/data-protection',

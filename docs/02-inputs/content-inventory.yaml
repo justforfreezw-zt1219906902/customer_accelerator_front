@@ -54,6 +54,44 @@ content_items:
       - Default typed content is implemented in src/content/footer/defaultFooterContent.ts.
       - External LinkedIn URL remains unresolved and must not be invented.
       - TASK-P4A-002 superseded the previous Phase 4A Footer content baseline without changing Figma version 1.0.0.
+  - id: CONTENT-CONTACT-HEADER
+    name: Contact Header content
+    source: Figma 10 Contact Page Header
+    source_node_id: "314:44"
+    owner: Product owner / Tom
+    status: implemented_needs_review
+    code_destination: src/content/navigation/contact.en.ts
+    locked_or_editable: locked_to_active_figma_1.0.0
+    preservation_required: true
+    language: [EN]
+    translation_status:
+      EN: implemented
+      DE: not_required
+      CN: not_required
+    figma_version: 1.0.0
+    notes:
+      - Exact visible navigation is HOME to /.
+      - No Contact language controls or CTA are present in node 314:44.
+      - Implemented by TASK-P4A-003 under CR-2026-001.
+  - id: CONTENT-CONTACT-FOOTER
+    name: Contact Footer content
+    source: Figma 10 Contact Page Footer
+    source_node_id: "257:1671"
+    owner: Product owner / Tom
+    status: implemented_needs_review
+    code_destination: src/content/footer/contact.en.ts
+    locked_or_editable: locked_to_active_figma_1.0.0
+    preservation_required: true
+    language: [EN]
+    translation_status:
+      EN: implemented
+      DE: not_required
+      CN: not_required
+    figma_version: 1.0.0
+    notes:
+      - Exact visible content is copyright plus Home, Imprint, and Data protection.
+      - No external URL or additional legal content was invented.
+      - Implemented by TASK-P4A-003 under CR-2026-001.
   - id: CONTENT-LANDING
     name: Landing Page copy
     source: Figma 06 Landing Page
@@ -131,20 +169,25 @@ content_items:
     notes: []
   - id: CONTENT-CONTACT
     name: Contact Page copy
-    source: unknown
+    source: Figma 10 Contact Page
+    source_node_id: "269:3"
+    form_panel_node_id: "269:47"
     owner: unknown
-    status: pending_source
-    code_destination: src/content/pages/contact
-    locked_or_editable: editable
+    status: implemented_from_figma_needs_review
+    code_destination: src/content/contact/en.ts
+    locked_or_editable: locked_to_active_figma_1.0.0_pending_human_review
     preservation_required: false
     language: [EN, DE, CN]
     translation_status:
-      EN: unknown
-      DE: unknown
-      CN: unknown
+      EN: under_review
+      DE: missing
+      CN: missing
     figma_version: 1.0.0
     notes:
-      - Form fields and behavior require interaction and OpenAPI sources.
+      - Visible English copy was extracted from Figma node 269:3 under TASK-P6B-001.
+      - OpenAPI controls the four visible payload fields and optional non-visible owner.
+      - Product and Interaction Specifications control validation and submit behavior.
+      - Human content and visual approval remain pending.
   - id: CONTENT-IMPRINT
     name: Imprint content
     source: unknown

@@ -26,9 +26,9 @@ type AccessibleRoute = Pick<RouteLocationNormalized, 'hash' | 'meta'>;
 export const applyRouteAccessibility = async (to: AccessibleRoute) => {
   document.title = to.meta.title || 'mi-goTo';
   await nextTick();
+  await waitForRouteRender();
 
   if (to.hash) {
-    await waitForRouteRender();
     const target = document.querySelector<HTMLElement>(to.hash);
     if (target) {
       focusElement(target.querySelector<HTMLElement>('h1, h2, h3') ?? target);
@@ -36,9 +36,9 @@ export const applyRouteAccessibility = async (to: AccessibleRoute) => {
     }
   }
 
-  const pageHeading = document.querySelector<HTMLElement>(
-    '[data-page-heading], main',
-  );
+  const pageHeading =
+    document.querySelector<HTMLElement>('[data-page-heading]') ??
+    document.querySelector<HTMLElement>('main');
   if (pageHeading) focusElement(pageHeading);
 };
 
