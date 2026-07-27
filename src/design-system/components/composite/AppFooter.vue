@@ -9,29 +9,40 @@ import { AppSectionContainer } from '../core';
 type FooterVariant = 'simple' | 'full';
 type FooterContext = 'enterprise-dark' | 'impact-light';
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     content?: FooterContent;
     variant?: FooterVariant;
     context?: FooterContext;
+    spaNavigation?: boolean;
   }>(),
   {
     content: () => defaultFooterContent,
     variant: 'full',
     context: 'enterprise-dark',
+    spaNavigation: false,
   },
 );
 
 const emit = defineEmits<{
   navigate: [link: FooterLink];
 }>();
+
+const handleNavigation = (event: MouseEvent, link: FooterLink) => {
+  if (props.spaNavigation && link.href && !link.external) {
+    event.preventDefault();
+  }
+  emit('navigate', link);
+};
 </script>
 
 <template>
   <footer
     class="app-footer"
     :class="[`app-footer--${variant}`, `app-footer--${context}`]"
-    :data-theme="context === 'impact-light' ? 'light-impact' : 'dark-enterprise'"
+    :data-theme="
+      context === 'impact-light' ? 'light-impact' : 'dark-enterprise'
+    "
   >
     <AppSectionContainer class="app-footer__container">
       <div class="app-footer__top">
@@ -56,9 +67,11 @@ const emit = defineEmits<{
                   :type="link.href ? undefined : 'button'"
                   :target="link.external && link.href ? '_blank' : undefined"
                   :rel="
-                    link.external && link.href ? 'noopener noreferrer' : undefined
+                    link.external && link.href
+                      ? 'noopener noreferrer'
+                      : undefined
                   "
-                  @click="emit('navigate', link)"
+                  @click="handleNavigation($event, link)"
                 >
                   {{ link.label }}
                 </component>
@@ -154,5 +167,4 @@ const emit = defineEmits<{
   color: var(--color-text-muted);
   font-size: var(--typography-body-sm-font-size);
 }
-
 </style>

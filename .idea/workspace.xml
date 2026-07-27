@@ -4,18 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa45ec9b-26dc-40ff-98de-dd81c1a64002" name="更改" comment="chore: validate and audit management documentation system">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="fa45ec9b-26dc-40ff-98de-dd81c1a64002" name="更改" comment="chore: Product Interaction Specification.">
+      <change beforePath="$PROJECT_DIR$/.env.development" beforeDir="false" afterPath="$PROJECT_DIR$/.env.development" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/01-roadmap/current-state.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/01-roadmap/current-state.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/01-roadmap/phase-status.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/01-roadmap/phase-status.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/02-inputs/environment-inputs.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/02-inputs/environment-inputs.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/03-design-system/page-registry.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/03-design-system/page-registry.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/04-frontend/interaction-map.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/04-frontend/interaction-map.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/04-frontend/product-interaction-specification.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/04-frontend/product-interaction-specification.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/04-frontend/route-map.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/04-frontend/route-map.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/06-traceability/implementation-baseline.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/06-traceability/implementation-baseline.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/06-traceability/requirements-traceability.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/06-traceability/requirements-traceability.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/09-release/environment-matrix.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/09-release/environment-matrix.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/07-change-control/instructions/PHASE-005B-routing.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/07-change-control/instructions/PHASE-005B-routing.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/phases/phase-5-routing-interaction-map.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/phases/phase-5-routing-interaction-map.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/configuration/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/configuration/environment.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content/footer/defaultFooterContent.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/footer/defaultFooterContent.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content/header/defaultHeaderContent.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/header/defaultHeaderContent.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/design-system/components/composite/AppFooter.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/design-system/components/composite/AppFooter.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/design-system/components/composite/AppNavbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/design-system/components/composite/AppNavbar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/AppNavbar.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/AppNavbar.spec.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +92,7 @@
       <workItem from="1784910311579" duration="34000" />
       <workItem from="1784910382969" duration="4459000" />
       <workItem from="1785142657494" duration="638000" />
-      <workItem from="1785177021836" duration="669000" />
+      <workItem from="1785177021836" duration="1467000" />
     </task>
     <task id="LOCAL-00001" summary="docs: initialize project governance structure">
       <option name="closed" value="true" />
@@ -199,7 +206,23 @@
       <option name="project" value="LOCAL" />
       <updated>1784922902301</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="chore: Product Interaction Specification.">
+      <option name="closed" value="true" />
+      <created>1785180551970</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1785180551970</updated>
+    </task>
+    <task id="LOCAL-00016" summary="chore: Product Interaction Specification.">
+      <option name="closed" value="true" />
+      <created>1785180560788</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1785180560788</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,6 +242,7 @@
     <MESSAGE value="docs: establish change issue deviation and incident controls" />
     <MESSAGE value="docs: define quality release rollback and operations controls" />
     <MESSAGE value="chore: validate and audit management documentation system" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore: validate and audit management documentation system" />
+    <MESSAGE value="chore: Product Interaction Specification." />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: Product Interaction Specification." />
   </component>
 </project>

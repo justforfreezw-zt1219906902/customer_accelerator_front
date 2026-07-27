@@ -4,8 +4,8 @@ project:
   name: mi-goTo Frontend
   status: planning
   current_phase:
-    id: phase-5
-    name: Routing and Page Interaction Map
+    id: phase-6
+    name: Static Pages
 
 versions:
   figma_design_system: 1.0.0

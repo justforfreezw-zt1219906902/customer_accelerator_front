@@ -38,9 +38,22 @@ describe('AppNavbar', () => {
     const wrapper = mount(AppNavbar);
 
     await wrapper.findAll('.app-navbar__link')[0].trigger('click');
-    await wrapper.findAll('.app-navbar__language')[0].trigger('click');
+    await wrapper.findAll('.app-navbar__language')[1].trigger('click');
 
     expect(wrapper.emitted('navigate')).toHaveLength(1);
-    expect(wrapper.emitted('languageChange')?.[0]).toEqual(['de']);
+    expect(wrapper.emitted('languageChange')?.[0]).toEqual(['en']);
+  });
+
+  it('keeps DE and CN visible but unavailable', async () => {
+    const wrapper = mount(AppNavbar);
+    const languages = wrapper.findAll('.app-navbar__language');
+
+    expect(languages.map((item) => item.text())).toEqual(['DE', 'EN', 'CN']);
+    expect(languages[0].attributes('disabled')).toBeDefined();
+    expect(languages[1].attributes('disabled')).toBeUndefined();
+    expect(languages[2].attributes('disabled')).toBeDefined();
+
+    await languages[0].trigger('click');
+    expect(wrapper.emitted('languageChange')).toBeUndefined();
   });
 });

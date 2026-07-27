@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { nextTick, onBeforeUnmount, onMounted, ref } from 'vue';
 import {
   defaultHeaderContent,
   type HeaderContent,
@@ -10,18 +10,20 @@ import { AppButton, AppSectionContainer } from '../core';
 
 type NavbarVariant = 'desktop' | 'mobile' | 'transparent' | 'solid';
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     content?: HeaderContent;
     variant?: NavbarVariant;
     activeItem?: HeaderNavigationItem['id'];
     activeLanguage?: SupportedLanguage;
+    spaNavigation?: boolean;
   }>(),
   {
     content: () => defaultHeaderContent,
     variant: 'desktop',
     activeItem: undefined,
     activeLanguage: 'en',
+    spaNavigation: false,
   },
 );
 
@@ -32,18 +34,58 @@ const emit = defineEmits<{
 }>();
 
 const menuOpen = ref(false);
+const headerElement = ref<HTMLElement>();
+const menuButton = ref<HTMLButtonElement>();
 
 const closeMenu = () => {
   menuOpen.value = false;
 };
 
-const handleKeydown = (event: KeyboardEvent) => {
-  if (event.key === 'Escape') closeMenu();
+const handleNavigation = (event: MouseEvent, item: HeaderNavigationItem) => {
+  if (props.spaNavigation && item.href) event.preventDefault();
+  emit('navigate', item);
+  closeMenu();
 };
+
+const handleStrategyDiscussion = (event: MouseEvent) => {
+  if (props.spaNavigation && props.content.strategyDiscussionHref) {
+    event.preventDefault();
+  }
+  emit('strategyDiscussion');
+  closeMenu();
+};
+
+const handleLanguageChange = (language: HeaderContent['languages'][number]) => {
+  if (!language.available) return;
+  emit('languageChange', language.code);
+};
+
+const handleKeydown = async (event: KeyboardEvent) => {
+  if (event.key !== 'Escape' || !menuOpen.value) return;
+  closeMenu();
+  await nextTick();
+  menuButton.value?.focus();
+};
+
+const handleOutsidePointer = (event: PointerEvent) => {
+  if (
+    menuOpen.value &&
+    event.target instanceof Node &&
+    !headerElement.value?.contains(event.target)
+  ) {
+    closeMenu();
+  }
+};
+
+onMounted(() => document.addEventListener('pointerdown', handleOutsidePointer));
+onBeforeUnmount(() =>
+  document.removeEventListener('pointerdown', handleOutsidePointer),
+);
 </script>
 
 <template>
   <header
+    ref="headerElement"
     class="app-navbar"
     :class="[`app-navbar--${variant}`, { 'app-navbar--open': menuOpen }]"
     @keydown="handleKeydown"
@@ -53,6 +95,7 @@ const handleKeydown = (event: KeyboardEvent) => {
 
       <button
         v-if="variant === 'mobile'"
+        ref="menuButton"
         class="app-navbar__menu-button"
         type="button"
         :aria-expanded="menuOpen"
@@ -78,12 +121,7 @@ const handleKeydown = (event: KeyboardEvent) => {
             :href="item.href"
             :type="item.href ? undefined : 'button'"
             :aria-current="activeItem === item.id ? 'page' : undefined"
-            @click="
-              () => {
-                emit('navigate', item);
-                closeMenu();
-              }
-            "
+            @click="handleNavigation($event, item)"
           >
             {{ item.label }}
           </component>
@@ -96,11 +134,13 @@ const handleKeydown = (event: KeyboardEvent) => {
             type="button"
             class="app-navbar__language"
             :class="{
-              'app-navbar__language--active':
-                activeLanguage === language.code,
+              'app-navbar__language--active': activeLanguage === language.code,
             }"
             :aria-pressed="activeLanguage === language.code"
-            @click="emit('languageChange', language.code)"
+            :aria-disabled="!language.available"
+            :disabled="!language.available"
+            :title="language.unavailableLabel"
+            @click="handleLanguageChange(language)"
           >
             {{ language.label }}
           </button>
@@ -109,7 +149,7 @@ const handleKeydown = (event: KeyboardEvent) => {
         <AppButton
           size="sm"
           :href="content.strategyDiscussionHref"
-          @click="emit('strategyDiscussion')"
+          @click="handleStrategyDiscussion"
         >
           {{ content.strategyDiscussionLabel }}
         </AppButton>
@@ -212,6 +252,12 @@ const handleKeydown = (event: KeyboardEvent) => {
 
 .app-navbar__language {
   padding: var(--spacing-4);
+}
+
+.app-navbar__language:disabled {
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+  opacity: var(--opacity-disabled);
 }
 
 .app-navbar__menu-button {

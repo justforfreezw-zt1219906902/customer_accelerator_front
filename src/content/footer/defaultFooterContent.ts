@@ -26,10 +26,10 @@ export const defaultFooterContent: FooterContent = {
       id: 'navigation',
       heading: 'NAVIGATION',
       links: [
-        { id: 'problem', label: 'The problem' },
-        { id: 'solutions', label: 'Solutions' },
-        { id: 'packages', label: 'Packages' },
-        { id: 'contact', label: 'Contact' },
+        { id: 'problem', label: 'The problem', href: '/#problem' },
+        { id: 'solutions', label: 'Solutions', href: '/#solution' },
+        { id: 'packages', label: 'Packages', href: '/#packages' },
+        { id: 'contact', label: 'Contact', href: '/contact' },
       ],
     },
     {
@@ -48,8 +48,12 @@ export const defaultFooterContent: FooterContent = {
       id: 'legal',
       heading: 'LEGAL',
       links: [
-        { id: 'imprint', label: 'Imprint' },
-        { id: 'data-protection', label: 'Data protection' },
+        { id: 'imprint', label: 'Imprint', href: '/imprint' },
+        {
+          id: 'data-protection',
+          label: 'Data protection',
+          href: '/data-protection',
+        },
       ],
     },
   ],

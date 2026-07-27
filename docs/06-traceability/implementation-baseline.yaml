@@ -1,6 +1,6 @@
 schema_version: 1
 baseline_id: DS1.0.0_API0.0.0_FE0.0.1
-status: sections_approved
+status: phase_5_routing_approved
 targeted_versions:
   figma: 1.0.0
   backend: 0.0.0
@@ -106,6 +106,34 @@ implemented_sections:
     figma_node_id: "90:1157"
 implemented_pages: []
 implemented_endpoints: []
+implemented_route_infrastructure:
+  - src/router/index.ts
+  - src/router/routes.ts
+  - src/router/scrollBehavior.ts
+  - src/layouts/MarketingLayout.vue
+  - src/layouts/LegalLayout.vue
+implemented_route_shells:
+  - route_name: landing
+    path: /
+    file: src/pages/LandingPage.vue
+  - route_name: why-mi-goto
+    path: /why-mi-goto
+    file: src/pages/WhyMiGotoPage.vue
+  - route_name: imprint
+    path: /imprint
+    file: src/pages/ImprintPage.vue
+  - route_name: data-protection
+    path: /data-protection
+    file: src/pages/DataProtectionPage.vue
+  - route_name: contact
+    path: /contact
+    file: src/pages/ContactPage.vue
+  - route_name: thank-you
+    path: /thank-you
+    file: src/pages/ThankYouPage.vue
+  - route_name: not-found
+    path: "/:pathMatch(.*)*"
+    file: src/pages/NotFoundPage.vue
 foundation_artifacts:
   - src/main.ts
   - src/App.vue
@@ -199,6 +227,24 @@ phase_4c:
     notes: good
     accepted_deviations: [DEV-2026-009]
   evidence: docs/08-quality/test-reports/phase-4c-task-p6-001-approval-2026-07-25.md
+phase_5b:
+  status: approved
+  implementation_status: complete
+  task: TASK-P5B-002
+  human_approval: approved
+  approval:
+    reviewer: Tom
+    date: "2026-07-27"
+    evidence: docs/08-quality/test-reports/TASK-P5B-002-phase-5-approval-2026-07-27.md
+  tests:
+    files: 21
+    tests: 58
+    result: passed
+  validation:
+    management: passed
+    typecheck: passed
+    lint: passed
+    build: passed
 notes:
   - Page and endpoint lists remain intentionally empty.
   - Foundation artifacts are application infrastructure, not registered Product Pages or components.

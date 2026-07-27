@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- Phase 5B typed route infrastructure, shared Marketing and Legal layouts,
+  accessible route title/focus and anchor behavior, unknown-route fallback,
+  approved navigation destinations, and temporary Page shells.
+- Unit coverage for registered routes, Header/Footer destinations, anchors,
+  titles, scroll behavior, language availability, and Not Found routing.
+
 ## 2026-07-25 — Phase 4B human approval
 
 ### Approved

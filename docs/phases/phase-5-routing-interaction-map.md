@@ -1,8 +1,8 @@
 ---
 phase: 5
 name: Routing and Page Interaction Map
-status: in_progress
-human_approval: pending
+status: approved
+human_approval: approved
 ---
 
 # Phase 5: Routing and Page Interaction Map
@@ -88,15 +88,22 @@ compatible redirects and document breaking URL migration impact.
 
 ## Status
 
-Phase 5 overall: `in_progress`
+Phase 5 overall: `approved`
 
 Phase 5A Product Interaction Specification: `approved`
 
-Phase 5B Routing and Shared Page Interaction Infrastructure: `planned`
+Phase 5B Routing and Shared Page Interaction Infrastructure: `approved`
 
 ## Human Approval
 
-Phase 5 overall: `pending`
+Phase 5 overall:
+
+- Reviewer: Tom
+- Result: `APPROVED`
+- Date: 2026-07-27
+- Reviewed task: `TASK-P5B-002`
+- Evidence:
+  `docs/08-quality/test-reports/TASK-P5B-002-phase-5-approval-2026-07-27.md`
 
 Phase 5A:
 
@@ -159,5 +166,18 @@ Interaction decision approval:
 - `TASK-P5A-003` applied the decisions, set the route map to
   `implementation_ready`, and registered `TASK-P5B-002` as the next planned
   implementation task.
-- Phase 5B implementation is permitted, but it is not complete or approved.
+- Phase 5B implementation was subsequently executed by `TASK-P5B-002`; it is
+  complete and was approved by Tom on 2026-07-27.
 - No application code was changed by the decision-application task.
+- `TASK-P5B-002` implemented typed lazy routes, shared Marketing and Legal
+  layouts, accessible title/focus behavior, saved-position and anchor scrolling,
+  the unknown-route fallback, approved Header/Footer destinations, EN-only
+  language behavior, and temporary Page shells.
+- No final Page content or backend calls were implemented.
+- Typecheck, lint, 58 unit tests, build, and management validation passed.
+- Test evidence:
+  `docs/08-quality/test-reports/TASK-P5B-002-phase-5b-test-report-2026-07-27.md`.
+- Tom explicitly approved `TASK-P5B-002`, Phase 5B, and Phase 5 on 2026-07-27.
+- All Phase 5 acceptance criteria are accepted as passed.
+- The next permitted task is `TASK-P6A-001`; the next Gate is Phase 6A Landing
+  Page Review.

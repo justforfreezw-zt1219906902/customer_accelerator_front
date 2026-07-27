@@ -14,7 +14,8 @@ pages:
     access_status: public
     route_approval: approved
     anchor_behavior: supports_same_page_and_cross_route_targets
-    implementation_status: not_started
+    implementation_status: implemented
+    implementation_scope: temporary_route_shell_only
     design_review_status: interaction_inspected_visual_review_pending
   - page_id: PAGE-WHY
     name: Why mi-goTo Page
@@ -29,7 +30,8 @@ pages:
     access_status: public
     route_approval: approved
     anchor_behavior: cross_route_anchors_navigate_to_landing_then_scroll
-    implementation_status: not_started
+    implementation_status: implemented
+    implementation_scope: temporary_route_shell_only
     design_review_status: interaction_inspected_visual_review_pending
   - page_id: PAGE-IMPRINT
     name: Imprint Page
@@ -44,7 +46,8 @@ pages:
     access_status: public
     route_approval: approved
     anchor_behavior: internal_anchors_after_stable_legal_headings
-    implementation_status: not_started
+    implementation_status: implemented
+    implementation_scope: temporary_route_shell_only
     design_review_status: interaction_inspected_legal_review_pending
   - page_id: PAGE-DATA-PROTECTION
     name: Data Protection Page
@@ -59,7 +62,8 @@ pages:
     access_status: public
     route_approval: approved
     anchor_behavior: internal_anchors_after_stable_legal_headings
-    implementation_status: not_started
+    implementation_status: implemented
+    implementation_scope: temporary_route_shell_only
     design_review_status: interaction_inspected_legal_review_pending
   - page_id: PAGE-CONTACT
     name: Contact Page
@@ -74,7 +78,8 @@ pages:
     access_status: public
     route_approval: approved
     anchor_behavior: cross_route_anchors_navigate_to_landing_then_scroll
-    implementation_status: not_started
+    implementation_status: implemented
+    implementation_scope: temporary_route_shell_only
     design_review_status: interaction_inspected_visual_review_pending
   - page_id: PAGE-THANK-YOU
     name: Thank You Page
@@ -89,7 +94,8 @@ pages:
     access_status: public_refresh_safe
     route_approval: approved
     anchor_behavior: none
-    implementation_status: not_started
+    implementation_status: implemented
+    implementation_scope: temporary_route_shell_only
     design_review_status: pending
     notes:
       - No expected Figma page or node has been registered.
@@ -106,13 +112,14 @@ pages:
     access_status: public_fallback
     route_approval: approved
     anchor_behavior: none
-    implementation_status: not_started
+    implementation_status: implemented
+    implementation_scope: temporary_route_shell_only
     design_review_status: interaction_approved_visual_review_pending
     notes:
       - Accessible fallback behavior is approved.
       - No Figma source exists; final design and copy remain separately reviewable.
 notes:
-  - Page paths are approved for implementation; final Page implementations do not exist.
+  - Approved routes have temporary accessible shells; final Page implementations do not exist.
   - Five Figma Page nodes were inspected read-only for Phase 5A.
   - Figma does not define final route or interaction behavior by itself.
   - Thank You Page has no registered Figma source.

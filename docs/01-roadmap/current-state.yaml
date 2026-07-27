@@ -2,15 +2,15 @@ schema_version: 1
 project: mi-goTo Frontend
 
 current_phase:
-  id: phase-5
-  name: Routing and Page Interaction Map
-  status: in_progress
+  id: phase-6
+  name: Static Pages
+  status: planned
 
 current_task:
-  id: TASK-P5B-002
-  name: Phase 5B Routing and Shared Page Interaction Infrastructure
+  id: TASK-P6A-001
+  name: Phase 6A Landing Page
   status: planned
-  note: Interaction gate is satisfied; implementation has not started.
+  note: Phase 5 is approved; final Landing Page implementation is permitted.
 environment: local
 
 versions:
@@ -28,7 +28,7 @@ compatibility:
 
 blockers: []
 next_gate:
-  name: Phase 5B Implementation Review
+  name: Phase 6A Landing Page Review
   human_approval_required: true
 
 management_readiness:
@@ -175,13 +175,26 @@ phase_5a:
     prior_evidence: docs/08-quality/test-reports/phase-5a-task-p6-001-approval-2026-07-25.md
 
 phase_5b:
-  implementation_status: planned
+  implementation_status: approved
   former_blocker: ISSUE-2026-001
-  application_changes: none
-  route_map_status: implementation_ready
+  application_changes: routing_layouts_temporary_page_shells
+  route_map_status: approved
   unresolved_decisions: 0
   implementation_permitted: true
-  next_task: TASK-P5B-002
+  completed_task: TASK-P5B-002
+  validation:
+    management: passed
+    typecheck: passed
+    lint: passed
+    unit_tests: 58_passed
+    build: passed
+    evidence: docs/08-quality/test-reports/TASK-P5B-002-phase-5b-test-report-2026-07-27.md
+  human_approval: approved
+  approval:
+    reviewer: Tom
+    result: APPROVED
+    date: "2026-07-27"
+    evidence: docs/08-quality/test-reports/TASK-P5B-002-phase-5-approval-2026-07-27.md
 
 last_updated: "2026-07-27"
 notes:
@@ -200,11 +213,14 @@ notes:
   - DEV-2026-007 and DEV-2026-008 were accepted as known Phase 4B differences.
   - Phase 4C Sections and TASK-P6-001 were approved by Tom.
   - DEV-2026-009 was accepted as a known Phase 4C responsive difference.
-  - Phase 4 is approved; Phase 5 requires separate authorization.
+  - Phase 4 was approved before Phase 5 execution.
   - Phase 5A Product Interaction Specification and supplied TASK-P7-001 review were approved by Tom.
   - The earlier Phase 5A TASK-P6-001 approval remains preserved as historical evidence.
   - All twenty-one named interaction decisions were approved by Tom on 2026-07-27.
   - No final routes or Pages were implemented in Phase 5A.
-  - ISSUE-2026-001 is resolved; Phase 5B remains unimplemented and awaits separate execution authorization.
+  - ISSUE-2026-001 was resolved before the authorized Phase 5B implementation.
   - TASK-P5A-002 and its INT-013 exception were approved without application-code changes.
   - TASK-P5A-003 applied the approved decisions to specifications, registries and traceability; no application code changed.
+  - TASK-P5B-002 implemented approved routing, shared layouts and temporary Page shells.
+  - Tom approved TASK-P5B-002, Phase 5B and Phase 5 on 2026-07-27.
+  - Current work advances to planned Phase 6A under TASK-P6A-001.

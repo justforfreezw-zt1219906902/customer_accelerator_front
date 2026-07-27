@@ -1,13 +1,14 @@
 schema_version: 1
-status: implementation_ready
-implementation_status: not_started
+status: approved
+implementation_status: approved
 specification: docs/04-frontend/product-interaction-specification.md
 decision_review: docs/04-frontend/interaction-decision-review.md
 human_approval:
   reviewer: Tom
   date: "2026-07-27"
-  task: TASK-P5A-003
-  source_task: TASK-P5A-002
+  task: TASK-P5B-002
+  decision_source_task: TASK-P5A-002
+  decision_application_task: TASK-P5A-003
   status: approved
 
 foundation_implementation:
@@ -35,7 +36,7 @@ routes:
     layout: MarketingLayout
     title: mi-goTo
     figma_page_id: "212:2"
-    implementation_status: not_started
+    implementation_status: temporary_shell_implemented
     anchor_behavior: supports_same_page_and_cross_route_targets
     access_status: public
     human_approval: approved
@@ -47,7 +48,7 @@ routes:
     layout: MarketingLayout
     title: Why mi-goTo | mi-goTo
     figma_page_id: "259:2"
-    implementation_status: not_started
+    implementation_status: temporary_shell_implemented
     anchor_behavior: cross_route_anchors_navigate_to_landing_then_scroll
     access_status: public
     human_approval: approved
@@ -59,7 +60,7 @@ routes:
     layout: LegalLayout
     title: Imprint | mi-goTo
     figma_page_id: "122:2"
-    implementation_status: not_started
+    implementation_status: temporary_shell_implemented
     anchor_behavior: internal_anchors_after_stable_legal_headings
     access_status: public
     human_approval: approved
@@ -71,7 +72,7 @@ routes:
     layout: LegalLayout
     title: Data Protection | mi-goTo
     figma_page_id: "128:2"
-    implementation_status: not_started
+    implementation_status: temporary_shell_implemented
     anchor_behavior: internal_anchors_after_stable_legal_headings
     access_status: public
     human_approval: approved
@@ -83,7 +84,7 @@ routes:
     layout: MarketingLayout
     title: Contact | mi-goTo
     figma_page_id: "269:2"
-    implementation_status: not_started
+    implementation_status: temporary_shell_implemented
     anchor_behavior: cross_route_anchors_navigate_to_landing_then_scroll
     access_status: public
     human_approval: approved
@@ -95,7 +96,7 @@ routes:
     layout: MarketingLayout
     title: Thank You | mi-goTo
     figma_page_id: not_applicable_no_figma_source
-    implementation_status: not_started
+    implementation_status: temporary_shell_implemented
     anchor_behavior: none
     access_status: public_refresh_safe
     human_approval: approved
@@ -111,7 +112,7 @@ routes:
     layout: MarketingLayout
     title: Page Not Found | mi-goTo
     figma_page_id: not_applicable_no_figma_source
-    implementation_status: not_started
+    implementation_status: temporary_shell_implemented
     anchor_behavior: none
     access_status: public_fallback
     human_approval: approved
@@ -166,6 +167,9 @@ decisions:
   - { id: INT-021, topic: contact_privacy_note, status: approved }
 
 notes:
-  - Route specifications are implementation-ready but application code remains unchanged.
+  - Route infrastructure and temporary shells were implemented by TASK-P5B-002.
+  - Final Page content and visual implementation remain Phase 6 scope.
+  - Tom approved the Phase 5 implementation on 2026-07-27.
+  - Final Page content and visual review remain Phase 6 scope.
   - Deferred items have approved safe baselines and do not block Phase 5B.
   - External URLs, translations, legacy redirects, timeouts, and analytics must not be invented.

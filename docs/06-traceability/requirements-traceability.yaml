@@ -23,11 +23,12 @@ requirements:
       - src/layouts/MarketingLayout.vue
       - src/layouts/LegalLayout.vue
       - src/pages/NotFoundPage.vue
-    tests: []
-    status: planned
+    tests:
+      - tests/unit/Routing.spec.ts
+    status: implemented
     introduced_version: 0.0.1
-    verified_version: null
-    approval: approved_specification_not_implemented
+    verified_version: 0.0.1
+    approval: approved
   - requirement_id: REQ-ANCHOR-001
     description: Header and Footer anchor links navigate to the approved Landing section IDs with cross-route mount waiting, visible focus, sticky-Header offset, and reduced-motion-safe scrolling.
     source:
@@ -42,11 +43,12 @@ requirements:
     planned_frontend_files:
       - src/router/scrollBehavior.ts
       - src/router/index.ts
-    tests: []
-    status: planned
+    tests:
+      - tests/unit/Routing.spec.ts
+    status: implemented
     introduced_version: 0.0.1
-    verified_version: null
-    approval: approved_specification_not_implemented
+    verified_version: 0.0.1
+    approval: approved
   - requirement_id: REQ-LANGUAGE-001
     description: EN is the only active initial language; DE and CN remain visible in the Header but clearly unavailable, and no translations are invented.
     source:
@@ -60,11 +62,13 @@ requirements:
     planned_frontend_files:
       - src/content/header
       - src/design-system/components/composite/AppNavbar.vue
-    tests: []
-    status: planned
+    tests:
+      - tests/unit/AppNavbar.spec.ts
+      - tests/unit/Routing.spec.ts
+    status: implemented
     introduced_version: 0.0.1
-    verified_version: null
-    approval: approved_specification_not_implemented
+    verified_version: 0.0.1
+    approval: approved
   - requirement_id: REQ-NOT-FOUND-001
     description: Unknown routes render an accessible Not Found state with a clear route to the Landing Page.
     source:
@@ -75,11 +79,12 @@ requirements:
     planned_frontend_files:
       - src/pages/NotFoundPage.vue
       - src/router/routes.ts
-    tests: []
-    status: planned
+    tests:
+      - tests/unit/Routing.spec.ts
+    status: implemented
     introduced_version: 0.0.1
-    verified_version: null
-    approval: approved_specification_not_implemented
+    verified_version: 0.0.1
+    approval: approved
   - requirement_id: REQ-EXTERNAL-001
     description: External URLs are never invented; the LinkedIn label remains non-interactive until an approved HTTPS URL is supplied.
     source:
@@ -93,11 +98,13 @@ requirements:
     planned_frontend_files:
       - src/content/footer
       - src/design-system/components/composite/AppFooter.vue
-    tests: []
-    status: planned
+    tests:
+      - tests/unit/AppFooter.spec.ts
+      - tests/unit/Routing.spec.ts
+    status: implemented
     introduced_version: 0.0.1
-    verified_version: null
-    approval: approved_safe_deferred_baseline
+    verified_version: 0.0.1
+    approval: approved
   - requirement_id: REQ-INTERACTION-001
     description: Routes, navigation, anchors, locale behavior, mobile navigation, and Contact states are governed by an approved Product Interaction Specification before implementation.
     source:
@@ -114,10 +121,13 @@ requirements:
       - src/router
       - src/pages
       - src/content
-    tests: []
-    status: planned
+    tests:
+      - tests/unit/Routing.spec.ts
+      - tests/unit/AppNavbar.spec.ts
+      - tests/unit/AppFooter.spec.ts
+    status: implemented
     introduced_version: 0.0.1
-    verified_version: null
+    verified_version: 0.0.1
     approval: approved
   - requirement_id: REQ-SECTIONS-001
     description: Authorized Landing Sections compose approved lower layers, expose stable IDs, and accept typed external content without Page coupling.

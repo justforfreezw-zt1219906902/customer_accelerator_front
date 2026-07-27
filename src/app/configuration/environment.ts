@@ -1,6 +1,5 @@
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 const hubspotOwnerId = import.meta.env.VITE_HUBSPOT_OWNER_ID;
-const appMode = import.meta.env.VITE_APP_MODE ?? 'development';
 
 if (apiBaseUrl) {
   try {
@@ -13,5 +12,4 @@ if (apiBaseUrl) {
 export const publicEnvironment = Object.freeze({
   apiBaseUrl,
   hubspotOwnerId,
-  appMode,
 });
