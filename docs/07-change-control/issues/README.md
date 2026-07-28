@@ -24,3 +24,9 @@ Recorded Issues:
 - `ISSUE-2026-006` — open blocking Phase 8 Release Candidate entry Gate:
   Not Found remains a temporary shell and the candidate source is not tied to
   a clean immutable Git commit.
+- `ISSUE-2026-007` — shared Header logo sharpness, background and Home-link
+  defect; corrected by `TASK-P8-002`, pending human visual verification.
+- `ISSUE-2026-008` — Packages card and CTA alignment defect; corrected by
+  `TASK-P8-002`, pending human visual verification.
+- `ISSUE-2026-009` — Footer logo rendering, transparent background and Home
+  navigation defect; corrected by `TASK-P8-003`, pending human visual review.

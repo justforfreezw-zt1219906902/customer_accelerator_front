@@ -70,7 +70,7 @@ requirements:
     verified_version: 0.0.1
     approval: approved
   - requirement_id: REQ-NOT-FOUND-001
-    description: Unknown routes render an accessible Not Found state with a clear route to the Landing Page.
+    description: Unknown routes render the final accessible Not Found state with approved English copy, shared chrome and a clear route to the Landing Page.
     source:
       - docs/04-frontend/route-map.yaml
       - docs/04-frontend/interaction-decision-review.md#INT-004
@@ -81,7 +81,8 @@ requirements:
       - src/router/routes.ts
     tests:
       - tests/unit/Routing.spec.ts
-    status: implemented
+      - tests/e2e/phase-8-rc-entry-remediation.spec.ts
+    status: verified
     introduced_version: 0.0.1
     verified_version: 0.0.1
     approval: approved
@@ -310,7 +311,7 @@ requirements:
     verified_version: 0.0.1
     approval: approved_by_phase_6a_review
   - requirement_id: REQ-FOOTER-001
-    description: Shared Footer matches the active Figma 1.0.0 content, width, hierarchy, and presentation approved by Tom.
+    description: Shared Footer preserves approved content and layout while every variant reuses the transparent high-density Core brand logo with an accessible Home link.
     source:
       - docs/02-inputs/content-inventory.yaml#CONTENT-FOOTER
     figma_source:
@@ -320,12 +321,15 @@ requirements:
     backend_source: not_applicable
     planned_frontend_files:
       - src/content/footer
+      - src/design-system/components/core/AppBrandLogo.vue
       - src/design-system/components/composite/AppFooter.vue
     tests:
+      - tests/unit/AppBrandLogo.spec.ts
       - tests/unit/AppFooter.spec.ts
       - tests/unit/LandingPage.spec.ts
       - tests/e2e/phase-6a-visual-fidelity.spec.ts
-    status: verified
+      - tests/e2e/phase-8-footer-logo-remediation.spec.ts
+    status: implemented
     introduced_version: 0.0.1
     verified_version: 0.0.1
     approval: approved_by_phase_6a_review

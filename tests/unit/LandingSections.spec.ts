@@ -138,6 +138,54 @@ describe('landing sections', () => {
     expect(wrapper.emitted('packageAction')?.[0]?.[0]).toBe('Pilot');
   });
 
+  it('uses one equal-height card structure with consistent CTA regions', () => {
+    const wrapper = mount(PackagesSection, {
+      props: {
+        intro,
+        packages: [
+          {
+            name: 'Pilot',
+            description: 'Short description.',
+            features: ['One feature'],
+            action: { label: 'STRATEGY DISCUSSION', href: '/contact' },
+          },
+          {
+            name: 'Growth',
+            description: 'Longer description that remains intact.',
+            features: ['One feature', 'A second longer feature'],
+            badgeLabel: 'RECOMMENDED',
+            highlighted: true,
+            action: { label: 'STRATEGY DISCUSSION', href: '/contact' },
+          },
+          {
+            name: 'Enterprise',
+            description: 'Another description.',
+            features: ['One feature'],
+            action: { label: 'STRATEGY DISCUSSION', href: '/contact' },
+          },
+          {
+            name: 'Custom',
+            description: 'Final description.',
+            features: ['One feature'],
+            action: { label: 'STRATEGY DISCUSSION', href: '/contact' },
+          },
+        ],
+      },
+    });
+
+    expect(wrapper.findAll('.packages-section__card')).toHaveLength(4);
+    expect(wrapper.findAll('.packages-section__badge-region')).toHaveLength(4);
+    expect(wrapper.findAll('.packages-section__action')).toHaveLength(4);
+    expect(wrapper.findAll('.packages-section__action a')).toHaveLength(4);
+    expect(wrapper.text()).toContain('A second longer feature');
+    expect(wrapper.text()).toContain('RECOMMENDED');
+    expect(
+      wrapper
+        .findAll('.packages-section__action a')
+        .every((link) => link.attributes('href') === '/contact'),
+    ).toBe(true);
+  });
+
   it('emits CTA interactions without implementing navigation logic', async () => {
     const hero = mount(HeroSection, {
       props: {

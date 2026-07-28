@@ -208,20 +208,21 @@ pages:
     code_name: NotFoundPage
     planned_path: src/pages/NotFoundPage.vue
     route: "/:pathMatch(.*)*"
-    route_name: not-found
+    route_name: NotFound
     layout: MarketingLayout
-    title: Page Not Found | mi-goTo
+    title: Page not found | mi-goTo
     access_status: public_fallback
     route_approval: approved
     anchor_behavior: none
     implementation_status: implemented
-    implementation_scope: temporary_route_shell_only
-    design_review_status: interaction_approved_visual_review_pending
+    implementation_scope: final_rc_fallback
+    design_review_status: implemented_needs_review
     notes:
-      - Accessible fallback behavior is approved.
-      - No Figma source exists; final design and copy remain separately reviewable.
+      - Tom approved exact English copy and an implementation without a separate
+        Figma frame for the current RC on 2026-07-28.
+      - TASK-P8-002 replaced the temporary shell; human visual review remains pending.
 notes:
-  - The Not Found fallback is the only remaining temporary route shell.
+  - The Not Found fallback is implemented for RC review and is no longer a temporary shell.
   - Five Figma Page nodes were inspected read-only for Phase 5A.
   - Figma does not define final route or interaction behavior by itself.
   - Thank You Page was added in Figma 1.1.0 and implemented under TASK-P6F-001.

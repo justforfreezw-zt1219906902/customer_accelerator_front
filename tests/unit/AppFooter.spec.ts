@@ -65,8 +65,13 @@ describe('AppFooter', () => {
         group.links.map((link) => link.label),
       ),
     );
-    expect(wrapper.get('.app-footer__brand-text').text()).toBe('mi-goTo');
-    expect(wrapper.get('.app-footer__logo').attributes('width')).toBe('132');
+    expect(wrapper.get('.app-brand-logo__text').text()).toBe('mi-goTo');
+    expect(wrapper.get('.app-footer__brand img').attributes('src')).toContain(
+      'mi-goto-lockup-light-hidpi.png',
+    );
+    expect(wrapper.get('.app-footer__brand img').attributes('width')).toBe(
+      '132',
+    );
     expect(
       wrapper
         .getComponent({ name: 'AppSectionContainer' })
@@ -98,6 +103,24 @@ describe('AppFooter', () => {
     expect(wrapper.find('.app-footer__top').exists()).toBe(false);
     expect(wrapper.find('.app-footer__divider').exists()).toBe(false);
     expect(wrapper.find('.app-footer__bottom-statement').exists()).toBe(false);
+    expect(wrapper.findAll('a[aria-label="mi-goTo home"]')).toHaveLength(1);
+  });
+
+  it('renders one transparent shared brand link and emits Home navigation', async () => {
+    const wrapper = mount(AppFooter, {
+      props: { spaNavigation: true },
+    });
+    const brandLinks = wrapper.findAll('a[aria-label="mi-goTo home"]');
+
+    expect(brandLinks).toHaveLength(1);
+    expect(brandLinks[0].attributes('href')).toBe('/');
+    expect(brandLinks[0].classes()).toContain('app-brand-logo');
+    expect(brandLinks[0].classes()).toContain('app-footer__brand');
+    expect(brandLinks[0].attributes('style')).toBeUndefined();
+    expect(wrapper.find('.app-footer__logo-background').exists()).toBe(false);
+
+    await brandLinks[0].trigger('click');
+    expect(wrapper.emitted('homeNavigate')).toHaveLength(1);
   });
 
   it('emits Contact legal navigation through the shared API', async () => {

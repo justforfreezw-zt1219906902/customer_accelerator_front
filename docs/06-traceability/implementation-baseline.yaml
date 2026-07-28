@@ -47,6 +47,11 @@ implemented_components:
   - component_id: CMP-CORE-005
     code_name: AppSectionContainer
     figma_node_id: "42:66"
+  - component_id: CMP-CORE-006
+    code_name: AppBrandLogo
+    figma_node_id: "105:452"
+    additional_figma_node_ids: ["105:474"]
+    status: implemented_needs_review
   - component_id: CMP-COMPOSITE-001
     code_name: AppFormField
     figma_node_id: "68:213"
@@ -179,9 +184,11 @@ implemented_route_infrastructure:
   - src/layouts/LegalLayout.vue
   - src/layouts/WhyLayout.vue
 implemented_route_shells:
-  - route_name: not-found
+  - route_name: NotFound
     path: "/:pathMatch(.*)*"
     file: src/pages/NotFoundPage.vue
+    status: implemented_needs_review
+    temporary: false
 foundation_artifacts:
   - src/main.ts
   - src/App.vue
@@ -507,9 +514,14 @@ phase_7:
     live_smoke_test: not_run_backend_unavailable
 phase_8:
   status: blocked
-  task: TASK-P8-001
-  task_status: blocked
+  task: TASK-P8-003
+  task_status: needs_review
   blocker: ISSUE-2026-006
+  remediation_issues:
+    - ISSUE-2026-007
+    - ISSUE-2026-008
+    - ISSUE-2026-009
+  remediation_gate: Phase 8 Footer Logo Visual Review
   rc_identifier: not_assigned
   artifact: not_created
   production_deployment: not_started

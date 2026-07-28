@@ -73,6 +73,24 @@ components:
     tests: [tests/unit/AppSectionContainer.spec.ts]
     notes:
       - TASK-P6A-004 added the semantic Landing content-width option sourced from the 1180px Figma Header/Footer content area.
+  - component_id: CMP-CORE-006
+    figma_name: Original mi-goTo lockup light
+    figma_node_id: "105:452"
+    additional_figma_node_ids: ["105:474"]
+    code_name: AppBrandLogo
+    planned_path: src/design-system/components/core/AppBrandLogo.vue
+    layer: core
+    dependencies: [tokens]
+    variants:
+      size: [Header, Footer]
+    figma_version: 1.1.0
+    implementation_status: implemented
+    design_review_status: footer_remediation_needs_review
+    asset: src/assets/brand/mi-goto-lockup-light-hidpi.png
+    tests: [tests/unit/AppBrandLogo.spec.ts]
+    notes:
+      - TASK-P8-003 centralizes the approved transparent high-density brand
+        source for Header and Footer without adding layout behavior.
   - component_id: CMP-COMPOSITE-001
     figma_name: mi-goTo/Form Field
     figma_node_id: "68:213"
@@ -131,12 +149,18 @@ components:
     landing_page_instance_node_id: "212:4"
     landing_header_component_node_id: "105:464"
     logo_node_id: "105:452"
+    logo_asset: src/assets/brand/mi-goto-lockup-light-hidpi.png
+    logo_asset_intrinsic_size: 649x188
+    logo_rendered_size: 124x36
     notes:
       - TASK-P6A-004 aligns the shared Navbar to the Landing Header layout while preserving locked Header content.
       - Tom's TASK-P6A-004 review found the result inconsistent with Figma.
       - Active Figma Header content and presentation are authoritative; see TASK-P6A-005 audit.
       - TASK-P4A-002 implemented the exact Figma navigation, hierarchy, language presentation, CTA, desktop geometry, and shared responsive menu.
       - Tom approved the shared Header regression at 1440px and 390px under TASK-P6A-006.
+      - TASK-P8-002 replaces the intrinsic-size raster with the transparent
+        high-density Figma asset and adds the shared accessible Home link.
+      - ISSUE-2026-007 is resolved in code and awaits human visual verification.
       - CR-2026-001 approves a typed Contact variant based on node 314:44; implementation is pending TASK-P4A-003.
       - TASK-P4A-003 implemented the typed Contact variant with exact HOME-only content and Figma-confirmed desktop geometry.
       - TASK-P6E-001 added the typed Why variant from Header component 257:1655 without changing Landing or Contact content.
@@ -173,6 +197,11 @@ components:
       - CR-2026-001 approves a typed Contact compact variant based on node 257:1671; implementation is pending TASK-P4A-003.
       - TASK-P4A-003 implemented the typed Contact compact variant with copyright and Home/Imprint/Data protection links.
       - TASK-P6E-001 added a distinct typed Why variant from component 257:1671; it currently shares the confirmed compact visual structure with Contact.
+      - TASK-P8-003 replaces duplicated Footer logo markup with AppBrandLogo,
+        uses the shared high-density transparent asset, and adds Home navigation.
+      - CR-2026-005 authorizes brand display in compact Footers where Figma
+        node 257:1671 contains no logo.
+      - ISSUE-2026-009 is resolved in code and awaits human visual verification.
     contact_footer_node_id: "257:1671"
     contact_variant_status: approved
     contact_variant_approval_task: TASK-P6B-003

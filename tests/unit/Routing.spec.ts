@@ -37,6 +37,39 @@ describe('Phase 5 routing infrastructure', () => {
     for (const [path, name] of expectedRoutes) {
       expect(router.resolve(path).name).toBe(name);
     }
+    expect(routeNames.notFound).toBe('NotFound');
+  });
+
+  it('renders the final accessible Not Found page through shared chrome', async () => {
+    const fetchSpy = vi.spyOn(globalThis, 'fetch');
+    const router = createAppRouter(createMemoryHistory());
+    await router.push('/route-that-does-not-exist');
+    await router.isReady();
+
+    const wrapper = mount(App, {
+      attachTo: document.body,
+      global: { plugins: [router] },
+    });
+    await flushPromises();
+    await applyRouteAccessibility(router.currentRoute.value);
+
+    expect(router.currentRoute.value.name).toBe('NotFound');
+    expect(wrapper.findAll('.app-navbar')).toHaveLength(1);
+    expect(wrapper.findAll('.app-footer')).toHaveLength(1);
+    expect(
+      wrapper.findAll('.app-footer a[aria-label="mi-goTo home"]'),
+    ).toHaveLength(1);
+    expect(wrapper.findAll('h1')).toHaveLength(1);
+    expect(wrapper.get('h1').text()).toBe('Page not found');
+    expect(wrapper.text()).toContain(
+      'The page you’re looking for doesn’t exist or may have moved.',
+    );
+    expect(wrapper.get('.not-found-page a[href="/"]').text()).toContain(
+      'BACK TO HOME',
+    );
+    expect(wrapper.text()).not.toContain('Return to the Landing Page');
+    expect(document.title).toBe('Page not found | mi-goTo');
+    expect(fetchSpy).not.toHaveBeenCalled();
   });
 
   it('preserves approved Header and Footer destinations', () => {
@@ -121,6 +154,41 @@ describe('Phase 5 routing infrastructure', () => {
     );
     expect(wrapper.findAll('.lead-form')).toHaveLength(1);
     expect(wrapper.findAll('input')).toHaveLength(4);
+  });
+
+  it('routes the shared Contact logo to Home without duplicating the brand', async () => {
+    const router = createAppRouter(createMemoryHistory());
+    await router.push('/contact');
+    await router.isReady();
+    const wrapper = mount(ContactLayout, {
+      global: { plugins: [router] },
+      slots: { default: '<h1>Contact</h1>' },
+    });
+
+    const logo = wrapper.get('.app-navbar a[aria-label="mi-goTo home"]');
+    expect(
+      wrapper.findAll('.app-navbar a[aria-label="mi-goTo home"]'),
+    ).toHaveLength(1);
+    await logo.trigger('click');
+    await vi.waitFor(() => {
+      expect(router.currentRoute.value.name).toBe(routeNames.landing);
+    });
+  });
+
+  it('routes the shared Contact Footer logo to Home', async () => {
+    const router = createAppRouter(createMemoryHistory());
+    await router.push('/contact');
+    await router.isReady();
+    const wrapper = mount(ContactLayout, {
+      global: { plugins: [router] },
+      slots: { default: '<h1>Contact</h1>' },
+    });
+
+    const logo = wrapper.get('.app-footer a[aria-label="mi-goTo home"]');
+    await logo.trigger('click');
+    await vi.waitFor(() => {
+      expect(router.currentRoute.value.name).toBe(routeNames.landing);
+    });
   });
 
   it('renders /contact through ContactLayout with title and focus behavior', async () => {

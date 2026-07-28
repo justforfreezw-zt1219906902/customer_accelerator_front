@@ -93,3 +93,15 @@ exact immutable source commit.
 - Reviewer: pending
 - Result: `pending`
 - Date: pending
+
+## TASK-P8-002 remediation update
+
+On 2026-07-28, `TASK-P8-002` replaced the temporary Not Found shell with the
+Tom-approved final RC fallback and updated its route name to `NotFound`.
+Automated unit and Chromium checks pass for the approved copy, shared chrome,
+Home recovery, title, responsive behavior and absence of backend calls.
+
+The Issue remains `open` because this task is prohibited from creating the
+exact source-freeze commit. Human visual approval is also pending. The original
+45-entry Gate evidence and previous HEAD remain unchanged above as historical
+evidence; the worktree is reclassified in the `TASK-P8-002` instruction record.

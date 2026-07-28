@@ -4,6 +4,14 @@
 
 ### Added
 
+- Shared Core `AppBrandLogo` used by Header and every Footer variant with the
+  approved high-density transparent asset and accessible Home navigation.
+
+- Final accessible Not Found Page with Product Owner-approved English copy,
+  shared Header/Footer, Home recovery action and responsive browser coverage.
+
+- High-density transparent Figma logo asset for the shared Header.
+
 - Frontend `0.2.0` integrates the approved Contact flow with provisional
   `API-CONTRACT-R1`: typed runtime configuration, exact `POST /api/lead`
   mapping, safe response/error handling, duplicate prevention, cancellation
@@ -42,6 +50,15 @@
   risk acceptance.
 
 ### Governance
+
+- Tom returned `TASK-P8-002` as changes required because the Footer logo failed
+  visual review; `ISSUE-2026-009` and `CR-2026-005` track the scoped
+  `TASK-P8-003` correction. Source Freeze remains prohibited.
+
+- `TASK-P8-002` records RC-entry remediation without creating an RC commit,
+  identifier, artifact or deployment. `ISSUE-2026-007` and
+  `ISSUE-2026-008` await human visual verification; `CR-2026-004` records the
+  approved Packages alignment correction where Figma remains staggered.
 
 - Phase 8 Release Candidate preparation stopped at its entry Gate.
   `ISSUE-2026-006` records the temporary Not Found shell and uncommitted

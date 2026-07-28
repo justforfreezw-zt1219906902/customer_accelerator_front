@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { nextTick, onBeforeUnmount, onMounted, ref } from 'vue';
-import logoLockup from '../../../assets/brand/mi-goto-lockup-light.png';
 import {
   defaultHeaderContent,
   type HeaderContent,
   type HeaderNavigationItem,
   type SupportedLanguage,
 } from '../../../content/header/defaultHeaderContent';
-import { AppButton, AppSectionContainer } from '../core';
+import { AppBrandLogo, AppButton, AppSectionContainer } from '../core';
 
 export type NavbarVariant =
   | 'landing'
@@ -36,6 +35,7 @@ const props = withDefaults(
 );
 
 const emit = defineEmits<{
+  homeNavigate: [];
   navigate: [item: HeaderNavigationItem];
   languageChange: [language: SupportedLanguage];
   strategyDiscussion: [];
@@ -47,6 +47,11 @@ const menuButton = ref<HTMLButtonElement>();
 
 const closeMenu = () => {
   menuOpen.value = false;
+};
+
+const handleHomeNavigation = () => {
+  emit('homeNavigate');
+  closeMenu();
 };
 
 const handleNavigation = (event: MouseEvent, item: HeaderNavigationItem) => {
@@ -104,16 +109,13 @@ onBeforeUnmount(() =>
       content-width="landing"
       divider="without-top-divider"
     >
-      <span class="app-navbar__brand">
-        <img
-          class="app-navbar__logo"
-          :src="logoLockup"
-          alt=""
-          width="124"
-          height="36"
-        />
-        <span class="app-navbar__brand-text">{{ content.brand }}</span>
-      </span>
+      <AppBrandLogo
+        class="app-navbar__brand"
+        :label="content.brand"
+        size="header"
+        :spa-navigation="spaNavigation"
+        @home-navigate="handleHomeNavigation"
+      />
 
       <button
         v-if="variant !== 'contact'"
@@ -233,24 +235,8 @@ onBeforeUnmount(() =>
 }
 
 .app-navbar__brand {
-  display: inline-flex;
   flex: 0 0 124px;
-}
-
-.app-navbar__logo {
-  display: block;
-  width: 124px;
-  height: 36px;
-  object-fit: contain;
-}
-
-.app-navbar__brand-text {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
+  background: transparent;
 }
 
 .app-navbar__menu {

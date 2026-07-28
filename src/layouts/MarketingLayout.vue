@@ -35,6 +35,7 @@ const handleFooterNavigation = (link: FooterLink) => {
       active-language="en"
       :content="navigationEn"
       spa-navigation
+      @home-navigate="navigateInternal('/')"
       @navigate="handleHeaderNavigation"
       @strategy-discussion="navigateInternal('/contact')"
     />
@@ -46,6 +47,7 @@ const handleFooterNavigation = (link: FooterLink) => {
     <AppFooter
       :content="footerEn"
       spa-navigation
+      @home-navigate="navigateInternal('/')"
       @navigate="handleFooterNavigation"
     />
   </div>

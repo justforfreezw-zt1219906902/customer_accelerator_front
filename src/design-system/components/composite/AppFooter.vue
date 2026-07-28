@@ -4,8 +4,7 @@ import {
   type FooterContent,
   type FooterLink,
 } from '../../../content/footer/defaultFooterContent';
-import logoLockup from '../../../assets/brand/mi-goto-lockup-light.png';
-import { AppSectionContainer } from '../core';
+import { AppBrandLogo, AppSectionContainer } from '../core';
 
 export type FooterVariant = 'landing' | 'contact' | 'why' | 'simple' | 'full';
 type FooterContext = 'enterprise-dark' | 'impact-light';
@@ -26,6 +25,7 @@ const props = withDefaults(
 );
 
 const emit = defineEmits<{
+  homeNavigate: [];
   navigate: [link: FooterLink];
 }>();
 
@@ -56,16 +56,13 @@ const handleNavigation = (event: MouseEvent, link: FooterLink) => {
         class="app-footer__top"
       >
         <div class="app-footer__identity">
-          <strong class="app-footer__brand">
-            <img
-              class="app-footer__logo"
-              :src="logoLockup"
-              alt=""
-              width="132"
-              height="38"
-            />
-            <span class="app-footer__brand-text">{{ content.brand }}</span>
-          </strong>
+          <AppBrandLogo
+            class="app-footer__brand"
+            :label="content.brand"
+            size="footer"
+            :spa-navigation="spaNavigation"
+            @home-navigate="emit('homeNavigate')"
+          />
           <p class="app-footer__description">{{ content.description }}</p>
         </div>
 
@@ -118,6 +115,13 @@ const handleNavigation = (event: MouseEvent, link: FooterLink) => {
       </div>
 
       <div v-else class="app-footer__contact">
+        <AppBrandLogo
+          class="app-footer__brand"
+          :label="content.brand"
+          size="footer"
+          :spa-navigation="spaNavigation"
+          @home-navigate="emit('homeNavigate')"
+        />
         <span>{{ content.copyright }}</span>
         <nav aria-label="Footer navigation">
           <ul class="app-footer__contact-links">
@@ -159,17 +163,16 @@ const handleNavigation = (event: MouseEvent, link: FooterLink) => {
 .app-footer--contact
   .app-footer__container
   :deep(.app-section-container__content),
-.app-footer--why
-  .app-footer__container
-  :deep(.app-section-container__content) {
+.app-footer--why .app-footer__container :deep(.app-section-container__content) {
   display: block;
 }
 
 .app-footer__contact {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   min-height: 56px;
   align-items: center;
-  justify-content: space-between;
+  gap: var(--spacing-32);
   color: var(--color-text-muted);
   font-family: var(--font-family-inter), sans-serif;
   font-size: 13px;
@@ -221,24 +224,8 @@ const handleNavigation = (event: MouseEvent, link: FooterLink) => {
 }
 
 .app-footer__brand {
-  display: inline-flex;
   width: 132px;
-}
-
-.app-footer__logo {
-  display: block;
-  width: 132px;
-  height: 38px;
-  object-fit: contain;
-}
-
-.app-footer__brand-text {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
+  background: transparent;
 }
 
 .app-footer__description {
@@ -343,7 +330,7 @@ const handleNavigation = (event: MouseEvent, link: FooterLink) => {
 
   .app-footer__contact {
     align-items: flex-start;
-    flex-direction: column;
+    grid-template-columns: 1fr;
     gap: var(--spacing-24);
     white-space: normal;
   }

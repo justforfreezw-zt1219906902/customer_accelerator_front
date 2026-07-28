@@ -61,30 +61,39 @@ const headingTag = computed(() => `h${props.intro.headingLevel ?? 2}`);
           class="packages-section__card"
           :variant="option.highlighted ? 'selected' : 'default'"
         >
-          <AppBadge v-if="option.badgeLabel" type="sourced">
-            {{ option.badgeLabel }}
-          </AppBadge>
-          <h3>{{ option.name }}</h3>
-          <p v-if="option.price" class="packages-section__price">
-            {{ option.price }}
-            <span v-if="option.priceQualifier">{{
-              option.priceQualifier
-            }}</span>
-          </p>
-          <p>{{ option.description }}</p>
-          <ul>
+          <div
+            class="packages-section__badge-region"
+            :aria-hidden="option.badgeLabel ? undefined : 'true'"
+          >
+            <AppBadge v-if="option.badgeLabel" type="sourced">
+              {{ option.badgeLabel }}
+            </AppBadge>
+          </div>
+          <div class="packages-section__heading">
+            <h3>{{ option.name }}</h3>
+            <p v-if="option.price" class="packages-section__price">
+              {{ option.price }}
+              <span v-if="option.priceQualifier">{{
+                option.priceQualifier
+              }}</span>
+            </p>
+          </div>
+          <p class="packages-section__description">{{ option.description }}</p>
+          <ul class="packages-section__features">
             <li v-for="feature in option.features" :key="feature">
               {{ feature }}
             </li>
           </ul>
-          <AppButton
-            v-if="option.action"
-            :href="option.action.href"
-            :variant="option.highlighted ? 'primary' : 'secondary'"
-            @click="emit('packageAction', option.name, $event)"
-          >
-            {{ option.action.label }}
-          </AppButton>
+          <div class="packages-section__action">
+            <AppButton
+              v-if="option.action"
+              :href="option.action.href"
+              :variant="option.highlighted ? 'primary' : 'secondary'"
+              @click="emit('packageAction', option.name, $event)"
+            >
+              {{ option.action.label }}
+            </AppButton>
+          </div>
         </AppCard>
       </div>
       <AppButton
@@ -102,7 +111,30 @@ const headingTag = computed(() => `h${props.intro.headingLevel ?? 2}`);
 @import './sections.css';
 
 .packages-section__card {
-  align-content: start;
+  height: 100%;
+  align-content: stretch;
+}
+
+.packages-section__card :deep(.app-card__body) {
+  display: grid;
+  grid-template-rows: auto auto auto 1fr auto;
+  gap: var(--spacing-32);
+  height: 100%;
+}
+
+.packages-section__badge-region {
+  display: flex;
+  min-height: 30px;
+  align-items: center;
+}
+
+.packages-section__badge-region :deep(.app-badge) {
+  width: 100%;
+}
+
+.packages-section__heading {
+  display: grid;
+  gap: var(--spacing-16);
 }
 
 .packages-section__card h3,
@@ -111,6 +143,19 @@ const headingTag = computed(() => `h${props.intro.headingLevel ?? 2}`);
 .packages-section__card ul {
   margin: 0;
   overflow-wrap: anywhere;
+}
+
+.packages-section__features {
+  align-content: start;
+}
+
+.packages-section__action {
+  display: flex;
+  align-items: end;
+}
+
+.packages-section__action :deep(.app-button) {
+  width: 100%;
 }
 
 .packages-section__price {
@@ -136,8 +181,7 @@ const headingTag = computed(() => `h${props.intro.headingLevel ?? 2}`);
   padding-inline-start: var(--spacing-24);
 }
 
-.packages-section--featured-center
-  :deep(.landing-section__grid > :nth-child(2)) {
-  transform: translateY(calc(var(--spacing-12) * -1));
+.packages-section--featured-center :deep(.landing-section__grid) {
+  align-items: stretch;
 }
 </style>

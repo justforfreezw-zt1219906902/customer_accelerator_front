@@ -40,8 +40,17 @@ describe('AppNavbar', () => {
     expect(
       wrapper.findAll('.app-navbar__link').map((item) => item.text()),
     ).toEqual(defaultHeaderContent.navigation.map((item) => item.label));
-    expect(wrapper.get('.app-navbar__brand-text').text()).toBe('mi-goTo');
-    expect(wrapper.get('.app-navbar__logo').attributes('width')).toBe('124');
+    expect(wrapper.get('.app-brand-logo__text').text()).toBe('mi-goTo');
+    expect(wrapper.get('.app-navbar__brand').attributes('href')).toBe('/');
+    expect(wrapper.get('.app-navbar__brand').attributes('aria-label')).toBe(
+      'mi-goTo home',
+    );
+    expect(wrapper.get('.app-navbar__brand img').attributes('width')).toBe(
+      '124',
+    );
+    expect(wrapper.get('.app-navbar__brand img').attributes('src')).toContain(
+      'mi-goto-lockup-light-hidpi.png',
+    );
     expect(
       wrapper
         .getComponent({ name: 'AppSectionContainer' })
@@ -54,6 +63,18 @@ describe('AppNavbar', () => {
         .find('.app-navbar__languages')
         .exists(),
     ).toBe(true);
+  });
+
+  it('emits router-aware Home navigation from the single transparent logo link', async () => {
+    const wrapper = mount(AppNavbar, { props: { spaNavigation: true } });
+    const logoLinks = wrapper.findAll('a[aria-label="mi-goTo home"]');
+
+    expect(logoLinks).toHaveLength(1);
+    expect(logoLinks[0].attributes('href')).toBe('/');
+    expect(logoLinks[0].classes()).not.toContain('app-navbar__logo-wrapper');
+
+    await logoLinks[0].trigger('click');
+    expect(wrapper.emitted('homeNavigate')).toHaveLength(1);
   });
 
   it('supports keyboard-accessible mobile menu behavior', async () => {
@@ -98,7 +119,7 @@ describe('AppNavbar', () => {
     });
 
     expect(wrapper.classes()).toContain('app-navbar--contact');
-    expect(wrapper.get('.app-navbar__brand-text').text()).toBe('mi-goTo');
+    expect(wrapper.get('.app-brand-logo__text').text()).toBe('mi-goTo');
     expect(
       wrapper.findAll('.app-navbar__link').map((item) => item.text()),
     ).toEqual(['HOME']);

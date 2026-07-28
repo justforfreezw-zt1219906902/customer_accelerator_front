@@ -110,3 +110,26 @@ current Git commit `23df8b4537f58fef00d28eedaec64e2b25f4e7e9`.
 `ISSUE-2026-006` records both blockers. No RC identifier, artifact, checksum or
 manifest was created. Full QA and Figma comparison did not start. Production
 deployment was not performed.
+
+`TASK-P8-002` implemented the authorized RC-entry remediation on 2026-07-28:
+the shared Header now uses the high-density transparent Figma logo and exposes
+an accessible Home link; the Packages grid uses equal-height card structure
+with aligned CTA regions; and the Not Found route is a final
+`implemented_needs_review` Page with Tom-approved copy.
+
+Phase 8 remains `blocked`. `ISSUE-2026-007` and `ISSUE-2026-008` are
+`resolved_needs_verification`, while `ISSUE-2026-006` remains open until human
+visual approval and a later exact source-freeze commit satisfy the RC entry
+Gate. No RC identifier, artifact, commit or deployment was created by this
+task.
+
+Tom reviewed `TASK-P8-002` as `CHANGES_REQUIRED`: Header, Packages and Not Found
+passed, but the Footer logo failed sharpness, background-integration and Home
+navigation review.
+
+`TASK-P8-003` replaces duplicated Header/Footer brand markup with the Core
+`AppBrandLogo`, reuses the approved transparent high-density asset across every
+Footer variant, and adds shared Home navigation. Compact Footer branding is an
+explicit Tom-approved correction recorded in `CR-2026-005`. The implementation
+is `needs_review`; Phase 8 remains blocked, `ISSUE-2026-006` remains open, and
+Source Freeze remains prohibited.

@@ -132,20 +132,21 @@ routes:
       - Final visual design and copy were approved through TASK-P6F-002.
       - Tom approved the Phase 6F implementation through TASK-P6F-002 on 2026-07-28.
   - path: /:pathMatch(.*)*
-    route_name: not-found
+    route_name: NotFound
     page: Not Found
     component: NotFoundPage
     planned_path: src/pages/NotFoundPage.vue
     layout: MarketingLayout
-    title: Page Not Found | mi-goTo
+    title: Page not found | mi-goTo
     figma_page_id: not_applicable_no_figma_source
-    implementation_status: temporary_shell_implemented
+    implementation_status: implemented_needs_review
     anchor_behavior: none
     access_status: public_fallback
     human_approval: approved
     notes:
-      - Must be accessible and provide a clear route to /.
-      - Final visual design and copy remain separately reviewable.
+      - Exact copy, Home CTA and no-separate-Figma-frame decision were approved
+        by Tom for TASK-P8-002 on 2026-07-28.
+      - Final human browser review remains pending.
 
 approved_navigation:
   header:

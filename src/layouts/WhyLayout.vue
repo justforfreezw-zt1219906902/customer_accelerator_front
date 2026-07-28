@@ -34,6 +34,7 @@ const handleFooterNavigation = (link: FooterLink) => {
       variant="why"
       :content="whyNavigationEn"
       spa-navigation
+      @home-navigate="navigateInternal('/')"
       @navigate="handleHeaderNavigation"
       @strategy-discussion="navigateInternal('/contact')"
     />
@@ -46,6 +47,7 @@ const handleFooterNavigation = (link: FooterLink) => {
       variant="why"
       :content="whyFooterEn"
       spa-navigation
+      @home-navigate="navigateInternal('/')"
       @navigate="handleFooterNavigation"
     />
   </div>

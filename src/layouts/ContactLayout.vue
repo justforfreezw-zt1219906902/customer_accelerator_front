@@ -32,6 +32,7 @@ const handleFooterNavigation = (link: FooterLink) => {
       variant="contact"
       :content="contactNavigationEn"
       spa-navigation
+      @home-navigate="navigateInternal('/')"
       @navigate="handleHeaderNavigation"
     />
     <main id="main-content" class="contact-layout__main" tabindex="-1">
@@ -43,6 +44,7 @@ const handleFooterNavigation = (link: FooterLink) => {
       variant="contact"
       :content="contactFooterEn"
       spa-navigation
+      @home-navigate="navigateInternal('/')"
       @navigate="handleFooterNavigation"
     />
   </div>

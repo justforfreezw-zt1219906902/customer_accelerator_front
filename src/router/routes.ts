@@ -7,7 +7,7 @@ export const routeNames = {
   dataProtection: 'data-protection',
   contact: 'contact',
   thankYou: 'thank-you',
-  notFound: 'not-found',
+  notFound: 'NotFound',
 } as const;
 
 export type AppRouteName = (typeof routeNames)[keyof typeof routeNames];
@@ -93,7 +93,7 @@ export const routes = [
         path: '',
         name: routeNames.notFound,
         component: () => import('../pages/NotFoundPage.vue'),
-        meta: { title: 'Page Not Found | mi-goTo' },
+        meta: { title: 'Page not found | mi-goTo' },
       },
     ],
   },

@@ -20,6 +20,13 @@ inspection:
     - 04 Product Components was inspected read-only and approved for Phase 4B.
     - 05 Sections was inspected read-only and approved for Phase 4C.
     - 06 Landing Page was inspected, implemented and approved by Tom under TASK-P6A-006.
+    - TASK-P8-002 re-inspected Header 105:464, logo 105:452 and Packages
+      212:453 read-only; no Figma write occurred.
+    - TASK-P8-003 re-inspected Landing Footer 105:494, Footer logo 105:474,
+      compact Footer 257:1671 and Header 105:464 read-only.
+    - Header and Landing Footer use the same Original mi-goTo lockup light
+      source; compact Footer has no Figma logo, so CR-2026-005 records Tom's
+      approved RC correction.
     - 10 Contact Page was inspected read-only and implemented for Phase 6B under TASK-P6B-001; human review remains pending.
 pages:
   - page_name: 00 Foundation
@@ -106,6 +113,12 @@ pages:
     notes:
       - Desktop frame is "212:3"; Header "212:4"; Footer "212:737".
       - Header source component is "105:464"; logo "105:452"; navigation "105:453"; language switcher "105:459".
+      - The Figma logo asset exported for TASK-P8-002 is a transparent 649x188
+        PNG rendered at 124x36 CSS pixels.
+      - Packages band "212:453" contains Pricing Section "195:629", grid
+        "195:633", and cards "226:1076", "195:634", "195:659", "195:689".
+      - CR-2026-004 records the approved RC alignment correction because the
+        Figma card instances themselves remain content-height staggered.
       - Footer source component is "105:494"; columns "I212:737;105:472"; divider "I212:737;105:490"; bottom row "I212:737;105:491".
       - Hero "212:22" contains copy "I212:22;197:847", validation data "I212:22;197:856", product stage "I212:22;197:866", Account Intelligence panel "168:41", and insufficient-data row "222:32".
       - Principle Section "212:375" contains panel "I212:375;194:819" from component "171:40".

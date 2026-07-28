@@ -40,8 +40,23 @@ categories:
         format: png
         license: existing_product_brand_asset
         version: 1.0.0
-        status: implemented
+        status: superseded_legacy_asset_not_referenced
         last_reviewed: "2026-07-27"
+        notes:
+          - Preserved as historical repository content; TASK-P8-003 confirms
+            application code no longer references this intrinsic-size raster.
+      - asset_id: ASSET-LOGO-002
+        name: Original mi-goTo lockup light high-density transparent export
+        source: Figma nodes "105:452" and "105:474"
+        owner: Product owner / Tom
+        repository_path: src/assets/brand/mi-goto-lockup-light-hidpi.png
+        format: png
+        intrinsic_dimensions: 649x188
+        alpha_channel: true
+        license: existing_product_brand_asset
+        version: 1.1.0
+        status: implemented_needs_review
+        last_reviewed: "2026-07-28"
   - id: icons
     name: Icons
     source: Figma 1.0.0
