@@ -18,6 +18,41 @@ Every version entry must contain:
 Entries should identify Figma nodes or variables, code mappings, compatibility
 impact, reviewer, review date, and approval evidence.
 
+## [1.1.0] — 2026-07-28
+
+### Added
+
+- `11 Thank You Page` (`321:28`) and desktop frame `321:29`.
+
+### Changed
+
+- The expected Figma page inventory now includes the successful Contact
+  submission destination.
+
+### Deprecated
+
+- None.
+
+### Removed
+
+- None.
+
+### Breaking Changes
+
+- None. This is compatible new page functionality.
+
+### Migration Notes
+
+- Replace the temporary `/thank-you` shell with the Figma-backed Page.
+- Reuse the approved Contact-style shared chrome shown in the frame.
+
+### Affected code layers
+
+- Pages, content configuration, routing layout mapping, tests, and traceability.
+
+Human scope approval: Tom, 2026-07-28. Implementation visual approval remains
+pending.
+
 ## [1.0.0] — 2026-07-24
 
 ### Added

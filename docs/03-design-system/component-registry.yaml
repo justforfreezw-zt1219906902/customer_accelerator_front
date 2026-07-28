@@ -123,11 +123,11 @@ components:
     layer: composite
     dependencies: [core]
     variants:
-      variant: [Landing, Contact, Desktop, Mobile, Transparent, Solid]
+      variant: [Landing, Contact, Why, Desktop, Mobile, Transparent, Solid]
     figma_version: 1.0.0
     implementation_status: implemented
-    design_review_status: landing_approved_contact_needs_review
-    tests: [tests/unit/AppNavbar.spec.ts]
+    design_review_status: landing_contact_and_why_approved
+    tests: [tests/unit/AppNavbar.spec.ts, tests/unit/WhyMiGotoPage.spec.ts]
     landing_page_instance_node_id: "212:4"
     landing_header_component_node_id: "105:464"
     logo_node_id: "105:452"
@@ -139,8 +139,14 @@ components:
       - Tom approved the shared Header regression at 1440px and 390px under TASK-P6A-006.
       - CR-2026-001 approves a typed Contact variant based on node 314:44; implementation is pending TASK-P4A-003.
       - TASK-P4A-003 implemented the typed Contact variant with exact HOME-only content and Figma-confirmed desktop geometry.
+      - TASK-P6E-001 added the typed Why variant from Header component 257:1655 without changing Landing or Contact content.
     contact_header_node_id: "314:44"
-    contact_variant_status: implementation_complete_needs_review
+    contact_variant_status: approved
+    contact_variant_approval_task: TASK-P6B-003
+    why_header_component_node_id: "257:1655"
+    why_page_instance_node_id: "259:4"
+    why_variant_status: approved
+    why_variant_approval_task: TASK-P6E-002
   - component_id: CMP-COMPOSITE-005
     figma_name: mi-goTo/Footer
     figma_node_id: "68:517"
@@ -149,12 +155,12 @@ components:
     layer: composite
     dependencies: [core]
     variants:
-      variant: [Landing, Contact, Simple, Full]
+      variant: [Landing, Contact, Why, Simple, Full]
       context: [Enterprise-Dark, Impact-Light]
     figma_version: 1.0.0
     implementation_status: implemented
-    design_review_status: landing_approved_contact_needs_review
-    tests: [tests/unit/AppFooter.spec.ts]
+    design_review_status: landing_contact_and_why_approved
+    tests: [tests/unit/AppFooter.spec.ts, tests/unit/WhyMiGotoPage.spec.ts]
     landing_page_instance_node_id: "212:737"
     landing_footer_component_node_id: "105:494"
     logo_node_id: "105:474"
@@ -166,8 +172,14 @@ components:
       - Tom approved the shared Footer regression at 1440px and 390px under TASK-P6A-006.
       - CR-2026-001 approves a typed Contact compact variant based on node 257:1671; implementation is pending TASK-P4A-003.
       - TASK-P4A-003 implemented the typed Contact compact variant with copyright and Home/Imprint/Data protection links.
+      - TASK-P6E-001 added a distinct typed Why variant from component 257:1671; it currently shares the confirmed compact visual structure with Contact.
     contact_footer_node_id: "257:1671"
-    contact_variant_status: implementation_complete_needs_review
+    contact_variant_status: approved
+    contact_variant_approval_task: TASK-P6B-003
+    why_footer_component_node_id: "257:1671"
+    why_page_instance_node_id: "259:167"
+    why_variant_status: approved
+    why_variant_approval_task: TASK-P6E-002
   - component_id: CMP-PRODUCT-001
     figma_name: mi-goTo/Value Proposition Card
     figma_node_id: "82:37"

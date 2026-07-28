@@ -2,8 +2,8 @@
 
 ## Status
 
-The minimal Vue 3 foundation is implemented and awaiting Phase 1 human review.
-Product layers remain planned and unimplemented.
+The Vue 3 foundation and approved lower layers are implemented. Static Page
+delivery is in Phase 6.
 
 ## Layered architecture
 
@@ -55,13 +55,19 @@ Phase 6B direction is:
 ```text
 MarketingLayout → AppNavbar (Landing/default) + AppFooter (Landing/full)
 ContactLayout   → AppNavbar (Contact) + AppFooter (Contact compact)
+WhyLayout       → AppNavbar (Why) + AppFooter (Why compact)
 LegalLayout     → approved legal chrome
 ```
 
 `ContactLayout` was implemented under `TASK-P6B-003`. It composes the shared
 Contact variants without duplicating Header or Footer markup, while
-`ContactPage` remains responsible only for Contact content and form UI. Human
-Figma-fidelity approval remains pending.
+`ContactPage` remains responsible only for Contact content and form UI.
+
+`WhyLayout` was implemented under `TASK-P6E-001` following Tom's explicit
+design decision and `CR-2026-002`. It selects the typed Why variants from
+Figma Header `257:1655` and Footer `257:1671`; the Page owns only the seven
+approved content Sections. Landing, Contact and Legal layout behavior remains
+unchanged.
 `AppNavbar` and `AppFooter` remain shared Composite owners. Pages must not copy
 raw Header/Footer markup, and a Page-specific variant must not change other
 routes implicitly.
@@ -101,4 +107,4 @@ Still required:
 - Content and localization format
 - API generation or manual mapping
 - Supported browsers, CI, and accessibility conformance target
-- Playwright browser binary installation approval
+- Final supported-browser and CI policy

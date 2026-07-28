@@ -45,13 +45,21 @@ routes:
     page: Why mi-goTo Page
     component: WhyMiGotoPage
     planned_path: src/pages/WhyMiGotoPage.vue
-    layout: MarketingLayout
+    layout: WhyLayout
     title: Why mi-goTo | mi-goTo
     figma_page_id: "259:2"
-    implementation_status: temporary_shell_implemented
-    anchor_behavior: cross_route_anchors_navigate_to_landing_then_scroll
+    implementation_status: implemented_approved
+    anchor_behavior: same_route_scroll_to_story_mission_pillars_or_impact
     access_status: public
     human_approval: approved
+    figma_frame_id: "259:3"
+    chrome_change_request: CR-2026-002
+    why_header_node_id: "259:4"
+    why_footer_node_id: "259:167"
+    implementation_approval:
+      reviewer: Tom
+      date: "2026-07-28"
+      task: TASK-P6E-002
   - path: /imprint
     route_name: imprint
     page: Imprint Page
@@ -60,10 +68,13 @@ routes:
     layout: LegalLayout
     title: Imprint | mi-goTo
     figma_page_id: "122:2"
-    implementation_status: temporary_shell_implemented
+    implementation_status: approved
     anchor_behavior: internal_anchors_after_stable_legal_headings
     access_status: public
     human_approval: approved
+    phase_6d_blocker: null
+    former_blocker: ISSUE-2026-005
+    content_revision: FIGMA-122-3-EN-1.0.0
   - path: /data-protection
     route_name: data-protection
     page: Data Protection Page
@@ -101,17 +112,19 @@ routes:
     page: Thank You Page
     component: ThankYouPage
     planned_path: src/pages/ThankYouPage.vue
-    layout: MarketingLayout
+    layout: ContactLayout
     title: Thank You | mi-goTo
-    figma_page_id: not_applicable_no_figma_source
-    implementation_status: temporary_shell_implemented
+    figma_page_id: "321:28"
+    figma_desktop_frame_id: "321:29"
+    implementation_status: approved
     anchor_behavior: none
     access_status: public_refresh_safe
     human_approval: approved
     notes:
       - Successful Contact submission uses router replace to this route.
       - No VITE_APP_MODE branch applies.
-      - Final visual design and copy remain separately reviewable.
+      - Final visual design and copy were approved through TASK-P6F-002.
+      - Tom approved the Phase 6F implementation through TASK-P6F-002 on 2026-07-28.
   - path: /:pathMatch(.*)*
     route_name: not-found
     page: Not Found

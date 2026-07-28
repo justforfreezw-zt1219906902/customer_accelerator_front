@@ -1,7 +1,7 @@
 ---
 phase: 7
 name: Backend Integration
-status: not_started
+status: planned
 human_approval: pending
 ---
 
@@ -102,4 +102,3 @@ errors, and coordinate incidents with the backend owner.
 Not available. It must later identify OpenAPI/API versions, compatibility ID,
 mappings, validation, security evidence, deviations, recovery readiness, and
 both approvals.
-

@@ -1,5 +1,5 @@
 schema_version: 1
-active_baseline_id: DS1.0.0_API0.0.0_FE0.0.1
+active_baseline_id: DS1.1.0_API0.0.0_FE0.1.0
 baselines:
   - baseline_id: DS1.0.0_API0.0.0_FE0.0.1
     human_display_name: figma1.00_backend_unassigned
@@ -18,9 +18,25 @@ baselines:
       - Production API URL is unresolved.
       - Compatibility has not been tested in any environment.
     effective_date: "2026-07-24"
+    superseded_by: DS1.1.0_API0.0.0_FE0.1.0
+  - baseline_id: DS1.1.0_API0.0.0_FE0.1.0
+    human_display_name: figma1.10_backend_unassigned
+    figma_semantic_version: 1.1.0
+    backend_semantic_version: 0.0.0
+    backend_version_status: contract_documented_version_unassigned
+    backend_contract_revision: 1
+    frontend_semantic_version: 0.1.0
+    compatibility_status: pending_backend_version_assignment
+    approval_status: not_approved
+    tested_environments: [local]
+    limitations:
+      - Backend 0.0.0 remains a non-release placeholder.
+      - Phase 6F visual and human approval remains pending.
+      - No explicit mobile Figma frame exists for the Thank You Page.
+      - Production API URL remains unresolved.
+    effective_date: "2026-07-28"
     superseded_by: null
 notes:
   - The active baseline is a planning baseline, not an approved release baseline.
   - Machine IDs must use DS<figma-version>_API<backend-version>_FE<frontend-version>.
   - Human display names are aliases and never replace semantic versions.
-

@@ -47,7 +47,7 @@ test('captures Phase 6A desktop visual-fidelity evidence', async ({
 test('resolves Landing Team and FAQ anchors without duplicate IDs', async ({
   page,
 }) => {
-  await page.goto('/contact');
+  await page.goto('/imprint');
   await page.locator('.app-footer a[href="/#team"]').click();
 
   await expect(page).toHaveURL(/\/#team$/);
@@ -87,14 +87,7 @@ test('captures shared Header and Footer mobile evidence', async ({
 test('uses the approved Landing Header and Footer across default consumers', async ({
   page,
 }) => {
-  for (const path of [
-    '/',
-    '/why-mi-goto',
-    '/thank-you',
-    '/imprint',
-    '/data-protection',
-    '/missing-route',
-  ]) {
+  for (const path of ['/', '/imprint', '/data-protection', '/missing-route']) {
     await page.goto(path);
 
     await expect(page.locator('.app-navbar')).toHaveCount(1);

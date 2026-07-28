@@ -29,11 +29,12 @@ evidence but does not independently approve these behaviors.
 | 08 Imprint | `122:2` | `122:3` | Header `122:439`, legal content and page index |
 | 09 Data Protection | `128:2` | desktop legal page | Header/Footer, long-form legal content and page index; Footer `128:542` |
 | 10 Contact Page | `269:2` | `269:3` | Header `269:4`, default four-field form `269:47`, direct email `269:44`, submit action `269:99`, Footer `269:103` |
+| 11 Thank You Page | `321:28` | `321:29` | Compact Header `321:30`, confirmation `321:129`, next steps `321:143`, compact Footer `321:84` |
 
 The inspected pages are desktop compositions. They do not contain authoritative
 route reactions, mobile Page compositions, locale transitions, unknown-route
-behavior, or Contact loading/success/error frames. No Thank You Page exists in
-the active Figma baseline.
+behavior or Contact loading/error frames. The Thank You Page was added in Figma
+1.1.0 under Tom's approved Phase 6F scope extension.
 
 ## Proposed route contract
 
@@ -46,7 +47,7 @@ These routes require human approval before implementation.
 | `/imprint` | Imprint Page | Footer legal entry | `approved_for_implementation` |
 | `/data-protection` | Data Protection Page | Footer legal and Contact privacy-note entry | `approved_for_implementation` |
 | `/contact` | Contact Page | Header, Footer, and CTA entry | `approved_for_implementation` |
-| `/thank-you` | Thank You Page | Successful submission | `approved_for_implementation`; no Figma source |
+| `/thank-you` | Thank You Page | Successful submission, direct access and refresh-safe rendering | `implemented_needs_review`; Figma `321:28` |
 
 Route names, metadata, canonical URL rules, and legacy redirects remain
 implementation inputs for a later approved task.

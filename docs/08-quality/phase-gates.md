@@ -66,8 +66,8 @@ Unavailable tools remain `planned`; they do not count as passed evidence.
 
 ## Phase 6 — Static Pages Gate
 
-- Landing, Contact, Data Protection, Imprint, and Why mi-goTo Pages meet approved
-  visual/content/route requirements
+- Landing, Contact, Data Protection, Imprint, Why mi-goTo, and Thank You Pages
+  meet approved visual/content/route requirements
 - Legal content has authorized approval
 - Accessibility, responsive, visual, route, and build checks pass
 - Static Contact does not claim live integration
@@ -90,4 +90,3 @@ Unavailable tools remain `planned`; they do not count as passed evidence.
 - Deployment, monitoring, support, privacy, Incident, and rollback readiness exist
 - Production smoke tests pass after authorized deployment
 - Product/release approval recorded
-

@@ -1,8 +1,8 @@
 ---
 phase: 6
 name: Static Pages
-status: in_progress
-human_approval: pending
+status: approved
+human_approval: approved
 ---
 
 # Phase 6: Static Pages
@@ -19,6 +19,7 @@ before enabling live backend behavior.
 - Phase 6C: Data Protection Page
 - Phase 6D: Imprint Page
 - Phase 6E: Why mi-goTo Page
+- Phase 6F: Thank You Page
 - Responsive, accessibility, visual, content, and route validation
 
 Phase 6A approved scope includes all previously approved Landing Sections plus
@@ -43,7 +44,7 @@ commercial qualifiers, qualitative claims, Team information, and FAQ content.
 
 ## Expected Outputs
 
-- Five static Page implementations
+- Six static Page implementations
 - Responsive accessible Page composition
 - Content and Figma traceability
 - Visual, route, and automated evidence
@@ -53,7 +54,7 @@ commercial qualifiers, qualitative claims, Team information, and FAQ content.
 Initial sequence:
 
 ```text
-Phase 5 → Phase 6A → Phase 6B → Phase 6C → Phase 6D → Phase 6E
+Phase 5 → Phase 6A → Phase 6B → Phase 6C → Phase 6D → Phase 6E → Phase 6F
 ```
 
 Parallel Page delivery requires human confirmation.
@@ -98,11 +99,14 @@ the last approved content and mapping; preserve a legal-content audit trail.
 
 ## Status
 
-Phase 6: `in_progress`
+Phase 6: `approved`
 
 - Phase 6A: `approved`
 - Phase 6B: `approved`
-- Phases 6C–6E: `not_started`
+- Phase 6C: `approved`
+- Phase 6D: `approved`
+- Phase 6E: `approved`
+- Phase 6F: `approved`
 
 Phase 6A was opened under `TASK-P6A-001` on 2026-07-27. The required Figma
 Landing Page was inspected read-only, but implementation stopped before code
@@ -166,15 +170,232 @@ to it, and preserved the Contact form behavior without API calls. Automated
 unit, Chromium, build, management, and regression evidence passes. Tom approved
 `TASK-P6B-003` and Phase 6B on 2026-07-28.
 
+`TASK-P6C-001` inspected Data Protection Figma Page `128:2` and desktop frame
+`128:3` read-only on 2026-07-28. The Page uses Landing Header `128:475` and
+Landing Footer `128:542`, so no new chrome variant is required. Application
+implementation stopped because `CONTENT-DATA-PROTECTION` has no authoritative
+source, owner, approver, revision, approved language, or production-publication
+approval. `ISSUE-2026-004` blocks Phase 6C; no application code was modified.
+
+Tom issued an explicit Product Owner Gate override for `TASK-P6C-002` on
+2026-07-28. Figma frame `128:3` is the authoritative current source for all 35
+German sections; its complete English translation is approved for
+implementation and public frontend use as revision
+`FIGMA-128-3-EN-1.0.0`. A PDF and separate legal approval are waived for this
+baseline. Professional legal review remains deferred and the result must not be
+represented as lawyer-approved.
+
+`TASK-P6C-002` implemented the structured English notice, Figma-derived hero,
+main legal column, table of contents, stable anchors, approved Landing chrome,
+and conservative responsive stacking. `ISSUE-2026-004` is resolved through the
+human Gate override. Tom approved Phase 6C through review task
+`TASK-P6C-003` on 2026-07-28. Phase 6D is now planned.
+
+`TASK-P6D-001` inspected Imprint Page `122:2` and desktop frame `122:3`
+read-only. The design reuses the approved Landing Header and Footer, so no new
+shared chrome variant is required. Application implementation stopped before
+code changes because `CONTENT-IMPRINT` has no authoritative source, owner,
+approver, revision, approved language or public-use approval. The Figma copy
+also contains transitional authority information and an editorial relocation
+note whose publication disposition is unresolved. `ISSUE-2026-005` blocks
+Phase 6D.
+
+Tom issued an explicit Product Owner Gate override for `TASK-P6D-002` on
+2026-07-28. Public current content in Figma frame `122:3` is accepted as the
+authoritative source for English revision `FIGMA-122-3-EN-1.0.0`. The future
+Treptow-Köpenick authority block and the relocation editor instruction are
+excluded. A PDF and professional legal review are waived for this revision;
+professional legal review remains deferred.
+
+`TASK-P6D-002` implemented ten current public content groups, the Figma-derived
+Hero, legal cards, quick information and section index using the approved
+Landing chrome through `LegalLayout`. `ISSUE-2026-005` is resolved by human
+Gate override. Tom approved the implementation and Phase 6D through review
+task `TASK-P6D-003` on 2026-07-28. Phase 6E is now the next planned subphase.
+
+`TASK-P6E-001` inspected Figma Page `259:2` and desktop frame `259:3`
+read-only, implemented seven exact Why Sections, five exported pillar assets,
+typed Why Header/Footer variants, `WhyLayout`, and the `/why-mi-goto` layout
+assignment. No mobile Figma frame was discovered, so the conservative
+responsive adaptation requires human review. Phase 6E is `needs_review`.
+Tom approved the implementation and Phase 6E through review task
+`TASK-P6E-002` on 2026-07-28. Phase 6 overall remains `in_progress` pending a
+separate Static Pages completion review.
+
+`TASK-P6F-001` added the newly approved Phase 6F scope on 2026-07-28. Figma
+Page `321:28` and desktop frame `321:29` were inspected read-only. The temporary
+route shell was replaced with the exact confirmation and next-step content,
+using `ContactLayout` because the Figma frame uses the existing compact
+Contact-style Header and Footer. The Page does not render submitted lead data,
+does not expose a HubSpot identifier, and performs no backend call. Management,
+type checking, lint, 97 unit/component tests, production build, and four
+Chromium viewport tests passed before human review.
+
+Tom approved the Phase 6F implementation through review task `TASK-P6F-002`
+on 2026-07-28. Review notes: “good”. Phase 6F is `approved`; Phase 6 remains
+`in_progress` pending the separate Static Pages completion review.
+
+### Phase 6C Gate override and implementation — 2026-07-28
+
+- Task: `TASK-P6C-002`
+- Decision owner: Tom, Product Owner
+- Source: Figma Page `128:2`, frame `128:3`
+- Source/target: complete 35-section German source translated to English
+- Content revision: `FIGMA-128-3-EN-1.0.0`
+- Page shell: removed
+- Shared chrome: approved Landing Header and Footer through `LegalLayout`
+- Responsive behavior: conservative sidebar/main-column stacking because no
+  mobile Figma frame was discovered
+- Validation: management, documentation, version, compatibility, registry,
+  OpenAPI, type checking, ESLint, 90 unit/component tests, 2 Chromium tests,
+  production build and diff check passed
+- Former blocker: `ISSUE-2026-004`, resolved by `human_gate_override`
+- Status: Phase 6C `approved`; Phase 6 remains `in_progress`
+- Human page review: approved by Tom through `TASK-P6C-003`
+- Professional legal review: deferred; the implementation is not
+  lawyer-approved
+
 ## Human Approval
 
 Phase 6A: `approved` by Tom on 2026-07-27.
 
-Phase 6 overall: `pending`; Phases 6B–6E remain.
+Before `TASK-P6-APPROVAL-001`, Phase 6A through Phase 6F were individually
+approved and the separate Phase 6 completion review remained required.
+
+Phase 6F implementation approval: `approved` by Tom on 2026-07-28 through
+review task `TASK-P6F-002`, covering implementation task `TASK-P6F-001`.
+Review notes: “good”.
+
+Phase 6 final approval: `approved` by Tom on 2026-07-28 through
+`TASK-P6-APPROVAL-001`. All six subphases are approved. Phase 7 is `planned`;
+`TASK-P7-001` is the next permitted task.
+
+### Phase 6 final approval — 2026-07-28
+
+- Review task: `TASK-P6-APPROVAL-001`
+- Reviewer: Tom
+- Result: `APPROVED`
+- Approved subphases: Phase 6A, 6B, 6C, 6D, 6E, and 6F
+- Static Pages: six
+- Blocking Issues: none
+- Deviations: resolved or explicitly accepted
+- Phase 7 status: `planned`
+- Next task: `TASK-P7-001`
+- Next Gate: Phase 7 Backend Contract Readiness Review
+- Application code and Figma changes in this approval task: none
 
 Phase 6B implementation approval: `approved` by Tom on 2026-07-28 for
 `TASK-P6B-003`. The prior `TASK-P6B-002` changes-required result remains
 preserved as decision history.
+
+Phase 6C implementation approval: `approved` by Tom on 2026-07-28 through
+review task `TASK-P6C-003`, covering the implementation and validation evidence
+from `TASK-P6C-002`. Review notes: “good”. Professional legal review remains
+deferred under the accepted Gate override and is not implied by this approval.
+
+Phase 6D implementation approval: `approved` by Tom on 2026-07-28 through
+review task `TASK-P6D-003`, covering the implementation and validation evidence
+from `TASK-P6D-002`. Review notes: “good”. Professional legal review remains
+deferred under the accepted Gate override and is not implied by this approval.
+
+### Phase 6D human approval — 2026-07-28
+
+- Review task: `TASK-P6D-003`
+- Reviewed implementation: `TASK-P6D-002`
+- Reviewer: Tom
+- Result: `APPROVED`
+- Notes: `good`
+- Existing automated and browser evidence: preserved
+- Open blocking Issues: none
+- Phase 6D status: `approved`
+- Phase 6 overall status: `in_progress`
+- Next task: `TASK-P6E-001`
+- Next Gate: Phase 6E Why mi-goTo Page Review
+- Application code modified by this approval task: none
+- Professional legal review: deferred; this approval is not legal-counsel
+  approval
+
+### Phase 6E Why Page implementation — 2026-07-28
+
+- Task: `TASK-P6E-001`
+- Figma Page: `259:2`
+- Desktop frame: `259:3`
+- Header: instance `259:4`, component `257:1655`
+- Footer: instance `259:167`, component `257:1671`
+- Sections: Hero, Story, Principle, Mission, Pillars, Impact, Final CTA
+- Architecture: `/why-mi-goto` → `WhyLayout` → typed shared Why chrome
+- Change Request: `CR-2026-002`
+- Validation: management, typecheck, ESLint, 95 unit/component tests, three
+  Phase 6E and fourteen full-suite Chromium tests, production build and Git
+  diff check passed
+- Human approval: pending
+- Phase 6E: `needs_review`
+- Phase 6: remains `in_progress`
+- Next Gate: Phase 6E Why Page Full Browser and Figma Fidelity Review
+
+### Phase 6E human approval — 2026-07-28
+
+- Review task: `TASK-P6E-002`
+- Reviewed implementation: `TASK-P6E-001`
+- Reviewer: Tom
+- Result: `APPROVED`
+- Notes: `good`
+- Existing automated and browser evidence: preserved
+- Open blocking Issues: none
+- Phase 6E status: `approved`
+- Phase 6 overall status: `in_progress`
+- Next Gate: Phase 6 Static Pages Completion Review
+- Application code modified by this approval task: none
+
+### Phase 6C human approval — 2026-07-28
+
+- Review task: `TASK-P6C-003`
+- Reviewed implementation: `TASK-P6C-002`
+- Reviewer: Tom
+- Result: `APPROVED`
+- Notes: `good`
+- Existing automated and browser evidence: preserved
+- Open blocking Issues: none
+- Phase 6C status: `approved`
+- Phase 6 overall status: `in_progress`
+- Next task: `TASK-P6D-001`
+- Next Gate: Phase 6D Imprint Page Review
+- Legal counsel review: still deferred
+
+### Phase 6D blocked execution — 2026-07-28
+
+- Task: `TASK-P6D-001`
+- Figma page: `08 Imprint` (`122:2`)
+- Desktop frame: `122:3`
+- Header/Footer decision: reuse approved Landing variants
+- Legal content source: unapproved Figma canvas copy only
+- Legal content owner and approver: unknown
+- Application files modified: none
+- Blocker: `ISSUE-2026-005`
+- Required decision: provide authoritative approved Imprint wording and resolve
+  the current/future trade-authority and editorial-note publication state
+- Status: Phase 6D `blocked`; Phase 6 remains `in_progress`
+- Human approval: pending
+
+### Phase 6D Gate override and implementation — 2026-07-28
+
+- Task: `TASK-P6D-002`
+- Decision owner: Tom, Product Owner
+- Source: Figma Page `122:2`, frame `122:3`
+- Source/target: German current public content translated to English
+- Content revision: `FIGMA-122-3-EN-1.0.0`
+- Published content groups: 10
+- Excluded: relocation editor instruction
+- Deferred: future Treptow-Köpenick authority block
+- Page shell: removed
+- Shared chrome: approved Landing Header and Footer through `LegalLayout`
+- Responsive behavior: conservative sidebar/main-column stacking because no
+  mobile Figma frame was discovered
+- Former blocker: `ISSUE-2026-005`, resolved by `human_gate_override`
+- Status: Phase 6D `needs_review`; Phase 6 remains `in_progress`
+- Human page review: pending
+- Professional legal review: deferred; the implementation is not
+  lawyer-approved
 
 ## Completion Report
 
@@ -336,6 +557,24 @@ stopped at the content approval gate.
 - Next task: `TASK-P6B-001`
 - Next Gate: Phase 6B Contact Page UI Review
 - Application code modified by this approval task: none
+
+### Phase 6C legal-content Gate — 2026-07-28
+
+- Task: `TASK-P6C-001`
+- Result: `blocked`
+- Figma Page: `128:2`
+- Desktop frame: `128:3`
+- Header: `128:475`, matching approved Landing variant
+- Main content: `128:495`; legal column `128:497`; sidebar `128:498`
+- Footer: `128:542`, matching approved Landing variant
+- Legal sections visible in Figma: 35, German
+- Authoritative legal source: not supplied
+- Legal owner and approver: not supplied
+- Document revision and public-production approval: not supplied
+- Blocker: `ISSUE-2026-004`
+- Application code modified: none
+- Application tests and build: not run because implementation did not start
+- Next Gate: Phase 6C Legal Content Approval Gate
 
 ### Phase 6B Contact Page UI — 2026-07-28
 

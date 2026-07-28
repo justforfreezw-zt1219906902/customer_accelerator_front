@@ -162,6 +162,97 @@ sections:
     tests_status: passed
     notes:
       - Registered during Phase 6A because the approved Landing frame contains a dedicated evidence-metrics section.
+  - section_id: SEC-WHY-001
+    figma_name: mi-goTo/Why Hero Section
+    figma_node_id: "251:979"
+    page_instance_node_id: "259:21"
+    code_name: WhyHeroSection
+    planned_path: src/components/why/WhyHeroSection.vue
+    dependencies: [core]
+    variants: [Desktop, Responsive]
+    figma_version: 1.0.0
+    implementation_status: implemented
+    design_review_status: approved
+    content_source: src/content/why/en.ts
+    tests: [tests/unit/WhyMiGotoPage.spec.ts]
+  - section_id: SEC-WHY-002
+    figma_name: mi-goTo/Why Story Section
+    figma_node_id: "253:979"
+    page_instance_node_id: "259:26"
+    code_name: WhyStorySection
+    planned_path: src/components/why/WhyStorySection.vue
+    dependencies: [core]
+    variants: [Editorial]
+    figma_version: 1.0.0
+    implementation_status: implemented
+    design_review_status: approved
+    content_source: src/content/why/en.ts
+    tests: [tests/unit/WhyMiGotoPage.spec.ts]
+  - section_id: SEC-WHY-003
+    figma_name: mi-goTo/Why Principle Section
+    figma_node_id: "257:993"
+    page_instance_node_id: "259:50"
+    code_name: WhyPrincipleSection
+    planned_path: src/components/why/WhyPrincipleSection.vue
+    dependencies: [core]
+    variants: [Amber Principle]
+    figma_version: 1.0.0
+    implementation_status: implemented
+    design_review_status: approved
+    content_source: src/content/why/en.ts
+    tests: [tests/unit/WhyMiGotoPage.spec.ts]
+  - section_id: SEC-WHY-004
+    figma_name: mi-goTo/Mission Bridge Section
+    figma_node_id: "254:983"
+    page_instance_node_id: "259:59"
+    code_name: WhyMissionSection
+    planned_path: src/components/why/WhyMissionSection.vue
+    dependencies: [core]
+    variants: [Surface]
+    figma_version: 1.0.0
+    implementation_status: implemented
+    design_review_status: approved
+    content_source: src/content/why/en.ts
+    tests: [tests/unit/WhyMiGotoPage.spec.ts]
+  - section_id: SEC-WHY-005
+    figma_name: mi-goTo/Why Pillars Section
+    figma_node_id: "257:1538"
+    page_instance_node_id: "259:65"
+    code_name: WhyPillarsSection
+    planned_path: src/components/why/WhyPillarsSection.vue
+    dependencies: [core]
+    variants: [Five Pillars]
+    figma_version: 1.0.0
+    implementation_status: implemented
+    design_review_status: approved
+    content_source: src/content/why/en.ts
+    tests: [tests/unit/WhyMiGotoPage.spec.ts]
+  - section_id: SEC-WHY-006
+    figma_name: mi-goTo/Why Impact Section
+    figma_node_id: "257:1569"
+    page_instance_node_id: "259:117"
+    code_name: WhyImpactSection
+    planned_path: src/components/why/WhyImpactSection.vue
+    dependencies: [core]
+    variants: [Six SDG Cards]
+    figma_version: 1.0.0
+    implementation_status: implemented
+    design_review_status: approved
+    content_source: src/content/why/en.ts
+    tests: [tests/unit/WhyMiGotoPage.spec.ts]
+  - section_id: SEC-WHY-007
+    figma_name: mi-goTo/Why Final CTA Section
+    figma_node_id: "257:1636"
+    page_instance_node_id: "259:155"
+    code_name: WhyFinalCtaSection
+    planned_path: src/components/why/WhyFinalCtaSection.vue
+    dependencies: [core]
+    variants: [Primary]
+    figma_version: 1.0.0
+    implementation_status: implemented
+    design_review_status: approved
+    content_source: src/content/why/en.ts
+    tests: [tests/unit/WhyMiGotoPage.spec.ts]
 notes:
   - Figma page 05 Sections (87:2) was inspected read-only on 2026-07-25.
   - All Section content and marketing values are supplied through typed props or slots.
@@ -170,3 +261,5 @@ notes:
   - DEV-2026-009 is an accepted known responsive difference.
   - Tom approved TeamSection and FAQSection for Phase 6A under TASK-P6A-002 on 2026-07-27.
   - TeamSection, FAQSection and TrustMetricsSection were implemented under TASK-P6A-003 and approved in the Phase 6A Page review under TASK-P6A-006.
+  - TASK-P6E-001 registered seven Why Page Sections from desktop frame 259:3; responsive fidelity remains pending human review because no mobile frame was discovered.
+  - Tom approved all seven Why Page Sections through TASK-P6E-002 on 2026-07-28.

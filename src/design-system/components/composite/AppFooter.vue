@@ -7,7 +7,7 @@ import {
 import logoLockup from '../../../assets/brand/mi-goto-lockup-light.png';
 import { AppSectionContainer } from '../core';
 
-export type FooterVariant = 'landing' | 'contact' | 'simple' | 'full';
+export type FooterVariant = 'landing' | 'contact' | 'why' | 'simple' | 'full';
 type FooterContext = 'enterprise-dark' | 'impact-light';
 
 const props = withDefaults(
@@ -51,7 +51,10 @@ const handleNavigation = (event: MouseEvent, link: FooterLink) => {
       content-width="landing"
       divider="without-top-divider"
     >
-      <div v-if="variant !== 'contact'" class="app-footer__top">
+      <div
+        v-if="variant !== 'contact' && variant !== 'why'"
+        class="app-footer__top"
+      >
         <div class="app-footer__identity">
           <strong class="app-footer__brand">
             <img
@@ -99,9 +102,15 @@ const handleNavigation = (event: MouseEvent, link: FooterLink) => {
         </div>
       </div>
 
-      <div v-if="variant !== 'contact'" class="app-footer__divider" />
+      <div
+        v-if="variant !== 'contact' && variant !== 'why'"
+        class="app-footer__divider"
+      />
 
-      <div v-if="variant !== 'contact'" class="app-footer__bottom">
+      <div
+        v-if="variant !== 'contact' && variant !== 'why'"
+        class="app-footer__bottom"
+      >
         <span>{{ content.copyright }}</span>
         <span class="app-footer__bottom-statement">
           {{ content.bottomStatement }}
@@ -141,12 +150,16 @@ const handleNavigation = (event: MouseEvent, link: FooterLink) => {
   background: var(--color-bg-surface);
 }
 
-.app-footer--contact .app-footer__container {
+.app-footer--contact .app-footer__container,
+.app-footer--why .app-footer__container {
   min-height: 120px;
   padding: var(--spacing-32) var(--content-padding-contact-desktop);
 }
 
 .app-footer--contact
+  .app-footer__container
+  :deep(.app-section-container__content),
+.app-footer--why
   .app-footer__container
   :deep(.app-section-container__content) {
   display: block;
@@ -322,7 +335,8 @@ const handleNavigation = (event: MouseEvent, link: FooterLink) => {
     padding: var(--spacing-48) var(--spacing-24) var(--spacing-32);
   }
 
-  .app-footer--contact .app-footer__container {
+  .app-footer--contact .app-footer__container,
+  .app-footer--why .app-footer__container {
     min-height: auto;
     padding: var(--spacing-32) var(--spacing-24);
   }

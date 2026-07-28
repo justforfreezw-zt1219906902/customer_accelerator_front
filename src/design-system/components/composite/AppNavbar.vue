@@ -10,7 +10,13 @@ import {
 import { AppButton, AppSectionContainer } from '../core';
 
 export type NavbarVariant =
-  'landing' | 'contact' | 'desktop' | 'mobile' | 'transparent' | 'solid';
+  | 'landing'
+  | 'contact'
+  | 'why'
+  | 'desktop'
+  | 'mobile'
+  | 'transparent'
+  | 'solid';
 
 const props = withDefaults(
   defineProps<{
@@ -203,6 +209,10 @@ onBeforeUnmount(() =>
   padding: 22px var(--content-padding-contact-desktop);
 }
 
+.app-navbar--why .app-navbar__container {
+  padding: 22px var(--content-padding-contact-desktop);
+}
+
 .app-navbar--contact
   .app-navbar__container
   :deep(.app-section-container__content) {
@@ -342,6 +352,10 @@ onBeforeUnmount(() =>
   }
 
   .app-navbar--contact .app-navbar__container {
+    padding: var(--spacing-16) var(--spacing-24);
+  }
+
+  .app-navbar--why .app-navbar__container {
     padding: var(--spacing-16) var(--spacing-24);
   }
 

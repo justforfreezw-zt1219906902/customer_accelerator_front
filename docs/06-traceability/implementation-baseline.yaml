@@ -1,12 +1,12 @@
 schema_version: 1
-baseline_id: DS1.0.0_API0.0.0_FE0.0.1
-status: phase_6b_contact_ui_needs_review
+baseline_id: DS1.1.0_API0.0.0_FE0.1.0
+status: phase_6_approved_phase_7_planned
 targeted_versions:
-  figma: 1.0.0
+  figma: 1.1.0
   backend: 0.0.0
   backend_version_status: contract_documented_version_unassigned
   backend_contract_revision: 1
-  frontend: 0.0.1
+  frontend: 0.1.0
 implemented_tokens:
   - category: layout
     count: 1
@@ -129,7 +129,37 @@ implemented_pages:
     path: /contact
     file: src/pages/ContactPage.vue
     figma_node_id: "269:2"
-    status: needs_review
+    status: approved
+  - page_id: PAGE-WHY
+    route_name: why-mi-goto
+    path: /why-mi-goto
+    file: src/pages/WhyMiGotoPage.vue
+    figma_node_id: "259:2"
+    desktop_frame: "259:3"
+    layout: WhyLayout
+    status: approved
+  - page_id: PAGE-THANK-YOU
+    route_name: thank-you
+    path: /thank-you
+    file: src/pages/ThankYouPage.vue
+    figma_node_id: "321:28"
+    desktop_frame: "321:29"
+    layout: ContactLayout
+    status: approved
+  - page_id: PAGE-IMPRINT
+    route_name: imprint
+    path: /imprint
+    file: src/pages/ImprintPage.vue
+    figma_node_id: "122:2"
+    layout: LegalLayout
+    status: approved
+  - page_id: PAGE-DATA-PROTECTION
+    route_name: data-protection
+    path: /data-protection
+    file: src/pages/DataProtectionPage.vue
+    figma_node_id: "128:2"
+    layout: LegalLayout
+    status: approved
 implemented_endpoints: []
 implemented_route_infrastructure:
   - src/router/index.ts
@@ -137,19 +167,8 @@ implemented_route_infrastructure:
   - src/router/scrollBehavior.ts
   - src/layouts/MarketingLayout.vue
   - src/layouts/LegalLayout.vue
+  - src/layouts/WhyLayout.vue
 implemented_route_shells:
-  - route_name: why-mi-goto
-    path: /why-mi-goto
-    file: src/pages/WhyMiGotoPage.vue
-  - route_name: imprint
-    path: /imprint
-    file: src/pages/ImprintPage.vue
-  - route_name: data-protection
-    path: /data-protection
-    file: src/pages/DataProtectionPage.vue
-  - route_name: thank-you
-    path: /thank-you
-    file: src/pages/ThankYouPage.vue
   - route_name: not-found
     path: "/:pathMatch(.*)*"
     file: src/pages/NotFoundPage.vue
@@ -172,7 +191,7 @@ validation:
   unit_tests: passed
   build: passed
   dependency_audit: passed
-  end_to_end_tests: phase_6a_and_phase_6b_suites_passed
+  end_to_end_tests: phase_6a_through_phase_6e_affected_suites_passed
   environments_tested: []
 phase_6a:
   status: approved
@@ -337,10 +356,129 @@ phase_5b:
     typecheck: passed
     lint: passed
     build: passed
+phase_6c:
+  status: approved
+  task: TASK-P6C-002
+  historical_blocked_task: TASK-P6C-001
+  figma_page: "09 Data Protection (128:2)"
+  desktop_frame: "128:3"
+  implemented_pages:
+    - src/pages/DataProtectionPage.vue
+  implemented_legal_content:
+    - src/content/legal/dataProtection.en.ts
+  content_revision: FIGMA-128-3-EN-1.0.0
+  section_count: 35
+  publication_language: en
+  chrome_decision: reuse_approved_landing_variants
+  former_blocker: ISSUE-2026-004
+  application_code_modified: true
+  human_approval: approved
+  approval:
+    reviewer: Tom
+    date: "2026-07-28"
+    reviewed_task: TASK-P6C-003
+    implementation_task: TASK-P6C-002
+    evidence: docs/08-quality/test-reports/phase-6c-TASK-P6C-003-approval-2026-07-28.md
+phase_6d:
+  status: approved
+  task: TASK-P6D-003
+  implementation_task: TASK-P6D-002
+  historical_blocked_task: TASK-P6D-001
+  figma_page: "08 Imprint (122:2)"
+  desktop_frame: "122:3"
+  implemented_pages:
+    - src/pages/ImprintPage.vue
+  implemented_legal_content:
+    - src/content/legal/imprint.en.ts
+  content_revision: FIGMA-122-3-EN-1.0.0
+  public_content_groups: 10
+  publication_language: en
+  chrome_decision: reuse_approved_landing_variants
+  former_blocker: ISSUE-2026-005
+  application_code_modified: true
+  human_approval: approved
+  approval_evidence: docs/08-quality/test-reports/phase-6d-TASK-P6D-003-approval-2026-07-28.md
+phase_6e:
+  status: approved
+  task: TASK-P6E-002
+  implementation_task: TASK-P6E-001
+  figma_page: "07 Why Mi-goTo Page (259:2)"
+  desktop_frame: "259:3"
+  header_node: "259:4"
+  footer_node: "259:167"
+  implemented_pages:
+    - src/pages/WhyMiGotoPage.vue
+  implemented_layouts:
+    - src/layouts/WhyLayout.vue
+  implemented_content:
+    - src/content/why/en.ts
+    - src/content/navigation/why.en.ts
+    - src/content/footer/why.en.ts
+  implemented_sections: 7
+  implemented_assets: 5
+  change_request: CR-2026-002
+  application_code_modified: true
+  validation:
+    management: passed
+    typecheck: passed
+    lint: passed
+    unit_tests: 95_passed
+    build: passed
+    end_to_end_tests: 3_passed_chromium
+    full_end_to_end_suite: 14_passed_chromium
+  human_approval: approved
+  approval:
+    reviewer: Tom
+    date: "2026-07-28"
+    reviewed_task: TASK-P6E-002
+    implementation_task: TASK-P6E-001
+    evidence: docs/08-quality/test-reports/phase-6e-TASK-P6E-002-approval-2026-07-28.md
+phase_6f:
+  status: approved
+  task: TASK-P6F-002
+  implementation_task: TASK-P6F-001
+  figma_page: "11 Thank You Page (321:28)"
+  desktop_frame: "321:29"
+  implemented_pages:
+    - src/pages/ThankYouPage.vue
+  implemented_content:
+    - src/content/thank-you/en.ts
+  layout: ContactLayout
+  backend_calls: []
+  personal_data_rendered: false
+  application_code_modified: true
+  validation:
+    management: passed
+    typecheck: passed
+    lint: passed
+    unit_tests: 97_passed
+    build: passed
+    phase_6f_end_to_end: 4_passed_chromium
+    full_end_to_end_suite: 18_passed_chromium
+  human_approval: approved
+  approval:
+    reviewer: Tom
+    date: "2026-07-28"
+    reviewed_task: TASK-P6F-002
+    implementation_task: TASK-P6F-001
+    notes: good
+    evidence: docs/08-quality/test-reports/phase-6f-TASK-P6F-002-approval-2026-07-28.md
+phase_6:
+  status: approved
+  human_approval: approved
+  approval:
+    reviewer: Tom
+    date: "2026-07-28"
+    reviewed_task: TASK-P6-APPROVAL-001
+    evidence: docs/08-quality/test-reports/TASK-P6-APPROVAL-001-phase-6-approval-2026-07-28.md
+  approved_subphases: [phase-6a, phase-6b, phase-6c, phase-6d, phase-6e, phase-6f]
+phase_7:
+  status: planned
+  next_task: TASK-P7-001
 notes:
-  - Page and endpoint lists remain intentionally empty.
+  - The six approved Phase 6 Pages are recorded; endpoint implementation remains empty until Phase 7.
   - Foundation artifacts are application infrastructure, not registered Product Pages or components.
-  - Planned component and Page registry entries are not implemented artifacts.
+  - Planned registry entries outside Phase 6 are not implemented artifacts.
   - Breakpoints and motion easing remain unresolved and are not represented as implemented.
   - Backend 0.0.0 is a compatibility placeholder, not an assigned semantic version.
   - Phase 1 is approved; approval_status above applies to the compatibility baseline, which remains not approved.

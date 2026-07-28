@@ -18,7 +18,7 @@ content_items:
     source_node_id: "212:4"
     source_component_node_id: "105:464"
     owner: Product owner / Tom
-    status: implemented_from_active_figma_needs_review
+    status: implemented_and_approved
     code_destination: src/content/header
     locked_or_editable: locked_to_active_figma_1.0.0
     preservation_required: true
@@ -39,7 +39,7 @@ content_items:
     source_node_id: "212:737"
     source_component_node_id: "105:494"
     owner: Product owner / Tom
-    status: implemented_from_active_figma_needs_review
+    status: implemented_and_approved
     code_destination: src/content/footer
     locked_or_editable: locked_to_active_figma_1.0.0
     preservation_required: true
@@ -59,7 +59,7 @@ content_items:
     source: Figma 10 Contact Page Header
     source_node_id: "314:44"
     owner: Product owner / Tom
-    status: implemented_needs_review
+    status: implemented_and_approved
     code_destination: src/content/navigation/contact.en.ts
     locked_or_editable: locked_to_active_figma_1.0.0
     preservation_required: true
@@ -78,7 +78,7 @@ content_items:
     source: Figma 10 Contact Page Footer
     source_node_id: "257:1671"
     owner: Product owner / Tom
-    status: implemented_needs_review
+    status: implemented_and_approved
     code_destination: src/content/footer/contact.en.ts
     locked_or_editable: locked_to_active_figma_1.0.0
     preservation_required: true
@@ -154,32 +154,41 @@ content_items:
       - No translations may be invented.
   - id: CONTENT-WHY
     name: Why mi-goTo copy
-    source: unknown
-    owner: unknown
-    status: pending_source
-    code_destination: src/content/pages/why-mi-goto
-    locked_or_editable: editable
+    source: Figma 07 Why Mi-goTo Page
+    source_node_id: "259:3"
+    owner: Product owner / Tom
+    status: implemented_and_approved
+    code_destination: src/content/why/en.ts
+    locked_or_editable: locked_to_figma_1.0.0
     preservation_required: false
-    language: [EN, DE, CN]
+    language: [EN]
     translation_status:
-      EN: unknown
-      DE: unknown
-      CN: unknown
+      EN: source_language_no_translation_required
+      DE: not_created
+      CN: not_created
     figma_version: 1.0.0
-    notes: []
+    approval:
+      approver: Tom
+      decision_task: TASK-P6E-001
+      approval_scope: exact_figma_content_and_why_specific_chrome
+      date: "2026-07-28"
+    notes:
+      - Exact Figma copy is implemented without additions or rewrites.
+      - No external URL, translation, testimonial, price or additional claim was invented.
+      - Tom approved the implementation through TASK-P6E-002 on 2026-07-28.
   - id: CONTENT-CONTACT
     name: Contact Page copy
     source: Figma 10 Contact Page
     source_node_id: "269:3"
     form_panel_node_id: "269:47"
     owner: unknown
-    status: implemented_from_figma_needs_review
+    status: implemented_and_approved
     code_destination: src/content/contact/en.ts
-    locked_or_editable: locked_to_active_figma_1.0.0_pending_human_review
+    locked_or_editable: locked_to_approved_figma_1.0.0
     preservation_required: false
     language: [EN, DE, CN]
     translation_status:
-      EN: under_review
+      EN: approved
       DE: missing
       CN: missing
     figma_version: 1.0.0
@@ -187,55 +196,110 @@ content_items:
       - Visible English copy was extracted from Figma node 269:3 under TASK-P6B-001.
       - OpenAPI controls the four visible payload fields and optional non-visible owner.
       - Product and Interaction Specifications control validation and submit behavior.
-      - Human content and visual approval remain pending.
+      - Tom approved the Contact implementation through TASK-P6B-003 on 2026-07-28.
   - id: CONTENT-IMPRINT
     name: Imprint content
-    source: unknown
-    owner: unknown
-    status: pending_legal_source
-    code_destination: src/content/pages/imprint
+    source: figma_frame:122:3
+    source_details:
+      type: figma_frame
+      figma_page_id: "122:2"
+      figma_frame_id: "122:3"
+      source_language: de-DE
+      publication_language: en
+      pdf_required: false
+    owner: Tom
+    status: approved_for_implementation
+    code_destination: src/content/legal/imprint.en.ts
     locked_or_editable: locked
     preservation_required: false
-    language: [EN, DE, CN]
+    language: [EN]
     translation_status:
-      EN: unknown
-      DE: unknown
-      CN: unknown
+      EN: approved_for_implementation
+      DE: source_only_not_published
+      CN: not_available
     figma_version: 1.0.0
+    approval:
+      owner: Tom
+      approver: Tom
+      approver_role: Product Owner
+      approval_type: product_owner_content_approval_and_risk_acceptance
+      approved_at: "2026-07-28"
+      revision: FIGMA-122-3-EN-1.0.0
+      public_frontend_use: approved
+      legal_counsel_review: deferred
+      risk_accepted_by_product_owner: true
+    publication_rules:
+      publish_current_public_content: true
+      publish_editorial_notes: false
+      publish_future_authority_information: false
+      publish_current_authority_information: true
     notes:
-      - Requires authorized human legal review.
+      - TASK-P6D-001 remains blocked historical evidence.
+      - Tom accepted the public-facing content in Figma frame 122:3 as the authoritative current source and waived a PDF requirement.
+      - Current Tempelhof-Schöneberg authority information is published.
+      - Future Treptow-Köpenick authority information and the relocation editor note are excluded from runtime content.
+      - Professional legal review is deferred; this must not be described as lawyer approval.
   - id: CONTENT-DATA-PROTECTION
     name: Data Protection content
-    source: unknown
-    owner: unknown
-    status: pending_legal_source
-    code_destination: src/content/pages/data-protection
+    source: figma_frame:128:3
+    source_details:
+      type: figma_frame
+      figma_page_id: "128:2"
+      figma_frame_id: "128:3"
+      source_language: de-DE
+      target_language: en
+      section_count: 35
+      pdf_required: false
+    owner: Tom
+    status: approved_for_implementation
+    code_destination: src/content/legal/dataProtection.en.ts
     locked_or_editable: locked
     preservation_required: false
-    language: [EN, DE, CN]
+    language: [EN]
     translation_status:
-      EN: unknown
-      DE: unknown
-      CN: unknown
+      EN: approved_for_implementation
+      DE: source_only_not_published
+      CN: not_available
     figma_version: 1.0.0
+    approval:
+      owner: Tom
+      approver: Tom
+      approver_role: Product Owner
+      approved_at: "2026-07-28"
+      revision: FIGMA-128-3-EN-1.0.0
+      public_frontend_use: approved
+      legal_counsel_review: deferred
+      risk_accepted_by_product_owner: true
     notes:
-      - Requires authorized human legal review.
+      - TASK-P6C-001 is preserved as blocked historical evidence.
+      - Tom explicitly accepted Figma frame 128:3 as the authoritative current content source and waived a PDF requirement.
+      - The English translation may be published under Product Owner risk acceptance; professional legal review is deferred.
+      - This approval must not be described as approval by legal counsel.
   - id: CONTENT-THANK-YOU
     name: Thank You Page copy
-    source: unknown
-    owner: unknown
-    status: pending_source
-    code_destination: src/content/pages/thank-you
-    locked_or_editable: editable
+    source: figma_frame:321:29
+    owner: Tom
+    status: implemented_and_approved
+    code_destination: src/content/thank-you/en.ts
+    locked_or_editable: locked_to_figma_1.1.0
     preservation_required: false
-    language: [EN, DE, CN]
+    language: [EN]
     translation_status:
-      EN: unknown
-      DE: unknown
-      CN: unknown
-    figma_version: 1.0.0
+      EN: source_language_no_translation_required
+      DE: not_created
+      CN: not_created
+    figma_version: 1.1.0
+    approval:
+      owner: Tom
+      scope_approval_date: "2026-07-28"
+      source_task: TASK-P6F-001
+      implementation_approval: approved
+      implementation_reviewer: Tom
+      implementation_review_task: TASK-P6F-002
     notes:
-      - No expected Figma page has yet been registered for the Thank You Page.
+      - Exact visible copy is taken from Figma Page 321:28 and desktop frame 321:29.
+      - Content must never include submitted lead data or HubSpot identifiers.
+      - No translation, claim, external URL or backend behavior was invented.
 notes:
   - Header and Footer code destinations exist; Landing EN content is approved for implementation under TASK-P6A-002.
   - Confirm whether CN maps to zh-CN or another locale before implementation.

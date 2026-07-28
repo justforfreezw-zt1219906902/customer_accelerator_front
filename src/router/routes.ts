@@ -23,17 +23,29 @@ export const routes = [
         component: () => import('../pages/LandingPage.vue'),
         meta: { title: 'mi-goTo' },
       },
+    ],
+  },
+  {
+    path: '/thank-you',
+    component: () => import('../layouts/ContactLayout.vue'),
+    children: [
       {
-        path: 'why-mi-goto',
-        name: routeNames.whyMiGoto,
-        component: () => import('../pages/WhyMiGotoPage.vue'),
-        meta: { title: 'Why mi-goTo | mi-goTo' },
-      },
-      {
-        path: 'thank-you',
+        path: '',
         name: routeNames.thankYou,
         component: () => import('../pages/ThankYouPage.vue'),
         meta: { title: 'Thank You | mi-goTo' },
+      },
+    ],
+  },
+  {
+    path: '/why-mi-goto',
+    component: () => import('../layouts/WhyLayout.vue'),
+    children: [
+      {
+        path: '',
+        name: routeNames.whyMiGoto,
+        component: () => import('../pages/WhyMiGotoPage.vue'),
+        meta: { title: 'Why mi-goTo | mi-goTo' },
       },
     ],
   },

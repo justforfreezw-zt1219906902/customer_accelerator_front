@@ -62,7 +62,7 @@ unavailable. No translations or localized routes may be invented.
 - Imprint: `122:2`
 - Data Protection: `128:2`
 - Contact Page: `269:2`
-- Thank You Page: no registered Figma source
+- Thank You Page: `321:28`; desktop frame `321:29`
 
 Figma confirms Page structure and visible entry elements. It does not confirm
 the route, anchor, locale, success, error, or analytics behavior in this map.

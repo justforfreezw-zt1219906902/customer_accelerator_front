@@ -23,8 +23,9 @@ phase requires the preceding gate and recorded human approval.
 | 11 | Phase 6C: Data Protection Page | Assemble approved legal content | Legal pages require the established page shell and approved legal copy |
 | 12 | Phase 6D: Imprint Page | Assemble approved imprint content | It reuses the approved legal/page patterns from preceding static work |
 | 13 | Phase 6E: Why mi-goTo Page | Assemble the product-value page | It reuses approved page, Section, content, and navigation patterns |
-| 14 | Phase 7: Backend Integration | Integrate the verified lead contract and runtime states | Integration is isolated until static UI and interaction intent are stable |
-| 15 | Phase 8: QA and Deployment | Verify, release, deploy, monitor, and recover | QA must test the complete compatible application and backend integration |
+| 14 | Phase 6F: Thank You Page | Implement the confirmed successful-submission destination | It depends on approved Contact success behavior, route infrastructure, and shared chrome |
+| 15 | Phase 7: Backend Integration | Integrate the verified lead contract and runtime states | Integration is isolated until static UI and interaction intent are stable |
+| 16 | Phase 8: QA and Deployment | Verify, release, deploy, monitor, and recover | QA must test the complete compatible application and backend integration |
 
 ## Gate rule
 
@@ -39,4 +40,3 @@ an approved change request or architecture decision.
 - Status: `planned`
 - Current task: none
 - Next gate: Phase 0 Audit Review
-

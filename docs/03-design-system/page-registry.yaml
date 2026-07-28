@@ -49,14 +49,28 @@ pages:
     planned_path: src/pages/WhyMiGotoPage.vue
     route: /why-mi-goto
     route_name: why-mi-goto
-    layout: MarketingLayout
+    layout: WhyLayout
     title: Why mi-goTo | mi-goTo
     access_status: public
     route_approval: approved
-    anchor_behavior: cross_route_anchors_navigate_to_landing_then_scroll
+    anchor_behavior: same_route_scroll_to_story_mission_pillars_or_impact
     implementation_status: implemented
-    implementation_scope: temporary_route_shell_only
-    design_review_status: interaction_inspected_visual_review_pending
+    implementation_scope: complete_english_why_page
+    design_review_status: approved
+    desktop_frame_node_id: "259:3"
+    header_node_id: "259:4"
+    footer_node_id: "259:167"
+    section_count: 7
+    content_source: src/content/why/en.ts
+    tests:
+      - tests/unit/WhyMiGotoPage.spec.ts
+      - tests/e2e/phase-6e-why.spec.ts
+    change_request: CR-2026-002
+    approval:
+      reviewer: Tom
+      date: "2026-07-28"
+      reviewed_task: TASK-P6E-002
+      evidence: docs/08-quality/test-reports/phase-6e-TASK-P6E-002-approval-2026-07-28.md
   - page_id: PAGE-IMPRINT
     name: Imprint Page
     figma_page_name: 08 Imprint
@@ -71,8 +85,26 @@ pages:
     route_approval: approved
     anchor_behavior: internal_anchors_after_stable_legal_headings
     implementation_status: implemented
-    implementation_scope: temporary_route_shell_only
-    design_review_status: interaction_inspected_legal_review_pending
+    implementation_scope: complete_current_english_imprint
+    design_review_status: needs_review
+    desktop_frame_node_id: "122:3"
+    header_node_id: "122:439"
+    hero_node_id: "122:454"
+    content_area_node_id: "122:459"
+    content_grid_node_id: "122:460"
+    main_legal_column_node_id: "122:461"
+    sidebar_node_id: "122:462"
+    footer_node_id: "122:577"
+    chrome_variant: landing
+    phase_6d_status: needs_review
+    blocker: null
+    former_blocker: ISSUE-2026-005
+    content_revision: FIGMA-122-3-EN-1.0.0
+    publication_language: en
+    legal_counsel_review: deferred
+    excluded_runtime_content:
+      - future_treptow_koepenick_authority_information
+      - relocation_editor_instruction
   - page_id: PAGE-DATA-PROTECTION
     name: Data Protection Page
     figma_page_name: 09 Data Protection
@@ -87,8 +119,26 @@ pages:
     route_approval: approved
     anchor_behavior: internal_anchors_after_stable_legal_headings
     implementation_status: implemented
-    implementation_scope: temporary_route_shell_only
-    design_review_status: interaction_inspected_legal_review_pending
+    implementation_scope: complete_35_section_english_notice
+    design_review_status: approved
+    desktop_frame_node_id: "128:3"
+    header_node_id: "128:475"
+    hero_node_id: "128:490"
+    content_area_node_id: "128:495"
+    main_legal_column_node_id: "128:497"
+    sidebar_node_id: "128:498"
+    footer_node_id: "128:542"
+    chrome_variant: landing
+    phase_6c_status: approved
+    blocker: null
+    content_revision: FIGMA-128-3-EN-1.0.0
+    publication_language: en
+    legal_counsel_review: deferred
+    implementation_approval:
+      reviewer: Tom
+      date: "2026-07-28"
+      review_task: TASK-P6C-003
+      notes: good
   - page_id: PAGE-CONTACT
     name: Contact Page
     figma_page_name: 10 Contact Page
@@ -125,22 +175,29 @@ pages:
       - tests/e2e/phase-6b-contact-page.spec.ts
   - page_id: PAGE-THANK-YOU
     name: Thank You Page
-    figma_page_name: not_applicable_no_figma_source
-    figma_node_id: not_applicable_no_figma_source
+    figma_page_name: 11 Thank You Page
+    figma_node_id: "321:28"
+    desktop_frame: "321:29"
     code_name: ThankYouPage
     planned_path: src/pages/ThankYouPage.vue
     route: /thank-you
     route_name: thank-you
-    layout: MarketingLayout
+    layout: ContactLayout
     title: Thank You | mi-goTo
     access_status: public_refresh_safe
     route_approval: approved
     anchor_behavior: none
     implementation_status: implemented
-    implementation_scope: temporary_route_shell_only
-    design_review_status: pending
+    implementation_scope: figma_backed_phase_6f_page
+    design_review_status: approved
+    figma_version: 1.1.0
+    tests:
+      - tests/unit/ThankYouPage.spec.ts
+      - tests/e2e/phase-6f-thank-you.spec.ts
     notes:
-      - No expected Figma page or node has been registered.
+      - Figma uses the existing Contact-style shared Header and compact Footer.
+      - The Page is refresh-safe and never renders submitted personal data.
+      - Tom approved Phase 6F through TASK-P6F-002 on 2026-07-28.
   - page_id: PAGE-NOT-FOUND
     name: Not Found
     figma_page_name: not_applicable
@@ -164,6 +221,6 @@ notes:
   - Approved non-Landing routes retain temporary accessible shells.
   - Five Figma Page nodes were inspected read-only for Phase 5A.
   - Figma does not define final route or interaction behavior by itself.
-  - Thank You Page has no registered Figma source.
+  - Thank You Page was added in Figma 1.1.0 and implemented under TASK-P6F-001.
   - PAGE-LANDING content and expanded Team/FAQ scope were approved by Tom on 2026-07-27.
   - PAGE-LANDING was approved by Tom under TASK-P6A-006 on 2026-07-27.

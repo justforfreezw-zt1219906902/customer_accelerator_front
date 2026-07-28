@@ -44,10 +44,26 @@ categories:
         last_reviewed: "2026-07-27"
   - id: icons
     name: Icons
-    source: unknown
-    owner: unknown
-    license_status: unknown
-    items: []
+    source: Figma 1.0.0
+    owner: Product owner / Tom
+    license_status: existing_product_design_asset
+    items:
+      - asset_id: ASSET-WHY-ICON-001
+        name: Why pillar icons
+        source: Figma nodes "265:18", "265:22", "265:25", "265:28", "265:32"
+        owner: Product owner / Tom
+        repository_path: src/assets/why
+        format: svg
+        license: existing_product_design_asset
+        version: 1.0.0
+        status: implemented
+        last_reviewed: "2026-07-28"
+        files:
+          - src/assets/why/pillar-joy.svg
+          - src/assets/why/pillar-growth-talent.svg
+          - src/assets/why/pillar-resilience.svg
+          - src/assets/why/pillar-sufficiency.svg
+          - src/assets/why/pillar-giving-back.svg
   - id: illustrations
     name: Illustrations
     source: unknown
@@ -93,3 +109,6 @@ notes:
   - Repository paths are recorded only for verified files.
   - Presence in Figma does not establish production usage or redistribution rights.
   - The Phase 6A Team approval is explicit human authorization, but the active Figma baseline currently contains no binary Team photographs.
+  - TASK-P6D-001 found no approved Imprint legal-document asset; no path was invented. ISSUE-2026-005 records the legal-content Gate.
+  - TASK-P6D-002 records `legal_document_asset_required: false` and uses `figma_frame:122:3` as the approved source reference; no PDF asset or path was added.
+  - TASK-P6E-001 downloaded the five exact Figma pillar SVGs; no vector was redrawn.

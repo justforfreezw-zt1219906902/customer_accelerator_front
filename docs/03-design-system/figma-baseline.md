@@ -4,10 +4,10 @@
 
 | Field | Value |
 | --- | --- |
-| Figma version | `1.0.0` |
+| Figma version | `1.1.0` |
 | Figma URL | [mi-goTo Figma design](https://www.figma.com/design/vyr3TvF5lAUOnuuxdW8iRb/prototype?node-id=0-1&p=f&t=AdHvWZgIn8DrsmI6-0) |
 | File key | `vyr3TvF5lAUOnuuxdW8iRb` |
-| Baseline status | `phase_6b_contact_chrome_variants_needs_review` |
+| Baseline status | `phase_6f_thank_you_page_needs_review` |
 | Human reviewer | Tom |
 | Capture date | 2026-07-24 |
 | Visual approval | Phase 2 token scope approved 2026-07-24 |
@@ -25,6 +25,7 @@
 9. `08 Imprint` — `122:2`, presence verified
 10. `09 Data Protection` — `128:2`, presence verified
 11. `10 Contact Page` — `269:2`, presence verified
+12. `11 Thank You Page` — `321:28`, inspected
 
 All expected pages and their node IDs were verified on 2026-07-24. Component,
 Section, and five registered Product Pages were subsequently inspected
@@ -52,6 +53,11 @@ awaits human review.
 2026-07-28. Typed Contact variants are implemented in the shared Composite
 components. Contact layout integration remains pending under `TASK-P6B-003`.
 
+`TASK-P6F-001` inspected Thank You Page `321:28` and desktop frame `321:29`
+read-only on 2026-07-28. The Page contains compact Header `321:30`,
+confirmation content `321:129`, next-steps card `321:143`, and compact Footer
+instance `321:84`. No mobile frame was discovered.
+
 ## Authority
 
 Figma controls visual hierarchy, tokens, component appearance, Section and Page
@@ -77,7 +83,7 @@ tests, or approval.
 - Motion easing and reduced-motion intent: not specified in the inspected source
 - Accessibility requirements beyond visible design
 - Human design reviewer and review date
-- Thank You Page visual design
+- Thank You Page mobile visual design
 
 Tom approved the Phase 2 Figma Tokens scope and `TASK-P2-001` on 2026-07-24.
 This does not approve uninspected component or Page visuals.

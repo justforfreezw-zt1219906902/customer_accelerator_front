@@ -5,7 +5,7 @@ source:
   url: "https://www.figma.com/design/vyr3TvF5lAUOnuuxdW8iRb/prototype?node-id=0-1&p=f&t=AdHvWZgIn8DrsmI6-0"
   file_key: vyr3TvF5lAUOnuuxdW8iRb
   entry_node_id: "0:1"
-  figma_version: 1.0.0
+  figma_version: 1.1.0
   version_status: initialized_from_project_input
 inspection:
   status: phase_6b_contact_ui_needs_review
@@ -121,31 +121,49 @@ pages:
     node_id: "259:2"
     figma_version: 1.0.0
     code_target: src/pages/WhyMiGotoPage.vue
-    status: structure_inspected_interaction_spec_needs_review
+    status: implemented_approved
     reviewer: Codex
-    last_reviewed: "2026-07-25"
+    last_reviewed: "2026-07-28"
     notes:
-      - Desktop frame is "259:3"; Header "259:4"; Footer "259:167".
+      - Desktop frame is "259:3"; Why Header instance "259:4" / component "257:1655"; Why Footer instance "259:167" / component "257:1671".
+      - Section bands are Hero "259:25", Story "259:49", Principle "259:58", Mission "259:64", Pillars "259:116", Impact "259:154", and Final CTA "259:166".
+      - No explicit mobile Why frame was discovered.
+      - TASK-P6E-001 implemented exact Figma content, five exported pillar assets, WhyLayout and typed shared chrome variants.
+      - Tom approved the full browser and Figma fidelity review through TASK-P6E-002 on 2026-07-28.
   - page_name: 08 Imprint
     node_id: "122:2"
     figma_version: 1.0.0
     code_target: src/pages/ImprintPage.vue
-    status: structure_inspected_legal_review_pending
+    status: implemented_needs_review
     reviewer: Codex
     last_reviewed: "2026-07-25"
     notes:
       - Legal content requires separate human approval.
       - Desktop frame is "122:3"; Header "122:439".
+      - Hero is "122:454"; content area "122:459"; grid "122:460"; main legal column "122:461"; sidebar "122:462"; Footer "122:577".
+      - Header and Footer match the approved Landing shared components "105:464" and "105:494".
+      - No explicit mobile Imprint frame was discovered.
+      - The frame contains German legal wording, current and future trade-authority blocks, and an editorial relocation note.
+      - Tom approved the public-facing current content for English implementation under TASK-P6D-002.
+      - Current authority content is included; future authority information and the editorial relocation note are excluded.
+      - Content revision is FIGMA-122-3-EN-1.0.0; professional legal review is deferred.
   - page_name: 09 Data Protection
     node_id: "128:2"
     figma_version: 1.0.0
     code_target: src/pages/DataProtectionPage.vue
-    status: structure_inspected_legal_review_pending
+    status: implemented_needs_review
     reviewer: Codex
     last_reviewed: "2026-07-25"
     notes:
       - Legal content requires separate human approval.
+      - Desktop frame is "128:3"; Header instance "128:475"; Hero "128:490".
+      - Content area is "128:495"; grid "128:496"; main legal column "128:497"; sidebar "128:498".
       - Footer instance is "128:542".
+      - Header and Footer are instances of Landing shared components "105:464" and "105:494".
+      - Thirty-five German legal sections were extracted and translated into English under Tom's explicit Product Owner approval and risk acceptance.
+      - No explicit mobile/responsive frame was discovered.
+      - Responsive stacking is an inferred implementation detail based on the approved responsive system.
+      - Content revision is FIGMA-128-3-EN-1.0.0; professional legal review is deferred.
   - page_name: 10 Contact Page
     node_id: "269:2"
     figma_version: 1.0.0
@@ -161,3 +179,16 @@ pages:
       - No loading, success, or error state frame was discovered.
       - Main content node is "269:18"; trust column "269:19"; direct email "269:44".
       - TASK-P6B-001 implements the static four-field UI without an API request.
+  - page_name: 11 Thank You Page
+    node_id: "321:28"
+    figma_version: 1.1.0
+    code_target: src/pages/ThankYouPage.vue
+    status: implemented_and_approved
+    reviewer: Tom
+    last_reviewed: "2026-07-28"
+    notes:
+      - Desktop frame is "321:29"; compact Header is "321:30"; main content is "321:90"; confirmation column is "321:129"; next-steps card is "321:143"; compact Footer instance is "321:84".
+      - The Page uses the existing Contact-style shared Header and compact Footer through ContactLayout.
+      - No mobile frame was discovered; the mobile layout is a conservative responsive adaptation requiring human review.
+      - The Page contains no submitted lead values, HubSpot identifiers, backend call, retry logic or API-contract change.
+      - Tom approved the implementation through TASK-P6F-002 on 2026-07-28.

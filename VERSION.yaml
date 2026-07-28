@@ -4,17 +4,17 @@ project:
   name: mi-goTo Frontend
   status: planning
   current_phase:
-    id: phase-6
-    name: Static Pages
+    id: phase-7
+    name: Backend Integration
 
 versions:
-  figma_design_system: 1.0.0
+  figma_design_system: 1.1.0
   backend_api: 0.0.0
   backend_status: contract_documented_version_unassigned
   backend_contract_revision: 1
-  frontend_app: 0.0.1
+  frontend_app: 0.1.0
 
 compatibility:
-  baseline_id: DS1.0.0_API0.0.0_FE0.0.1
-  display_name: figma1.00_backend_unassigned
+  baseline_id: DS1.1.0_API0.0.0_FE0.1.0
+  display_name: figma1.10_backend_unassigned
   status: pending_backend_version_assignment

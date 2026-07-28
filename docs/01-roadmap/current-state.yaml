@@ -2,29 +2,30 @@ schema_version: 1
 project: mi-goTo Frontend
 
 current_phase:
-  id: phase-6
-  name: Static Pages
-  status: in_progress
+  id: phase-7
+  name: Backend Integration
+  status: planned
 
 current_task: null
+next_task: TASK-P7-001
 environment: local
 
 versions:
-  figma: 1.0.0
+  figma: 1.1.0
   backend: 0.0.0
-  frontend: 0.0.1
+  frontend: 0.1.0
 
 backend:
   status: contract_documented_version_unassigned
   contract_revision: 1
 
 compatibility:
-  baseline_id: DS1.0.0_API0.0.0_FE0.0.1
+  baseline_id: DS1.1.0_API0.0.0_FE0.1.0
   status: pending_backend_version_assignment
 
 blockers: []
 next_gate:
-  name: Phase 6C Data Protection Page Review
+  name: Phase 7 Backend Contract Readiness Review
   human_approval_required: true
 
 management_readiness:
@@ -206,6 +207,7 @@ phase_6a:
     unit_tests: 74_passed
     build: passed
     end_to_end_tests: 4_passed_chromium
+    full_end_to_end_suite: 18_passed_chromium
   task_status: approved
   prior_review_result: changes_required
   human_approval: approved
@@ -271,6 +273,185 @@ phase_6b:
   next_gate: Phase 6C Data Protection Page Review
   evidence: docs/07-change-control/instructions/TASK-P6B-003-contact-layout-integration.md
 
+phase_6c:
+  implementation_status: approved
+  task: TASK-P6C-002
+  review_task: TASK-P6C-003
+  task_status: approved
+  historical_blocked_task: TASK-P6C-001
+  figma_inspection: completed_read_only
+  figma_page: "09 Data Protection (128:2)"
+  desktop_frame: "128:3"
+  header_node: "128:475"
+  main_content_node: "128:495"
+  legal_column_node: "128:497"
+  sidebar_node: "128:498"
+  footer_node: "128:542"
+  chrome_decision: reuse_approved_landing_variants
+  legal_content_status: product_owner_approved_for_implementation
+  content_revision: FIGMA-128-3-EN-1.0.0
+  source_language: de-DE
+  publication_language: en
+  translated_sections: 35
+  former_blocker: ISSUE-2026-004
+  active_blocker: null
+  application_code_modified: true
+  validation:
+    management: passed
+    typecheck: passed
+    lint: passed
+    unit_tests: 90_passed
+    build: passed
+    end_to_end_tests: 4_passed_chromium
+  human_approval: approved
+  approval:
+    reviewer: Tom
+    result: APPROVED
+    date: "2026-07-28"
+    reviewed_task: TASK-P6C-003
+    implementation_task: TASK-P6C-002
+    notes: good
+    evidence: docs/08-quality/test-reports/phase-6c-TASK-P6C-003-approval-2026-07-28.md
+  legal_counsel_review: deferred
+  next_task: TASK-P6D-001
+  next_gate: Phase 6D Imprint Page Review
+  evidence: docs/07-change-control/instructions/TASK-P6C-002-data-protection-gate-override-and-implementation.md
+
+phase_6d:
+  implementation_status: approved
+  task: TASK-P6D-003
+  implementation_task: TASK-P6D-002
+  task_status: approved
+  historical_blocked_task: TASK-P6D-001
+  figma_inspection: completed_read_only
+  figma_page: "08 Imprint (122:2)"
+  desktop_frame: "122:3"
+  header_node: "122:439"
+  hero_node: "122:454"
+  content_area_node: "122:459"
+  legal_column_node: "122:461"
+  sidebar_node: "122:462"
+  footer_node: "122:577"
+  chrome_decision: reuse_approved_landing_variants
+  legal_content_status: product_owner_approved_for_implementation
+  content_revision: FIGMA-122-3-EN-1.0.0
+  source_language: de-DE
+  publication_language: en
+  translated_public_content_groups: 10
+  excluded_editorial_notes: true
+  deferred_future_authority_information: true
+  former_blocker: ISSUE-2026-005
+  active_blocker: null
+  application_code_modified: true
+  validation:
+    management: passed
+    typecheck: passed
+    lint: passed
+    unit_tests: 92_passed
+    build: passed
+    end_to_end_tests: 3_passed_chromium
+  human_approval: approved
+  approval:
+    reviewer: Tom
+    result: APPROVED
+    date: "2026-07-28"
+    reviewed_task: TASK-P6D-003
+    implementation_task: TASK-P6D-002
+    notes: good
+    evidence: docs/08-quality/test-reports/phase-6d-TASK-P6D-003-approval-2026-07-28.md
+  legal_counsel_review: deferred
+  next_gate: Phase 6E Why mi-goTo Page Review
+  evidence: docs/07-change-control/instructions/TASK-P6D-002-imprint-gate-override-and-implementation.md
+
+phase_6e:
+  implementation_status: approved
+  task: TASK-P6E-002
+  implementation_task: TASK-P6E-001
+  task_status: approved
+  figma_inspection: completed_read_only
+  figma_page: "07 Why Mi-goTo Page (259:2)"
+  desktop_frame: "259:3"
+  header_instance: "259:4"
+  header_component: "257:1655"
+  footer_instance: "259:167"
+  footer_component: "257:1671"
+  section_count: 7
+  asset_count: 5
+  layout: WhyLayout
+  change_request: CR-2026-002
+  active_blocker: null
+  validation:
+    management: passed
+    typecheck: passed
+    lint: passed
+    unit_tests: 95_passed
+    build: passed
+    end_to_end_tests: 3_passed_chromium
+    full_end_to_end_suite: 14_passed_chromium
+  human_approval: approved
+  approval:
+    reviewer: Tom
+    result: APPROVED
+    date: "2026-07-28"
+    reviewed_task: TASK-P6E-002
+    implementation_task: TASK-P6E-001
+    notes: good
+    evidence: docs/08-quality/test-reports/phase-6e-TASK-P6E-002-approval-2026-07-28.md
+  next_gate: Phase 6 Static Pages Completion Review
+  evidence: docs/07-change-control/instructions/TASK-P6E-001-why-page.md
+
+phase_6f:
+  implementation_status: approved
+  task: TASK-P6F-002
+  implementation_task: TASK-P6F-001
+  task_status: approved
+  figma_inspection: completed_read_only
+  figma_page: "11 Thank You Page (321:28)"
+  desktop_frame: "321:29"
+  layout: ContactLayout
+  content_status: implemented_and_approved
+  backend_calls: []
+  personal_data_rendered: false
+  change_request: CR-2026-003
+  active_blocker: null
+  validation:
+    management: passed
+    typecheck: passed
+    lint: passed
+    unit_tests: 97_passed
+    build: passed
+    end_to_end_tests: 4_passed_chromium
+    full_end_to_end_suite: 18_passed_chromium
+  human_approval: approved
+  approval:
+    reviewer: Tom
+    result: APPROVED
+    date: "2026-07-28"
+    reviewed_task: TASK-P6F-002
+    implementation_task: TASK-P6F-001
+    notes: good
+    evidence: docs/08-quality/test-reports/phase-6f-TASK-P6F-002-approval-2026-07-28.md
+  next_gate: Phase 6 Static Pages Completion Review
+  evidence: docs/07-change-control/instructions/TASK-P6F-001-thank-you-page.md
+
+phase_6:
+  status: approved
+  human_approval: approved
+  approval:
+    reviewer: Tom
+    result: APPROVED
+    date: "2026-07-28"
+    reviewed_task: TASK-P6-APPROVAL-001
+    evidence: docs/08-quality/test-reports/TASK-P6-APPROVAL-001-phase-6-approval-2026-07-28.md
+  approved_subphases: [phase-6a, phase-6b, phase-6c, phase-6d, phase-6e, phase-6f]
+  blocking_issues: []
+
+phase_7:
+  status: planned
+  next_task: TASK-P7-001
+  next_gate: Phase 7 Backend Contract Readiness Review
+  human_approval: pending
+
 last_updated: "2026-07-28"
 notes:
   - The Phase 0 repository audit and TASK-P0-001 were approved by Tom.
@@ -324,3 +505,17 @@ notes:
   - Phase 6B reached needs_review after TASK-P6B-003 completed the Contact Figma-fidelity correction.
   - TASK-P4A-003 implemented the typed shared Contact Header/Footer variants used by the approved Contact Page.
   - Tom approved TASK-P6B-003 and Phase 6B on 2026-07-28; Phase 6C is the next subphase.
+  - TASK-P6C-001 inspected Figma read-only and stopped before application changes because Data Protection legal content has no approved source or owner.
+  - ISSUE-2026-004 was resolved by Tom's explicit Product Owner Gate override and risk acceptance under TASK-P6C-002.
+  - TASK-P6C-002 implemented all 35 sections in English from Figma frame 128:3; professional legal review remains deferred.
+  - Tom approved Phase 6C through review task TASK-P6C-003 on 2026-07-28 with notes "good"; legal counsel review remains deferred.
+  - TASK-P6D-001 inspected the Imprint design read-only and stopped before application changes because no authoritative human-approved Imprint source is recorded.
+  - ISSUE-2026-005 blocks Phase 6D until the legal-content approval Gate is satisfied.
+  - Tom resolved the Phase 6D Gate through explicit Product Owner content approval and risk acceptance under TASK-P6D-002.
+  - TASK-P6D-002 implemented ten current public Imprint groups in English; editorial notes and future authority information remain excluded.
+  - Tom approved Phase 6D through review task TASK-P6D-003 on 2026-07-28 with notes "good"; professional legal review remains deferred.
+  - TASK-P6E-001 implemented the Why Page, seven registered Sections, WhyLayout and typed Why Header/Footer variants from Figma frame 259:3.
+  - Tom approved Phase 6E through review task TASK-P6E-002 on 2026-07-28 with notes "good"; Phase 6 overall remains in_progress pending its completion review.
+  - TASK-P6F-001 added the Figma 1.1.0 Thank You Page, advanced the Frontend App to 0.1.0, and passed all automated checks; human visual approval remains pending.
+  - Tom approved Phase 6F through review task TASK-P6F-002 on 2026-07-28 with notes "good"; Phase 6 remains in_progress pending its separate completion review.
+  - Tom approved Phase 6 through TASK-P6-APPROVAL-001 on 2026-07-28; Phase 7 is planned and TASK-P7-001 is the next permitted task.

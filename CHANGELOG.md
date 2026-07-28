@@ -4,6 +4,47 @@
 
 ### Added
 
+- Figma-backed Thank You Page from Page `321:28` and desktop frame `321:29`,
+  with typed EN content, shared Contact-style chrome, privacy-safe confirmation,
+  responsive layout, and unit/browser coverage.
+
+- The complete English Why mi-goTo Page from Figma frame `259:3`, with seven
+  registered Sections, five exact Figma pillar assets, `WhyLayout`, typed Why
+  Header/Footer variants, and desktop/mobile regression coverage.
+
+- The Product Owner-approved English Imprint Page from Figma frame `122:3`,
+  with ten current public content groups, typed source metadata, accessible
+  internal navigation and responsive presentation.
+
+- The complete 35-section English Data Protection Page from Product
+  Owner-approved Figma frame `128:3`, with typed legal content, source
+  revision metadata, accessible navigation, responsive presentation and tests.
+
+### Approved
+
+- Tom approved Phase 6 — Static Pages through `TASK-P6-APPROVAL-001` on
+  2026-07-28. All six subphases (6A–6F) are approved, and Phase 7 is planned.
+
+- Tom approved Phase 6E and the Why Page implementation through
+  `TASK-P6E-002` on 2026-07-28.
+
+- Tom approved Phase 6C through review task `TASK-P6C-003` on 2026-07-28.
+  Professional legal review remains deferred under the recorded Product Owner
+  risk acceptance.
+
+### Governance
+
+- Figma Design System advanced to `1.1.0` and Frontend App to `0.1.0` for the
+  compatible new Thank You Page; backend remains unassigned at `0.0.0`.
+
+- `CR-2026-002` records Tom's explicit approval for Why-specific shared Header
+  and Footer variants without changing Figma version `1.0.0`.
+
+- Phase 6D Imprint implementation stopped at the legal-content Gate after
+  read-only Figma inspection. `ISSUE-2026-005` records the missing
+  authoritative source and unresolved transitional authority wording; no
+  application code was changed.
+
 - Typed Contact Header and Footer variants based on Figma nodes `314:44` and
   `257:1671`, with exact Contact-specific EN content configuration and
   component regression tests.
