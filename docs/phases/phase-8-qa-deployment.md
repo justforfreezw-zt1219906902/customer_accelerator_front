@@ -140,3 +140,11 @@ ran the pre-freeze gates and froze RC build source at
 `5773c9474be8731f8350a8f3ff542be4f0fce91d`. `ISSUE-2026-006` through
 `ISSUE-2026-009` are resolved. Phase 8 is now `in_progress`; no RC identifier,
 artifact, checksum or deployment exists. `TASK-P8-005` is next.
+
+`TASK-P8-005` passed the RC Entry Gate and assigned
+`REL-FE-0.2.0-rc.1`. Application validation passed (120 unit/component/router
+tests, 28 Chromium tests and production build), but clean-checkout
+documentation validation failed four missing-directory checks. Management
+validation therefore failed. `ISSUE-2026-010` is open, TASK-P8-005 is
+`blocked`, and no final artifact or checksum was created. Phase 8 remains
+`in_progress`; `TASK-P8-006` is the planned remediation.

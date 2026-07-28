@@ -60,7 +60,13 @@ test_reports:
   - docs/08-quality/test-reports/TASK-P8-002-TASK-P8-003-visual-approval-2026-07-28.md
   - docs/08-quality/test-reports/TASK-P8-004-working-tree-classification-2026-07-28.md
   - docs/08-quality/test-reports/TASK-P8-004-source-freeze-2026-07-28.md
-open_issues: []
+  - docs/08-quality/test-reports/TASK-P8-005-full-automated-qa-2026-07-28.md
+  - docs/08-quality/test-reports/TASK-P8-005-browser-responsive-accessibility-2026-07-28.md
+  - docs/08-quality/test-reports/TASK-P8-005-visual-comparison-2026-07-28.md
+  - docs/08-quality/test-reports/TASK-P8-005-performance-security-compatibility-2026-07-28.md
+  - docs/08-quality/test-reports/TASK-P8-005-artifact-verification-2026-07-28.md
+open_issues:
+  - ISSUE-2026-010
 resolved_issues:
   - ISSUE-2026-006
   - ISSUE-2026-007
@@ -80,6 +86,13 @@ pending_deviations: []
 environments_tested:
   - local Chromium at 1440, 1024, 768 and 390 CSS pixels
 notes:
+  - TASK-P8-005 assigned REL-FE-0.2.0-rc.1 after the RC Entry Gate passed.
+  - Frozen clean-checkout documentation validation failed four required
+    directory checks; management validation failed and ISSUE-2026-010 blocks
+    artifact creation.
+  - TASK-P8-005 application evidence passed: 120 unit/component/router tests,
+    28 Chromium tests and production build.
+  - No RC artifact, checksum or deployment was created.
   - Tom approved TASK-P8-002 and TASK-P8-003 after the final visual review.
   - TASK-P8-004 froze the exact RC build source at
     5773c9474be8731f8350a8f3ff542be4f0fce91d using the source-plus-metadata

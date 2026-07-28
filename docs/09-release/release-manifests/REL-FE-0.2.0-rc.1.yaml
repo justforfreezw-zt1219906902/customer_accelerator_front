@@ -1,0 +1,69 @@
+schema_version: 1
+release_candidate:
+  rc_id: REL-FE-0.2.0-rc.1
+  status: blocked_qa
+  creation_date: "2026-07-28"
+  frontend_version: 0.2.0
+  figma_version: 1.1.0
+  backend_api_version: 0.0.0
+  backend_version_status: contract_documented_version_unassigned
+  backend_contract: API-CONTRACT-R1
+  compatibility_baseline: DS1.1.0_API0.0.0_FE0.2.0
+  compatibility_status: provisional_contract_r1_pending_backend_version_assignment
+  source_commit: 5773c9474be8731f8350a8f3ff542be4f0fce91d
+  rc_build_commit: 5773c9474be8731f8350a8f3ff542be4f0fce91d
+  starting_governance_metadata_commit: cbfc9386b2e835afcc68cd52e2860c634f4af817
+  resulting_governance_metadata_commit: pending_current_report_commit
+  source_status: frozen
+build:
+  workspace: /private/tmp/mi-goto-frontend-0.2.0-rc.1-5773c947
+  node: v24.2.0
+  package_manager: npm@11.6.0
+  lockfile: package-lock.json
+  lockfile_sha256: b76a684aef8c955ba0eb3ef31971a281ae246990b6946bea295c8fb3a6370844
+  production_build: passed
+  output_size_kib: 396
+scope:
+  routes: ["/", /why-mi-goto, /contact, /data-protection, /imprint, /thank-you, "/:pathMatch(.*)*"]
+  pages: [Landing, WhyMiGoto, Contact, DataProtection, Imprint, ThankYou, NotFound]
+  excluded_configuration:
+    - production API base URL
+    - HubSpot owner ID
+    - private credentials
+  excluded_local_files: [.idea/workspace.xml, .DS_Store]
+quality:
+  automated_application_checks: passed
+  documentation_validation: failed
+  management_validation: failed
+  unit_component_router: 120_passed
+  chromium: 28_passed
+  firefox: not_run_policy_unresolved
+  webkit: not_run_policy_unresolved
+  visual: passed_with_prior_human_subjective_evidence
+  accessibility: partial_pass_policy_pending
+  responsive: passed_configured_evidence
+  performance: build_metrics_only_policy_pending
+  security_privacy: passed_with_dev_dependency_risk_pending
+  backend_compatibility: passed_mocked_contract_r1
+  live_backend: not_run_environment_unavailable
+issues:
+  blocking: [ISSUE-2026-010]
+  open_non_blocking: []
+accepted_deviations:
+  - DEV-2026-001
+  - DEV-2026-002
+  - DEV-2026-003
+  - DEV-2026-004
+  - DEV-2026-006
+  - DEV-2026-007
+  - DEV-2026-008
+  - DEV-2026-009
+artifact:
+  status: not_created_blocking_qa
+  filename: null
+  size: null
+  sha256: null
+deployment:
+  status: not_started
+human_approval: pending
+rollback_reference: docs/09-release/rollback-plan.md

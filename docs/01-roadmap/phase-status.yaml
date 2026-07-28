@@ -587,10 +587,10 @@ phases:
   - id: phase-8
     name: QA and Deployment
     status: in_progress
-    current_task: null
-    next_task: TASK-P8-005
-    active_blocker: null
-    next_gate: Phase 8 Release Candidate Entry Gate
+    current_task: TASK-P8-005
+    next_task: TASK-P8-006
+    active_blocker: ISSUE-2026-010
+    next_gate: Phase 8 RC Clean-Checkout Remediation Review
     human_approval: approved_visual_remediation_and_source_freeze
     source_freeze:
       status: frozen
@@ -653,5 +653,21 @@ phases:
         artifact: not_created
         production_deployment: not_started
         evidence: docs/07-change-control/instructions/TASK-P8-004-release-candidate-source-freeze.md
+      - id: TASK-P8-005
+        name: Full QA and Release Candidate Build
+        status: blocked
+        blocker: ISSUE-2026-010
+        rc_identifier: REL-FE-0.2.0-rc.1
+        rc_status: blocked_qa
+        source_commit: 5773c9474be8731f8350a8f3ff542be4f0fce91d
+        artifact: not_created
+        production_deployment: not_started
+        human_approval: pending
+        evidence: docs/07-change-control/instructions/TASK-P8-005-full-qa-release-candidate-build.md
+      - id: TASK-P8-006
+        name: RC clean-checkout validation remediation
+        status: planned
+        blocker_to_resolve: ISSUE-2026-010
+        human_approval: pending
 
 last_updated: "2026-07-28"

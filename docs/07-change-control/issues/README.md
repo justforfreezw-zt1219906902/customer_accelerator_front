@@ -29,3 +29,6 @@ Recorded Issues:
   `TASK-P8-002` and approved by Tom.
 - `ISSUE-2026-009` — Footer logo rendering, transparent background and Home
   navigation defect; corrected by `TASK-P8-003` and approved by Tom.
+- `ISSUE-2026-010` — open blocking RC reproducibility failure: the frozen
+  clean checkout omits four required empty directories, causing documentation
+  and management validation to fail. Planned remediation: `TASK-P8-006`.

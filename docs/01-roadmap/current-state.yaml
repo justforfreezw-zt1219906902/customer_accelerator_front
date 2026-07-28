@@ -6,8 +6,8 @@ current_phase:
   name: QA and Deployment
   status: in_progress
 
-current_task: null
-next_task: TASK-P8-005
+current_task: TASK-P8-005
+next_task: TASK-P8-006
 environment: local
 
 versions:
@@ -23,9 +23,10 @@ compatibility:
   baseline_id: DS1.1.0_API0.0.0_FE0.2.0
   status: provisional_contract_r1_pending_backend_version_assignment
 
-blockers: []
+blockers:
+  - ISSUE-2026-010
 next_gate:
-  name: Phase 8 Release Candidate Entry Gate
+  name: Phase 8 RC Clean-Checkout Remediation Review
   human_approval_required: true
 
 management_readiness:
@@ -476,10 +477,10 @@ phase_7:
 
 phase_8:
   status: in_progress
-  current_task: null
+  current_task: TASK-P8-005
   completed_task: TASK-P8-004
   task_status: approved
-  blocker: null
+  blocker: ISSUE-2026-010
   remediation_issues:
     ISSUE-2026-007: resolved
     ISSUE-2026-008: resolved
@@ -489,11 +490,12 @@ phase_8:
     source_commit: 5773c9474be8731f8350a8f3ff542be4f0fce91d
     rc_build_commit: 5773c9474be8731f8350a8f3ff542be4f0fce91d
     method: source_commit_plus_metadata_commit
-  rc_identifier: not_assigned
-  artifact: not_created
+  rc_identifier: REL-FE-0.2.0-rc.1
+  rc_status: blocked_qa
+  artifact: not_created_blocking_qa
   production_deployment: not_started
-  next_task: TASK-P8-005
-  next_gate: Phase 8 Release Candidate Entry Gate
+  next_task: TASK-P8-006
+  next_gate: Phase 8 RC Clean-Checkout Remediation Review
   human_approval: approved_visual_remediation_and_source_freeze
   reviewer: Tom
   approval_date: "2026-07-28"
