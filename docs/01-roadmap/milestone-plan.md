@@ -12,7 +12,7 @@ inputs and ownership. Milestones are evidence gates, not calendar promises.
 | M2 — Visual foundation | Phases 2–3 | Traceable Tokens and accessible Core Components | Design reviewer / colleague |
 | M3 — Component system | Phases 4A–4C | Composite, Product, and Section layers with dependency evidence | Design reviewer for Composite; product owner for Product/Sections |
 | M4 — Interaction baseline | Phase 5 | Approved route, link, CTA, form, success, and error map | Product owner / Tom |
-| M5 — Static website | Phases 6A–6E | Reviewed responsive pages using approved content | Design reviewer and product owner |
+| M5 — Static website | Phases 6A–6F | Approved responsive pages using approved content | Design reviewer and product owner |
 | M6 — Integrated lead flow | Phase 7 | OpenAPI-aligned submission with runtime and recovery evidence | Backend owner and product owner |
 | M7 — Release readiness | Phase 8 | QA evidence, release manifest, deployment, monitoring, and rollback readiness | Product owner / Tom |
 
@@ -28,5 +28,6 @@ inputs and ownership. Milestones are evidence gates, not calendar promises.
 
 ## Current milestone
 
-M0 — Audit readiness is `planned`. It has not started and is not approved.
-
+M5 — Static website is `approved`. M6 — Integrated lead flow is `planned`;
+`TASK-P7-001` is the next permitted task and remains subject to the Phase 7
+Backend Contract Readiness Review.

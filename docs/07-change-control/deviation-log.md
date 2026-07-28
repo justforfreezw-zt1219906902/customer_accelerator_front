@@ -20,7 +20,7 @@ as deviations.
 - Review date and next review date
 - Linked Change Request, Issue, or ADR
 
-## Active deviations
+## Accepted deviations
 
 ### DEV-2026-001 — Fluid Section Container sizing
 
@@ -79,8 +79,8 @@ as deviations.
 - Impact: Closed states follow the token-backed control treatment; the open
   option list is rendered by the browser rather than the Figma specimen.
 - Alternatives: Build an unapproved custom listbox; defer the entire Select.
-- Resolution or expiry: Pending human review; revisit when interaction behavior
-  for a custom Select is approved.
+- Resolution or expiry: Explicitly accepted for the current baseline; revisit
+  when interaction behavior for a custom Select is approved.
 - Owner: Product owner / Tom
 - Approval: Approved by Tom for `TASK-P4-001` on 2026-07-25
 - Review date: 2026-07-25
@@ -114,7 +114,8 @@ as deviations.
 - Impact: Code uses the nearest approved spacing values: 16px for 14px, 64px
   for 60px, and 32px for 36px.
 - Alternatives: Embed unapproved raw values; change the approved token baseline.
-- Resolution or expiry: Pending human review; revisit when the spacing baseline changes.
+- Resolution or expiry: Explicitly accepted for the current baseline; revisit
+  when the spacing baseline changes.
 - Owner: Product owner / Tom
 - Approval: Approved by Tom for `TASK-P5-001` on 2026-07-25
 - Review date: 2026-07-25
@@ -131,7 +132,8 @@ as deviations.
 - Impact: Specimen widths are represented as maximum widths where relevant;
   cards can shrink within responsive layouts and long copy can wrap safely.
 - Alternatives: Force fixed widths; invent breakpoint-specific widths.
-- Resolution or expiry: Pending human review; revisit after breakpoint approval.
+- Resolution or expiry: Explicitly accepted for the current baseline; revisit
+  after breakpoint approval.
 - Owner: Product owner / Tom
 - Approval: Approved by Tom for `TASK-P5-001` on 2026-07-25
 - Review date: 2026-07-25

@@ -19,7 +19,7 @@ Phase 7 → Phase 8
 
 ```text
 Phase 4 = Phase 4A → Phase 4B → Phase 4C
-Phase 6 = Phase 6A → Phase 6B → Phase 6C → Phase 6D → Phase 6E
+Phase 6 = Phase 6A → Phase 6B → Phase 6C → Phase 6D → Phase 6E → Phase 6F
 ```
 
 ## Input dependencies
@@ -42,10 +42,6 @@ or unapproved work cannot silently satisfy a dependency.
 
 ## Unresolved dependency decisions
 
-- Whether Phase 6 pages must be sequential or may run in parallel after Phase 5
-- Whether Contact may precede Landing
 - Whether legal/content/localization foundations need a separate workstream
-- Whether Phase 7 may use a mock contract before all Phase 6 pages are approved
 - Whether deployment infrastructure preparation may run before Phase 8 while
   production release remains gated
-
