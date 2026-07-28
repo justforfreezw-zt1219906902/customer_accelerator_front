@@ -1,8 +1,8 @@
 ---
 phase: 8
 name: QA and Deployment
-status: blocked
-human_approval: pending
+status: in_progress
+human_approval: approved_visual_remediation_and_source_freeze
 ---
 
 # Phase 8: QA and Deployment
@@ -93,11 +93,11 @@ impact, and create an incident record.
 
 ## Status
 
-`blocked`
+`in_progress`
 
 ## Human Approval
 
-`pending`
+`approved_visual_remediation_and_source_freeze`
 
 ## Completion Report
 
@@ -133,3 +133,10 @@ Footer variant, and adds shared Home navigation. Compact Footer branding is an
 explicit Tom-approved correction recorded in `CR-2026-005`. The implementation
 is `needs_review`; Phase 8 remains blocked, `ISSUE-2026-006` remains open, and
 Source Freeze remains prohibited.
+
+Tom gave final visual approval for `TASK-P8-002` and `TASK-P8-003` on
+2026-07-28. `TASK-P8-004` classified the candidate, preserved local-only files,
+ran the pre-freeze gates and froze RC build source at
+`5773c9474be8731f8350a8f3ff542be4f0fce91d`. `ISSUE-2026-006` through
+`ISSUE-2026-009` are resolved. Phase 8 is now `in_progress`; no RC identifier,
+artifact, checksum or deployment exists. `TASK-P8-005` is next.

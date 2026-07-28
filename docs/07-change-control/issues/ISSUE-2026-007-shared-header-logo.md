@@ -2,7 +2,7 @@
 
 ## Metadata
 
-- Status: `resolved_needs_verification`
+- Status: `resolved`
 - Severity: `release_blocking`
 - Reported by: Miroslav
 - Accepted by: Tom
@@ -12,7 +12,7 @@
 - Baseline: `DS1.1.0_API0.0.0_FE0.2.0`
 - Affected phase: Phase 8
 - Resolution task: `TASK-P8-002`
-- Human verification: `pending`
+- Human verification: `approved`
 
 ## Requirement
 
@@ -64,7 +64,8 @@ navigation and keyboard-accessibility defect across all shared-layout Pages.
 ## Human review
 
 - Reviewer: Tom
-- Result: `header_portion_passed`
+- Result: `approved`
 - Date: 2026-07-28
-- Notes: Header correction is acceptable. Footer defects are tracked separately
+- Notes: Header correction is visually clear, background-integrated and
+  keyboard/pointer navigable to `/`. Footer history remains separately tracked
   by `ISSUE-2026-009`.

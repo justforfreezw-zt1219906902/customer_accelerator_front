@@ -4,10 +4,10 @@ project: mi-goTo Frontend
 current_phase:
   id: phase-8
   name: QA and Deployment
-  status: blocked
+  status: in_progress
 
-current_task: TASK-P8-003
-next_task: null
+current_task: null
+next_task: TASK-P8-005
 environment: local
 
 versions:
@@ -23,10 +23,9 @@ compatibility:
   baseline_id: DS1.1.0_API0.0.0_FE0.2.0
   status: provisional_contract_r1_pending_backend_version_assignment
 
-blockers:
-  - ISSUE-2026-006
+blockers: []
 next_gate:
-  name: Phase 8 Footer Logo Visual Review
+  name: Phase 8 Release Candidate Entry Gate
   human_approval_required: true
 
 management_readiness:
@@ -476,20 +475,28 @@ phase_7:
     live_smoke_test: not_run_backend_unavailable
 
 phase_8:
-  status: blocked
-  current_task: TASK-P8-003
-  task_status: needs_review
-  blocker: ISSUE-2026-006
+  status: in_progress
+  current_task: null
+  completed_task: TASK-P8-004
+  task_status: approved
+  blocker: null
   remediation_issues:
-    ISSUE-2026-007: resolved_needs_verification
-    ISSUE-2026-008: resolved_needs_verification
-    ISSUE-2026-009: resolved_needs_verification
+    ISSUE-2026-007: resolved
+    ISSUE-2026-008: resolved
+    ISSUE-2026-009: resolved
+  source_freeze:
+    status: frozen
+    source_commit: 5773c9474be8731f8350a8f3ff542be4f0fce91d
+    rc_build_commit: 5773c9474be8731f8350a8f3ff542be4f0fce91d
+    method: source_commit_plus_metadata_commit
   rc_identifier: not_assigned
   artifact: not_created
   production_deployment: not_started
-  next_task: null
-  next_gate: Phase 8 Footer Logo Visual Review
-  human_approval: pending
+  next_task: TASK-P8-005
+  next_gate: Phase 8 Release Candidate Entry Gate
+  human_approval: approved_visual_remediation_and_source_freeze
+  reviewer: Tom
+  approval_date: "2026-07-28"
 
 last_updated: "2026-07-28"
 notes:

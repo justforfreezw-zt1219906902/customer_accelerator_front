@@ -6,8 +6,8 @@
 - Tool: Codex
 - Product Owner: Tom
 - Stakeholder reviewer: Miroslav
-- Status: `needs_review`
-- Phase 8 status: `blocked`
+- Status: `approved`
+- Phase 8 status after TASK-P8-004: `in_progress`
 - Starting baseline: `DS1.1.0_API0.0.0_FE0.2.0`
 - Starting HEAD: `c137702ae25ac2c3320116c9cced8eaa682a9383`
 - Previous blocked task: `TASK-P8-001`
@@ -187,3 +187,20 @@ Tom reviewed `TASK-P8-002` and returned `CHANGES_REQUIRED`.
 - Follow-up task: `TASK-P8-003`
 
 The original implementation result and evidence above remain unchanged.
+
+## Final human review evidence — 2026-07-28
+
+After `TASK-P8-003` corrected the Footer, Tom completed the final combined
+visual review.
+
+- Final result: `APPROVED`
+- Header logo: approved
+- Footer logo: approved
+- Packages alignment: approved
+- Not Found Page: approved
+- Task status: `approved`
+- Source Freeze authorization: granted for `TASK-P8-004`
+- Evidence:
+  `docs/08-quality/test-reports/TASK-P8-002-TASK-P8-003-visual-approval-2026-07-28.md`
+
+The earlier `CHANGES_REQUIRED` result remains historical evidence.

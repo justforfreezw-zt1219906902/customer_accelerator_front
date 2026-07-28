@@ -35,6 +35,9 @@
 
 ### Approved
 
+- Tom approved the final Phase 8 Header, Footer, Packages and Not Found visual
+  remediation through `TASK-P8-004` on 2026-07-28.
+
 - Tom approved Phase 7 Backend Integration and `TASK-P7-001` on 2026-07-28.
   The approval covers the frontend implementation of `API-CONTRACT-R1`, not
   production release or assignment of an official Backend API semantic version.
@@ -51,14 +54,19 @@
 
 ### Governance
 
+- RC source is frozen at
+  `5773c9474be8731f8350a8f3ff542be4f0fce91d`. `ISSUE-2026-006` through
+  `ISSUE-2026-009` are resolved. No RC identifier, artifact, checksum or
+  deployment has been created.
+
 - Tom returned `TASK-P8-002` as changes required because the Footer logo failed
   visual review; `ISSUE-2026-009` and `CR-2026-005` track the scoped
-  `TASK-P8-003` correction. Source Freeze remains prohibited.
+  `TASK-P8-003` correction. Source Freeze was prohibited at that review point.
 
 - `TASK-P8-002` records RC-entry remediation without creating an RC commit,
   identifier, artifact or deployment. `ISSUE-2026-007` and
-  `ISSUE-2026-008` await human visual verification; `CR-2026-004` records the
-  approved Packages alignment correction where Figma remains staggered.
+  `ISSUE-2026-008` awaited human visual verification; `CR-2026-004` records
+  the approved Packages alignment correction where Figma remains staggered.
 
 - Phase 8 Release Candidate preparation stopped at its entry Gate.
   `ISSUE-2026-006` records the temporary Not Found shell and uncommitted

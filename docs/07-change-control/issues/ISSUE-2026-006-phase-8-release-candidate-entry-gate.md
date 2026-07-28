@@ -2,7 +2,7 @@
 
 ## Metadata
 
-- Status: `open`
+- Status: `resolved`
 - Severity: `blocking`
 - Reported by: Codex
 - Date: 2026-07-28
@@ -11,7 +11,7 @@
 - Baseline: `DS1.1.0_API0.0.0_FE0.2.0`
 - Affected phase: Phase 8 — QA, Release Candidate and Deployment Readiness
 - Affected task: `TASK-P8-001`
-- Human verification: `pending`
+- Human verification: `approved`
 
 ## Requirement
 
@@ -105,3 +105,20 @@ The Issue remains `open` because this task is prohibited from creating the
 exact source-freeze commit. Human visual approval is also pending. The original
 45-entry Gate evidence and previous HEAD remain unchanged above as historical
 evidence; the worktree is reclassified in the `TASK-P8-002` instruction record.
+
+## TASK-P8-004 resolution
+
+- Resolution type: `remediation_visual_approval_and_exact_source_freeze`
+- Resolved by task: `TASK-P8-004`
+- Human reviewer: Tom
+- Resolution date: 2026-07-28
+- Exact source commit:
+  `5773c9474be8731f8350a8f3ff542be4f0fce91d`
+- Exact RC build commit:
+  `5773c9474be8731f8350a8f3ff542be4f0fce91d`
+
+Tom approved the final Header, Footer, Packages and Not Found presentation.
+Every candidate path was classified, required validation passed, no ambiguous
+required file remains, and the immutable source commit exists. Local
+`.idea/workspace.xml` and `.DS_Store` state remains excluded. No RC identifier,
+artifact, checksum or deployment was created.

@@ -86,6 +86,7 @@ requirements:
     introduced_version: 0.0.1
     verified_version: 0.0.1
     approval: approved
+    approval_evidence: docs/08-quality/test-reports/TASK-P8-002-TASK-P8-003-visual-approval-2026-07-28.md
   - requirement_id: REQ-EXTERNAL-001
     description: External URLs are never invented; the LinkedIn label remains non-interactive until an approved HTTPS URL is supplied.
     source:
@@ -309,7 +310,8 @@ requirements:
     status: verified
     introduced_version: 0.0.1
     verified_version: 0.0.1
-    approval: approved_by_phase_6a_review
+    approval: approved_by_phase_6a_and_phase_8_reviews
+    approval_evidence: docs/08-quality/test-reports/TASK-P8-002-TASK-P8-003-visual-approval-2026-07-28.md
   - requirement_id: REQ-FOOTER-001
     description: Shared Footer preserves approved content and layout while every variant reuses the transparent high-density Core brand logo with an accessible Home link.
     source:
@@ -332,7 +334,8 @@ requirements:
     status: implemented
     introduced_version: 0.0.1
     verified_version: 0.0.1
-    approval: approved_by_phase_6a_review
+    approval: approved_by_phase_6a_and_phase_8_reviews
+    approval_evidence: docs/08-quality/test-reports/TASK-P8-002-TASK-P8-003-visual-approval-2026-07-28.md
   - requirement_id: REQ-CONTACT-001
     description: Contact Page contains the confirmed required lead fields.
     source:

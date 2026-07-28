@@ -2,7 +2,7 @@
 
 ## Metadata
 
-- Status: `resolved_needs_verification`
+- Status: `resolved`
 - Severity: `release_blocking`
 - Reported by: Miroslav
 - Accepted by: Tom
@@ -12,7 +12,7 @@
 - Baseline: `DS1.1.0_API0.0.0_FE0.2.0`
 - Affected phase: Phase 8
 - Resolution task: `TASK-P8-002`
-- Human verification: `pending`
+- Human verification: `approved`
 
 ## Requirement
 
@@ -62,6 +62,8 @@ There is no backend, privacy or content impact.
 
 ## Human review
 
-- Reviewer: pending
-- Result: `pending`
-- Date: pending
+- Reviewer: Tom
+- Result: `approved`
+- Date: 2026-07-28
+- Notes: All four card tops, bottoms and CTA regions align acceptably; the
+  Recommended badge and responsive behavior are accepted.

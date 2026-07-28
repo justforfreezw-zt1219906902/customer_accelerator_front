@@ -9,8 +9,8 @@
 - Starting baseline: `DS1.1.0_API0.0.0_FE0.2.0`
 - Starting state: Phase 8 blocked by `ISSUE-2026-006`;
   `TASK-P8-002` reviewed as `CHANGES_REQUIRED`
-- Final task status: `needs_review`
-- Human approval: pending
+- Final task status: `approved`
+- Human approval: approved by Tom on 2026-07-28
 
 ## Permitted and prohibited scope
 
@@ -111,3 +111,10 @@ were discarded, staged or committed.
 `ISSUE-2026-009` is `resolved_needs_verification`; `ISSUE-2026-006` remains
 open. Source Freeze remains prohibited until Tom approves the Footer logo and a
 separately authorized exact source-freeze commit is created.
+
+## Final human review
+
+Tom approved Footer logo clarity, transparent background integration, pointer
+and keyboard Home navigation, and the global compact-Footer brand correction
+on 2026-07-28. `TASK-P8-003` is approved; `ISSUE-2026-009` is resolved. The
+exact Source Freeze is recorded separately by `TASK-P8-004`.

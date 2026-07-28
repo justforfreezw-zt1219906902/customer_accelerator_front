@@ -216,11 +216,12 @@ pages:
     anchor_behavior: none
     implementation_status: implemented
     implementation_scope: final_rc_fallback
-    design_review_status: implemented_needs_review
+    design_review_status: approved
     notes:
       - Tom approved exact English copy and an implementation without a separate
         Figma frame for the current RC on 2026-07-28.
-      - TASK-P8-002 replaced the temporary shell; human visual review remains pending.
+      - TASK-P8-002 replaced the temporary shell and Tom approved the final
+        browser presentation through TASK-P8-004.
 notes:
   - The Not Found fallback is implemented for RC review and is no longer a temporary shell.
   - Five Figma Page nodes were inspected read-only for Phase 5A.

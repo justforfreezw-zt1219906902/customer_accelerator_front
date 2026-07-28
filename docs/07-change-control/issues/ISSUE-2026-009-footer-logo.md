@@ -2,7 +2,7 @@
 
 ## Metadata
 
-- Status: `resolved_needs_verification`
+- Status: `resolved`
 - Severity: `release_blocking`
 - Reported by: Tom
 - Originally observed by: Miroslav
@@ -14,7 +14,7 @@
 - Affected pages: Landing, Why mi-goTo, Contact, Data Protection, Imprint,
   Thank You and Not Found
 - Resolution task: `TASK-P8-003`
-- Human verification: `pending`
+- Human verification: `approved`
 
 ## Requirement
 
@@ -74,6 +74,9 @@ recovery.
 
 ## Human review
 
-- Reviewer: pending
-- Result: `pending`
-- Date: pending
+- Reviewer: Tom
+- Result: `approved`
+- Date: 2026-07-28
+- Notes: Footer logo clarity, transparent background integration, Home
+  navigation, keyboard behavior and the global compact-Footer brand correction
+  are accepted.

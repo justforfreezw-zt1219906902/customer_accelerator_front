@@ -586,12 +586,16 @@ phases:
           live_smoke_test: not_run_backend_unavailable
   - id: phase-8
     name: QA and Deployment
-    status: blocked
-    current_task: TASK-P8-003
-    next_task: null
-    active_blocker: ISSUE-2026-006
-    next_gate: Phase 8 Footer Logo Visual Review
-    human_approval: pending
+    status: in_progress
+    current_task: null
+    next_task: TASK-P8-005
+    active_blocker: null
+    next_gate: Phase 8 Release Candidate Entry Gate
+    human_approval: approved_visual_remediation_and_source_freeze
+    source_freeze:
+      status: frozen
+      source_commit: 5773c9474be8731f8350a8f3ff542be4f0fce91d
+      rc_build_commit: 5773c9474be8731f8350a8f3ff542be4f0fce91d
     tasks:
       - id: TASK-P8-001
         name: QA, Release Candidate and Deployment Readiness
@@ -604,15 +608,15 @@ phases:
         evidence: docs/07-change-control/instructions/TASK-P8-001-qa-release-candidate.md
       - id: TASK-P8-002
         name: Release Candidate entry remediation
-        status: needs_review
-        blocker: ISSUE-2026-006
-        resolved_needs_verification:
+        status: approved
+        blocker: null
+        resolved:
           - ISSUE-2026-007
           - ISSUE-2026-008
         rc_identifier: not_assigned
         artifact: not_created
         production_deployment: not_started
-        human_approval: pending
+        human_approval: approved
         human_review:
           reviewer: Tom
           date: "2026-07-28"
@@ -620,17 +624,34 @@ phases:
           passed: [header_logo, packages_alignment, not_found]
           failed: [footer_logo]
           source_freeze: prohibited
+        final_human_review:
+          reviewer: Tom
+          date: "2026-07-28"
+          result: approved
+          follow_up_remediation: TASK-P8-003
+          evidence: docs/08-quality/test-reports/TASK-P8-002-TASK-P8-003-visual-approval-2026-07-28.md
         evidence: docs/07-change-control/instructions/TASK-P8-002-rc-entry-remediation.md
       - id: TASK-P8-003
         name: Footer Logo remediation
-        status: needs_review
-        blocker: ISSUE-2026-006
-        resolved_needs_verification:
+        status: approved
+        blocker: null
+        resolved:
           - ISSUE-2026-009
-        human_approval: pending
+        human_approval: approved
         rc_identifier: not_assigned
         artifact: not_created
         production_deployment: not_started
         evidence: docs/07-change-control/instructions/TASK-P8-003-footer-logo-remediation.md
+      - id: TASK-P8-004
+        name: Release Candidate source freeze
+        status: approved
+        human_approval: approved
+        reviewer: Tom
+        source_commit: 5773c9474be8731f8350a8f3ff542be4f0fce91d
+        rc_build_commit: 5773c9474be8731f8350a8f3ff542be4f0fce91d
+        rc_identifier: not_assigned
+        artifact: not_created
+        production_deployment: not_started
+        evidence: docs/07-change-control/instructions/TASK-P8-004-release-candidate-source-freeze.md
 
 last_updated: "2026-07-28"

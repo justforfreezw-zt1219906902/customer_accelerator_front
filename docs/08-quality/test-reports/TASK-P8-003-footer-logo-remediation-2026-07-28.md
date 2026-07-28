@@ -6,8 +6,8 @@
 - Date: 2026-07-28
 - Automated result: passed after correcting the documented local test-build
   environment
-- Task status: `needs_review`
-- Human visual approval: pending
+- Task status: `approved`
+- Human visual approval: approved by Tom on 2026-07-28
 - Phase 8 status: `blocked`
 - Release Candidate source freeze: prohibited
 
@@ -61,8 +61,7 @@ Landing and Contact representatives. Visual inspection confirmed:
 - one Footer logo and one Footer landmark per Page;
 - Landing, compact, legal and Not Found layout regressions passed.
 
-Subjective sharpness and final Figma fidelity still require Tom's browser
-review.
+Tom's final browser review approved subjective sharpness and Figma fidelity.
 
 ## Accessibility evidence
 
@@ -74,6 +73,5 @@ review.
 
 ## Gate
 
-`ISSUE-2026-009` is `resolved_needs_verification`. `ISSUE-2026-006` remains
-open. No source-freeze commit, RC identifier, artifact or deployment was
-created.
+`ISSUE-2026-009` is resolved. Source Freeze is recorded by `TASK-P8-004`.
+No RC identifier, artifact or deployment was created by this remediation task.

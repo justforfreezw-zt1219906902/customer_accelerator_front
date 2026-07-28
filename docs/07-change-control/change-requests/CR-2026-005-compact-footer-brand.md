@@ -2,7 +2,7 @@
 
 ## Metadata
 
-- Status: `approved_implementation_needs_review`
+- Status: `approved_implemented`
 - Requested and approved by: Tom
 - Date: 2026-07-28
 - Owner: Product owner / Tom
@@ -42,7 +42,7 @@ Figma Footer and must be traceable rather than silently diverging.
 - [x] Exactly one Footer brand link appears per Page.
 - [x] Link destination is `/`, with accessible name and keyboard focus.
 - [x] Existing Footer content and links remain.
-- [ ] Human visual review approves the result.
+- [x] Human visual review approves the result.
 
 ## Decision
 
@@ -51,3 +51,4 @@ Figma Footer and must be traceable rather than silently diverging.
 - Date: 2026-07-28
 - Conditions: no Footer redesign beyond the brand integration; no Figma write;
   Source Freeze remains prohibited until review.
+- Implementation review: approved by Tom on 2026-07-28

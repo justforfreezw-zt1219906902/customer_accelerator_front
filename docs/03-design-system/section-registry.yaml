@@ -93,7 +93,7 @@ sections:
       - Prices and package claims are not part of the component API; supplied content remains independently governed.
       - TASK-P8-002 applies the Tom-approved RC alignment correction recorded
         by CR-2026-004: equal desktop card heights and aligned CTA regions.
-      - Human visual verification of the correction remains pending.
+      - Tom approved the desktop and responsive alignment through TASK-P8-004.
   - section_id: SEC-LANDING-008
     figma_name: mi-goTo/Final CTA Section
     figma_node_id: "90:1157"

@@ -21,12 +21,11 @@ Recorded Issues:
 - `ISSUE-2026-005` — resolved Phase 6D legal-content Gate through Tom's
   explicit Product Owner content approval and risk acceptance on 2026-07-28;
   retained as historical evidence. Professional legal review remains deferred.
-- `ISSUE-2026-006` — open blocking Phase 8 Release Candidate entry Gate:
-  Not Found remains a temporary shell and the candidate source is not tied to
-  a clean immutable Git commit.
+- `ISSUE-2026-006` — resolved Phase 8 Release Candidate entry Gate through
+  Tom's final visual approval and exact source freeze under `TASK-P8-004`.
 - `ISSUE-2026-007` — shared Header logo sharpness, background and Home-link
-  defect; corrected by `TASK-P8-002`, pending human visual verification.
+  defect; corrected by `TASK-P8-002` and approved by Tom.
 - `ISSUE-2026-008` — Packages card and CTA alignment defect; corrected by
-  `TASK-P8-002`, pending human visual verification.
+  `TASK-P8-002` and approved by Tom.
 - `ISSUE-2026-009` — Footer logo rendering, transparent background and Home
-  navigation defect; corrected by `TASK-P8-003`, pending human visual review.
+  navigation defect; corrected by `TASK-P8-003` and approved by Tom.

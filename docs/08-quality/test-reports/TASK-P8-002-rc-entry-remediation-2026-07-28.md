@@ -83,3 +83,16 @@ review remains required.
   navigation
 - Gate: Phase 8 Footer Logo Visual Review
 - Source Freeze: prohibited
+
+## Final follow-up review
+
+- Reviewer: Tom
+- Date: 2026-07-28
+- Follow-up remediation: `TASK-P8-003`
+- Final result: `APPROVED`
+- Approved scope: Header logo, Footer logo, Packages alignment and Not Found
+- Source Freeze authorization: granted to `TASK-P8-004`
+- Evidence:
+  `TASK-P8-002-TASK-P8-003-visual-approval-2026-07-28.md`
+
+The initial failed Footer review above is intentionally preserved.

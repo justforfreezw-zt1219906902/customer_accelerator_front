@@ -2,7 +2,7 @@
 
 ## Metadata
 
-- Status: `approved_implementation_needs_review`
+- Status: `approved_implemented`
 - Requested by: Miroslav
 - Accepted and approved by: Tom
 - Date: 2026-07-28
@@ -47,7 +47,7 @@ explicitly approved the correction on 2026-07-28.
 - [x] Equal-height desktop layout and bottom CTA structure are implemented.
 - [x] Recommended badge does not introduce a CTA offset.
 - [x] Responsive layout avoids overlap.
-- [ ] Human browser review approves the correction.
+- [x] Human browser review approves the correction.
 
 ## Recovery
 
@@ -61,3 +61,4 @@ evidence. Do not alter content configuration.
 - Date: 2026-07-28
 - Conditions: shared structure, no content loss, responsive behavior and human
   visual review before RC source freeze.
+- Implementation review: approved by Tom on 2026-07-28

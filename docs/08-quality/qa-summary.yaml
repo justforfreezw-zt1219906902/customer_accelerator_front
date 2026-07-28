@@ -1,8 +1,8 @@
 schema_version: 1
 baseline_id: DS1.1.0_API0.0.0_FE0.2.0
 project_phase: phase-8
-status: blocked
-human_approval: pending
+status: in_progress
+human_approval: approved_visual_remediation_and_source_freeze
 prior_phase_5a_approval:
   reviewer: Tom
   result: APPROVED
@@ -57,9 +57,12 @@ test_reports:
   - docs/08-quality/test-reports/phase-5a-task-p7-001-approval-2026-07-25.md
   - docs/08-quality/test-reports/TASK-P8-002-rc-entry-remediation-2026-07-28.md
   - docs/08-quality/test-reports/TASK-P8-003-footer-logo-remediation-2026-07-28.md
-open_issues:
+  - docs/08-quality/test-reports/TASK-P8-002-TASK-P8-003-visual-approval-2026-07-28.md
+  - docs/08-quality/test-reports/TASK-P8-004-working-tree-classification-2026-07-28.md
+  - docs/08-quality/test-reports/TASK-P8-004-source-freeze-2026-07-28.md
+open_issues: []
+resolved_issues:
   - ISSUE-2026-006
-issues_resolved_needs_verification:
   - ISSUE-2026-007
   - ISSUE-2026-008
   - ISSUE-2026-009
@@ -77,19 +80,27 @@ pending_deviations: []
 environments_tested:
   - local Chromium at 1440, 1024, 768 and 390 CSS pixels
 notes:
+  - Tom approved TASK-P8-002 and TASK-P8-003 after the final visual review.
+  - TASK-P8-004 froze the exact RC build source at
+    5773c9474be8731f8350a8f3ff542be4f0fce91d using the source-plus-metadata
+    reference method.
+  - No RC identifier, artifact, checksum or deployment exists; TASK-P8-005 is
+    the next permitted task.
   - TASK-P8-003 automated evidence passed: 120 unit/component/router tests and
     28 Chromium tests; Footer evidence covers 1440, 1024, 768 and 390.
-  - ISSUE-2026-009 is resolved_needs_verification; subjective Footer sharpness
-    and Figma fidelity remain pending Tom's browser review.
+  - ISSUE-2026-009 is resolved; Tom approved Footer sharpness and Figma
+    fidelity.
   - Tom reviewed TASK-P8-002 as changes required: Header, Packages and Not
-    Found passed; Footer logo failed and Source Freeze remains prohibited.
-  - TASK-P8-003 implements one shared Header/Footer brand primitive and awaits
-    human Footer Logo visual review.
+    Found passed; Footer logo failed and Source Freeze was prohibited at that
+    review point.
+  - TASK-P8-003 implemented one shared Header/Footer brand primitive and later
+    passed Tom's final Footer Logo visual review.
   - TASK-P8-002 implemented logo, Packages alignment and final Not Found
-    remediation; human visual review and source freeze remain pending.
+    remediation; the later review and source freeze are recorded above.
   - TASK-P8-001 stopped at the Release Candidate entry Gate.
-  - PAGE-NOT-FOUND remains a temporary route shell with visual review pending.
-  - The candidate source is not tied to an exact immutable commit because the working tree contains 45 entries.
+  - PAGE-NOT-FOUND is the final approved fallback and is not a temporary shell.
+  - The candidate source is tied to exact immutable commit
+    5773c9474be8731f8350a8f3ff542be4f0fce91d.
   - Full Phase 8 QA, Figma comparison, RC artifact and manifest were not created.
   - Production deployment was not performed.
   - Phase 1 foundation validation passed except end-to-end execution.

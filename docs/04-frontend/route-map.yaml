@@ -139,14 +139,15 @@ routes:
     layout: MarketingLayout
     title: Page not found | mi-goTo
     figma_page_id: not_applicable_no_figma_source
-    implementation_status: implemented_needs_review
+    implementation_status: implemented_approved
     anchor_behavior: none
     access_status: public_fallback
     human_approval: approved
     notes:
       - Exact copy, Home CTA and no-separate-Figma-frame decision were approved
         by Tom for TASK-P8-002 on 2026-07-28.
-      - Final human browser review remains pending.
+      - Tom approved the final browser presentation through TASK-P8-004 on
+        2026-07-28.
 
 approved_navigation:
   header:

@@ -85,12 +85,13 @@ components:
       size: [Header, Footer]
     figma_version: 1.1.0
     implementation_status: implemented
-    design_review_status: footer_remediation_needs_review
+    design_review_status: approved
     asset: src/assets/brand/mi-goto-lockup-light-hidpi.png
     tests: [tests/unit/AppBrandLogo.spec.ts]
     notes:
       - TASK-P8-003 centralizes the approved transparent high-density brand
         source for Header and Footer without adding layout behavior.
+      - Tom approved Header and Footer visual remediation through TASK-P8-004.
   - component_id: CMP-COMPOSITE-001
     figma_name: mi-goTo/Form Field
     figma_node_id: "68:213"
@@ -160,7 +161,7 @@ components:
       - Tom approved the shared Header regression at 1440px and 390px under TASK-P6A-006.
       - TASK-P8-002 replaces the intrinsic-size raster with the transparent
         high-density Figma asset and adds the shared accessible Home link.
-      - ISSUE-2026-007 is resolved in code and awaits human visual verification.
+      - ISSUE-2026-007 is resolved and visually approved through TASK-P8-004.
       - CR-2026-001 approves a typed Contact variant based on node 314:44; implementation is pending TASK-P4A-003.
       - TASK-P4A-003 implemented the typed Contact variant with exact HOME-only content and Figma-confirmed desktop geometry.
       - TASK-P6E-001 added the typed Why variant from Header component 257:1655 without changing Landing or Contact content.
@@ -201,7 +202,7 @@ components:
         uses the shared high-density transparent asset, and adds Home navigation.
       - CR-2026-005 authorizes brand display in compact Footers where Figma
         node 257:1671 contains no logo.
-      - ISSUE-2026-009 is resolved in code and awaits human visual verification.
+      - ISSUE-2026-009 is resolved and visually approved through TASK-P8-004.
     contact_footer_node_id: "257:1671"
     contact_variant_status: approved
     contact_variant_approval_task: TASK-P6B-003
