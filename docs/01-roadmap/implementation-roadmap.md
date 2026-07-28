@@ -36,7 +36,9 @@ an approved change request or architecture decision.
 
 ## Current position
 
-- Current phase: Phase 0 — Project Audit
-- Status: `planned`
-- Current task: none
-- Next gate: Phase 0 Audit Review
+- Phase 0 through Phase 8: completed and human-approved.
+- Current project status: `production_maintenance`
+- Current release: `REL-FE-0.2.0`
+- Maintenance line: `0.2.x`
+- Next task pattern: `TASK-MAINT-NNN`
+- Next gate: Maintenance Change Review

@@ -1,0 +1,26 @@
+schema_version: 1
+release_id: REL-FE-0.2.0
+status: released
+release_date: "2026-07-28"
+application_source_commit: 5773c9474be8731f8350a8f3ff542be4f0fce91d
+governance_commits:
+  source_freeze: cbfc9386b2e835afcc68cd52e2860c634f4af817
+  task_p8_005: 4c0a45a062feed3973bbe212ac6e662737429131
+versions:
+  figma: 1.1.0
+  backend: 0.0.0
+  backend_status: contract_documented_version_unassigned
+  backend_contract: API-CONTRACT-R1
+  frontend: 0.2.0
+compatibility_baseline: DS1.1.0_API0.0.0_FE0.2.0
+compatibility_status: provisional_release_accepted_by_product_owner
+deployment:
+  model: git_push_automatic_production
+  status: completed
+  verification: human_confirmed
+  confirmed_by: Tom
+artifact:
+  required: false
+  checksum_required: false
+release_deviation: DEV-2026-011
+maintenance_line: 0.2.x

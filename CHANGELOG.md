@@ -1,5 +1,33 @@
 # Changelog
 
+## [0.2.0] — 2026-07-28
+
+### Released
+
+- Vue 3, Vite and TypeScript frontend foundation with routing and shared layouts.
+- Figma-traceable tokens; Core, Composite, Product and Section component layers.
+- Responsive Landing, Why mi-goTo, Contact, Data Protection, Imprint, Thank You
+  and final Not Found Pages.
+- Shared Header/Footer variants, accessible navigation, route focus/title
+  behavior and EN-only language availability.
+- `API-CONTRACT-R1` Contact lead integration with validation, safe errors,
+  duplicate prevention and privacy-safe Thank You navigation.
+- Header/Footer logo rendering and Packages alignment corrections.
+- 120 unit/component/router tests and 28 Chromium E2E tests passed for the
+  frozen application source.
+
+### Known limitations and accepted release exceptions
+
+- Live backend smoke test was not run because an authorized environment was
+  unavailable.
+- Thirteen accepted historical formatting warnings remain.
+- Four clean-checkout empty-directory documentation checks failed and are
+  accepted through `DEV-2026-011`; the failure is not represented as passing.
+- No packaged artifact or checksum exists because production deployment is
+  Git-push based and the immutable runtime reference is the Git commit.
+- Firefox, WebKit, full accessibility conformance and performance budgets remain
+  outside the confirmed release evidence.
+
 ## Unreleased
 
 ### Added

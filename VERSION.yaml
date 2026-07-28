@@ -2,10 +2,10 @@ schema_version: 1
 
 project:
   name: mi-goTo Frontend
-  status: planning
+  status: production_maintenance
   current_phase:
     id: phase-8
-    name: QA and Deployment
+    name: Production Maintenance
 
 versions:
   figma_design_system: 1.1.0
@@ -18,3 +18,16 @@ compatibility:
   baseline_id: DS1.1.0_API0.0.0_FE0.2.0
   display_name: figma1.10_backend_unassigned_contract_r1
   status: provisional_contract_r1_pending_backend_version_assignment
+
+release:
+  current_release: REL-FE-0.2.0
+  release_date: "2026-07-28"
+  frontend_status: released
+  maintenance_line: 0.2.x
+  production_status: released
+  deployment_model: git_push_automatic_production
+  deployment_verification: human_confirmed
+  confirmed_by: Tom
+  artifact_required: false
+  artifact_checksum_required: false
+  application_source_commit: 5773c9474be8731f8350a8f3ff542be4f0fce91d

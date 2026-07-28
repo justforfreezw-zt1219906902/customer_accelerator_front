@@ -1,5 +1,15 @@
 schema_version: 1
-frontend_planning_version: 0.0.1
+frontend_planning_version: 0.2.0
+release:
+  current: REL-FE-0.2.0
+  status: released
+  date: "2026-07-28"
+  application_source_commit: 5773c9474be8731f8350a8f3ff542be4f0fce91d
+  evidence:
+    unit_component_router: 120_passed
+    chromium: 28_passed
+    live_backend: not_run_environment_unavailable
+  accepted_release_deviation: DEV-2026-011
 status_values:
   - planned
   - blocked

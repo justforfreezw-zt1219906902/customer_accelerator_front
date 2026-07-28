@@ -586,12 +586,18 @@ phases:
           live_smoke_test: not_run_backend_unavailable
   - id: phase-8
     name: QA and Deployment
-    status: in_progress
-    current_task: TASK-P8-005
-    next_task: TASK-P8-006
-    active_blocker: ISSUE-2026-010
-    next_gate: Phase 8 RC Clean-Checkout Remediation Review
-    human_approval: approved_visual_remediation_and_source_freeze
+    status: approved
+    completion_status: completed
+    current_task: null
+    next_task: TASK-MAINT-001
+    active_blocker: null
+    next_gate: Maintenance Change Review
+    human_approval: approved
+    reviewer: Tom
+    approval_date: "2026-07-28"
+    current_release: REL-FE-0.2.0
+    maintenance_line: 0.2.x
+    production_deployment: completed_human_confirmed
     source_freeze:
       status: frozen
       source_commit: 5773c9474be8731f8350a8f3ff542be4f0fce91d
@@ -664,10 +670,21 @@ phases:
         production_deployment: not_started
         human_approval: pending
         evidence: docs/07-change-control/instructions/TASK-P8-005-full-qa-release-candidate-build.md
+        disposition: accepted_for_release_by_product_owner_override
+        superseding_task: TASK-P8-006
+        artifact_created: false
+        checksum_created: false
+        live_backend_smoke_test: not_run_environment_unavailable
       - id: TASK-P8-006
-        name: RC clean-checkout validation remediation
-        status: planned
-        blocker_to_resolve: ISSUE-2026-010
-        human_approval: pending
+        name: Production release override and Phase 8 closeout
+        status: approved
+        resolved_issue: ISSUE-2026-010
+        release_deviation: DEV-2026-011
+        release: REL-FE-0.2.0
+        production_deployment: completed_human_confirmed
+        human_approval: approved
+        reviewer: Tom
+        approval_date: "2026-07-28"
+        evidence: docs/07-change-control/instructions/TASK-P8-006-production-release-closeout.md
 
 last_updated: "2026-07-28"

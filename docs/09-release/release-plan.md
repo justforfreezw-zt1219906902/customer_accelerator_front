@@ -44,9 +44,19 @@ readiness. Automation cannot approve a release.
 
 ## Production
 
-- Deploy only the approved immutable candidate.
-- Record environment, time, operator, artifact, baseline, and outcome.
+- Production deployment is triggered by a push to the designated production
+  branch.
+- The immutable runtime reference is the Git application commit.
+- A packaged artifact and checksum are not required for the current hosting
+  workflow unless the deployment architecture changes.
+- Record environment, time, operator, Git commit, baseline, and outcome.
 - Do not include secrets in release records.
+
+Application changes must pass applicable checks before push. Documentation-only
+pushes may trigger a production rebuild without changing runtime behavior. The
+production branch must not be force-pushed. Provider evidence is preferred;
+when unavailable, explicit confirmation by an authorized human owner is valid
+deployment verification.
 
 ## Smoke test
 
@@ -62,10 +72,11 @@ Verify approved critical checks immediately after deployment:
 
 ## Release blockers
 
-- Unassigned Backend API version
+- Unassigned Backend API version unless explicitly accepted by a release deviation
 - Pending compatibility or human approval
 - Failed required quality/security/privacy check
 - Unresolved critical/high Issue without accepted risk
 - Missing legal content or approval
 - Missing deployment/rollback/monitoring evidence
 
+Release `REL-FE-0.2.0` uses approved deviation `DEV-2026-011`.

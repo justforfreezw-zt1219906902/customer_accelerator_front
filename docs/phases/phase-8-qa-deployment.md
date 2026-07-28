@@ -1,8 +1,8 @@
 ---
 phase: 8
 name: QA and Deployment
-status: in_progress
-human_approval: approved_visual_remediation_and_source_freeze
+status: approved
+human_approval: approved
 ---
 
 # Phase 8: QA and Deployment
@@ -93,7 +93,7 @@ impact, and create an incident record.
 
 ## Status
 
-`in_progress`
+`approved` — completion state: `completed`
 
 ## Human Approval
 
@@ -148,3 +148,10 @@ documentation validation failed four missing-directory checks. Management
 validation therefore failed. `ISSUE-2026-010` is open, TASK-P8-005 is
 `blocked`, and no final artifact or checksum was created. Phase 8 remains
 `in_progress`; `TASK-P8-006` is the planned remediation.
+
+Tom authorized `TASK-P8-006` as an explicit production release override on
+2026-07-28. `DEV-2026-011` accepts the non-runtime clean-checkout failure,
+Git-push deployment without packaged artifact/checksum, and unavailable live
+backend smoke evidence. `REL-FE-0.2.0-rc.1` is promoted to
+`REL-FE-0.2.0`; deployment is `human_confirmed`. Phase 8 is approved and
+completed, and the project enters the `0.2.x` production-maintenance line.

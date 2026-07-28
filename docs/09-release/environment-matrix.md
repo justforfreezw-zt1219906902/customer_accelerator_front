@@ -35,9 +35,10 @@ Staging must use non-production data and approved integration isolation.
 | Monitoring/logging | Unresolved |
 | Privacy/retention | Unresolved |
 
-The production backend URL remains unresolved. Production deployment is blocked
-until configuration ownership, validation, compatibility, security/privacy,
-monitoring, and rollback procedures are approved.
+The production backend URL remains unresolved in repository documentation.
+Tom confirmed production deployment of `REL-FE-0.2.0`; absence of a live
+backend smoke test is explicitly accepted by `DEV-2026-011`. This is not
+evidence that the live backend test passed.
 
 ## Shared rules
 
@@ -46,6 +47,8 @@ monitoring, and rollback procedures are approved.
 - Environment configuration must fail safely.
 - Every deployment links environment, release manifest, compatibility baseline,
   test report, and human approval.
+- Production deployment is triggered by a designated production-branch push;
+  Git commit is the immutable runtime reference.
 - `VITE_APP_MODE` is not required. Confirmed successful Contact submissions use
   the same `/thank-you` destination in all environments.
 - `VITE_API_BASE_URL` is required for live submission and is normalized without

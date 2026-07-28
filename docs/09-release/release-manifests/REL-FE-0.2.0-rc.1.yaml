@@ -1,7 +1,7 @@
 schema_version: 1
 release_candidate:
   rc_id: REL-FE-0.2.0-rc.1
-  status: blocked_qa
+  status: promoted_to_release
   creation_date: "2026-07-28"
   frontend_version: 0.2.0
   figma_version: 1.1.0
@@ -13,7 +13,10 @@ release_candidate:
   source_commit: 5773c9474be8731f8350a8f3ff542be4f0fce91d
   rc_build_commit: 5773c9474be8731f8350a8f3ff542be4f0fce91d
   starting_governance_metadata_commit: cbfc9386b2e835afcc68cd52e2860c634f4af817
-  resulting_governance_metadata_commit: pending_current_report_commit
+  task_p8_005_governance_commit: 4c0a45a062feed3973bbe212ac6e662737429131
+  promoted_release: REL-FE-0.2.0
+  promotion_task: TASK-P8-006
+  promotion_approved_by: Tom
   source_status: frozen
 build:
   workspace: /private/tmp/mi-goto-frontend-0.2.0-rc.1-5773c947
@@ -47,7 +50,8 @@ quality:
   backend_compatibility: passed_mocked_contract_r1
   live_backend: not_run_environment_unavailable
 issues:
-  blocking: [ISSUE-2026-010]
+  blocking: []
+  resolved_by_release_deviation: [ISSUE-2026-010]
   open_non_blocking: []
 accepted_deviations:
   - DEV-2026-001
@@ -59,11 +63,12 @@ accepted_deviations:
   - DEV-2026-008
   - DEV-2026-009
 artifact:
-  status: not_created_blocking_qa
+  status: not_required_git_push_deployment
   filename: null
   size: null
   sha256: null
 deployment:
-  status: not_started
-human_approval: pending
+  status: completed_human_confirmed
+  model: git_push_automatic_production
+human_approval: approved
 rollback_reference: docs/09-release/rollback-plan.md

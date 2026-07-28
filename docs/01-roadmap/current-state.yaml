@@ -3,12 +3,12 @@ project: mi-goTo Frontend
 
 current_phase:
   id: phase-8
-  name: QA and Deployment
-  status: in_progress
+  name: Production Maintenance
+  status: approved
 
-current_task: TASK-P8-005
-next_task: TASK-P8-006
-environment: local
+current_task: null
+next_task: TASK-MAINT-001
+environment: production
 
 versions:
   figma: 1.1.0
@@ -23,10 +23,9 @@ compatibility:
   baseline_id: DS1.1.0_API0.0.0_FE0.2.0
   status: provisional_contract_r1_pending_backend_version_assignment
 
-blockers:
-  - ISSUE-2026-010
+blockers: []
 next_gate:
-  name: Phase 8 RC Clean-Checkout Remediation Review
+  name: Maintenance Change Review
   human_approval_required: true
 
 management_readiness:
@@ -476,11 +475,12 @@ phase_7:
     live_smoke_test: not_run_backend_unavailable
 
 phase_8:
-  status: in_progress
-  current_task: TASK-P8-005
-  completed_task: TASK-P8-004
+  status: approved
+  completion_status: completed
+  current_task: null
+  completed_task: TASK-P8-006
   task_status: approved
-  blocker: ISSUE-2026-010
+  blocker: null
   remediation_issues:
     ISSUE-2026-007: resolved
     ISSUE-2026-008: resolved
@@ -491,14 +491,25 @@ phase_8:
     rc_build_commit: 5773c9474be8731f8350a8f3ff542be4f0fce91d
     method: source_commit_plus_metadata_commit
   rc_identifier: REL-FE-0.2.0-rc.1
-  rc_status: blocked_qa
-  artifact: not_created_blocking_qa
-  production_deployment: not_started
-  next_task: TASK-P8-006
-  next_gate: Phase 8 RC Clean-Checkout Remediation Review
-  human_approval: approved_visual_remediation_and_source_freeze
+  rc_status: promoted_to_release
+  current_release: REL-FE-0.2.0
+  artifact: not_required_git_push_deployment
+  checksum: not_required
+  production_deployment: completed
+  deployment_verification: human_confirmed
+  release_deviation: DEV-2026-011
+  next_task: TASK-MAINT-001
+  next_gate: Maintenance Change Review
+  human_approval: approved
   reviewer: Tom
   approval_date: "2026-07-28"
+
+maintenance:
+  status: production_maintenance
+  release: REL-FE-0.2.0
+  release_line: 0.2.x
+  next_task_pattern: TASK-MAINT-NNN
+  next_gate: Maintenance Change Review
 
 last_updated: "2026-07-28"
 notes:

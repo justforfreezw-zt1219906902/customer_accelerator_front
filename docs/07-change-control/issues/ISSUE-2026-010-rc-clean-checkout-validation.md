@@ -2,7 +2,7 @@
 
 ## Metadata
 
-- Status: `open`
+- Status: `resolved`
 - Severity: `blocking`
 - Priority: `high`
 - Reported by: Codex
@@ -12,7 +12,7 @@
 - Affected phase: Phase 8
 - RC: `REL-FE-0.2.0-rc.1`
 - Frozen source: `5773c9474be8731f8350a8f3ff542be4f0fce91d`
-- Human approval: `pending`
+- Human approval: `approved`
 
 ## Expected
 
@@ -69,5 +69,15 @@ before production release:
 
 ## Resolution
 
-Pending `TASK-P8-006`. Do not patch the frozen worktree or retain a misleading
-artifact.
+The original clean-checkout validation failure remains factual. Tom accepted
+it as non-runtime documentation-tooling behavior through approved Release
+Deviation `DEV-2026-011`; it does not block production release 0.2.0. The
+push-based deployment model does not require a packaged artifact, and the
+immutable production application reference is Git Source Commit
+`5773c9474be8731f8350a8f3ff542be4f0fce91d`.
+
+- Resolution type: `accepted_release_deviation`
+- Resolved by task: `TASK-P8-006`
+- Human reviewer: Tom
+- Resolution date: 2026-07-28
+- Runtime impact: none

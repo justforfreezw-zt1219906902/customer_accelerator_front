@@ -43,6 +43,12 @@ commands remain `decision_pending`.
 8. Communicate status and preserve evidence.
 9. Keep the Incident open until stability and follow-up actions are confirmed.
 
+For the current push-based hosting workflow, rollback means redeploying or
+reverting to a known-good Git application commit through the approved
+production-branch process. Do not force-push the production branch. The last
+known-good runtime reference must be recorded separately from documentation-only
+governance commits.
+
 ## When rollback is unsafe
 
 If an irreversible data/contract migration prevents rollback, apply the approved

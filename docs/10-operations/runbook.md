@@ -2,9 +2,11 @@
 
 ## Status and safety
 
-This is a provider-neutral planning runbook. Exact commands, hosting access,
-owners, URLs, alerts, and escalation contacts are `decision_pending`. Never put
-secrets or personal lead data into troubleshooting records.
+Production uses push-triggered automatic deployment from the designated
+production branch. The Git application commit is the immutable runtime
+reference; packaged artifacts are not required. Exact provider commands,
+hosting access, URLs, alerts and escalation contacts remain
+`decision_pending`. Never put secrets or personal lead data into records.
 
 ## Common evidence to collect
 
@@ -42,6 +44,9 @@ Do not mask a missing Page with an unrelated redirect.
 Stop rollout, preserve provider evidence, verify artifact/configuration identity,
 check approval and environment access, and follow the approved provider
 procedure. Roll back if a partial deployment creates material impact.
+
+For the current workflow, verify the production-branch commit and automation
+result. Do not force-push. Rollback redeploys or reverts to a known-good commit.
 
 ### Backend cannot be reached
 

@@ -1,8 +1,8 @@
 schema_version: 1
 baseline_id: DS1.1.0_API0.0.0_FE0.2.0
-project_phase: phase-8
-status: in_progress
-human_approval: approved_visual_remediation_and_source_freeze
+project_phase: maintenance
+status: released
+human_approval: approved
 prior_phase_5a_approval:
   reviewer: Tom
   result: APPROVED
@@ -66,12 +66,13 @@ test_reports:
   - docs/08-quality/test-reports/TASK-P8-005-performance-security-compatibility-2026-07-28.md
   - docs/08-quality/test-reports/TASK-P8-005-artifact-verification-2026-07-28.md
 open_issues:
-  - ISSUE-2026-010
+  []
 resolved_issues:
   - ISSUE-2026-006
   - ISSUE-2026-007
   - ISSUE-2026-008
   - ISSUE-2026-009
+  - ISSUE-2026-010
 approved_deviations:
   - DEV-2026-001
   - DEV-2026-002
@@ -82,10 +83,16 @@ approved_deviations:
   - DEV-2026-007
   - DEV-2026-008
   - DEV-2026-009
+  - DEV-2026-011
 pending_deviations: []
 environments_tested:
   - local Chromium at 1440, 1024, 768 and 390 CSS pixels
 notes:
+  - Tom approved REL-FE-0.2.0 and Phase 8 closeout through TASK-P8-006.
+  - Deployment is completed by human confirmation under the Git-push automatic
+    production model; no push or deployment was performed by TASK-P8-006.
+  - TASK-P8-005 remains historically blocked and its failed documentation
+    checks remain factual; DEV-2026-011 accepts them for release.
   - TASK-P8-005 assigned REL-FE-0.2.0-rc.1 after the RC Entry Gate passed.
   - Frozen clean-checkout documentation validation failed four required
     directory checks; management validation failed and ISSUE-2026-010 blocks

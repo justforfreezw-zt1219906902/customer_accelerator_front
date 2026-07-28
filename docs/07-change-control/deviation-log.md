@@ -22,6 +22,38 @@ as deviations.
 
 ## Accepted deviations
 
+### DEV-2026-011 — Git-push production release without packaged artifact and clean-checkout empty-directory validation
+
+- Classification: `approved_release_deviation`
+- Reason: The production hosting workflow deploys from the designated Git
+  branch; four required empty documentation directories are not preserved by
+  Git and caused four clean-checkout documentation checks to fail.
+- Clean-checkout evidence: The failure remains factual and is recorded by
+  `TASK-P8-005` and `ISSUE-2026-010`. It did not affect Vue source, the
+  production bundle, routes, runtime behavior, or `API-CONTRACT-R1`.
+- Remediation disposition: No `.gitkeep` remediation is required for release
+  `0.2.0`. Future governance tooling may stop requiring untracked empty
+  directories.
+- Artifact: No packaged archive was produced or required.
+- Checksum: No artifact checksum was produced or required.
+- Immutable runtime reference:
+  `5773c9474be8731f8350a8f3ff542be4f0fce91d`
+- Deployment model: push-triggered automatic production deployment.
+- Live backend smoke test: `not_run_environment_unavailable`; mocked contract
+  validation passed, and Tom accepts the missing live evidence for 0.2.0.
+- Affected Figma version: `1.1.0`
+- Affected Frontend version: `0.2.0`
+- Affected release: `REL-FE-0.2.0`
+- Runtime impact: none
+- Risk acceptance: explicit
+- Owner and approver: Tom, Product Owner
+- Approval: `approved`
+- Approval date: 2026-07-28
+- Expiration: review before any major or minor release beyond the 0.2.x
+  maintenance line
+- Linked records: `TASK-P8-006`, `ISSUE-2026-010`,
+  `REL-FE-0.2.0-rc.1`, `REL-FE-0.2.0`
+
 ### DEV-2026-001 — Fluid Section Container sizing
 
 - Reason: Responsive web sections must scale beyond the fixed 720px Figma

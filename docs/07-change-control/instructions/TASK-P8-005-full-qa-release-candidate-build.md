@@ -11,6 +11,19 @@
 - Deployment: `not_started`
 - Human approval: `pending`
 
+## Subsequent release disposition
+
+- Disposition: `accepted_for_release_by_product_owner_override`
+- Superseding task: `TASK-P8-006`
+- Product Owner: Tom
+- Decision date: 2026-07-28
+- Artifact created: `false`
+- Checksum created: `false`
+- Live backend smoke: `not_run_environment_unavailable`
+
+This disposition does not change the original blocked status or failed
+clean-checkout evidence.
+
 ## Gate and baseline
 
 The RC Entry Gate passed. TASK-P8-002 through TASK-P8-004 were approved,

@@ -1,6 +1,14 @@
 schema_version: 1
 baseline_id: DS1.1.0_API0.0.0_FE0.2.0
-status: phase_7_approved_phase_8_planned
+status: released_production_maintenance
+release:
+  release_id: REL-FE-0.2.0
+  release_date: "2026-07-28"
+  application_source_commit: 5773c9474be8731f8350a8f3ff542be4f0fce91d
+  deployment_model: git_push_automatic_production
+  deployment_verification: human_confirmed
+  maintenance_line: 0.2.x
+  release_deviation: DEV-2026-011
 targeted_versions:
   figma: 1.1.0
   backend: 0.0.0
@@ -210,6 +218,11 @@ validation:
   dependency_audit: passed
   end_to_end_tests: phase_6a_through_phase_6e_affected_suites_passed
   environments_tested: []
+  release_evidence:
+    unit_component_router: 120_passed
+    chromium: 28_passed
+    live_backend: not_run_environment_unavailable
+    clean_checkout_documentation: failed_accepted_by_DEV-2026-011
 phase_6a:
   status: approved
   task: TASK-P6A-006

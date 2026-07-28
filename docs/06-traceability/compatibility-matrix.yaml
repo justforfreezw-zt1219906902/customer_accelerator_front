@@ -52,9 +52,20 @@ baselines:
       - API-CONTRACT-R1 authorizes implementation and review, not production release.
       - Official backend semantic version and production API URL remain unresolved.
       - Live local backend smoke-test status is recorded in TASK-P7-001 evidence.
+      - Production release REL-FE-0.2.0 is explicitly accepted by Tom under
+        DEV-2026-011 despite the unassigned Backend semantic version and
+        unavailable live backend smoke environment.
+    release_disposition: released_provisional_with_approved_deviation
+    release_id: REL-FE-0.2.0
+    release_approval:
+      reviewer: Tom
+      date: "2026-07-28"
+      deviation: DEV-2026-011
     effective_date: "2026-07-28"
     superseded_by: null
 notes:
-  - The active baseline is a planning baseline, not an approved release baseline.
+  - The active baseline remains technically provisional because the Backend
+    semantic version is unassigned; Tom explicitly approved its use for
+    REL-FE-0.2.0 through DEV-2026-011.
   - Machine IDs must use DS<figma-version>_API<backend-version>_FE<frontend-version>.
   - Human display names are aliases and never replace semantic versions.
