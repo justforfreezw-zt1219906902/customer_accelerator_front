@@ -12,7 +12,7 @@ errors:
     backend_machine_code: not_specified
     frontend_category: invalid_request
     presentation: recoverable_form_error
-    retry: decision_required
+    retry: manual_after_user_review
   - catalog_id: API-LEAD-400-VALIDATION
     http_status: 400
     confirmed_example_text: workEmail must be valid
@@ -26,17 +26,30 @@ errors:
     backend_machine_code: not_specified
     frontend_category: server_error
     presentation: generic_temporary_failure
-    retry: decision_required
+    retry: deliberate_manual_only
   - catalog_id: API-LEAD-502-HUBSPOT
     http_status: 502
     confirmed_example_text: failed to create contact in HubSpot
     backend_machine_code: not_specified
-    frontend_category: upstream_integration_error
+    frontend_category: upstream_service_error
     presentation: generic_integration_failure
-    retry: decision_required
+    retry: deliberate_manual_only
 unknown_error:
-  frontend_category: unexpected_error
+  frontend_category: unexpected_response
   presentation: generic_safe_failure
   logging: sanitized_only
-  retry: decision_required
-
+  retry: deliberate_manual_only
+client_errors:
+  - frontend_category: network_error
+    presentation: safe_connection_failure
+    retry: deliberate_manual_only
+  - frontend_category: timeout_error
+    presentation: ambiguous_result_warning
+    timeout_value: explicitly_deferred_INT-015
+    retry: deliberate_manual_only_after_result_check
+  - frontend_category: cancelled
+    presentation: no_error_after_confirmed_navigation
+    notes: Browser cancellation does not prove server-side cancellation.
+  - frontend_category: configuration_error
+    presentation: safe_contact_by_email_fallback
+    retry: after_configuration_correction

@@ -1,5 +1,5 @@
 schema_version: 1
-active_baseline_id: DS1.1.0_API0.0.0_FE0.1.0
+active_baseline_id: DS1.1.0_API0.0.0_FE0.2.0
 baselines:
   - baseline_id: DS1.0.0_API0.0.0_FE0.0.1
     human_display_name: figma1.00_backend_unassigned
@@ -34,6 +34,24 @@ baselines:
       - Phase 6F visual and human approval remains pending.
       - No explicit mobile Figma frame exists for the Thank You Page.
       - Production API URL remains unresolved.
+    effective_date: "2026-07-28"
+    superseded_by: DS1.1.0_API0.0.0_FE0.2.0
+  - baseline_id: DS1.1.0_API0.0.0_FE0.2.0
+    human_display_name: figma1.10_backend_unassigned_contract_r1
+    figma_semantic_version: 1.1.0
+    backend_semantic_version: 0.0.0
+    backend_version_status: contract_documented_version_unassigned
+    backend_contract_revision: 1
+    provisional_contract_identifier: API-CONTRACT-R1
+    frontend_semantic_version: 0.2.0
+    compatibility_status: provisional_contract_r1_pending_backend_version_assignment
+    approval_status: not_approved
+    tested_environments: [local_mocked]
+    limitations:
+      - Backend 0.0.0 remains a non-release placeholder.
+      - API-CONTRACT-R1 authorizes implementation and review, not production release.
+      - Official backend semantic version and production API URL remain unresolved.
+      - Live local backend smoke-test status is recorded in TASK-P7-001 evidence.
     effective_date: "2026-07-28"
     superseded_by: null
 notes:

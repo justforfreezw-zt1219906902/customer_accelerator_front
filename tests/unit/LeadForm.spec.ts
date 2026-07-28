@@ -3,6 +3,7 @@ import { describe, expect, it, vi } from 'vitest';
 
 import LeadForm from '../../src/components/contact/LeadForm.vue';
 import { contactContentEn } from '../../src/content/contact/en';
+import { ApiRequestError } from '../../src/utils/apiErrors';
 
 const fillValidForm = async (
   wrapper: ReturnType<typeof mount<typeof LeadForm>>,
@@ -87,5 +88,30 @@ describe('LeadForm', () => {
     await Promise.resolve();
     await wrapper.vm.$nextTick();
     expect(wrapper.get('form').attributes('aria-busy')).toBe('false');
+  });
+
+  it('shows a safe server error, preserves memory-only values, and permits manual retry', async () => {
+    const submitAdapter = vi
+      .fn()
+      .mockRejectedValueOnce(
+        new ApiRequestError('server_error', 'Temporary service failure.'),
+      )
+      .mockResolvedValueOnce(undefined);
+    const wrapper = mount(LeadForm, {
+      props: { content: contactContentEn.form, submitAdapter },
+    });
+    await fillValidForm(wrapper);
+
+    await wrapper.get('form').trigger('submit');
+    await vi.waitFor(() =>
+      expect(wrapper.text()).toContain('Temporary service failure.'),
+    );
+    expect(wrapper.get('input[name="workEmail"]').element).toHaveProperty(
+      'value',
+      'ada@example.com',
+    );
+
+    await wrapper.get('form').trigger('submit');
+    await vi.waitFor(() => expect(submitAdapter).toHaveBeenCalledTimes(2));
   });
 });

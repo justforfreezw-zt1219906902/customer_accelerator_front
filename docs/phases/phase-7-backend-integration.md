@@ -1,8 +1,8 @@
 ---
 phase: 7
 name: Backend Integration
-status: planned
-human_approval: pending
+status: approved
+human_approval: approved
 ---
 
 # Phase 7: Backend Integration
@@ -14,7 +14,8 @@ including lead submission and all specified runtime states.
 
 ## Scope
 
-- Verify and register the official Backend API semantic version and OpenAPI
+- Implement against Product Owner-authorized `API-CONTRACT-R1` while preserving
+  the unassigned Backend API semantic version
 - Implement approved `POST /api/lead` behavior
 - Map requests, responses, authentication, validation, and errors
 - Implement specified loading, success, failure, timeout, retry, and duplicate
@@ -32,7 +33,8 @@ including lead submission and all specified runtime states.
 ## Required Inputs
 
 - Approved Phase 6 Pages
-- Authoritative OpenAPI and official backend semantic version
+- Authoritative OpenAPI and explicit Product Owner authorization for the
+  provisional contract identifier
 - Product and Interaction Specifications
 - Environment, authentication, privacy, security, CORS, rate-limit, and
   observability requirements
@@ -48,7 +50,8 @@ including lead submission and all specified runtime states.
 ## Dependencies
 
 - Phase 6 approved
-- Backend official semantic version assigned
+- Backend official semantic version assigned, or an explicit human
+  implementation-only authorization such as `TASK-P7-001`
 - Backend owner and product owner resolve contract/behavior conflicts
 
 ## Tasks
@@ -63,7 +66,8 @@ including lead submission and all specified runtime states.
 
 ## Acceptance Criteria
 
-- Backend semantic version and OpenAPI are verified.
+- OpenAPI and contract revision are verified; a missing official backend
+  semantic version remains a production-release blocker.
 - Requests, responses, authentication, validation, loading, success, errors,
   timeout, retry, and duplicates match authoritative sources.
 - No secret is exposed through frontend code or `VITE_*`.
@@ -91,14 +95,27 @@ errors, and coordinate incidents with the backend owner.
 
 ## Status
 
-`not_started`
+`approved`
 
 ## Human Approval
 
-`pending`
+`approved` by Tom on 2026-07-28 for `TASK-P7-001`. Review notes: `good`.
 
 ## Completion Report
 
-Not available. It must later identify OpenAPI/API versions, compatibility ID,
-mappings, validation, security evidence, deviations, recovery readiness, and
-both approvals.
+`TASK-P7-001` implemented the Product Owner-authorized provisional
+`API-CONTRACT-R1`. The exact request/response boundary, safe errors, loading,
+duplicate prevention, cancellation, manual recovery and Thank You navigation
+are covered by tests. No numeric timeout was invented because `INT-015`
+explicitly defers it. Backend semantic version `0.0.0` remains an unassigned
+placeholder and must not be interpreted as API version `1.0.0`.
+
+Validation passed: management, version, documentation, compatibility,
+registries, OpenAPI, formatting, type checking, lint, 112 unit/component tests,
+21 Chromium tests and production build. The live smoke test was not run because
+the local backend was unavailable.
+
+Tom explicitly approved Phase 7 and `TASK-P7-001` on 2026-07-28. This approval
+does not approve production release, assign an official Backend API semantic
+version, or approve the provisional compatibility baseline. Phase 8 is
+`planned`; `TASK-P8-001` is the next permitted task.

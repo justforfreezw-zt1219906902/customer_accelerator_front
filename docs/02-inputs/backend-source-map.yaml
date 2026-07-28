@@ -6,6 +6,12 @@ backend:
   compatibility_placeholder: 0.0.0
   version_status: contract_documented_version_unassigned
   contract_revision: 1
+  provisional_contract_identifier: API-CONTRACT-R1
+  implementation_authorization:
+    status: approved_for_local_implementation_and_testing
+    reviewer: Tom
+    task: TASK-P7-001
+    production_release_approval: false
   openapi:
     destination: docs/05-backend/openapi.yaml
     status: documented_pending_backend_owner_review
@@ -19,7 +25,7 @@ backend:
   operations:
     - method: POST
       path: /api/lead
-      status: contract_documented
+      status: frontend_implemented_needs_review
       request_schema: LeadRequest
       response_schema: LeadSuccessResponse
       http_status_codes: [200, 400, 500, 502]
@@ -39,3 +45,4 @@ notes:
   - Contract revision 1 must not be interpreted as semantic version 1.0.0.
   - The OpenAPI contract is now documented at the registered destination.
   - Backend-owner review and official semantic version assignment remain pending.
+  - API-CONTRACT-R1 is a traceability identifier, not semantic version 1.0.0.

@@ -42,3 +42,5 @@ personal payloads.
 Logging tooling, retention, access, correlation, and operational necessity for
 HubSpot IDs are `decision_pending` and require security/privacy approval.
 
+`TASK-P7-001` adds no frontend diagnostic logging. Contract tests verify safe
+mapping and navigation without logging request or response payloads.

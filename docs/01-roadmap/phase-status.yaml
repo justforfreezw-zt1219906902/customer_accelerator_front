@@ -550,13 +550,57 @@ phases:
           visual_review: approved
   - id: phase-7
     name: Backend Integration
-    status: planned
-    next_task: TASK-P7-001
-    next_gate: Phase 7 Backend Contract Readiness Review
-    human_approval: pending
+    status: approved
+    current_task: null
+    next_task: null
+    next_gate: Phase 8 QA and Deployment Readiness Review
+    human_approval: approved
+    approval:
+      reviewer: Tom
+      result: APPROVED
+      date: "2026-07-28"
+      reviewed_task: TASK-P7-001
+      notes: good
+      evidence: docs/08-quality/test-reports/phase-7-TASK-P7-001-approval-2026-07-28.md
+    tasks:
+      - id: TASK-P7-001
+        name: Backend Integration
+        status: approved
+        contract_identifier: API-CONTRACT-R1
+        backend_semantic_version: 0.0.0
+        backend_version_status: contract_documented_version_unassigned
+        implementation_authorized_by: Tom
+        human_approval: approved
+        reviewer: Tom
+        approval_date: "2026-07-28"
+        review_notes: good
+        approval_evidence: docs/08-quality/test-reports/phase-7-TASK-P7-001-approval-2026-07-28.md
+        evidence: docs/07-change-control/instructions/TASK-P7-001-backend-integration.md
+        validation:
+          management: passed
+          typecheck: passed
+          lint: passed
+          unit_component_integration_tests: 112_passed
+          chromium_tests: 21_passed
+          build: passed
+          live_smoke_test: not_run_backend_unavailable
   - id: phase-8
     name: QA and Deployment
-    status: not_started
+    status: blocked
+    current_task: TASK-P8-001
+    next_task: null
+    active_blocker: ISSUE-2026-006
+    next_gate: Phase 8 Release Candidate Entry Gate Resolution
     human_approval: pending
+    tasks:
+      - id: TASK-P8-001
+        name: QA, Release Candidate and Deployment Readiness
+        status: blocked
+        blocker: ISSUE-2026-006
+        rc_identifier: not_assigned
+        artifact: not_created
+        production_deployment: not_started
+        human_approval: pending
+        evidence: docs/07-change-control/instructions/TASK-P8-001-qa-release-candidate.md
 
 last_updated: "2026-07-28"

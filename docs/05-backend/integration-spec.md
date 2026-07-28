@@ -2,9 +2,10 @@
 
 ## Status
 
-This specification plans future frontend integration. No frontend API calls are
-implemented. OpenAPI controls the contract; Product and Interaction
-Specifications control user behavior.
+`TASK-P7-001` implements this specification against provisional identifier
+`API-CONTRACT-R1`. OpenAPI controls the contract; Product and Interaction
+Specifications control user behavior. The backend semantic version remains
+unassigned, so this integration is not production-release approved.
 
 ## Base URL configuration
 
@@ -33,14 +34,14 @@ Do not add `website`, `phoneNumber`, `message`, or other unconfirmed fields.
 - The source may be `VITE_HUBSPOT_OWNER_ID` only if a human confirms that the
   value is safe to expose in browser-delivered code.
 - Omit the optional field when no approved value exists.
-- Empty-string versus omitted behavior requires backend-owner confirmation.
+- Blank owner values are omitted from the JSON body.
 
 ## Client-side validation
 
 Mirror the confirmed required/non-empty and email-format constraints for user
-feedback. Client validation does not replace backend validation. Exact
-whitespace normalization, email validation strategy, messages, focus, and
-localization remain `decision_required`.
+feedback. Client validation does not replace backend validation. Values are
+trimmed during request mapping; existing approved messages and focus behavior
+remain in force.
 
 ## Loading and double-submit prevention
 
@@ -48,7 +49,8 @@ localization remain `decision_required`.
 - Disable or otherwise guard the submission action while the request is active.
 - Prevent duplicate requests from repeated click, keyboard, or retry actions.
 - Preserve accessible status and focus behavior.
-- Exact cancellation and navigation behavior remains `decision_required`.
+- Navigation while active prompts the user. Confirmed navigation aborts the
+  browser request; this does not prove server-side effects stopped.
 
 ## Success
 
@@ -57,9 +59,8 @@ present, then apply the approved success behavior.
 
 Production success: redirect to `/thank-you`.
 
-`decision_required`: router push versus replace, direct-access behavior,
-analytics, focus placement, form clearing, and treatment of an unexpected
-success response shape.
+Use router `replace` to `/thank-you`. Direct access remains refresh-safe.
+Malformed success responses do not navigate and map to `unexpected_response`.
 
 ## Error presentation
 
@@ -82,17 +83,18 @@ details beyond approved copy. Retry behavior is unresolved.
 
 ## Timeout
 
-Status: `decision_required`.
+Status: `explicitly_deferred` by approved `INT-015`.
 
-Required decisions include threshold, cancellation, user message, duplicate
-protection, observability, and whether retry is safe.
+No numeric client timeout is introduced. The HTTP boundary supports
+`AbortSignal` and a stable `timeout_error` category for a future approved
+timeout source, but application code does not start a timer.
 
 ## Retry
 
-Status: `decision_required`.
+Status: approved through `INT-016`.
 
-Automatic retry must not be introduced without idempotency and duplicate-lead
-analysis. Manual retry rules also require product and backend approval.
+Automatic retry is disabled. After an error settles, the user may deliberately
+submit again; the frontend never resends automatically.
 
 ## CORS
 
@@ -109,3 +111,7 @@ are `decision_required`.
 - Correlation identifiers may be used only if defined by the contract or
   operations policy; none are currently confirmed.
 
+## Implementation evidence
+
+See `docs/05-backend/contract-mapping.md`. Contract-focused unit and Chromium
+tests verify exact mapping, state behavior, safe failures and privacy.

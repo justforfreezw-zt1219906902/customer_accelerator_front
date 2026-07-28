@@ -6,7 +6,7 @@
 VITE_API_BASE_URL=http://localhost:8080
 ```
 
-- `VITE_HUBSPOT_OWNER_ID` value is unresolved.
+- `VITE_HUBSPOT_OWNER_ID` is optional and omitted when blank.
 - The Go backend runs separately.
 - Local CORS, runtime availability, and test-data behavior require validation.
 - No secret belongs in `VITE_*`.
@@ -30,7 +30,7 @@ Staging must use non-production data and approved integration isolation.
 | --- | --- |
 | Frontend URL | Unresolved |
 | Backend URL | Unresolved |
-| `VITE_HUBSPOT_OWNER_ID` | Unresolved; must be confirmed safe for public exposure |
+| `VITE_HUBSPOT_OWNER_ID` | Optional public routing identifier; blank values are omitted |
 | CORS origins | Unresolved |
 | Monitoring/logging | Unresolved |
 | Privacy/retention | Unresolved |
@@ -48,3 +48,7 @@ monitoring, and rollback procedures are approved.
   test report, and human approval.
 - `VITE_APP_MODE` is not required. Confirmed successful Contact submissions use
   the same `/thank-you` destination in all environments.
+- `VITE_API_BASE_URL` is required for live submission and is normalized without
+  a trailing slash. Missing or invalid values fail safely.
+- All `VITE_*` values are public browser configuration. No private HubSpot,
+  backend, or email-service credential may be stored in them.

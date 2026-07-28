@@ -1,7 +1,7 @@
 ---
 phase: 8
 name: QA and Deployment
-status: not_started
+status: blocked
 human_approval: pending
 ---
 
@@ -93,7 +93,7 @@ impact, and create an incident record.
 
 ## Status
 
-`not_started`
+`blocked`
 
 ## Human Approval
 
@@ -101,7 +101,12 @@ impact, and create an incident record.
 
 ## Completion Report
 
-Not available. It must later include release and compatibility IDs, artifact,
-environment, gate results, deviations, deployment/smoke evidence, monitoring,
-recovery readiness, incidents, and approval.
+`TASK-P8-001` stopped at the Release Candidate entry Gate on 2026-07-28.
+Phase 7 and all Phase 6 subphases are approved, but the in-scope Not Found Page
+remains a temporary route shell with visual review pending. The repository also
+contains 45 uncommitted entries, so the candidate source cannot be tied to the
+current Git commit `23df8b4537f58fef00d28eedaec64e2b25f4e7e9`.
 
+`ISSUE-2026-006` records both blockers. No RC identifier, artifact, checksum or
+manifest was created. Full QA and Figma comparison did not start. Production
+deployment was not performed.

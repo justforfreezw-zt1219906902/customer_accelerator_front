@@ -15,7 +15,7 @@ foundation_implementation:
   path: /
   component: FoundationPlaceholderPage
   planned_path: src/pages/FoundationPlaceholderPage.vue
-  status: temporary_implemented
+  status: historical_replaced
   replacement: LandingPage
   notes:
     - This temporary Phase 1 route proves the router shell.
@@ -83,7 +83,7 @@ routes:
     layout: LegalLayout
     title: Data Protection | mi-goTo
     figma_page_id: "128:2"
-    implementation_status: temporary_shell_implemented
+    implementation_status: implemented_approved
     anchor_behavior: internal_anchors_after_stable_legal_headings
     access_status: public
     human_approval: approved
@@ -107,6 +107,12 @@ routes:
       current_code_layout: ContactLayout
       target_layout: ContactLayout
       implementation_task: TASK-P6B-003
+    backend_integration:
+      task: TASK-P7-001
+      contract_identifier: API-CONTRACT-R1
+      endpoint: POST /api/lead
+      success_route: /thank-you
+      status: implemented_approved
   - path: /thank-you
     route_name: thank-you
     page: Thank You Page

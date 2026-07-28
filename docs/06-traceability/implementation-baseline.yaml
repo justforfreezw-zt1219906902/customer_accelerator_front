@@ -1,12 +1,13 @@
 schema_version: 1
-baseline_id: DS1.1.0_API0.0.0_FE0.1.0
-status: phase_6_approved_phase_7_planned
+baseline_id: DS1.1.0_API0.0.0_FE0.2.0
+status: phase_7_approved_phase_8_planned
 targeted_versions:
   figma: 1.1.0
   backend: 0.0.0
   backend_version_status: contract_documented_version_unassigned
   backend_contract_revision: 1
-  frontend: 0.1.0
+  frontend: 0.2.0
+  provisional_contract_identifier: API-CONTRACT-R1
 implemented_tokens:
   - category: layout
     count: 1
@@ -160,7 +161,16 @@ implemented_pages:
     figma_node_id: "128:2"
     layout: LegalLayout
     status: approved
-implemented_endpoints: []
+implemented_endpoints:
+  - operation: POST /api/lead
+    operation_id: submitLead
+    contract_identifier: API-CONTRACT-R1
+    contract_revision: 1
+    openapi: docs/05-backend/openapi.yaml
+    service: src/services/leadApi.ts
+    request_type: LeadRequest
+    success_type: LeadSuccessResponse
+    status: implemented_approved
 implemented_route_infrastructure:
   - src/router/index.ts
   - src/router/routes.ts
@@ -473,8 +483,37 @@ phase_6:
     evidence: docs/08-quality/test-reports/TASK-P6-APPROVAL-001-phase-6-approval-2026-07-28.md
   approved_subphases: [phase-6a, phase-6b, phase-6c, phase-6d, phase-6e, phase-6f]
 phase_7:
-  status: planned
-  next_task: TASK-P7-001
+  status: approved
+  task: TASK-P7-001
+  task_status: approved
+  contract_identifier: API-CONTRACT-R1
+  backend_semantic_version: 0.0.0
+  backend_version_status: contract_documented_version_unassigned
+  human_approval: approved
+  approval:
+    reviewer: Tom
+    date: "2026-07-28"
+    reviewed_task: TASK-P7-001
+    notes: good
+    evidence: docs/08-quality/test-reports/phase-7-TASK-P7-001-approval-2026-07-28.md
+  validation:
+    management: passed
+    typecheck: passed
+    lint: passed
+    formatting: passed
+    unit_component_integration_tests: 112_passed
+    chromium_tests: 21_passed
+    build: passed
+    live_smoke_test: not_run_backend_unavailable
+phase_8:
+  status: blocked
+  task: TASK-P8-001
+  task_status: blocked
+  blocker: ISSUE-2026-006
+  rc_identifier: not_assigned
+  artifact: not_created
+  production_deployment: not_started
+  human_approval: pending
 notes:
   - The six approved Phase 6 Pages are recorded; endpoint implementation remains empty until Phase 7.
   - Foundation artifacts are application infrastructure, not registered Product Pages or components.

@@ -31,6 +31,10 @@ privacy classification and handling.
 - Clear or preserve form data only according to approved interactions/privacy.
 - VITE variables cannot contain private credentials.
 - Error messages must not expose backend internals or other personal data.
+- `TASK-P7-001` keeps form values only in component memory, omits blank owner,
+  uses no browser storage, and never places lead or HubSpot values in the URL.
+- The Thank You Page remains directly accessible and does not receive or render
+  submitted personal data.
 
 ## Production Incident
 
@@ -48,4 +52,3 @@ closure.
 - Access controls and audit
 - Test-data policy
 - Security/privacy owner and incident notification requirements
-

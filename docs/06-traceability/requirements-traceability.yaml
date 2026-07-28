@@ -416,12 +416,16 @@ requirements:
       contract_revision: 1
       semantic_version: unassigned
     planned_frontend_files:
-      - src/services/api
+      - src/services/leadApi.ts
+      - src/services/httpClient.ts
       - src/pages/ContactPage.vue
-    tests: []
-    status: planned
-    introduced_version: 0.0.1
-    verified_version: null
+    tests:
+      - tests/unit/LeadApi.spec.ts
+      - tests/unit/ContactPage.spec.ts
+      - tests/e2e/phase-7-backend-integration.spec.ts
+    status: implemented
+    introduced_version: 0.2.0
+    verified_version: 0.2.0
     approval: not_approved
   - requirement_id: REQ-CONTACT-004
     description: Every confirmed successful Contact submission navigates to the Thank You Page without a VITE_APP_MODE branch.
@@ -464,11 +468,16 @@ requirements:
       contract_revision: 1
     planned_frontend_files:
       - src/pages/ContactPage.vue
-      - src/services/api
-    tests: []
-    status: planned
-    introduced_version: 0.0.1
-    verified_version: null
+      - src/services/leadApi.ts
+      - src/services/httpClient.ts
+      - src/utils/apiErrors.ts
+    tests:
+      - tests/unit/LeadApi.spec.ts
+      - tests/unit/LeadForm.spec.ts
+      - tests/e2e/phase-7-backend-integration.spec.ts
+    status: implemented
+    introduced_version: 0.2.0
+    verified_version: 0.2.0
     approval: not_approved
   - requirement_id: REQ-LEGAL-001
     description: Imprint Page exists.

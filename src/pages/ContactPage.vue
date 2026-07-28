@@ -1,7 +1,48 @@
 <script setup lang="ts">
+import { onBeforeUnmount, ref } from 'vue';
+import { onBeforeRouteLeave, useRouter } from 'vue-router';
+
 import { LeadForm } from '../components/contact';
 import { contactContentEn as content } from '../content/contact/en';
 import { AppBadge } from '../design-system/components/core';
+import { submitLead } from '../services/leadApi';
+import type { LeadFormValues } from '../types/lead';
+
+const router = useRouter();
+const isSubmitting = ref(false);
+let activeController: AbortController | undefined;
+let allowConfirmedSuccessNavigation = false;
+
+const submitContact = async (values: LeadFormValues) => {
+  activeController = new AbortController();
+  try {
+    await submitLead(values, { signal: activeController.signal });
+    allowConfirmedSuccessNavigation = true;
+    await router.replace({ name: 'thank-you' });
+  } finally {
+    activeController = undefined;
+    allowConfirmedSuccessNavigation = false;
+  }
+};
+
+const setSubmissionState = (value: boolean) => {
+  isSubmitting.value = value;
+};
+
+onBeforeRouteLeave(() => {
+  if (allowConfirmedSuccessNavigation) return true;
+  if (!isSubmitting.value) return true;
+
+  const shouldLeave = window.confirm(
+    'Your request is still being submitted. Leaving now may make the result unclear. Leave this page?',
+  );
+  if (shouldLeave) activeController?.abort();
+  return shouldLeave;
+});
+
+onBeforeUnmount(() => {
+  activeController?.abort();
+});
 </script>
 
 <template>
@@ -47,7 +88,11 @@ import { AppBadge } from '../design-system/components/core';
         </div>
       </div>
 
-      <LeadForm :content="content.form" />
+      <LeadForm
+        :content="content.form"
+        :submit-adapter="submitContact"
+        @submission-state="setSubmissionState"
+      />
     </div>
   </section>
 </template>

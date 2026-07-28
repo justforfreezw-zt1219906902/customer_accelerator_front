@@ -58,3 +58,13 @@ operations, product, and security/privacy coordination as applicable.
 - User/data impact assessment
 - Human decision and closure
 
+## Phase 7 integration containment
+
+- Restore the prior approved frontend release to return to the static Contact
+  experience without changing the backend.
+- If rollback cannot be deployed immediately, publish an approved
+  submission-unavailable state with the existing direct-email route.
+- Never automatically replay a failed or ambiguous lead request.
+- Revert the compatibility record to the prior baseline and preserve
+  `API-CONTRACT-R1` evidence for investigation.
+- Escalate widespread production submission failures as an Incident.

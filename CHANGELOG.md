@@ -4,6 +4,11 @@
 
 ### Added
 
+- Frontend `0.2.0` integrates the approved Contact flow with provisional
+  `API-CONTRACT-R1`: typed runtime configuration, exact `POST /api/lead`
+  mapping, safe response/error handling, duplicate prevention, cancellation
+  support, privacy-safe Thank You navigation, and contract-focused tests.
+
 - Figma-backed Thank You Page from Page `321:28` and desktop frame `321:29`,
   with typed EN content, shared Contact-style chrome, privacy-safe confirmation,
   responsive layout, and unit/browser coverage.
@@ -22,6 +27,10 @@
 
 ### Approved
 
+- Tom approved Phase 7 Backend Integration and `TASK-P7-001` on 2026-07-28.
+  The approval covers the frontend implementation of `API-CONTRACT-R1`, not
+  production release or assignment of an official Backend API semantic version.
+
 - Tom approved Phase 6 — Static Pages through `TASK-P6-APPROVAL-001` on
   2026-07-28. All six subphases (6A–6F) are approved, and Phase 7 is planned.
 
@@ -33,6 +42,10 @@
   risk acceptance.
 
 ### Governance
+
+- Phase 8 Release Candidate preparation stopped at its entry Gate.
+  `ISSUE-2026-006` records the temporary Not Found shell and uncommitted
+  candidate source; no RC artifact or production deployment was created.
 
 - Figma Design System advanced to `1.1.0` and Frontend App to `0.1.0` for the
   compatible new Thank You Page; backend remains unassigned at `0.0.0`.

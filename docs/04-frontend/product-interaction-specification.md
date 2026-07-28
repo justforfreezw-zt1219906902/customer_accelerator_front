@@ -46,7 +46,7 @@ These routes require human approval before implementation.
 | `/why-mi-goto` | Why mi-goTo Page | Direct entry and future internal link target | `approved_for_implementation` |
 | `/imprint` | Imprint Page | Footer legal entry | `approved_for_implementation` |
 | `/data-protection` | Data Protection Page | Footer legal and Contact privacy-note entry | `approved_for_implementation` |
-| `/contact` | Contact Page | Header, Footer, and CTA entry | `approved_for_implementation` |
+| `/contact` | Contact Page | Header, Footer, CTA entry and `API-CONTRACT-R1` submission | `backend_integration_implemented_needs_review` |
 | `/thank-you` | Thank You Page | Successful submission, direct access and refresh-safe rendering | `implemented_needs_review`; Figma `321:28` |
 
 Route names, metadata, canonical URL rules, and legacy redirects remain

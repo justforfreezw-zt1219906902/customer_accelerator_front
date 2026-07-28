@@ -41,5 +41,6 @@ export const contactContentEn = {
     submitLabel: 'SEND REQUEST',
     submittingLabel: 'SENDING…',
     errorSummaryTitle: 'Please correct the following fields:',
+    submissionErrorTitle: 'We could not send your request.',
   },
 } as const;

@@ -107,9 +107,23 @@ environment matrix, and redeploy only through the approved platform mechanism.
 Rotate credentials if exposure occurred; VITE values themselves must not be
 secret.
 
+### Temporarily disable Contact submission
+
+Use the approved release process to restore the last approved static frontend
+artifact or deploy an explicitly reviewed unavailable-state correction. Do not
+introduce a hidden runtime flag or silently redirect the API. Keep the form
+disabled only with clear safe user messaging and an approved direct-contact
+alternative.
+
+### Submission remains pending
+
+`INT-015` defines no numeric client timeout. Confirm network/backend state
+before asking the user to retry. Navigation confirmation may abort the browser
+request, but it does not prove the backend, HubSpot or email side effects were
+cancelled. Avoid repeated submissions until the result is understood.
+
 ## Escalation
 
 Open an Incident for production or major operational failure. Open an Issue for
 implementation failure against an existing requirement. Use a Change Request
 for desired changed behavior.
-

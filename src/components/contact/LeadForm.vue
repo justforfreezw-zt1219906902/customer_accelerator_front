@@ -9,6 +9,7 @@ import type {
   LeadFieldName,
   LeadFormValues,
 } from '../../types/lead';
+import { ApiRequestError, toApiRequestError } from '../../utils/apiErrors';
 import { validateLead, validateLeadField } from '../../utils/leadValidation';
 
 type FormContent = (typeof contactContentEn)['form'];
@@ -26,6 +27,7 @@ const props = withDefaults(
 
 const emit = defineEmits<{
   submit: [values: LeadFormValues];
+  submissionState: [isSubmitting: boolean];
 }>();
 
 const fieldOrder: LeadFieldName[] = [
@@ -45,6 +47,7 @@ const errors = reactive<LeadFieldErrors>({});
 const isSubmitting = ref(false);
 const showSummary = ref(false);
 const errorSummary = ref<HTMLElement>();
+const submissionError = ref<string>();
 
 const errorEntries = computed(() =>
   fieldOrder
@@ -53,6 +56,7 @@ const errorEntries = computed(() =>
 );
 
 const setFieldError = (field: LeadFieldName) => {
+  submissionError.value = undefined;
   const message = validateLeadField(field, values[field]);
   if (message) errors[field] = message;
   else delete errors[field];
@@ -83,16 +87,27 @@ const handleSubmit = async () => {
   }
 
   showSummary.value = false;
+  submissionError.value = undefined;
   const submittedValues = { ...values };
   emit('submit', submittedValues);
 
   if (!props.submitAdapter) return;
 
   isSubmitting.value = true;
+  emit('submissionState', true);
   try {
     await props.submitAdapter(submittedValues);
+  } catch (error) {
+    const requestError =
+      error instanceof ApiRequestError ? error : toApiRequestError(error);
+    if (requestError.category !== 'cancelled') {
+      submissionError.value = requestError.message;
+      await nextTick();
+      errorSummary.value?.focus();
+    }
   } finally {
     isSubmitting.value = false;
+    emit('submissionState', false);
   }
 };
 </script>
@@ -110,14 +125,21 @@ const handleSubmit = async () => {
     </header>
 
     <div
-      v-if="showSummary && errorEntries.length"
+      v-if="(showSummary && errorEntries.length) || submissionError"
       ref="errorSummary"
       class="lead-form__error-summary"
       role="alert"
       tabindex="-1"
     >
-      <strong>{{ content.errorSummaryTitle }}</strong>
-      <ul>
+      <strong>
+        {{
+          submissionError
+            ? content.submissionErrorTitle
+            : content.errorSummaryTitle
+        }}
+      </strong>
+      <p v-if="submissionError">{{ submissionError }}</p>
+      <ul v-if="errorEntries.length">
         <li v-for="entry in errorEntries" :key="entry.field">
           <a :href="`#lead-${entry.field}`">{{ entry.message }}</a>
         </li>
@@ -246,6 +268,10 @@ const handleSubmit = async () => {
 .lead-form__error-summary ul {
   margin: var(--spacing-8) 0 0;
   padding-left: var(--spacing-24);
+}
+
+.lead-form__error-summary p {
+  margin: var(--spacing-8) 0 0;
 }
 
 .lead-form__error-summary a {

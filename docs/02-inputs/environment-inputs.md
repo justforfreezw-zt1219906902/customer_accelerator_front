@@ -4,7 +4,7 @@
 
 ```env
 VITE_API_BASE_URL=http://localhost:8080
-VITE_HUBSPOT_OWNER_ID=90579791
+VITE_HUBSPOT_OWNER_ID=
 ```
 
 These are names and non-secret example values only.
@@ -24,7 +24,7 @@ These are names and non-secret example values only.
 | Variable | Purpose | Current state |
 | --- | --- | --- |
 | `VITE_API_BASE_URL` | Select the backend base URL | Local value supplied; production unresolved |
-| `VITE_HUBSPOT_OWNER_ID` | Provide the supplied public owner identifier | Local value `90579791` supplied; production ownership remains to be confirmed |
+| `VITE_HUBSPOT_OWNER_ID` | Optional public owner identifier; omitted when blank | Blank baseline; environment owner remains deployment configuration |
 
 ## Local
 

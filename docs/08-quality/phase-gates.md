@@ -75,7 +75,10 @@ Unavailable tools remain `planned`; they do not count as passed evidence.
 
 ## Phase 7 — Backend Integration Gate
 
-- Official Backend API version and OpenAPI are verified
+- OpenAPI and contract revision are verified. Tom's `TASK-P7-001`
+  implementation authorization permits review against `API-CONTRACT-R1`; the
+  official Backend API version remains required for production release unless
+  an explicit release deviation is approved.
 - Contract mappings and `POST /api/lead` states are implemented and tested
 - CORS, configuration, privacy, safe logging, error, timeout, retry, and duplicate
   decisions are resolved

@@ -86,7 +86,7 @@ pages:
     anchor_behavior: internal_anchors_after_stable_legal_headings
     implementation_status: implemented
     implementation_scope: complete_current_english_imprint
-    design_review_status: needs_review
+    design_review_status: approved
     desktop_frame_node_id: "122:3"
     header_node_id: "122:439"
     hero_node_id: "122:454"
@@ -96,7 +96,7 @@ pages:
     sidebar_node_id: "122:462"
     footer_node_id: "122:577"
     chrome_variant: landing
-    phase_6d_status: needs_review
+    phase_6d_status: approved
     blocker: null
     former_blocker: ISSUE-2026-005
     content_revision: FIGMA-122-3-EN-1.0.0
@@ -153,12 +153,15 @@ pages:
     route_approval: approved
     anchor_behavior: cross_route_anchors_navigate_to_landing_then_scroll
     implementation_status: implemented
-    implementation_scope: phase_6b_static_contact_ui
+    implementation_scope: phase_6b_ui_plus_phase_7_backend_integration
     design_review_status: approved
     content_status: approved
     form_panel_node_id: "269:47"
     submit_action_node_id: "269:99"
-    api_integration_status: not_started_phase_7
+    api_integration_status: implemented_approved
+    api_contract_identifier: API-CONTRACT-R1
+    api_endpoint: POST /api/lead
+    api_integration_task: TASK-P7-001
     current_code_layout: ContactLayout
     target_layout_status: implemented_approved
     contact_header_node_id: "314:44"
@@ -218,7 +221,7 @@ pages:
       - Accessible fallback behavior is approved.
       - No Figma source exists; final design and copy remain separately reviewable.
 notes:
-  - Approved non-Landing routes retain temporary accessible shells.
+  - The Not Found fallback is the only remaining temporary route shell.
   - Five Figma Page nodes were inspected read-only for Phase 5A.
   - Figma does not define final route or interaction behavior by itself.
   - Thank You Page was added in Figma 1.1.0 and implemented under TASK-P6F-001.

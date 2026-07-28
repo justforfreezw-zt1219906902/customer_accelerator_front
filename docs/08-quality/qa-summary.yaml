@@ -1,9 +1,9 @@
 schema_version: 1
-baseline_id: DS1.0.0_API0.0.0_FE0.0.1
-project_phase: phase-5a
-status: approved
-human_approval: approved
-approval:
+baseline_id: DS1.1.0_API0.0.0_FE0.2.0
+project_phase: phase-8
+status: blocked
+human_approval: pending
+prior_phase_5a_approval:
   reviewer: Tom
   result: APPROVED
   date: "2026-07-25"
@@ -23,7 +23,7 @@ tooling:
   accessibility_automation: decision_pending
   responsive_review: decision_pending
   production_smoke_tests: decision_pending
-results:
+historical_results_before_phase_8:
   lint: passed
   type_checking: passed
   unit_tests: passed
@@ -55,7 +55,8 @@ test_reports:
   - docs/08-quality/test-reports/phase-4c-task-p6-001-approval-2026-07-25.md
   - docs/08-quality/test-reports/phase-5a-task-p6-001-approval-2026-07-25.md
   - docs/08-quality/test-reports/phase-5a-task-p7-001-approval-2026-07-25.md
-open_issues: []
+open_issues:
+  - ISSUE-2026-006
 approved_deviations:
   - DEV-2026-001
   - DEV-2026-002
@@ -69,6 +70,11 @@ approved_deviations:
 pending_deviations: []
 environments_tested: []
 notes:
+  - TASK-P8-001 stopped at the Release Candidate entry Gate.
+  - PAGE-NOT-FOUND remains a temporary route shell with visual review pending.
+  - The candidate source is not tied to an exact immutable commit because the working tree contains 45 entries.
+  - Full Phase 8 QA, Figma comparison, RC artifact and manifest were not created.
+  - Production deployment was not performed.
   - Phase 1 foundation validation passed except end-to-end execution.
   - Playwright browser binaries were not installed without explicit permission.
   - Visual, responsive, accessibility, integration and production smoke reviews remain future work.
