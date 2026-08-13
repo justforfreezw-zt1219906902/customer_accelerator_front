@@ -8,8 +8,8 @@ safe null signal sources, accessible ScoreIndicator null labels, dynamic DNA
 rules/source rendering, and required non-negative integer counts for account and
 signal summaries.
 
-Focused validation passed: typecheck, focused parser tests (14 tests), and
-production build. One pre-existing ScoreIndicator formatting warning remains.
-Overview dynamic API tab rendering remains a follow-up item because the current
-API branch still renders its returned signal collection directly.
+Focused validation passed: typecheck, focused parser tests (14 tests), full
+unit suite (164 tests), production build, and governance validators. Dynamic
+API Signal tabs now render arbitrary returned signal types and filter through
+`visibleApiSignals`. One pre-existing ScoreIndicator formatting warning remains.
 The previous human approvals remain preserved as historical evidence.

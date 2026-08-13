@@ -7,6 +7,7 @@ import type {
   AccountSignalDto,
   CommunicationDnaDto,
 } from '../types/accountApi';
+import type { DemoDataStatus } from '../demo/types';
 
 const obj = (v: unknown): Record<string, unknown> => {
   if (!v || typeof v !== 'object' || Array.isArray(v))
@@ -39,11 +40,11 @@ const bool = (v: unknown): boolean => {
     );
   return v;
 };
-const status = (v: unknown): string => {
+const status = (v: unknown): DemoDataStatus => {
   const value = str(v)!;
   if (!['SOURCE_BACKED', 'DERIVED', 'INSUFFICIENT_DATA'].includes(value))
     throw new ApiRequestError('contract_error', apiErrorMessages.contract_error);
-  return value;
+  return value as DemoDataStatus;
 };
 const source = (v: unknown) => {
   const x = obj(v);

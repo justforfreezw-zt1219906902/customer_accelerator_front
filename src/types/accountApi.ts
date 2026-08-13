@@ -53,6 +53,8 @@ export interface AccountSignalDto {
   scoreEligible: boolean;
   source: { name: string | null; type: string | null; url: string } | null;
 }
+import type { DemoDataStatus } from '../demo/types';
+
 export interface DnaSource {
   name: string | null;
   type: string | null;
@@ -65,11 +67,11 @@ export interface CommunicationDnaDto {
     primary: string | null;
     secondary: string | null;
     description: string | null;
-    status: string;
+    status: DemoDataStatus;
     sources: DnaSource[];
   };
   vocabulary: {
-    status: string;
+    status: DemoDataStatus;
     terms: {
       term: string;
       context: string | null;
@@ -77,31 +79,31 @@ export interface CommunicationDnaDto {
       sources: DnaSource[];
     }[];
   };
-  valuePropositions: { quote: string; status: string; sources: DnaSource[] }[];
+  valuePropositions: { quote: string; status: DemoDataStatus; sources: DnaSource[] }[];
   problemFraming: {
     description: string | null;
     quote: string | null;
-    status: string;
+    status: DemoDataStatus;
     sources: DnaSource[];
   };
   proofStyle: {
     primary: string | null;
     secondary: string | null;
     description: string | null;
-    status: string;
+    status: DemoDataStatus;
     sources: DnaSource[];
   };
   ctaPatterns: {
     style: string | null;
     description: string | null;
     examples: string[];
-    status: string;
+    status: DemoDataStatus;
     sources: DnaSource[];
   };
   recurringPhrases: {
     quote: string;
     description: string | null;
-    status: string;
+    status: DemoDataStatus;
     sources: DnaSource[];
   }[];
   doRules: string[];
