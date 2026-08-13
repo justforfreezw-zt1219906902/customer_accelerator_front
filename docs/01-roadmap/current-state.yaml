@@ -549,8 +549,8 @@ maintenance:
   task_maint_006_stage_a_reviewer: Tom
   task_maint_006_stage_a_review_date: "2026-08-13"
   task_maint_006_status: stageB_linkedin_ad_complete_pending_human_visual_review
-  task_maint_006_stage: stage_f_sales_talking_points
-  task_maint_006_status: stageF_sales_talking_points_complete_pending_human_visual_review
+  task_maint_006_stage: stage_g_integrated_qa
+  task_maint_006_status: implementation_complete_needs_human_review
   task_maint_006_stage_c_status: human_accepted
   task_maint_006_stage_c_reviewer: Tom
   task_maint_006_stage_c_review_date: "2026-08-13"
@@ -560,7 +560,15 @@ maintenance:
   task_maint_006_stage_e_status: human_accepted
   task_maint_006_stage_e_reviewer: Tom
   task_maint_006_stage_e_review_date: "2026-08-13"
-  task_maint_006_next_gate: TASK-MAINT-006 Stage F Sales Talking Points Human Visual Review
+  task_maint_006_stage_f_status: human_accepted
+  task_maint_006_stage_f_reviewer: Tom
+  task_maint_006_stage_f_review_date: "2026-08-13"
+  task_maint_006_external_evaluation_status: deferred_pending_internal_user_feedback
+  task_maint_006_closure_status: open_pending_external_human_evaluation
+  task_maint_006_feedback_change_authorization: classification_required_before_code_changes
+  task_maint_006_legacy_chromium_failures: retained_as_test_contract_mismatches
+  task_maint_007_authorized: false
+  task_maint_006_next_gate: TASK-MAINT-006 Final Human Closure Review
   next_task: TASK-MAINT-006
   next_gate: TASK-MAINT-006 Content Studio / Figma Page 18 Review
 

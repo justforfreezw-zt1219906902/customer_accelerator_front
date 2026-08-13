@@ -4,49 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa45ec9b-26dc-40ff-98de-dd81c1a64002" name="更改" comment="chore: bug fix for packages , footer and header">
+    <list default="true" id="fa45ec9b-26dc-40ff-98de-dd81c1a64002" name="更改" comment="abm : from ACCount Discovery to Content Studio :v1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VERSION.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/VERSION.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/01-roadmap/current-state.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/01-roadmap/current-state.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/01-roadmap/phase-status.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/01-roadmap/phase-status.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/03-design-system/component-registry.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/03-design-system/component-registry.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/03-design-system/figma-baseline.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/03-design-system/figma-baseline.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/03-design-system/page-registry.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/03-design-system/page-registry.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/03-design-system/token-map.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/03-design-system/token-map.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/04-frontend/route-map.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/04-frontend/route-map.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/06-traceability/compatibility-matrix.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/06-traceability/compatibility-matrix.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/06-traceability/implementation-baseline.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/06-traceability/implementation-baseline.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/06-traceability/requirements-traceability.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/06-traceability/requirements-traceability.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/07-change-control/change-requests/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/07-change-control/change-requests/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/phases/phase-8-qa-deployment.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/phases/phase-8-qa-deployment.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/product/AIInsightPreviewCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/product/AIInsightPreviewCard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/product/CustomerProblemCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/product/CustomerProblemCard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/product/ProcessStepCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/product/ProcessStepCard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/product/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/product/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/why/WhyImpactSection.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/why/WhyImpactSection.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/why/WhyPillarsSection.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/why/WhyPillarsSection.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/why/en.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/why/en.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/design-system/components/composite/AppFormField.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/design-system/components/composite/AppFormField.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/design-system/components/composite/AppNavbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/design-system/components/composite/AppNavbar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/design-system/components/composite/AppTextarea.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/design-system/components/composite/AppTextarea.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/design-system/components/core/AppBrandLogo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/design-system/components/core/AppBrandLogo.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/design-system/components/core/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/design-system/components/core/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/design-system/theme/variables.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/design-system/theme/variables.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/design-system/tokens/colors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/design-system/tokens/colors.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/design-system/tokens/radius.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/design-system/tokens/radius.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/design-system/tokens/spacing.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/design-system/tokens/spacing.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/design-system/tokens/typography.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/design-system/tokens/typography.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/WhyMiGotoPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/WhyMiGotoPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/e2e/phase-6e-why.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/e2e/phase-6e-why.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/AIInsightPreviewCard.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/AIInsightPreviewCard.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/AppBrandLogo.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/AppBrandLogo.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/TrustMetricCard.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/TrustMetricCard.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/WhyMiGotoPage.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/WhyMiGotoPage.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/designTokens.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/designTokens.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/demo/ContentStudioPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/demo/ContentStudioPage.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +86,7 @@
       <workItem from="1786019575310" duration="13000" />
       <workItem from="1786543568589" duration="2533000" />
       <workItem from="1786565368843" duration="47000" />
-      <workItem from="1786565431322" duration="1111000" />
+      <workItem from="1786565431322" duration="4797000" />
     </task>
     <task id="LOCAL-00001" summary="docs: initialize project governance structure">
       <option name="closed" value="true" />
@@ -308,7 +272,15 @@
       <option name="project" value="LOCAL" />
       <updated>1785267631765</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="abm : from ACCount Discovery to Content Studio :v1">
+      <option name="closed" value="true" />
+      <created>1786584673981</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1786584673981</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -346,6 +318,7 @@
     <MESSAGE value="chore: Data Protection Page&#10;Imprint Page&#10;Why mi-goTo Page&#10;hank You Page." />
     <MESSAGE value="chore: Backend Integration" />
     <MESSAGE value="chore: bug fix for packages , footer and header" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore: bug fix for packages , footer and header" />
+    <MESSAGE value="abm : from ACCount Discovery to Content Studio :v1" />
+    <option name="LAST_COMMIT_MESSAGE" value="abm : from ACCount Discovery to Content Studio :v1" />
   </component>
 </project>

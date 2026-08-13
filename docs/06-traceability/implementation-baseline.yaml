@@ -614,8 +614,8 @@ phase_7:
     build: passed
     live_smoke_test: not_run_backend_unavailable
 maintenance_task_maint_006:
-  status: stageF_sales_talking_points_complete_pending_human_visual_review
-  stage: stage_f_sales_talking_points
+  status: open_pending_external_human_evaluation
+  stage: stage_g_integrated_qa
   figma_version: 1.2.0
   figma_page: "350:8"
   figma_frame: "361:2"
@@ -632,6 +632,9 @@ maintenance_task_maint_006:
   linkedin_outreach_tests: [tests/e2e/task-maint-006-stage-e.spec.ts]
   sales_talking_points_formal_frame: "502:832"
   sales_talking_points_tests: [tests/e2e/task-maint-006-stage-f.spec.ts]
+  stage_g_responsive_tests: [tests/e2e/task-maint-006-stage-g-responsive.spec.ts]
+  external_evaluation: deferred_pending_internal_user_feedback
+  task_maint_007_authorized: false
 
 phase_8:
   status: in_progress

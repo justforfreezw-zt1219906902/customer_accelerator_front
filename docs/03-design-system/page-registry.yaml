@@ -328,7 +328,7 @@ pages:
     title: Content Studio | mi-goTo
     access_status: internal_demo_noindex
     route_approval: pending
-    implementation_status: stage_f_sales_talking_points_needs_review
+    implementation_status: stage_g_integrated_qa_needs_human_review
     design_review_status: pending
     formal_editor_frame: "361:325"
     landing_formal_frame: "502:297"

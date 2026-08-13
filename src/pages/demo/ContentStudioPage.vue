@@ -1988,6 +1988,22 @@ const clearFilters = () => {
   .studio-editor-workspace {
     grid-template-columns: 1fr;
   }
+  .email-workspace {
+    grid-template-columns: 1fr;
+  }
+  .email-editor,
+  .email-preview-column,
+  .studio-editor-column,
+  .studio-preview-column,
+  .email-preview,
+  .linkedin-preview {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .linkedin-preview {
+    width: 100%;
+  }
   .landing-workspace {
     grid-template-columns: 1fr;
   }
@@ -2009,6 +2025,13 @@ const clearFilters = () => {
   .studio-page__context--editor {
     grid-template-columns: 1fr 1fr;
   }
+  .studio-page__context--editor > label,
+  .studio-page__context--editor select,
+  .studio-page__context-wide {
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
   .studio-page__context-wide {
     grid-column: 1/-1;
   }
@@ -2019,6 +2042,31 @@ const clearFilters = () => {
   }
   .studio-page__header {
     flex-direction: column;
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+  .studio-page,
+  .studio-page > *,
+  .studio-page__context--editor > *,
+  .studio-page__context-wide,
+  .studio-asset-tabs,
+  .landing-workspace,
+  .landing-guidance,
+  .landing-draft-region,
+  .email-workspace,
+  .studio-editor-workspace,
+  .linkedin-outreach-workspace,
+  .sales-talking-points-workspace {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .studio-page__context--editor > label,
+  .studio-page__context--editor select,
+  .studio-page__context-wide select,
+  .studio-page__context-wide {
+    width: 100%;
+    min-width: 0;
   }
   .studio-page__filters,
   .studio-page__controls,
