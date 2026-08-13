@@ -639,3 +639,4 @@ notes:
   - TASK-P6F-001 added the Figma 1.1.0 Thank You Page, advanced the Frontend App to 0.1.0, and passed all automated checks; human visual approval remains pending.
   - Tom approved Phase 6F through review task TASK-P6F-002 on 2026-07-28 with notes "good"; Phase 6 remains in_progress pending its separate completion review.
   - Tom approved Phase 6 through TASK-P6-APPROVAL-001 on 2026-07-28; Phase 7 is planned and TASK-P7-001 is the next permitted task.
+  - Tom accepted the API-CONTRACT-R2 Pages 13–15 frontend/backend integration on 2026-08-14 after host-side browser smoke passed; Pages 16–18 backend integration remain deferred.

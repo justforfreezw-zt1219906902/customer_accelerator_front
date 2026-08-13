@@ -27,6 +27,8 @@ export const apiErrorMessages: Record<ApiErrorCategory, string> = {
     'We could not confirm the submission. Please try again later.',
   configuration_error:
     'The submission service is not configured. Please contact us by email.',
+  contract_error:
+    'The account data could not be read safely. Please try again later.',
 };
 
 export const toApiRequestError = (error: unknown): ApiRequestError => {

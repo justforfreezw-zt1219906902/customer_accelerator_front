@@ -1,6 +1,6 @@
 <script setup lang="ts">
 withDefaults(
-  defineProps<{ label: string; value: number; display?: 'bar' | 'ring' }>(),
+  defineProps<{ label: string; value: number | null; display?: 'bar' | 'ring' }>(),
   { display: 'bar' },
 );
 </script>
@@ -8,20 +8,20 @@ withDefaults(
   <div
     class="score-indicator"
     :class="`score-indicator--${display}`"
-    :aria-label="`${label}: ${value} out of 100`"
+    :aria-label="`${label}: ${value === null ? 'insufficient data' : `${value} out of 100`}`"
   >
     <template v-if="display === 'ring'">
-      <span
+      <span v-if="value !== null"
         class="score-indicator__ring"
         :style="{ '--score': `${value * 3.6}deg` }"
       />
-      <strong>{{ value }}</strong>
+      <strong>{{ value ?? 'INSUFFICIENT DATA' }}</strong>
     </template>
     <template v-else>
-      <span class="score-indicator__track" aria-hidden="true"
+      <span v-if="value !== null" class="score-indicator__track" aria-hidden="true"
         ><i :style="{ width: `${value}%` }"
       /></span>
-      <strong>{{ value }}</strong>
+      <strong>{{ value ?? 'INSUFFICIENT DATA' }}</strong>
     </template>
   </div>
 </template>

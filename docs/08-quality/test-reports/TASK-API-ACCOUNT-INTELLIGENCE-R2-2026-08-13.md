@@ -7,9 +7,15 @@ the runtime configuration supports `VITE_DEMO_DATA_SOURCE=fixtures|api`.
 The existing fixture mode remains the default. Page 13 has explicit API loading,
 error and API-derived collection behavior. Pages 14–15 API data service and DTO
 boundaries are established for subsequent page wiring review. Pages 16–18
-remain fixture/local by explicit scope. Page 13 API loading/error and API-derived
-collection behavior is wired; Pages 14–15 service/DTO boundaries are present but
-page-level API integration is not yet complete, so this task remains partial.
+remain fixture/local by explicit scope. Pages 13–15 now have explicit API-mode
+rendering boundaries with no fixture fallback: Page 13 derives metrics and
+truthful unavailable values, Page 14 renders account detail and signals, and
+Page 15 renders supported DNA collections and nullable states.
 
-Typecheck and management validation passed. Human review remains pending; no
-release or deployment is authorized.
+Typecheck, lint, focused parser tests, fixture regressions, production build and
+management validation passed. The host-side browser smoke was completed by Tom
+and passed for Pages 13–15, including API account list, detail, signals, DNA,
+UUID navigation, CORS communication, and nullable/data states. The earlier
+Codex-shell inability to reach localhost:8080 is recorded as execution-
+environment network isolation. Human acceptance: APPROVED by Tom on
+2026-08-14. No release or deployment is authorized.

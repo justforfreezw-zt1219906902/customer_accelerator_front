@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import type { DemoAccountTier } from '../../demo/types';
-defineProps<{ tier: DemoAccountTier }>();
+defineProps<{ tier: string | null }>();
 </script>
 <template>
   <span
     class="tier-badge"
-    :class="`tier-badge--${tier.toLowerCase().replaceAll(' ', '-')}`"
-    >{{ tier }}</span
+    :class="tier ? `tier-badge--${tier.toLowerCase().replaceAll(' ', '-')}` : 'tier-badge--unknown'"
+    >{{ tier ?? 'INSUFFICIENT DATA' }}</span
   >
 </template>
 <style scoped>

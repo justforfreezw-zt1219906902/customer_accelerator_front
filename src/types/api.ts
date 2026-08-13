@@ -6,7 +6,8 @@ export type ApiErrorCategory =
   | 'server_error'
   | 'upstream_service_error'
   | 'unexpected_response'
-  | 'configuration_error';
+  | 'configuration_error'
+  | 'contract_error';
 
 export interface ApiErrorResponse {
   error: string;

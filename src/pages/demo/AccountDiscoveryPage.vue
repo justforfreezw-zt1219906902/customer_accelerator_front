@@ -22,26 +22,39 @@ onMounted(async () => {
     apiError.value = 'Account data is unavailable right now.';
   }
 });
+const isApiMode = getRuntimeConfig().demoDataSource === 'api';
 const displayAccounts = computed<readonly DemoAccountIdentity[]>(() =>
-  getRuntimeConfig().demoDataSource === 'api'
-    ? (apiAccounts.value.map((item) => ({
+  isApiMode
+    ? (apiState.value === 'loaded'
+        ? apiAccounts.value.map((item) => ({
         id: item.id,
         initials: item.name.slice(0, 2).toUpperCase(),
         name: item.name,
-        industry: item.industry ?? 'Industry unavailable',
-        location: item.hq ?? 'HQ unavailable',
-        tier: (item.analysis?.tier as DemoAccountTier) ?? 'Tier 2',
-        icpFit: item.analysis?.icpScore ?? 0,
-        signalScore: item.analysis?.signalScore ?? 0,
-        resonance: item.analysis?.resonanceScore ?? 0,
+        industry: item.industry ?? 'INSUFFICIENT DATA',
+        location: item.hq ?? 'INSUFFICIENT DATA',
+        tier: (item.analysis?.tier as DemoAccountTier | null) ?? null,
+        icpFit: item.analysis?.icpScore ?? null,
+        signalScore: item.analysis?.signalScore ?? null,
+        resonance: item.analysis?.resonanceScore ?? null,
         activeSignals: item.activeSignalCount,
         signalPattern: [],
-        nextBestAction:
-          item.analysis?.nextBestAction ?? 'No next best action available',
+        nextBestAction: item.analysis?.nextBestAction ?? 'INSUFFICIENT DATA',
         discoveryVisible: true,
-      })) as DemoAccountIdentity[])
+      })) as unknown as DemoAccountIdentity[]
+        : [])
     : accounts,
 );
+const metrics = computed(() => {
+  if (!isApiMode || apiState.value !== 'loaded') {
+    return { total: 6, focus: 3, tier1: 2, tier2: 1 };
+  }
+  return {
+    total: apiAccounts.value.length,
+    focus: apiAccounts.value.filter((item) => item.analysis?.tier === 'Focus Accounts').length,
+    tier1: apiAccounts.value.filter((item) => item.analysis?.tier === 'Tier 1').length,
+    tier2: apiAccounts.value.filter((item) => item.analysis?.tier === 'Tier 2').length,
+  };
+});
 const query = ref('');
 const tier = ref<'all' | DemoAccountTier>('all');
 const industry = ref('all');
@@ -80,13 +93,13 @@ const clearFilters = () => {
       </div>
       <button type="button" disabled>Add Account</button>
     </header>
-    <div class="discovery-page__metrics" aria-label="Account portfolio summary">
-      <AppMetricCard label="Total Accounts" :value="6" />
-      <AppMetricCard label="Focus Accounts" :value="3" tone="brand" />
-      <AppMetricCard label="Tier 1 — Active" :value="2" />
-      <AppMetricCard label="Tier 2 — Watchlist" :value="1" tone="warning" />
+    <div v-if="!isApiMode || apiState === 'loaded'" class="discovery-page__metrics" aria-label="Account portfolio summary">
+      <AppMetricCard label="Total Accounts" :value="metrics.total" />
+      <AppMetricCard label="Focus Accounts" :value="metrics.focus" tone="brand" />
+      <AppMetricCard label="Tier 1 — Active" :value="metrics.tier1" />
+      <AppMetricCard label="Tier 2 — Watchlist" :value="metrics.tier2" tone="warning" />
     </div>
-    <form class="discovery-page__filters" role="search" @submit.prevent>
+    <form v-if="!isApiMode || apiState === 'loaded'" class="discovery-page__filters" role="search" @submit.prevent>
       <label class="discovery-page__search"
         ><span>Search accounts</span
         ><input
@@ -118,7 +131,7 @@ const clearFilters = () => {
         ><button type="button" @click="clearFilters">Clear filters</button>
       </div>
     </form>
-    <div class="discovery-page__table" aria-label="Accounts">
+    <div v-if="!isApiMode || apiState === 'loaded'" class="discovery-page__table" aria-label="Accounts">
       <div class="discovery-page__columns" aria-hidden="true">
         <span>Account</span><span>Tier</span><span>ICP Fit</span
         ><span>Signal Score</span><span>Resonance</span><span>Signals</span

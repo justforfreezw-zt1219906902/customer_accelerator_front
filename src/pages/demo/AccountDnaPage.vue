@@ -1,18 +1,41 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import {
   DataStatusBadge,
   DnaEvidenceCard,
   FrequencyBadge,
 } from '../../components/product';
-import { AppButton } from '../../design-system/components/core';
+import { AppButton, AppSourceAttributionChip } from '../../design-system/components/core';
 import { demoAccountProvider } from '../../demo/demoAccountProvider';
 import type { DemoDnaSource } from '../../demo/types';
 import { useDemoAccount } from '../../demo/useDemoAccount';
+import { getRuntimeConfig } from '../../app/configuration/environment';
+import { getAccount, getCommunicationDna } from '../../services/accountApi';
+import type { CommunicationDnaDto } from '../../types/accountApi';
 
 const router = useRouter();
 const { account, accountId } = useDemoAccount();
+const apiMode = getRuntimeConfig().demoDataSource === 'api';
+const apiName = ref('');
+const apiDna = ref<CommunicationDnaDto | null>();
+const apiLoading = ref(apiMode);
+const apiError = ref('');
+onMounted(async () => {
+  if (!apiMode) return;
+  try {
+    const [detail, dnaResult] = await Promise.all([
+      getAccount(accountId.value),
+      getCommunicationDna(accountId.value),
+    ]);
+    apiName.value = detail.name;
+    apiDna.value = dnaResult;
+  } catch {
+    apiError.value = 'Communication DNA is unavailable right now.';
+  } finally {
+    apiLoading.value = false;
+  }
+});
 const dna = computed(() =>
   demoAccountProvider.findCommunicationDna(accountId.value),
 );
@@ -32,11 +55,48 @@ const generate = () =>
   });
 const back = () => router.push(`/demo/accounts/${accountId.value}`);
 const sourceLabel = (source: DemoDnaSource) => `Open ${source.label} source`;
+const apiStatus = (value: string | undefined) =>
+  value === 'SOURCE_BACKED' || value === 'DERIVED' || value === 'INSUFFICIENT_DATA'
+    ? value
+    : 'INSUFFICIENT_DATA';
+const apiFrequency = (value: string | null) =>
+  value === 'high' ? 'HIGH' : value === 'medium' ? 'MEDIUM' : 'LOW';
 </script>
 
 <template>
   <section
-    v-if="!account"
+    v-if="apiMode && apiLoading"
+    class="account-not-found"
+    aria-live="polite"
+  >
+    <h1 data-page-heading>Loading Communication DNA…</h1>
+  </section>
+  <section
+    v-else-if="apiMode && apiError"
+    class="account-not-found"
+    role="alert"
+  >
+    <h1 data-page-heading>Communication DNA unavailable</h1>
+    <p>{{ apiError }}</p>
+    <RouterLink :to="`/demo/accounts/${accountId}`"
+      >Return to Account Overview</RouterLink
+    >
+  </section>
+  <section v-else-if="apiMode" class="dna-page" aria-labelledby="api-dna-title">
+    <article class="dna-page__hero"><div class="dna-page__identity"><span aria-hidden="true">{{ apiName.charAt(0) }}</span><div><p>ACCOUNT INTELLIGENCE / COMMUNICATION DNA</p><h1 id="api-dna-title" data-page-heading>Communication DNA — {{ apiName }}</h1><p>Backend-provided account communication intelligence.</p></div></div><div class="dna-page__actions"><AppButton disabled title="Content Studio is fixture-only">Generate Mirrored Content</AppButton><AppButton variant="secondary" disabled>Export DNA Report</AppButton><AppButton variant="ghost" @click="back">← Back</AppButton></div></article>
+    <p v-if="!apiDna" class="dna-page__limited">No Communication DNA is available for this account.</p>
+    <div v-else class="dna-page__grid">
+      <DnaEvidenceCard title="Tone" :status="apiStatus(apiDna.tone.status)"><dl class="dna-page__facts"><div><dt>PRIMARY</dt><dd>{{ apiDna.tone.primary ?? 'INSUFFICIENT DATA' }}</dd></div><div><dt>SECONDARY</dt><dd>{{ apiDna.tone.secondary ?? 'INSUFFICIENT DATA' }}</dd></div></dl><p>{{ apiDna.tone.description ?? 'INSUFFICIENT DATA' }}</p><AppSourceAttributionChip :source="`${apiDna.tone.sources.length} source(s)`"/></DnaEvidenceCard>
+      <DnaEvidenceCard title="Vocabulary" :status="apiStatus(apiDna.vocabulary.status)"><ul class="dna-page__vocabulary"><li v-for="item in apiDna.vocabulary.terms" :key="item.term"><strong>{{ item.term }}</strong><small>{{ item.context ?? 'INSUFFICIENT DATA' }}</small><FrequencyBadge v-if="item.frequency === 'high' || item.frequency === 'medium' || item.frequency === 'low'" :level="apiFrequency(item.frequency)"/></li></ul></DnaEvidenceCard>
+      <DnaEvidenceCard title="Value Propositions" :status="apiStatus(apiDna.valuePropositions.length ? apiDna.valuePropositions[0].status : 'INSUFFICIENT_DATA')"><blockquote v-for="item in apiDna.valuePropositions" :key="item.quote">{{ item.quote }}</blockquote><p v-if="!apiDna.valuePropositions.length">INSUFFICIENT DATA</p></DnaEvidenceCard>
+      <DnaEvidenceCard title="Problem Framing" :status="apiStatus(apiDna.problemFraming.status)"><p>{{ apiDna.problemFraming.description ?? 'INSUFFICIENT DATA' }}</p><blockquote>{{ apiDna.problemFraming.quote ?? 'INSUFFICIENT DATA' }}</blockquote></DnaEvidenceCard>
+      <DnaEvidenceCard title="Proof Style" :status="apiStatus(apiDna.proofStyle.status)"><dl class="dna-page__facts"><div><dt>PRIMARY</dt><dd>{{ apiDna.proofStyle.primary ?? 'INSUFFICIENT DATA' }}</dd></div><div><dt>SECONDARY</dt><dd>{{ apiDna.proofStyle.secondary ?? 'INSUFFICIENT DATA' }}</dd></div></dl><p>{{ apiDna.proofStyle.description ?? 'INSUFFICIENT DATA' }}</p></DnaEvidenceCard>
+      <DnaEvidenceCard title="CTA Patterns" :status="apiStatus(apiDna.ctaPatterns.status)"><p>{{ apiDna.ctaPatterns.style ?? 'INSUFFICIENT DATA' }}</p><p>{{ apiDna.ctaPatterns.description ?? 'INSUFFICIENT DATA' }}</p><div class="dna-page__tags"><span v-for="example in apiDna.ctaPatterns.examples" :key="example">{{ example }}</span></div></DnaEvidenceCard>
+      <DnaEvidenceCard title="Recurring Phrases" :status="apiStatus(apiDna.recurringPhrases.length ? apiDna.recurringPhrases[0].status : 'INSUFFICIENT_DATA')"><blockquote v-for="item in apiDna.recurringPhrases" :key="item.quote">{{ item.quote }}</blockquote><p v-if="!apiDna.recurringPhrases.length">INSUFFICIENT DATA</p></DnaEvidenceCard>
+    </div>
+  </section>
+  <section
+    v-else-if="!account"
     class="account-not-found"
     aria-labelledby="dna-not-found-title"
   >

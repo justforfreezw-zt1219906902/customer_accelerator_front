@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { AppMetricCard, TierBadge } from '../../components/product';
 import {
@@ -8,9 +8,36 @@ import {
 } from '../../design-system/components/core';
 import { useDemoAccount } from '../../demo/useDemoAccount';
 import type { DemoSignalCategory } from '../../demo/types';
+import { getRuntimeConfig } from '../../app/configuration/environment';
+import { getAccount, getAccountSignals } from '../../services/accountApi';
+import type { AccountDetailDto, AccountSignalDto } from '../../types/accountApi';
 
 const router = useRouter();
 const { account, accountId } = useDemoAccount();
+const apiMode = getRuntimeConfig().demoDataSource === 'api';
+const apiAccount = ref<AccountDetailDto>();
+const apiSignals = ref<AccountSignalDto[]>([]);
+const apiLoading = ref(apiMode);
+const apiError = ref('');
+onMounted(async () => {
+  if (!apiMode) return;
+  const controller = new AbortController();
+  try {
+    const [detail, signalData] = await Promise.all([
+      getAccount(accountId.value, controller.signal),
+      getAccountSignals(accountId.value, controller.signal),
+    ]);
+    apiAccount.value = {
+      ...detail,
+      activeSignalCount: signalData.summary.active,
+    };
+    apiSignals.value = signalData.items;
+  } catch {
+    apiError.value = 'Account data is unavailable right now.';
+  } finally {
+    apiLoading.value = false;
+  }
+});
 const signalFilter = ref<'all' | DemoSignalCategory>('all');
 const signals = computed(() => account.value?.overview?.buyingSignals ?? []);
 const visibleSignals = computed(() =>
@@ -33,7 +60,35 @@ const isCompleteUrl = (url?: string) => {
 
 <template>
   <section
-    v-if="!account"
+    v-if="apiMode && apiLoading"
+    class="account-not-found"
+    aria-live="polite"
+  >
+    <h1 data-page-heading>Loading account intelligence…</h1>
+  </section>
+  <section
+    v-else-if="apiMode && apiError"
+    class="account-not-found"
+    role="alert"
+  >
+    <h1 data-page-heading>Account data unavailable</h1>
+    <p>{{ apiError }}</p>
+    <RouterLink to="/demo">Return to Account Discovery</RouterLink>
+  </section>
+  <section v-else-if="apiMode && apiAccount" class="overview-page api-overview" aria-labelledby="api-overview-title">
+    <header class="overview-page__header"><div class="overview-page__company">
+      <strong>{{ apiAccount.name }}</strong>
+      <span>{{ [apiAccount.industry, apiAccount.hq, apiAccount.employees === null ? null : `${apiAccount.employees} employees`, apiAccount.revenue?.amountM == null ? null : `${apiAccount.revenue.currency ?? ''} ${apiAccount.revenue.amountM}M`, apiAccount.analysis?.tier].filter(Boolean).join(' · ') }}</span>
+      <h1 id="api-overview-title" data-page-heading>{{ apiAccount.name }} Account Overview</h1>
+    </div><div class="overview-page__actions"><AppButton variant="secondary" size="sm" @click="router.push(`/demo/accounts/${accountId}/dna`)">View Communication DNA</AppButton><AppButton size="sm" disabled title="Content Studio is fixture-only">Generate Content</AppButton></div></header>
+    <p v-if="apiAccount.description" class="overview-page__summary">{{ apiAccount.description }}</p>
+    <div class="overview-page__metrics"><AppMetricCard label="ICP Fit" :value="apiAccount.analysis?.icpScore ?? 'INSUFFICIENT DATA'" tone="brand"/><AppMetricCard label="Signal Score" :value="apiAccount.analysis?.signalScore ?? 'INSUFFICIENT DATA'"/><AppMetricCard label="Resonance" :value="apiAccount.analysis?.resonanceScore ?? 'INSUFFICIENT DATA'"/></div>
+    <div v-if="apiAccount.analysis" class="overview-page__reasons"><article><span>WHY THIS ACCOUNT</span><p>{{ apiAccount.analysis.whyThisAccount ?? 'INSUFFICIENT DATA' }}</p></article><article><span>WHY NOW</span><p>{{ apiAccount.analysis.whyNow ?? 'INSUFFICIENT DATA' }}</p></article></div>
+    <article v-if="apiAccount.analysis?.nextBestAction" class="overview-page__next"><span>NEXT BEST ACTION</span><h2>{{ apiAccount.analysis.nextBestAction.action }}</h2><p>{{ apiAccount.analysis.nextBestAction.rationale ?? 'INSUFFICIENT DATA' }}</p><dl><div><dt>Window</dt><dd>{{ apiAccount.analysis.nextBestAction.timeWindow ?? 'INSUFFICIENT DATA' }}</dd></div><div><dt>Priority</dt><dd>{{ apiAccount.analysis.nextBestAction.priority ?? 'INSUFFICIENT DATA' }}</dd></div></dl></article>
+    <section class="overview-page__signals" aria-labelledby="api-signals-title"><header><div><h2 id="api-signals-title">Buying Signals</h2><p>{{ apiSignals.length }} signals returned by the API</p></div><TierBadge :tier="apiAccount.analysis?.tier ?? null"/></header><div v-if="apiSignals.length" class="overview-page__signal-list"><article v-for="signal in apiSignals" :key="signal.id" class="overview-page__signal"><header><div><span>{{ signal.type }}</span><h3>{{ signal.title }}</h3></div><time>{{ signal.freshnessLabel ?? signal.signalDate ?? 'INSUFFICIENT DATA' }}</time></header><strong>{{ signal.evidenceStatus }} · {{ signal.verified ? 'Verified' : 'Not verified' }} · {{ signal.isActive ? 'Active' : 'Inactive' }}</strong><p>{{ signal.body ?? 'INSUFFICIENT DATA' }}</p><a v-if="isCompleteUrl(signal.source?.url)" :href="signal.source!.url" target="_blank" rel="noopener noreferrer">{{ signal.source?.name ?? 'Open source' }}</a><AppSourceAttributionChip v-else :source="signal.source?.name ?? 'Source unavailable'"/></article></div><p v-else>No buying signals are available for this account.</p></section>
+  </section>
+  <section
+    v-else-if="!account"
     class="account-not-found"
     aria-labelledby="account-not-found-title"
   >

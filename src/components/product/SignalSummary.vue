@@ -1,14 +1,14 @@
 <script setup lang="ts">
-defineProps<{ count: number; pattern: readonly ('active' | 'inactive')[] }>();
+defineProps<{ count: number | null; pattern: readonly ('active' | 'inactive')[] }>();
 </script>
 <template>
-  <div class="signal-summary" :aria-label="`${count} active signals`">
+  <div class="signal-summary" :aria-label="`${count ?? 'insufficient data'} active signals`">
     <span class="signal-summary__dots" aria-hidden="true"
       ><i
         v-for="(state, index) in pattern"
         :key="index"
         :class="`is-${state}`" /></span
-    ><strong>{{ count }} active</strong>
+    ><strong>{{ count === null ? 'INSUFFICIENT DATA' : `${count} active` }}</strong>
   </div>
 </template>
 <style scoped>
