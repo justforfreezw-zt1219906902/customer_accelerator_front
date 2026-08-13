@@ -6,8 +6,8 @@ export type FetchImplementation = typeof fetch;
 export interface JsonRequestOptions {
   baseUrl: string;
   path: string;
-  method: 'POST';
-  body: unknown;
+  method: 'GET' | 'POST';
+  body?: unknown;
   signal?: AbortSignal;
   fetcher?: FetchImplementation;
 }
@@ -41,8 +41,11 @@ export const requestJson = async ({
   try {
     response = await fetcher(`${baseUrl}${path}`, {
       method,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
+      headers: {
+        Accept: 'application/json',
+        ...(method === 'POST' ? { 'Content-Type': 'application/json' } : {}),
+      },
+      ...(method === 'POST' ? { body: JSON.stringify(body) } : {}),
       signal,
     });
   } catch (error) {
@@ -63,6 +66,13 @@ export const requestJson = async ({
     throw new ApiRequestError(
       'validation_error',
       apiErrorMessages.validation_error,
+      response.status,
+    );
+  }
+  if (response.status === 404) {
+    throw new ApiRequestError(
+      'unexpected_response',
+      'The requested account was not found.',
       response.status,
     );
   }

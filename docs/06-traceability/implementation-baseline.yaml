@@ -13,9 +13,9 @@ targeted_versions:
   figma: 1.2.0
   backend: 0.0.0
   backend_version_status: contract_documented_version_unassigned
-  backend_contract_revision: 1
+  backend_contract_revision: 2
   frontend: 0.2.0
-  provisional_contract_identifier: API-CONTRACT-R1
+  provisional_contract_identifier: API-CONTRACT-R2
 implemented_tokens:
   - category: layout
     count: 1
@@ -635,6 +635,17 @@ maintenance_task_maint_006:
   stage_g_responsive_tests: [tests/e2e/task-maint-006-stage-g-responsive.spec.ts]
   external_evaluation: deferred_pending_internal_user_feedback
   task_maint_007_authorized: false
+
+account_intelligence_api_integration:
+  status: partially_implemented_needs_page_integration
+  contract_identifier: API-CONTRACT-R2
+  contract_revision: 2
+  backend_semantic_version: 0.0.0
+  frontend_mode_variable: VITE_DEMO_DATA_SOURCE
+  default_mode: fixtures
+  api_mode_pages: [Page 13, Page 14, Page 15]
+  deferred_pages: [Page 16, Page 17, Page 18]
+  endpoints: [GET /api/accounts, GET /api/accounts/{accountId}, GET /api/accounts/{accountId}/signals, GET /api/accounts/{accountId}/communication-dna]
 
 phase_8:
   status: in_progress

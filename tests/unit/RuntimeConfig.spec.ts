@@ -11,11 +11,10 @@ describe('runtime configuration', () => {
       createRuntimeConfig({
         VITE_API_BASE_URL: 'http://localhost:8080///',
         VITE_HUBSPOT_OWNER_ID: ' ',
-        VITE_APP_MODE: 'development',
       }),
     ).toEqual({
       apiBaseUrl: 'http://localhost:8080',
-      appMode: 'development',
+      demoDataSource: 'fixtures',
     });
   });
 
@@ -27,7 +26,7 @@ describe('runtime configuration', () => {
       }),
     ).toEqual({
       apiBaseUrl: 'https://api.example.test',
-      appMode: 'development',
+      demoDataSource: 'fixtures',
       ownerId: '90579791',
     });
   });

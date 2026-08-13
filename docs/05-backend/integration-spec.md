@@ -3,7 +3,7 @@
 ## Status
 
 `TASK-P7-001` implements this specification against provisional identifier
-`API-CONTRACT-R1`. OpenAPI controls the contract; Product and Interaction
+`API-CONTRACT-R2`. OpenAPI controls the contract; Product and Interaction
 Specifications control user behavior. The backend semantic version remains
 unassigned, so this integration is not production-release approved.
 

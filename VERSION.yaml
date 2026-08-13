@@ -11,12 +11,12 @@ versions:
   figma_design_system: 1.2.0
   backend_api: 0.0.0
   backend_status: contract_documented_version_unassigned
-  backend_contract_revision: 1
+  backend_contract_revision: 2
   frontend_app: 0.2.0
 
 compatibility:
   baseline_id: DS1.2.0_API0.0.0_FE0.2.0
-  display_name: figma1.20_backend_unassigned_contract_r1
+  display_name: figma1.20_backend_unassigned_contract_r2
   status: migration_needs_marketing_review_and_backend_version_assignment
 
 release:

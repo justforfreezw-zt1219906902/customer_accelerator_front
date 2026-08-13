@@ -1,6 +1,6 @@
 export interface RuntimeConfig {
   apiBaseUrl: string;
-  appMode: string;
+  demoDataSource: 'fixtures' | 'api';
   ownerId?: string;
 }
 
@@ -44,7 +44,8 @@ export const createRuntimeConfig = (
 
   return Object.freeze({
     apiBaseUrl: normalizeBaseUrl(environment.VITE_API_BASE_URL),
-    appMode: environment.VITE_APP_MODE?.trim() || 'development',
+    demoDataSource:
+      environment.VITE_DEMO_DATA_SOURCE === 'api' ? 'api' : 'fixtures',
     ...(ownerId ? { ownerId } : {}),
   });
 };

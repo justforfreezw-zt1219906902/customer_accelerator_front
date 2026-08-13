@@ -18,7 +18,7 @@ const values = {
 
 const config: RuntimeConfig = {
   apiBaseUrl: 'http://localhost:8080',
-  appMode: 'development',
+  demoDataSource: 'fixtures',
   ownerId: '90579791',
 };
 

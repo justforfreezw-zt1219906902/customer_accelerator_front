@@ -1,10 +1,10 @@
-# API-CONTRACT-R1 Frontend Mapping
+# API-CONTRACT-R2 Frontend Mapping
 
 ## Authority and status
 
 - OpenAPI: `docs/05-backend/openapi.yaml`
-- Contract revision: `1`
-- Provisional implementation identifier: `API-CONTRACT-R1`
+- Contract revision: `2`
+- Provisional implementation identifier: `API-CONTRACT-R2`
 - Backend semantic version: `0.0.0`, unassigned placeholder
 - Frontend version: `0.2.0`
 - Implementation task: `TASK-P7-001`

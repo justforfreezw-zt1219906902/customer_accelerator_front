@@ -59,8 +59,8 @@ configuration injection mechanism are required before staging use.
 
 ## Superseded input
 
-`VITE_APP_MODE` is not required by the approved Phase 5 interaction behavior.
+`VITE_APP_MODE` has been removed. It is not part of the runtime configuration.
 Tom approved one success path on 2026-07-27: every confirmed successful Contact
 submission navigates to `/thank-you`. Existing application configuration that
-still reads `VITE_APP_MODE` must be removed only within a separately authorized
+Any future environment-mode configuration requires a separately authorized
 implementation task.

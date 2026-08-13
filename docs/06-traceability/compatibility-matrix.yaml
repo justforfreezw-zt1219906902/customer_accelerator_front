@@ -6,7 +6,7 @@ baselines:
     figma_semantic_version: 1.0.0
     backend_semantic_version: 0.0.0
     backend_version_status: contract_documented_version_unassigned
-    backend_contract_revision: 1
+    backend_contract_revision: 2
     frontend_semantic_version: 0.0.1
     compatibility_status: pending_backend_version_assignment
     approval_status: not_approved
@@ -24,7 +24,7 @@ baselines:
     figma_semantic_version: 1.1.0
     backend_semantic_version: 0.0.0
     backend_version_status: contract_documented_version_unassigned
-    backend_contract_revision: 1
+    backend_contract_revision: 2
     frontend_semantic_version: 0.1.0
     compatibility_status: pending_backend_version_assignment
     approval_status: not_approved
@@ -41,7 +41,7 @@ baselines:
     figma_semantic_version: 1.1.0
     backend_semantic_version: 0.0.0
     backend_version_status: contract_documented_version_unassigned
-    backend_contract_revision: 1
+    backend_contract_revision: 2
     provisional_contract_identifier: API-CONTRACT-R1
     frontend_semantic_version: 0.2.0
     compatibility_status: provisional_contract_r1_pending_backend_version_assignment
@@ -64,12 +64,12 @@ baselines:
     effective_date: "2026-07-28"
     superseded_by: DS1.2.0_API0.0.0_FE0.2.0
   - baseline_id: DS1.2.0_API0.0.0_FE0.2.0
-    human_display_name: figma1.20_backend_unassigned_contract_r1
+    human_display_name: figma1.20_backend_unassigned_contract_r2
     figma_semantic_version: 1.2.0
     backend_semantic_version: 0.0.0
     backend_version_status: contract_documented_version_unassigned
-    backend_contract_revision: 1
-    provisional_contract_identifier: API-CONTRACT-R1
+    backend_contract_revision: 2
+    provisional_contract_identifier: API-CONTRACT-R2
     frontend_semantic_version: 0.2.0
     compatibility_status: pending_backend_version_assignment
     approval_status: not_approved
@@ -77,6 +77,7 @@ baselines:
     limitations:
       - Human Marketing regression review was accepted for TASK-MAINT-002; backend version assignment remains pending.
       - Backend 0.0.0 remains a non-release placeholder.
+      - API-CONTRACT-R2 is an additive Account Intelligence contract revision.
       - Official backend semantic version and production API URL remain unresolved.
       - Figma 1.2.0 semantic color additions without verified Light Impact values remain unmigrated.
       - This maintenance baseline does not authorize a new Frontend release.

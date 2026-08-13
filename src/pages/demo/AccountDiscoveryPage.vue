@@ -1,17 +1,56 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { AccountRow, AppMetricCard } from '../../components/product';
 import { demoAccountProvider } from '../../demo/demoAccountProvider';
-import type { DemoAccountTier } from '../../demo/types';
+import type { DemoAccountIdentity, DemoAccountTier } from '../../demo/types';
+import { getRuntimeConfig } from '../../app/configuration/environment';
+import { listAccounts } from '../../services/accountApi';
+import type { AccountListDto } from '../../types/accountApi';
 
 const accounts = demoAccountProvider.listDiscoveryAccounts();
+const apiAccounts = ref<AccountListDto[]>([]);
+const apiState = ref<'idle' | 'loading' | 'loaded' | 'error'>('idle');
+const apiError = ref('');
+onMounted(async () => {
+  if (getRuntimeConfig().demoDataSource !== 'api') return;
+  apiState.value = 'loading';
+  try {
+    apiAccounts.value = await listAccounts();
+    apiState.value = 'loaded';
+  } catch {
+    apiState.value = 'error';
+    apiError.value = 'Account data is unavailable right now.';
+  }
+});
+const displayAccounts = computed<readonly DemoAccountIdentity[]>(() =>
+  getRuntimeConfig().demoDataSource === 'api'
+    ? (apiAccounts.value.map((item) => ({
+        id: item.id,
+        initials: item.name.slice(0, 2).toUpperCase(),
+        name: item.name,
+        industry: item.industry ?? 'Industry unavailable',
+        location: item.hq ?? 'HQ unavailable',
+        tier: (item.analysis?.tier as DemoAccountTier) ?? 'Tier 2',
+        icpFit: item.analysis?.icpScore ?? 0,
+        signalScore: item.analysis?.signalScore ?? 0,
+        resonance: item.analysis?.resonanceScore ?? 0,
+        activeSignals: item.activeSignalCount,
+        signalPattern: [],
+        nextBestAction:
+          item.analysis?.nextBestAction ?? 'No next best action available',
+        discoveryVisible: true,
+      })) as DemoAccountIdentity[])
+    : accounts,
+);
 const query = ref('');
 const tier = ref<'all' | DemoAccountTier>('all');
 const industry = ref('all');
-const industries = [...new Set(accounts.map((account) => account.industry))];
+const industries = computed(() => [
+  ...new Set(displayAccounts.value.map((account) => account.industry)),
+]);
 const filteredAccounts = computed(() => {
   const needle = query.value.trim().toLocaleLowerCase();
-  return accounts.filter((account) => {
+  return displayAccounts.value.filter((account) => {
     const searchable =
       `${account.name} ${account.industry} ${account.location}`.toLocaleLowerCase();
     return (
@@ -30,6 +69,10 @@ const clearFilters = () => {
 
 <template>
   <section class="discovery-page" aria-labelledby="discovery-title">
+    <p v-if="apiState === 'loading'" role="status">
+      Loading account intelligence…
+    </p>
+    <p v-else-if="apiState === 'error'" role="alert">{{ apiError }}</p>
     <header class="discovery-page__header">
       <div>
         <h1 id="discovery-title" data-page-heading>Account Discovery</h1>

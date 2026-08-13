@@ -160,7 +160,7 @@ export interface DemoDnaPortfolio {
 }
 
 export interface DemoAccountIdentity {
-  id: `demo-acc-${string}`;
+  id: string;
   initials: string;
   name: string;
   industry: string;

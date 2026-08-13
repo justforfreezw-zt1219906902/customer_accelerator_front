@@ -49,7 +49,7 @@ evidence that the live backend test passed.
   test report, and human approval.
 - Production deployment is triggered by a designated production-branch push;
   Git commit is the immutable runtime reference.
-- `VITE_APP_MODE` is not required. Confirmed successful Contact submissions use
+- `VITE_APP_MODE` is removed. Confirmed successful Contact submissions use
   the same `/thank-you` destination in all environments.
 - `VITE_API_BASE_URL` is required for live submission and is normalized without
   a trailing slash. Missing or invalid values fail safely.

@@ -28,7 +28,7 @@ represent the unresolved URL. It is not a deployment target.
 ## Contract record
 
 - Contract location: `docs/05-backend/openapi.yaml`
-- Contract revision: `1`
+- Contract revision: `2` (`API-CONTRACT-R2`)
 - Official Backend API semantic version: unassigned
 - Compatibility placeholder: `0.0.0`
 - Known endpoint: `POST /api/lead`
@@ -46,4 +46,3 @@ Specifications independently control frontend behavior around the contract.
 Contract revision `1` is not Backend API version `1.0.0`. The placeholder
 `0.0.0` must remain until a human backend owner assigns an official semantic
 version.
-

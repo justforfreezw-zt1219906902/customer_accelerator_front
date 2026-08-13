@@ -1,5 +1,5 @@
 schema_version: 1
-contract_revision: 1
+contract_revision: 2
 classification_policy:
   backend_error_text_is_stable_machine_code: false
   notes:

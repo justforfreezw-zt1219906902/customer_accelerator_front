@@ -3,7 +3,7 @@ info:
   title: mi-goTo Lead API
   version: 0.0.0
   description: |
-    Documented backend contract revision 1.
+    Documented backend contract revision 2 (API-CONTRACT-R2).
     The official backend semantic version has not been supplied.
     The info.version value 0.0.0 is a non-release compatibility placeholder.
 servers:
@@ -12,6 +12,38 @@ servers:
   - url: "https://production-url-unresolved.invalid"
     description: Unresolved placeholder; the production base URL has not been supplied.
 paths:
+  /api/accounts:
+    get:
+      operationId: listAccounts
+      responses:
+        "200": { description: Account collection, content: { application/json: { schema: { $ref: '#/components/schemas/AccountListResponse' } } } }
+        "400": { description: Invalid request, content: { application/json: { schema: { $ref: '#/components/schemas/ErrorResponse' } } } }
+        "500": { description: Backend failure, content: { application/json: { schema: { $ref: '#/components/schemas/ErrorResponse' } } } }
+  /api/accounts/{accountId}:
+    get:
+      operationId: getAccount
+      parameters: [{ name: accountId, in: path, required: true, schema: { type: string } }]
+      responses:
+        "200": { description: Account detail, content: { application/json: { schema: { $ref: '#/components/schemas/AccountDetail' } } } }
+        "400": { description: Invalid identifier, content: { application/json: { schema: { $ref: '#/components/schemas/ErrorResponse' } } } }
+        "404": { description: Account not found, content: { application/json: { schema: { $ref: '#/components/schemas/ErrorResponse' } } } }
+        "500": { description: Backend failure, content: { application/json: { schema: { $ref: '#/components/schemas/ErrorResponse' } } } }
+  /api/accounts/{accountId}/signals:
+    get:
+      operationId: getAccountSignals
+      parameters: [{ name: accountId, in: path, required: true, schema: { type: string } }]
+      responses:
+        "200": { description: Account signals, content: { application/json: { schema: { $ref: '#/components/schemas/SignalsResponse' } } } }
+        "404": { description: Account not found, content: { application/json: { schema: { $ref: '#/components/schemas/ErrorResponse' } } } }
+        "500": { description: Backend failure, content: { application/json: { schema: { $ref: '#/components/schemas/ErrorResponse' } } } }
+  /api/accounts/{accountId}/communication-dna:
+    get:
+      operationId: getCommunicationDna
+      parameters: [{ name: accountId, in: path, required: true, schema: { type: string } }]
+      responses:
+        "200": { description: Communication DNA or null, content: { application/json: { schema: { $ref: '#/components/schemas/CommunicationDnaResponse' } } } }
+        "404": { description: Account not found, content: { application/json: { schema: { $ref: '#/components/schemas/ErrorResponse' } } } }
+        "500": { description: Backend failure, content: { application/json: { schema: { $ref: '#/components/schemas/ErrorResponse' } } } }
   /api/lead:
     post:
       operationId: submitLead
@@ -75,6 +107,32 @@ paths:
                 error: failed to create contact in HubSpot
 components:
   schemas:
+    AccountListResponse:
+      type: object
+      required: [items]
+      properties: { items: { type: array, items: { $ref: '#/components/schemas/AccountListItem' } } }
+    AccountListItem:
+      type: object
+      required: [id, name, lifecycle, activeSignalCount]
+      properties:
+        id: { type: string }
+        name: { type: string }
+        industry: { type: [string, 'null'] }
+        hq: { type: [string, 'null'] }
+        lifecycle: { type: string }
+        analysis: { type: [object, 'null'], additionalProperties: true }
+        activeSignalCount: { type: integer }
+    AccountDetail:
+      allOf: [{ $ref: '#/components/schemas/AccountListItem' }]
+      description: Detailed account response including nullable facts and analysis.
+    SignalsResponse:
+      type: object
+      required: [summary, items]
+      properties: { summary: { type: object, additionalProperties: true }, items: { type: array, items: { type: object, additionalProperties: true } } }
+    CommunicationDnaResponse:
+      type: object
+      required: [data]
+      properties: { data: { type: [object, 'null'], additionalProperties: true } }
     LeadRequest:
       type: object
       required:
@@ -123,4 +181,3 @@ components:
         error:
           type: string
           description: Human-readable backend error text; not a stable machine error code.
-
