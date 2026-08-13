@@ -132,6 +132,20 @@ Interaction decision approval:
 
 ## Completion Report
 
+### Account Intelligence Integration Final Acceptance
+
+- Status: `approved_accepted_frozen`.
+- Reviewed frontend revision: `ebd8059f9673ccef8277cff466a8bf5454bdd33d`.
+- Human reviewer: Tom; result: `APPROVED`; date: 2026-08-14.
+- API-CONTRACT-R2 and backend contract revision 2 remain current; backend
+  semantic version remains `0.0.0 / unassigned`.
+- Pages 13–15 are accepted. Pages 16–18 remain deferred; Signal Pulse backend
+  integration is deferred to Phase 6, DNA Portfolio remains later work, and
+  Content Studio backend integration remains deferred.
+- No release or deployment was performed or authorized, and no version bump
+  occurred. Evidence:
+  `docs/08-quality/test-reports/PHASE-5-final-human-acceptance-2026-08-14.md`.
+
 ### Phase 5A
 
 - Figma pages `06 Landing Page` (`212:2`), `07 Why Mi-goTo Page` (`259:2`),

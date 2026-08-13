@@ -1,6 +1,6 @@
 # Phase 5 Account Intelligence Edge-Case Fix
 
-Status: `implemented_pending_human_re_review`
+Status: `approved_accepted_frozen`
 
 Changes include neutral null/unanalyzed presentation, removal of nested
 `activeSignalCount` fallback, non-negative integer validation for `summary.byType`,
@@ -18,5 +18,7 @@ unit suite (175 tests), typecheck, production build, and governance validators.
 Coverage includes analyzed and unanalyzed detail responses without
 `activeSignalCount`, strict list-item validation, null Communication DNA, and
 the existing dynamic Signal-tab and neutral-state regressions. One pre-existing
-ScoreIndicator formatting warning remains. The previous human approvals remain
-preserved as historical evidence.
+ScoreIndicator formatting warning remains. Tom's final human browser
+verification on 2026-08-14 accepted the post-hotfix revision at frontend
+commit `ebd8059f9673ccef8277cff466a8bf5454bdd33d`; the previous human approvals
+remain preserved as historical evidence.

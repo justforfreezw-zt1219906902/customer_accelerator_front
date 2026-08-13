@@ -637,8 +637,11 @@ maintenance_task_maint_006:
   task_maint_007_authorized: false
 
 account_intelligence_api_integration:
-  status: implemented_pending_human_re_review
-  human_approval: pending
+  status: approved_accepted_frozen
+  human_approval: approved
+  reviewer: Tom
+  approval_date: "2026-08-14"
+  reviewed_frontend_commit: ebd8059f9673ccef8277cff466a8bf5454bdd33d
   previous_human_approval: preserved_in_historical_record
   post_acceptance_fix: true
   reapproval: phase_5_contract_hardening_accepted
@@ -651,6 +654,9 @@ account_intelligence_api_integration:
   default_mode: fixtures
   api_mode_pages: [Page 13, Page 14, Page 15]
   deferred_pages: [Page 16, Page 17, Page 18]
+  release: not_performed
+  deployment_authorized: false
+  final_acceptance_evidence: docs/08-quality/test-reports/PHASE-5-final-human-acceptance-2026-08-14.md
   endpoints: [GET /api/accounts, GET /api/accounts/{accountId}, GET /api/accounts/{accountId}/signals, GET /api/accounts/{accountId}/communication-dna]
 
 phase_8:

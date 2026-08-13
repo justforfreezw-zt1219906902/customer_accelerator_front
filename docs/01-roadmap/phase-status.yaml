@@ -220,6 +220,23 @@ phases:
             reviewer: Tom
             approval_date: "2026-07-27"
             evidence: docs/08-quality/test-reports/TASK-P5B-002-phase-5-approval-2026-07-27.md
+    account_intelligence_integration:
+      status: approved_accepted_frozen
+      human_approval: approved
+      reviewer: Tom
+      approval_date: "2026-08-14"
+      reviewed_frontend_commit: ebd8059f9673ccef8277cff466a8bf5454bdd33d
+      contract_identifier: API-CONTRACT-R2
+      backend_contract_revision: 2
+      backend_semantic_version: 0.0.0
+      backend_version_status: unassigned
+      frontend_version: 0.2.0
+      figma_design_system: 1.2.0
+      accepted_pages: [Page 13, Page 14, Page 15]
+      deferred_pages: [Page 16, Page 17, Page 18]
+      release: not_performed
+      deployment_authorized: false
+      evidence: docs/08-quality/test-reports/PHASE-5-final-human-acceptance-2026-08-14.md
   - id: phase-6
     name: Static Pages
     status: approved
