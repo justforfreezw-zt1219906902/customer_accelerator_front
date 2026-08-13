@@ -637,10 +637,8 @@ maintenance_task_maint_006:
   task_maint_007_authorized: false
 
 account_intelligence_api_integration:
-  status: approved
-  human_approval: approved
-  reviewer: Tom
-  approval_date: "2026-08-14"
+  status: implemented_pending_human_re_review
+  human_approval: pending
   previous_human_approval: preserved_in_historical_record
   post_acceptance_fix: true
   reapproval: phase_5_contract_hardening_accepted

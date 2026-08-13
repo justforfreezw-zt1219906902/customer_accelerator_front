@@ -642,3 +642,4 @@ notes:
   - Tom accepted the API-CONTRACT-R2 Pages 13–15 frontend/backend integration on 2026-08-14 after host-side browser smoke passed; Pages 16–18 backend integration remain deferred.
   - A post-acceptance Phase 5 contract-hardening fix corrected API null semantics, retry/404 handling, AccountRow view-model boundaries, dynamic signal handling, and valid environment configuration; the prior approval remains historical and this revision is pending human re-review.
   - Tom re-approved the Phase 5 Account Intelligence contract-hardening revision on 2026-08-14; API-CONTRACT-R2 remains current, Pages 16–18 backend integration remains deferred, and release/deployment remain unauthorized.
+  - A subsequent focused edge-case fix changed null semantics, API row typing, byType validation, source rendering, and ScoreIndicator accessibility; prior approvals remain historical and this revision requires human re-review.

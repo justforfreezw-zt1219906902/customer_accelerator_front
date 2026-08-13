@@ -55,4 +55,9 @@ describe('Account Intelligence API contract boundary', () => {
     ));
     await expect(getAccountSignals('demo-acc-001')).resolves.toMatchObject({ summary: { active: 1 } });
   });
+
+  it('rejects negative or fractional byType counts', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify({ summary: { total: 1, active: 1, byType: { hiring: -1 } }, items: [] }), { status: 200 })));
+    await expect(getAccountSignals('demo-acc-001')).rejects.toMatchObject({ category: 'contract_error' });
+  });
 });

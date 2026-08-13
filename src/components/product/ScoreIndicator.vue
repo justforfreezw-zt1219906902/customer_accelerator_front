@@ -8,7 +8,7 @@ withDefaults(
   <div
     class="score-indicator"
     :class="`score-indicator--${display}`"
-    :aria-label="`${label}: ${value === null ? 'insufficient data' : `${value} out of 100`}`"
+    :aria-label="`${label}: ${value === null ? 'not analyzed' : `${value} out of 100`}`"
   >
     <template v-if="display === 'ring'">
       <span v-if="value !== null"

@@ -84,7 +84,7 @@
       <workItem from="1786019575310" duration="13000" />
       <workItem from="1786543568589" duration="2533000" />
       <workItem from="1786565368843" duration="47000" />
-      <workItem from="1786565431322" duration="12996000" />
+      <workItem from="1786565431322" duration="13614000" />
     </task>
     <task id="LOCAL-00001" summary="docs: initialize project governance structure">
       <option name="closed" value="true" />
@@ -310,7 +310,15 @@
       <option name="project" value="LOCAL" />
       <updated>1786660668272</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="abm : backend-integration:v1 final">
+      <option name="closed" value="true" />
+      <created>1786661553136</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1786661553136</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -99,10 +99,6 @@ const analysis = (v: unknown): AccountListDto['analysis'] => {
 const listItem = (v: unknown): AccountListDto => {
   const a = obj(v);
   const parsedAnalysis = analysis(a.analysis);
-  const nestedSignalCount =
-    parsedAnalysis && typeof (a.analysis as Record<string, unknown>).activeSignalCount === 'number'
-      ? ((a.analysis as Record<string, unknown>).activeSignalCount as number)
-      : null;
   return {
     id: str(a.id)!,
     name: str(a.name)!,
@@ -110,10 +106,7 @@ const listItem = (v: unknown): AccountListDto => {
     hq: str(a.hq, true),
     lifecycle: str(a.lifecycle)!,
     analysis: parsedAnalysis,
-    activeSignalCount:
-      a.activeSignalCount === undefined
-        ? (nestedSignalCount ?? 0)
-        : num(a.activeSignalCount)!,
+    activeSignalCount: num(a.activeSignalCount)!,
   };
 };
 const detail = (v: unknown): AccountDetailDto => {
@@ -222,7 +215,7 @@ export const getAccountSignals = async (id: string, signal?: AbortSignal) => {
   );
   const s = obj(x.summary);
   const byType = obj(s.byType);
-  if (Object.values(byType).some((value) => typeof value !== 'number' || !Number.isFinite(value)))
+  if (Object.values(byType).some((value) => typeof value !== 'number' || !Number.isInteger(value) || value < 0))
     throw new ApiRequestError('contract_error', apiErrorMessages.contract_error);
   if (
     typeof s.total !== 'number' ||
