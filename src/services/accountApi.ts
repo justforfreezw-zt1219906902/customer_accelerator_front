@@ -221,6 +221,9 @@ export const getAccountSignals = async (id: string, signal?: AbortSignal) => {
     await get(`/api/accounts/${encodeURIComponent(id)}/signals`, signal),
   );
   const s = obj(x.summary);
+  const byType = obj(s.byType);
+  if (Object.values(byType).some((value) => typeof value !== 'number' || !Number.isFinite(value)))
+    throw new ApiRequestError('contract_error', apiErrorMessages.contract_error);
   if (
     typeof s.total !== 'number' ||
     typeof s.active !== 'number' ||
@@ -239,7 +242,7 @@ export const getAccountSignals = async (id: string, signal?: AbortSignal) => {
     summary: {
       total: s.total,
       active: s.active,
-      byType: s.byType as Record<string, number>,
+      byType: byType as Record<string, number>,
     },
     items: x.items.map(parseSignal),
   };

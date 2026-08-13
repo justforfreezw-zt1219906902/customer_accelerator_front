@@ -5,7 +5,7 @@ defineProps<{ tier: string | null }>();
   <span
     class="tier-badge"
     :class="tier ? `tier-badge--${tier.toLowerCase().replaceAll(' ', '-')}` : 'tier-badge--unknown'"
-    >{{ tier ?? 'INSUFFICIENT DATA' }}</span
+    >{{ tier ?? 'Not analyzed' }}</span
   >
 </template>
 <style scoped>

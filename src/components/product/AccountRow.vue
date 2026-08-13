@@ -1,11 +1,16 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
-import type { DemoAccountIdentity } from '../../demo/types';
 import AccountIdentity from './AccountIdentity.vue';
 import ScoreIndicator from './ScoreIndicator.vue';
 import SignalSummary from './SignalSummary.vue';
 import TierBadge from './TierBadge.vue';
-defineProps<{ account: DemoAccountIdentity }>();
+export interface AccountRowViewModel {
+  id: string; initials: string; name: string; industry: string; location: string;
+  tier: string | null; icpFit: number | null; signalScore: number | null;
+  resonance: number | null; activeSignals: number; nextBestAction: string | null;
+  signalPattern?: readonly ('active' | 'inactive')[];
+}
+defineProps<{ account: AccountRowViewModel }>();
 </script>
 <template>
   <article class="account-row">

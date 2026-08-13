@@ -15,13 +15,13 @@ withDefaults(
         class="score-indicator__ring"
         :style="{ '--score': `${value * 3.6}deg` }"
       />
-      <strong>{{ value ?? 'INSUFFICIENT DATA' }}</strong>
+      <strong>{{ value ?? '—' }}</strong>
     </template>
     <template v-else>
       <span v-if="value !== null" class="score-indicator__track" aria-hidden="true"
         ><i :style="{ width: `${value}%` }"
       /></span>
-      <strong>{{ value ?? 'INSUFFICIENT DATA' }}</strong>
+      <strong>{{ value ?? '—' }}</strong>
     </template>
   </div>
 </template>

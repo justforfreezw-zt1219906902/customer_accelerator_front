@@ -12,6 +12,7 @@ import type { DemoDnaSource } from '../../demo/types';
 import { useDemoAccount } from '../../demo/useDemoAccount';
 import { getRuntimeConfig } from '../../app/configuration/environment';
 import { getAccount, getCommunicationDna } from '../../services/accountApi';
+import { ApiRequestError } from '../../utils/apiErrors';
 import type { CommunicationDnaDto } from '../../types/accountApi';
 
 const router = useRouter();
@@ -21,7 +22,8 @@ const apiName = ref('');
 const apiDna = ref<CommunicationDnaDto | null>();
 const apiLoading = ref(apiMode);
 const apiError = ref('');
-onMounted(async () => {
+const apiNotFound = ref(false);
+const loadApi = async () => {
   if (!apiMode) return;
   try {
     const [detail, dnaResult] = await Promise.all([
@@ -30,12 +32,14 @@ onMounted(async () => {
     ]);
     apiName.value = detail.name;
     apiDna.value = dnaResult;
-  } catch {
-    apiError.value = 'Communication DNA is unavailable right now.';
+  } catch (error) {
+    if (error instanceof ApiRequestError && error.status === 404) apiNotFound.value = true;
+    else apiError.value = 'Communication DNA is unavailable right now.';
   } finally {
     apiLoading.value = false;
   }
-});
+};
+onMounted(loadApi);
 const dna = computed(() =>
   demoAccountProvider.findCommunicationDna(accountId.value),
 );
@@ -71,13 +75,17 @@ const apiFrequency = (value: string | null) =>
   >
     <h1 data-page-heading>Loading Communication DNA…</h1>
   </section>
+  <section v-else-if="apiMode && apiNotFound" class="account-not-found" role="alert">
+    <h1 data-page-heading>Account not found</h1><p>The requested account is unavailable.</p>
+    <RouterLink to="/demo">Return to Account Discovery</RouterLink>
+  </section>
   <section
     v-else-if="apiMode && apiError"
     class="account-not-found"
     role="alert"
   >
     <h1 data-page-heading>Communication DNA unavailable</h1>
-    <p>{{ apiError }}</p>
+    <p>{{ apiError }}</p><button type="button" @click="loadApi">Retry DNA</button>
     <RouterLink :to="`/demo/accounts/${accountId}`"
       >Return to Account Overview</RouterLink
     >

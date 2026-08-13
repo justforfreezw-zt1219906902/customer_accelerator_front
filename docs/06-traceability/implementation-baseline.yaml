@@ -641,6 +641,9 @@ account_intelligence_api_integration:
   human_approval: approved
   reviewer: Tom
   approval_date: "2026-08-14"
+  previous_human_approval: preserved_in_historical_record
+  post_acceptance_fix: true
+  reapproval: phase_5_contract_hardening_accepted
   live_host_browser_smoke: passed
   shell_network_limitation: execution-environment network isolation
   contract_identifier: API-CONTRACT-R2

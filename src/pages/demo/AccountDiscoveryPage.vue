@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
 import { AccountRow, AppMetricCard } from '../../components/product';
+import type { AccountRowViewModel } from '../../components/product/AccountRow.vue';
 import { demoAccountProvider } from '../../demo/demoAccountProvider';
-import type { DemoAccountIdentity, DemoAccountTier } from '../../demo/types';
+import type { DemoAccountTier } from '../../demo/types';
 import { getRuntimeConfig } from '../../app/configuration/environment';
 import { listAccounts } from '../../services/accountApi';
 import type { AccountListDto } from '../../types/accountApi';
@@ -11,7 +12,7 @@ const accounts = demoAccountProvider.listDiscoveryAccounts();
 const apiAccounts = ref<AccountListDto[]>([]);
 const apiState = ref<'idle' | 'loading' | 'loaded' | 'error'>('idle');
 const apiError = ref('');
-onMounted(async () => {
+const loadAccounts = async () => {
   if (getRuntimeConfig().demoDataSource !== 'api') return;
   apiState.value = 'loading';
   try {
@@ -21,28 +22,28 @@ onMounted(async () => {
     apiState.value = 'error';
     apiError.value = 'Account data is unavailable right now.';
   }
-});
+};
+onMounted(loadAccounts);
 const isApiMode = getRuntimeConfig().demoDataSource === 'api';
-const displayAccounts = computed<readonly DemoAccountIdentity[]>(() =>
+const toRow = (item: AccountListDto): AccountRowViewModel => ({
+  id: item.id, initials: item.name.split(/\s+/).map((part) => part[0]).join('').slice(0, 2).toUpperCase(),
+  name: item.name, industry: item.industry ?? 'Not available', location: item.hq ?? 'Not available',
+  tier: item.analysis?.tier ?? null, icpFit: item.analysis?.icpScore ?? null,
+  signalScore: item.analysis?.signalScore ?? null, resonance: item.analysis?.resonanceScore ?? null,
+  activeSignals: item.activeSignalCount, nextBestAction: item.analysis?.nextBestAction ?? null,
+});
+const fixtureRows = accounts.map((item): AccountRowViewModel => ({
+  id: item.id, initials: item.initials, name: item.name, industry: item.industry,
+  location: item.location, tier: item.tier, icpFit: item.icpFit, signalScore: item.signalScore,
+  resonance: item.resonance, activeSignals: item.activeSignals, nextBestAction: item.nextBestAction,
+  signalPattern: item.signalPattern,
+}));
+const displayAccounts = computed<readonly AccountRowViewModel[]>(() =>
   isApiMode
     ? (apiState.value === 'loaded'
-        ? apiAccounts.value.map((item) => ({
-        id: item.id,
-        initials: item.name.slice(0, 2).toUpperCase(),
-        name: item.name,
-        industry: item.industry ?? 'INSUFFICIENT DATA',
-        location: item.hq ?? 'INSUFFICIENT DATA',
-        tier: (item.analysis?.tier as DemoAccountTier | null) ?? null,
-        icpFit: item.analysis?.icpScore ?? null,
-        signalScore: item.analysis?.signalScore ?? null,
-        resonance: item.analysis?.resonanceScore ?? null,
-        activeSignals: item.activeSignalCount,
-        signalPattern: [],
-        nextBestAction: item.analysis?.nextBestAction ?? 'INSUFFICIENT DATA',
-        discoveryVisible: true,
-      })) as unknown as DemoAccountIdentity[]
+        ? apiAccounts.value.map(toRow)
         : [])
-    : accounts,
+    : fixtureRows,
 );
 const metrics = computed(() => {
   if (!isApiMode || apiState.value !== 'loaded') {
@@ -51,12 +52,12 @@ const metrics = computed(() => {
   return {
     total: apiAccounts.value.length,
     focus: apiAccounts.value.filter((item) => item.analysis?.tier === 'Focus Accounts').length,
-    tier1: apiAccounts.value.filter((item) => item.analysis?.tier === 'Tier 1').length,
+    tier1: apiAccounts.value.filter((item) => item.analysis?.tier === 'Tier 1' && item.activeSignalCount > 0).length,
     tier2: apiAccounts.value.filter((item) => item.analysis?.tier === 'Tier 2').length,
   };
 });
 const query = ref('');
-const tier = ref<'all' | DemoAccountTier>('all');
+const tier = ref<'all' | DemoAccountTier | 'Below ICP' | 'unanalyzed'>('all');
 const industry = ref('all');
 const industries = computed(() => [
   ...new Set(displayAccounts.value.map((account) => account.industry)),
@@ -68,7 +69,7 @@ const filteredAccounts = computed(() => {
       `${account.name} ${account.industry} ${account.location}`.toLocaleLowerCase();
     return (
       (!needle || searchable.includes(needle)) &&
-      (tier.value === 'all' || account.tier === tier.value) &&
+      (tier.value === 'all' || (tier.value === 'unanalyzed' ? account.tier === null : account.tier === tier.value)) &&
       (industry.value === 'all' || account.industry === industry.value)
     );
   });
@@ -85,7 +86,7 @@ const clearFilters = () => {
     <p v-if="apiState === 'loading'" role="status">
       Loading account intelligence…
     </p>
-    <p v-else-if="apiState === 'error'" role="alert">{{ apiError }}</p>
+    <div v-else-if="apiState === 'error'" role="alert"><p>{{ apiError }}</p><button type="button" @click="loadAccounts">Retry Accounts</button></div>
     <header class="discovery-page__header">
       <div>
         <h1 id="discovery-title" data-page-heading>Account Discovery</h1>
@@ -114,6 +115,8 @@ const clearFilters = () => {
           <option value="Focus Accounts">Focus Accounts</option>
           <option value="Tier 1">Tier 1</option>
           <option value="Tier 2">Tier 2</option>
+          <option value="Below ICP">Below ICP</option>
+          <option value="unanalyzed">Not analyzed</option>
         </select></label
       >
       <label

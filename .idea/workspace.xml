@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa45ec9b-26dc-40ff-98de-dd81c1a64002" name="更改" comment="abm : backend-integration:v1">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/06-traceability/implementation-baseline.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/06-traceability/implementation-baseline.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/07-change-control/instructions/TASK-API-ACCOUNT-INTELLIGENCE-R2.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/07-change-control/instructions/TASK-API-ACCOUNT-INTELLIGENCE-R2.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/08-quality/test-reports/TASK-API-ACCOUNT-INTELLIGENCE-R2-2026-08-13.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/08-quality/test-reports/TASK-API-ACCOUNT-INTELLIGENCE-R2-2026-08-13.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/product/ScoreIndicator.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/product/ScoreIndicator.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/product/SignalSummary.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/product/SignalSummary.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/product/TierBadge.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/product/TierBadge.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/demo/AccountDiscoveryPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/demo/AccountDiscoveryPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/demo/AccountDnaPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/demo/AccountDnaPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/demo/AccountOverviewPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/demo/AccountOverviewPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/accountApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/accountApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/apiErrors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/apiErrors.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.ts" afterDir="false" />
-    </list>
+    <list default="true" id="fa45ec9b-26dc-40ff-98de-dd81c1a64002" name="更改" comment="abm : backend-integration:v1 final" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -99,7 +84,7 @@
       <workItem from="1786019575310" duration="13000" />
       <workItem from="1786543568589" duration="2533000" />
       <workItem from="1786565368843" duration="47000" />
-      <workItem from="1786565431322" duration="12354000" />
+      <workItem from="1786565431322" duration="12996000" />
     </task>
     <task id="LOCAL-00001" summary="docs: initialize project governance structure">
       <option name="closed" value="true" />
@@ -317,7 +302,15 @@
       <option name="project" value="LOCAL" />
       <updated>1786657901415</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="abm : backend-integration:v1 final">
+      <option name="closed" value="true" />
+      <created>1786660668272</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1786660668272</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -358,6 +351,7 @@
     <MESSAGE value="abm : from ACCount Discovery to Content Studio :v1" />
     <MESSAGE value="abm : from ACCount Discovery to Content Studio :v1.01" />
     <MESSAGE value="abm : backend-integration:v1" />
-    <option name="LAST_COMMIT_MESSAGE" value="abm : backend-integration:v1" />
+    <MESSAGE value="abm : backend-integration:v1 final" />
+    <option name="LAST_COMMIT_MESSAGE" value="abm : backend-integration:v1 final" />
   </component>
 </project>
