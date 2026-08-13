@@ -26,6 +26,11 @@ const num = (v: unknown, nullable = false): number | null => {
   if (nullable && v === null) return null;
   throw new ApiRequestError('contract_error', apiErrorMessages.contract_error);
 };
+const count = (v: unknown): number => {
+  if (typeof v !== 'number' || !Number.isFinite(v) || !Number.isInteger(v) || v < 0)
+    throw new ApiRequestError('contract_error', apiErrorMessages.contract_error);
+  return v;
+};
 const bool = (v: unknown): boolean => {
   if (typeof v !== 'boolean')
     throw new ApiRequestError(
@@ -106,7 +111,7 @@ const listItem = (v: unknown): AccountListDto => {
     hq: str(a.hq, true),
     lifecycle: str(a.lifecycle)!,
     analysis: parsedAnalysis,
-    activeSignalCount: num(a.activeSignalCount)!,
+    activeSignalCount: count(a.activeSignalCount),
   };
 };
 const detail = (v: unknown): AccountDetailDto => {
@@ -217,15 +222,8 @@ export const getAccountSignals = async (id: string, signal?: AbortSignal) => {
   const byType = obj(s.byType);
   if (Object.values(byType).some((value) => typeof value !== 'number' || !Number.isInteger(value) || value < 0))
     throw new ApiRequestError('contract_error', apiErrorMessages.contract_error);
-  if (
-    typeof s.total !== 'number' ||
-    typeof s.active !== 'number' ||
-    !obj(s.byType)
-  )
-    throw new ApiRequestError(
-      'contract_error',
-      apiErrorMessages.contract_error,
-    );
+  const total = count(s.total);
+  const active = count(s.active);
   if (!Array.isArray(x.items))
     throw new ApiRequestError(
       'contract_error',
@@ -233,8 +231,8 @@ export const getAccountSignals = async (id: string, signal?: AbortSignal) => {
     );
   return {
     summary: {
-      total: s.total,
-      active: s.active,
+      total,
+      active,
       byType: byType as Record<string, number>,
     },
     items: x.items.map(parseSignal),

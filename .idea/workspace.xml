@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa45ec9b-26dc-40ff-98de-dd81c1a64002" name="更改" comment="abm : backend-integration:v1 final" />
+    <list default="true" id="fa45ec9b-26dc-40ff-98de-dd81c1a64002" name="更改" comment="abm : backend-integration:v1 final fix2" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -84,7 +84,7 @@
       <workItem from="1786019575310" duration="13000" />
       <workItem from="1786543568589" duration="2533000" />
       <workItem from="1786565368843" duration="47000" />
-      <workItem from="1786565431322" duration="13614000" />
+      <workItem from="1786565431322" duration="14079000" />
     </task>
     <task id="LOCAL-00001" summary="docs: initialize project governance structure">
       <option name="closed" value="true" />
@@ -318,7 +318,15 @@
       <option name="project" value="LOCAL" />
       <updated>1786661553136</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="abm : backend-integration:v1 final fix2">
+      <option name="closed" value="true" />
+      <created>1786662001871</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1786662001871</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -360,6 +368,7 @@
     <MESSAGE value="abm : from ACCount Discovery to Content Studio :v1.01" />
     <MESSAGE value="abm : backend-integration:v1" />
     <MESSAGE value="abm : backend-integration:v1 final" />
-    <option name="LAST_COMMIT_MESSAGE" value="abm : backend-integration:v1 final" />
+    <MESSAGE value="abm : backend-integration:v1 final fix2" />
+    <option name="LAST_COMMIT_MESSAGE" value="abm : backend-integration:v1 final fix2" />
   </component>
 </project>
