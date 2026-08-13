@@ -4,26 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa45ec9b-26dc-40ff-98de-dd81c1a64002" name="更改" comment="abm : from ACCount Discovery to Content Studio :v1.01">
+    <list default="true" id="fa45ec9b-26dc-40ff-98de-dd81c1a64002" name="更改" comment="abm : backend-integration:v1">
       <change beforePath="$PROJECT_DIR$/.env.development" beforeDir="false" afterPath="$PROJECT_DIR$/.env.development" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VERSION.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/VERSION.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/02-inputs/environment-inputs.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/02-inputs/environment-inputs.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/05-backend/api-overview.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/05-backend/api-overview.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/05-backend/contract-mapping.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/05-backend/contract-mapping.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/05-backend/error-catalog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/05-backend/error-catalog.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/05-backend/integration-spec.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/05-backend/integration-spec.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/05-backend/openapi.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/05-backend/openapi.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/06-traceability/compatibility-matrix.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/06-traceability/compatibility-matrix.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/06-traceability/implementation-baseline.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/06-traceability/implementation-baseline.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/09-release/environment-matrix.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/09-release/environment-matrix.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/configuration/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/configuration/environment.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/demo/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/demo/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/demo/AccountDiscoveryPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/demo/AccountDiscoveryPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/httpClient.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/httpClient.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/LeadApi.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/LeadApi.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/RuntimeConfig.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/RuntimeConfig.spec.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +86,7 @@
       <workItem from="1786019575310" duration="13000" />
       <workItem from="1786543568589" duration="2533000" />
       <workItem from="1786565368843" duration="47000" />
-      <workItem from="1786565431322" duration="10651000" />
+      <workItem from="1786565431322" duration="10987000" />
     </task>
     <task id="LOCAL-00001" summary="docs: initialize project governance structure">
       <option name="closed" value="true" />
@@ -306,7 +288,15 @@
       <option name="project" value="LOCAL" />
       <updated>1786630116542</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="abm : backend-integration:v1">
+      <option name="closed" value="true" />
+      <created>1786657381742</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1786657381742</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -346,6 +336,7 @@
     <MESSAGE value="chore: bug fix for packages , footer and header" />
     <MESSAGE value="abm : from ACCount Discovery to Content Studio :v1" />
     <MESSAGE value="abm : from ACCount Discovery to Content Studio :v1.01" />
-    <option name="LAST_COMMIT_MESSAGE" value="abm : from ACCount Discovery to Content Studio :v1.01" />
+    <MESSAGE value="abm : backend-integration:v1" />
+    <option name="LAST_COMMIT_MESSAGE" value="abm : backend-integration:v1" />
   </component>
 </project>
