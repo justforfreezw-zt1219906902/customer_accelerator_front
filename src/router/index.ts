@@ -13,6 +13,8 @@ import { appScrollBehavior, waitForRouteRender } from './scrollBehavior';
 declare module 'vue-router' {
   interface RouteMeta {
     title: string;
+    productTitle?: string;
+    robots?: 'noindex, nofollow';
   }
 }
 
@@ -25,6 +27,18 @@ type AccessibleRoute = Pick<RouteLocationNormalized, 'hash' | 'meta'>;
 
 export const applyRouteAccessibility = async (to: AccessibleRoute) => {
   document.title = to.meta.title || 'mi-goTo';
+  const existingRobots = document.head.querySelector<HTMLMetaElement>(
+    'meta[name="robots"]',
+  );
+  if (to.meta.robots) {
+    const robots =
+      existingRobots ??
+      document.head.appendChild(document.createElement('meta'));
+    robots.name = 'robots';
+    robots.content = to.meta.robots;
+  } else {
+    existingRobots?.remove();
+  }
   await nextTick();
   await waitForRouteRender();
 

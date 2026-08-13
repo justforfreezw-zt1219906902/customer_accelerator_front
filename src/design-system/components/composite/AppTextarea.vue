@@ -45,7 +45,9 @@ const emit = defineEmits<{
 
 const attrs = useAttrs();
 const resolvedError = computed(() =>
-  props.invalid ? (props.error ?? 'This field needs a valid value.') : props.error,
+  props.invalid
+    ? (props.error ?? 'This field needs a valid value.')
+    : props.error,
 );
 const countLabel = computed(() =>
   props.maxLength
@@ -83,11 +85,7 @@ const countLabel = computed(() =>
       @focus="emit('focus', $event)"
       @blur="emit('blur', $event)"
     />
-    <span
-      v-if="showCounter"
-      class="app-textarea__counter"
-      aria-live="polite"
-    >
+    <span v-if="showCounter" class="app-textarea__counter" aria-live="polite">
       {{ countLabel }}
     </span>
   </AppFormField>

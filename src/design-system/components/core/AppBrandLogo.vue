@@ -1,19 +1,23 @@
 <script setup lang="ts">
 import logoLockup from '../../../assets/brand/mi-goto-lockup-light-hidpi.png';
+import logoLockupDark from '../../../assets/brand/mi-goto-lockup-dark.png';
 
 type BrandLogoSize = 'header' | 'footer';
+type BrandLogoContext = 'dark' | 'light';
 
 const props = withDefaults(
   defineProps<{
     label?: string;
     destination?: string;
     size?: BrandLogoSize;
+    context?: BrandLogoContext;
     spaNavigation?: boolean;
   }>(),
   {
     label: 'mi-goTo',
     destination: '/',
     size: 'header',
+    context: 'dark',
     spaNavigation: false,
   },
 );
@@ -38,7 +42,7 @@ const handleNavigation = (event: MouseEvent) => {
   >
     <img
       class="app-brand-logo__image"
-      :src="logoLockup"
+      :src="context === 'light' ? logoLockupDark : logoLockup"
       alt=""
       :width="size === 'footer' ? 132 : 124"
       :height="size === 'footer' ? 38 : 36"

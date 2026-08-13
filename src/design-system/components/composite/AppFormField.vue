@@ -29,8 +29,9 @@ const descriptionId = computed(() =>
 const errorId = computed(() =>
   props.error ? `${controlId.value}-error` : undefined,
 );
-const describedBy = computed(() =>
-  [descriptionId.value, errorId.value].filter(Boolean).join(' ') || undefined,
+const describedBy = computed(
+  () =>
+    [descriptionId.value, errorId.value].filter(Boolean).join(' ') || undefined,
 );
 </script>
 
@@ -59,11 +60,7 @@ const describedBy = computed(() =>
       :required="required"
     />
 
-    <p
-      v-if="description"
-      :id="descriptionId"
-      class="app-form-field__message"
-    >
+    <p v-if="description" :id="descriptionId" class="app-form-field__message">
       {{ description }}
     </p>
     <p

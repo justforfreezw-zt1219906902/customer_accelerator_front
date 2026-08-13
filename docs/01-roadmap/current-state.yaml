@@ -6,12 +6,12 @@ current_phase:
   name: Production Maintenance
   status: approved
 
-current_task: null
-next_task: TASK-MAINT-001
-environment: production
+current_task: TASK-MAINT-005
+next_task: null
+environment: local
 
 versions:
-  figma: 1.1.0
+  figma: 1.2.0
   backend: 0.0.0
   frontend: 0.2.0
 
@@ -20,8 +20,8 @@ backend:
   contract_revision: 1
 
 compatibility:
-  baseline_id: DS1.1.0_API0.0.0_FE0.2.0
-  status: provisional_contract_r1_pending_backend_version_assignment
+  baseline_id: DS1.2.0_API0.0.0_FE0.2.0
+  status: migration_needs_marketing_review_and_backend_version_assignment
 
 blockers: []
 next_gate:
@@ -505,13 +505,66 @@ phase_8:
   approval_date: "2026-07-28"
 
 maintenance:
-  status: production_maintenance
+  status: in_progress
   release: REL-FE-0.2.0
   release_line: 0.2.x
   next_task_pattern: TASK-MAINT-NNN
-  next_gate: Maintenance Change Review
+  current_task: TASK-MAINT-005
+  task_status: approved
+  target_figma_version: 1.2.0
+  human_marketing_regression_review: accepted
+  marketing_regression_reviewer: Tom
+  marketing_regression_review_date: "2026-08-12"
+  next_gate: TASK-MAINT-006 Content Studio / Figma Page 18 Review
+  task_maint_003_authorized: true
+  task_maint_003_status: human_accepted
+  task_maint_003_reviewer: Tom
+  task_maint_003_review_date: "2026-08-12"
+  task_maint_004_authorized: true
+  task_maint_004_status: human_accepted_closed
+  task_maint_004_review_date: "2026-08-13"
+  task_maint_004_reviewer: human_reviewer_name_not_supplied
+  task_maint_004_closure_outcome: implementation_complete_needs_human_review
+  task_maint_005_stage: closed
+  task_maint_005_status: approved_closed
+  task_maint_005_human_approval: approved
+  task_maint_005_reviewer: Tom
+  task_maint_005_review_date: "2026-08-13"
+  task_maint_005_page15_status: human_accepted
+  task_maint_005_page15_reviewer: Tom
+  task_maint_005_page15_review_date: "2026-08-13"
+  task_maint_005_page16_status: human_accepted
+  task_maint_005_page16_reviewer: Tom
+  task_maint_005_page16_review_date: "2026-08-13"
+  task_maint_005_page17_status: human_accepted
+  task_maint_005_page17_reviewer: Tom
+  task_maint_005_page17_review_date: "2026-08-13"
+  task_maint_005_closure_status: approved
+  task_maint_006_stage: stage_a_company_preview
+  task_maint_006_status: stageA_company_preview_complete_pending_human_visual_review
+  task_maint_006_human_approval: pending
+  task_maint_006_next_gate: TASK-MAINT-006 Stage A Human Visual Review
+  task_maint_006_stage_b_status: blocked_pending_stage_a_acceptance
+  task_maint_006_stage_a_status: human_accepted
+  task_maint_006_stage_a_reviewer: Tom
+  task_maint_006_stage_a_review_date: "2026-08-13"
+  task_maint_006_status: stageB_linkedin_ad_complete_pending_human_visual_review
+  task_maint_006_stage: stage_f_sales_talking_points
+  task_maint_006_status: stageF_sales_talking_points_complete_pending_human_visual_review
+  task_maint_006_stage_c_status: human_accepted
+  task_maint_006_stage_c_reviewer: Tom
+  task_maint_006_stage_c_review_date: "2026-08-13"
+  task_maint_006_stage_d_status: human_accepted
+  task_maint_006_stage_d_reviewer: Tom
+  task_maint_006_stage_d_review_date: "2026-08-13"
+  task_maint_006_stage_e_status: human_accepted
+  task_maint_006_stage_e_reviewer: Tom
+  task_maint_006_stage_e_review_date: "2026-08-13"
+  task_maint_006_next_gate: TASK-MAINT-006 Stage F Sales Talking Points Human Visual Review
+  next_task: TASK-MAINT-006
+  next_gate: TASK-MAINT-006 Content Studio / Figma Page 18 Review
 
-last_updated: "2026-07-28"
+last_updated: "2026-08-13"
 notes:
   - The Phase 0 repository audit and TASK-P0-001 were approved by Tom.
   - Backend 0.0.0 is a non-release placeholder pending official version assignment.

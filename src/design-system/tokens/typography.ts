@@ -12,6 +12,43 @@ export const fontWeights = {
 } as const;
 
 export const typography = {
+  appPageTitle: {
+    fontFamily: fontFamilies.inter,
+    fontWeight: fontWeights.semibold,
+    fontSize: 'var(--typography-app-page-title-font-size)',
+    lineHeight: 'var(--typography-app-page-title-line-height)',
+  },
+  appSectionTitle: {
+    fontFamily: fontFamilies.inter,
+    fontWeight: fontWeights.semibold,
+    fontSize: 'var(--typography-app-section-title-font-size)',
+    lineHeight: 'var(--typography-app-section-title-line-height)',
+  },
+  appBody: {
+    fontFamily: fontFamilies.inter,
+    fontWeight: fontWeights.regular,
+    fontSize: 'var(--typography-app-body-font-size)',
+    lineHeight: 'var(--typography-app-body-line-height)',
+  },
+  appCaption: {
+    fontFamily: fontFamilies.inter,
+    fontWeight: fontWeights.regular,
+    fontSize: 'var(--typography-app-caption-font-size)',
+    lineHeight: 'var(--typography-app-caption-line-height)',
+  },
+  appMonoLabel: {
+    fontFamily: fontFamilies.mono,
+    fontWeight: fontWeights.medium,
+    fontSize: 'var(--typography-app-mono-label-font-size)',
+    lineHeight: 'var(--typography-app-mono-label-line-height)',
+    letterSpacing: 'var(--typography-app-mono-label-letter-spacing)',
+  },
+  appMonoData: {
+    fontFamily: fontFamilies.mono,
+    fontWeight: fontWeights.regular,
+    fontSize: 'var(--typography-app-mono-data-font-size)',
+    lineHeight: 'var(--typography-app-mono-data-line-height)',
+  },
   displayHero: {
     fontFamily: fontFamilies.inter,
     fontWeight: fontWeights.regular,

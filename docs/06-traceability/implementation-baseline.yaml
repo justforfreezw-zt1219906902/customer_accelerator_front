@@ -1,6 +1,6 @@
 schema_version: 1
-baseline_id: DS1.1.0_API0.0.0_FE0.2.0
-status: released_production_maintenance
+baseline_id: DS1.2.0_API0.0.0_FE0.2.0
+status: maintenance_migration_needs_marketing_review
 release:
   release_id: REL-FE-0.2.0
   release_date: "2026-07-28"
@@ -10,7 +10,7 @@ release:
   maintenance_line: 0.2.x
   release_deviation: DEV-2026-011
 targeted_versions:
-  figma: 1.1.0
+  figma: 1.2.0
   backend: 0.0.0
   backend_version_status: contract_documented_version_unassigned
   backend_contract_revision: 1
@@ -21,12 +21,12 @@ implemented_tokens:
     count: 1
     source: Figma Landing Header and Footer 1180px content width
   - category: color
-    count: 45
+    count: 46
     modes: [Dark Enterprise, Light Impact]
   - category: spacing
-    count: 9
+    count: 21
   - category: radius
-    count: 6
+    count: 18
   - category: opacity
     count: 5
   - category: motion_duration
@@ -36,7 +36,7 @@ implemented_tokens:
   - category: stroke
     count: 2
   - category: typography_style
-    count: 12
+    count: 18
   - category: effect_style
     count: 5
 implemented_components:
@@ -59,7 +59,11 @@ implemented_components:
     code_name: AppBrandLogo
     figma_node_id: "105:452"
     additional_figma_node_ids: ["105:474"]
-    status: implemented_needs_review
+    status: implemented_approved_release_baseline
+  - component_id: CMP-CORE-007
+    code_name: AppSourceAttributionChip
+    figma_node_id: "167:14"
+    status: implemented_needs_marketing_review
   - component_id: CMP-COMPOSITE-001
     code_name: AppFormField
     figma_node_id: "68:213"
@@ -206,7 +210,91 @@ foundation_artifacts:
   - src/design-system/tokens/index.ts
   - src/design-system/theme/index.css
   - src/app/configuration/environment.ts
-pending_migrations: []
+pending_migrations:
+  - Figma 1.2.0 semantic colors that lack verified Light Impact mode values
+  - Avatar, deferred to Product/App work unless a shared Marketing consumer is approved
+  - ABM Core, Composite, Product, App Shell and Pages 13–18 work
+maintenance_product_foundation:
+  task: TASK-MAINT-003
+  status: human_accepted
+  figma_shell_node: "358:1352"
+  topbar_nodes: ["356:40", "356:51"]
+  routes: [/demo, "/demo/accounts/:accountId", "/demo/accounts/:accountId/dna", /demo/signals, /demo/dna, /demo/content-studio]
+  fixture_provider: src/demo/demoAccountProvider.ts
+  persistence: none
+  backend_calls: none
+  detailed_product_pages_implemented: false
+maintenance_account_vertical_slice:
+  task: TASK-MAINT-004
+  status: human_accepted_closed
+  figma_pages:
+    - { page: ABM Account Discovery, node_id: "350:3", desktop_frame: "359:2" }
+    - { page: ABM Account Overview, node_id: "350:4", desktop_frame: "360:2" }
+  routes: [/demo, "/demo/accounts/:accountId"]
+  provider: src/demo/demoAccountProvider.ts
+  fixtures: src/demo/fixtures/accounts.ts
+  backend_calls: none
+  persistence: none
+  formal_overview_fixture: demo-acc-001
+  formal_discovery_fixture_ids: [demo-acc-001, demo-acc-003, demo-acc-004, demo-acc-005, demo-acc-006, demo-acc-007]
+  visual_correction:
+    status: human_accepted
+    reviewer_finding_date: "2026-08-12"
+    canvas: full_workspace_with_24px_gutters
+    formal_discovery_row_height: 72px
+    evidence_viewports: [1440, 1024, 768, 390]
+    approval_date: "2026-08-13"
+    reviewer: human_reviewer_name_not_supplied
+  deferred_routes: [/demo/content-studio]
+maintenance_account_intelligence_views:
+  task: TASK-MAINT-005
+  stage: stage_d_integrated_responsive_qa_closure
+  status: approved_closed
+  figma_page: { page: ABM Communication DNA, node_id: "350:5", desktop_frame: "360:2116" }
+  implemented_route: "/demo/accounts/:accountId/dna"
+  formal_fixture: demo-acc-001
+  provider: src/demo/demoAccountProvider.ts
+  fixture: src/demo/fixtures/communicationDna.ts
+  backend_calls: none
+  persistence: none
+  page18: not_started
+  human_approval: pending
+  page15:
+    status: human_accepted
+    reviewer: Tom
+    review_date: "2026-08-13"
+  page16:
+    figma_page: { page: ABM Signal Pulse, node_id: "350:6", desktop_frame: "360:2226" }
+    route: /demo/signals
+    formal_state: Overview
+    fixture: src/demo/fixtures/signalPulse.ts
+    status: human_accepted
+    human_approval: accepted
+    reviewer: Tom
+    review_date: "2026-08-13"
+  page17:
+    figma_page: { page: Communication DNA / DNA Portfolio, node_id: "350:7", desktop_frame: "360:2385", card: "360:2381" }
+    route: /demo/dna
+    formal_state: ProcessMind_selected
+    fixture: src/demo/fixtures/dnaPortfolio.ts
+    profile_count: 6
+    representative_tier_counts: [140, 8, 2, 130]
+    representative_industry_count: 19
+    status: human_accepted
+    human_approval: accepted
+    reviewer: Tom
+    review_date: "2026-08-13"
+  closure:
+    status: approved
+    reviewer: Tom
+    review_date: "2026-08-13"
+    responsive_viewports: [1024, 768, 390]
+    responsive_matrix: passed_9_of_9
+    drawer_checks: passed_3_of_3
+    full_unit_component_router: 147_passed
+    focused_closure_chromium: 13_passed
+    full_chromium: 71_passed_1_pre_existing_environment_dependent_failure
+    production_build: passed
 validation:
   implementation_started: true
   management_validation: passed
@@ -525,6 +613,26 @@ phase_7:
     chromium_tests: 21_passed
     build: passed
     live_smoke_test: not_run_backend_unavailable
+maintenance_task_maint_006:
+  status: stageF_sales_talking_points_complete_pending_human_visual_review
+  stage: stage_f_sales_talking_points
+  figma_version: 1.2.0
+  figma_page: "350:8"
+  figma_frame: "361:2"
+  frontend_version: 0.2.0
+  route: /demo/content-studio
+  implemented_files: [src/pages/demo/ContentStudioPage.vue, src/demo/contentStudio.ts]
+  tests: [tests/unit/TaskMaint006ContentStudio.spec.ts, tests/e2e/task-maint-006-stage-a.spec.ts, tests/e2e/task-maint-006-stage-b.spec.ts]
+  formal_frame: "361:325"
+  human_approval: pending
+  landing_formal_frame: "502:297"
+  landing_files: [src/pages/demo/ContentStudioPage.vue]
+  landing_tests: [tests/e2e/task-maint-006-stage-c.spec.ts]
+  linkedin_outreach_formal_frame: "502:662"
+  linkedin_outreach_tests: [tests/e2e/task-maint-006-stage-e.spec.ts]
+  sales_talking_points_formal_frame: "502:832"
+  sales_talking_points_tests: [tests/e2e/task-maint-006-stage-f.spec.ts]
+
 phase_8:
   status: in_progress
   task: TASK-P8-004

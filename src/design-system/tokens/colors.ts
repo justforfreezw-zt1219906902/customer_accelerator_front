@@ -20,6 +20,7 @@ export const colors = {
   },
   text: {
     primary: 'var(--color-text-primary)',
+    secondary: 'var(--color-text-secondary)',
     muted: 'var(--color-text-muted)',
     inverse: 'var(--color-text-inverse)',
     onBrand: 'var(--color-text-on-brand)',
@@ -54,6 +55,7 @@ export const colors = {
     glowViolet: 'var(--color-shadow-glow-violet)',
     glowAmber: 'var(--color-shadow-glow-amber)',
     focusRing: 'var(--color-shadow-focus-ring)',
+    glowVioletSoft: 'var(--color-shadow-glow-violet-soft)',
   },
   input: {
     background: 'var(--color-input-background)',

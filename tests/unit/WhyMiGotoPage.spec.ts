@@ -3,7 +3,10 @@ import { describe, expect, it } from 'vitest';
 
 import { whyFooterEn } from '../../src/content/footer/why.en';
 import { whyNavigationEn } from '../../src/content/navigation/why.en';
-import { AppFooter, AppNavbar } from '../../src/design-system/components/composite';
+import {
+  AppFooter,
+  AppNavbar,
+} from '../../src/design-system/components/composite';
 import WhyMiGotoPage from '../../src/pages/WhyMiGotoPage.vue';
 
 describe('WhyMiGotoPage', () => {
@@ -12,7 +15,11 @@ describe('WhyMiGotoPage', () => {
 
     expect(wrapper.findAll('section')).toHaveLength(7);
     expect(wrapper.findAll('h1')).toHaveLength(1);
-    expect(wrapper.findAll('section').map((section) => section.attributes('id') ?? section.classes()[0])).toEqual([
+    expect(
+      wrapper
+        .findAll('section')
+        .map((section) => section.attributes('id') ?? section.classes()[0]),
+    ).toEqual([
       'why-hero',
       'story',
       'why-principle',

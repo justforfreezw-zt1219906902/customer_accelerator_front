@@ -15,6 +15,7 @@ for an implementation defect; create an Issue instead.
 | `CR-2026-003` | Phase 6F Thank You Page | approved | Tom | Phase 6F | `TASK-P6F-001` approved through `TASK-P6F-002` |
 | `CR-2026-004` | Release Candidate Packages alignment correction | approved_implemented | Miroslav / Tom | Phase 8 | `TASK-P8-002` |
 | `CR-2026-005` | Shared brand in compact Footers | approved_implemented | Tom | Phase 8 | `TASK-P8-003` |
+| `CR-2026-006` | ABM Product Demo and Shared Design System Migration | approved_in_progress | Tom | Production maintenance | `TASK-MAINT-002` |
 
 The approved record is
 `CR-2026-001-contact-page-chrome-variants.md`. Approval changes the

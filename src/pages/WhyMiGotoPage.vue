@@ -12,7 +12,10 @@ import { whyContentEn } from '../content/why/en';
 </script>
 
 <template>
-  <article class="why-page" :data-figma-frame="whyContentEn.source.desktopFrame">
+  <article
+    class="why-page"
+    :data-figma-frame="whyContentEn.source.desktopFrame"
+  >
     <div class="why-page__band">
       <WhyHeroSection :content="whyContentEn.hero" />
     </div>

@@ -21,7 +21,9 @@ for (const viewport of [
     await expect(page.locator('#impact')).toBeVisible();
     await expect(page.getByText('Phase 5 route shell')).toHaveCount(0);
 
-    const bodyWidth = await page.locator('body').evaluate((element) => element.scrollWidth);
+    const bodyWidth = await page
+      .locator('body')
+      .evaluate((element) => element.scrollWidth);
     expect(bodyWidth).toBeLessThanOrEqual(viewport.width);
 
     await page.screenshot({

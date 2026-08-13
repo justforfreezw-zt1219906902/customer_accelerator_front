@@ -30,6 +30,16 @@
 
 ## Unreleased
 
+### Maintenance — Figma Design System 1.2.0
+
+- Extended the shared token foundation with verified Figma spacing, radius,
+  component font-size, app typography and soft-violet-glow mappings.
+- Added compatible light/dark context support to `AppBrandLogo` while retaining
+  the existing dark-context default.
+- Added the shared Core `AppSourceAttributionChip` with Neutral and Amber tones.
+- Preserved Frontend version `0.2.0`; human Marketing regression review remains
+  mandatory before `TASK-MAINT-003`.
+
 ### Added
 
 - Shared Core `AppBrandLogo` used by Header and every Footer variant with the

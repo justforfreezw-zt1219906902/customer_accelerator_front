@@ -149,6 +149,20 @@ routes:
       - Tom approved the final browser presentation through TASK-P8-004 on
         2026-07-28.
 
+demo_routes:
+  status: implemented_needs_review
+  layout: DemoLayout
+  indexing: noindex_nofollow
+  human_approval: pending
+  routes:
+    - { path: /demo, route_name: DemoDiscovery, host: AccountDiscoveryPage, implementation_status: human_accepted, detail_owner: TASK-MAINT-004 }
+    - { path: "/demo/accounts/:accountId", route_name: DemoAccountOverview, host: AccountOverviewPage, implementation_status: human_accepted, detail_owner: TASK-MAINT-004 }
+    - { path: "/demo/accounts/:accountId/dna", route_name: DemoAccountDna, host: AccountDnaPage, implementation_status: human_accepted, detail_owner: TASK-MAINT-005 }
+    - { path: /demo/signals, route_name: DemoSignals, host: SignalPulsePage, implementation_status: human_accepted, detail_owner: TASK-MAINT-005 }
+    - { path: /demo/dna, route_name: DemoDna, host: DnaPortfolioPage, implementation_status: human_accepted, detail_owner: TASK-MAINT-005 }
+    - { path: /demo/content-studio, route_name: DemoContentStudio, host: ContentStudioPage, implementation_status: stage_a_needs_review, detail_owner: TASK-MAINT-006 }
+  excluded: ["/app/:companyId", /demo/campaigns, /demo/company-profile, /demo/icp, /demo/data-integration]
+
 approved_navigation:
   header:
     THE_PROBLEM: /#problem

@@ -2,10 +2,7 @@
 import { computed } from 'vue';
 
 import { AppBadge, AppCard } from '../../design-system/components/core';
-import type {
-  ProductBadgeType,
-  ProductHeadingLevel,
-} from './product.types';
+import type { ProductBadgeType, ProductHeadingLevel } from './product.types';
 
 type InsightVariant = 'default' | 'high-fit' | 'medium-fit';
 

@@ -692,6 +692,97 @@ requirements:
     verified_version: 0.1.0
     approval: approved
     approval_evidence: docs/08-quality/test-reports/phase-6f-TASK-P6F-002-approval-2026-07-28.md
+  - requirement_id: REQ-DEMO-001
+    description: Account Discovery renders curated opaque-ID accounts with local search and source-defined filters.
+    source: [CR-2026-006, TASK-MAINT-004]
+    figma_source: { page: ABM Account Discovery, node_id: "350:3", desktop_frame: "359:2" }
+    backend_source: not_applicable_fixture_backed
+    planned_frontend_files: [src/pages/demo/AccountDiscoveryPage.vue, src/demo/fixtures/accounts.ts]
+    tests: [tests/unit/TaskMaint004Accounts.spec.ts, tests/e2e/task-maint-004-accounts.spec.ts]
+    status: verified
+    introduced_version: 0.2.0
+    verified_version: 0.2.0
+    approval: accepted
+    approval_evidence: docs/08-quality/test-reports/TASK-MAINT-004-closure-2026-08-13.md
+  - requirement_id: REQ-DEMO-002
+    description: Account Overview resolves URL account identity, preserves invalid-account behavior, and presents source evidence safely.
+    source: [CR-2026-006, TASK-MAINT-004]
+    figma_source: { page: ABM Account Overview, node_id: "350:4", desktop_frame: "360:2" }
+    backend_source: not_applicable_fixture_backed
+    planned_frontend_files: [src/pages/demo/AccountOverviewPage.vue, src/demo/demoAccountProvider.ts]
+    tests: [tests/unit/TaskMaint004Accounts.spec.ts, tests/e2e/task-maint-004-accounts.spec.ts]
+    status: verified
+    introduced_version: 0.2.0
+    verified_version: 0.2.0
+    approval: accepted
+    approval_evidence: docs/08-quality/test-reports/TASK-MAINT-004-closure-2026-08-13.md
+  - requirement_id: REQ-DEMO-003
+    description: Account DNA resolves opaque account identity, presents approved evidence status and source-backed Oracle demo content, and safely routes Generate and Back actions.
+    source: [CR-2026-006, TASK-MAINT-005]
+    figma_source: { page: ABM Communication DNA, node_id: "350:5", desktop_frame: "360:2116" }
+    backend_source: not_applicable_fixture_backed
+    planned_frontend_files: [src/pages/demo/AccountDnaPage.vue, src/demo/fixtures/communicationDna.ts, src/demo/demoAccountProvider.ts]
+    tests: [tests/unit/TaskMaint005AccountDna.spec.ts, tests/e2e/task-maint-005-account-dna.spec.ts]
+    status: human_accepted
+    introduced_version: 0.2.0
+    verified_version: 0.2.0
+    approval: accepted_by_tom
+  - requirement_id: REQ-DEMO-004
+    description: Signal Pulse preserves representative portfolio metrics separately from deterministic local account interactions, accessible persona tabs and safe opaque routing.
+    source: [CR-2026-006, TASK-MAINT-005]
+    figma_source: { page: ABM Signal Pulse, node_id: "350:6", desktop_frame: "360:2226", formal_state: Overview }
+    backend_source: not_applicable_fixture_backed
+    planned_frontend_files: [src/pages/demo/SignalPulsePage.vue, src/demo/fixtures/signalPulse.ts]
+    tests: [tests/unit/TaskMaint005SignalPulse.spec.ts, tests/e2e/task-maint-005-signal-pulse.spec.ts]
+    status: human_accepted
+    introduced_version: 0.2.0
+    verified_version: 0.2.0
+    approval: accepted_by_tom
+  - requirement_id: REQ-DEMO-005
+    description: Communication DNA Portfolio presents representative filters separately from six curated local profiles, supports ephemeral selection and deterministic cross-account analysis, and routes by opaque account ID.
+    source: [CR-2026-006, TASK-MAINT-005]
+    figma_source: { page: Communication DNA / DNA Portfolio, node_id: "350:7", desktop_frame: "360:2385", formal_state: ProcessMind_selected }
+    backend_source: not_applicable_fixture_backed
+    planned_frontend_files: [src/pages/demo/DnaPortfolioPage.vue, src/components/product/DnaPortfolioCard.vue, src/demo/fixtures/dnaPortfolio.ts]
+    tests: [tests/unit/TaskMaint005DnaPortfolio.spec.ts, tests/e2e/task-maint-005-dna-portfolio.spec.ts]
+    status: human_accepted
+    introduced_version: 0.2.0
+    verified_version: 0.2.0
+    approval: accepted_by_tom
+  - requirement_id: REQ-DEMO-006
+    description: Content Studio Stage A provides Company Preview account selection, opaque account query handling, local filters and workflow foundation controls without backend or persistence.
+    source: [CR-2026-006, TASK-MAINT-006]
+    figma_source: { page: Content Studio, node_id: "350:8", desktop_frame: "361:2" }
+    backend_source: not_applicable_fixture_backed
+    planned_frontend_files: [src/pages/demo/ContentStudioPage.vue, src/demo/contentStudio.ts, src/router/routes.ts]
+    tests: [tests/unit/TaskMaint006ContentStudio.spec.ts, tests/e2e/task-maint-006-stage-a.spec.ts]
+    status: implementation_complete_needs_human_review
+    introduced_version: 0.2.0
+    verified_version: 0.2.0
+    approval: pending
+  - requirement_id: REQ-DEMO-007
+    description: LinkedIn Ad Stage B provides deterministic Single Image editing, preview synchronization, local copy, safe image preview and disabled export, with local secondary ad states.
+    source: [CR-2026-006, TASK-MAINT-006]
+    figma_source: { page: Content Studio, node_id: "350:8", frame: "361:325" }
+    backend_source: not_applicable_fixture_backed
+    planned_frontend_files: [src/pages/demo/ContentStudioPage.vue, src/demo/contentStudio.ts]
+    tests: [tests/unit/TaskMaint006ContentStudio.spec.ts, tests/e2e/task-maint-006-stage-b.spec.ts]
+    status: implementation_complete_needs_human_review
+    introduced_version: 0.2.0
+    verified_version: 0.2.0
+    approval: pending
+  - requirement_id: REQ-DEMO-008
+    description: LinkedIn Outreach provides deterministic editable connection and first-message drafts with traceability and disabled export, without platform integration.
+    source: [CR-2026-006, TASK-MAINT-006]
+    figma_source: { page: Content Studio, node_id: "350:8", frame: "502:662" }
+    backend_source: not_applicable_fixture_backed
+    planned_frontend_files: [src/pages/demo/ContentStudioPage.vue, src/demo/contentStudio.ts]
+    tests: [tests/e2e/task-maint-006-stage-e.spec.ts]
+    status: implementation_complete_needs_human_review
+    introduced_version: 0.2.0
+    verified_version: 0.2.0
+    approval: pending
+
 notes:
   - Planned frontend files are targets and do not claim implementation.
   - Empty tests and null verified versions are intentional.

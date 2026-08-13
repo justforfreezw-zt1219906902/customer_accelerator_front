@@ -1,5 +1,5 @@
 schema_version: 1
-active_baseline_id: DS1.1.0_API0.0.0_FE0.2.0
+active_baseline_id: DS1.2.0_API0.0.0_FE0.2.0
 baselines:
   - baseline_id: DS1.0.0_API0.0.0_FE0.0.1
     human_display_name: figma1.00_backend_unassigned
@@ -62,6 +62,25 @@ baselines:
       date: "2026-07-28"
       deviation: DEV-2026-011
     effective_date: "2026-07-28"
+    superseded_by: DS1.2.0_API0.0.0_FE0.2.0
+  - baseline_id: DS1.2.0_API0.0.0_FE0.2.0
+    human_display_name: figma1.20_backend_unassigned_contract_r1
+    figma_semantic_version: 1.2.0
+    backend_semantic_version: 0.0.0
+    backend_version_status: contract_documented_version_unassigned
+    backend_contract_revision: 1
+    provisional_contract_identifier: API-CONTRACT-R1
+    frontend_semantic_version: 0.2.0
+    compatibility_status: pending_backend_version_assignment
+    approval_status: not_approved
+    tested_environments: [local_automated]
+    limitations:
+      - Human Marketing regression review was accepted for TASK-MAINT-002; backend version assignment remains pending.
+      - Backend 0.0.0 remains a non-release placeholder.
+      - Official backend semantic version and production API URL remain unresolved.
+      - Figma 1.2.0 semantic color additions without verified Light Impact values remain unmigrated.
+      - This maintenance baseline does not authorize a new Frontend release.
+    effective_date: "2026-08-12"
     superseded_by: null
 notes:
   - The active baseline remains technically provisional because the Backend

@@ -22,6 +22,8 @@ describe('TrustMetricCard', () => {
       props: { value: 'External', label: 'Metric' },
     });
 
-    expect(wrapper.find('.trust-metric-card__explanation').exists()).toBe(false);
+    expect(wrapper.find('.trust-metric-card__explanation').exists()).toBe(
+      false,
+    );
   });
 });

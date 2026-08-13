@@ -5,13 +5,24 @@ defineProps<{ content: typeof whyContentEn.pillars }>();
 </script>
 
 <template>
-  <section id="pillars" class="why-pillar-section" aria-labelledby="why-pillars-title">
+  <section
+    id="pillars"
+    class="why-pillar-section"
+    aria-labelledby="why-pillars-title"
+  >
     <p class="why-label">{{ content.eyebrow }}</p>
     <h2 id="why-pillars-title">{{ content.title }}</h2>
     <p class="why-description">{{ content.description }}</p>
     <div class="why-pillar-grid">
-      <article v-for="item in content.items" :key="item.title" class="why-pillar">
-        <span class="why-pillar__icon" :class="`why-pillar__icon--${item.tone}`">
+      <article
+        v-for="item in content.items"
+        :key="item.title"
+        class="why-pillar"
+      >
+        <span
+          class="why-pillar__icon"
+          :class="`why-pillar__icon--${item.tone}`"
+        >
           <img :src="item.icon" alt="" width="20" height="20" />
         </span>
         <h3>{{ item.title }}</h3>

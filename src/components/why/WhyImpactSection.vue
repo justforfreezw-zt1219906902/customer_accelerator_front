@@ -10,7 +10,11 @@ defineProps<{ content: typeof whyContentEn.impact }>();
     <h2 id="why-impact-title">{{ content.title }}</h2>
     <p class="why-description">{{ content.description }}</p>
     <div class="why-impact__grid">
-      <article v-for="item in content.items" :key="item.number" :class="`why-impact__card--${item.tone}`">
+      <article
+        v-for="item in content.items"
+        :key="item.number"
+        :class="`why-impact__card--${item.tone}`"
+      >
         <span>{{ item.number }}</span>
         <h3>{{ item.title }}</h3>
         <p>{{ item.description }}</p>

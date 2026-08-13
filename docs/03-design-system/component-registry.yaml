@@ -83,15 +83,33 @@ components:
     dependencies: [tokens]
     variants:
       size: [Header, Footer]
-    figma_version: 1.1.0
+      context: [Dark, Light]
+    figma_version: 1.2.0
     implementation_status: implemented
     design_review_status: approved
     asset: src/assets/brand/mi-goto-lockup-light-hidpi.png
+    additional_asset: src/assets/brand/mi-goto-lockup-dark.png
     tests: [tests/unit/AppBrandLogo.spec.ts]
     notes:
       - TASK-P8-003 centralizes the approved transparent high-density brand
         source for Header and Footer without adding layout behavior.
       - Tom approved Header and Footer visual remediation through TASK-P8-004.
+  - component_id: CMP-CORE-007
+    figma_name: mi-goTo/Source Attribution Chip
+    figma_node_id: "167:14"
+    code_name: AppSourceAttributionChip
+    planned_path: src/design-system/components/core/AppSourceAttributionChip.vue
+    layer: core
+    dependencies: [tokens]
+    variants:
+      tone: [Neutral, Amber]
+    figma_version: 1.2.0
+    implementation_status: implemented
+    design_review_status: needs_marketing_review
+    tests: [tests/unit/AppSourceAttributionChip.spec.ts]
+    notes:
+      - Additive evidence primitive; AppBadge semantics remain unchanged.
+      - Human Marketing regression review is pending under TASK-MAINT-002.
   - component_id: CMP-COMPOSITE-001
     figma_name: mi-goTo/Form Field
     figma_node_id: "68:213"
@@ -302,7 +320,187 @@ components:
     implementation_status: implemented
     design_review_status: approved
     tests: [tests/unit/LandingCtaPanel.spec.ts]
+  - component_id: CMP-PRODUCT-008
+    figma_name: mi-goTo/App Shell navigation
+    figma_node_id: "358:1352"
+    code_name: DemoNavigation
+    planned_path: src/components/product/DemoNavigation.vue
+    layer: product
+    dependencies: [core]
+    variants: { state: [active, default, disabled] }
+    figma_version: 1.2.0
+    implementation_status: implemented
+    design_review_status: pending
+    tests: [tests/unit/DemoFoundation.spec.ts, tests/e2e/task-maint-003-demo-shell.spec.ts]
+  - component_id: CMP-PRODUCT-009
+    figma_name: mi-goTo/App Topbar
+    figma_node_id: "356:40"
+    code_name: DemoTopbar
+    planned_path: src/components/product/DemoTopbar.vue
+    layer: product
+    dependencies: [core]
+    variants: { context: [Default] }
+    figma_version: 1.2.0
+    implementation_status: implemented
+    design_review_status: pending
+    tests: [tests/unit/DemoFoundation.spec.ts, tests/e2e/task-maint-003-demo-shell.spec.ts]
+  - component_id: CMP-PRODUCT-010
+    figma_name: App Metric Card
+    figma_node_id: "357:1775"
+    code_name: AppMetricCard
+    planned_path: src/components/product/AppMetricCard.vue
+    layer: product
+    dependencies: [core]
+    variants: { tone: [default, brand, warning] }
+    figma_version: 1.2.0
+    implementation_status: implemented
+    design_review_status: approved
+    design_review_date: "2026-08-13"
+    tests: [tests/unit/TaskMaint004Accounts.spec.ts]
+  - component_id: CMP-PRODUCT-011
+    figma_name: Account Row
+    figma_node_id: "357:1827"
+    code_name: AccountRow
+    planned_path: src/components/product/AccountRow.vue
+    layer: product
+    dependencies: [core]
+    variants: { viewport: [desktop, adaptive, mobile] }
+    figma_version: 1.2.0
+    implementation_status: implemented
+    design_review_status: approved
+    design_review_date: "2026-08-13"
+    tests: [tests/unit/TaskMaint004Accounts.spec.ts]
+  - component_id: CMP-PRODUCT-012
+    figma_name: Account Identity
+    figma_node_id: "383:101"
+    code_name: AccountIdentity
+    planned_path: src/components/product/AccountIdentity.vue
+    layer: product
+    dependencies: [core]
+    variants: { size: [sm, lg] }
+    figma_version: 1.2.0
+    implementation_status: implemented
+    design_review_status: approved
+    design_review_date: "2026-08-13"
+    tests: [tests/unit/TaskMaint004Accounts.spec.ts]
+  - component_id: CMP-PRODUCT-013
+    figma_name: Signal Summary
+    figma_node_id: "384:81"
+    code_name: SignalSummary
+    planned_path: src/components/product/SignalSummary.vue
+    layer: product
+    dependencies: [core]
+    variants: { state: [active, inactive] }
+    figma_version: 1.2.0
+    implementation_status: implemented
+    design_review_status: approved
+    design_review_date: "2026-08-13"
+    tests: [tests/unit/TaskMaint004Accounts.spec.ts]
+  - component_id: CMP-PRODUCT-014
+    figma_name: Tier Badge
+    figma_node_id: "352:9"
+    code_name: TierBadge
+    planned_path: src/components/product/TierBadge.vue
+    layer: product
+    dependencies: [core]
+    variants: { tier: [Focus Accounts, Tier 1, Tier 2] }
+    figma_version: 1.2.0
+    implementation_status: implemented
+    design_review_status: approved
+    design_review_date: "2026-08-13"
+    tests: [tests/unit/TaskMaint004Accounts.spec.ts]
+  - component_id: CMP-PRODUCT-015
+    figma_name: Score Indicator
+    figma_node_id: "353:24"
+    code_name: ScoreIndicator
+    planned_path: src/components/product/ScoreIndicator.vue
+    layer: product
+    dependencies: [core]
+    variants: { value: [dynamic] }
+    figma_version: 1.2.0
+    implementation_status: implemented
+    design_review_status: approved
+    design_review_date: "2026-08-13"
+    tests: [tests/unit/TaskMaint004Accounts.spec.ts]
+  - component_id: CMP-PRODUCT-016
+    figma_name: Data Status Badge
+    figma_node_id: "351:9"
+    code_name: DataStatusBadge
+    planned_path: src/components/product/DataStatusBadge.vue
+    layer: product
+    dependencies: [core]
+    variants: { status: [SOURCE_BACKED, DERIVED, INSUFFICIENT_DATA] }
+    figma_version: 1.2.0
+    implementation_status: implemented
+    design_review_status: pending
+    tests: [tests/unit/TaskMaint005AccountDna.spec.ts]
+  - component_id: CMP-PRODUCT-017
+    figma_name: Frequency Badge
+    figma_node_id: "456:8"
+    code_name: FrequencyBadge
+    planned_path: src/components/product/FrequencyBadge.vue
+    layer: product
+    dependencies: [core]
+    variants: { frequency: [HIGH, MEDIUM, LOW] }
+    figma_version: 1.2.0
+    implementation_status: implemented
+    design_review_status: pending
+    tests: [tests/unit/TaskMaint005AccountDna.spec.ts]
+  - component_id: CMP-PRODUCT-018
+    figma_name: Communication DNA evidence card family
+    figma_node_id: "441:127"
+    code_name: DnaEvidenceCard
+    planned_path: src/components/product/DnaEvidenceCard.vue
+    layer: product
+    dependencies: [core]
+    variants: { evidence: [tone, vocabulary, value_proposition, problem_framing, proof_style, cta_patterns, recurring_phrases] }
+    figma_version: 1.2.0
+    implementation_status: implemented
+    design_review_status: pending
+    tests: [tests/unit/TaskMaint005AccountDna.spec.ts]
+  - component_id: CMP-PRODUCT-019
+    figma_name: Market Pattern Card
+    figma_node_id: "479:110"
+    code_name: MarketPatternCard
+    planned_path: src/components/product/MarketPatternCard.vue
+    layer: product
+    dependencies: [core]
+    variants: { layout: [Compact] }
+    figma_version: 1.2.0
+    implementation_status: implemented
+    design_review_status: pending
+    tests: [tests/unit/TaskMaint005SignalPulse.spec.ts]
+  - component_id: CMP-PRODUCT-020
+    figma_name: Signal Urgency Account Card
+    figma_node_id: "480:151"
+    code_name: SignalUrgencyAccountCard
+    planned_path: src/components/product/SignalUrgencyAccountCard.vue
+    layer: product
+    dependencies: [core]
+    variants: { tier: [Focus Accounts, Tier 1, Tier 2] }
+    figma_version: 1.2.0
+    implementation_status: implemented
+    design_review_status: pending
+    tests: [tests/unit/TaskMaint005SignalPulse.spec.ts]
+  - component_id: CMP-PRODUCT-021
+    figma_name: Communication DNA Portfolio Card
+    figma_node_id: "360:2381"
+    code_name: DnaPortfolioCard
+    planned_path: src/components/product/DnaPortfolioCard.vue
+    layer: product
+    dependencies: [core]
+    variants: { selection: [selected, unselected] }
+    figma_version: 1.2.0
+    implementation_status: implemented
+    design_review_status: accepted_in_page17_context
+    tests: [tests/unit/TaskMaint005DnaPortfolio.spec.ts]
 notes:
+  - Tom accepted the Page 17 composition, including CMP-PRODUCT-021, on 2026-08-13; this does not authorize unrelated variants.
+  - TASK-MAINT-005 Stage C adds the Page 17 Communication DNA Portfolio Card; Page 17 visual approval is pending.
+  - Tom accepted TASK-MAINT-005 Stage B Page 16 on 2026-08-13.
+  - TASK-MAINT-005 Stage A Page 15 evidence components are accepted in their Page 15 composition.
+  - TASK-MAINT-004 adds Product components AccountIdentity (383:101), SignalSummary (384:81), AccountRow (357:1827), AppMetricCard (357:1775), TierBadge (352:9) and ScoreIndicator (353:24) for immediate Page 13–14 use; Page 13–14 received explicit human acceptance on 2026-08-13.
+  - TASK-MAINT-003 adds DemoNavigation and DemoTopbar from App Shell 358:1352; both are implemented_needs_review and used only by DemoLayout.
   - Core Figma names and variants were inspected read-only on 2026-07-24.
   - Composite Figma component sets were inspected read-only on 2026-07-25.
   - Product Figma component sets were inspected read-only on 2026-07-25.

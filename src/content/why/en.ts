@@ -48,10 +48,8 @@ export const whyContentEn = {
   mission: {
     eyebrow: 'OUR MISSION',
     title: 'The Bridge',
-    lead:
-      'We build a commercially successful company on purpose — because commercial success is the bridge that makes everything else possible: meaningful work, growing people, giving back, and staying independent.',
-    body:
-      'mi-goTo is not a company with a mission statement bolted on. The business model and the mission are one structure: honest intelligence work, sold at a fair price, done by people who enjoy doing it — funding a company that answers to no one but its own principles.',
+    lead: 'We build a commercially successful company on purpose — because commercial success is the bridge that makes everything else possible: meaningful work, growing people, giving back, and staying independent.',
+    body: 'mi-goTo is not a company with a mission statement bolted on. The business model and the mission are one structure: honest intelligence work, sold at a fair price, done by people who enjoy doing it — funding a company that answers to no one but its own principles.',
   },
   pillars: {
     eyebrow: 'FIVE PILLARS',
@@ -102,12 +100,42 @@ export const whyContentEn = {
     description:
       'We keep our impact claims to the same standard as our intelligence: specific and honest. These are the six SDGs where our work actually contributes.',
     items: [
-      ['SDG 3', 'Good Health & Well-being', 'Joyful, sustainable work culture — no burnout economics.', 'purple'],
-      ['SDG 4', 'Quality Education', 'Knowledge transfer in every engagement; learning built into the model.', 'amber'],
-      ['SDG 8', 'Decent Work & Economic Growth', 'Fair, resilient growth for us and the mid-market companies we serve.', 'purple'],
-      ['SDG 9', 'Industry, Innovation & Infrastructure', 'Source-grounded AI as responsible innovation in a hype-driven market.', 'amber'],
-      ['SDG 10', 'Reduced Inequalities', 'Enterprise-grade intelligence at mid-market prices — leveling a playing field owned by six-figure platforms.', 'purple'],
-      ['SDG 17', 'Partnerships for the Goals', 'We work as partners, not vendors — knowledge shared, capability transferred.', 'amber'],
+      [
+        'SDG 3',
+        'Good Health & Well-being',
+        'Joyful, sustainable work culture — no burnout economics.',
+        'purple',
+      ],
+      [
+        'SDG 4',
+        'Quality Education',
+        'Knowledge transfer in every engagement; learning built into the model.',
+        'amber',
+      ],
+      [
+        'SDG 8',
+        'Decent Work & Economic Growth',
+        'Fair, resilient growth for us and the mid-market companies we serve.',
+        'purple',
+      ],
+      [
+        'SDG 9',
+        'Industry, Innovation & Infrastructure',
+        'Source-grounded AI as responsible innovation in a hype-driven market.',
+        'amber',
+      ],
+      [
+        'SDG 10',
+        'Reduced Inequalities',
+        'Enterprise-grade intelligence at mid-market prices — leveling a playing field owned by six-figure platforms.',
+        'purple',
+      ],
+      [
+        'SDG 17',
+        'Partnerships for the Goals',
+        'We work as partners, not vendors — knowledge shared, capability transferred.',
+        'amber',
+      ],
     ].map(([number, title, description, tone]) => ({
       number,
       title,

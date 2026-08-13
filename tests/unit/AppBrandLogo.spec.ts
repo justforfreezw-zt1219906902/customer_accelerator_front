@@ -27,4 +27,18 @@ describe('AppBrandLogo', () => {
     await wrapper.get('a').trigger('click');
     expect(wrapper.emitted('homeNavigate')).toHaveLength(1);
   });
+
+  it('preserves the light lockup by default and supports the dark lockup on light surfaces', () => {
+    const defaultLogo = mount(AppBrandLogo);
+    const lightContextLogo = mount(AppBrandLogo, {
+      props: { context: 'light' },
+    });
+
+    expect(defaultLogo.get('img').attributes('src')).toContain(
+      'mi-goto-lockup-light-hidpi.png',
+    );
+    expect(lightContextLogo.get('img').attributes('src')).toContain(
+      'mi-goto-lockup-dark.png',
+    );
+  });
 });

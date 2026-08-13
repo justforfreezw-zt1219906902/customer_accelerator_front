@@ -15,9 +15,9 @@ describe('AIInsightPreviewCard', () => {
       },
     });
 
-    expect(wrapper.get('[role="progressbar"]').attributes('aria-valuenow')).toBe(
-      '91',
-    );
+    expect(
+      wrapper.get('[role="progressbar"]').attributes('aria-valuenow'),
+    ).toBe('91');
     expect(wrapper.classes()).toContain('ai-insight-preview-card--high-fit');
   });
 

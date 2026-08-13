@@ -222,7 +222,128 @@ pages:
         Figma frame for the current RC on 2026-07-28.
       - TASK-P8-002 replaced the temporary shell and Tom approved the final
         browser presentation through TASK-P8-004.
+  - page_id: PAGE-DEMO-DISCOVERY
+    name: ABM Account Discovery
+    figma_page_name: ABM Account Discovery
+    figma_node_id: "350:3"
+    desktop_frame_node_id: "359:2"
+    code_name: AccountDiscoveryPage
+    planned_path: src/pages/demo/AccountDiscoveryPage.vue
+    route: /demo
+    route_name: DemoDiscovery
+    layout: DemoLayout
+    title: Account Discovery | mi-goTo
+    access_status: internal_demo_noindex
+    route_approval: approved
+    implementation_status: implemented
+    design_review_status: approved
+    design_review_date: "2026-08-13"
+    design_reviewer: human_reviewer_name_not_supplied
+    tests: [tests/unit/TaskMaint004Accounts.spec.ts, tests/e2e/task-maint-004-accounts.spec.ts]
+  - page_id: PAGE-DEMO-ACCOUNT-OVERVIEW
+    name: ABM Account Overview
+    figma_page_name: ABM Account Overview
+    figma_node_id: "350:4"
+    desktop_frame_node_id: "360:2"
+    code_name: AccountOverviewPage
+    planned_path: src/pages/demo/AccountOverviewPage.vue
+    route: "/demo/accounts/:accountId"
+    route_name: DemoAccountOverview
+    layout: DemoLayout
+    title: Account Overview | mi-goTo
+    access_status: internal_demo_noindex
+    route_approval: approved
+    implementation_status: implemented
+    design_review_status: approved
+    design_review_date: "2026-08-13"
+    design_reviewer: human_reviewer_name_not_supplied
+    formal_reference_fixture: demo-acc-001
+    tests: [tests/unit/TaskMaint004Accounts.spec.ts, tests/e2e/task-maint-004-accounts.spec.ts]
+  - page_id: PAGE-DEMO-ACCOUNT-DNA
+    name: ABM Communication DNA
+    figma_page_name: ABM Communication DNA
+    figma_node_id: "350:5"
+    desktop_frame_node_id: "360:2116"
+    code_name: AccountDnaPage
+    planned_path: src/pages/demo/AccountDnaPage.vue
+    route: "/demo/accounts/:accountId/dna"
+    route_name: DemoAccountDna
+    layout: DemoLayout
+    title: Account DNA | mi-goTo
+    access_status: internal_demo_noindex
+    route_approval: approved
+    implementation_status: implemented
+    design_review_status: accepted
+    design_review_date: "2026-08-13"
+    design_reviewer: Tom
+    formal_reference_fixture: demo-acc-001
+    tests: [tests/unit/TaskMaint005AccountDna.spec.ts, tests/e2e/task-maint-005-account-dna.spec.ts, tests/e2e/task-maint-005-closure.spec.ts]
+  - page_id: PAGE-DEMO-SIGNAL-PULSE
+    name: ABM Signal Pulse
+    figma_page_name: ABM Signal Pulse
+    figma_node_id: "350:6"
+    desktop_frame_node_id: "360:2226"
+    code_name: SignalPulsePage
+    planned_path: src/pages/demo/SignalPulsePage.vue
+    route: /demo/signals
+    route_name: DemoSignals
+    layout: DemoLayout
+    title: Signal Pulse | mi-goTo
+    access_status: internal_demo_noindex
+    route_approval: approved
+    implementation_status: implemented
+    design_review_status: accepted
+    design_review_date: "2026-08-13"
+    design_reviewer: Tom
+    tests: [tests/unit/TaskMaint005SignalPulse.spec.ts, tests/e2e/task-maint-005-signal-pulse.spec.ts, tests/e2e/task-maint-005-closure.spec.ts]
+  - page_id: PAGE-DEMO-DNA-PORTFOLIO
+    name: Communication DNA Portfolio
+    figma_page_name: Communication DNA / DNA Portfolio
+    figma_node_id: "350:7"
+    desktop_frame_node_id: "360:2385"
+    code_name: DnaPortfolioPage
+    planned_path: src/pages/demo/DnaPortfolioPage.vue
+    route: /demo/dna
+    route_name: DemoDna
+    layout: DemoLayout
+    title: Communication DNA | mi-goTo
+    access_status: internal_demo_noindex
+    route_approval: approved
+    implementation_status: implemented
+    design_review_status: accepted
+    design_review_date: "2026-08-13"
+    design_reviewer: Tom
+    formal_reference_fixture: demo-acc-006
+    tests: [tests/unit/TaskMaint005DnaPortfolio.spec.ts, tests/e2e/task-maint-005-dna-portfolio.spec.ts, tests/e2e/task-maint-005-closure.spec.ts]
+  - id: PAGE-DEMO-CONTENT-STUDIO
+    name: Content Studio
+    figma_page_name: Content Studio
+    figma_node_id: "350:8"
+    desktop_frame_node_id: "361:2"
+    code_name: ContentStudioPage
+    planned_path: src/pages/demo/ContentStudioPage.vue
+    route: /demo/content-studio
+    route_name: DemoContentStudio
+    layout: DemoLayout
+    title: Content Studio | mi-goTo
+    access_status: internal_demo_noindex
+    route_approval: pending
+    implementation_status: stage_f_sales_talking_points_needs_review
+    design_review_status: pending
+    formal_editor_frame: "361:325"
+    landing_formal_frame: "502:297"
+    linkedin_outreach_formal_frame: "502:662"
+    sales_talking_points_formal_frame: "502:832"
+    design_reviewer: Tom
+    formal_reference_fixture: demo-acc-001
+    tests: [tests/unit/TaskMaint006ContentStudio.spec.ts, tests/e2e/task-maint-006-stage-a.spec.ts, tests/e2e/task-maint-006-stage-e.spec.ts, tests/e2e/task-maint-006-stage-f.spec.ts]
+
 notes:
+  - Tom accepted TASK-MAINT-005 Stage A Page 15 on 2026-08-13 at 1440 × 900; its formal state is frozen against redesign.
+  - Tom accepted and closed TASK-MAINT-005 on 2026-08-13; TASK-MAINT-006 Page 18 is authorized next.
+  - TASK-MAINT-005 Stage A Page 15 and Stage B Page 16 are accepted; Page 18 remains deferred.
+  - TASK-MAINT-003 registered six internal-evaluation Demo routes under DemoLayout and was accepted by Tom on 2026-08-12.
+  - TASK-MAINT-004 implements Figma Page 13 as AccountDiscoveryPage and Page 14 as AccountOverviewPage; both received explicit human visual acceptance on 2026-08-13 and the task is closed. Pages 15–18 remain deferred route hosts.
   - The Not Found fallback is implemented for RC review and is no longer a temporary shell.
   - Five Figma Page nodes were inspected read-only for Phase 5A.
   - Figma does not define final route or interaction behavior by itself.

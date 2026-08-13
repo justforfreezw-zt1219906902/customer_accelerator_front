@@ -1,5 +1,5 @@
 schema_version: 1
-source_version: 1.0.0
+source_version: 1.2.0
 inspection_date: "2026-07-24"
 source_pages:
   foundation: "0:1"
@@ -109,3 +109,28 @@ review:
   date: "2026-07-24"
   reviewed_task: TASK-P2-001
   evidence: docs/08-quality/test-reports/phase-2-task-p2-001-approval-2026-07-24.md
+maintenance_extensions:
+  task: TASK-MAINT-002
+  source_version: 1.2.0
+  status: implemented_needs_marketing_review
+  verified_sources:
+    - node_id: "349:13"
+      additions: [spacing/20, spacing/40, app typography]
+    - node_id: "467:5"
+      additions:
+        - "spacing/0, 2, 3, 6, 7, 10, 14, 18, 22, 28"
+        - "radius/1, 2, 3, 4, 5, 6, 10, 14, 15, 22, 26, 35"
+        - "component font-size ladder and Bold weight"
+    - node_id: "443:1080"
+      additions: [color/shadow/glow-violet-soft]
+  output_preservation:
+    existing_marketing_values_changed: false
+    normalized_value: "AppNavbar desktop block padding 22px -> var(--spacing-22)"
+  unresolved:
+    - Semantic text/documentation colors were not added because complete verified Light Impact mode values were unavailable.
+    - No breakpoint or motion-easing values were introduced.
+  task_maint_003:
+    status: implemented_needs_review
+    verified_source: "App Shell 358:1352 / dark text-secondary #a0a0b8"
+    addition: color.text.secondary
+    scope: dark_enterprise_product_shell

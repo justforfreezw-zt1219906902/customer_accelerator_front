@@ -2,10 +2,7 @@
 import { computed } from 'vue';
 
 import { AppCard } from '../../design-system/components/core';
-import type {
-  ProductCardVariant,
-  ProductHeadingLevel,
-} from './product.types';
+import type { ProductCardVariant, ProductHeadingLevel } from './product.types';
 
 type CustomerProblemVariant = ProductCardVariant | 'severe';
 

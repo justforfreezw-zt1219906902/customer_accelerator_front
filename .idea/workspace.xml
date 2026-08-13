@@ -4,33 +4,49 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa45ec9b-26dc-40ff-98de-dd81c1a64002" name="更改" comment="chore: Backend Integration">
+    <list default="true" id="fa45ec9b-26dc-40ff-98de-dd81c1a64002" name="更改" comment="chore: bug fix for packages , footer and header">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VERSION.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/VERSION.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/01-roadmap/current-state.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/01-roadmap/current-state.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/01-roadmap/phase-status.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/01-roadmap/phase-status.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/02-inputs/figma-source-map.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/02-inputs/figma-source-map.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/03-design-system/component-registry.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/03-design-system/component-registry.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/03-design-system/figma-baseline.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/03-design-system/figma-baseline.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/03-design-system/page-registry.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/03-design-system/page-registry.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/03-design-system/section-registry.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/03-design-system/section-registry.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/03-design-system/token-map.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/03-design-system/token-map.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/04-frontend/route-map.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/04-frontend/route-map.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/06-traceability/compatibility-matrix.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/06-traceability/compatibility-matrix.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/06-traceability/implementation-baseline.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/06-traceability/implementation-baseline.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/06-traceability/requirements-traceability.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/06-traceability/requirements-traceability.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/07-change-control/change-requests/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/07-change-control/change-requests/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/07-change-control/issues/ISSUE-2026-006-phase-8-release-candidate-entry-gate.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/07-change-control/issues/ISSUE-2026-006-phase-8-release-candidate-entry-gate.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/07-change-control/issues/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/07-change-control/issues/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/08-quality/qa-summary.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/08-quality/qa-summary.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/phases/phase-8-qa-deployment.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/phases/phase-8-qa-deployment.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/playwright.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/playwright.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sections/PackagesSection.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/PackagesSection.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/product/AIInsightPreviewCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/product/AIInsightPreviewCard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/product/CustomerProblemCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/product/CustomerProblemCard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/product/ProcessStepCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/product/ProcessStepCard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/product/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/product/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/why/WhyImpactSection.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/why/WhyImpactSection.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/why/WhyPillarsSection.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/why/WhyPillarsSection.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content/why/en.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/why/en.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/design-system/components/composite/AppFormField.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/design-system/components/composite/AppFormField.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/design-system/components/composite/AppNavbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/design-system/components/composite/AppNavbar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/ContactLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/ContactLayout.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/MarketingLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/MarketingLayout.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/WhyLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/WhyLayout.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/NotFoundPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/NotFoundPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/design-system/components/composite/AppTextarea.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/design-system/components/composite/AppTextarea.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/design-system/components/core/AppBrandLogo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/design-system/components/core/AppBrandLogo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/design-system/components/core/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/design-system/components/core/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/design-system/theme/variables.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/design-system/theme/variables.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/design-system/tokens/colors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/design-system/tokens/colors.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/design-system/tokens/radius.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/design-system/tokens/radius.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/design-system/tokens/spacing.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/design-system/tokens/spacing.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/design-system/tokens/typography.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/design-system/tokens/typography.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/WhyMiGotoPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/WhyMiGotoPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/router/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/AppNavbar.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/AppNavbar.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/LandingSections.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/LandingSections.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/Routing.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/Routing.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/e2e/phase-6e-why.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/e2e/phase-6e-why.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/AIInsightPreviewCard.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/AIInsightPreviewCard.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/AppBrandLogo.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/AppBrandLogo.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/TrustMetricCard.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/TrustMetricCard.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/WhyMiGotoPage.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/WhyMiGotoPage.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/designTokens.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/designTokens.spec.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,25 +78,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/zhaowei/WebstormProjects/customer_accelerator_front&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "master",
+    "javascript.preferred.runtime.type.id": "node",
+    "last_opened_file_path": "/Users/zhaowei/WebstormProjects/customer_accelerator_front",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "/Users/zhaowei/WebstormProjects/customer_accelerator_front/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -100,7 +117,12 @@
       <workItem from="1784910311579" duration="34000" />
       <workItem from="1784910382969" duration="4459000" />
       <workItem from="1785142657494" duration="638000" />
-      <workItem from="1785177021836" duration="10927000" />
+      <workItem from="1785177021836" duration="14150000" />
+      <workItem from="1785271080398" duration="8634000" />
+      <workItem from="1786019575310" duration="13000" />
+      <workItem from="1786543568589" duration="2533000" />
+      <workItem from="1786565368843" duration="47000" />
+      <workItem from="1786565431322" duration="1111000" />
     </task>
     <task id="LOCAL-00001" summary="docs: initialize project governance structure">
       <option name="closed" value="true" />
@@ -278,11 +300,30 @@
       <option name="project" value="LOCAL" />
       <updated>1785262028785</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="chore: bug fix for packages , footer and header">
+      <option name="closed" value="true" />
+      <created>1785267631765</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1785267631765</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="docs: initialize project governance structure" />
@@ -304,6 +345,7 @@
     <MESSAGE value="chore: Contact Page User Interface." />
     <MESSAGE value="chore: Data Protection Page&#10;Imprint Page&#10;Why mi-goTo Page&#10;hank You Page." />
     <MESSAGE value="chore: Backend Integration" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore: Backend Integration" />
+    <MESSAGE value="chore: bug fix for packages , footer and header" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: bug fix for packages , footer and header" />
   </component>
 </project>

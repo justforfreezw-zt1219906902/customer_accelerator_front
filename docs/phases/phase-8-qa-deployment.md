@@ -155,3 +155,45 @@ Git-push deployment without packaged artifact/checksum, and unavailable live
 backend smoke evidence. `REL-FE-0.2.0-rc.1` is promoted to
 `REL-FE-0.2.0`; deployment is `human_confirmed`. Phase 8 is approved and
 completed, and the project enters the `0.2.x` production-maintenance line.
+
+### TASK-MAINT-005 Stage A maintenance checkpoint
+
+Page 15 Account DNA was implemented from Figma frame `360:2116` with Oracle as
+the formal `demo-acc-001` fixture. The route, evidence status, all 14 configured
+buying-signal sources, safe links, Generate/Back actions, invalid-account state,
+noindex protection, and Pages 13–14 regressions have automated evidence.
+
+Status is `page15_implementation_complete_pending_human_visual_review`.
+Human approval remains pending. Pages 16–18 were not started, and no release,
+deployment, backend, persistence, dependency, version, or Git operation was
+performed.
+
+Tom accepted the Stage A Page 15 and Stage B Page 16 visual checkpoints on
+2026-08-13. Stage C implements Page 17 Communication DNA Portfolio and is now
+`page17_implementation_complete_pending_human_visual_review`. Page 18 remains
+not started; release, deployment and version changes remain unauthorized.
+
+Tom accepted the Stage C Page 17 checkpoint on 2026-08-13. Stage D completed
+the integrated responsive matrix at 1024 / 768 / 390, Drawer, accessibility,
+route, deterministic-data, Product and Marketing regression checks. Outcome is
+`implementation_complete_needs_human_review`; Tom then accepted and closed
+TASK-MAINT-005 on 2026-08-13. The complete Chromium suite
+passed 71/72; the sole failure is the previously documented environment-driven
+optional owner-field expectation caused by local `VITE_HUBSPOT_OWNER_ID`.
+Page 18 is now authorized under TASK-MAINT-006. Release and deployment remain
+unauthorized.
+
+TASK-MAINT-006 Stage A checkpoint: Content Studio Company Preview and workflow
+foundation are implementation-complete and awaiting human visual review. The
+formal source is Figma page `350:8`, frame `361:2`, at `1440 × 900`. Backend,
+AI, persistence, export and full asset editors remain out of scope.
+
+Tom accepted Stage A on 2026-08-13. TASK-MAINT-006 Stage B LinkedIn Ad is now
+implementation-complete pending visual review. The formal Single Image source
+is frame `361:325`; Document and Thought Leadership are local secondary states.
+# Maintenance Stage E note
+
+TASK-MAINT-006 Stage E LinkedIn Outreach is implemented as a local, deterministic
+Content Studio editor from Figma frame `502:662`. It is pending Tom's human
+visual review; no external LinkedIn integration, backend, AI, persistence or
+release authorization is included.

@@ -36,10 +36,7 @@ const cardVariant = computed(() =>
 <template>
   <AppCard
     class="process-step-card"
-    :class="[
-      `process-step-card--${variant}`,
-      `process-step-card--${density}`,
-    ]"
+    :class="[`process-step-card--${variant}`, `process-step-card--${density}`]"
     :variant="cardVariant"
     :aria-current="variant === 'active' ? 'step' : undefined"
   >

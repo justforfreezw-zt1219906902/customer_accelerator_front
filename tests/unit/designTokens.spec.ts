@@ -98,4 +98,21 @@ describe('design tokens', () => {
     expect(fontWeights.bold).toBe('var(--font-weight-bold)');
     expect(theme).toContain('--font-weight-bold: 700;');
   });
+
+  it('maps the verified Figma 1.2 shared-foundation extensions', () => {
+    expect(spacing[0]).toBe('var(--spacing-0)');
+    expect(spacing[22]).toBe('var(--spacing-22)');
+    expect(spacing[40]).toBe('var(--spacing-40)');
+    expect(radius[3]).toBe('var(--radius-3)');
+    expect(radius[35]).toBe('var(--radius-35)');
+    expect(colors.shadow.glowVioletSoft).toBe(
+      'var(--color-shadow-glow-violet-soft)',
+    );
+    expect(typography.appPageTitle.fontSize).toBe(
+      'var(--typography-app-page-title-font-size)',
+    );
+    expect(typography.appMonoLabel.letterSpacing).toBe(
+      'var(--typography-app-mono-label-letter-spacing)',
+    );
+  });
 });

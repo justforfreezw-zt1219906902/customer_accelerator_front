@@ -203,7 +203,7 @@ onBeforeUnmount(() =>
 }
 
 .app-navbar__container {
-  padding: 22px clamp(var(--spacing-24), 9vw, 130px);
+  padding: var(--spacing-22) clamp(var(--spacing-24), 9vw, 130px);
   background: transparent;
 }
 
