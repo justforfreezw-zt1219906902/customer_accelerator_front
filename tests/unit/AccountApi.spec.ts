@@ -56,10 +56,26 @@ describe('Account Intelligence API contract boundary', () => {
     await expect(getAccountSignals('demo-acc-001')).resolves.toMatchObject({ summary: { active: 1 } });
   });
 
-  it('rejects negative or fractional byType counts', async () => {
-    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify({ summary: { total: 1, active: 1, byType: { hiring: -1 } }, items: [] }), { status: 200 })));
+  it.each([-1, 1.5, '2'])('rejects invalid byType counts: %s', async (count) => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify({ summary: { total: 1, active: 1, byType: { hiring: count } }, items: [] }), { status: 200 })));
     await expect(getAccountSignals('demo-acc-001')).rejects.toMatchObject({ category: 'contract_error' });
   });
+
+  it.each([
+    ['total', { total: -1, active: 0, byType: {} }],
+    ['active', { total: 0, active: 1.5, byType: {} }],
+  ])('rejects invalid summary %s count', async (_name, summary) => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify({ summary, items: [] }), { status: 200 })));
+    await expect(getAccountSignals('demo-acc-001')).rejects.toMatchObject({ category: 'contract_error' });
+  });
+
+  it('accepts an activeSignalCount of zero', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify({ items: [{
+      id: 'a', name: 'A', industry: null, hq: null, lifecycle: 'Lead', activeSignalCount: 0, analysis: null,
+    }] }), { status: 200 })));
+    await expect(listAccounts()).resolves.toMatchObject([{ id: 'a', activeSignalCount: 0 }]);
+  });
+
   it.each([undefined, -1, 1.5])('rejects invalid activeSignalCount %s', async (value) => {
     const item = { id: 'a', name: 'A', industry: null, hq: null, lifecycle: 'Lead', analysis: null, ...(value === undefined ? {} : { activeSignalCount: value }) };
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify({ items: [item] }), { status: 200 })));
