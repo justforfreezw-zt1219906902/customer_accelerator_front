@@ -60,4 +60,9 @@ describe('Account Intelligence API contract boundary', () => {
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify({ summary: { total: 1, active: 1, byType: { hiring: -1 } }, items: [] }), { status: 200 })));
     await expect(getAccountSignals('demo-acc-001')).rejects.toMatchObject({ category: 'contract_error' });
   });
+  it.each([undefined, -1, 1.5])('rejects invalid activeSignalCount %s', async (value) => {
+    const item = { id: 'a', name: 'A', industry: null, hq: null, lifecycle: 'Lead', analysis: null, ...(value === undefined ? {} : { activeSignalCount: value }) };
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify({ items: [item] }), { status: 200 })));
+    await expect(listAccounts()).rejects.toMatchObject({ category: 'contract_error' });
+  });
 });
