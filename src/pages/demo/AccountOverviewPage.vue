@@ -30,10 +30,7 @@ const loadApi = async () => {
   const controller = new AbortController();
   try {
     const detail = await getAccount(accountId.value, controller.signal);
-    apiAccount.value = {
-      ...detail,
-      activeSignalCount: 0,
-    };
+    apiAccount.value = detail;
     try { apiSignals.value = (await getAccountSignals(accountId.value, controller.signal)).items; }
     catch { apiSignalsError.value = 'Buying Signals are unavailable right now.'; }
   } catch (error) {

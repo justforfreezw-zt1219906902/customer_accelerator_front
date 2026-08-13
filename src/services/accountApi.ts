@@ -117,7 +117,6 @@ const listItem = (v: unknown): AccountListDto => {
 };
 const detail = (v: unknown): AccountDetailDto => {
   const a = obj(v);
-  const base = listItem(a);
   const revenue =
     a.revenue === null
       ? null
@@ -128,7 +127,7 @@ const detail = (v: unknown): AccountDetailDto => {
             currency: str(r.currency, true),
           };
         })();
-  let next = null;
+  let detailAnalysis: AccountDetailDto['analysis'] = null;
   if (a.analysis !== null) {
     const x = obj(a.analysis);
     const n =
@@ -143,22 +142,30 @@ const detail = (v: unknown): AccountDetailDto => {
               priority: str(q.priority, true),
             };
           })();
-    next = {
-      ...analysis(a.analysis)!,
+    detailAnalysis = {
+      icpScore: num(x.icpScore)!,
+      icpFit: str(x.icpFit)!,
+      signalScore: num(x.signalScore)!,
+      resonanceScore: num(x.resonanceScore)!,
+      tier: str(x.tier)!,
       whyThisAccount: str(x.whyThisAccount, true),
       whyNow: str(x.whyNow, true),
       nextBestAction: n,
     };
   }
   return {
-    ...base,
+    id: str(a.id)!,
+    name: str(a.name)!,
     domain: str(a.domain)!,
     webUrl: str(a.webUrl)!,
+    industry: str(a.industry, true),
+    hq: str(a.hq, true),
     employees: num(a.employees, true),
     revenue,
     founded: num(a.founded, true),
     description: str(a.description, true),
-    analysis: next,
+    lifecycle: str(a.lifecycle)!,
+    analysis: detailAnalysis,
   };
 };
 const parseSignal = (v: unknown): AccountSignalDto => {

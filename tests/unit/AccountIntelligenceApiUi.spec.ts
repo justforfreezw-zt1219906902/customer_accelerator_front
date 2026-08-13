@@ -9,7 +9,7 @@ vi.mock('../../src/services/accountApi', () => ({
   getAccount: vi.fn(async () => ({
     id: 'api-1', name: 'API Account', industry: null, hq: null, lifecycle: 'Lead',
     domain: 'example.com', webUrl: 'https://example.com', employees: null, revenue: null,
-    founded: null, description: null, activeSignalCount: 0, analysis: null,
+    founded: null, description: null, analysis: null,
   })),
   getAccountSignals: vi.fn(async () => ({
     summary: { total: 4, active: 3, byType: { 'Job Posting': 2, 'Custom Intent Signal': 1, 'News & Events': 1 } },
@@ -31,6 +31,7 @@ vi.mock('../../src/services/accountApi', () => ({
 
 import App from '../../src/App.vue';
 import { createAppRouter } from '../../src/router';
+import { getCommunicationDna } from '../../src/services/accountApi';
 
 beforeEach(() => vi.stubGlobal('scrollTo', vi.fn()));
 afterEach(() => document.body.innerHTML = '');
@@ -75,5 +76,13 @@ describe('API-mode Account Intelligence focused regressions', () => {
     expect(wrapper.text()).toContain('Avoid vague claims');
     expect(wrapper.text()).toContain('2 sources used in the account signal analysis');
     expect(wrapper.text()).not.toContain('14 verified sources');
+  });
+
+  it('renders an existing account with no Communication DNA as a normal empty state', async () => {
+    vi.mocked(getCommunicationDna).mockResolvedValueOnce(null);
+    const wrapper = await mountRoute('/demo/accounts/api-1/dna');
+    expect(wrapper.text()).toContain('API Account');
+    expect(wrapper.text()).toContain('No Communication DNA is available for this account.');
+    expect(wrapper.text()).not.toContain('Communication DNA is unavailable right now.');
   });
 });

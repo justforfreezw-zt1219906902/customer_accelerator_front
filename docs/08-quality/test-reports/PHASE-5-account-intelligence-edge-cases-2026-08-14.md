@@ -8,11 +8,15 @@ safe null signal sources, accessible ScoreIndicator null labels, dynamic DNA
 rules/source rendering, and required non-negative integer counts for account and
 signal summaries.
 
-Focused validation passed: typecheck, focused parser/UI regression tests (22
-tests), full unit suite (172 tests), production build, and governance
-validators. Dynamic API Signal tabs render arbitrary returned signal types and
-filter through `visibleApiSignals`; neutral API null states and DNA edge cases
-are covered. Parser coverage includes fractional/string `byType` counts,
-invalid total/active summary counts, and a valid zero `activeSignalCount`.
-One pre-existing ScoreIndicator formatting warning remains. The previous human
-approvals remain preserved as historical evidence.
+Human browser smoke later identified list/detail DTO coupling: the detail
+parser incorrectly required list-only `activeSignalCount`. This hotfix now
+keeps the list and detail contracts separate, accepts unanalyzed detail
+responses with `analysis: null`, and preserves strict list validation.
+
+Focused validation passed: focused parser/UI regression tests (25 tests), full
+unit suite (175 tests), typecheck, production build, and governance validators.
+Coverage includes analyzed and unanalyzed detail responses without
+`activeSignalCount`, strict list-item validation, null Communication DNA, and
+the existing dynamic Signal-tab and neutral-state regressions. One pre-existing
+ScoreIndicator formatting warning remains. The previous human approvals remain
+preserved as historical evidence.

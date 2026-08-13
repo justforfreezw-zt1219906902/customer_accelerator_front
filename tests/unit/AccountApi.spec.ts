@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { listAccounts, getAccountSignals, getCommunicationDna } from '../../src/services/accountApi';
+import { listAccounts, getAccount, getAccountSignals, getCommunicationDna } from '../../src/services/accountApi';
 import { ApiRequestError } from '../../src/utils/apiErrors';
 
 afterEach(() => vi.restoreAllMocks());
@@ -35,6 +35,34 @@ describe('Account Intelligence API contract boundary', () => {
       }), { status: 200, headers: { 'Content-Type': 'application/json' } }),
     ));
     await expect(listAccounts()).resolves.toMatchObject([{ id: 'demo-acc-001', name: 'Oracle' }]);
+  });
+
+  it('accepts an unanalyzed account detail without activeSignalCount', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify({
+      id: 'detail-1', name: 'Unanalyzed Account', domain: 'unanalyzed.example',
+      webUrl: 'https://unanalyzed.example', industry: 'Retail', hq: 'Hamburg',
+      employees: null, revenue: null, founded: null, description: null,
+      lifecycle: 'Lead', analysis: null,
+    }), { status: 200 })));
+    await expect(getAccount('detail-1')).resolves.toMatchObject({
+      id: 'detail-1', name: 'Unanalyzed Account', analysis: null,
+    });
+  });
+
+  it('accepts an analyzed account detail without activeSignalCount', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify({
+      id: 'detail-2', name: 'Analyzed Account', domain: 'analyzed.example',
+      webUrl: 'https://analyzed.example', industry: 'Technology', hq: 'Austin',
+      employees: 12, revenue: { amountM: 4, currency: 'USD' }, founded: 2020,
+      description: 'Analyzed demo account', lifecycle: 'Customer', analysis: {
+        icpScore: 91, icpFit: 'High', signalScore: 88, resonanceScore: 79,
+        tier: 'Focus Accounts', whyThisAccount: 'Strong fit', whyNow: 'Active need',
+        nextBestAction: { action: 'Prepare outreach', rationale: null, timeWindow: null, priority: null },
+      },
+    }), { status: 200 })));
+    await expect(getAccount('detail-2')).resolves.toMatchObject({
+      id: 'detail-2', analysis: { icpScore: 91, nextBestAction: { action: 'Prepare outreach' } },
+    });
   });
 
   it('rejects malformed payloads as contract errors', async () => {

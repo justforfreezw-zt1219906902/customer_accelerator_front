@@ -14,13 +14,18 @@ export interface AccountListDto {
   } | null;
   activeSignalCount: number;
 }
-export interface AccountDetailDto extends Omit<AccountListDto, 'analysis'> {
+export interface AccountDetailDto {
+  id: string;
+  name: string;
   domain: string;
   webUrl: string;
+  industry: string | null;
+  hq: string | null;
   employees: number | null;
   revenue: { amountM: number | null; currency: string | null } | null;
   founded: number | null;
   description: string | null;
+  lifecycle: string;
   analysis: {
     icpScore: number;
     icpFit: string;
