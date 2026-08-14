@@ -188,6 +188,19 @@ implemented_endpoints:
     request_type: LeadRequest
     success_type: LeadSuccessResponse
     status: implemented_approved
+  - operation: Pages 16-18 API integration baseline
+    operation_id: phase6dAccountIntelligenceViews
+    contract_identifier: API-CONTRACT-R2
+    contract_revision: 2
+    backend_semantic_version: 0.0.0
+    backend_version_status: unassigned
+    frontend_version: 0.2.0
+    phase: Phase 6D
+    status: accepted_frozen
+    technical_review: passed
+    human_revalidation: passed
+    human_approval: approved
+    frozen: true
 implemented_route_infrastructure:
   - src/router/index.ts
   - src/router/routes.ts

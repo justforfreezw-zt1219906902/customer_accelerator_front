@@ -39,3 +39,19 @@ verification of Fix 1 must complete before a focused human re-validation of
 the affected behaviors. Only after that re-validation may Phase 6D be frozen
 and Phase 6E closure proceed. This transition does not create a new backend
 contract revision and does not imply release or deployment approval.
+
+## Final post-fix re-validation and freeze
+
+- Post-fix targeted human re-validation: `PASSED`
+- Reviewer: Tom
+- Re-validation date: 2026-08-14
+- `PHASE-6D-FIX-1`: completed
+- Technical final review: `PASSED`
+- Phase 6D final status: `PASS / FROZEN`
+- Phase 6E closure: `CLOSED / PASS`
+
+The original 2026-08-14 human approval remains historical evidence. The later
+technical reopening and corrective implementation are preserved above; they do
+not invalidate the original review. This final re-validation freezes Phase 6D
+and closes Phase 6E. No API-CONTRACT-R3, version change, release or deployment
+authorization is created by this record.

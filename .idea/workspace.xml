@@ -4,17 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa45ec9b-26dc-40ff-98de-dd81c1a64002" name="更改" comment="abm : email-outreach regenerate">
+    <list default="true" id="fa45ec9b-26dc-40ff-98de-dd81c1a64002" name="更改" comment="abm : PHASE 6D FINAL TEST PATCH — OUTREACH REGRESSION ONLY">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/01-roadmap/current-state.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/01-roadmap/current-state.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/01-roadmap/phase-status.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/01-roadmap/phase-status.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/06-traceability/implementation-baseline.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/06-traceability/implementation-baseline.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/product/DnaPortfolioCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/product/DnaPortfolioCard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/product/SignalUrgencyAccountCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/product/SignalUrgencyAccountCard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/demo/ContentStudioPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/demo/ContentStudioPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/demo/DnaPortfolioPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/demo/DnaPortfolioPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/demo/SignalPulsePage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/demo/SignalPulsePage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/accountApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/accountApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/accountApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/accountApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/07-change-control/instructions/PHASE-006D-pages-16-18-backend-integration.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/07-change-control/instructions/PHASE-006D-pages-16-18-backend-integration.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/08-quality/test-reports/phase-6d-backend-integration-human-approval-2026-08-14.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/08-quality/test-reports/phase-6d-backend-integration-human-approval-2026-08-14.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/phases/phase-6-static-pages.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/phases/phase-6-static-pages.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,26 +43,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "master",
-    "javascript.preferred.runtime.type.id": "node",
-    "last_opened_file_path": "/Users/zhaowei/WebstormProjects/customer_accelerator_front",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/Users/zhaowei/WebstormProjects/customer_accelerator_front/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/zhaowei/WebstormProjects/customer_accelerator_front&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/zhaowei/WebstormProjects/customer_accelerator_front/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -393,7 +390,23 @@
       <option name="project" value="LOCAL" />
       <updated>1786713782556</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="abm : PHASE 6D FINAL TEST COMPLETION">
+      <option name="closed" value="true" />
+      <created>1786739116809</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1786739116809</updated>
+    </task>
+    <task id="LOCAL-00039" summary="abm : PHASE 6D FINAL TEST PATCH — OUTREACH REGRESSION ONLY">
+      <option name="closed" value="true" />
+      <created>1786739831185</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1786739831185</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -411,8 +424,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="docs: add phased roadmap and delivery gates" />
-    <MESSAGE value="docs: register project inputs and external sources" />
     <MESSAGE value="docs: bootstrap governance system in repository root" />
     <MESSAGE value="docs: establish governance and source-of-truth policies" />
     <MESSAGE value="docs: define roadmap phase controls and delivery gates" />
@@ -436,6 +447,8 @@
     <MESSAGE value="abm : backend-integration:v1 final fix2" />
     <MESSAGE value="abm : backend-integration:v1 final" />
     <MESSAGE value="abm : email-outreach regenerate" />
-    <option name="LAST_COMMIT_MESSAGE" value="abm : email-outreach regenerate" />
+    <MESSAGE value="abm : PHASE 6D FINAL TEST COMPLETION" />
+    <MESSAGE value="abm : PHASE 6D FINAL TEST PATCH — OUTREACH REGRESSION ONLY" />
+    <option name="LAST_COMMIT_MESSAGE" value="abm : PHASE 6D FINAL TEST PATCH — OUTREACH REGRESSION ONLY" />
   </component>
 </project>

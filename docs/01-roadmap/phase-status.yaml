@@ -253,6 +253,27 @@ phases:
       reviewer: Tom
       approval_date: "2026-07-28"
       instruction: docs/07-change-control/instructions/TASK-P6-APPROVAL-001.md
+    final_closure:
+      phase_6a: PASS / FROZEN
+      phase_6b: PASS / FROZEN
+      phase_6c1: PASS / FROZEN
+      phase_6c2: PASS / FROZEN
+      phase_6d: PASS / FROZEN
+      phase_6e: CLOSED / PASS
+      reviewer: Tom
+      date: "2026-08-14"
+      evidence: docs/08-quality/test-reports/phase-6d-final-freeze-phase-6e-closure-2026-08-14.md
+    phase_6d_backend_integration:
+      implementation_status: complete
+      technical_review: passed
+      human_revalidation: passed
+      human_approval: approved
+      frozen: true
+      contract_identifier: API-CONTRACT-R2
+      backend_contract_revision: 2
+      backend_semantic_version: 0.0.0
+      frontend_version: 0.2.0
+      corrective_task: PHASE-6D-FIX-1
     subphases:
       - id: phase-6a
         name: Landing Page
@@ -476,7 +497,10 @@ phases:
             evidence: docs/08-quality/test-reports/phase-6d-TASK-P6D-003-approval-2026-07-28.md
       - id: phase-6e
         name: Why mi-goTo Page
-        status: approved
+        status: closed
+        result: PASS
+        human_revalidation: passed
+        phase_6d_frozen: true
         current_task: TASK-P6E-002
         active_blocker: null
         next_gate: Phase 6 Static Pages Completion Review

@@ -385,7 +385,7 @@ phase_6d:
   evidence: docs/07-change-control/instructions/TASK-P6D-002-imprint-gate-override-and-implementation.md
 
 phase_6d_backend_integration:
-  implementation_status: changes_required
+  implementation_status: complete
   task: PHASE-006D-pages-16-18-backend-integration
   contract_identifier: API-CONTRACT-R2
   backend_contract_revision: 2
@@ -401,19 +401,43 @@ phase_6d_backend_integration:
     date: "2026-08-14"
   approval_evidence: docs/08-quality/test-reports/phase-6d-backend-integration-human-approval-2026-08-14.md
   technical_review:
-    status: reopened_changes_required
-    reason: post_approval_source_review_findings
+    status: passed
+    prior_status: reopened_changes_required
+    reason: post_approval_source_review_findings_corrected_by_fix_1
   corrective_task: PHASE-6D-FIX-1
-  post_fix_human_revalidation_required: true
-  frozen: false
+  corrective_implementation: PHASE-6D-FIX-1_completed
+  human_revalidation:
+    status: passed
+    reviewer: Tom
+    date: "2026-08-14"
+  post_fix_human_revalidation_required: false
+  frozen: true
+  status: PASS / FROZEN
   governance_follow_ups:
-    - public Pages 16-18 endpoints are not yet represented in docs/05-backend/openapi.yaml
-    - expanded API surface still requires an explicit human contract-revision decision
-    - dedicated parser and API-mode service test coverage remains outstanding
+    - historical: public Pages 16-18 endpoints were initially absent from docs/05-backend/openapi.yaml
+    - historical: expanded API surface initially required an explicit human contract-revision decision
+    - historical contract follow-ups remain preserved in the approval chronology
   evidence: docs/07-change-control/instructions/PHASE-006D-pages-16-18-backend-integration.md
+
+phase_6e_closure:
+  status: closed
+  result: PASS
+  human_revalidation: passed
+  reviewer: Tom
+  date: "2026-08-14"
+  phase_6d_frozen: true
+  production_implementation: none
+  api_contract_change: none
+  database_change: none
+  backend_change: none
+  evidence: docs/08-quality/test-reports/phase-6d-final-freeze-phase-6e-closure-2026-08-14.md
 
 phase_6e:
   implementation_status: approved
+  status: closed
+  result: PASS
+  human_revalidation: passed
+  phase_6d_frozen: true
   task: TASK-P6E-002
   implementation_task: TASK-P6E-001
   task_status: approved
