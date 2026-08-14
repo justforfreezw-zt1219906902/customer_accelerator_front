@@ -385,7 +385,7 @@ phase_6d:
   evidence: docs/07-change-control/instructions/TASK-P6D-002-imprint-gate-override-and-implementation.md
 
 phase_6d_backend_integration:
-  implementation_status: approved
+  implementation_status: changes_required
   task: PHASE-006D-pages-16-18-backend-integration
   contract_identifier: API-CONTRACT-R2
   backend_contract_revision: 2
@@ -395,10 +395,17 @@ phase_6d_backend_integration:
   pages: [Page 16 Signal Pulse, Page 17 Communication DNA Portfolio, Page 18 Content Studio]
   fixture_mode_preserved: true
   api_mode_fallback_to_fixtures: false
-  human_approval: approved
-  approval_date: "2026-08-14"
-  reviewer: Tom
+  human_approval:
+    status: approved
+    reviewer: Tom
+    date: "2026-08-14"
   approval_evidence: docs/08-quality/test-reports/phase-6d-backend-integration-human-approval-2026-08-14.md
+  technical_review:
+    status: reopened_changes_required
+    reason: post_approval_source_review_findings
+  corrective_task: PHASE-6D-FIX-1
+  post_fix_human_revalidation_required: true
+  frozen: false
   governance_follow_ups:
     - public Pages 16-18 endpoints are not yet represented in docs/05-backend/openapi.yaml
     - expanded API surface still requires an explicit human contract-revision decision

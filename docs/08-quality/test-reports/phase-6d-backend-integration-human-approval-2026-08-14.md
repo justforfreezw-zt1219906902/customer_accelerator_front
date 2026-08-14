@@ -26,3 +26,16 @@ parser/API-mode service test coverage remains outstanding.
 
 No application code, versions, API-CONTRACT-R3, Git state, release, or
 deployment was changed by this approval record.
+
+## Follow-up status
+
+The original human browser review was completed and approved by Tom on
+2026-08-14. A later technical source review identified defects requiring
+`PHASE-6D-FIX-1`. The original approval remains historical audit evidence;
+it was not fabricated, withdrawn, or replaced.
+
+Phase 6D is temporarily reopened for corrective implementation. Technical
+verification of Fix 1 must complete before a focused human re-validation of
+the affected behaviors. Only after that re-validation may Phase 6D be frozen
+and Phase 6E closure proceed. This transition does not create a new backend
+contract revision and does not imply release or deployment approval.

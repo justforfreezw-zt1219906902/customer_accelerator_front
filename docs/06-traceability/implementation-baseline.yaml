@@ -691,7 +691,7 @@ notes:
   - Phase 4C Sections and DEV-2026-009 were approved by Tom.
 
 phase_6d_backend_integration:
-  status: approved
+  status: changes_required
   implementation_task: PHASE-006D-pages-16-18-backend-integration
   pages: [Page 16 Signal Pulse, Page 17 Communication DNA Portfolio, Page 18 Content Studio]
   contract_identifier: API-CONTRACT-R2
@@ -703,6 +703,10 @@ phase_6d_backend_integration:
   fixture_mode_preserved: true
   api_mode_fallback_to_fixtures: false
   human_approval: approved
+  frozen: false
+  technical_review_status: reopened_changes_required
+  corrective_task: PHASE-6D-FIX-1
+  post_fix_human_revalidation_required: true
   approval:
     reviewer: Tom
     date: "2026-08-14"
