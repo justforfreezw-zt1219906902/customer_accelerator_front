@@ -1,6 +1,6 @@
 import { flushPromises, mount } from '@vue/test-utils';
 import { createMemoryHistory } from 'vue-router';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 vi.mock('../../src/app/configuration/environment', () => ({
   getRuntimeConfig: () => ({ apiBaseUrl: 'http://localhost:8080', demoDataSource: 'api' }),
@@ -60,6 +60,7 @@ const deferred = <T>() => {
 
 describe('Phase 6D API-mode UI regressions', () => {
   beforeEach(() => vi.clearAllMocks());
+  afterEach(() => vi.unstubAllGlobals());
 
   it('uses backend Signal Pulse metrics and urgency filters without fixture patterns', async () => {
     const wrapper = await mountRoute('/demo/signals');
@@ -174,6 +175,65 @@ describe('Phase 6D API-mode UI regressions', () => {
     expect(wrapper.text()).toContain('Account B');
     expect((wrapper.get('[aria-label="Anchor Signal"]').element as HTMLSelectElement).value).toBe('signal-uuid-b');
     expect((wrapper.get('[aria-label="Subject line"]').element as HTMLInputElement).value).toBe('');
+  });
+
+  it('preserves every API outreach draft field after provider failure', async () => {
+    vi.mocked(listAccounts).mockResolvedValue([{ id: 'uuid-a', name: 'Account A', industry: null, hq: null, lifecycle: 'Lead', activeSignalCount: 1, analysis: null }]);
+    vi.mocked(getAccount).mockResolvedValue({ id: 'uuid-a', name: 'Account A', domain: 'api.test', webUrl: 'https://api.test', industry: null, hq: null, employees: null, revenue: null, founded: null, description: null, lifecycle: 'Lead', analysis: null });
+    vi.mocked(getAccountSignals).mockResolvedValue({ summary: { total: 1, active: 1, byType: {} }, items: [{ id: 'active-signal', type: 'News', title: 'Active signal', body: null, strength: 'high', relevance: null, signalDate: null, signalDateRaw: null, freshnessLabel: null, evidenceStatus: 'DERIVED', verified: true, isActive: true, scoreEligible: true, source: null }] });
+    vi.mocked(getCommunicationDna).mockResolvedValue(null);
+    vi.mocked(generateOutreachEmail).mockRejectedValueOnce(new Error('provider unavailable'));
+    const wrapper = await mountRoute('/demo/content-studio?account=uuid-a');
+    await wrapper.findAll('.studio-asset-tabs button').find((button) => button.text() === 'Outreach Email')!.trigger('click');
+    await wrapper.get('[aria-label="Subject line"]').setValue('manual subject');
+    await wrapper.get('[aria-label="Opening"]').setValue('manual opening');
+    await wrapper.get('[aria-label="Value"]').setValue('manual value');
+    await wrapper.get('[aria-label="CTA"]').setValue('manual cta');
+    await wrapper.findAll('button').find((button) => button.text() === 'Regenerate')!.trigger('click');
+    await flushPromises();
+    expect((wrapper.get('[aria-label="Subject line"]').element as HTMLInputElement).value).toBe('manual subject');
+    expect((wrapper.get('[aria-label="Opening"]').element as HTMLTextAreaElement).value).toBe('manual opening');
+    expect((wrapper.get('[aria-label="Value"]').element as HTMLTextAreaElement).value).toBe('manual value');
+    expect((wrapper.get('[aria-label="CTA"]').element as HTMLInputElement).value).toBe('manual cta');
+    expect(wrapper.text()).toContain('Your draft was not changed');
+  });
+
+  it('copies the current API Outreach Email draft rather than fixture ad content', async () => {
+    const writeText = vi.fn();
+    vi.stubGlobal('navigator', { clipboard: { writeText } });
+    vi.mocked(listAccounts).mockResolvedValue([{ id: 'uuid-a', name: 'Account A', industry: null, hq: null, lifecycle: 'Lead', activeSignalCount: 1, analysis: null }]);
+    vi.mocked(getAccount).mockResolvedValue({ id: 'uuid-a', name: 'Account A', domain: 'api.test', webUrl: 'https://api.test', industry: null, hq: null, employees: null, revenue: null, founded: null, description: null, lifecycle: 'Lead', analysis: null });
+    vi.mocked(getAccountSignals).mockResolvedValue({ summary: { total: 1, active: 1, byType: {} }, items: [{ id: 'active-signal', type: 'News', title: 'Active signal', body: null, strength: 'high', relevance: null, signalDate: null, signalDateRaw: null, freshnessLabel: null, evidenceStatus: 'DERIVED', verified: true, isActive: true, scoreEligible: true, source: null }] });
+    const wrapper = await mountRoute('/demo/content-studio?account=uuid-a');
+    await wrapper.findAll('.studio-asset-tabs button').find((button) => button.text() === 'Outreach Email')!.trigger('click');
+    await wrapper.get('[aria-label="Opening"]').setValue('copy opening');
+    await wrapper.get('[aria-label="Value"]').setValue('copy value');
+    await wrapper.get('[aria-label="CTA"]').setValue('copy cta');
+    await wrapper.get('[aria-label="Signature name"]').setValue('Copy Sender');
+    await wrapper.find('.email-preview button').trigger('click');
+    expect(writeText).toHaveBeenCalledOnce();
+    const copied = writeText.mock.calls[0][0] as string;
+    for (const value of ['copy opening', 'copy value', 'copy cta', 'Copy Sender']) expect(copied).toContain(value);
+    expect(copied).not.toContain('BUILT FOR THE ENTERPRISE');
+  });
+
+  it('shows real API traceability only after successful outreach generation', async () => {
+    vi.mocked(listAccounts).mockResolvedValue([{ id: 'uuid-a', name: 'Account A', industry: null, hq: null, lifecycle: 'Lead', activeSignalCount: 2, analysis: null }]);
+    vi.mocked(getAccount).mockResolvedValue({ id: 'uuid-a', name: 'Account A', domain: 'api.test', webUrl: 'https://api.test', industry: null, hq: null, employees: null, revenue: null, founded: null, description: null, lifecycle: 'Lead', analysis: null });
+    vi.mocked(getAccountSignals).mockResolvedValue({ summary: { total: 2, active: 2, byType: {} }, items: [{ id: 'active-signal', type: 'News', title: 'Anchor title', body: null, strength: 'high', relevance: null, signalDate: null, signalDateRaw: null, freshnessLabel: null, evidenceStatus: 'DERIVED', verified: true, isActive: true, scoreEligible: true, source: null }, { id: 'supporting-signal-id', type: 'Hiring', title: 'Supporting title', body: null, strength: 'medium', relevance: null, signalDate: null, signalDateRaw: null, freshnessLabel: null, evidenceStatus: 'DERIVED', verified: true, isActive: true, scoreEligible: true, source: null }] });
+    vi.mocked(generateOutreachEmail).mockResolvedValue({ generatedParts: { subject: 'generated subject' }, traceability: { anchorSignalId: 'active-signal', supportingSignalIds: ['supporting-signal-id'], communicationDnaUsed: true, analysisUsed: false } });
+    const wrapper = await mountRoute('/demo/content-studio?account=uuid-a');
+    await wrapper.findAll('.studio-asset-tabs button').find((button) => button.text() === 'Outreach Email')!.trigger('click');
+    expect(wrapper.text()).toContain('No generation trace available yet');
+    await wrapper.findAll('button').find((button) => button.text() === 'Regenerate')!.trigger('click');
+    await flushPromises();
+    expect(wrapper.text()).toContain('Backend generation trace available');
+    await wrapper.find('.email-preview-column .studio-traceability').trigger('click');
+    const trace = wrapper.find('.email-preview-column .studio-trace-detail').text();
+    expect(trace).toContain('Anchor Signal: Anchor title');
+    expect(trace).toContain('Supporting Signals: Supporting title');
+    expect(trace).toContain('Communication DNA used: Yes');
+    expect(trace).toContain('Account analysis used: No');
   });
 
   it('clears the selected-account loading state when query navigation returns to the selector', async () => {
