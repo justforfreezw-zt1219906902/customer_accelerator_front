@@ -101,13 +101,13 @@ const chooseMetric = (value: PulseFilter | 'strategy') => {
   }
 };
 const draftContent = () => router.push('/demo/content-studio');
-const displayMetrics = computed(() => apiPulse.value?.metrics ?? { activeSignals: 42, newThisWeek: 2, hotAccounts: 3, goingCold: 129 });
+const displayMetrics = computed(() => apiMode ? (apiPulse.value?.metrics ?? { activeSignals: 0, newThisWeek: 0, hotAccounts: 0, goingCold: 0 }) : { activeSignals: 42, newThisWeek: 2, hotAccounts: 3, goingCold: 129 });
 </script>
 
 <template>
   <section v-if="apiMode && apiLoading" class="pulse-page" aria-live="polite"><h1 data-page-heading>Loading Signal Pulse…</h1></section>
   <section v-else-if="apiMode && apiError" class="pulse-page" role="alert"><h1 data-page-heading>Signal Pulse unavailable</h1><p>{{ apiError }}</p><button type="button" @click="loadApi">Retry</button></section>
-  <section class="pulse-page" aria-labelledby="pulse-title">
+  <section v-else class="pulse-page" aria-labelledby="pulse-title">
     <header class="pulse-page__header">
       <div>
         <h1 id="pulse-title" data-page-heading>Signal Pulse</h1>

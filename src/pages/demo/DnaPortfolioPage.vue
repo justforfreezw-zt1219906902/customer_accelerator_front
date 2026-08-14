@@ -22,12 +22,22 @@ const tier = ref('All');
 const industry = ref('All');
 const selected = ref(new Set<string>(apiMode ? [] : ['demo-acc-006']));
 const apiVisibleItems = computed(() => (apiPortfolio.value?.items ?? []).filter((item) => (apiTier.value === 'All' || item.tier === apiTier.value) && (apiIndustry.value === 'All' || item.industry === apiIndustry.value)));
+const apiAllVisibleSelected = computed(() => apiVisibleItems.value.length > 0 && apiVisibleItems.value.every((item) => selected.value.has(item.accountId)));
+const toggleApiAllVisible = () => {
+  const next = new Set(selected.value);
+  for (const item of apiVisibleItems.value) {
+    if (apiAllVisibleSelected.value) next.delete(item.accountId);
+    else next.add(item.accountId);
+  }
+  selected.value = next;
+  void apiCompareSelection();
+};
 const apiToggle = (id: string) => { const next = new Set(selected.value); if (next.has(id)) next.delete(id); else next.add(id); selected.value = next; void apiCompareSelection(); };
 let compareGeneration = 0;
 const apiCompareSelection = async () => {
+  const generation = ++compareGeneration;
   const ids = [...selected.value]; apiCompare.value = undefined; apiCompareError.value = '';
   if (ids.length < 2) return;
-  const generation = ++compareGeneration;
   try { const result = await compareDnaPortfolio(ids); if (generation === compareGeneration) apiCompare.value = result; } catch { if (generation === compareGeneration) apiCompareError.value = 'Comparison is unavailable right now.'; }
 };
 const loadApi = async () => { apiLoading.value = true; apiError.value = ''; try { apiPortfolio.value = await getDnaPortfolio(); } catch { apiError.value = 'Communication DNA portfolio is unavailable right now.'; } finally { apiLoading.value = false; } };
@@ -121,9 +131,9 @@ const viewDna = (id: string) => router.push(`/demo/accounts/${id}/dna`);
     <header><h1 id="portfolio-api-title" data-page-heading>Communication DNA</h1><p>Compare how your target accounts communicate — select accounts to find shared patterns</p></header>
     <div class="portfolio-page__filters"><span>Tier:</span><button type="button" :aria-pressed="apiTier === 'All'" @click="apiTier = 'All'">All ({{ apiPortfolio?.summary.totalProfiles ?? 0 }})</button><button v-for="[value, total] in Object.entries(apiPortfolio?.summary.byTier ?? {})" :key="value" type="button" :aria-pressed="apiTier === value" @click="apiTier = value">{{ value }} ({{ total }})</button></div>
     <div class="portfolio-page__filters"><span>Industry:</span><button type="button" :aria-pressed="apiIndustry === 'All'" @click="apiIndustry = 'All'">All</button><button v-for="[value, total] in Object.entries(apiPortfolio?.summary.byIndustry ?? {})" :key="value" type="button" :aria-pressed="apiIndustry === value" @click="apiIndustry = value">{{ value }} ({{ total }})</button></div>
-    <div class="portfolio-page__selection"><button type="button" @click="selected = new Set(apiVisibleItems.map((item) => item.accountId)); void apiCompareSelection()">Select All Visible</button></div>
+    <div class="portfolio-page__selection"><button type="button" @click="toggleApiAllVisible">{{ apiAllVisibleSelected ? 'Deselect All Visible' : 'Select All Visible' }}</button></div>
     <div v-if="apiVisibleItems.length" class="portfolio-page__grid"><DnaPortfolioCard v-for="item in apiVisibleItems" :key="item.accountId" :account="{ id: item.accountId, name: item.name, initials: item.name.slice(0, 2).toUpperCase(), industry: item.industry, tier: item.tier, activeSignalCount: item.activeSignalCount }" :profile="{ tone: item.tone, vocabulary: item.vocabulary }" :selected="selected.has(item.accountId)" @toggle="apiToggle(item.accountId)" @view="viewDna(item.accountId)" /></div><p v-else class="portfolio-page__empty" role="status">No portfolio profiles are available.</p>
-    <section v-if="apiCompare" class="portfolio-page__analysis" aria-labelledby="analysis-api-title"><h2 id="analysis-api-title">Cross-account analysis</h2><p>{{ apiCompare.selectedCount }} selected accounts</p><p v-for="item in apiCompare.dominantTone" :key="item.value">{{ item.value }} — {{ item.count }}</p><template v-if="apiCompare.problemFraming.length"><p v-for="item in apiCompare.problemFraming" :key="item.accountId"><strong>{{ item.accountName }}:</strong> {{ item.value ?? 'Not available' }}</p></template></section><p v-else-if="apiCompareError" role="alert">{{ apiCompareError }} <button type="button" @click="apiCompareSelection">Retry Compare</button></p><p v-else-if="selected.size < 2" class="portfolio-page__empty">Select at least two accounts to compare.</p>
+    <section v-if="apiCompare" class="portfolio-page__analysis" aria-labelledby="analysis-api-title"><h2 id="analysis-api-title">Cross-account analysis</h2><p>{{ apiCompare.selectedCount }} selected accounts</p><article v-for="[title, values] in [['Dominant tone', apiCompare.dominantTone], ['Shared vocabulary', apiCompare.sharedVocabulary], ['Unique vocabulary', apiCompare.uniqueVocabulary], ['Proof styles', apiCompare.proofStyles], ['CTA styles', apiCompare.ctaStyles], ['Do rules', apiCompare.doRules], ['Do not rules', apiCompare.dontRules], ['Signal types', apiCompare.signalTypes]]" :key="title"><h3>{{ title }}</h3><p v-if="!values.length">Not available</p><p v-for="item in values" :key="item.value">{{ item.value }} — {{ item.count }}</p></article><article><h3>Problem framing</h3><p v-if="!apiCompare.problemFraming.length">Not available</p><p v-for="item in apiCompare.problemFraming" :key="item.accountId"><strong>{{ item.accountName }}:</strong> {{ item.value ?? 'Not available' }}</p></article></section><p v-else-if="apiCompareError" role="alert">{{ apiCompareError }} <button type="button" @click="apiCompareSelection">Retry Compare</button></p><p v-else-if="selected.size < 2" class="portfolio-page__empty">Select at least two accounts to compare.</p>
   </section>
   <section v-else class="portfolio-page" aria-labelledby="portfolio-title">
     <header>

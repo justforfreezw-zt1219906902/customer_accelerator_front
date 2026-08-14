@@ -13,9 +13,10 @@ import type {
   ContentStudioContext,
   SalesTalkingPointsDraft,
 } from '../../demo/contentStudio';
-import type { DemoAccountIdentity, DemoAccountTier } from '../../demo/types';
+import type { DemoAccountIdentity } from '../../demo/types';
 import { getRuntimeConfig } from '../../app/configuration/environment';
 import { getAccount, getAccountSignals, getCommunicationDna, listAccounts, generateOutreachEmail } from '../../services/accountApi';
+import { ApiRequestError } from '../../utils/apiErrors';
 import type { AccountDetailDto, AccountListDto, AccountSignalDto, CommunicationDnaDto, OutreachEmailPart, OutreachEmailGenerationResponse } from '../../types/accountApi';
 
 const route = useRoute();
@@ -31,6 +32,9 @@ const apiSelectedSignals = ref<AccountSignalDto[]>([]);
 const apiSelectedDna = ref<CommunicationDnaDto | null>();
 const apiLoading = ref(apiMode);
 const apiError = ref('');
+const apiSelectedLoading = ref(false);
+const apiSelectedError = ref('');
+let accountLoadGeneration = 0;
 const selectedAccount = computed<DemoAccountIdentity | AccountListDto | AccountDetailDto | undefined>(() => apiMode ? apiSelectedAccount.value : (accountQuery.value ? demoAccountProvider.findAccountById(accountQuery.value) : undefined));
 const selectedTier = computed(() => {
   const account = selectedAccount.value;
@@ -42,7 +46,7 @@ const invalidAccount = computed(
 );
 const query = ref('');
 const industry = ref('all');
-const tier = ref<'all' | DemoAccountTier>('all');
+const tier = ref<string>('all');
 const lifecycle = ref('all');
 const persona = ref(defaultContentStudioContext().persona);
 const asset = ref(defaultContentStudioContext().asset);
@@ -84,7 +88,7 @@ const emailValue = ref(apiMode ? '' : 'Oracle Fusion 26C retraining creates a ti
 const emailCta = ref(apiMode ? '' : 'worth a quick look?');
 const signatureName = ref('[Your name]');
 const signatureTitle = ref('[Your title]');
-const signatureUrl = ref('techsmith.com');
+const signatureUrl = ref(apiMode ? '' : 'techsmith.com');
 const emailBestPracticeOpen = ref(true);
 const emailGenerating = ref(false);
 const emailError = ref('');
@@ -177,10 +181,10 @@ const submitEmailGeneration = async (parts: OutreachEmailPart[]) => {
   emailGenerating.value = true; emailError.value = '';
   try {
     const result = await generateOutreachEmail(accountQuery.value, { persona: persona.value, anchorSignalId: anchorSignal.value, parts, currentDraft: { subject: emailSubject.value, opening: emailOpening.value, value: emailValue.value, cta: emailCta.value } });
-    if (result.generatedParts.subject !== undefined) emailSubject.value = result.generatedParts.subject;
-    if (result.generatedParts.opening !== undefined) emailOpening.value = result.generatedParts.opening;
-    if (result.generatedParts.value !== undefined) emailValue.value = result.generatedParts.value;
-    if (result.generatedParts.cta !== undefined) emailCta.value = result.generatedParts.cta;
+    if (parts.includes('subject') && result.generatedParts.subject !== undefined) emailSubject.value = result.generatedParts.subject;
+    if (parts.includes('opening') && result.generatedParts.opening !== undefined) emailOpening.value = result.generatedParts.opening;
+    if (parts.includes('value') && result.generatedParts.value !== undefined) emailValue.value = result.generatedParts.value;
+    if (parts.includes('cta') && result.generatedParts.cta !== undefined) emailCta.value = result.generatedParts.cta;
     emailTrace.value = result.traceability;
   } catch { emailError.value = 'Outreach generation is unavailable right now. Your draft was not changed.'; } finally { emailGenerating.value = false; }
 };
@@ -256,24 +260,61 @@ const clearLogo = () => (logoPreview.value = null);
 watch(selectedAccount, (account) => {
   if (account && !apiMode) generatedDefaults();
 });
+const resetApiSelectedContext = () => {
+  apiSelectedAccount.value = undefined;
+  apiSelectedSignals.value = [];
+  apiSelectedDna.value = undefined;
+  anchorSignal.value = '';
+  emailTrace.value = undefined;
+  emailError.value = '';
+  emailSubject.value = '';
+  emailOpening.value = '';
+  emailValue.value = '';
+  emailCta.value = '';
+};
+const loadSelectedApiAccount = async (id: string | null) => {
+  const generation = ++accountLoadGeneration;
+  resetApiSelectedContext();
+  apiSelectedError.value = '';
+  if (!id) return;
+  apiSelectedLoading.value = true;
+  try {
+    const account = await getAccount(id);
+    const [signals, dna] = await Promise.all([getAccountSignals(id), getCommunicationDna(id)]);
+    if (generation !== accountLoadGeneration) return;
+    apiSelectedAccount.value = account;
+    apiSelectedSignals.value = signals.items.filter((signal) => signal.isActive);
+    apiSelectedDna.value = dna;
+    anchorSignal.value = apiSelectedSignals.value[0]?.id ?? '';
+  } catch (error) {
+    if (generation !== accountLoadGeneration) return;
+    apiSelectedError.value = error instanceof ApiRequestError && error.status === 404
+      ? 'Account not found'
+      : 'Content Studio data is unavailable right now.';
+  } finally {
+    if (generation === accountLoadGeneration) apiSelectedLoading.value = false;
+  }
+};
 const loadApiAccounts = async () => {
   if (!apiMode) return;
   apiLoading.value = true; apiError.value = '';
   try {
     apiAccounts.value = await listAccounts();
-    if (accountQuery.value) {
-      apiSelectedAccount.value = await getAccount(accountQuery.value);
-      const [signals, dna] = await Promise.all([getAccountSignals(accountQuery.value), getCommunicationDna(accountQuery.value)]);
-      apiSelectedSignals.value = signals.items.filter((signal) => signal.isActive);
-      apiSelectedDna.value = dna;
-      anchorSignal.value = apiSelectedSignals.value[0]?.id ?? '';
-    }
   } catch (error) {
     apiError.value = error instanceof Error ? error.message : 'Content Studio data is unavailable right now.';
-  } finally { apiLoading.value = false; }
+  } finally {
+    apiLoading.value = false;
+    if (!apiError.value) void loadSelectedApiAccount(accountQuery.value);
+  }
 };
 onMounted(() => { if (apiMode) void loadApiAccounts(); });
+watch(accountQuery, (id, previous) => {
+  if (apiMode && id !== previous && !apiLoading.value) void loadSelectedApiAccount(id);
+});
 const industries = computed(() => apiMode ? [...new Set(apiAccounts.value.map((account) => account.industry).filter((value): value is string => Boolean(value)))] : [...new Set(accounts.map((account) => account.industry))]);
+const tiers = computed(() => apiMode
+  ? [...new Set(apiAccounts.value.map((account) => account.analysis?.tier).filter((value): value is string => Boolean(value)))]
+  : ['Focus Accounts', 'Tier 1', 'Tier 2', 'Below ICP']);
 const lifecycles = computed(() => apiMode ? [...new Set(apiAccounts.value.map((account) => account.lifecycle))] : [...new Set(Object.values(contentStudioLifecycle))]);
 const filteredAccounts = computed(() => {
   const needle = query.value.trim().toLocaleLowerCase();
@@ -322,6 +363,12 @@ const clearFilters = () => {
     <template v-else-if="apiMode && apiError">
       <div class="studio-page__invalid" role="alert"><h1 id="studio-title">Content Studio unavailable</h1><p>{{ apiError }}</p><button type="button" @click="loadApiAccounts">Retry</button></div>
     </template>
+    <template v-else-if="apiMode && apiSelectedLoading">
+      <div class="studio-page__invalid" aria-live="polite"><h1 id="studio-title">Loading account context…</h1></div>
+    </template>
+    <template v-else-if="apiMode && apiSelectedError">
+      <div class="studio-page__invalid" role="alert"><h1 id="studio-title">{{ apiSelectedError === 'Account not found' ? 'Account not found' : 'Content Studio unavailable' }}</h1><p>{{ apiSelectedError }}</p><button type="button" @click="loadSelectedApiAccount(accountQuery)">Retry</button></div>
+    </template>
     <template v-else-if="invalidAccount">
       <div class="studio-page__invalid" role="alert">
         <h1 id="studio-title">Account not found</h1>
@@ -337,8 +384,7 @@ const clearFilters = () => {
           <p class="studio-page__eyebrow">CONTENT STUDIO</p>
           <h1 id="studio-title">Content Studio</h1>
           <p>
-            Everything you need to build a LinkedIn Ad for
-            {{ selectedAccount.name }} — every part sourced.
+            {{ apiMode ? `Build source-grounded content for ${selectedAccount.name}.` : `Everything you need to build a LinkedIn Ad for ${selectedAccount.name} — every part sourced.` }}
           </p>
         </div>
       </header>
@@ -791,15 +837,15 @@ const clearFilters = () => {
               </header>
               <div class="email-paper">
                 <p>
-                  <b>FROM</b><br />{{ signatureName }} &lt;you@techsmith.com&gt;
+                  <b>FROM</b><br />{{ signatureName }} &lt;{{ apiMode ? (signatureUrl || '[your email]') : 'you@techsmith.com' }}&gt;
                 </p>
                 <p>
                   <b>TO</b><br />{{ recipientFirst || 'Head of Marketing' }}
-                  {{ recipientLast }} · Oracle
+                  {{ recipientLast }} · {{ selectedAccount.name }}
                 </p>
                 <p><b>SUBJECT</b><br />{{ emailSubject }}</p>
                 <pre>{{ emailBodyText }}</pre>
-                <small>✓ Plain text · ✓ Interest CTA · ✓ Source grounded</small>
+                <small>✓ Plain text · ✓ Interest CTA · {{ apiMode && !emailTrace ? 'No generation trace available yet' : '✓ Source grounded' }}</small>
               </div>
             </article>
             <div class="email-checks">
@@ -822,8 +868,17 @@ const clearFilters = () => {
               type="button"
               @click="traceOpen = !traceOpen"
             >
-              ▸ Traceability · 9 sourced elements
+              ▸ Traceability · {{ apiMode && !emailTrace ? 'No generation trace available yet' : 'backend generation trace available' }}
             </button>
+            <div v-if="traceOpen && apiMode" class="studio-trace-detail">
+              <template v-if="emailTrace">
+                <p>Anchor Signal: {{ apiSelectedSignals.find((signal) => signal.id === emailTrace?.anchorSignalId)?.title || emailTrace.anchorSignalId }}</p>
+                <p>Supporting Signals: {{ emailTrace.supportingSignalIds.length ? emailTrace.supportingSignalIds.map((id) => apiSelectedSignals.find((signal) => signal.id === id)?.title || id).join(', ') : 'None' }}</p>
+                <p>Communication DNA used: {{ emailTrace.communicationDnaUsed ? 'Yes' : 'No' }}</p>
+                <p>Account analysis used: {{ emailTrace.analysisUsed ? 'Yes' : 'No' }}</p>
+              </template>
+              <p v-else>No generation trace available yet</p>
+            </div>
           </div>
         </section>
       </template>
@@ -1052,9 +1107,7 @@ const clearFilters = () => {
         <label
           >Tier<select v-model="tier" aria-label="Tier">
             <option value="all">All tiers</option>
-            <option>Focus Accounts</option>
-            <option>Tier 1</option>
-            <option>Tier 2</option>
+            <option v-for="value in tiers" :key="value" :value="value">{{ value }}</option>
           </select></label
         >
         <label

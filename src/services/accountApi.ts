@@ -10,6 +10,7 @@ import type {
   DnaPortfolioDto,
   OutreachEmailGenerationRequest,
   OutreachEmailGenerationResponse,
+  OutreachEmailPart,
   SignalPulseDto,
 } from '../types/accountApi';
 import type { DemoDataStatus } from '../demo/types';
@@ -308,7 +309,15 @@ export const compareDnaPortfolio = async (accountIds: string[], signal?: AbortSi
 export const generateOutreachEmail = async (accountId: string, request: OutreachEmailGenerationRequest, signal?: AbortSignal): Promise<OutreachEmailGenerationResponse> => {
   const x = obj(await requestJson({ baseUrl: getRuntimeConfig().apiBaseUrl, path: `/api/accounts/${encodeURIComponent(accountId)}/outreach-email/generate`, method: 'POST', signal, body: request }));
   const generated = obj(x.generatedParts); const generatedParts: Partial<Record<OutreachEmailGenerationRequest['parts'][number], string>> = {};
-  for (const key of ['subject', 'opening', 'value', 'cta'] as const) if (key in generated) generatedParts[key] = str(generated[key])!;
+  const requested = new Set(request.parts);
+  const known = new Set(['subject', 'opening', 'value', 'cta']);
+  for (const key of Object.keys(generated)) {
+    if (!known.has(key) || !requested.has(key as OutreachEmailPart)) throw new ApiRequestError('contract_error', apiErrorMessages.contract_error);
+    const value = str(generated[key]);
+    if (value === null || !value.trim()) throw new ApiRequestError('contract_error', apiErrorMessages.contract_error);
+    generatedParts[key as OutreachEmailPart] = value;
+  }
+  for (const key of request.parts) if (!(key in generatedParts)) throw new ApiRequestError('contract_error', apiErrorMessages.contract_error);
   const trace = obj(x.traceability); if (!Array.isArray(trace.supportingSignalIds)) throw new ApiRequestError('contract_error', apiErrorMessages.contract_error);
   return { generatedParts, traceability: { anchorSignalId: str(trace.anchorSignalId)!, supportingSignalIds: trace.supportingSignalIds.map((id) => str(id)!), communicationDnaUsed: bool(trace.communicationDnaUsed), analysisUsed: bool(trace.analysisUsed) } };
 };
