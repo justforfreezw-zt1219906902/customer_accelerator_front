@@ -1,14 +1,25 @@
 <script setup lang="ts">
-import type { DemoPulseAccount } from '../../demo/types';
 import TierBadge from './TierBadge.vue';
-defineProps<{ account: DemoPulseAccount; outreach?: boolean }>();
+export interface SignalUrgencyAccountViewModel {
+  accountId?: string;
+  name: string;
+  initials: string;
+  industry: string | null;
+  tier: string | null;
+  activeSignalCount: number;
+  latestActiveSignalDate: string | null;
+  nextBestAction: string | null;
+  signals: Array<{ id: string; title: string; strength: string; signalDate: string | null }>;
+  routability?: string;
+}
+defineProps<{ account: SignalUrgencyAccountViewModel; outreach?: boolean }>();
 </script>
 
 <template>
   <component
     :is="account.accountId ? 'a' : 'article'"
     class="signal-urgency-card"
-    :class="`signal-urgency-card--${account.tier.toLowerCase().replaceAll(' ', '-')}`"
+    :class="account.tier ? `signal-urgency-card--${account.tier.toLowerCase().replaceAll(' ', '-')}` : undefined"
     :href="
       account.accountId ? `/demo/accounts/${account.accountId}` : undefined
     "
@@ -23,7 +34,7 @@ defineProps<{ account: DemoPulseAccount; outreach?: boolean }>();
         <span>{{ account.initials }}</span>
         <div>
           <h3>{{ account.name }}</h3>
-          <p>{{ account.industry }}</p>
+          <p>{{ account.industry ?? 'Not available' }}</p>
         </div>
       </div>
       <TierBadge :tier="account.tier" />
@@ -41,18 +52,18 @@ defineProps<{ account: DemoPulseAccount; outreach?: boolean }>();
       </ul>
       <p v-else>No signals yet</p>
       <span class="signal-urgency-card__eyebrow">→ NEXT BEST ACTION</span>
-      <strong>{{ account.nextBestAction }}</strong>
+      <strong>{{ account.nextBestAction ?? 'Not available' }}</strong>
       <p v-if="outreach" class="signal-urgency-card__outreach">
         Outreach insight uses this existing signal evidence only.
       </p>
     </div>
     <div class="signal-urgency-card__meta">
       <strong>{{
-        account.signals.length === 8 ? 14 : account.signals.length
+        account.activeSignalCount
       }}</strong
       ><small>SIGNALS</small
       ><span>{{
-        account.signals.length ? 'This week' : 'No signals yet'
+        account.activeSignalCount > 0 ? (account.latestActiveSignalDate ?? 'Date unavailable') : 'No active signals'
       }}</span>
     </div>
   </component>

@@ -7,10 +7,18 @@ import {
 } from '../../components/product';
 import { demoAccountProvider } from '../../demo/demoAccountProvider';
 import type { DemoPulseAccount, DemoPulsePersona } from '../../demo/types';
+import { getRuntimeConfig } from '../../app/configuration/environment';
+import { getSignalPulse } from '../../services/accountApi';
+import type { SignalPulseAccountDto, SignalPulseDto } from '../../types/accountApi';
+import type { SignalUrgencyAccountViewModel } from '../../components/product/SignalUrgencyAccountCard.vue';
 
 type PulseFilter = 'all' | 'new' | 'hot' | 'cold';
 const router = useRouter();
 const pulse = demoAccountProvider.getSignalPulse();
+const apiMode = getRuntimeConfig().demoDataSource === 'api';
+const apiPulse = ref<SignalPulseDto>();
+const apiLoading = ref(apiMode);
+const apiError = ref('');
 const personas: readonly DemoPulsePersona[] = [
   'Overview',
   'Prioritize',
@@ -34,7 +42,7 @@ const highCount = (account: DemoPulseAccount) =>
 const newestAccountSignal = (account: DemoPulseAccount) =>
   Math.max(...account.signals.map(({ date }) => Date.parse(date)));
 
-const filteredAccounts = computed(() => {
+const fixtureAccounts = computed(() => {
   let accounts = [...pulse.accounts];
   if (filter.value === 'new')
     accounts = accounts.filter((account) =>
@@ -55,6 +63,32 @@ const filteredAccounts = computed(() => {
     );
   return accounts;
 });
+const apiAccounts = computed<SignalUrgencyAccountViewModel[]>(() => (apiPulse.value?.accounts ?? []).map((account: SignalPulseAccountDto) => ({
+  accountId: account.accountId,
+  name: account.name,
+  initials: account.name.split(/\s+/).map((part) => part[0]).join('').slice(0, 2).toUpperCase(),
+  industry: account.industry,
+  tier: account.tier,
+  activeSignalCount: account.activeSignalCount,
+  latestActiveSignalDate: account.latestActiveSignalDate,
+  nextBestAction: account.nextBestAction,
+  signals: account.signals.map((signal) => ({ ...signal, signalDate: signal.signalDate })),
+})));
+const filteredAccounts = computed<SignalUrgencyAccountViewModel[]>(() => {
+  if (apiMode) {
+    if (!apiPulse.value) return [];
+    if (filter.value === 'hot') return apiAccounts.value.filter((account) => apiPulse.value?.accounts.find((item) => item.accountId === account.accountId)?.urgency === 'hot');
+    if (filter.value === 'cold') return apiAccounts.value.filter((account) => apiPulse.value?.accounts.find((item) => item.accountId === account.accountId)?.urgency === 'cold');
+    return [...apiAccounts.value];
+  }
+  return fixtureAccounts.value.map((account) => ({ ...account, industry: account.industry ?? null, tier: account.tier ?? null, activeSignalCount: account.signals.length === 8 ? 14 : account.signals.length, latestActiveSignalDate: account.signals.at(-1)?.date ?? null, nextBestAction: account.nextBestAction ?? null, signals: account.signals.map((signal) => ({ ...signal, signalDate: signal.date })) }));
+});
+const loadApi = async () => {
+  if (!apiMode) return;
+  apiLoading.value = true; apiError.value = '';
+  try { apiPulse.value = await getSignalPulse(); } catch { apiError.value = 'Signal Pulse is unavailable right now.'; } finally { apiLoading.value = false; }
+};
+if (apiMode) loadApi();
 const choosePersona = (value: DemoPulsePersona) => {
   persona.value = value;
   filter.value = 'all';
@@ -67,9 +101,12 @@ const chooseMetric = (value: PulseFilter | 'strategy') => {
   }
 };
 const draftContent = () => router.push('/demo/content-studio');
+const displayMetrics = computed(() => apiPulse.value?.metrics ?? { activeSignals: 42, newThisWeek: 2, hotAccounts: 3, goingCold: 129 });
 </script>
 
 <template>
+  <section v-if="apiMode && apiLoading" class="pulse-page" aria-live="polite"><h1 data-page-heading>Loading Signal Pulse…</h1></section>
+  <section v-else-if="apiMode && apiError" class="pulse-page" role="alert"><h1 data-page-heading>Signal Pulse unavailable</h1><p>{{ apiError }}</p><button type="button" @click="loadApi">Retry</button></section>
   <section class="pulse-page" aria-labelledby="pulse-title">
     <header class="pulse-page__header">
       <div>
@@ -89,7 +126,7 @@ const draftContent = () => router.push('/demo/content-studio');
         @click="chooseMetric('all')"
       >
         <span>Active Signals <small>+0%</small></span
-        ><strong>42</strong>
+        ><strong>{{ displayMetrics.activeSignals }}</strong>
       </button>
       <button
         type="button"
@@ -98,7 +135,7 @@ const draftContent = () => router.push('/demo/content-studio');
         @click="chooseMetric('new')"
       >
         <span>New This Week <small>new</small></span
-        ><strong>2</strong>
+        ><strong>{{ displayMetrics.newThisWeek }}</strong>
       </button>
       <button
         type="button"
@@ -106,7 +143,7 @@ const draftContent = () => router.push('/demo/content-studio');
         @click="chooseMetric('hot')"
       >
         <span>Hot Accounts <small>priority</small></span
-        ><strong>3</strong>
+        ><strong>{{ displayMetrics.hotAccounts }}</strong>
       </button>
       <button
         type="button"
@@ -115,9 +152,9 @@ const draftContent = () => router.push('/demo/content-studio');
         @click="chooseMetric('cold')"
       >
         <span>Going Cold <small>risk</small></span
-        ><strong>129</strong>
+        ><strong>{{ displayMetrics.goingCold }}</strong>
       </button>
-      <button
+      <button v-if="!apiMode"
         type="button"
         class="is-success"
         :aria-pressed="persona === 'Strategy'"
@@ -155,17 +192,14 @@ const draftContent = () => router.push('/demo/content-studio');
       >
         <h2>Portfolio Health</h2>
         <div>
-          <article><strong>3</strong><span>Hot accounts</span></article>
-          <article><strong>2</strong><span>Warm accounts</span></article>
-          <article><strong>129</strong><span>Cold / watchlist</span></article>
+          <article><strong>{{ displayMetrics.hotAccounts }}</strong><span>Hot accounts</span></article>
+          <article><strong>{{ apiMode ? (apiPulse?.accounts.filter((account) => account.urgency === 'warm').length ?? 0) : 2 }}</strong><span>Warm accounts</span></article>
+          <article><strong>{{ displayMetrics.goingCold }}</strong><span>Cold / watchlist</span></article>
         </div>
         <h2>Market Patterns</h2>
+        <p v-if="apiMode">Market pattern analysis is not available from the current backend.</p>
         <div class="pulse-page__patterns">
-          <MarketPatternCard
-            v-for="pattern in pulse.patterns"
-            :key="pattern.id"
-            :pattern="pattern"
-          />
+          <template v-if="!apiMode"><MarketPatternCard v-for="pattern in pulse.patterns" :key="pattern.id" :pattern="pattern" /></template>
         </div>
       </section>
     </template>
@@ -176,14 +210,9 @@ const draftContent = () => router.push('/demo/content-studio');
         :aria-labelledby="`pulse-tab-${persona}`"
       >
         <h2>MARKET PATTERNS ACROSS YOUR PORTFOLIO</h2>
+        <p v-if="apiMode">Market pattern analysis is not available from the current backend.</p>
         <div class="pulse-page__patterns">
-          <MarketPatternCard
-            v-for="pattern in pulse.patterns"
-            :key="pattern.id"
-            :pattern="pattern"
-            :show-actions="persona === 'Content'"
-            @draft="draftContent"
-          />
+          <template v-if="!apiMode"><MarketPatternCard v-for="pattern in pulse.patterns" :key="pattern.id" :pattern="pattern" :show-actions="persona === 'Content'" @draft="draftContent" /></template>
         </div>
       </section>
       <section
@@ -194,13 +223,13 @@ const draftContent = () => router.push('/demo/content-studio');
         <div v-if="filteredAccounts.length">
           <SignalUrgencyAccountCard
             v-for="account in filteredAccounts"
-            :key="account.key"
+            :key="account.accountId ?? account.name"
             :account="account"
             :outreach="persona === 'Outreach'"
           />
         </div>
         <p v-else role="status">
-          No curated demo accounts match this temporary filter.
+          {{ apiMode ? 'No accounts are available for this view.' : 'No curated demo accounts match this temporary filter.' }}
         </p>
       </section>
     </template>

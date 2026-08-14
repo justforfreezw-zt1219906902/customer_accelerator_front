@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { demoAccountProvider } from '../../demo/demoAccountProvider';
 import {
@@ -14,20 +14,31 @@ import type {
   SalesTalkingPointsDraft,
 } from '../../demo/contentStudio';
 import type { DemoAccountIdentity, DemoAccountTier } from '../../demo/types';
+import { getRuntimeConfig } from '../../app/configuration/environment';
+import { getAccount, getAccountSignals, getCommunicationDna, listAccounts, generateOutreachEmail } from '../../services/accountApi';
+import type { AccountDetailDto, AccountListDto, AccountSignalDto, CommunicationDnaDto, OutreachEmailPart, OutreachEmailGenerationResponse } from '../../types/accountApi';
 
 const route = useRoute();
 const router = useRouter();
+const apiMode = getRuntimeConfig().demoDataSource === 'api';
 const accounts = demoAccountProvider.listDiscoveryAccounts();
 const accountQuery = computed(() =>
   typeof route.query.account === 'string' ? route.query.account : null,
 );
-const selectedAccount = computed(() =>
-  accountQuery.value
-    ? demoAccountProvider.findAccountById(accountQuery.value)
-    : undefined,
-);
+const apiAccounts = ref<AccountListDto[]>([]);
+const apiSelectedAccount = ref<AccountDetailDto>();
+const apiSelectedSignals = ref<AccountSignalDto[]>([]);
+const apiSelectedDna = ref<CommunicationDnaDto | null>();
+const apiLoading = ref(apiMode);
+const apiError = ref('');
+const selectedAccount = computed<DemoAccountIdentity | AccountListDto | AccountDetailDto | undefined>(() => apiMode ? apiSelectedAccount.value : (accountQuery.value ? demoAccountProvider.findAccountById(accountQuery.value) : undefined));
+const selectedTier = computed(() => {
+  const account = selectedAccount.value;
+  if (!account) return 'Not available';
+  return 'tier' in account ? account.tier ?? 'Not available' : account.analysis?.tier ?? 'Not available';
+});
 const invalidAccount = computed(
-  () => Boolean(accountQuery.value) && !selectedAccount.value,
+  () => Boolean(accountQuery.value) && !selectedAccount.value && !apiLoading.value && !apiError.value,
 );
 const query = ref('');
 const industry = ref('all');
@@ -36,15 +47,13 @@ const lifecycle = ref('all');
 const persona = ref(defaultContentStudioContext().persona);
 const asset = ref(defaultContentStudioContext().asset);
 const adType = ref<ContentStudioContext['adType']>('Single Image Ad');
-const anchorSignal = ref(
-  'Product launch / major UI update: Oracle Fusion 26C Quarterly Release',
-);
+const anchorSignal = ref(apiMode ? '' : 'Product launch / major UI update: Oracle Fusion 26C Quarterly Release');
 const intro = ref('Run your most demanding workloads with confidence');
 const overlay = ref('BUILT FOR THE ENTERPRISE');
 const headline = ref('Complete and integrated');
 const cta = ref('Learn More');
-const destination = ref('techsmith.com/oracle');
-const advertiser = ref('TechSmith');
+const destination = ref(apiMode ? '' : 'techsmith.com/oracle');
+const advertiser = ref(apiMode ? '' : 'TechSmith');
 const creativeImagePreview = ref<string | null>(null);
 const logoPreview = ref<string | null>(null);
 const copied = ref(false);
@@ -69,16 +78,17 @@ const landingProof = ref(
 const recipientFirst = ref('');
 const recipientLast = ref('');
 const greeting = ref('Hi');
-const emailSubject = ref('cloud infrastructure');
-const emailOpening = ref('Run your most demanding workloads with confidence.');
-const emailValue = ref(
-  'Oracle Fusion 26C retraining creates a timely opening for a complete and integrated learning approach.',
-);
-const emailCta = ref('worth a quick look?');
+const emailSubject = ref(apiMode ? '' : 'cloud infrastructure');
+const emailOpening = ref(apiMode ? '' : 'Run your most demanding workloads with confidence.');
+const emailValue = ref(apiMode ? '' : 'Oracle Fusion 26C retraining creates a timely opening for a complete and integrated learning approach.');
+const emailCta = ref(apiMode ? '' : 'worth a quick look?');
 const signatureName = ref('[Your name]');
 const signatureTitle = ref('[Your title]');
 const signatureUrl = ref('techsmith.com');
 const emailBestPracticeOpen = ref(true);
+const emailGenerating = ref(false);
+const emailError = ref('');
+const emailTrace = ref<OutreachEmailGenerationResponse['traceability']>();
 const linkedinConnection = ref(
   'Hi [First name] — I noticed Oracle is hiring for field marketing across Government, Defense and Intelligence. I work with TechSmith on enterprise enablement and would value connecting.',
 );
@@ -162,7 +172,20 @@ const emailChecks = computed(() => ({
   lowercase: emailSubject.value === emailSubject.value.toLowerCase(),
   under100: emailWordCount.value < 100,
 }));
-const resetEmail = () => {
+const submitEmailGeneration = async (parts: OutreachEmailPart[]) => {
+  if (!apiMode || !accountQuery.value || !anchorSignal.value || emailGenerating.value) return;
+  emailGenerating.value = true; emailError.value = '';
+  try {
+    const result = await generateOutreachEmail(accountQuery.value, { persona: persona.value, anchorSignalId: anchorSignal.value, parts, currentDraft: { subject: emailSubject.value, opening: emailOpening.value, value: emailValue.value, cta: emailCta.value } });
+    if (result.generatedParts.subject !== undefined) emailSubject.value = result.generatedParts.subject;
+    if (result.generatedParts.opening !== undefined) emailOpening.value = result.generatedParts.opening;
+    if (result.generatedParts.value !== undefined) emailValue.value = result.generatedParts.value;
+    if (result.generatedParts.cta !== undefined) emailCta.value = result.generatedParts.cta;
+    emailTrace.value = result.traceability;
+  } catch { emailError.value = 'Outreach generation is unavailable right now. Your draft was not changed.'; } finally { emailGenerating.value = false; }
+};
+const resetEmail = async () => {
+  if (apiMode) { await submitEmailGeneration(['subject', 'opening', 'value', 'cta']); return; }
   emailSubject.value = 'cloud infrastructure';
   emailOpening.value = 'Run your most demanding workloads with confidence.';
   emailValue.value =
@@ -170,7 +193,8 @@ const resetEmail = () => {
   emailCta.value = 'worth a quick look?';
 };
 type EmailGeneratedPart = 'subject' | 'opening' | 'value' | 'cta';
-const regenerateEmailPart = (part: EmailGeneratedPart) => {
+const regenerateEmailPart = async (part: EmailGeneratedPart) => {
+  if (apiMode) { await submitEmailGeneration([part]); return; }
   const accountName = selectedAccount.value?.name ?? 'Oracle';
   const companyName = advertiser.value.trim() || 'TechSmith';
   const signal = anchorSignal.value.split(':')[0]?.trim() || 'account signal';
@@ -206,7 +230,7 @@ const generatedDefaults = () => {
     'You lead with benchmarks + enterprise scale. So will we — sourced.';
 };
 const selectedDna = computed(() =>
-  accountQuery.value
+  apiMode ? undefined : accountQuery.value
     ? demoAccountProvider.findCommunicationDna(accountQuery.value)
     : undefined,
 );
@@ -230,12 +254,33 @@ const handleLogo = (event: Event) => {
 const clearCreativeImage = () => (creativeImagePreview.value = null);
 const clearLogo = () => (logoPreview.value = null);
 watch(selectedAccount, (account) => {
-  if (account) generatedDefaults();
+  if (account && !apiMode) generatedDefaults();
 });
-const industries = [...new Set(accounts.map((account) => account.industry))];
-const lifecycles = [...new Set(Object.values(contentStudioLifecycle))];
+const loadApiAccounts = async () => {
+  if (!apiMode) return;
+  apiLoading.value = true; apiError.value = '';
+  try {
+    apiAccounts.value = await listAccounts();
+    if (accountQuery.value) {
+      apiSelectedAccount.value = await getAccount(accountQuery.value);
+      const [signals, dna] = await Promise.all([getAccountSignals(accountQuery.value), getCommunicationDna(accountQuery.value)]);
+      apiSelectedSignals.value = signals.items.filter((signal) => signal.isActive);
+      apiSelectedDna.value = dna;
+      anchorSignal.value = apiSelectedSignals.value[0]?.id ?? '';
+    }
+  } catch (error) {
+    apiError.value = error instanceof Error ? error.message : 'Content Studio data is unavailable right now.';
+  } finally { apiLoading.value = false; }
+};
+onMounted(() => { if (apiMode) void loadApiAccounts(); });
+const industries = computed(() => apiMode ? [...new Set(apiAccounts.value.map((account) => account.industry).filter((value): value is string => Boolean(value)))] : [...new Set(accounts.map((account) => account.industry))]);
+const lifecycles = computed(() => apiMode ? [...new Set(apiAccounts.value.map((account) => account.lifecycle))] : [...new Set(Object.values(contentStudioLifecycle))]);
 const filteredAccounts = computed(() => {
   const needle = query.value.trim().toLocaleLowerCase();
+  if (apiMode) return apiAccounts.value.filter((account) => {
+    const searchable = `${account.name} ${account.industry ?? ''} ${account.hq ?? ''}`.toLocaleLowerCase();
+    return (!needle || searchable.includes(needle)) && (industry.value === 'all' || account.industry === industry.value) && (tier.value === 'all' || account.analysis?.tier === tier.value) && (lifecycle.value === 'all' || account.lifecycle === lifecycle.value);
+  }).map((account) => ({ ...account, initials: account.name.slice(0, 2).toUpperCase(), location: account.hq ?? 'Not available', tier: account.analysis?.tier ?? null }));
   return accounts.filter((account) => {
     const searchable =
       `${account.name} ${account.industry} ${account.location}`.toLocaleLowerCase();
@@ -253,11 +298,14 @@ const accountResultLabel = computed(() =>
   industry.value !== 'all' ||
   tier.value !== 'all' ||
   lifecycle.value !== 'all'
-    ? `${filteredAccounts.value.length} of 140`
-    : '140 of 140',
+    ? `${filteredAccounts.value.length} of ${apiMode ? apiAccounts.value.length : 140}`
+    : apiMode ? `${apiAccounts.value.length} of ${apiAccounts.value.length}` : '140 of 140',
 );
-const chooseAccount = (account: DemoAccountIdentity) =>
+const chooseAccount = (account: DemoAccountIdentity | AccountListDto) =>
   router.push({ path: '/demo/content-studio', query: { account: account.id } });
+const accountResonance = (account: DemoAccountIdentity | AccountListDto) => 'resonance' in account ? account.resonance : account.analysis?.resonanceScore ?? 'Not available';
+const accountNextBestAction = (account: DemoAccountIdentity | AccountListDto) => 'nextBestAction' in account ? account.nextBestAction : account.analysis?.nextBestAction ?? 'Not available';
+const accountLifecycle = (account: DemoAccountIdentity | AccountListDto) => 'location' in account ? contentStudioLifecycle[account.id] : account.lifecycle;
 const clearFilters = () => {
   query.value = '';
   industry.value = 'all';
@@ -268,7 +316,13 @@ const clearFilters = () => {
 
 <template>
   <section class="studio-page" aria-labelledby="studio-title">
-    <template v-if="invalidAccount">
+    <template v-if="apiMode && apiLoading">
+      <div class="studio-page__invalid" aria-live="polite"><h1 id="studio-title">Loading Content Studio…</h1></div>
+    </template>
+    <template v-else-if="apiMode && apiError">
+      <div class="studio-page__invalid" role="alert"><h1 id="studio-title">Content Studio unavailable</h1><p>{{ apiError }}</p><button type="button" @click="loadApiAccounts">Retry</button></div>
+    </template>
+    <template v-else-if="invalidAccount">
       <div class="studio-page__invalid" role="alert">
         <h1 id="studio-title">Account not found</h1>
         <p>The requested account context is not available in this Demo.</p>
@@ -297,7 +351,7 @@ const clearFilters = () => {
           ← Accounts
         </button>
         <strong>{{ selectedAccount.name }}</strong
-        ><span>{{ selectedAccount.tier }}</span>
+        ><span>{{ selectedTier }}</span>
         <label
           >Persona<select v-model="persona" aria-label="Persona">
             <option
@@ -318,13 +372,8 @@ const clearFilters = () => {
             v-model="anchorSignal"
             aria-label="Anchor Signal"
           >
-            <option
-              v-for="signal in contentStudioAnchorSignals"
-              :key="signal.id"
-              :value="signal.label"
-            >
-              {{ signal.label }}
-            </option>
+            <template v-if="!apiMode"><option v-for="signal in contentStudioAnchorSignals" :key="signal.id" :value="signal.label">{{ signal.label }}</option></template>
+            <template v-else><option v-for="signal in apiSelectedSignals" :key="signal.id" :value="signal.id">{{ signal.type }}: {{ signal.title }}</option></template>
           </select></label
         >
         <label class="studio-page__context-meta studio-company-input"
@@ -362,7 +411,10 @@ const clearFilters = () => {
           {{ item }}
         </button>
       </nav>
-      <template v-if="asset === 'Landing Page'">
+      <template v-if="apiMode && asset !== 'Outreach Email'">
+        <section class="studio-secondary-state" aria-live="polite"><h2>{{ asset }}</h2><p>Generation for this asset is not available from the current backend.</p><button type="button" disabled>Generate</button></section>
+      </template>
+      <template v-else-if="asset === 'Landing Page'">
         <section class="landing-workspace">
           <aside class="landing-guidance">
             <h2>Landing Page</h2>
@@ -676,8 +728,9 @@ const clearFilters = () => {
                 <li>Keep entire email under 100 words</li>
               </ul>
             </div>
-            <button class="studio-generate" type="button" @click="resetEmail">
+            <button class="studio-generate" type="button" :disabled="emailGenerating || (apiMode && !apiSelectedSignals.length)" @click="resetEmail">
               ↻ Generate all parts</button
+            ><p v-if="emailGenerating" role="status">Generating outreach…</p><p v-if="emailError" role="alert">{{ emailError }}</p>
             ><label class="studio-field"
               >Recipient<input
                 v-model="recipientFirst"
@@ -695,6 +748,7 @@ const clearFilters = () => {
                 v-model="emailSubject"
                 aria-label="Subject line" /><button
                 type="button"
+                :disabled="emailGenerating || (apiMode && !apiSelectedSignals.length)"
                 @click="regenerateEmailPart('subject')"
               >Regenerate</button></label
             ><label class="studio-field"
@@ -702,17 +756,17 @@ const clearFilters = () => {
                 v-model="emailOpening"
                 aria-label="Opening"
                 rows="2"
-              /><button type="button" @click="regenerateEmailPart('opening')">Regenerate</button></label
+              /><button type="button" :disabled="emailGenerating || (apiMode && !apiSelectedSignals.length)" @click="regenerateEmailPart('opening')">Regenerate</button></label
             ><label class="studio-field"
               >3. Value — one concrete sentence<textarea
                 v-model="emailValue"
                 aria-label="Value"
                 rows="2"
-              /><button type="button" @click="regenerateEmailPart('value')">Regenerate</button></label
+              /><button type="button" :disabled="emailGenerating || (apiMode && !apiSelectedSignals.length)" @click="regenerateEmailPart('value')">Regenerate</button></label
             ><label class="studio-field"
               >4. CTA — interest, not a meeting<input
                 v-model="emailCta"
-                aria-label="CTA" /><button type="button" @click="regenerateEmailPart('cta')">Regenerate</button></label
+                aria-label="CTA" /><button type="button" :disabled="emailGenerating || (apiMode && !apiSelectedSignals.length)" @click="regenerateEmailPart('cta')">Regenerate</button></label
             ><label class="studio-field"
               >Signature<input
                 v-model="signatureName"
@@ -1038,15 +1092,15 @@ const clearFilters = () => {
               >
             </span>
             <strong class="studio-account-card__score">{{
-              account.resonance
+              accountResonance(account)
             }}</strong>
           </span>
           <span class="studio-account-card__badges"
             ><span>{{ account.tier }}</span
-            ><span>{{ contentStudioLifecycle[account.id] }}</span></span
+            ><span>{{ accountLifecycle(account) }}</span></span
           >
           <span class="studio-account-card__signal"
-            >● {{ account.nextBestAction }}</span
+            >● {{ accountNextBestAction(account) }}</span
           >
         </button>
       </div>

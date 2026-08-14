@@ -1,19 +1,17 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type {
-  DemoAccountIdentity,
-  DemoDnaPortfolioProfile,
-} from '../../demo/types';
 import TierBadge from './TierBadge.vue';
+export interface DnaPortfolioCardAccount { id: string; name: string; initials: string; industry: string | null; tier: string | null; activeSignals?: number; activeSignalCount?: number; }
+export interface DnaPortfolioCardProfile { tone: string | null; vocabulary: readonly string[]; }
 const props = defineProps<{
-  account: DemoAccountIdentity;
-  profile: DemoDnaPortfolioProfile;
+  account: DnaPortfolioCardAccount;
+  profile: DnaPortfolioCardProfile;
   selected: boolean;
 }>();
 defineEmits<{ toggle: []; view: [] }>();
 const signalLabel = computed(
   () =>
-    `${props.account.activeSignals} signal${props.account.activeSignals === 1 ? '' : 's'}`,
+    `${props.account.activeSignalCount ?? props.account.activeSignals ?? 0} signal${(props.account.activeSignalCount ?? props.account.activeSignals ?? 0) === 1 ? '' : 's'}`,
 );
 </script>
 
@@ -39,13 +37,13 @@ const signalLabel = computed(
       }}</span>
       <div class="dna-portfolio-card__identity">
         <h2>{{ account.name }}</h2>
-        <p>{{ account.industry }}</p>
+        <p>{{ account.industry ?? 'Not available' }}</p>
       </div>
       <TierBadge :tier="account.tier" />
     </header>
     <div>
       <span class="dna-portfolio-card__eyebrow">TONE</span
-      ><strong>{{ profile.tone }}</strong>
+      ><strong>{{ profile.tone ?? 'Not available' }}</strong>
     </div>
     <ul aria-label="Top vocabulary">
       <li v-for="term in profile.vocabulary.slice(0, 3)" :key="term">
@@ -62,7 +60,7 @@ const signalLabel = computed(
 <style scoped>
 .dna-portfolio-card {
   display: flex;
-  width: 373px;
+  width: 100%;
   height: 230px;
   flex-direction: column;
   gap: var(--spacing-10);

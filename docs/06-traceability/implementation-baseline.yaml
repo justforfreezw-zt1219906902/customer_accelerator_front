@@ -689,3 +689,26 @@ notes:
   - Phase 4A Composite components and known deviations were approved by Tom.
   - Phase 4B Product components and known deviations were approved by Tom.
   - Phase 4C Sections and DEV-2026-009 were approved by Tom.
+
+phase_6d_backend_integration:
+  status: approved
+  implementation_task: PHASE-006D-pages-16-18-backend-integration
+  pages: [Page 16 Signal Pulse, Page 17 Communication DNA Portfolio, Page 18 Content Studio]
+  contract_identifier: API-CONTRACT-R2
+  backend_contract_revision: 2
+  backend_semantic_version: 0.0.0
+  backend_version_status: unassigned
+  frontend_version: 0.2.0
+  figma_design_system_version: 1.2.0
+  fixture_mode_preserved: true
+  api_mode_fallback_to_fixtures: false
+  human_approval: approved
+  approval:
+    reviewer: Tom
+    date: "2026-08-14"
+    scope: implementation_and_human_behavior_review
+    evidence: docs/08-quality/test-reports/phase-6d-backend-integration-human-approval-2026-08-14.md
+  unresolved_governance:
+    - openapi_endpoints_not_registered
+    - contract_revision_decision_required
+    - dedicated_parser_api_mode_tests_outstanding

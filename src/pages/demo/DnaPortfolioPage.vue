@@ -1,15 +1,37 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { DnaPortfolioCard } from '../../components/product';
 import { demoAccountProvider } from '../../demo/demoAccountProvider';
+import { getRuntimeConfig } from '../../app/configuration/environment';
+import { compareDnaPortfolio, getDnaPortfolio } from '../../services/accountApi';
+import type { DnaCompareDto, DnaPortfolioDto } from '../../types/accountApi';
 
 const router = useRouter();
+const apiMode = getRuntimeConfig().demoDataSource === 'api';
+const apiPortfolio = ref<DnaPortfolioDto>();
+const apiLoading = ref(apiMode);
+const apiError = ref('');
+const apiCompare = ref<DnaCompareDto>();
+const apiCompareError = ref('');
+const apiTier = ref('All');
+const apiIndustry = ref('All');
 const portfolio = demoAccountProvider.getDnaPortfolio();
 const accounts = demoAccountProvider.listDiscoveryAccounts();
 const tier = ref('All');
 const industry = ref('All');
-const selected = ref(new Set<string>(['demo-acc-006']));
+const selected = ref(new Set<string>(apiMode ? [] : ['demo-acc-006']));
+const apiVisibleItems = computed(() => (apiPortfolio.value?.items ?? []).filter((item) => (apiTier.value === 'All' || item.tier === apiTier.value) && (apiIndustry.value === 'All' || item.industry === apiIndustry.value)));
+const apiToggle = (id: string) => { const next = new Set(selected.value); if (next.has(id)) next.delete(id); else next.add(id); selected.value = next; void apiCompareSelection(); };
+let compareGeneration = 0;
+const apiCompareSelection = async () => {
+  const ids = [...selected.value]; apiCompare.value = undefined; apiCompareError.value = '';
+  if (ids.length < 2) return;
+  const generation = ++compareGeneration;
+  try { const result = await compareDnaPortfolio(ids); if (generation === compareGeneration) apiCompare.value = result; } catch { if (generation === compareGeneration) apiCompareError.value = 'Comparison is unavailable right now.'; }
+};
+const loadApi = async () => { apiLoading.value = true; apiError.value = ''; try { apiPortfolio.value = await getDnaPortfolio(); } catch { apiError.value = 'Communication DNA portfolio is unavailable right now.'; } finally { apiLoading.value = false; } };
+onMounted(() => { if (apiMode) void loadApi(); });
 const visibleProfiles = computed(() =>
   portfolio.profiles.filter((profile) => {
     const account = accounts.find(({ id }) => id === profile.accountId);
@@ -93,7 +115,17 @@ const viewDna = (id: string) => router.push(`/demo/accounts/${id}/dna`);
 </script>
 
 <template>
-  <section class="portfolio-page" aria-labelledby="portfolio-title">
+  <section v-if="apiMode && apiLoading" class="portfolio-page" aria-live="polite"><h1 data-page-heading>Loading Communication DNA…</h1></section>
+  <section v-else-if="apiMode && apiError" class="portfolio-page" role="alert"><h1 data-page-heading>Communication DNA unavailable</h1><p>{{ apiError }}</p><button type="button" @click="loadApi">Retry</button></section>
+  <section v-else-if="apiMode" class="portfolio-page" aria-labelledby="portfolio-api-title">
+    <header><h1 id="portfolio-api-title" data-page-heading>Communication DNA</h1><p>Compare how your target accounts communicate — select accounts to find shared patterns</p></header>
+    <div class="portfolio-page__filters"><span>Tier:</span><button type="button" :aria-pressed="apiTier === 'All'" @click="apiTier = 'All'">All ({{ apiPortfolio?.summary.totalProfiles ?? 0 }})</button><button v-for="[value, total] in Object.entries(apiPortfolio?.summary.byTier ?? {})" :key="value" type="button" :aria-pressed="apiTier === value" @click="apiTier = value">{{ value }} ({{ total }})</button></div>
+    <div class="portfolio-page__filters"><span>Industry:</span><button type="button" :aria-pressed="apiIndustry === 'All'" @click="apiIndustry = 'All'">All</button><button v-for="[value, total] in Object.entries(apiPortfolio?.summary.byIndustry ?? {})" :key="value" type="button" :aria-pressed="apiIndustry === value" @click="apiIndustry = value">{{ value }} ({{ total }})</button></div>
+    <div class="portfolio-page__selection"><button type="button" @click="selected = new Set(apiVisibleItems.map((item) => item.accountId)); void apiCompareSelection()">Select All Visible</button></div>
+    <div v-if="apiVisibleItems.length" class="portfolio-page__grid"><DnaPortfolioCard v-for="item in apiVisibleItems" :key="item.accountId" :account="{ id: item.accountId, name: item.name, initials: item.name.slice(0, 2).toUpperCase(), industry: item.industry, tier: item.tier, activeSignalCount: item.activeSignalCount }" :profile="{ tone: item.tone, vocabulary: item.vocabulary }" :selected="selected.has(item.accountId)" @toggle="apiToggle(item.accountId)" @view="viewDna(item.accountId)" /></div><p v-else class="portfolio-page__empty" role="status">No portfolio profiles are available.</p>
+    <section v-if="apiCompare" class="portfolio-page__analysis" aria-labelledby="analysis-api-title"><h2 id="analysis-api-title">Cross-account analysis</h2><p>{{ apiCompare.selectedCount }} selected accounts</p><p v-for="item in apiCompare.dominantTone" :key="item.value">{{ item.value }} — {{ item.count }}</p><template v-if="apiCompare.problemFraming.length"><p v-for="item in apiCompare.problemFraming" :key="item.accountId"><strong>{{ item.accountName }}:</strong> {{ item.value ?? 'Not available' }}</p></template></section><p v-else-if="apiCompareError" role="alert">{{ apiCompareError }} <button type="button" @click="apiCompareSelection">Retry Compare</button></p><p v-else-if="selected.size < 2" class="portfolio-page__empty">Select at least two accounts to compare.</p>
+  </section>
+  <section v-else class="portfolio-page" aria-labelledby="portfolio-title">
     <header>
       <h1 id="portfolio-title" data-page-heading>Communication DNA</h1>
       <p>

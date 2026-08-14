@@ -384,6 +384,27 @@ phase_6d:
   next_gate: Phase 6E Why mi-goTo Page Review
   evidence: docs/07-change-control/instructions/TASK-P6D-002-imprint-gate-override-and-implementation.md
 
+phase_6d_backend_integration:
+  implementation_status: approved
+  task: PHASE-006D-pages-16-18-backend-integration
+  contract_identifier: API-CONTRACT-R2
+  backend_contract_revision: 2
+  backend_semantic_version: 0.0.0
+  backend_version_status: unassigned
+  frontend_version: 0.2.0
+  pages: [Page 16 Signal Pulse, Page 17 Communication DNA Portfolio, Page 18 Content Studio]
+  fixture_mode_preserved: true
+  api_mode_fallback_to_fixtures: false
+  human_approval: approved
+  approval_date: "2026-08-14"
+  reviewer: Tom
+  approval_evidence: docs/08-quality/test-reports/phase-6d-backend-integration-human-approval-2026-08-14.md
+  governance_follow_ups:
+    - public Pages 16-18 endpoints are not yet represented in docs/05-backend/openapi.yaml
+    - expanded API surface still requires an explicit human contract-revision decision
+    - dedicated parser and API-mode service test coverage remains outstanding
+  evidence: docs/07-change-control/instructions/PHASE-006D-pages-16-18-backend-integration.md
+
 phase_6e:
   implementation_status: approved
   task: TASK-P6E-002

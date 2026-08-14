@@ -6,6 +6,11 @@ import type {
   AccountListDto,
   AccountSignalDto,
   CommunicationDnaDto,
+  DnaCompareDto,
+  DnaPortfolioDto,
+  OutreachEmailGenerationRequest,
+  OutreachEmailGenerationResponse,
+  SignalPulseDto,
 } from '../types/accountApi';
 import type { DemoDataStatus } from '../demo/types';
 
@@ -260,4 +265,50 @@ export const getCommunicationDna = async (id: string, signal?: AbortSignal) => {
     );
   if (x.data === null) return null;
   return communicationDna(x.data);
+};
+
+const date = (v: unknown): string | null => {
+  if (v === null) return null;
+  if (typeof v !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(v)) throw new ApiRequestError('contract_error', apiErrorMessages.contract_error);
+  return v;
+};
+const countMap = (v: unknown): Record<string, number> => {
+  const x = obj(v);
+  const result: Record<string, number> = {};
+  for (const [key, value] of Object.entries(x)) result[key] = count(value);
+  return result;
+};
+const stringList = (v: unknown): string[] => stringArray(v);
+const compareValues = (v: unknown) => {
+  if (!Array.isArray(v)) throw new ApiRequestError('contract_error', apiErrorMessages.contract_error);
+  return v.map((item) => { const x = obj(item); return { value: str(x.value)!, count: count(x.count) }; });
+};
+export const getSignalPulse = async (signal?: AbortSignal): Promise<SignalPulseDto> => {
+  const x = obj(await get('/api/signal-pulse', signal));
+  const m = obj(x.metrics);
+  const metrics = { activeSignals: count(m.activeSignals), newThisWeek: count(m.newThisWeek), hotAccounts: count(m.hotAccounts), goingCold: count(m.goingCold) };
+  if (!Array.isArray(x.accounts)) throw new ApiRequestError('contract_error', apiErrorMessages.contract_error);
+  const accounts = x.accounts.map((value) => {
+    const a = obj(value); const urgency = str(a.urgency)!;
+    if (!['hot', 'warm', 'cold'].includes(urgency)) throw new ApiRequestError('contract_error', apiErrorMessages.contract_error);
+    if (!Array.isArray(a.signals)) throw new ApiRequestError('contract_error', apiErrorMessages.contract_error);
+    return { accountId: str(a.accountId)!, name: str(a.name)!, industry: str(a.industry, true), tier: str(a.tier, true), urgency: urgency as 'hot' | 'warm' | 'cold', activeSignalCount: count(a.activeSignalCount), highActiveSignalCount: count(a.highActiveSignalCount), latestActiveSignalDate: date(a.latestActiveSignalDate), nextBestAction: str(a.nextBestAction, true), signals: a.signals.map((item) => { const s = obj(item); const strength = str(s.strength)!; if (!['high', 'medium', 'low'].includes(strength)) throw new ApiRequestError('contract_error', apiErrorMessages.contract_error); return { id: str(s.id)!, type: str(s.type)!, title: str(s.title)!, strength: strength as 'high' | 'medium' | 'low', signalDate: date(s.signalDate) }; }) };
+  });
+  return { metrics, accounts };
+};
+export const getDnaPortfolio = async (signal?: AbortSignal): Promise<DnaPortfolioDto> => {
+  const x = obj(await get('/api/dna-portfolio', signal)); const summary = obj(x.summary);
+  if (!Array.isArray(x.items)) throw new ApiRequestError('contract_error', apiErrorMessages.contract_error);
+  return { summary: { totalProfiles: count(summary.totalProfiles), byTier: countMap(summary.byTier), byIndustry: countMap(summary.byIndustry) }, items: x.items.map((value) => { const a = obj(value); return { accountId: str(a.accountId)!, name: str(a.name)!, industry: str(a.industry, true), tier: str(a.tier, true), activeSignalCount: count(a.activeSignalCount), tone: str(a.tone, true), vocabulary: stringList(a.vocabulary), problemFraming: str(a.problemFraming, true), proofStyle: str(a.proofStyle, true), ctaStyle: str(a.ctaStyle, true), doRules: stringList(a.doRules), dontRules: stringList(a.dontRules), signalTypes: stringList(a.signalTypes) }; }) };
+};
+export const compareDnaPortfolio = async (accountIds: string[], signal?: AbortSignal): Promise<DnaCompareDto> => {
+  const x = obj(await requestJson({ baseUrl: getRuntimeConfig().apiBaseUrl, path: '/api/dna-portfolio/compare', method: 'POST', signal, body: { accountIds } }));
+  return { selectedCount: count(x.selectedCount), dominantTone: compareValues(x.dominantTone), sharedVocabulary: compareValues(x.sharedVocabulary), uniqueVocabulary: compareValues(x.uniqueVocabulary), proofStyles: compareValues(x.proofStyles), ctaStyles: compareValues(x.ctaStyles), doRules: compareValues(x.doRules), dontRules: compareValues(x.dontRules), signalTypes: compareValues(x.signalTypes), problemFraming: (() => { if (!Array.isArray(x.problemFraming)) throw new ApiRequestError('contract_error', apiErrorMessages.contract_error); return x.problemFraming.map((item) => { const p = obj(item); return { accountId: str(p.accountId)!, accountName: str(p.accountName)!, value: str(p.value, true) }; }); })() };
+};
+export const generateOutreachEmail = async (accountId: string, request: OutreachEmailGenerationRequest, signal?: AbortSignal): Promise<OutreachEmailGenerationResponse> => {
+  const x = obj(await requestJson({ baseUrl: getRuntimeConfig().apiBaseUrl, path: `/api/accounts/${encodeURIComponent(accountId)}/outreach-email/generate`, method: 'POST', signal, body: request }));
+  const generated = obj(x.generatedParts); const generatedParts: Partial<Record<OutreachEmailGenerationRequest['parts'][number], string>> = {};
+  for (const key of ['subject', 'opening', 'value', 'cta'] as const) if (key in generated) generatedParts[key] = str(generated[key])!;
+  const trace = obj(x.traceability); if (!Array.isArray(trace.supportingSignalIds)) throw new ApiRequestError('contract_error', apiErrorMessages.contract_error);
+  return { generatedParts, traceability: { anchorSignalId: str(trace.anchorSignalId)!, supportingSignalIds: trace.supportingSignalIds.map((id) => str(id)!), communicationDnaUsed: bool(trace.communicationDnaUsed), analysisUsed: bool(trace.analysisUsed) } };
 };

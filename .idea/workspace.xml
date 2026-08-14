@@ -4,10 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa45ec9b-26dc-40ff-98de-dd81c1a64002" name="更改" comment="abm : backend-integration:v1 final">
+    <list default="true" id="fa45ec9b-26dc-40ff-98de-dd81c1a64002" name="更改" comment="abm : email-outreach regenerate">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/01-roadmap/current-state.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/01-roadmap/current-state.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/06-traceability/implementation-baseline.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/06-traceability/implementation-baseline.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/product/DnaPortfolioCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/product/DnaPortfolioCard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/product/SignalUrgencyAccountCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/product/SignalUrgencyAccountCard.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/demo/ContentStudioPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/demo/ContentStudioPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/TaskMaint006ContentStudio.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/TaskMaint006ContentStudio.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/demo/DnaPortfolioPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/demo/DnaPortfolioPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/demo/SignalPulsePage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/demo/SignalPulsePage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/accountApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/accountApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/accountApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/accountApi.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +95,7 @@
       <workItem from="1786019575310" duration="13000" />
       <workItem from="1786543568589" duration="2533000" />
       <workItem from="1786565368843" duration="47000" />
-      <workItem from="1786565431322" duration="21482000" />
+      <workItem from="1786565431322" duration="24564000" />
     </task>
     <task id="LOCAL-00001" summary="docs: initialize project governance structure">
       <option name="closed" value="true" />
@@ -378,7 +385,15 @@
       <option name="project" value="LOCAL" />
       <updated>1786664397526</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="abm : email-outreach regenerate">
+      <option name="closed" value="true" />
+      <created>1786713782556</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1786713782556</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -396,7 +411,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="docs: initialize project governance structure" />
     <MESSAGE value="docs: add phased roadmap and delivery gates" />
     <MESSAGE value="docs: register project inputs and external sources" />
     <MESSAGE value="docs: bootstrap governance system in repository root" />
@@ -421,6 +435,7 @@
     <MESSAGE value="abm : backend-integration:v1" />
     <MESSAGE value="abm : backend-integration:v1 final fix2" />
     <MESSAGE value="abm : backend-integration:v1 final" />
-    <option name="LAST_COMMIT_MESSAGE" value="abm : backend-integration:v1 final" />
+    <MESSAGE value="abm : email-outreach regenerate" />
+    <option name="LAST_COMMIT_MESSAGE" value="abm : email-outreach regenerate" />
   </component>
 </project>
