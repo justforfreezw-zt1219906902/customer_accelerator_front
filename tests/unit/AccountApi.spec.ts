@@ -121,15 +121,61 @@ describe('Account Intelligence API contract boundary', () => {
     await expect(getSignalPulse()).rejects.toMatchObject({ category: 'contract_error' });
   });
 
+  it.each([
+    ['signals value', { ...signalPulse(), accounts: [{ ...signalPulse().accounts[0], signals: 'bad' }] }],
+    ['signal strength', { ...signalPulse(), accounts: [{ ...signalPulse().accounts[0], signals: [{ id: 's', type: 'job', title: 'Job', strength: 'bad', signalDate: null }] }] }],
+  ])('rejects malformed Signal Pulse nested data: %s', async (_name, payload) => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify(payload), { status: 200 })));
+    await expect(getSignalPulse()).rejects.toMatchObject({ category: 'contract_error' });
+  });
+
   it('parses DNA portfolio and complete compare payloads', async () => {
     vi.stubGlobal('fetch', vi.fn().mockResolvedValueOnce(new Response(JSON.stringify(dnaPortfolio()), { status: 200 })).mockResolvedValueOnce(new Response(JSON.stringify(dnaCompare()), { status: 200 })));
     await expect(getDnaPortfolio()).resolves.toMatchObject({ items: [{ tone: null, proofStyle: null }] });
     await expect(compareDnaPortfolio(['acc-1', 'acc-2'])).resolves.toMatchObject({ problemFraming: [{ value: null }] });
   });
 
+  it.each([
+    ['negative activeSignalCount', { ...dnaPortfolio(), items: [{ ...dnaPortfolio().items[0], activeSignalCount: -1 }] }],
+    ['malformed vocabulary', { ...dnaPortfolio(), items: [{ ...dnaPortfolio().items[0], vocabulary: [1] }] }],
+    ['malformed summary count', { ...dnaPortfolio(), summary: { totalProfiles: 0, byTier: { Focus: -1 }, byIndustry: {} } }],
+  ])('rejects malformed DNA portfolio: %s', async (_name, payload) => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify(payload), { status: 200 })));
+    await expect(getDnaPortfolio()).rejects.toMatchObject({ category: 'contract_error' });
+  });
+
+  it.each([
+    ['malformed collection', { ...dnaCompare(), sharedVocabulary: 'bad' }],
+    ['negative item count', { ...dnaCompare(), dominantTone: [{ value: 'technical', count: -1 }] }],
+  ])('rejects malformed DNA compare: %s', async (_name, payload) => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify(payload), { status: 200 })));
+    await expect(compareDnaPortfolio(['acc-1', 'acc-2'])).rejects.toMatchObject({ category: 'contract_error' });
+  });
+
   it('requires exactly the requested non-empty outreach parts', async () => {
     const request: OutreachEmailGenerationRequest = { persona: 'marketing', anchorSignalId: 'sig-1', parts: ['subject'], currentDraft: { subject: '', opening: '', value: '', cta: '' } };
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify({ generatedParts: { subject: 'new subject', opening: 'unexpected' }, traceability: { anchorSignalId: 'sig-1', supportingSignalIds: [], communicationDnaUsed: false, analysisUsed: false } }), { status: 200 })));
+    await expect(generateOutreachEmail('acc-1', request)).rejects.toMatchObject({ category: 'contract_error' });
+  });
+
+  it.each([
+    ['subject', ['subject'], { subject: 'new subject' }],
+    ['cta', ['cta'], { cta: 'worth a look?' }],
+    ['all', ['subject', 'opening', 'value', 'cta'], { subject: 'subject', opening: 'opening', value: 'value', cta: 'cta' }],
+  ] as const)('accepts valid %s outreach response', async (_name, parts, generatedParts) => {
+    const request: OutreachEmailGenerationRequest = { persona: 'marketing', anchorSignalId: 'sig-1', parts: [...parts], currentDraft: { subject: '', opening: '', value: '', cta: '' } };
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify({ generatedParts, traceability: { anchorSignalId: 'sig-1', supportingSignalIds: [], communicationDnaUsed: false, analysisUsed: false } }), { status: 200 })));
+    await expect(generateOutreachEmail('acc-1', request)).resolves.toMatchObject({ generatedParts });
+  });
+
+  it.each([
+    ['missing requested', { generatedParts: {}, traceability: { anchorSignalId: 'sig-1', supportingSignalIds: [], communicationDnaUsed: false, analysisUsed: false } }],
+    ['whitespace', { generatedParts: { subject: '  ' }, traceability: { anchorSignalId: 'sig-1', supportingSignalIds: [], communicationDnaUsed: false, analysisUsed: false } }],
+    ['unknown key', { generatedParts: { subject: 'ok', unexpected: 'bad' }, traceability: { anchorSignalId: 'sig-1', supportingSignalIds: [], communicationDnaUsed: false, analysisUsed: false } }],
+    ['malformed traceability', { generatedParts: { subject: 'ok' }, traceability: { anchorSignalId: 'sig-1', supportingSignalIds: ['ok'], communicationDnaUsed: 'yes', analysisUsed: false } }],
+  ])('rejects invalid outreach response: %s', async (_name, payload) => {
+    const request: OutreachEmailGenerationRequest = { persona: 'marketing', anchorSignalId: 'sig-1', parts: ['subject'], currentDraft: { subject: '', opening: '', value: '', cta: '' } };
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify(payload), { status: 200 })));
     await expect(generateOutreachEmail('acc-1', request)).rejects.toMatchObject({ category: 'contract_error' });
   });
 

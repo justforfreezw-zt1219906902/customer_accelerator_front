@@ -245,6 +245,11 @@ const copyContent = async () => {
   copied.value = true;
   window.setTimeout(() => (copied.value = false), 1200);
 };
+const copyEmailContent = async () => {
+  await navigator.clipboard?.writeText(emailBodyText.value);
+  copied.value = true;
+  window.setTimeout(() => (copied.value = false), 1200);
+};
 const handleCreativeImage = (event: Event) => {
   const file = (event.target as HTMLInputElement).files?.[0];
   if (file?.type.startsWith('image/'))
@@ -276,7 +281,10 @@ const loadSelectedApiAccount = async (id: string | null) => {
   const generation = ++accountLoadGeneration;
   resetApiSelectedContext();
   apiSelectedError.value = '';
-  if (!id) return;
+  if (!id) {
+    apiSelectedLoading.value = false;
+    return;
+  }
   apiSelectedLoading.value = true;
   try {
     const account = await getAccount(id);
@@ -421,7 +429,7 @@ const clearFilters = () => {
             <template v-if="!apiMode"><option v-for="signal in contentStudioAnchorSignals" :key="signal.id" :value="signal.label">{{ signal.label }}</option></template>
             <template v-else><option v-for="signal in apiSelectedSignals" :key="signal.id" :value="signal.id">{{ signal.type }}: {{ signal.title }}</option></template>
           </select></label
-        >
+        ><p v-if="apiMode && !apiSelectedSignals.length" class="studio-empty-signal" role="status">No active anchor signal is available for this account.</p>
         <label class="studio-page__context-meta studio-company-input"
           >YOUR COMPANY<input v-model="advertiser" aria-label="Your company" />
         </label>
@@ -831,13 +839,13 @@ const clearFilters = () => {
             <article class="email-preview">
               <header>
                 <span>Email preview · plain text</span
-                ><button type="button" @click="copyContent">
+                ><button type="button" @click="copyEmailContent">
                   {{ copied ? 'Copied' : 'Copy' }}</button
                 ><button type="button" disabled>Export .txt</button>
               </header>
               <div class="email-paper">
                 <p>
-                  <b>FROM</b><br />{{ signatureName }} &lt;{{ apiMode ? (signatureUrl || '[your email]') : 'you@techsmith.com' }}&gt;
+                  <b>FROM</b><br />{{ signatureName }} &lt;{{ apiMode ? '[your email]' : 'you@techsmith.com' }}&gt;
                 </p>
                 <p>
                   <b>TO</b><br />{{ recipientFirst || 'Head of Marketing' }}
@@ -845,7 +853,7 @@ const clearFilters = () => {
                 </p>
                 <p><b>SUBJECT</b><br />{{ emailSubject }}</p>
                 <pre>{{ emailBodyText }}</pre>
-                <small>✓ Plain text · ✓ Interest CTA · {{ apiMode && !emailTrace ? 'No generation trace available yet' : '✓ Source grounded' }}</small>
+                <small>✓ Plain text · ✓ Interest CTA · {{ apiMode ? (emailTrace ? 'Backend generation trace available' : 'No generation trace available yet') : '✓ Source grounded' }}</small>
               </div>
             </article>
             <div class="email-checks">
@@ -1158,7 +1166,7 @@ const clearFilters = () => {
         </button>
       </div>
       <p v-else class="studio-page__empty" role="status">
-        No curated demo accounts match these filters.
+        {{ apiMode ? 'No accounts match these filters.' : 'No curated demo accounts match these filters.' }}
         <button type="button" @click="clearFilters">Clear filters</button>
       </p>
     </template>
