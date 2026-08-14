@@ -168,7 +168,16 @@ const resetEmail = () => {
   emailValue.value =
     'Oracle Fusion 26C retraining creates a timely opening for a complete and integrated learning approach.';
   emailCta.value = 'worth a quick look?';
-  signatureUrl.value = 'techsmith.com';
+};
+type EmailGeneratedPart = 'subject' | 'opening' | 'value' | 'cta';
+const regenerateEmailPart = (part: EmailGeneratedPart) => {
+  const accountName = selectedAccount.value?.name ?? 'Oracle';
+  const companyName = advertiser.value.trim() || 'TechSmith';
+  const signal = anchorSignal.value.split(':')[0]?.trim() || 'account signal';
+  if (part === 'subject') emailSubject.value = `${signal.toLowerCase()} update`;
+  if (part === 'opening') emailOpening.value = `${accountName}'s ${signal.toLowerCase()} points to a timely enablement need.`;
+  if (part === 'value') emailValue.value = `${companyName} can turn that ${signal.toLowerCase()} into a clear, source-grounded learning motion.`;
+  if (part === 'cta') emailCta.value = `worth a quick look for ${accountName}?`;
 };
 const resetLinkedinOutreach = () => {
   linkedinConnection.value = `Hi [First name] — I noticed Oracle is hiring for field marketing across Government, Defense and Intelligence. I work with ${advertiser.value} on enterprise enablement and would value connecting.`;
@@ -684,23 +693,26 @@ const clearFilters = () => {
             ><label class="studio-field"
               >1. Subject line<input
                 v-model="emailSubject"
-                aria-label="Subject line" /></label
+                aria-label="Subject line" /><button
+                type="button"
+                @click="regenerateEmailPart('subject')"
+              >Regenerate</button></label
             ><label class="studio-field"
               >2. Opening — the prospect's problem<textarea
                 v-model="emailOpening"
                 aria-label="Opening"
                 rows="2"
-              /></label
+              /><button type="button" @click="regenerateEmailPart('opening')">Regenerate</button></label
             ><label class="studio-field"
               >3. Value — one concrete sentence<textarea
                 v-model="emailValue"
                 aria-label="Value"
                 rows="2"
-              /></label
+              /><button type="button" @click="regenerateEmailPart('value')">Regenerate</button></label
             ><label class="studio-field"
               >4. CTA — interest, not a meeting<input
                 v-model="emailCta"
-                aria-label="CTA" /></label
+                aria-label="CTA" /><button type="button" @click="regenerateEmailPart('cta')">Regenerate</button></label
             ><label class="studio-field"
               >Signature<input
                 v-model="signatureName"
