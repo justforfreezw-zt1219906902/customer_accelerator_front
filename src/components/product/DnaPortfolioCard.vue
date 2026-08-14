@@ -1,8 +1,19 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import TierBadge from './TierBadge.vue';
-export interface DnaPortfolioCardAccount { id: string; name: string; initials: string; industry: string | null; tier: string | null; activeSignals?: number; activeSignalCount?: number; }
-export interface DnaPortfolioCardProfile { tone: string | null; vocabulary: readonly string[]; }
+export interface DnaPortfolioCardAccount {
+  id: string;
+  name: string;
+  initials: string;
+  industry: string | null;
+  tier: string | null;
+  activeSignals?: number;
+  activeSignalCount?: number;
+}
+export interface DnaPortfolioCardProfile {
+  tone: string | null;
+  vocabulary: readonly string[];
+}
 const props = defineProps<{
   account: DnaPortfolioCardAccount;
   profile: DnaPortfolioCardProfile;
@@ -61,7 +72,7 @@ const signalLabel = computed(
 .dna-portfolio-card {
   display: flex;
   width: 100%;
-  height: 230px;
+  min-height: 230px;
   flex-direction: column;
   gap: var(--spacing-10);
   padding: var(--spacing-18) var(--spacing-18) var(--spacing-16);
@@ -114,15 +125,14 @@ const signalLabel = computed(
   margin: 0;
 }
 .dna-portfolio-card h2 {
-  overflow: hidden;
   font-size: var(--font-size-14);
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
 }
 .dna-portfolio-card p {
   margin-top: 3px;
   color: var(--color-text-muted);
   font-size: var(--font-size-11);
+  overflow-wrap: anywhere;
 }
 .dna-portfolio-card > div {
   display: grid;
@@ -137,10 +147,10 @@ const signalLabel = computed(
 }
 .dna-portfolio-card ul {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--spacing-6);
   margin: 0;
   padding: 0;
-  overflow: hidden;
   list-style: none;
 }
 .dna-portfolio-card li {
@@ -149,7 +159,7 @@ const signalLabel = computed(
   border-radius: var(--radius-full);
   color: var(--color-brand-light);
   font-size: var(--font-size-10);
-  white-space: nowrap;
+  overflow-wrap: anywhere;
 }
 .dna-portfolio-card footer {
   display: flex;

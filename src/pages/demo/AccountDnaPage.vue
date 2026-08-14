@@ -6,7 +6,10 @@ import {
   DnaEvidenceCard,
   FrequencyBadge,
 } from '../../components/product';
-import { AppButton, AppSourceAttributionChip } from '../../design-system/components/core';
+import {
+  AppButton,
+  AppSourceAttributionChip,
+} from '../../design-system/components/core';
 import { demoAccountProvider } from '../../demo/demoAccountProvider';
 import type { DemoDnaSource } from '../../demo/types';
 import { useDemoAccount } from '../../demo/useDemoAccount';
@@ -33,7 +36,8 @@ const loadApi = async () => {
     apiName.value = detail.name;
     apiDna.value = dnaResult;
   } catch (error) {
-    if (error instanceof ApiRequestError && error.status === 404) apiNotFound.value = true;
+    if (error instanceof ApiRequestError && error.status === 404)
+      apiNotFound.value = true;
     else apiError.value = 'Communication DNA is unavailable right now.';
   } finally {
     apiLoading.value = false;
@@ -71,8 +75,13 @@ const apiFrequency = (value: string | null) =>
   >
     <h1 data-page-heading>Loading Communication DNA…</h1>
   </section>
-  <section v-else-if="apiMode && apiNotFound" class="account-not-found" role="alert">
-    <h1 data-page-heading>Account not found</h1><p>The requested account is unavailable.</p>
+  <section
+    v-else-if="apiMode && apiNotFound"
+    class="account-not-found"
+    role="alert"
+  >
+    <h1 data-page-heading>Account not found</h1>
+    <p>The requested account is unavailable.</p>
     <RouterLink to="/demo">Return to Account Discovery</RouterLink>
   </section>
   <section
@@ -81,24 +90,159 @@ const apiFrequency = (value: string | null) =>
     role="alert"
   >
     <h1 data-page-heading>Communication DNA unavailable</h1>
-    <p>{{ apiError }}</p><button type="button" @click="loadApi">Retry DNA</button>
+    <p>{{ apiError }}</p>
+    <button type="button" @click="loadApi">Retry DNA</button>
     <RouterLink :to="`/demo/accounts/${accountId}`"
       >Return to Account Overview</RouterLink
     >
   </section>
   <section v-else-if="apiMode" class="dna-page" aria-labelledby="api-dna-title">
-    <article class="dna-page__hero"><div class="dna-page__identity"><span aria-hidden="true">{{ apiName.charAt(0) }}</span><div><p>ACCOUNT INTELLIGENCE / COMMUNICATION DNA</p><h1 id="api-dna-title" data-page-heading>Communication DNA — {{ apiName }}</h1><p>Backend-provided account communication intelligence.</p></div></div><div class="dna-page__actions"><AppButton disabled title="Content Studio is fixture-only">Generate Mirrored Content</AppButton><AppButton variant="secondary" disabled>Export DNA Report</AppButton><AppButton variant="ghost" @click="back">← Back</AppButton></div></article>
-    <p v-if="!apiDna" class="dna-page__limited">No Communication DNA is available for this account.</p>
+    <article class="dna-page__hero">
+      <div class="dna-page__identity">
+        <span aria-hidden="true">{{ apiName.charAt(0) }}</span>
+        <div>
+          <p>ACCOUNT INTELLIGENCE / COMMUNICATION DNA</p>
+          <h1 id="api-dna-title" data-page-heading>
+            Communication DNA — {{ apiName }}
+          </h1>
+          <p>Backend-provided account communication intelligence.</p>
+        </div>
+      </div>
+      <div class="dna-page__actions">
+        <AppButton disabled title="Content Studio is fixture-only"
+          >Generate Mirrored Content</AppButton
+        ><AppButton variant="secondary" disabled>Export DNA Report</AppButton
+        ><AppButton variant="ghost" @click="back">← Back</AppButton>
+      </div>
+    </article>
+    <p v-if="!apiDna" class="dna-page__limited">
+      No Communication DNA is available for this account.
+    </p>
     <div v-else class="dna-page__grid">
-      <DnaEvidenceCard title="Tone" :status="apiDna.tone.status"><dl class="dna-page__facts"><div><dt>PRIMARY</dt><dd>{{ apiDna.tone.primary ?? '—' }}</dd></div><div><dt>SECONDARY</dt><dd>{{ apiDna.tone.secondary ?? '—' }}</dd></div></dl><p>{{ apiDna.tone.description ?? 'Not available' }}</p><AppSourceAttributionChip v-if="apiDna.tone.sources.length" :source="`${apiDna.tone.sources.length} source(s)`"/></DnaEvidenceCard>
-      <DnaEvidenceCard title="Vocabulary" :status="apiDna.vocabulary.status"><ul v-if="apiDna.vocabulary.terms.length" class="dna-page__vocabulary"><li v-for="item in apiDna.vocabulary.terms" :key="item.term"><strong>{{ item.term }}</strong><small>{{ item.context ?? '—' }}</small><FrequencyBadge v-if="item.frequency === 'high' || item.frequency === 'medium' || item.frequency === 'low'" :level="apiFrequency(item.frequency)"/><small v-else>{{ item.frequency ?? '—' }}</small></li></ul><p v-else>Not available</p></DnaEvidenceCard>
-      <DnaEvidenceCard v-if="apiDna.valuePropositions.length" title="Value Propositions" :status="apiDna.valuePropositions[0].status"><blockquote v-for="item in apiDna.valuePropositions" :key="item.quote">{{ item.quote }}</blockquote></DnaEvidenceCard><section v-else class="dna-page__empty">No value propositions available.</section>
-      <DnaEvidenceCard title="Problem Framing" :status="apiDna.problemFraming.status"><p>{{ apiDna.problemFraming.description ?? 'Not available' }}</p><blockquote>{{ apiDna.problemFraming.quote ?? 'Not available' }}</blockquote></DnaEvidenceCard>
-      <DnaEvidenceCard title="Proof Style" :status="apiDna.proofStyle.status"><dl class="dna-page__facts"><div><dt>PRIMARY</dt><dd>{{ apiDna.proofStyle.primary ?? '—' }}</dd></div><div><dt>SECONDARY</dt><dd>{{ apiDna.proofStyle.secondary ?? '—' }}</dd></div></dl><p>{{ apiDna.proofStyle.description ?? 'Not available' }}</p></DnaEvidenceCard>
-      <DnaEvidenceCard title="CTA Patterns" :status="apiDna.ctaPatterns.status"><p>{{ apiDna.ctaPatterns.style ?? 'Not available' }}</p><p>{{ apiDna.ctaPatterns.description ?? 'Not available' }}</p><div class="dna-page__tags"><span v-for="example in apiDna.ctaPatterns.examples" :key="example">{{ example }}</span></div></DnaEvidenceCard>
-      <DnaEvidenceCard v-if="apiDna.recurringPhrases.length" title="Recurring Phrases" :status="apiDna.recurringPhrases[0].status"><blockquote v-for="item in apiDna.recurringPhrases" :key="item.quote">{{ item.quote }}</blockquote></DnaEvidenceCard><section v-else class="dna-page__empty">No recurring phrases available.</section>
-      <section class="dna-page__mirroring"><section><h3>DO</h3><ul><li v-for="rule in apiDna.doRules" :key="rule">{{ rule }}</li></ul><p v-if="!apiDna.doRules.length">Not available</p></section><section><h3>DON’T</h3><ul><li v-for="rule in apiDna.dontRules" :key="rule">{{ rule }}</li></ul><p v-if="!apiDna.dontRules.length">Not available</p></section></section>
-      <section class="dna-page__buying-sources"><h3>Buying Signals</h3><p>{{ apiDna.buyingSignalSources.length }} sources used in the account signal analysis</p><ul><li v-for="(source, index) in apiDna.buyingSignalSources" :key="source.url ?? source.name ?? source.type ?? index"><a v-if="isCompleteUrl(source.url ?? undefined)" :href="source.url!" target="_blank" rel="noopener noreferrer">{{ source.name ?? 'Open source' }}</a><span v-else>{{ source.name ?? 'Source unavailable' }}</span></li></ul></section>
+      <DnaEvidenceCard title="Tone" :status="apiDna.tone.status"
+        ><dl class="dna-page__facts">
+          <div>
+            <dt>PRIMARY</dt>
+            <dd>{{ apiDna.tone.primary ?? '—' }}</dd>
+          </div>
+          <div>
+            <dt>SECONDARY</dt>
+            <dd>{{ apiDna.tone.secondary ?? '—' }}</dd>
+          </div>
+        </dl>
+        <p>{{ apiDna.tone.description ?? 'Not available' }}</p>
+        <AppSourceAttributionChip
+          v-if="apiDna.tone.sources.length"
+          :source="`${apiDna.tone.sources.length} source(s)`"
+      /></DnaEvidenceCard>
+      <DnaEvidenceCard title="Vocabulary" :status="apiDna.vocabulary.status"
+        ><ul v-if="apiDna.vocabulary.terms.length" class="dna-page__vocabulary">
+          <li v-for="item in apiDna.vocabulary.terms" :key="item.term">
+            <strong>{{ item.term }}</strong
+            ><small>{{ item.context ?? '—' }}</small
+            ><FrequencyBadge
+              v-if="
+                item.frequency === 'high' ||
+                item.frequency === 'medium' ||
+                item.frequency === 'low'
+              "
+              :level="apiFrequency(item.frequency)"
+            /><small v-else>{{ item.frequency ?? '—' }}</small>
+          </li>
+        </ul>
+        <p v-else>Not available</p></DnaEvidenceCard
+      >
+      <DnaEvidenceCard
+        v-if="apiDna.valuePropositions.length"
+        title="Value Propositions"
+        :status="apiDna.valuePropositions[0].status"
+        ><blockquote v-for="item in apiDna.valuePropositions" :key="item.quote">
+          {{ item.quote }}
+        </blockquote></DnaEvidenceCard
+      >
+      <section v-else class="dna-page__empty">
+        No value propositions available.
+      </section>
+      <DnaEvidenceCard
+        title="Problem Framing"
+        :status="apiDna.problemFraming.status"
+        ><p>{{ apiDna.problemFraming.description ?? 'Not available' }}</p>
+        <blockquote>
+          {{ apiDna.problemFraming.quote ?? 'Not available' }}
+        </blockquote></DnaEvidenceCard
+      >
+      <DnaEvidenceCard title="Proof Style" :status="apiDna.proofStyle.status"
+        ><dl class="dna-page__facts">
+          <div>
+            <dt>PRIMARY</dt>
+            <dd>{{ apiDna.proofStyle.primary ?? '—' }}</dd>
+          </div>
+          <div>
+            <dt>SECONDARY</dt>
+            <dd>{{ apiDna.proofStyle.secondary ?? '—' }}</dd>
+          </div>
+        </dl>
+        <p>
+          {{ apiDna.proofStyle.description ?? 'Not available' }}
+        </p></DnaEvidenceCard
+      >
+      <DnaEvidenceCard title="CTA Patterns" :status="apiDna.ctaPatterns.status"
+        ><p>{{ apiDna.ctaPatterns.style ?? 'Not available' }}</p>
+        <p>{{ apiDna.ctaPatterns.description ?? 'Not available' }}</p>
+        <div class="dna-page__tags">
+          <span v-for="example in apiDna.ctaPatterns.examples" :key="example">{{
+            example
+          }}</span>
+        </div></DnaEvidenceCard
+      >
+      <DnaEvidenceCard
+        v-if="apiDna.recurringPhrases.length"
+        title="Recurring Phrases"
+        :status="apiDna.recurringPhrases[0].status"
+        ><blockquote v-for="item in apiDna.recurringPhrases" :key="item.quote">
+          {{ item.quote }}
+        </blockquote></DnaEvidenceCard
+      >
+      <section v-else class="dna-page__empty">
+        No recurring phrases available.
+      </section>
+      <section class="dna-page__mirroring">
+        <section>
+          <h3>DO</h3>
+          <ul>
+            <li v-for="rule in apiDna.doRules" :key="rule">{{ rule }}</li>
+          </ul>
+          <p v-if="!apiDna.doRules.length">Not available</p>
+        </section>
+        <section>
+          <h3>DON’T</h3>
+          <ul>
+            <li v-for="rule in apiDna.dontRules" :key="rule">{{ rule }}</li>
+          </ul>
+          <p v-if="!apiDna.dontRules.length">Not available</p>
+        </section>
+      </section>
+      <section class="dna-page__buying-sources">
+        <h3>Buying Signals</h3>
+        <p>
+          {{ apiDna.buyingSignalSources.length }} sources used in the account
+          signal analysis
+        </p>
+        <ul>
+          <li
+            v-for="(source, index) in apiDna.buyingSignalSources"
+            :key="source.url ?? source.name ?? source.type ?? index"
+          >
+            <a
+              v-if="isCompleteUrl(source.url ?? undefined)"
+              :href="source.url!"
+              target="_blank"
+              rel="noopener noreferrer"
+              >{{ source.name ?? 'Open source' }}</a
+            ><span v-else>{{ source.name ?? 'Source unavailable' }}</span>
+          </li>
+        </ul>
+      </section>
     </div>
   </section>
   <section
@@ -344,9 +488,16 @@ const apiFrequency = (value: string | null) =>
 .dna-page {
   display: grid;
   width: 100%;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--spacing-20);
   padding: var(--spacing-24);
   box-sizing: border-box;
+}
+.dna-page > *,
+.dna-page__grid > *,
+.dna-page__source-summary > *,
+.dna-page__buying-sources li > * {
+  min-width: 0;
 }
 .dna-page__hero {
   display: grid;
@@ -436,8 +587,10 @@ const apiFrequency = (value: string | null) =>
   color: var(--color-text-primary);
 }
 .dna-page a {
+  max-width: 100%;
   color: var(--color-brand-light);
   font-size: var(--font-size-11);
+  overflow-wrap: anywhere;
 }
 .dna-page__vocabulary {
   display: grid;
@@ -454,11 +607,18 @@ const apiFrequency = (value: string | null) =>
 .dna-page__vocabulary li > div {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: var(--spacing-7);
 }
 .dna-page__vocabulary strong {
   min-width: 150px;
   color: var(--color-brand-light);
+}
+.dna-page__vocabulary small,
+.dna-page blockquote,
+.dna-page__buying-sources small {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 .dna-page__vocabulary small {
   flex: 1;
@@ -530,7 +690,7 @@ const apiFrequency = (value: string | null) =>
 }
 .dna-page__source-summary {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--spacing-12);
 }
 .dna-page__source-summary article,

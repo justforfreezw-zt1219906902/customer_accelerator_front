@@ -26,23 +26,42 @@ const loadAccounts = async () => {
 onMounted(loadAccounts);
 const isApiMode = getRuntimeConfig().demoDataSource === 'api';
 const toRow = (item: AccountListDto): AccountRowViewModel => ({
-  id: item.id, initials: item.name.split(/\s+/).map((part) => part[0]).join('').slice(0, 2).toUpperCase(),
-  name: item.name, industry: item.industry ?? 'Not available', location: item.hq ?? 'Not available',
-  tier: item.analysis?.tier ?? null, icpFit: item.analysis?.icpScore ?? null,
-  signalScore: item.analysis?.signalScore ?? null, resonance: item.analysis?.resonanceScore ?? null,
-  activeSignals: item.activeSignalCount, nextBestAction: item.analysis?.nextBestAction ?? null,
+  id: item.id,
+  initials: item.name
+    .split(/\s+/)
+    .map((part) => part[0])
+    .join('')
+    .slice(0, 2)
+    .toUpperCase(),
+  name: item.name,
+  industry: item.industry ?? 'Not available',
+  location: item.hq ?? 'Not available',
+  tier: item.analysis?.tier ?? null,
+  icpFit: item.analysis?.icpScore ?? null,
+  signalScore: item.analysis?.signalScore ?? null,
+  resonance: item.analysis?.resonanceScore ?? null,
+  activeSignals: item.activeSignalCount,
+  nextBestAction: item.analysis?.nextBestAction ?? null,
 });
 const fixtureRows = accounts.map((item): AccountRowViewModel => ({
-  id: item.id, initials: item.initials, name: item.name, industry: item.industry,
-  location: item.location, tier: item.tier, icpFit: item.icpFit, signalScore: item.signalScore,
-  resonance: item.resonance, activeSignals: item.activeSignals, nextBestAction: item.nextBestAction,
+  id: item.id,
+  initials: item.initials,
+  name: item.name,
+  industry: item.industry,
+  location: item.location,
+  tier: item.tier,
+  icpFit: item.icpFit,
+  signalScore: item.signalScore,
+  resonance: item.resonance,
+  activeSignals: item.activeSignals,
+  nextBestAction: item.nextBestAction,
   signalPattern: item.signalPattern,
 }));
 const displayAccounts = computed<readonly AccountRowViewModel[]>(() =>
   isApiMode
-    ? (apiState.value === 'loaded'
-        ? apiAccounts.value.map(toRow)
-        : [])
+    ? apiState.value === 'loaded'
+      ? apiAccounts.value.map(toRow)
+      : []
     : fixtureRows,
 );
 const metrics = computed(() => {
@@ -51,9 +70,14 @@ const metrics = computed(() => {
   }
   return {
     total: apiAccounts.value.length,
-    focus: apiAccounts.value.filter((item) => item.analysis?.tier === 'Focus Accounts').length,
-    tier1: apiAccounts.value.filter((item) => item.analysis?.tier === 'Tier 1' && item.activeSignalCount > 0).length,
-    tier2: apiAccounts.value.filter((item) => item.analysis?.tier === 'Tier 2').length,
+    focus: apiAccounts.value.filter(
+      (item) => item.analysis?.tier === 'Focus Accounts',
+    ).length,
+    tier1: apiAccounts.value.filter(
+      (item) => item.analysis?.tier === 'Tier 1' && item.activeSignalCount > 0,
+    ).length,
+    tier2: apiAccounts.value.filter((item) => item.analysis?.tier === 'Tier 2')
+      .length,
   };
 });
 const query = ref('');
@@ -69,7 +93,10 @@ const filteredAccounts = computed(() => {
       `${account.name} ${account.industry} ${account.location}`.toLocaleLowerCase();
     return (
       (!needle || searchable.includes(needle)) &&
-      (tier.value === 'all' || (tier.value === 'unanalyzed' ? account.tier === null : account.tier === tier.value)) &&
+      (tier.value === 'all' ||
+        (tier.value === 'unanalyzed'
+          ? account.tier === null
+          : account.tier === tier.value)) &&
       (industry.value === 'all' || account.industry === industry.value)
     );
   });
@@ -86,7 +113,10 @@ const clearFilters = () => {
     <p v-if="apiState === 'loading'" role="status">
       Loading account intelligence…
     </p>
-    <div v-else-if="apiState === 'error'" role="alert"><p>{{ apiError }}</p><button type="button" @click="loadAccounts">Retry Accounts</button></div>
+    <div v-else-if="apiState === 'error'" role="alert">
+      <p>{{ apiError }}</p>
+      <button type="button" @click="loadAccounts">Retry Accounts</button>
+    </div>
     <header class="discovery-page__header">
       <div>
         <h1 id="discovery-title" data-page-heading>Account Discovery</h1>
@@ -94,13 +124,30 @@ const clearFilters = () => {
       </div>
       <button type="button" disabled>Add Account</button>
     </header>
-    <div v-if="!isApiMode || apiState === 'loaded'" class="discovery-page__metrics" aria-label="Account portfolio summary">
+    <div
+      v-if="!isApiMode || apiState === 'loaded'"
+      class="discovery-page__metrics"
+      aria-label="Account portfolio summary"
+    >
       <AppMetricCard label="Total Accounts" :value="metrics.total" />
-      <AppMetricCard label="Focus Accounts" :value="metrics.focus" tone="brand" />
+      <AppMetricCard
+        label="Focus Accounts"
+        :value="metrics.focus"
+        tone="brand"
+      />
       <AppMetricCard label="Tier 1 — Active" :value="metrics.tier1" />
-      <AppMetricCard label="Tier 2 — Watchlist" :value="metrics.tier2" tone="warning" />
+      <AppMetricCard
+        label="Tier 2 — Watchlist"
+        :value="metrics.tier2"
+        tone="warning"
+      />
     </div>
-    <form v-if="!isApiMode || apiState === 'loaded'" class="discovery-page__filters" role="search" @submit.prevent>
+    <form
+      v-if="!isApiMode || apiState === 'loaded'"
+      class="discovery-page__filters"
+      role="search"
+      @submit.prevent
+    >
       <label class="discovery-page__search"
         ><span>Search accounts</span
         ><input
@@ -134,7 +181,11 @@ const clearFilters = () => {
         ><button type="button" @click="clearFilters">Clear filters</button>
       </div>
     </form>
-    <div v-if="!isApiMode || apiState === 'loaded'" class="discovery-page__table" aria-label="Accounts">
+    <div
+      v-if="!isApiMode || apiState === 'loaded'"
+      class="discovery-page__table"
+      aria-label="Accounts"
+    >
       <div class="discovery-page__columns" aria-hidden="true">
         <span>Account</span><span>Tier</span><span>ICP Fit</span
         ><span>Signal Score</span><span>Resonance</span><span>Signals</span
@@ -156,10 +207,14 @@ const clearFilters = () => {
 <style scoped>
 .discovery-page {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   width: 100%;
   box-sizing: border-box;
   gap: var(--spacing-16);
   padding: var(--spacing-24);
+}
+.discovery-page > * {
+  min-width: 0;
 }
 .discovery-page__header {
   display: flex;
@@ -197,7 +252,7 @@ p {
     auto;
   align-items: end;
   gap: var(--spacing-12);
-  height: 72px;
+  min-height: 72px;
   padding: var(--spacing-16);
   border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-md);
@@ -256,6 +311,7 @@ select:focus-visible,
   --account-discovery-column-gap: var(--spacing-14);
 
   width: 100%;
+  min-width: 0;
   max-width: 1152px;
   overflow: hidden;
   border: 1px solid var(--color-border-subtle);
@@ -280,7 +336,7 @@ select:focus-visible,
   padding: var(--spacing-40);
   text-align: center;
 }
-@media (max-width: 1023px) {
+@media (max-width: 1024px) {
   .discovery-page__metrics {
     grid-template-columns: repeat(2, 1fr);
   }

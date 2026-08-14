@@ -5,9 +5,17 @@ import ScoreIndicator from './ScoreIndicator.vue';
 import SignalSummary from './SignalSummary.vue';
 import TierBadge from './TierBadge.vue';
 export interface AccountRowViewModel {
-  id: string; initials: string; name: string; industry: string; location: string;
-  tier: string | null; icpFit: number | null; signalScore: number | null;
-  resonance: number | null; activeSignals: number; nextBestAction: string | null;
+  id: string;
+  initials: string;
+  name: string;
+  industry: string;
+  location: string;
+  tier: string | null;
+  icpFit: number | null;
+  signalScore: number | null;
+  resonance: number | null;
+  activeSignals: number;
+  nextBestAction: string | null;
   signalPattern?: readonly ('active' | 'inactive')[];
 }
 defineProps<{ account: AccountRowViewModel }>();
@@ -53,7 +61,7 @@ defineProps<{ account: AccountRowViewModel }>();
   grid-template-columns: var(--account-discovery-columns);
   align-items: center;
   gap: var(--account-discovery-column-gap);
-  height: 72px;
+  min-height: 72px;
   padding: var(--spacing-12) var(--spacing-16);
   color: inherit;
   text-decoration: none;
@@ -68,12 +76,18 @@ defineProps<{ account: AccountRowViewModel }>();
 }
 .account-row__action {
   display: inline-flex;
-  align-items: center;
+  min-width: 0;
+  align-items: flex-start;
   gap: var(--spacing-8);
+  width: 100%;
   max-width: 130px;
   color: var(--color-text-secondary);
   font-size: var(--font-size-11);
   line-height: 1.45;
+}
+.account-row__action span {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 .account-row__spacer {
   pointer-events: none;
@@ -96,6 +110,8 @@ defineProps<{ account: AccountRowViewModel }>();
   }
   .account-row__action {
     grid-column: 1/-1;
+    width: auto;
+    max-width: none;
     padding-top: var(--spacing-8);
     border-top: 1px solid var(--color-border-subtle);
   }
@@ -125,6 +141,28 @@ defineProps<{ account: AccountRowViewModel }>();
   }
   .account-row__action {
     grid-row: auto;
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .account-row__link {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-16);
+    padding: var(--spacing-16);
+  }
+  .account-row__link > :first-child,
+  .account-row__action {
+    grid-column: 1/-1;
+  }
+  .account-row__link > :nth-child(2),
+  .account-row__link > :nth-child(3),
+  .account-row__link > :nth-child(4),
+  .account-row__link > :nth-child(5) {
+    justify-self: start;
+  }
+  .account-row__link > :nth-child(6) {
+    justify-self: end;
+    grid-column: 2;
+    grid-row: 2;
   }
 }
 </style>

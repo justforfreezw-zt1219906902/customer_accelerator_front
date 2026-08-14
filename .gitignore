@@ -8,3 +8,7 @@ test-results/
 .env.*.local
 *.log
 *.tsbuildinfo
+# Local test screenshots and browser evidence (do not upload)
+docs/08-quality/test-reports/evidence/
+docs/08-quality/test-reports/*.png
+docs/08-quality/test-reports/**/*.png

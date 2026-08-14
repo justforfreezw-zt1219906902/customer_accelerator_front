@@ -15,9 +15,22 @@ import type {
 } from '../../demo/contentStudio';
 import type { DemoAccountIdentity } from '../../demo/types';
 import { getRuntimeConfig } from '../../app/configuration/environment';
-import { getAccount, getAccountSignals, getCommunicationDna, listAccounts, generateOutreachEmail } from '../../services/accountApi';
+import {
+  getAccount,
+  getAccountSignals,
+  getCommunicationDna,
+  listAccounts,
+  generateOutreachEmail,
+} from '../../services/accountApi';
 import { ApiRequestError } from '../../utils/apiErrors';
-import type { AccountDetailDto, AccountListDto, AccountSignalDto, CommunicationDnaDto, OutreachEmailPart, OutreachEmailGenerationResponse } from '../../types/accountApi';
+import type {
+  AccountDetailDto,
+  AccountListDto,
+  AccountSignalDto,
+  CommunicationDnaDto,
+  OutreachEmailPart,
+  OutreachEmailGenerationResponse,
+} from '../../types/accountApi';
 
 const route = useRoute();
 const router = useRouter();
@@ -35,14 +48,28 @@ const apiError = ref('');
 const apiSelectedLoading = ref(false);
 const apiSelectedError = ref('');
 let accountLoadGeneration = 0;
-const selectedAccount = computed<DemoAccountIdentity | AccountListDto | AccountDetailDto | undefined>(() => apiMode ? apiSelectedAccount.value : (accountQuery.value ? demoAccountProvider.findAccountById(accountQuery.value) : undefined));
+const selectedAccount = computed<
+  DemoAccountIdentity | AccountListDto | AccountDetailDto | undefined
+>(() =>
+  apiMode
+    ? apiSelectedAccount.value
+    : accountQuery.value
+      ? demoAccountProvider.findAccountById(accountQuery.value)
+      : undefined,
+);
 const selectedTier = computed(() => {
   const account = selectedAccount.value;
   if (!account) return 'Not available';
-  return 'tier' in account ? account.tier ?? 'Not available' : account.analysis?.tier ?? 'Not available';
+  return 'tier' in account
+    ? (account.tier ?? 'Not available')
+    : (account.analysis?.tier ?? 'Not available');
 });
 const invalidAccount = computed(
-  () => Boolean(accountQuery.value) && !selectedAccount.value && !apiLoading.value && !apiError.value,
+  () =>
+    Boolean(accountQuery.value) &&
+    !selectedAccount.value &&
+    !apiLoading.value &&
+    !apiError.value,
 );
 const query = ref('');
 const industry = ref('all');
@@ -51,7 +78,11 @@ const lifecycle = ref('all');
 const persona = ref(defaultContentStudioContext().persona);
 const asset = ref(defaultContentStudioContext().asset);
 const adType = ref<ContentStudioContext['adType']>('Single Image Ad');
-const anchorSignal = ref(apiMode ? '' : 'Product launch / major UI update: Oracle Fusion 26C Quarterly Release');
+const anchorSignal = ref(
+  apiMode
+    ? ''
+    : 'Product launch / major UI update: Oracle Fusion 26C Quarterly Release',
+);
 const intro = ref('Run your most demanding workloads with confidence');
 const overlay = ref('BUILT FOR THE ENTERPRISE');
 const headline = ref('Complete and integrated');
@@ -83,8 +114,14 @@ const recipientFirst = ref('');
 const recipientLast = ref('');
 const greeting = ref('Hi');
 const emailSubject = ref(apiMode ? '' : 'cloud infrastructure');
-const emailOpening = ref(apiMode ? '' : 'Run your most demanding workloads with confidence.');
-const emailValue = ref(apiMode ? '' : 'Oracle Fusion 26C retraining creates a timely opening for a complete and integrated learning approach.');
+const emailOpening = ref(
+  apiMode ? '' : 'Run your most demanding workloads with confidence.',
+);
+const emailValue = ref(
+  apiMode
+    ? ''
+    : 'Oracle Fusion 26C retraining creates a timely opening for a complete and integrated learning approach.',
+);
 const emailCta = ref(apiMode ? '' : 'worth a quick look?');
 const signatureName = ref('[Your name]');
 const signatureTitle = ref('[Your title]');
@@ -177,19 +214,54 @@ const emailChecks = computed(() => ({
   under100: emailWordCount.value < 100,
 }));
 const submitEmailGeneration = async (parts: OutreachEmailPart[]) => {
-  if (!apiMode || !accountQuery.value || !anchorSignal.value || emailGenerating.value) return;
-  emailGenerating.value = true; emailError.value = '';
+  if (
+    !apiMode ||
+    !accountQuery.value ||
+    !anchorSignal.value ||
+    emailGenerating.value
+  )
+    return;
+  emailGenerating.value = true;
+  emailError.value = '';
   try {
-    const result = await generateOutreachEmail(accountQuery.value, { persona: persona.value, anchorSignalId: anchorSignal.value, parts, currentDraft: { subject: emailSubject.value, opening: emailOpening.value, value: emailValue.value, cta: emailCta.value } });
-    if (parts.includes('subject') && result.generatedParts.subject !== undefined) emailSubject.value = result.generatedParts.subject;
-    if (parts.includes('opening') && result.generatedParts.opening !== undefined) emailOpening.value = result.generatedParts.opening;
-    if (parts.includes('value') && result.generatedParts.value !== undefined) emailValue.value = result.generatedParts.value;
-    if (parts.includes('cta') && result.generatedParts.cta !== undefined) emailCta.value = result.generatedParts.cta;
+    const result = await generateOutreachEmail(accountQuery.value, {
+      persona: persona.value,
+      anchorSignalId: anchorSignal.value,
+      parts,
+      currentDraft: {
+        subject: emailSubject.value,
+        opening: emailOpening.value,
+        value: emailValue.value,
+        cta: emailCta.value,
+      },
+    });
+    if (
+      parts.includes('subject') &&
+      result.generatedParts.subject !== undefined
+    )
+      emailSubject.value = result.generatedParts.subject;
+    if (
+      parts.includes('opening') &&
+      result.generatedParts.opening !== undefined
+    )
+      emailOpening.value = result.generatedParts.opening;
+    if (parts.includes('value') && result.generatedParts.value !== undefined)
+      emailValue.value = result.generatedParts.value;
+    if (parts.includes('cta') && result.generatedParts.cta !== undefined)
+      emailCta.value = result.generatedParts.cta;
     emailTrace.value = result.traceability;
-  } catch { emailError.value = 'Outreach generation is unavailable right now. Your draft was not changed.'; } finally { emailGenerating.value = false; }
+  } catch {
+    emailError.value =
+      'Outreach generation is unavailable right now. Your draft was not changed.';
+  } finally {
+    emailGenerating.value = false;
+  }
 };
 const resetEmail = async () => {
-  if (apiMode) { await submitEmailGeneration(['subject', 'opening', 'value', 'cta']); return; }
+  if (apiMode) {
+    await submitEmailGeneration(['subject', 'opening', 'value', 'cta']);
+    return;
+  }
   emailSubject.value = 'cloud infrastructure';
   emailOpening.value = 'Run your most demanding workloads with confidence.';
   emailValue.value =
@@ -198,13 +270,18 @@ const resetEmail = async () => {
 };
 type EmailGeneratedPart = 'subject' | 'opening' | 'value' | 'cta';
 const regenerateEmailPart = async (part: EmailGeneratedPart) => {
-  if (apiMode) { await submitEmailGeneration([part]); return; }
+  if (apiMode) {
+    await submitEmailGeneration([part]);
+    return;
+  }
   const accountName = selectedAccount.value?.name ?? 'Oracle';
   const companyName = advertiser.value.trim() || 'TechSmith';
   const signal = anchorSignal.value.split(':')[0]?.trim() || 'account signal';
   if (part === 'subject') emailSubject.value = `${signal.toLowerCase()} update`;
-  if (part === 'opening') emailOpening.value = `${accountName}'s ${signal.toLowerCase()} points to a timely enablement need.`;
-  if (part === 'value') emailValue.value = `${companyName} can turn that ${signal.toLowerCase()} into a clear, source-grounded learning motion.`;
+  if (part === 'opening')
+    emailOpening.value = `${accountName}'s ${signal.toLowerCase()} points to a timely enablement need.`;
+  if (part === 'value')
+    emailValue.value = `${companyName} can turn that ${signal.toLowerCase()} into a clear, source-grounded learning motion.`;
   if (part === 'cta') emailCta.value = `worth a quick look for ${accountName}?`;
 };
 const resetLinkedinOutreach = () => {
@@ -234,9 +311,11 @@ const generatedDefaults = () => {
     'You lead with benchmarks + enterprise scale. So will we — sourced.';
 };
 const selectedDna = computed(() =>
-  apiMode ? undefined : accountQuery.value
-    ? demoAccountProvider.findCommunicationDna(accountQuery.value)
-    : undefined,
+  apiMode
+    ? undefined
+    : accountQuery.value
+      ? demoAccountProvider.findCommunicationDna(accountQuery.value)
+      : undefined,
 );
 const copyContent = async () => {
   await navigator.clipboard?.writeText(
@@ -288,48 +367,97 @@ const loadSelectedApiAccount = async (id: string | null) => {
   apiSelectedLoading.value = true;
   try {
     const account = await getAccount(id);
-    const [signals, dna] = await Promise.all([getAccountSignals(id), getCommunicationDna(id)]);
+    const [signals, dna] = await Promise.all([
+      getAccountSignals(id),
+      getCommunicationDna(id),
+    ]);
     if (generation !== accountLoadGeneration) return;
     apiSelectedAccount.value = account;
-    apiSelectedSignals.value = signals.items.filter((signal) => signal.isActive);
+    apiSelectedSignals.value = signals.items.filter(
+      (signal) => signal.isActive,
+    );
     apiSelectedDna.value = dna;
     anchorSignal.value = apiSelectedSignals.value[0]?.id ?? '';
   } catch (error) {
     if (generation !== accountLoadGeneration) return;
-    apiSelectedError.value = error instanceof ApiRequestError && error.status === 404
-      ? 'Account not found'
-      : 'Content Studio data is unavailable right now.';
+    apiSelectedError.value =
+      error instanceof ApiRequestError && error.status === 404
+        ? 'Account not found'
+        : 'Content Studio data is unavailable right now.';
   } finally {
     if (generation === accountLoadGeneration) apiSelectedLoading.value = false;
   }
 };
 const loadApiAccounts = async () => {
   if (!apiMode) return;
-  apiLoading.value = true; apiError.value = '';
+  apiLoading.value = true;
+  apiError.value = '';
   try {
     apiAccounts.value = await listAccounts();
   } catch (error) {
-    apiError.value = error instanceof Error ? error.message : 'Content Studio data is unavailable right now.';
+    apiError.value =
+      error instanceof Error
+        ? error.message
+        : 'Content Studio data is unavailable right now.';
   } finally {
     apiLoading.value = false;
     if (!apiError.value) void loadSelectedApiAccount(accountQuery.value);
   }
 };
-onMounted(() => { if (apiMode) void loadApiAccounts(); });
-watch(accountQuery, (id, previous) => {
-  if (apiMode && id !== previous && !apiLoading.value) void loadSelectedApiAccount(id);
+onMounted(() => {
+  if (apiMode) void loadApiAccounts();
 });
-const industries = computed(() => apiMode ? [...new Set(apiAccounts.value.map((account) => account.industry).filter((value): value is string => Boolean(value)))] : [...new Set(accounts.map((account) => account.industry))]);
-const tiers = computed(() => apiMode
-  ? [...new Set(apiAccounts.value.map((account) => account.analysis?.tier).filter((value): value is string => Boolean(value)))]
-  : ['Focus Accounts', 'Tier 1', 'Tier 2', 'Below ICP']);
-const lifecycles = computed(() => apiMode ? [...new Set(apiAccounts.value.map((account) => account.lifecycle))] : [...new Set(Object.values(contentStudioLifecycle))]);
+watch(accountQuery, (id, previous) => {
+  if (apiMode && id !== previous && !apiLoading.value)
+    void loadSelectedApiAccount(id);
+});
+const industries = computed(() =>
+  apiMode
+    ? [
+        ...new Set(
+          apiAccounts.value
+            .map((account) => account.industry)
+            .filter((value): value is string => Boolean(value)),
+        ),
+      ]
+    : [...new Set(accounts.map((account) => account.industry))],
+);
+const tiers = computed(() =>
+  apiMode
+    ? [
+        ...new Set(
+          apiAccounts.value
+            .map((account) => account.analysis?.tier)
+            .filter((value): value is string => Boolean(value)),
+        ),
+      ]
+    : ['Focus Accounts', 'Tier 1', 'Tier 2', 'Below ICP'],
+);
+const lifecycles = computed(() =>
+  apiMode
+    ? [...new Set(apiAccounts.value.map((account) => account.lifecycle))]
+    : [...new Set(Object.values(contentStudioLifecycle))],
+);
 const filteredAccounts = computed(() => {
   const needle = query.value.trim().toLocaleLowerCase();
-  if (apiMode) return apiAccounts.value.filter((account) => {
-    const searchable = `${account.name} ${account.industry ?? ''} ${account.hq ?? ''}`.toLocaleLowerCase();
-    return (!needle || searchable.includes(needle)) && (industry.value === 'all' || account.industry === industry.value) && (tier.value === 'all' || account.analysis?.tier === tier.value) && (lifecycle.value === 'all' || account.lifecycle === lifecycle.value);
-  }).map((account) => ({ ...account, initials: account.name.slice(0, 2).toUpperCase(), location: account.hq ?? 'Not available', tier: account.analysis?.tier ?? null }));
+  if (apiMode)
+    return apiAccounts.value
+      .filter((account) => {
+        const searchable =
+          `${account.name} ${account.industry ?? ''} ${account.hq ?? ''}`.toLocaleLowerCase();
+        return (
+          (!needle || searchable.includes(needle)) &&
+          (industry.value === 'all' || account.industry === industry.value) &&
+          (tier.value === 'all' || account.analysis?.tier === tier.value) &&
+          (lifecycle.value === 'all' || account.lifecycle === lifecycle.value)
+        );
+      })
+      .map((account) => ({
+        ...account,
+        initials: account.name.slice(0, 2).toUpperCase(),
+        location: account.hq ?? 'Not available',
+        tier: account.analysis?.tier ?? null,
+      }));
   return accounts.filter((account) => {
     const searchable =
       `${account.name} ${account.industry} ${account.location}`.toLocaleLowerCase();
@@ -348,13 +476,26 @@ const accountResultLabel = computed(() =>
   tier.value !== 'all' ||
   lifecycle.value !== 'all'
     ? `${filteredAccounts.value.length} of ${apiMode ? apiAccounts.value.length : 140}`
-    : apiMode ? `${apiAccounts.value.length} of ${apiAccounts.value.length}` : '140 of 140',
+    : apiMode
+      ? `${apiAccounts.value.length} of ${apiAccounts.value.length}`
+      : '140 of 140',
 );
 const chooseAccount = (account: DemoAccountIdentity | AccountListDto) =>
   router.push({ path: '/demo/content-studio', query: { account: account.id } });
-const accountResonance = (account: DemoAccountIdentity | AccountListDto) => 'resonance' in account ? account.resonance : account.analysis?.resonanceScore ?? 'Not available';
-const accountNextBestAction = (account: DemoAccountIdentity | AccountListDto) => 'nextBestAction' in account ? account.nextBestAction : account.analysis?.nextBestAction ?? 'Not available';
-const accountLifecycle = (account: DemoAccountIdentity | AccountListDto) => 'location' in account ? contentStudioLifecycle[account.id] : account.lifecycle;
+const accountResonance = (account: DemoAccountIdentity | AccountListDto) =>
+  'resonance' in account
+    ? account.resonance
+    : (account.analysis?.resonanceScore ?? 'Not available');
+const accountNextBestAction = (
+  account: DemoAccountIdentity | AccountListDto,
+) =>
+  'nextBestAction' in account
+    ? account.nextBestAction
+    : (account.analysis?.nextBestAction ?? 'Not available');
+const accountLifecycle = (account: DemoAccountIdentity | AccountListDto) =>
+  'location' in account
+    ? contentStudioLifecycle[account.id]
+    : account.lifecycle;
 const clearFilters = () => {
   query.value = '';
   industry.value = 'all';
@@ -366,16 +507,36 @@ const clearFilters = () => {
 <template>
   <section class="studio-page" aria-labelledby="studio-title">
     <template v-if="apiMode && apiLoading">
-      <div class="studio-page__invalid" aria-live="polite"><h1 id="studio-title">Loading Content Studio…</h1></div>
+      <div class="studio-page__invalid" aria-live="polite">
+        <h1 id="studio-title">Loading Content Studio…</h1>
+      </div>
     </template>
     <template v-else-if="apiMode && apiError">
-      <div class="studio-page__invalid" role="alert"><h1 id="studio-title">Content Studio unavailable</h1><p>{{ apiError }}</p><button type="button" @click="loadApiAccounts">Retry</button></div>
+      <div class="studio-page__invalid" role="alert">
+        <h1 id="studio-title">Content Studio unavailable</h1>
+        <p>{{ apiError }}</p>
+        <button type="button" @click="loadApiAccounts">Retry</button>
+      </div>
     </template>
     <template v-else-if="apiMode && apiSelectedLoading">
-      <div class="studio-page__invalid" aria-live="polite"><h1 id="studio-title">Loading account context…</h1></div>
+      <div class="studio-page__invalid" aria-live="polite">
+        <h1 id="studio-title">Loading account context…</h1>
+      </div>
     </template>
     <template v-else-if="apiMode && apiSelectedError">
-      <div class="studio-page__invalid" role="alert"><h1 id="studio-title">{{ apiSelectedError === 'Account not found' ? 'Account not found' : 'Content Studio unavailable' }}</h1><p>{{ apiSelectedError }}</p><button type="button" @click="loadSelectedApiAccount(accountQuery)">Retry</button></div>
+      <div class="studio-page__invalid" role="alert">
+        <h1 id="studio-title">
+          {{
+            apiSelectedError === 'Account not found'
+              ? 'Account not found'
+              : 'Content Studio unavailable'
+          }}
+        </h1>
+        <p>{{ apiSelectedError }}</p>
+        <button type="button" @click="loadSelectedApiAccount(accountQuery)">
+          Retry
+        </button>
+      </div>
     </template>
     <template v-else-if="invalidAccount">
       <div class="studio-page__invalid" role="alert">
@@ -392,7 +553,11 @@ const clearFilters = () => {
           <p class="studio-page__eyebrow">CONTENT STUDIO</p>
           <h1 id="studio-title">Content Studio</h1>
           <p>
-            {{ apiMode ? `Build source-grounded content for ${selectedAccount.name}.` : `Everything you need to build a LinkedIn Ad for ${selectedAccount.name} — every part sourced.` }}
+            {{
+              apiMode
+                ? `Build source-grounded content for ${selectedAccount.name}.`
+                : `Everything you need to build a LinkedIn Ad for ${selectedAccount.name} — every part sourced.`
+            }}
           </p>
         </div>
       </header>
@@ -426,10 +591,33 @@ const clearFilters = () => {
             v-model="anchorSignal"
             aria-label="Anchor Signal"
           >
-            <template v-if="!apiMode"><option v-for="signal in contentStudioAnchorSignals" :key="signal.id" :value="signal.label">{{ signal.label }}</option></template>
-            <template v-else><option v-for="signal in apiSelectedSignals" :key="signal.id" :value="signal.id">{{ signal.type }}: {{ signal.title }}</option></template>
+            <template v-if="!apiMode"
+              ><option
+                v-for="signal in contentStudioAnchorSignals"
+                :key="signal.id"
+                :value="signal.label"
+              >
+                {{ signal.label }}
+              </option></template
+            >
+            <template v-else
+              ><option
+                v-for="signal in apiSelectedSignals"
+                :key="signal.id"
+                :value="signal.id"
+              >
+                {{ signal.type }}: {{ signal.title }}
+              </option></template
+            >
           </select></label
-        ><p v-if="apiMode && !apiSelectedSignals.length" class="studio-empty-signal" role="status">No active anchor signal is available for this account.</p>
+        >
+        <p
+          v-if="apiMode && !apiSelectedSignals.length"
+          class="studio-empty-signal"
+          role="status"
+        >
+          No active anchor signal is available for this account.
+        </p>
         <label class="studio-page__context-meta studio-company-input"
           >YOUR COMPANY<input v-model="advertiser" aria-label="Your company" />
         </label>
@@ -466,7 +654,13 @@ const clearFilters = () => {
         </button>
       </nav>
       <template v-if="apiMode && asset !== 'Outreach Email'">
-        <section class="studio-secondary-state" aria-live="polite"><h2>{{ asset }}</h2><p>Generation for this asset is not available from the current backend.</p><button type="button" disabled>Generate</button></section>
+        <section class="studio-secondary-state" aria-live="polite">
+          <h2>{{ asset }}</h2>
+          <p>
+            Generation for this asset is not available from the current backend.
+          </p>
+          <button type="button" disabled>Generate</button>
+        </section>
       </template>
       <template v-else-if="asset === 'Landing Page'">
         <section class="landing-workspace">
@@ -782,9 +976,18 @@ const clearFilters = () => {
                 <li>Keep entire email under 100 words</li>
               </ul>
             </div>
-            <button class="studio-generate" type="button" :disabled="emailGenerating || (apiMode && !apiSelectedSignals.length)" @click="resetEmail">
-              ↻ Generate all parts</button
-            ><p v-if="emailGenerating" role="status">Generating outreach…</p><p v-if="emailError" role="alert">{{ emailError }}</p>
+            <button
+              class="studio-generate"
+              type="button"
+              :disabled="
+                emailGenerating || (apiMode && !apiSelectedSignals.length)
+              "
+              @click="resetEmail"
+            >
+              ↻ Generate all parts
+            </button>
+            <p v-if="emailGenerating" role="status">Generating outreach…</p>
+            <p v-if="emailError" role="alert">{{ emailError }}</p>
             ><label class="studio-field"
               >Recipient<input
                 v-model="recipientFirst"
@@ -800,27 +1003,57 @@ const clearFilters = () => {
             ><label class="studio-field"
               >1. Subject line<input
                 v-model="emailSubject"
-                aria-label="Subject line" /><button
+                aria-label="Subject line"
+              /><button
                 type="button"
-                :disabled="emailGenerating || (apiMode && !apiSelectedSignals.length)"
+                :disabled="
+                  emailGenerating || (apiMode && !apiSelectedSignals.length)
+                "
                 @click="regenerateEmailPart('subject')"
-              >Regenerate</button></label
+              >
+                Regenerate
+              </button></label
             ><label class="studio-field"
               >2. Opening — the prospect's problem<textarea
                 v-model="emailOpening"
                 aria-label="Opening"
                 rows="2"
-              /><button type="button" :disabled="emailGenerating || (apiMode && !apiSelectedSignals.length)" @click="regenerateEmailPart('opening')">Regenerate</button></label
+              /><button
+                type="button"
+                :disabled="
+                  emailGenerating || (apiMode && !apiSelectedSignals.length)
+                "
+                @click="regenerateEmailPart('opening')"
+              >
+                Regenerate
+              </button></label
             ><label class="studio-field"
               >3. Value — one concrete sentence<textarea
                 v-model="emailValue"
                 aria-label="Value"
                 rows="2"
-              /><button type="button" :disabled="emailGenerating || (apiMode && !apiSelectedSignals.length)" @click="regenerateEmailPart('value')">Regenerate</button></label
+              /><button
+                type="button"
+                :disabled="
+                  emailGenerating || (apiMode && !apiSelectedSignals.length)
+                "
+                @click="regenerateEmailPart('value')"
+              >
+                Regenerate
+              </button></label
             ><label class="studio-field"
               >4. CTA — interest, not a meeting<input
                 v-model="emailCta"
-                aria-label="CTA" /><button type="button" :disabled="emailGenerating || (apiMode && !apiSelectedSignals.length)" @click="regenerateEmailPart('cta')">Regenerate</button></label
+                aria-label="CTA"
+              /><button
+                type="button"
+                :disabled="
+                  emailGenerating || (apiMode && !apiSelectedSignals.length)
+                "
+                @click="regenerateEmailPart('cta')"
+              >
+                Regenerate
+              </button></label
             ><label class="studio-field"
               >Signature<input
                 v-model="signatureName"
@@ -845,7 +1078,9 @@ const clearFilters = () => {
               </header>
               <div class="email-paper">
                 <p>
-                  <b>FROM</b><br />{{ signatureName }} &lt;{{ apiMode ? '[your email]' : 'you@techsmith.com' }}&gt;
+                  <b>FROM</b><br />{{ signatureName }} &lt;{{
+                    apiMode ? '[your email]' : 'you@techsmith.com'
+                  }}&gt;
                 </p>
                 <p>
                   <b>TO</b><br />{{ recipientFirst || 'Head of Marketing' }}
@@ -853,7 +1088,16 @@ const clearFilters = () => {
                 </p>
                 <p><b>SUBJECT</b><br />{{ emailSubject }}</p>
                 <pre>{{ emailBodyText }}</pre>
-                <small>✓ Plain text · ✓ Interest CTA · {{ apiMode ? (emailTrace ? 'Backend generation trace available' : 'No generation trace available yet') : '✓ Source grounded' }}</small>
+                <small
+                  >✓ Plain text · ✓ Interest CTA ·
+                  {{
+                    apiMode
+                      ? emailTrace
+                        ? 'Backend generation trace available'
+                        : 'No generation trace available yet'
+                      : '✓ Source grounded'
+                  }}</small
+                >
               </div>
             </article>
             <div class="email-checks">
@@ -876,14 +1120,46 @@ const clearFilters = () => {
               type="button"
               @click="traceOpen = !traceOpen"
             >
-              ▸ Traceability · {{ apiMode && !emailTrace ? 'No generation trace available yet' : 'backend generation trace available' }}
+              ▸ Traceability ·
+              {{
+                apiMode && !emailTrace
+                  ? 'No generation trace available yet'
+                  : 'backend generation trace available'
+              }}
             </button>
             <div v-if="traceOpen && apiMode" class="studio-trace-detail">
               <template v-if="emailTrace">
-                <p>Anchor Signal: {{ apiSelectedSignals.find((signal) => signal.id === emailTrace?.anchorSignalId)?.title || emailTrace.anchorSignalId }}</p>
-                <p>Supporting Signals: {{ emailTrace.supportingSignalIds.length ? emailTrace.supportingSignalIds.map((id) => apiSelectedSignals.find((signal) => signal.id === id)?.title || id).join(', ') : 'None' }}</p>
-                <p>Communication DNA used: {{ emailTrace.communicationDnaUsed ? 'Yes' : 'No' }}</p>
-                <p>Account analysis used: {{ emailTrace.analysisUsed ? 'Yes' : 'No' }}</p>
+                <p>
+                  Anchor Signal:
+                  {{
+                    apiSelectedSignals.find(
+                      (signal) => signal.id === emailTrace?.anchorSignalId,
+                    )?.title || emailTrace.anchorSignalId
+                  }}
+                </p>
+                <p>
+                  Supporting Signals:
+                  {{
+                    emailTrace.supportingSignalIds.length
+                      ? emailTrace.supportingSignalIds
+                          .map(
+                            (id) =>
+                              apiSelectedSignals.find(
+                                (signal) => signal.id === id,
+                              )?.title || id,
+                          )
+                          .join(', ')
+                      : 'None'
+                  }}
+                </p>
+                <p>
+                  Communication DNA used:
+                  {{ emailTrace.communicationDnaUsed ? 'Yes' : 'No' }}
+                </p>
+                <p>
+                  Account analysis used:
+                  {{ emailTrace.analysisUsed ? 'Yes' : 'No' }}
+                </p>
               </template>
               <p v-else>No generation trace available yet</p>
             </div>
@@ -1115,7 +1391,9 @@ const clearFilters = () => {
         <label
           >Tier<select v-model="tier" aria-label="Tier">
             <option value="all">All tiers</option>
-            <option v-for="value in tiers" :key="value" :value="value">{{ value }}</option>
+            <option v-for="value in tiers" :key="value" :value="value">
+              {{ value }}
+            </option>
           </select></label
         >
         <label
@@ -1166,7 +1444,11 @@ const clearFilters = () => {
         </button>
       </div>
       <p v-else class="studio-page__empty" role="status">
-        {{ apiMode ? 'No accounts match these filters.' : 'No curated demo accounts match these filters.' }}
+        {{
+          apiMode
+            ? 'No accounts match these filters.'
+            : 'No curated demo accounts match these filters.'
+        }}
         <button type="button" @click="clearFilters">Clear filters</button>
       </p>
     </template>
@@ -1177,8 +1459,15 @@ const clearFilters = () => {
 .studio-page {
   display: grid;
   width: 100%;
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--spacing-18);
   padding: var(--spacing-24);
+  box-sizing: border-box;
+}
+.studio-page > * {
+  min-width: 0;
+  max-width: 100%;
   box-sizing: border-box;
 }
 .studio-page h1,
@@ -1342,9 +1631,15 @@ const clearFilters = () => {
 }
 .studio-page__context--editor {
   display: grid;
-  grid-template-columns: auto auto auto 270px 1fr 110px;
+  grid-template-columns:
+    auto minmax(0, 1fr) minmax(0, 1fr) minmax(180px, 270px)
+    minmax(160px, 1fr) minmax(96px, 110px);
   align-items: center;
   gap: 12px;
+}
+.studio-page__context--editor > * {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 .studio-page__context--editor > button {
   background: none;
@@ -1375,7 +1670,10 @@ const clearFilters = () => {
 }
 .studio-company-input input {
   display: block;
+  width: 100%;
   min-width: 180px;
+  max-width: 100%;
+  box-sizing: border-box;
   margin-top: 4px;
   padding: 7px 9px;
   border: 1px solid var(--color-border-default);
@@ -1422,15 +1720,17 @@ const clearFilters = () => {
 }
 .studio-asset-tabs {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   border-bottom: 1px solid var(--color-border-subtle);
 }
 .studio-asset-tabs button {
+  min-width: 0;
   min-height: 56px;
   border: 0;
   border-bottom: 2px solid transparent;
   background: transparent;
   color: var(--color-text-muted);
+  overflow-wrap: anywhere;
 }
 .studio-asset-tabs button.active {
   color: var(--color-text-primary);
@@ -2003,7 +2303,7 @@ const clearFilters = () => {
 }
 .email-workspace {
   display: grid;
-  grid-template-columns: 544px 560px;
+  grid-template-columns: minmax(320px, 544px) minmax(0, 560px);
   gap: 32px;
   align-items: start;
 }
@@ -2161,6 +2461,9 @@ const clearFilters = () => {
   }
   .studio-page__context-wide {
     grid-column: 1/-1;
+  }
+  .studio-company-input input {
+    min-width: 0;
   }
 }
 @media (max-width: 767px) {

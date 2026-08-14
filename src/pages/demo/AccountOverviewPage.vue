@@ -10,7 +10,10 @@ import { useDemoAccount } from '../../demo/useDemoAccount';
 import type { DemoSignalCategory } from '../../demo/types';
 import { getRuntimeConfig } from '../../app/configuration/environment';
 import { getAccount, getAccountSignals } from '../../services/accountApi';
-import type { AccountDetailDto, AccountSignalDto } from '../../types/accountApi';
+import type {
+  AccountDetailDto,
+  AccountSignalDto,
+} from '../../types/accountApi';
 import { ApiRequestError } from '../../utils/apiErrors';
 
 const router = useRouter();
@@ -23,18 +26,33 @@ const apiError = ref('');
 const apiNotFound = ref(false);
 const apiSignalsError = ref('');
 const apiSignalFilter = ref('all');
-const apiSignalTypes = computed(() => ['all', ...new Set(apiSignals.value.map((signal) => signal.type))]);
-const visibleApiSignals = computed(() => apiSignalFilter.value === 'all' ? apiSignals.value : apiSignals.value.filter((signal) => signal.type === apiSignalFilter.value));
+const apiSignalTypes = computed(() => [
+  'all',
+  ...new Set(apiSignals.value.map((signal) => signal.type)),
+]);
+const visibleApiSignals = computed(() =>
+  apiSignalFilter.value === 'all'
+    ? apiSignals.value
+    : apiSignals.value.filter(
+        (signal) => signal.type === apiSignalFilter.value,
+      ),
+);
 const loadApi = async () => {
   if (!apiMode) return;
   const controller = new AbortController();
   try {
     const detail = await getAccount(accountId.value, controller.signal);
     apiAccount.value = detail;
-    try { apiSignals.value = (await getAccountSignals(accountId.value, controller.signal)).items; }
-    catch { apiSignalsError.value = 'Buying Signals are unavailable right now.'; }
+    try {
+      apiSignals.value = (
+        await getAccountSignals(accountId.value, controller.signal)
+      ).items;
+    } catch {
+      apiSignalsError.value = 'Buying Signals are unavailable right now.';
+    }
   } catch (error) {
-    if (error instanceof ApiRequestError && error.status === 404) apiNotFound.value = true;
+    if (error instanceof ApiRequestError && error.status === 404)
+      apiNotFound.value = true;
     else apiError.value = 'Account data is unavailable right now.';
   } finally {
     apiLoading.value = false;
@@ -43,8 +61,11 @@ const loadApi = async () => {
 onMounted(loadApi);
 const retrySignals = async () => {
   apiSignalsError.value = '';
-  try { apiSignals.value = (await getAccountSignals(accountId.value)).items; }
-  catch { apiSignalsError.value = 'Buying Signals are unavailable right now.'; }
+  try {
+    apiSignals.value = (await getAccountSignals(accountId.value)).items;
+  } catch {
+    apiSignalsError.value = 'Buying Signals are unavailable right now.';
+  }
 };
 const signalFilter = ref<'all' | DemoSignalCategory>('all');
 const signals = computed(() => account.value?.overview?.buyingSignals ?? []);
@@ -74,8 +95,13 @@ const isCompleteUrl = (url?: string) => {
   >
     <h1 data-page-heading>Loading account intelligence…</h1>
   </section>
-  <section v-else-if="apiMode && apiNotFound" class="account-not-found" role="alert">
-    <h1 data-page-heading>Account not found</h1><p>The requested account is unavailable.</p>
+  <section
+    v-else-if="apiMode && apiNotFound"
+    class="account-not-found"
+    role="alert"
+  >
+    <h1 data-page-heading>Account not found</h1>
+    <p>The requested account is unavailable.</p>
     <RouterLink to="/demo">Return to Account Discovery</RouterLink>
   </section>
   <section
@@ -84,20 +110,170 @@ const isCompleteUrl = (url?: string) => {
     role="alert"
   >
     <h1 data-page-heading>Account data unavailable</h1>
-    <p>{{ apiError }}</p><button type="button" @click="loadApi">Retry</button>
+    <p>{{ apiError }}</p>
+    <button type="button" @click="loadApi">Retry</button>
     <RouterLink to="/demo">Return to Account Discovery</RouterLink>
   </section>
-  <section v-else-if="apiMode && apiAccount" class="overview-page api-overview" aria-labelledby="api-overview-title">
-    <header class="overview-page__header"><div class="overview-page__company">
-      <strong>{{ apiAccount.name }}</strong>
-      <span>{{ [apiAccount.industry, apiAccount.hq, apiAccount.employees === null ? null : `${apiAccount.employees} employees`, apiAccount.revenue?.amountM == null ? null : `${apiAccount.revenue.currency ?? ''} ${apiAccount.revenue.amountM}M`, apiAccount.analysis?.tier].filter(Boolean).join(' · ') }}</span>
-      <h1 id="api-overview-title" data-page-heading>{{ apiAccount.name }} Account Overview</h1>
-    </div><div class="overview-page__actions"><AppButton variant="secondary" size="sm" @click="router.push(`/demo/accounts/${accountId}/dna`)">View Communication DNA</AppButton><AppButton size="sm" disabled title="Content Studio is fixture-only">Generate Content</AppButton></div></header>
-    <p v-if="apiAccount.description" class="overview-page__summary">{{ apiAccount.description }}</p>
-    <div class="overview-page__metrics"><AppMetricCard label="ICP Fit" :value="apiAccount.analysis?.icpScore ?? '—'" tone="brand"/><AppMetricCard label="Signal Score" :value="apiAccount.analysis?.signalScore ?? '—'"/><AppMetricCard label="Resonance" :value="apiAccount.analysis?.resonanceScore ?? '—'"/></div>
-    <div class="overview-page__reasons"><article><span>WHY THIS ACCOUNT</span><p>{{ apiAccount.analysis?.whyThisAccount ?? 'Not available' }}</p></article><article><span>WHY NOW</span><p>{{ apiAccount.analysis?.whyNow ?? 'Not available' }}</p></article></div>
-    <article class="overview-page__next"><span>NEXT BEST ACTION</span><template v-if="apiAccount.analysis?.nextBestAction"><h2>{{ apiAccount.analysis.nextBestAction.action }}</h2><p>{{ apiAccount.analysis.nextBestAction.rationale ?? 'Not available' }}</p><dl><div><dt>Window</dt><dd>{{ apiAccount.analysis.nextBestAction.timeWindow ?? 'Not available' }}</dd></div><div><dt>Priority</dt><dd>{{ apiAccount.analysis.nextBestAction.priority ?? 'Not available' }}</dd></div></dl></template><p v-else>Not available</p></article>
-    <section class="overview-page__signals" aria-labelledby="api-signals-title"><header><div><h2 id="api-signals-title">Buying Signals</h2><p>{{ apiSignals.length }} signals returned by the API</p></div><TierBadge :tier="apiAccount.analysis?.tier ?? null"/></header><div v-if="!apiSignalsError && apiSignals.length" class="overview-page__tabs"><button v-for="type in apiSignalTypes" :key="type" type="button" :aria-pressed="apiSignalFilter === type" @click="apiSignalFilter = type">{{ type === 'all' ? `All (${apiSignals.length})` : `${type} (${apiSignals.filter((signal) => signal.type === type).length})` }}</button></div><p v-if="apiSignalsError" role="alert">{{ apiSignalsError }} <button type="button" @click="retrySignals">Retry Signals</button></p><div v-else-if="visibleApiSignals.length" class="overview-page__signal-list"><article v-for="signal in visibleApiSignals" :key="signal.id" class="overview-page__signal"><header><div><span>{{ signal.type }}</span><h3>{{ signal.title }}</h3></div><time>{{ signal.freshnessLabel ?? signal.signalDate ?? 'Not available' }}</time></header><strong>{{ signal.evidenceStatus }} · {{ signal.verified ? 'Verified' : 'Not verified' }} · {{ signal.isActive ? 'Active' : 'Inactive' }}</strong><p>{{ signal.body ?? 'Not available' }}</p><a v-if="isCompleteUrl(signal.source?.url)" :href="signal.source!.url" target="_blank" rel="noopener noreferrer">{{ signal.source?.name ?? 'Open source' }}</a><AppSourceAttributionChip v-else-if="signal.source" :source="signal.source.name ?? 'Source unavailable'"/><span v-else>Source unavailable</span></article></div><p v-else>No buying signals are available for this account.</p></section>
+  <section
+    v-else-if="apiMode && apiAccount"
+    class="overview-page api-overview"
+    aria-labelledby="api-overview-title"
+  >
+    <header class="overview-page__header">
+      <div class="overview-page__company">
+        <strong>{{ apiAccount.name }}</strong>
+        <span>{{
+          [
+            apiAccount.industry,
+            apiAccount.hq,
+            apiAccount.employees === null
+              ? null
+              : `${apiAccount.employees} employees`,
+            apiAccount.revenue?.amountM == null
+              ? null
+              : `${apiAccount.revenue.currency ?? ''} ${apiAccount.revenue.amountM}M`,
+            apiAccount.analysis?.tier,
+          ]
+            .filter(Boolean)
+            .join(' · ')
+        }}</span>
+        <h1 id="api-overview-title" data-page-heading>
+          {{ apiAccount.name }} Account Overview
+        </h1>
+      </div>
+      <div class="overview-page__actions">
+        <AppButton
+          variant="secondary"
+          size="sm"
+          @click="router.push(`/demo/accounts/${accountId}/dna`)"
+          >View Communication DNA</AppButton
+        ><AppButton size="sm" disabled title="Content Studio is fixture-only"
+          >Generate Content</AppButton
+        >
+      </div>
+    </header>
+    <p v-if="apiAccount.description" class="overview-page__summary">
+      {{ apiAccount.description }}
+    </p>
+    <div class="overview-page__metrics">
+      <AppMetricCard
+        label="ICP Fit"
+        :value="apiAccount.analysis?.icpScore ?? '—'"
+        tone="brand"
+      /><AppMetricCard
+        label="Signal Score"
+        :value="apiAccount.analysis?.signalScore ?? '—'"
+      /><AppMetricCard
+        label="Resonance"
+        :value="apiAccount.analysis?.resonanceScore ?? '—'"
+      />
+    </div>
+    <div class="overview-page__reasons">
+      <article>
+        <span>WHY THIS ACCOUNT</span>
+        <p>{{ apiAccount.analysis?.whyThisAccount ?? 'Not available' }}</p>
+      </article>
+      <article>
+        <span>WHY NOW</span>
+        <p>{{ apiAccount.analysis?.whyNow ?? 'Not available' }}</p>
+      </article>
+    </div>
+    <article class="overview-page__next">
+      <span>NEXT BEST ACTION</span
+      ><template v-if="apiAccount.analysis?.nextBestAction"
+        ><h2>{{ apiAccount.analysis.nextBestAction.action }}</h2>
+        <p>
+          {{ apiAccount.analysis.nextBestAction.rationale ?? 'Not available' }}
+        </p>
+        <dl>
+          <div>
+            <dt>Window</dt>
+            <dd>
+              {{
+                apiAccount.analysis.nextBestAction.timeWindow ?? 'Not available'
+              }}
+            </dd>
+          </div>
+          <div>
+            <dt>Priority</dt>
+            <dd>
+              {{
+                apiAccount.analysis.nextBestAction.priority ?? 'Not available'
+              }}
+            </dd>
+          </div>
+        </dl></template
+      >
+      <p v-else>Not available</p>
+    </article>
+    <section class="overview-page__signals" aria-labelledby="api-signals-title">
+      <header>
+        <div>
+          <h2 id="api-signals-title">Buying Signals</h2>
+          <p>{{ apiSignals.length }} signals returned by the API</p>
+        </div>
+        <TierBadge :tier="apiAccount.analysis?.tier ?? null" />
+      </header>
+      <div
+        v-if="!apiSignalsError && apiSignals.length"
+        class="overview-page__tabs"
+      >
+        <button
+          v-for="type in apiSignalTypes"
+          :key="type"
+          type="button"
+          :aria-pressed="apiSignalFilter === type"
+          @click="apiSignalFilter = type"
+        >
+          {{
+            type === 'all'
+              ? `All (${apiSignals.length})`
+              : `${type} (${apiSignals.filter((signal) => signal.type === type).length})`
+          }}
+        </button>
+      </div>
+      <p v-if="apiSignalsError" role="alert">
+        {{ apiSignalsError }}
+        <button type="button" @click="retrySignals">Retry Signals</button>
+      </p>
+      <div
+        v-else-if="visibleApiSignals.length"
+        class="overview-page__signal-list"
+      >
+        <article
+          v-for="signal in visibleApiSignals"
+          :key="signal.id"
+          class="overview-page__signal"
+        >
+          <header>
+            <div>
+              <span>{{ signal.type }}</span>
+              <h3>{{ signal.title }}</h3>
+            </div>
+            <time>{{
+              signal.freshnessLabel ?? signal.signalDate ?? 'Not available'
+            }}</time>
+          </header>
+          <strong
+            >{{ signal.evidenceStatus }} ·
+            {{ signal.verified ? 'Verified' : 'Not verified' }} ·
+            {{ signal.isActive ? 'Active' : 'Inactive' }}</strong
+          >
+          <p>{{ signal.body ?? 'Not available' }}</p>
+          <a
+            v-if="isCompleteUrl(signal.source?.url)"
+            :href="signal.source!.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            >{{ signal.source?.name ?? 'Open source' }}</a
+          ><AppSourceAttributionChip
+            v-else-if="signal.source"
+            :source="signal.source.name ?? 'Source unavailable'"
+          /><span v-else>Source unavailable</span>
+        </article>
+      </div>
+      <p v-else>No buying signals are available for this account.</p>
+    </section>
   </section>
   <section
     v-else-if="!account"
@@ -278,8 +454,27 @@ const isCompleteUrl = (url?: string) => {
   display: grid;
   width: 100%;
   box-sizing: border-box;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--spacing-16);
   padding: var(--spacing-24);
+}
+.overview-page > *,
+.overview-page__company,
+.overview-page__header,
+.overview-page__signals,
+.overview-page__signal,
+.overview-page__signal header > div {
+  min-width: 0;
+}
+.overview-page__company > strong,
+.overview-page__company > span,
+.overview-page__company h1,
+.overview-page__next h2,
+.overview-page__next p,
+.overview-page__signal h3,
+.overview-page__signal > p,
+.overview-page__signal > a {
+  overflow-wrap: anywhere;
 }
 .overview-page__company {
   display: grid;
@@ -304,8 +499,8 @@ const isCompleteUrl = (url?: string) => {
   gap: var(--spacing-10);
 }
 .overview-page__summary {
-  width: 820px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 820px;
   margin: 0;
   color: var(--color-text-secondary);
   font-size: var(--font-size-13);
@@ -313,7 +508,7 @@ const isCompleteUrl = (url?: string) => {
 }
 .overview-page__metrics {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--spacing-12);
 }
 .overview-page__metrics :deep(.app-metric-card) {
@@ -321,7 +516,7 @@ const isCompleteUrl = (url?: string) => {
 }
 .overview-page__reasons {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--spacing-12);
 }
 .overview-page__reasons article,
@@ -333,7 +528,7 @@ const isCompleteUrl = (url?: string) => {
   background: var(--color-bg-surface);
 }
 .overview-page__reasons article {
-  height: 170px;
+  min-height: 170px;
   box-sizing: border-box;
 }
 .overview-page__reasons article:first-child {
@@ -481,6 +676,7 @@ dd {
 }
 .overview-page__signal > a {
   justify-self: start;
+  max-width: 100%;
   text-decoration: none;
 }
 .overview-page__limited {

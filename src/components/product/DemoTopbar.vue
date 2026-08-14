@@ -56,6 +56,7 @@ defineEmits<{ menu: [] }>();
   gap: var(--spacing-8);
 }
 .demo-topbar__context {
+  min-width: 0;
   color: var(--color-text-muted);
 }
 .demo-topbar__context strong {
@@ -90,6 +91,11 @@ defineEmits<{ menu: [] }>();
   background: transparent;
   color: var(--color-text-primary);
   font-size: var(--font-size-24);
+}
+@media (max-width: 900px) {
+  .demo-topbar__context > span {
+    display: none;
+  }
 }
 @media (max-width: 767px) {
   .demo-topbar {

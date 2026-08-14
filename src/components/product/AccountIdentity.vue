@@ -15,8 +15,8 @@ withDefaults(
       initials
     }}</span>
     <span class="account-identity__copy"
-      ><strong>{{ name }}</strong
-      ><small>{{ detail }}</small></span
+      ><strong :title="name">{{ name }}</strong
+      ><small :title="detail">{{ detail }}</small></span
     >
   </div>
 </template>
