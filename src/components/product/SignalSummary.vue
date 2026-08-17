@@ -1,14 +1,20 @@
 <script setup lang="ts">
-defineProps<{ count: number; pattern?: readonly ('active' | 'inactive')[] }>();
+const props = defineProps<{
+  count: number;
+  /** Fixture-only visual pattern; API mode intentionally omits this. */
+  pattern?: readonly ('active' | 'inactive')[];
+}>();
+
+const decorativeDots = props.pattern ?? Array.from({ length: 5 }, () => 'neutral');
 </script>
 <template>
   <div class="signal-summary" :aria-label="`${count} active signals`">
-    <span v-if="pattern?.length" class="signal-summary__dots" aria-hidden="true"
+    <span class="signal-summary__dots" aria-hidden="true"
       ><i
-        v-for="(state, index) in pattern"
+        v-for="(state, index) in decorativeDots"
         :key="index"
-        :class="`is-${state}`" /></span
-    ><strong>{{ count }} active</strong>
+        :class="state === 'neutral' ? undefined : `is-${state}`" /></span
+      ><strong>{{ count }} active</strong>
   </div>
 </template>
 <style scoped>

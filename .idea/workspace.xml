@@ -4,19 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa45ec9b-26dc-40ff-98de-dd81c1a64002" name="更改" comment="abm :PHASE 6D FINAL FREEZE + PHASE 6E CLOSURE">
+    <list default="true" id="fa45ec9b-26dc-40ff-98de-dd81c1a64002" name="更改" comment="abm :# Post-Phase-6 Frontend Stabilization">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/01-roadmap/current-state.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/01-roadmap/current-state.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/06-traceability/implementation-baseline.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/06-traceability/implementation-baseline.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/product/AccountIdentity.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/product/AccountIdentity.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/product/AccountRow.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/product/AccountRow.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/product/DemoTopbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/product/DemoTopbar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/product/DnaPortfolioCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/product/DnaPortfolioCard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/demo/AccountDiscoveryPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/demo/AccountDiscoveryPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/demo/AccountDnaPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/demo/AccountDnaPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/demo/AccountOverviewPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/demo/AccountOverviewPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/demo/ContentStudioPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/demo/ContentStudioPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/demo/DnaPortfolioPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/demo/DnaPortfolioPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/product/SignalSummary.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/product/SignalSummary.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -419,7 +409,15 @@
       <option name="project" value="LOCAL" />
       <updated>1786740698770</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="abm :# Post-Phase-6 Frontend Stabilization">
+      <option name="closed" value="true" />
+      <created>1786750940819</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1786750940819</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -437,7 +435,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="docs: establish governance and source-of-truth policies" />
     <MESSAGE value="docs: define roadmap phase controls and delivery gates" />
     <MESSAGE value="docs: register Figma backend content and environment inputs" />
     <MESSAGE value="docs: map Figma design system to frontend architecture" />
@@ -462,6 +459,7 @@
     <MESSAGE value="abm : PHASE 6D FINAL TEST COMPLETION" />
     <MESSAGE value="abm : PHASE 6D FINAL TEST PATCH — OUTREACH REGRESSION ONLY" />
     <MESSAGE value="abm :PHASE 6D FINAL FREEZE + PHASE 6E CLOSURE" />
-    <option name="LAST_COMMIT_MESSAGE" value="abm :PHASE 6D FINAL FREEZE + PHASE 6E CLOSURE" />
+    <MESSAGE value="abm :# Post-Phase-6 Frontend Stabilization" />
+    <option name="LAST_COMMIT_MESSAGE" value="abm :# Post-Phase-6 Frontend Stabilization" />
   </component>
 </project>
