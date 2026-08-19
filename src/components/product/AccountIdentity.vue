@@ -5,12 +5,16 @@ withDefaults(
     name: string;
     detail: string;
     size?: 'sm' | 'lg';
+    wrap?: boolean;
   }>(),
-  { size: 'sm' },
+  { size: 'sm', wrap: false },
 );
 </script>
 <template>
-  <div class="account-identity" :class="`account-identity--${size}`">
+  <div
+    class="account-identity"
+    :class="[`account-identity--${size}`, { 'account-identity--wrap': wrap }]"
+  >
     <span class="account-identity__avatar" aria-hidden="true">{{
       initials
     }}</span>
@@ -70,5 +74,18 @@ withDefaults(
 .account-identity--lg small {
   font-size: var(--font-size-12);
   white-space: normal;
+}
+.account-identity--wrap strong,
+.account-identity--wrap small {
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.account-identity--wrap small {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
 </style>

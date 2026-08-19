@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const props = defineProps<{
   count: number;
-  /** Fixture-only visual pattern; API mode intentionally omits this. */
+  /** Optional fixture decoration; API mode uses fixed neutral decoration. */
   pattern?: readonly ('active' | 'inactive')[];
 }>();
 

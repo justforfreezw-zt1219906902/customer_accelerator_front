@@ -125,14 +125,14 @@ automated evidence cannot create approval.
 
 ### DR-007 — Visual Design Enrichment Stage 1 proposal
 
-- Date: 2026-08-19
-- Human reviewer: Tom (pending)
+- Date: 2026-08-20
+- Human reviewer: Tom
 - Figma version: `1.2.0`
 - Frontend version: `0.2.0`
 - Scope: Demo Shell and Product Pages 13–18 in fixture/API modes; Figma frames
   `359:2`, `360:2`, `360:2116`, `360:2226`, `360:2385`, `361:2`
-- Result: `pending`
-- Outcome: `design_system_proposal_needs_human_review`
+- Result: `approved`
+- Outcome: `design_system_proposal_approved`
 - Evidence:
   - `DESIGN.md`
   - `docs/03-design-system/visual-design-enrichment-stage-1-audit.md`
@@ -147,4 +147,47 @@ automated evidence cannot create approval.
   - Stage 2 now begins with minimal shared foundations, then a Page 14 pilot
     and Tom visual checkpoint before broader shared-component or page changes.
   - Phase 6 behavior remains `PASS / FROZEN`.
+  - Tom approved the corrected Stage 1 proposal on 2026-08-20.
+  - Stage 2A Page 14 visual pilot is authorized; broad rollout remains gated.
   - No release or deployment is authorized.
+
+### DR-008 — Visual Design Enrichment Stage 2A Page 14 pilot
+
+- Date: 2026-08-20
+- Human reviewer: Tom (pending)
+- Figma version: `1.2.0`
+- Frontend version: `0.2.0`
+- Scope: Page 14 Account Overview visual hierarchy pilot
+- Result: `pending`
+- Outcome: `page14_visual_pilot_complete_pending_human_review`
+- Evidence: local fixture/API viewport captures; API captures use the live
+  local backend account NVIDIA Corporation (`b0e18742-3249-592f-9eef-b6830fb8ba56`).
+- Notes:
+  - Only Page 14 scoped styles were changed; shared Product components and
+    other Product pages were untouched.
+  - Why This Account uses restrained brand emphasis, Why Now uses amber timing
+    emphasis, and Next Best Action uses the strongest readable action surface.
+  - `SOURCE_BACKED` remains independent from `verified`.
+  - Stage 2A stops here for Tom's visual review.
+
+### DR-009 — Visual Design Enrichment Stage 2B Page 13 list pilot
+
+- Date: 2026-08-20
+- Human reviewer: Tom (pending)
+- Figma version: `1.2.0`
+- Frontend version: `0.2.0`
+- Scope: Page 13 Account Discovery list hierarchy and scanning pilot
+- Result: `pending`
+- Outcome: `page13_list_visual_pilot_complete_pending_human_review`
+- Evidence: API and fixture captures at the required responsive viewports.
+- Notes:
+  - Account identity is allowed to wrap safely for long real API names rather
+    than truncating important identity content.
+  - Tier, score, signal-count and Next Best Action remain semantically
+    unchanged; visual emphasis is restrained and uses existing tokens.
+  - Signal dots are fixed decorative presentation only, are `aria-hidden`, and
+    never encode backend history or counts; the numeric active count remains
+    the sole semantic signal value.
+  - Stage 2A remains directionally positive and pending separate human review.
+  - No shared Demo Shell, Page 14, Pages 15–18, backend, routes, or API
+    contract were changed.

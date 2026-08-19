@@ -1,6 +1,6 @@
 # mi-goTo Product Design System
 
-Status: `proposed_pending_human_review`  
+Status: `approved`
 Figma Design System: `1.2.0`  
 Frontend: `0.2.0`  
 Lifecycle: `HUMAN TESTING / STABILIZATION`
@@ -263,5 +263,5 @@ Suggested implementation prompt fragment:
 
 - Phase 6 functional semantics: `PASS / FROZEN`
 - Current Product: `HUMAN TESTING / STABILIZATION`
-- Visual enrichment: `PROPOSED / PENDING HUMAN REVIEW`
+- Visual enrichment: `APPROVED / STAGE 2A PILOT AUTHORIZED`
 - Release: `NOT AUTHORIZED`

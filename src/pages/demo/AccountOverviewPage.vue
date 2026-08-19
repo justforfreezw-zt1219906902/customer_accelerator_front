@@ -533,15 +533,22 @@ const isCompleteUrl = (url?: string) => {
 }
 .overview-page__reasons article:first-child {
   border-color: var(--color-border-brand);
+  background: var(--color-bg-elevated);
+  box-shadow: inset 3px 0 var(--color-brand-light);
 }
 .overview-page__reasons article:last-child {
   border-color: var(--color-border-amber);
+  background: var(--color-bg-surface);
+  box-shadow: inset 3px 0 var(--color-accent-amber-light);
 }
 .overview-page__reasons span,
 .overview-page__next > span {
   color: var(--color-brand-light);
   font: var(--font-size-10)/1.4 var(--font-family-mono);
   letter-spacing: 0.08em;
+}
+.overview-page__reasons article:last-child span {
+  color: var(--color-accent-amber-light);
 }
 .overview-page__reasons p,
 .overview-page__next p {
@@ -554,6 +561,7 @@ const isCompleteUrl = (url?: string) => {
   min-height: 240px;
   box-sizing: border-box;
   border-color: var(--color-border-brand);
+  background: var(--color-bg-elevated);
   box-shadow: inset 3px 0 var(--color-brand-light);
 }
 .overview-page__next h2 {

@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa45ec9b-26dc-40ff-98de-dd81c1a64002" name="更改" comment="abm :# Post-Phase-6 Frontend Stabilization">
+    <list default="true" id="fa45ec9b-26dc-40ff-98de-dd81c1a64002" name="更改" comment="Awesome-design-integration-little-fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/product/SignalSummary.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/product/SignalSummary.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DESIGN.md" beforeDir="false" afterPath="$PROJECT_DIR$/DESIGN.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/01-roadmap/current-state.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/01-roadmap/current-state.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/03-design-system/design-review-log.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/03-design-system/design-review-log.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/demo/AccountOverviewPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/demo/AccountOverviewPage.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +17,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="SYNC" />
   </component>
@@ -23,6 +31,9 @@
     &quot;assignee&quot;: &quot;justforfreezw-zt1219906902&quot;
   }
 }</component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="9c7bdc91-56e1-433d-a5be-9af059e846fd" />
+  </component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/justforfreezw-zt1219906902/customer_accelerator_front.git&quot;,
@@ -38,26 +49,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/zhaowei/WebstormProjects/customer_accelerator_front&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/zhaowei/WebstormProjects/customer_accelerator_front/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Git.Working.Tree.Tab.closed.by.user": "closed",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "awesome__design__v1",
+    "javascript.preferred.runtime.type.id": "node",
+    "last_opened_file_path": "/Users/zhaowei/WebstormProjects/customer_accelerator_front",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+    "ts.external.directory.path": "/Users/zhaowei/WebstormProjects/customer_accelerator_front/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -88,6 +101,7 @@
       <workItem from="1786543568589" duration="2533000" />
       <workItem from="1786565368843" duration="47000" />
       <workItem from="1786565431322" duration="24564000" />
+      <workItem from="1787151204270" duration="4712000" />
     </task>
     <task id="LOCAL-00001" summary="docs: initialize project governance structure">
       <option name="closed" value="true" />
@@ -417,7 +431,31 @@
       <option name="project" value="LOCAL" />
       <updated>1786750940819</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="abm :# Focused UX Fix — Restore Decorative Signal Dots in API Mode">
+      <option name="closed" value="true" />
+      <created>1786981436216</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1786981436216</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Awesome-design-integration">
+      <option name="closed" value="true" />
+      <created>1787176493686</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1787176493686</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Awesome-design-integration-little-fix">
+      <option name="closed" value="true" />
+      <created>1787177035777</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1787177035777</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -435,9 +473,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="docs: define roadmap phase controls and delivery gates" />
-    <MESSAGE value="docs: register Figma backend content and environment inputs" />
-    <MESSAGE value="docs: map Figma design system to frontend architecture" />
     <MESSAGE value="docs: document lead API and HubSpot integration contract" />
     <MESSAGE value="docs: establish version compatibility and requirement traceability" />
     <MESSAGE value="docs: establish change issue deviation and incident controls" />
@@ -460,6 +495,9 @@
     <MESSAGE value="abm : PHASE 6D FINAL TEST PATCH — OUTREACH REGRESSION ONLY" />
     <MESSAGE value="abm :PHASE 6D FINAL FREEZE + PHASE 6E CLOSURE" />
     <MESSAGE value="abm :# Post-Phase-6 Frontend Stabilization" />
-    <option name="LAST_COMMIT_MESSAGE" value="abm :# Post-Phase-6 Frontend Stabilization" />
+    <MESSAGE value="abm :# Focused UX Fix — Restore Decorative Signal Dots in API Mode" />
+    <MESSAGE value="Awesome-design-integration" />
+    <MESSAGE value="Awesome-design-integration-little-fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Awesome-design-integration-little-fix" />
   </component>
 </project>

@@ -664,8 +664,8 @@ post_phase_6_frontend_stabilization:
   evidence: docs/08-quality/test-reports/post-phase-6-frontend-stabilization-2026-08-15.md
 
 visual_design_enrichment_stage_1:
-  status: proposed_pending_human_review
-  outcome: design_system_proposal_needs_human_review
+  status: approved
+  outcome: design_system_proposal_approved
   date: "2026-08-20"
   scope: visual_design_governance_only
   phase_6_functional_semantics: PASS / FROZEN
@@ -675,17 +675,60 @@ visual_design_enrichment_stage_1:
   frontend_version: 0.2.0
   api_contract: API-CONTRACT-R2
   release_authorized: false
-  human_approval: pending
+  human_approval: approved
+  reviewer: Tom
+  approval_date: "2026-08-20"
   design_system: DESIGN.md
   audit: docs/03-design-system/visual-design-enrichment-stage-1-audit.md
-  next_gate: Stage 1 Visual Design Proposal Review
+  next_gate: Stage 2A Page 14 Visual Checkpoint
   review_corrections:
-    status: applied_pending_final_approval
+    status: approved
     source_backed_and_verified_independent: true
     api_market_patterns: neutral_unavailable
     stage_2_pilot: Page 14 Account Overview before broader shared changes
 
-last_updated: "2026-08-19"
+visual_design_enrichment_stage_2a:
+  status: page14_visual_pilot_complete_pending_human_review
+  outcome: page14_visual_pilot_complete_pending_human_review
+  date: "2026-08-20"
+  scope: page14_account_overview_visual_pilot
+  stage_1_approval: approved
+  application_files_modified: true
+  application_page: src/pages/demo/AccountOverviewPage.vue
+  shared_components_touched: none
+  other_product_pages_touched: false
+  fixture_visual_review: captured
+  api_visual_review: captured_backend_available
+  viewports: [1440x900, 1024x768, 768x1024, 390x844]
+  source_backed_verified_independent: true
+  api_market_patterns: neutral_unavailable
+  human_approval: pending
+  release_authorized: false
+  next_gate: Stage 2A Page 14 Human Visual Review
+  api_account_fixture: NVIDIA Corporation / b0e18742-3249-592f-9eef-b6830fb8ba56
+
+visual_design_enrichment_stage_2b:
+  status: page13_list_visual_pilot_complete_pending_human_review
+  outcome: page13_list_visual_pilot_complete_pending_human_review
+  date: "2026-08-20"
+  scope: page13_account_discovery_list_visual_pilot
+  stage_1_approval: approved
+  stage_2a_feedback: directionally_positive_pending_human_review
+  application_files_modified:
+    - src/components/product/AccountIdentity.vue
+    - src/components/product/AccountRow.vue
+    - src/components/product/SignalSummary.vue
+  other_product_pages_touched: false
+  api_visual_review: captured_backend_available
+  fixture_visual_review: captured
+  viewports: [1440x900, 1024x768, 768x1024, 390x844]
+  api_fixture: real_backend_accounts_only
+  decorative_signal_dots: fixed_neutral_aria_hidden
+  human_approval: pending
+  release_authorized: false
+  next_gate: Stage 2B Page 13 Human Visual Review
+
+last_updated: "2026-08-20"
 notes:
   - The Phase 0 repository audit and TASK-P0-001 were approved by Tom.
   - Backend 0.0.0 is a non-release placeholder pending official version assignment.

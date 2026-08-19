@@ -30,6 +30,7 @@ defineProps<{ account: AccountRowViewModel }>();
         :initials="account.initials"
         :name="account.name"
         :detail="`${account.industry} · ${account.location}`"
+        wrap
       /><TierBadge :tier="account.tier" /><ScoreIndicator
         label="ICP fit"
         :value="account.icpFit"
@@ -44,7 +45,7 @@ defineProps<{ account: AccountRowViewModel }>();
         :count="account.activeSignals"
         :pattern="account.signalPattern"
       /><span class="account-row__spacer" aria-hidden="true"></span
-      ><span class="account-row__action"
+      ><span class="account-row__action" :title="account.nextBestAction ?? undefined"
         ><span>{{ account.nextBestAction }}</span
         ><b aria-hidden="true">→</b></span
       ></RouterLink
@@ -81,13 +82,18 @@ defineProps<{ account: AccountRowViewModel }>();
   gap: var(--spacing-8);
   width: 100%;
   max-width: 130px;
-  color: var(--color-text-secondary);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
   font-size: var(--font-size-11);
   line-height: 1.45;
 }
 .account-row__action span {
   min-width: 0;
   overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  overflow: hidden;
 }
 .account-row__spacer {
   pointer-events: none;
