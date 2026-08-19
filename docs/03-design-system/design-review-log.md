@@ -191,3 +191,24 @@ automated evidence cannot create approval.
   - Stage 2A remains directionally positive and pending separate human review.
   - No shared Demo Shell, Page 14, Pages 15–18, backend, routes, or API
     contract were changed.
+
+### DR-011 — Visual Design Enrichment Stage 2C-R1 Page 13 categorical palette
+
+- Date: 2026-08-20
+- Human reviewer: Tom (pending)
+- Figma version: `1.2.0`
+- Frontend version: `0.2.0`
+- Scope: Page 13 repeated-element identity and metric-dimension accents
+- Result: `pending`
+- Outcome: `page13_palette_refinement_pending_human_review`
+- Evidence: API-primary and fixture regression checks.
+- Notes:
+  - Page 13 hierarchy and list treatment remain approved.
+  - Categorical identity color is presentation-only and distinct from semantic
+    state color.
+  - Account avatar tone is deterministic from account identity, never list
+    position, score, tier, industry, or urgency.
+  - ICP Fit, Signal Score, and Resonance use stable metric identity accents,
+    not score-quality thresholds.
+  - Decorative Signal dots remain `aria-hidden` and do not encode backend data.
+  - The rejected Page 16 experiment was not adopted and no stash was touched.

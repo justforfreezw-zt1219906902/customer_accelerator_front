@@ -728,6 +728,28 @@ visual_design_enrichment_stage_2b:
   release_authorized: false
   next_gate: Stage 2B Page 13 Human Visual Review
 
+visual_design_enrichment_stage_2c_r1:
+  status: page13_palette_refinement_pending_human_review
+  outcome: page13_palette_refinement_pending_human_review
+  date: "2026-08-20"
+  scope: page13_categorical_identity_palette_refinement
+  page13_hierarchy_status: approved
+  page13_palette_status: authorized
+  page16_palette_experiment: not_adopted
+  application_files_modified:
+    - src/components/product/AccountIdentity.vue
+    - src/components/product/AccountRow.vue
+    - src/components/product/ScoreIndicator.vue
+    - src/components/product/SignalSummary.vue
+    - src/utils/accountIdentityTone.ts
+    - DESIGN.md
+  existing_palette_only: true
+  semantic_model: semantic_and_categorical_color_distinct
+  api_decorative_signal_dots: fixed_amber_only
+  human_approval: pending
+  release_authorized: false
+  next_gate: Stage 2C-R1 Page 13 Human Visual Review
+
 last_updated: "2026-08-20"
 notes:
   - The Phase 0 repository audit and TASK-P0-001 were approved by Tom.

@@ -6,14 +6,19 @@ withDefaults(
     detail: string;
     size?: 'sm' | 'lg';
     wrap?: boolean;
+    tone?: 'brand' | 'amber' | 'success' | 'deep';
   }>(),
-  { size: 'sm', wrap: false },
+  { size: 'sm', wrap: false, tone: 'brand' },
 );
 </script>
 <template>
   <div
     class="account-identity"
-    :class="[`account-identity--${size}`, { 'account-identity--wrap': wrap }]"
+    :class="[
+      `account-identity--${size}`,
+      `account-identity--tone-${tone}`,
+      { 'account-identity--wrap': wrap },
+    ]"
   >
     <span class="account-identity__avatar" aria-hidden="true">{{
       initials
@@ -43,6 +48,21 @@ withDefaults(
   color: var(--color-brand-light);
   font: var(--font-weight-semibold) var(--font-size-11)/1
     var(--font-family-mono);
+}
+.account-identity--tone-amber .account-identity__avatar {
+  border-color: var(--color-border-amber);
+  background: var(--color-accent-amber-deep);
+  color: var(--color-accent-amber-light);
+}
+.account-identity--tone-success .account-identity__avatar {
+  border-color: var(--color-state-success);
+  background: var(--color-state-success-subtle);
+  color: var(--color-state-success);
+}
+.account-identity--tone-deep .account-identity__avatar {
+  border-color: var(--color-brand-deep);
+  background: var(--color-brand-deep);
+  color: var(--color-brand-tint-200);
 }
 .account-identity__copy {
   display: grid;

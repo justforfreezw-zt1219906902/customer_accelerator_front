@@ -71,6 +71,16 @@ positive, but it must never imply `verified = true`. Verification retains its
 own explicit state and label. A record can be source-backed without being
 verified, and the visual treatment must preserve that distinction.
 
+### Categorical / Identity Color
+
+Categorical color is distinct from semantic/state color. It may distinguish
+repeated identities or dimensions—such as company avatars, metric dimensions,
+categorical tags, and signal types—without communicating better/worse,
+verified/unverified, urgency, priority, or score quality. Categorical colors
+must use existing approved tokens, remain stable for the same identity, stay
+small-element-first, and remain supplementary to text. Semantic colors still
+require semantic truth.
+
 ### Contrast guardrail
 
 The current dark palette provides strong contrast for primary and secondary

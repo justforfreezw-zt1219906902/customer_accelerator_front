@@ -1,13 +1,13 @@
 <script setup lang="ts">
 withDefaults(
-  defineProps<{ label: string; value: number | null; display?: 'bar' | 'ring' }>(),
-  { display: 'bar' },
+  defineProps<{ label: string; value: number | null; display?: 'bar' | 'ring'; tone?: 'brand' | 'amber' | 'success' }>(),
+  { display: 'bar', tone: 'brand' },
 );
 </script>
 <template>
   <div
     class="score-indicator"
-    :class="`score-indicator--${display}`"
+    :class="[`score-indicator--${display}`, `score-indicator--${tone}`]"
     :aria-label="`${label}: ${value === null ? 'not analyzed' : `${value} out of 100`}`"
   >
     <template v-if="display === 'ring'">
@@ -43,7 +43,7 @@ withDefaults(
       transparent 84%
     ),
     conic-gradient(
-      var(--color-brand-light) var(--score),
+      var(--score-accent) var(--score),
       var(--color-border-default) 0
     );
 }
@@ -58,8 +58,11 @@ withDefaults(
   display: block;
   height: 100%;
   border-radius: inherit;
-  background: var(--color-state-success);
+  background: var(--score-accent);
 }
+.score-indicator--brand { --score-accent: var(--color-brand-light); }
+.score-indicator--amber { --score-accent: var(--color-accent-amber-light); }
+.score-indicator--success { --score-accent: var(--color-state-success); }
 .score-indicator strong {
   color: var(--color-text-primary);
   font: var(--font-weight-regular) var(--font-size-11)/1 var(--font-family-mono);

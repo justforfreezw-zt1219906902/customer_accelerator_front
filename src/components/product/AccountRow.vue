@@ -4,6 +4,7 @@ import AccountIdentity from './AccountIdentity.vue';
 import ScoreIndicator from './ScoreIndicator.vue';
 import SignalSummary from './SignalSummary.vue';
 import TierBadge from './TierBadge.vue';
+import { accountIdentityTone } from '../../utils/accountIdentityTone';
 export interface AccountRowViewModel {
   id: string;
   initials: string;
@@ -30,17 +31,21 @@ defineProps<{ account: AccountRowViewModel }>();
         :initials="account.initials"
         :name="account.name"
         :detail="`${account.industry} · ${account.location}`"
+        :tone="accountIdentityTone(account.id)"
         wrap
       /><TierBadge :tier="account.tier" /><ScoreIndicator
         label="ICP fit"
         :value="account.icpFit"
+        tone="brand"
       /><ScoreIndicator
         label="Signal"
         :value="account.signalScore"
+        tone="amber"
       /><ScoreIndicator
         label="Resonance"
         :value="account.resonance"
         display="ring"
+        tone="success"
       /><SignalSummary
         :count="account.activeSignals"
         :pattern="account.signalPattern"

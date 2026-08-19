@@ -6,10 +6,11 @@ const props = defineProps<{
 }>();
 
 const decorativeDots = props.pattern ?? Array.from({ length: 5 }, () => 'neutral');
+const isCategoricalDecoration = !props.pattern;
 </script>
 <template>
   <div class="signal-summary" :aria-label="`${count} active signals`">
-    <span class="signal-summary__dots" aria-hidden="true"
+    <span class="signal-summary__dots" :class="{ 'is-categorical': isCategoricalDecoration }" aria-hidden="true"
       ><i
         v-for="(state, index) in decorativeDots"
         :key="index"
@@ -31,6 +32,9 @@ const decorativeDots = props.pattern ?? Array.from({ length: 5 }, () => 'neutral
   height: 7px;
   border-radius: 50%;
   background: var(--color-border-default);
+}
+.signal-summary__dots.is-categorical i {
+  background: var(--color-accent-amber-light);
 }
 .signal-summary i.is-active {
   background: var(--color-state-success);
