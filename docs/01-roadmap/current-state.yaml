@@ -660,7 +660,7 @@ post_phase_6_frontend_stabilization:
   overall_product: NOT FINAL
   human_testing: IN PROGRESS
   release_authorized: false
-  human_approval: pending
+  human_approval: approved
   evidence: docs/08-quality/test-reports/post-phase-6-frontend-stabilization-2026-08-15.md
 
 visual_design_enrichment_stage_1:
@@ -729,8 +729,8 @@ visual_design_enrichment_stage_2b:
   next_gate: Stage 2B Page 13 Human Visual Review
 
 visual_design_enrichment_stage_2c_r1:
-  status: page13_palette_refinement_pending_human_review
-  outcome: page13_palette_refinement_pending_human_review
+  status: approved
+  outcome: page13_palette_refinement_approved
   date: "2026-08-20"
   scope: page13_categorical_identity_palette_refinement
   page13_hierarchy_status: approved
@@ -746,9 +746,37 @@ visual_design_enrichment_stage_2c_r1:
   existing_palette_only: true
   semantic_model: semantic_and_categorical_color_distinct
   api_decorative_signal_dots: fixed_amber_only
+  human_approval: approved
+  reviewer: Tom
+  approval_date: "2026-08-20"
+  release_authorized: false
+  next_gate: Stage 2D Integrated Pages 14–18 Visual Rollout
+
+visual_design_enrichment_stage_2d:
+  status: implementation_in_progress
+  outcome: pages14_18_visual_rollout_pending_human_review
+  date: "2026-08-20"
+  scope: integrated_pages_14_18_visual_rollout
+  page13_calibration: approved_dark_purple_black_foundation_colorful_details
+  previous_page16_experiment: not_adopted
+  pages:
+    page14: implemented_pending_human_review
+    page15: implemented_pending_human_review
+    page16: implemented_pending_human_review
+    page17: implemented_pending_human_review
+    page18: implemented_pending_human_review
+  application_files_modified:
+    - src/pages/demo/AccountOverviewPage.vue
+    - src/pages/demo/SignalPulsePage.vue
+    - src/components/product/AppMetricCard.vue
+    - src/components/product/DnaPortfolioCard.vue
+    - src/components/product/SignalUrgencyAccountCard.vue
+  shared_identity_helper_reused: src/utils/accountIdentityTone.ts
+  existing_palette_only: true
+  api_fixture_isolation: preserved
   human_approval: pending
   release_authorized: false
-  next_gate: Stage 2C-R1 Page 13 Human Visual Review
+  next_gate: Stage 2D Pages 14–18 Human Visual Review
 
 last_updated: "2026-08-20"
 notes:

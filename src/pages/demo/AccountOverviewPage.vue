@@ -163,9 +163,11 @@ const isCompleteUrl = (url?: string) => {
       /><AppMetricCard
         label="Signal Score"
         :value="apiAccount.analysis?.signalScore ?? '—'"
+        tone="warning"
       /><AppMetricCard
         label="Resonance"
         :value="apiAccount.analysis?.resonanceScore ?? '—'"
+        tone="success"
       />
     </div>
     <div class="overview-page__reasons">
@@ -332,9 +334,11 @@ const isCompleteUrl = (url?: string) => {
       /><AppMetricCard
         :label="`Signal Score · ${account.activeSignals} active`"
         :value="account.signalScore"
+        tone="warning"
       /><AppMetricCard
         :label="`Resonance · ${account.tier}`"
         :value="account.resonance"
+        tone="success"
       />
     </div>
     <template v-if="account.overview">

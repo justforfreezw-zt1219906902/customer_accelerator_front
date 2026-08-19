@@ -4,7 +4,7 @@ withDefaults(
     label: string;
     value: string | number;
     detail?: string;
-    tone?: 'default' | 'brand' | 'warning';
+    tone?: 'default' | 'brand' | 'warning' | 'success' | 'error';
   }>(),
   { detail: undefined, tone: 'default' },
 );
@@ -49,4 +49,9 @@ withDefaults(
 .app-metric-card--warning {
   border-color: var(--color-border-amber);
 }
+.app-metric-card--warning strong { color: var(--color-accent-amber-light); }
+.app-metric-card--success { border-color: var(--color-state-success); }
+.app-metric-card--success strong { color: var(--color-state-success); }
+.app-metric-card--error { border-color: var(--color-state-error); }
+.app-metric-card--error strong { color: var(--color-state-error); }
 </style>

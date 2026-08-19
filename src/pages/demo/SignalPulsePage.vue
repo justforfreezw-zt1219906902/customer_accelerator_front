@@ -72,6 +72,7 @@ const apiAccounts = computed<SignalUrgencyAccountViewModel[]>(() => (apiPulse.va
   activeSignalCount: account.activeSignalCount,
   latestActiveSignalDate: account.latestActiveSignalDate,
   nextBestAction: account.nextBestAction,
+  urgency: account.urgency,
   signals: account.signals.map((signal) => ({ ...signal, signalDate: signal.signalDate })),
 })));
 const filteredAccounts = computed<SignalUrgencyAccountViewModel[]>(() => {

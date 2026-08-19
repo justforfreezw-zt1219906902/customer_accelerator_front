@@ -212,3 +212,21 @@ automated evidence cannot create approval.
     not score-quality thresholds.
   - Decorative Signal dots remain `aria-hidden` and do not encode backend data.
   - The rejected Page 16 experiment was not adopted and no stash was touched.
+
+### DR-012 — Visual Design Enrichment Stage 2D integrated Pages 14–18 rollout
+
+- Date: 2026-08-20
+- Human reviewer: Tom (pending)
+- Figma version: `1.2.0`
+- Frontend version: `0.2.0`
+- Scope: integrated categorical/identity visual rollout across Pages 14–18
+- Result: `pending`
+- Outcome: `pages14_18_visual_rollout_pending_human_review`
+- Baseline: approved Page 13 dark purple-black foundation with colorful details.
+- Notes:
+  - Large surfaces remain dark-neutral; color is concentrated in avatars,
+    metric identities, compact markers, and semantic edges.
+  - Page 13 is not reopened.
+  - The rejected Page 16 page-level experiment remains historical only.
+  - API/fixture behavior, backend semantics, routing, and generation behavior
+    remain unchanged.

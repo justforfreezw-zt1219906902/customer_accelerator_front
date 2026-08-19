@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import TierBadge from './TierBadge.vue';
+import { accountIdentityTone } from '../../utils/accountIdentityTone';
 export interface DnaPortfolioCardAccount {
   id: string;
   name: string;
@@ -43,7 +44,7 @@ const signalLabel = computed(
       >
         <span aria-hidden="true">{{ selected ? '✓' : '' }}</span>
       </button>
-      <span class="dna-portfolio-card__avatar" aria-hidden="true">{{
+      <span class="dna-portfolio-card__avatar" :class="`dna-portfolio-card__avatar--${accountIdentityTone(account.id)}`" aria-hidden="true">{{
         account.initials
       }}</span>
       <div class="dna-portfolio-card__identity">
@@ -117,6 +118,9 @@ const signalLabel = computed(
   color: var(--color-brand-light);
   font-weight: 700;
 }
+.dna-portfolio-card__avatar--amber { border: 1px solid var(--color-border-amber); background: var(--color-accent-amber-deep); color: var(--color-accent-amber-light); }
+.dna-portfolio-card__avatar--success { border: 1px solid var(--color-state-success); background: var(--color-state-success-subtle); color: var(--color-state-success); }
+.dna-portfolio-card__avatar--deep { border: 1px solid var(--color-brand-deep); background: var(--color-brand-deep); color: var(--color-brand-tint-200); }
 .dna-portfolio-card__identity {
   min-width: 0;
 }
