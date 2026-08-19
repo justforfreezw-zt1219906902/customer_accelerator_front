@@ -139,5 +139,12 @@ automated evidence cannot create approval.
 - Notes:
   - This is a visual-governance proposal, not UI implementation.
   - The existing palette is preserved and organized into clearer semantic roles.
+  - Tom's review requires `SOURCE_BACKED` and `verified` to remain independent;
+    source-backed evidence must not imply `verified = true`.
+  - Page 16 Market Patterns may retain the approved fixture treatment, but API
+    mode must use a neutral unavailable treatment because no backend capability
+    is documented.
+  - Stage 2 now begins with minimal shared foundations, then a Page 14 pilot
+    and Tom visual checkpoint before broader shared-component or page changes.
   - Phase 6 behavior remains `PASS / FROZEN`.
   - No release or deployment is authorized.

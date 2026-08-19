@@ -41,7 +41,7 @@ reviewed token change.
 | Neutral border | `--color-border-default`, `--color-border-subtle` | Structure, row division, ordinary cards | Equal-strength borders around every nested surface |
 | Brand emphasis | `--color-brand-core`, `--color-brand-light`, `--color-brand-deep`, `--color-brand-tint-900`, `--color-border-brand` | Primary action, selection, active navigation, primary insight | Using purple for warning, verified, danger, and every link simultaneously |
 | Attention/timing | `--color-accent-amber`, `--color-accent-amber-light`, `--color-accent-amber-deep`, `--color-border-amber` | Why Now, urgency, opportunities, time-sensitive intelligence, watchlist | Using amber for ordinary metadata or permanent navigation |
-| Positive/verified | `--color-state-success`, `--color-state-success-subtle` | Active, verified, source-supported, healthy score where semantically accurate | Applying green to decorative dots or unknown data |
+| Positive/evidence-positive | `--color-state-success`, `--color-state-success-subtle` | Active, evidence-positive, explicit verified state, or healthy score where semantically accurate | Applying green to decorative dots, unknown data, or treating source support as verification |
 | Danger/error | `--color-state-error`, `--color-state-error-subtle` | Failed state, critical risk, going cold, destructive warning | Using red for generic absence or ordinary low-priority content |
 | Disabled | `--color-state-disabled`, `--opacity-disabled` | Disabled controls and unavailable actions | Using disabled styling for actions that remain available |
 | Focus | `--color-focus-ring`, `--shadow-focus-ring` | Keyboard focus only | Reusing focus treatment as persistent selection styling |
@@ -55,12 +55,21 @@ semantic accents. Neutral surfaces remain the majority.
 
 - Purple: selection, primary action, primary intelligence.
 - Amber: attention, timing, opportunity, watchlist.
-- Green: verified, active, healthy, source-supported.
+- Green: explicit verified/active/healthy states or positive source evidence;
+  source-backed evidence alone does not mean verified.
 - Red: error, critical risk, going cold.
 - Neutral: ordinary metadata, unselected content, unavailable data.
 
 Color never acts alone. Text, icons, badges, borders, and accessible names must
 continue to communicate the state.
+
+### Evidence and verification are independent
+
+`SOURCE_BACKED` and `verified` are independent semantics. `SOURCE_BACKED` may
+use an evidence-positive/success-family treatment when the source evidence is
+positive, but it must never imply `verified = true`. Verification retains its
+own explicit state and label. A record can be source-backed without being
+verified, and the visual treatment must preserve that distinction.
 
 ### Contrast guardrail
 
@@ -101,7 +110,8 @@ Use the existing Inter and JetBrains Mono system.
 - Default metrics use neutral surfaces.
 - The one primary portfolio metric may use brand emphasis.
 - Time-sensitive metrics use amber.
-- Verified/healthy metrics may use success.
+- Verified/healthy metrics may use success only when the corresponding explicit
+  state is present.
 - Risk metrics use error.
 - A number, label, and accessible name remain present; color is supplementary.
 
@@ -117,7 +127,10 @@ Use the existing Inter and JetBrains Mono system.
 
 ### Evidence and status
 
-- `SOURCE_BACKED`: success role.
+- `SOURCE_BACKED`: evidence-positive/success-family role where appropriate; it
+  does not imply `verified = true`.
+- `verified`: an independent explicit verification state and label; never infer
+  it from `SOURCE_BACKED`.
 - `DERIVED`: brand role.
 - `INSUFFICIENT_DATA`: warning or neutral-incomplete treatment unless it is an
   actual error; do not imply failure automatically.

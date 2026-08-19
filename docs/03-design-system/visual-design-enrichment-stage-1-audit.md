@@ -34,7 +34,7 @@ but are not consistently assigned to timing, verification, and risk.
 | Demo Sidebar | Clear selected navigation and stable dark shell | Selected item and ordinary Product accents rely on the same purple | Brand, neutral surface/border | Keep purple for current location; keep inactive groups neutral and use type weight for hierarchy | High |
 | Demo Topbar | Quiet and consistent | Breadcrumb/context sometimes competes weakly with page content | Primary/secondary text, subtle border | Keep Topbar neutral; reserve accent for status or actionable context only | Medium |
 | Page backgrounds | Spacious Level 0 dark canvas | Long dark areas can feel visually flat | Surface default/elevated | Use consistent Level 1/2 section surfaces rather than more page-level color | Medium |
-| Page 13 metrics | Brand and warning variants already exist | Default cards and important cards still have similar value hierarchy | Brand, amber, success, neutral borders | Keep one primary brand metric; use amber only for watchlist/timing and success only when active/verified | High |
+| Page 13 metrics | Brand and warning variants already exist | Default cards and important cards still have similar value hierarchy | Brand, amber, success, neutral borders | Keep one primary brand metric; use amber only for watchlist/timing and success only for explicit active/verified or positive-evidence states | High |
 | Page 13 table header | Clear geometry | Header and rows have weak tonal separation | Surface default/elevated, subtle/default border | Establish a slightly distinct neutral header surface and stronger hover without changing grid | High |
 | Page 13 tier badges | Focus and Tier 1 differ | Unanalyzed/Below ICP/Tier 2 need clearer neutral/incomplete distinctions | Brand, amber, neutral, error only for actual failure | Define badge-role matrix; do not use red for generic unavailable state | High |
 | Page 13 scores | Bars and rings scan well | Same green/purple relationship may imply meanings not consistently documented | Success, amber, error, neutral track | Use score bands only when Product semantics define them; otherwise keep one neutral/brand visualization | Medium |
@@ -44,12 +44,12 @@ but are not consistently assigned to timing, verification, and risk.
 | Page 14 Why This Account | Strong bordered card | Similar weight to Why Now despite different meaning | Brand border/tint | Use brand as strategic-fit/primary-insight role | High |
 | Page 14 Why Now | Existing Figma uses amber effectively | Current API state can visually converge with other cards | Amber border/glow sparingly | Use amber header/edge for time-sensitive intelligence | Critical |
 | Page 14 Next Best Action | Large and readable | Strong purple border plus purple action can compete with Why Now | Brand fill/edge, primary text | Make it the single action-oriented Level 3 surface; keep recommendation text primary | Critical |
-| Page 14 Buying Signals | Dense, source-rich list | Evidence status, timing, category, and source can compete | Success, amber, brand, neutral | Success for verified/source-backed, amber for timing, brand for navigable source, neutral for metadata | High |
+| Page 14 Buying Signals | Dense, source-rich list | Evidence status, timing, category, and source can compete | Success, amber, brand, neutral | Success-family treatment may indicate positive source evidence; explicit `verified` remains independent, amber is for timing, brand for navigable source, neutral for metadata | High |
 | Page 15 hero | Strong brand-framed identity | Large brand border can compete with every derived badge below | Brand border/glow | Keep hero as one primary brand region; reduce repeated strong brand framing lower down | Medium |
 | Page 15 evidence cards | Consistent card family | Tone, proof, framing, CTA, vocabulary all look equally important | Surface hierarchy plus status colors | Group categories by scan pattern; use category structure, not random card colors | High |
 | Page 15 status badges | Source/derived/incomplete already differentiated | Small brand text can approach contrast limits; incomplete reads as error | Success, brand, amber/neutral incomplete | Retain source/derived split; review incomplete treatment and small-text contrast | Critical |
 | Page 15 Do / Don't | Semantically distinct in Figma | Current generic cards may understate behavioral polarity | Success subtle/error subtle with labels | Reserve paired green/red treatment for this explicit semantic pair | High |
-| Page 16 portfolio metrics | Good prototype color separation | Current implementation exposes only part of the semantic spectrum consistently | Brand, amber, error, success | Active=brand, new/timing=amber, hot=brand/attention, cold=error, patterns=success | Critical |
+| Page 16 portfolio metrics | Good prototype color separation | Current implementation exposes only part of the semantic spectrum consistently | Brand, amber, error, success, neutral unavailable | Active=brand, new/timing=amber, hot=brand/attention, cold=error; Market Patterns may retain the approved fixture/prototype treatment, but API mode must be neutral unavailable because no backend Market Pattern capability exists | Critical |
 | Page 16 tabs | Selected state is recognizable | Purple pill selection can resemble primary CTA | Brand tint/border, neutral surface | Keep selected tab brand-tinted and secondary to page CTA/action | Medium |
 | Page 16 urgency cards | Strong accent edge in prototype | Content-heavy cards can still blend across urgency categories | Amber, brand, neutral/error as authorized by backend urgency | Map only backend urgency to edge color and preserve text label | Critical |
 | Page 17 filters | Clear local selection | Many selected pills can create a purple-heavy band | Brand for current filters, neutral for choices | Limit filled purple to active choices; keep other filters neutral | Medium |
@@ -74,6 +74,10 @@ but are not consistently assigned to timing, verification, and risk.
 - Page 15 uses status badges and the explicit Do/Don't pair to make evidence
   categories scannable.
 - Page 16 maps metric and urgency roles across the existing palette.
+- Page 16 Market Patterns treatment is valid for the approved fixture/demo
+  state only. API mode has no backend Market Pattern capability and must use a
+  neutral unavailable treatment; success styling must not imply live backend
+  intelligence.
 - Page 17 keeps most cards neutral and spends brand emphasis on selection.
 - Page 18 distinguishes context, workflow, editor/preview, and guidance regions.
 
@@ -114,20 +118,22 @@ but are not consistently assigned to timing, verification, and risk.
 
 ## Proposed Stage 2 sequence
 
-1. **Shared foundations:** approve semantic color-role aliases, border/surface
-   hierarchy, status/score rules, contrast checks, and color-budget tests.
-2. **Shared Product components:** metrics, badges, score indicators, evidence
-   badges, selected cards, tables/rows, action hierarchy, focus separation.
-3. **Demo Shell:** Sidebar, Topbar, Drawer, and page-level surface rhythm.
-4. **Page 13:** table/header/hover, tier and score roles, Signals presentation,
-   Next Best Action.
-5. **Page 14:** enforce Why This Account → Why Now → What Next hierarchy.
-6. **Page 15:** evidence-category scanning, status contrast, Do/Don't pairing.
-7. **Page 16:** metric and urgency palette mapping.
-8. **Page 17:** selection and comparison-result hierarchy.
-9. **Page 18:** context/editor/preview/guidance/traceability hierarchy.
-10. **Integrated QA:** fixture/API modes, 1440/1024/768/390, keyboard/focus,
-    contrast, reduced motion, Product regressions, and human visual review.
+1. **Minimal shared foundations:** approve only the semantic color-role aliases,
+   border/surface hierarchy, status/score rules, contrast checks, and
+   color-budget tests needed for the pilot.
+2. **Page 14 Account Overview pilot:** apply the proposal first to the
+   `Why This Account → Why Now → Next Best Action` hierarchy, including the
+   independent `SOURCE_BACKED` versus `verified` distinction.
+3. **Tom human visual checkpoint:** pause for explicit visual review of the
+   Page 14 pilot before broadening the language.
+4. **Shared Product components:** only after the pilot is accepted, enrich
+   metrics, badges, score indicators, evidence badges, selected cards,
+   tables/rows, action hierarchy, and focus separation.
+5. **Demo Shell:** Sidebar, Topbar, Drawer, and page-level surface rhythm.
+6. **Pages 13 and 15–18:** apply the approved hierarchy page by page, with
+   Page 16 Market Patterns remaining neutral unavailable in API mode.
+7. **Integrated QA:** fixture/API modes, 1440/1024/768/390, keyboard/focus,
+   contrast, reduced motion, Product regressions, and human visual review.
 
 Each page checkpoint requires Tom's visual review before the next page begins.
 Stage 2 must not change Product semantics, contracts, routes, data isolation, or
@@ -140,4 +146,3 @@ generation behavior.
 - Visual enrichment: `PROPOSED / PENDING HUMAN REVIEW`
 - Human review: `PENDING`
 - Release: `NOT AUTHORIZED`
-

@@ -1,6 +1,6 @@
 # Visual Design Enrichment — Stage 1
 
-- Date: 2026-08-19
+- Date: 2026-08-20
 - Operator: Codex
 - Human owner: Tom
 - Status: `design_system_proposal_needs_human_review`
@@ -39,13 +39,13 @@ changed. Existing `.idea/workspace.xml` and `.DS_Store` state was preserved.
 
 ## Design conclusion
 
-The current dark enterprise identity and palette remain authoritative. Stage 2
-should enrich hierarchy by assigning existing purple, amber, green, red, and
-neutral roles consistently, beginning with shared tokens/components before
-moving through Pages 13–18.
+The current dark enterprise identity and palette remain authoritative. The
+proposal explicitly keeps `SOURCE_BACKED` independent from `verified`, uses a
+neutral unavailable treatment for API-mode Market Patterns, and stages future
+work as minimal shared foundations → Page 14 Account Overview pilot → Tom
+visual checkpoint → broader shared components and Pages 13–18.
 
 ## Gate
 
 Tom must review and approve, amend, or reject the Stage 1 `DESIGN.md` and audit.
 No visual implementation is authorized by this record.
-
