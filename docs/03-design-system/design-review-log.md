@@ -122,3 +122,22 @@ automated evidence cannot create approval.
   - `DEV-2026-009` was accepted as a known responsive difference.
   - Approval evidence:
     `docs/08-quality/test-reports/phase-4c-task-p6-001-approval-2026-07-25.md`.
+
+### DR-007 — Visual Design Enrichment Stage 1 proposal
+
+- Date: 2026-08-19
+- Human reviewer: Tom (pending)
+- Figma version: `1.2.0`
+- Frontend version: `0.2.0`
+- Scope: Demo Shell and Product Pages 13–18 in fixture/API modes; Figma frames
+  `359:2`, `360:2`, `360:2116`, `360:2226`, `360:2385`, `361:2`
+- Result: `pending`
+- Outcome: `design_system_proposal_needs_human_review`
+- Evidence:
+  - `DESIGN.md`
+  - `docs/03-design-system/visual-design-enrichment-stage-1-audit.md`
+- Notes:
+  - This is a visual-governance proposal, not UI implementation.
+  - The existing palette is preserved and organized into clearer semantic roles.
+  - Phase 6 behavior remains `PASS / FROZEN`.
+  - No release or deployment is authorized.
