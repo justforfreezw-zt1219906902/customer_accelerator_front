@@ -893,3 +893,23 @@ landing_partnership_section:
   human_approval: pending
   release_authorized: false
   next_gate: Landing Partnership Visual Review
+
+marketing_figma_sync_contact_partnership:
+  status: marketing_final_sync_pending_human_review
+  outcome: marketing_final_sync_pending_human_review
+  date: "2026-08-20"
+  contact_figma_page: "269:2"
+  contact_desktop_frame: "269:3"
+  landing_figma_node: "697:1062"
+  landing_underlying_component: "696:1292"
+  current_contact_contract: API-CONTRACT-R1
+  context_supported: true
+  previous_blocker: contact_optional_context_blocked_by_api_contract
+  blocker_resolution: backend_contact_contract_now_supports_optional_context
+  frontend_owner_control: removed
+  api_contract_revision: 2
+  frontend_version: 0.2.0
+  figma_design_system: 1.2.0
+  human_approval: pending
+  release_authorized: false
+  next_gate: Contact context contract decision and Marketing Figma visual review

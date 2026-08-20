@@ -30,7 +30,11 @@ describe('LeadForm', () => {
     expect(wrapper.find('input[name="owner"]').exists()).toBe(false);
     expect(wrapper.find('input[name="website"]').exists()).toBe(false);
     expect(wrapper.find('input[name="phoneNumber"]').exists()).toBe(false);
-    expect(wrapper.find('textarea[name="message"]').exists()).toBe(false);
+    expect(wrapper.find('textarea[name="context"]').exists()).toBe(true);
+    expect(wrapper.get('textarea[name="context"]').attributes('required')).toBeUndefined();
+    expect(wrapper.get('textarea[name="context"]').attributes('placeholder')).toBe(
+      'Share any context that would help us prepare.',
+    );
   });
 
   it('shows required and email errors with an accessible summary', async () => {
@@ -77,6 +81,7 @@ describe('LeadForm', () => {
       familyName: 'Lovelace',
       company: 'Analytical Engines',
       workEmail: 'ada@example.com',
+      context: '',
     });
     expect(wrapper.get('form').attributes('aria-busy')).toBe('true');
     expect(

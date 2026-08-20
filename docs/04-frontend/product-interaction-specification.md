@@ -148,7 +148,7 @@ Revision 1 controls the payload:
 | Family name | `familyName` | Required, non-empty string |
 | Company | `company` | Required, non-empty string |
 | Work email | `workEmail` | Required, non-empty valid email |
-| Owner | `owner` | No visible field; optional configured value only |
+| Context | `context` | Optional free-form preparation context; omitted when blank |
 
 No message, website, telephone, consent checkbox, or other payload field is
 approved.

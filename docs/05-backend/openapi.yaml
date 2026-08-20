@@ -63,7 +63,7 @@ paths:
               familyName: Doe
               company: Example Inc
               workEmail: john@example.com
-              owner: "90579791"
+              context: Optional context
       responses:
         "200":
           description: Lead submitted successfully
@@ -158,9 +158,9 @@ components:
           format: email
           minLength: 1
           description: Required; cannot be empty and must be a valid email address.
-        owner:
+        context:
           type: string
-          description: Optional owner identifier.
+          description: Optional preparation context supplied by the visitor.
     LeadSuccessResponse:
       type: object
       required:

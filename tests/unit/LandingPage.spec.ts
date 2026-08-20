@@ -40,7 +40,7 @@ describe('Phase 6A Landing Page', () => {
     );
     expect(wrapper.findAll('h2')).toHaveLength(10);
     expect(wrapper.text()).toContain('1.3–8%');
-    expect(wrapper.text()).toContain("Let's talk");
+    expect(wrapper.text()).toContain('5 spots, this round');
     expect(wrapper.text()).toContain('The people behind the intelligence');
     expect(wrapper.text()).toContain('Before you book a call');
   });
@@ -110,8 +110,14 @@ describe('Phase 6A Landing Page', () => {
     const wrapper = mount(LandingPage);
     const packages = wrapper.get('#packages');
     expect(packages.text()).toContain('PARTNERSHIP');
-    expect(packages.text()).toContain('Build the intelligence layer your workflow actually needs');
+    expect(packages.text()).toContain(
+      'Co-build the account intelligence layer — on your real workflows, not a demo.',
+    );
+    expect(packages.text()).toContain(
+      'Partner-rate terms, fixed now — ahead of standard pricing.',
+    );
     expect(packages.text()).toContain('Developer Partner');
+    expect(packages.find('img[alt=""]').exists()).toBe(true);
     expect(packages.text()).toContain('PARTNERSHIP DISCUSSION');
     expect(packages.findAll('.packages-section__card')).toHaveLength(1);
     for (const legacy of ['Pilot', 'Entry', 'Growth', 'Enterprise']) {

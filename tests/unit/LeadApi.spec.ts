@@ -14,12 +14,12 @@ const values = {
   familyName: ' Lovelace ',
   company: ' Analytical Engines ',
   workEmail: ' ada@example.com ',
+  context: ' Optional context ',
 };
 
 const config: RuntimeConfig = {
   apiBaseUrl: 'http://localhost:8080',
   demoDataSource: 'fixtures',
-  ownerId: '90579791',
 };
 
 const jsonResponse = (value: unknown, status = 200) =>
@@ -29,21 +29,15 @@ const jsonResponse = (value: unknown, status = 200) =>
   });
 
 describe('API-CONTRACT-R1 lead service', () => {
-  it('maps only confirmed fields and handles optional owner', () => {
+  it('maps the optional context and never sends owner', () => {
     expect(LEAD_CONTRACT_ID).toBe('API-CONTRACT-R1');
     expect(LEAD_ENDPOINT).toBe('/api/lead');
-    expect(mapLeadRequest(values, '90579791')).toEqual({
+    expect(mapLeadRequest(values)).toEqual({
       firstName: 'Ada',
       familyName: 'Lovelace',
       company: 'Analytical Engines',
       workEmail: 'ada@example.com',
-      owner: '90579791',
-    });
-    expect(mapLeadRequest(values, ' ')).toEqual({
-      firstName: 'Ada',
-      familyName: 'Lovelace',
-      company: 'Analytical Engines',
-      workEmail: 'ada@example.com',
+      context: 'Optional context',
     });
   });
 
@@ -75,11 +69,21 @@ describe('API-CONTRACT-R1 lead service', () => {
       familyName: 'Lovelace',
       company: 'Analytical Engines',
       workEmail: 'ada@example.com',
-      owner: '90579791',
+      context: 'Optional context',
     });
+    expect(init.body).not.toContain('owner');
     expect(init.body).not.toContain('website');
     expect(init.body).not.toContain('phone');
     expect(init.body).not.toContain('message');
+  });
+
+  it('omits whitespace-only context', () => {
+    expect(mapLeadRequest({ ...values, context: '   ' })).toEqual({
+      firstName: 'Ada',
+      familyName: 'Lovelace',
+      company: 'Analytical Engines',
+      workEmail: 'ada@example.com',
+    });
   });
 
   it.each([

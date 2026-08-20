@@ -31,7 +31,7 @@ POST /api/lead
 | Contract concern | Frontend evidence |
 | --- | --- |
 | Required request fields | `firstName`, `familyName`, `company`, `workEmail` in `LeadRequest` |
-| Optional request field | `owner`, sourced only from public runtime configuration and omitted when blank |
+| Optional request field | `context`, trimmed and omitted when blank |
 | Success response | `LeadSuccessResponse` validates `message` and `hubspot_contact_id` |
 | Known HTTP errors | 400, 500 and 502 mapped in `httpClient.ts` |
 | Other/malformed responses | `unexpected_response` |
@@ -41,7 +41,7 @@ POST /api/lead
 | Retry | Automatic retry disabled; deliberate resubmission is possible after failure |
 | Duplicate prevention | `LeadForm` accepts only one active submission |
 | Navigation during submit | User confirmation is required; confirmed navigation aborts the browser request |
-| Privacy | No payload, personal field, owner, or HubSpot contact ID is logged or routed |
+| Privacy | No payload, personal field, or HubSpot contact ID is logged or routed; frontend sends no owner |
 
 ## Tests
 

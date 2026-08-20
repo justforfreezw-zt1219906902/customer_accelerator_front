@@ -11,6 +11,7 @@ import type {
   TeamMember,
   TrustMetricItem,
 } from '../../components/sections';
+import prototypePreview from '../../assets/marketing/account-discovery-prototype.png';
 
 export interface LandingContentEn {
   hero: {
@@ -275,24 +276,28 @@ export const landingContentEn: LandingContentEn = {
   packages: {
     intro: {
       eyebrow: 'PARTNERSHIP',
-      title: 'Build the intelligence layer your workflow actually needs',
+      title:
+        'Co-build the account intelligence layer — on your real workflows, not a demo.',
       description:
-        'Work directly with us to design, integrate and validate a solution around your real account workflows. Scope and commercial terms are agreed together.',
+        "We're bringing in 5 teams to integrate mi-goTo directly into how they already work — CRM, API, existing tools — and stress-test it against real accounts. You get early access, a direct line into what ships next, and partner terms locked in before our standard pricing applies.",
     },
     packages: [
       {
         name: 'Developer Partner',
-        price: "Let's talk",
-        description: 'For teams that want to co-build, integrate, or extend the intelligence layer with us.',
+        price: '5 spots, this round',
+        description:
+          'For teams that want to integrate the intelligence layer into how you already sell — not bolt on another dashboard.',
         features: [
-          'Joint solution design & technical discovery',
-          'API, CRM & data integration planning',
-          'Custom workflow or module development',
-          'Shared validation on real account use cases',
-          'Roadmap alignment & knowledge transfer',
+          'Joint solution design, scoped to your actual account workflow',
+          'API, CRM & data integration — planned together, not handed to you as a spec',
+          "Custom modules for the cases we don't cover yet",
+          'Validated on real accounts, with your team watching it work',
+          'Direct input into the roadmap — you see what ships before it ships',
         ],
         action: partnershipAction,
         highlighted: true,
+        supportingNote: 'Partner-rate terms, fixed now — ahead of standard pricing.',
+        previewImage: prototypePreview,
       },
     ],
   },

@@ -38,6 +38,11 @@ describe('ContactPage', () => {
     expect(wrapper.text()).toContain('hello@mi-goto.com');
     expect(wrapper.findComponent({ name: 'LeadForm' }).exists()).toBe(true);
     expect(wrapper.findAll('input')).toHaveLength(4);
+    expect(wrapper.text()).toContain('Last name');
+    expect(wrapper.get('input[name="familyName"]').attributes('placeholder')).toBe(
+      'Your last name',
+    );
+    expect(wrapper.find('textarea[name="context"]').exists()).toBe(true);
   });
 
   it('navigates valid success to a privacy-safe Thank You route', async () => {

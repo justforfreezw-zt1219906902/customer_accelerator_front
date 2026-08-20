@@ -18,7 +18,7 @@ describe('runtime configuration', () => {
     });
   });
 
-  it('keeps a configured owner and never treats it as a form value', () => {
+  it('does not expose obsolete frontend owner configuration', () => {
     expect(
       createRuntimeConfig({
         VITE_API_BASE_URL: 'https://api.example.test/',
@@ -27,7 +27,6 @@ describe('runtime configuration', () => {
     ).toEqual({
       apiBaseUrl: 'https://api.example.test',
       demoDataSource: 'fixtures',
-      ownerId: '90579791',
     });
   });
 

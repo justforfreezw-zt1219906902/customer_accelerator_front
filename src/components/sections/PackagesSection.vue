@@ -79,16 +79,44 @@ const headingTag = computed(() => `h${props.intro.headingLevel ?? 2}`);
               }}</span>
             </p>
           </div>
-          <p class="packages-section__description">{{ option.description }}</p>
-          <ul class="packages-section__features">
-            <li v-for="feature in option.features" :key="feature">
-              <template v-if="variant === 'developer-partner'"><span aria-hidden="true">—</span>{{ feature }}</template>
-              <template v-else>{{ feature }}</template>
-            </li>
-          </ul>
+          <template v-if="variant === 'developer-partner'">
+            <div class="packages-section__partner-body">
+              <div class="packages-section__preview" aria-label="Account Discovery prototype preview">
+                <div class="packages-section__preview-image">
+                  <img v-if="option.previewImage" :src="option.previewImage" alt="" />
+                </div>
+                <AppButton
+                  v-if="option.action"
+                  :href="option.action.href"
+                  :variant="option.highlighted ? 'primary' : 'secondary'"
+                  @click="emit('packageAction', option.name, $event)"
+                >
+                  {{ option.action.label }}
+                </AppButton>
+              </div>
+              <div class="packages-section__partner-copy">
+                <p class="packages-section__description">{{ option.description }}</p>
+                <ul class="packages-section__features">
+                  <li v-for="feature in option.features" :key="feature"><span aria-hidden="true">—</span>{{ feature }}</li>
+                </ul>
+              </div>
+            </div>
+          </template>
+          <template v-else>
+            <p class="packages-section__description">{{ option.description }}</p>
+            <ul class="packages-section__features">
+              <li v-for="feature in option.features" :key="feature">{{ feature }}</li>
+            </ul>
+          </template>
           <div class="packages-section__action">
+            <div
+              v-if="variant === 'developer-partner' && option.supportingNote"
+              class="packages-section__supporting-message"
+            >
+              <p class="packages-section__supporting-note">{{ option.supportingNote }}</p>
+            </div>
             <AppButton
-              v-if="option.action"
+              v-if="option.action && variant !== 'developer-partner'"
               :href="option.action.href"
               :variant="option.highlighted ? 'primary' : 'secondary'"
               @click="emit('packageAction', option.name, $event)"
@@ -198,14 +226,13 @@ const headingTag = computed(() => `h${props.intro.headingLevel ?? 2}`);
   max-width: none;
 }
 .packages-section--developer-partner :deep(.landing-section__grid) {
-  min-height: 780px;
   align-items: center;
   justify-content: center;
   justify-items: center;
 }
 .packages-section--developer-partner .packages-section__card {
-  width: min(520px, 100%);
-  min-height: 732px;
+  width: min(980px, 100%);
+  max-width: 980px;
   box-sizing: border-box;
   padding: 0;
   text-align: start;
@@ -214,12 +241,56 @@ const headingTag = computed(() => `h${props.intro.headingLevel ?? 2}`);
 }
 .packages-section--developer-partner .packages-section__card :deep(.app-card__body) {
   display: grid;
-  grid-template-rows: auto auto auto 1fr auto;
-  gap: var(--spacing-32);
-  height: 100%;
-  padding: var(--spacing-48);
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto;
+  gap: var(--spacing-24);
+  height: auto;
+  padding: var(--spacing-40);
   text-align: start;
 }
+.packages-section--developer-partner .packages-section__partner-body {
+  display: grid;
+  grid-template-columns: minmax(280px, 420px) minmax(0, 1fr);
+  gap: var(--spacing-24);
+  min-height: 315px;
+  align-items: start;
+}
+.packages-section--developer-partner .packages-section__preview {
+  display: grid;
+  gap: var(--spacing-20);
+  align-content: start;
+  overflow: hidden;
+}
+.packages-section--developer-partner .packages-section__preview-image {
+  display: grid;
+  width: 420px;
+  height: 220px;
+  place-items: center;
+  overflow: hidden;
+  border: var(--stroke-1) solid var(--color-border-default);
+  border-radius: var(--radius-sm, 8px);
+  background: var(--color-bg-default);
+}
+.packages-section--developer-partner .packages-section__preview-image img {
+  display: block;
+  width: 400px;
+  height: 190px;
+  object-fit: contain;
+}
+.packages-section--developer-partner .packages-section__preview :deep(.app-button) {
+  width: 284px;
+  justify-self: center;
+}
+.packages-section--developer-partner .packages-section__partner-copy { display: grid; gap: var(--spacing-16); }
+.packages-section--developer-partner .packages-section__features { gap: var(--spacing-8); }
+.packages-section--developer-partner .packages-section__action {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+}
+.packages-section--developer-partner .packages-section__action .packages-section__supporting-message { grid-column: 1; }
+.packages-section--developer-partner .packages-section__supporting-note { margin: 0; color: var(--color-text-muted); font-size: var(--font-size-20); font-weight: var(--font-weight-semibold); line-height: 28px; }
 .packages-section--developer-partner .packages-section__heading { gap: var(--spacing-10); }
 .packages-section--developer-partner .packages-section__heading h3 {
   font-size: var(--font-size-28);
@@ -231,20 +302,20 @@ const headingTag = computed(() => `h${props.intro.headingLevel ?? 2}`);
 }
 .packages-section--developer-partner .packages-section__description {
   color: var(--color-text-muted);
-  font-size: var(--font-size-21);
-  line-height: 32px;
+  font-size: var(--font-size-16);
+  line-height: 24px;
 }
 .packages-section--developer-partner .packages-section__features {
   display: grid;
-  gap: var(--spacing-24);
+  gap: var(--spacing-8);
   padding: 0;
   list-style: none;
 }
 .packages-section--developer-partner .packages-section__features li {
   display: flex;
   gap: var(--spacing-12);
-  font-size: var(--font-size-18);
-  line-height: 29px;
+  font-size: var(--font-size-16);
+  line-height: 24px;
 }
 .packages-section--developer-partner .packages-section__features li span {
   color: var(--color-brand-primary);
@@ -254,10 +325,22 @@ const headingTag = computed(() => `h${props.intro.headingLevel ?? 2}`);
   width: 100%;
   border-radius: var(--radius-md);
 }
+.packages-section--developer-partner .packages-section__supporting-note {
+  color: var(--color-text-muted);
+}
+.packages-section--developer-partner .packages-section__supporting-message {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-12);
+  justify-content: center;
+  width: 100%;
+}
 @media (max-width: 767px) {
   .packages-section--developer-partner { padding-block: var(--spacing-48); }
   .packages-section--developer-partner :deep(.landing-section__grid) { min-height: 0; }
   .packages-section--developer-partner .packages-section__card { min-height: 0; }
+  .packages-section--developer-partner .packages-section__partner-body { grid-template-columns: 1fr; }
+  .packages-section--developer-partner .packages-section__action { grid-column: auto; grid-row: auto; }
   .packages-section--developer-partner .packages-section__card :deep(.app-card__body) { padding: var(--spacing-24); }
 }
 </style>

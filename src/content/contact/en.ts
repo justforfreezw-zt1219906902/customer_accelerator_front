@@ -23,8 +23,8 @@ export const contactContentEn = {
         placeholder: 'Your first name',
       },
       familyName: {
-        label: 'Family name',
-        placeholder: 'Your family name',
+        label: 'Last name',
+        placeholder: 'Your last name',
       },
       company: {
         label: 'Company',
@@ -33,6 +33,10 @@ export const contactContentEn = {
       workEmail: {
         label: 'Work email',
         placeholder: 'name@company.com',
+      },
+      context: {
+        label: 'Context (optional)',
+        placeholder: 'Share any context that would help us prepare.',
       },
     },
     privacyNote:

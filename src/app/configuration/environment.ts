@@ -1,7 +1,6 @@
 export interface RuntimeConfig {
   apiBaseUrl: string;
   demoDataSource: 'fixtures' | 'api';
-  ownerId?: string;
 }
 
 export class RuntimeConfigurationError extends Error {
@@ -40,13 +39,10 @@ const normalizeBaseUrl = (value: string | undefined): string => {
 export const createRuntimeConfig = (
   environment: Record<string, string | undefined>,
 ): RuntimeConfig => {
-  const ownerId = environment.VITE_HUBSPOT_OWNER_ID?.trim();
-
   return Object.freeze({
     apiBaseUrl: normalizeBaseUrl(environment.VITE_API_BASE_URL),
     demoDataSource:
       environment.VITE_DEMO_DATA_SOURCE === 'api' ? 'api' : 'fixtures',
-    ...(ownerId ? { ownerId } : {}),
   });
 };
 
@@ -56,5 +52,4 @@ export const getRuntimeConfig = (): RuntimeConfig =>
 // Preserved foundation export. Values are public and intentionally not logged.
 export const publicEnvironment = Object.freeze({
   apiBaseUrl: import.meta.env.VITE_API_BASE_URL,
-  hubspotOwnerId: import.meta.env.VITE_HUBSPOT_OWNER_ID,
 });

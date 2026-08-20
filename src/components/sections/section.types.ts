@@ -66,6 +66,8 @@ export interface PackageOption {
   badgeLabel?: string;
   action?: SectionAction;
   highlighted?: boolean;
+  supportingNote?: string;
+  previewImage?: string;
 }
 
 export interface TrustMetricItem {

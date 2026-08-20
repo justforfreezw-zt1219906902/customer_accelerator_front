@@ -22,7 +22,7 @@ const request = requestStart >= 0 && responseStart > requestStart
   ? document.slice(requestStart, responseStart) : "";
 check(Boolean(request), "LeadRequest schema exists", "LeadRequest schema is missing");
 
-const expectedFields = ["firstName", "familyName", "company", "workEmail", "owner"];
+const expectedFields = ["firstName", "familyName", "company", "workEmail", "context"];
 for (const field of expectedFields) {
   check(new RegExp(`^\\s{8}${field}:\\s*$`, "m").test(request),
     `LeadRequest contains ${field}`, `LeadRequest is missing ${field}`);
@@ -32,8 +32,8 @@ for (const field of ["firstName", "familyName", "company", "workEmail"]) {
   check(new RegExp(`^\\s{8}- ${field}\\s*$`, "m").test(requiredBlock),
     `${field} is required`, `${field} must be required`);
 }
-check(!/^\s{8}- owner\s*$/m.test(requiredBlock),
-  "owner is optional", "owner must remain optional");
+check(!/^\s{8}- context\s*$/m.test(requiredBlock),
+  "context is optional", "context must remain optional");
 check(/^\s{8}workEmail:\s*$[\s\S]*?^\s{10}format:\s*email\s*$/m.test(request),
   "workEmail uses email format", "workEmail must use email format");
 

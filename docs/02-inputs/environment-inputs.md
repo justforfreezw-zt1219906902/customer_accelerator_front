@@ -4,7 +4,6 @@
 
 ```env
 VITE_API_BASE_URL=http://localhost:8080
-VITE_HUBSPOT_OWNER_ID=
 ```
 
 These are names and non-secret example values only.
@@ -24,7 +23,7 @@ These are names and non-secret example values only.
 | Variable | Purpose | Current state |
 | --- | --- | --- |
 | `VITE_API_BASE_URL` | Select the backend base URL | Local value supplied; production unresolved |
-| `VITE_HUBSPOT_OWNER_ID` | Optional public owner identifier; omitted when blank | Blank baseline; environment owner remains deployment configuration |
+| HubSpot owner configuration | Backend-only assignment | Never exposed to the browser |
 
 ## Local
 
@@ -52,9 +51,7 @@ configuration injection mechanism are required before staging use.
 
 ## Decisions required
 
-- Environment owner and approved secret-management platform
 - Production and staging URLs
-- Whether a HubSpot owner ID belongs in public client configuration
 - CORS origins, logging, privacy, retention, monitoring, and incident handling
 
 ## Superseded input

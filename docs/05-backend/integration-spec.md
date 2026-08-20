@@ -24,17 +24,17 @@ unassigned, so this integration is not production-release approved.
 | Family name | `familyName` | Required non-empty string |
 | Company | `company` | Required non-empty string |
 | Work email | `workEmail` | Required non-empty valid email string |
-| Owner identifier | `owner` | Optional string |
+| Context | `context` | Optional string; omitted when blank |
 
 Do not add `website`, `phoneNumber`, `message`, or other unconfirmed fields.
 
 ## Owner field behavior
 
-- Send `owner` only when an approved non-empty string is available.
-- The source may be `VITE_HUBSPOT_OWNER_ID` only if a human confirms that the
-  value is safe to expose in browser-delivered code.
-- Omit the optional field when no approved value exists.
-- Blank owner values are omitted from the JSON body.
+The public frontend request contains no owner field. HubSpot ownership is
+assigned by backend configuration and is never controlled by browser-visible
+configuration.
+
+Context is trimmed and omitted from the JSON body when blank.
 
 ## Client-side validation
 

@@ -26,15 +26,14 @@ export interface SubmitLeadOptions extends RequestOptions {
 
 export const mapLeadRequest = (
   values: LeadFormValues,
-  ownerId?: string,
 ): LeadRequest => {
-  const owner = ownerId?.trim();
+  const context = values.context?.trim() ?? '';
   return {
     firstName: values.firstName.trim(),
     familyName: values.familyName.trim(),
     company: values.company.trim(),
     workEmail: values.workEmail.trim(),
-    ...(owner ? { owner } : {}),
+    ...(context ? { context } : {}),
   };
 };
 
@@ -68,7 +67,7 @@ export const submitLead = async (
     throw toApiRequestError(error);
   }
 
-  const payload = mapLeadRequest(values, config.ownerId);
+  const payload = mapLeadRequest(values);
   const response = await requestJson({
     baseUrl: config.apiBaseUrl,
     path: LEAD_ENDPOINT,

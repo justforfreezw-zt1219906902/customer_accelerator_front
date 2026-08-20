@@ -2,7 +2,7 @@
 import { computed, nextTick, reactive, ref } from 'vue';
 
 import type { contactContentEn } from '../../content/contact/en';
-import { AppFormField } from '../../design-system/components/composite';
+import { AppFormField, AppTextarea } from '../../design-system/components/composite';
 import { AppButton, AppInput } from '../../design-system/components/core';
 import type {
   LeadFieldErrors,
@@ -42,6 +42,7 @@ const values = reactive<LeadFormValues>({
   familyName: '',
   company: '',
   workEmail: '',
+  context: '',
 });
 const errors = reactive<LeadFieldErrors>({});
 const isSubmitting = ref(false);
@@ -179,6 +180,16 @@ const handleSubmit = async () => {
           @blur="setFieldError(field)"
         />
       </AppFormField>
+      <AppTextarea
+        id="lead-context"
+        v-model="values.context"
+        name="context"
+        :label="content.fields.context.label"
+        :placeholder="content.fields.context.placeholder"
+        :disabled="isSubmitting"
+        :rows="3"
+        class="lead-form__context"
+      />
     </div>
 
     <p class="lead-form__privacy-note">{{ content.privacyNote }}</p>
