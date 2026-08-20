@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import TierBadge from './TierBadge.vue';
-import { accountIdentityTone } from '../../utils/accountIdentityTone';
+import AccountAvatar from './AccountAvatar.vue';
+import { categoricalTagTone } from '../../utils/categoricalTone';
 export interface DnaPortfolioCardAccount {
   id: string;
   name: string;
-  initials: string;
+  initials?: string;
   industry: string | null;
   tier: string | null;
   activeSignals?: number;
@@ -44,9 +45,7 @@ const signalLabel = computed(
       >
         <span aria-hidden="true">{{ selected ? '✓' : '' }}</span>
       </button>
-      <span class="dna-portfolio-card__avatar" :class="`dna-portfolio-card__avatar--${accountIdentityTone(account.id)}`" aria-hidden="true">{{
-        account.initials
-      }}</span>
+      <AccountAvatar :account-id="account.id" :name="account.name" size="md" />
       <div class="dna-portfolio-card__identity">
         <h2>{{ account.name }}</h2>
         <p>{{ account.industry ?? 'Not available' }}</p>
@@ -58,7 +57,7 @@ const signalLabel = computed(
       ><strong>{{ profile.tone ?? 'Not available' }}</strong>
     </div>
     <ul aria-label="Top vocabulary">
-      <li v-for="term in profile.vocabulary.slice(0, 3)" :key="term">
+      <li v-for="term in profile.vocabulary.slice(0, 3)" :key="term" :class="`dna-portfolio-card__tag--${categoricalTagTone(term)}`">
         {{ term }}
       </li>
     </ul>
@@ -108,19 +107,6 @@ const signalLabel = computed(
   border-color: var(--color-brand-core);
   background: var(--color-brand-core);
 }
-.dna-portfolio-card__avatar {
-  display: grid;
-  width: 44px;
-  height: 44px;
-  place-items: center;
-  border-radius: var(--radius-10);
-  background: var(--color-brand-tint-900);
-  color: var(--color-brand-light);
-  font-weight: 700;
-}
-.dna-portfolio-card__avatar--amber { border: 1px solid var(--color-border-amber); background: var(--color-accent-amber-deep); color: var(--color-accent-amber-light); }
-.dna-portfolio-card__avatar--success { border: 1px solid var(--color-state-success); background: var(--color-state-success-subtle); color: var(--color-state-success); }
-.dna-portfolio-card__avatar--deep { border: 1px solid var(--color-brand-deep); background: var(--color-brand-deep); color: var(--color-brand-tint-200); }
 .dna-portfolio-card__identity {
   min-width: 0;
 }
@@ -165,6 +151,9 @@ const signalLabel = computed(
   font-size: var(--font-size-10);
   overflow-wrap: anywhere;
 }
+.dna-portfolio-card li.dna-portfolio-card__tag--amber { border-color: var(--color-border-amber); color: var(--color-accent-amber-light); }
+.dna-portfolio-card li.dna-portfolio-card__tag--success { border-color: var(--color-state-success); color: var(--color-state-success); }
+.dna-portfolio-card li.dna-portfolio-card__tag--deep { border-color: var(--color-brand-deep); color: var(--color-brand-tint-200); }
 .dna-portfolio-card footer {
   display: flex;
   align-items: center;

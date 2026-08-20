@@ -9,6 +9,7 @@ import {
   getDnaPortfolio,
 } from '../../services/accountApi';
 import type { DnaCompareDto, DnaPortfolioDto } from '../../types/accountApi';
+import { dnaDimensionTone } from '../../utils/categoricalTone';
 
 const router = useRouter();
 const apiMode = getRuntimeConfig().demoDataSource === 'api';
@@ -242,7 +243,6 @@ const viewDna = (id: string) => router.push(`/demo/accounts/${id}/dna`);
         :account="{
           id: item.accountId,
           name: item.name,
-          initials: item.name.slice(0, 2).toUpperCase(),
           industry: item.industry,
           tier: item.tier,
           activeSignalCount: item.activeSignalCount,
@@ -372,13 +372,13 @@ const viewDna = (id: string) => router.push(`/demo/accounts/${id}/dna`);
         </div>
       </header>
       <div class="portfolio-page__analysis-grid">
-        <article>
+        <article :class="`portfolio-page__analysis-card--${dnaDimensionTone('Tone')}`">
           <h3>Dominant tone</h3>
           <p v-for="[label, total] in analysis.tone" :key="label">
             {{ label }} — {{ total }}
           </p>
         </article>
-        <article>
+        <article :class="`portfolio-page__analysis-card--${dnaDimensionTone('Vocabulary')}`">
           <h3>Shared vocabulary</h3>
           <p>
             {{
@@ -391,7 +391,7 @@ const viewDna = (id: string) => router.push(`/demo/accounts/${id}/dna`);
             {{ analysis.uniqueVocabulary.map(([label]) => label).join(', ') }}
           </p>
         </article>
-        <article>
+        <article :class="`portfolio-page__analysis-card--${dnaDimensionTone('Proof Style')}`">
           <h3>Proof style</h3>
           <p v-for="[label, total] in analysis.proofStyle" :key="label">
             {{ label }} — {{ total }}
@@ -401,13 +401,13 @@ const viewDna = (id: string) => router.push(`/demo/accounts/${id}/dna`);
             {{ label }} — {{ total }}
           </p>
         </article>
-        <article>
+        <article :class="`portfolio-page__analysis-card--${dnaDimensionTone('Problem Framing')}`">
           <h3>Problem framing</h3>
           <p v-for="item in analysis.problemFraming" :key="item.account">
             <strong>{{ item.account }}:</strong> {{ item.problemFraming }}
           </p>
         </article>
-        <article>
+        <article :class="`portfolio-page__analysis-card--${dnaDimensionTone('Signal Types')}`">
           <h3>Do patterns</h3>
           <p>{{ analysis.doRules.map(([label]) => label).join(', ') }}</p>
           <h3>Don’t patterns</h3>
@@ -529,6 +529,10 @@ const viewDna = (id: string) => router.push(`/demo/accounts/${id}/dna`);
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--spacing-12);
 }
+.portfolio-page__analysis-grid article { border-left: 2px solid var(--color-brand-light); padding-left: var(--spacing-12); }
+.portfolio-page__analysis-grid article.portfolio-page__analysis-card--amber { border-left-color: var(--color-accent-amber-light); }
+.portfolio-page__analysis-grid article.portfolio-page__analysis-card--success { border-left-color: var(--color-state-success); }
+.portfolio-page__analysis-grid article.portfolio-page__analysis-card--deep { border-left-color: var(--color-brand-deep); }
 .portfolio-page__analysis article {
   padding: var(--spacing-14);
   border: 1px solid var(--color-border-subtle);

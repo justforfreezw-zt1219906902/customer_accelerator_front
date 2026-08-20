@@ -850,3 +850,31 @@ notes:
   - Tom re-approved the Phase 5 Account Intelligence contract-hardening revision on 2026-08-14; API-CONTRACT-R2 remains current, Pages 16–18 backend integration remains deferred, and release/deployment remain unauthorized.
   - A subsequent focused edge-case fix changed null semantics, API row typing, byType validation, source rendering, and ScoreIndicator accessibility; prior approvals remain historical and this revision requires human re-review.
   - Tom approved and froze the post-hotfix Phase 5 Account Intelligence integration on 2026-08-14 at frontend revision ebd8059f9673ccef8277cff466a8bf5454bdd33d; Pages 13–15 are accepted, Pages 16–18 remain deferred, and no release or deployment was authorized.
+  - Cross-page account identity consistency uses a shared AccountAvatar primitive and is pending human visual review; API-CONTRACT-R2, frontend 0.2.0, Figma DS 1.2.0, and release boundaries remain unchanged.
+
+cross_page_account_identity_consistency:
+  status: cross_page_account_identity_consistency_pending_human_review
+  outcome: cross_page_account_identity_consistency_pending_human_review
+  date: "2026-08-20"
+  scope: canonical_account_avatar_initials_tone
+  pages: [13, 14, 15, 16, 17, 18]
+  page13_baseline: approved
+  api_contract: API-CONTRACT-R2
+  frontend_version: 0.2.0
+  figma_design_system: 1.2.0
+  human_approval: pending
+  release_authorized: false
+  next_gate: Cross-Page Account Identity Human Visual Review
+
+communication_dna_categorical_color_coverage:
+  status: communication_dna_categorical_color_coverage_pending_human_review
+  outcome: communication_dna_categorical_color_coverage_pending_human_review
+  date: "2026-08-20"
+  scope: communication_dna_dimension_and_multi_color_tag_distribution
+  pages: [15, 17]
+  api_contract: API-CONTRACT-R2
+  frontend_version: 0.2.0
+  figma_design_system: 1.2.0
+  human_approval: pending
+  release_authorized: false
+  next_gate: Communication DNA Categorical Color Human Visual Review

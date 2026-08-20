@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import { AccountAvatar } from '../../components/product';
 import { demoAccountProvider } from '../../demo/demoAccountProvider';
 import {
   contentStudioAssets,
@@ -454,7 +455,6 @@ const filteredAccounts = computed(() => {
       })
       .map((account) => ({
         ...account,
-        initials: account.name.slice(0, 2).toUpperCase(),
         location: account.hq ?? 'Not available',
         tier: account.analysis?.tier ?? null,
       }));
@@ -1420,9 +1420,7 @@ const clearFilters = () => {
         >
           <span class="studio-account-card__top">
             <span class="studio-account-card__identity">
-              <span class="studio-account-card__avatar">{{
-                account.initials
-              }}</span>
+              <AccountAvatar :account-id="account.id" :name="account.name" size="sm" />
               <span
                 ><strong>{{ account.name }}</strong
                 ><small

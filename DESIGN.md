@@ -81,6 +81,16 @@ must use existing approved tokens, remain stable for the same identity, stay
 small-element-first, and remain supplementary to text. Semantic colors still
 require semantic truth.
 
+#### Multi-color tag groups
+
+Sibling categorical tags may use different existing approved color families.
+The same normalized tag value retains the same presentation tone across cards,
+Page 15, Page 17, and other Product surfaces. Tag color is categorical, not
+evaluative; it does not mean verified, successful, urgent, risky, better, or
+worse. Large surfaces remain dark and tags use restrained borders/tints rather
+than saturated fills. The same DNA dimension retains one stable category accent
+across pages, while individual values inside that dimension may vary.
+
 ### Contrast guardrail
 
 The current dark palette provides strong contrast for primary and secondary

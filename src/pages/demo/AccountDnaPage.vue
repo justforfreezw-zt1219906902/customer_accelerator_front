@@ -5,6 +5,7 @@ import {
   DataStatusBadge,
   DnaEvidenceCard,
   FrequencyBadge,
+  AccountAvatar,
 } from '../../components/product';
 import {
   AppButton,
@@ -17,6 +18,7 @@ import { getRuntimeConfig } from '../../app/configuration/environment';
 import { getAccount, getCommunicationDna } from '../../services/accountApi';
 import { ApiRequestError } from '../../utils/apiErrors';
 import type { CommunicationDnaDto } from '../../types/accountApi';
+import { categoricalTagTone } from '../../utils/categoricalTone';
 
 const router = useRouter();
 const { account, accountId } = useDemoAccount();
@@ -99,7 +101,7 @@ const apiFrequency = (value: string | null) =>
   <section v-else-if="apiMode" class="dna-page" aria-labelledby="api-dna-title">
     <article class="dna-page__hero">
       <div class="dna-page__identity">
-        <span aria-hidden="true">{{ apiName.charAt(0) }}</span>
+        <AccountAvatar :account-id="accountId" :name="apiName" size="lg" />
         <div>
           <p>ACCOUNT INTELLIGENCE / COMMUNICATION DNA</p>
           <h1 id="api-dna-title" data-page-heading>
@@ -190,7 +192,7 @@ const apiFrequency = (value: string | null) =>
         ><p>{{ apiDna.ctaPatterns.style ?? 'Not available' }}</p>
         <p>{{ apiDna.ctaPatterns.description ?? 'Not available' }}</p>
         <div class="dna-page__tags">
-          <span v-for="example in apiDna.ctaPatterns.examples" :key="example">{{
+          <span v-for="example in apiDna.ctaPatterns.examples" :key="example" :class="`dna-page__tag--${categoricalTagTone(example)}`">{{
             example
           }}</span>
         </div></DnaEvidenceCard
@@ -257,7 +259,7 @@ const apiFrequency = (value: string | null) =>
   <section v-else class="dna-page" aria-labelledby="dna-title">
     <article class="dna-page__hero">
       <div class="dna-page__identity">
-        <span aria-hidden="true">{{ account.name.charAt(0) }}</span>
+        <AccountAvatar :account-id="accountId" :name="account.name" size="lg" />
         <div>
           <p>ACCOUNT INTELLIGENCE / COMMUNICATION DNA</p>
           <h1 id="dna-title" data-page-heading>
@@ -365,7 +367,7 @@ const apiFrequency = (value: string | null) =>
           </dl>
           <p>{{ dna.ctaPatterns.description }}</p>
           <div class="dna-page__tags">
-            <span v-for="example in dna.ctaPatterns.examples" :key="example">{{
+          <span v-for="example in dna.ctaPatterns.examples" :key="example" :class="`dna-page__tag--${categoricalTagTone(example)}`">{{
               example
             }}</span>
           </div>
@@ -515,19 +517,6 @@ const apiFrequency = (value: string | null) =>
   align-items: center;
   gap: var(--spacing-16);
 }
-.dna-page__identity > span {
-  display: grid;
-  width: 44px;
-  height: 44px;
-  place-items: center;
-  flex: 0 0 44px;
-  border: 1px solid var(--color-border-brand);
-  border-radius: var(--radius-10);
-  background: var(--color-brand-tint-50);
-  color: var(--color-brand-light);
-  font-size: var(--font-size-18);
-  font-weight: var(--font-weight-semibold);
-}
 .dna-page__identity p,
 .dna-page__identity h1 {
   margin: 0;
@@ -633,6 +622,9 @@ const apiFrequency = (value: string | null) =>
   color: var(--color-brand-light);
   font-size: var(--font-size-11);
 }
+.dna-page__tags span.dna-page__tag--amber { border-color: var(--color-border-amber); color: var(--color-accent-amber-light); }
+.dna-page__tags span.dna-page__tag--success { border-color: var(--color-state-success); color: var(--color-state-success); }
+.dna-page__tags span.dna-page__tag--deep { border-color: var(--color-brand-deep); color: var(--color-brand-tint-200); }
 .dna-page__mirroring {
   padding: var(--spacing-20);
   border: 1px solid var(--color-border-subtle);

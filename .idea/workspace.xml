@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa45ec9b-26dc-40ff-98de-dd81c1a64002" name="更改" comment="Awesome-design-integration-little-fix">
-      <change beforePath="$PROJECT_DIR$/DESIGN.md" beforeDir="false" afterPath="$PROJECT_DIR$/DESIGN.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/01-roadmap/current-state.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/01-roadmap/current-state.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/03-design-system/design-review-log.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/03-design-system/design-review-log.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/product/AccountIdentity.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/product/AccountIdentity.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/product/AccountRow.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/product/AccountRow.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/product/ScoreIndicator.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/product/ScoreIndicator.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/product/SignalSummary.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/product/SignalSummary.vue" afterDir="false" />
-    </list>
+    <list default="true" id="fa45ec9b-26dc-40ff-98de-dd81c1a64002" name="更改" comment="Awesome-design-page14-18-v1" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -457,7 +449,23 @@
       <option name="project" value="LOCAL" />
       <updated>1787177035777</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Awesome-design-page13-update">
+      <option name="closed" value="true" />
+      <created>1787180986005</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1787180986005</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Awesome-design-page14-18-v1">
+      <option name="closed" value="true" />
+      <created>1787181531301</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1787181531301</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -475,8 +483,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="docs: document lead API and HubSpot integration contract" />
-    <MESSAGE value="docs: establish version compatibility and requirement traceability" />
     <MESSAGE value="docs: establish change issue deviation and incident controls" />
     <MESSAGE value="docs: define quality release rollback and operations controls" />
     <MESSAGE value="chore: validate and audit management documentation system" />
@@ -500,6 +506,8 @@
     <MESSAGE value="abm :# Focused UX Fix — Restore Decorative Signal Dots in API Mode" />
     <MESSAGE value="Awesome-design-integration" />
     <MESSAGE value="Awesome-design-integration-little-fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Awesome-design-integration-little-fix" />
+    <MESSAGE value="Awesome-design-page13-update" />
+    <MESSAGE value="Awesome-design-page14-18-v1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Awesome-design-page14-18-v1" />
   </component>
 </project>

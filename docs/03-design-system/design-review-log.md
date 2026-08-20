@@ -229,4 +229,31 @@ automated evidence cannot create approval.
   - Page 13 is not reopened.
   - The rejected Page 16 page-level experiment remains historical only.
   - API/fixture behavior, backend semantics, routing, and generation behavior
-    remain unchanged.
+  remain unchanged.
+
+### DR-013 — Cross-page account identity consistency
+
+- Date: 2026-08-20
+- Human reviewer: Tom (pending)
+- Figma version: `1.2.0`
+- Frontend version: `0.2.0`
+- Scope: Canonical account initials, avatar primitive and deterministic tone
+  across Pages 13–18
+- Result: `pending`
+- Outcome: `cross_page_account_identity_consistency_pending_human_review`
+- Notes: Same stable account ID and display name produce the same decorative
+  avatar identity on every Product page. This does not alter account semantics,
+  API contracts, routing, or fixture behavior.
+
+### DR-014 — Communication DNA categorical color coverage
+
+- Date: 2026-08-20
+- Human reviewer: Tom (pending)
+- Figma version: `1.2.0`
+- Frontend version: `0.2.0`
+- Scope: Page 15 and Page 17 DNA dimensions and multi-color categorical tags
+- Result: `pending`
+- Outcome: `communication_dna_categorical_color_coverage_pending_human_review`
+- Notes: Dark cards remain dominant. Stable dimension accents and deterministic
+  sibling tag tones add restrained colorful details without changing semantic
+  meaning, account identity, API behavior, or layout.

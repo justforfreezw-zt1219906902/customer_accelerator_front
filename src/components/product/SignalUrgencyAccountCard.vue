@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import TierBadge from './TierBadge.vue';
-import { accountIdentityTone } from '../../utils/accountIdentityTone';
+import AccountAvatar from './AccountAvatar.vue';
 export interface SignalUrgencyAccountViewModel {
   accountId?: string;
   name: string;
-  initials: string;
+  initials?: string;
   industry: string | null;
   tier: string | null;
   activeSignalCount: number;
@@ -33,7 +33,7 @@ defineProps<{ account: SignalUrgencyAccountViewModel; outreach?: boolean }>();
     <i class="signal-urgency-card__accent" aria-hidden="true" />
     <div class="signal-urgency-card__identity">
       <div class="signal-urgency-card__name">
-        <span :class="`signal-urgency-card__avatar--${accountIdentityTone(account.accountId ?? account.name)}`">{{ account.initials }}</span>
+        <AccountAvatar :account-id="account.accountId" :name="account.name" size="md" />
         <div>
           <h3>{{ account.name }}</h3>
           <p>{{ account.industry ?? 'Not available' }}</p>
@@ -108,20 +108,6 @@ defineProps<{ account: SignalUrgencyAccountViewModel; outreach?: boolean }>();
   display: flex;
   gap: var(--spacing-12);
 }
-.signal-urgency-card__name > span {
-  display: grid;
-  width: 44px;
-  height: 44px;
-  place-items: center;
-  flex: 0 0 44px;
-  border-radius: var(--radius-10);
-  background: var(--color-brand-tint-900);
-  color: var(--color-brand-light);
-  font-weight: 700;
-}
-.signal-urgency-card__name > span.signal-urgency-card__avatar--amber { border: 1px solid var(--color-border-amber); background: var(--color-accent-amber-deep); color: var(--color-accent-amber-light); }
-.signal-urgency-card__name > span.signal-urgency-card__avatar--success { border: 1px solid var(--color-state-success); background: var(--color-state-success-subtle); color: var(--color-state-success); }
-.signal-urgency-card__name > span.signal-urgency-card__avatar--deep { border: 1px solid var(--color-brand-deep); background: var(--color-brand-deep); color: var(--color-brand-tint-200); }
 .signal-urgency-card__name h3,
 .signal-urgency-card__name p {
   margin: 0;

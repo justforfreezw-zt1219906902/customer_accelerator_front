@@ -13,6 +13,7 @@ export { default as ValuePropositionCard } from './ValuePropositionCard.vue';
 export { default as DemoNavigation } from './DemoNavigation.vue';
 export { default as DemoTopbar } from './DemoTopbar.vue';
 export { default as AccountIdentity } from './AccountIdentity.vue';
+export { default as AccountAvatar } from './AccountAvatar.vue';
 export { default as AccountRow } from './AccountRow.vue';
 export { default as AppMetricCard } from './AppMetricCard.vue';
 export { default as ScoreIndicator } from './ScoreIndicator.vue';

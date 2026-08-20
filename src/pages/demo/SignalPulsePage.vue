@@ -66,7 +66,6 @@ const fixtureAccounts = computed(() => {
 const apiAccounts = computed<SignalUrgencyAccountViewModel[]>(() => (apiPulse.value?.accounts ?? []).map((account: SignalPulseAccountDto) => ({
   accountId: account.accountId,
   name: account.name,
-  initials: account.name.split(/\s+/).map((part) => part[0]).join('').slice(0, 2).toUpperCase(),
   industry: account.industry,
   tier: account.tier,
   activeSignalCount: account.activeSignalCount,

@@ -27,12 +27,6 @@ onMounted(loadAccounts);
 const isApiMode = getRuntimeConfig().demoDataSource === 'api';
 const toRow = (item: AccountListDto): AccountRowViewModel => ({
   id: item.id,
-  initials: item.name
-    .split(/\s+/)
-    .map((part) => part[0])
-    .join('')
-    .slice(0, 2)
-    .toUpperCase(),
   name: item.name,
   industry: item.industry ?? 'Not available',
   location: item.hq ?? 'Not available',
@@ -45,7 +39,6 @@ const toRow = (item: AccountListDto): AccountRowViewModel => ({
 });
 const fixtureRows = accounts.map((item): AccountRowViewModel => ({
   id: item.id,
-  initials: item.initials,
   name: item.name,
   industry: item.industry,
   location: item.location,
