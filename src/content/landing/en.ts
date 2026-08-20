@@ -49,6 +49,10 @@ const strategyAction = {
   label: 'STRATEGY DISCUSSION',
   href: '/contact',
 } as const;
+const partnershipAction = {
+  label: 'PARTNERSHIP DISCUSSION',
+  href: '/contact',
+} as const;
 
 export const landingContentEn: LandingContentEn = {
   hero: {
@@ -270,65 +274,25 @@ export const landingContentEn: LandingContentEn = {
   },
   packages: {
     intro: {
-      eyebrow: 'PACKAGES',
-      title: 'Choose the engagement that matches your growth motion',
+      eyebrow: 'PARTNERSHIP',
+      title: 'Build the intelligence layer your workflow actually needs',
       description:
-        'Transparent monthly engagements — no fake SaaS pricing, no annual lock-in surprise. Every package starts with a strategy discussion.',
+        'Work directly with us to design, integrate and validate a solution around your real account workflows. Scope and commercial terms are agreed together.',
     },
     packages: [
       {
-        name: 'Pilot',
-        price: 'On request',
-        description: 'A focused proof of value before a monthly engagement.',
+        name: 'Developer Partner',
+        price: "Let's talk",
+        description: 'For teams that want to co-build, integrate, or extend the intelligence layer with us.',
         features: [
-          '3 target accounts, fully decoded',
-          'ICP & fit snapshot',
-          'Buying-signal review',
-          'Communication DNA preview',
-          'Decision-ready readout',
+          'Joint solution design & technical discovery',
+          'API, CRM & data integration planning',
+          'Custom workflow or module development',
+          'Shared validation on real account use cases',
+          'Roadmap alignment & knowledge transfer',
         ],
-        action: strategyAction,
-      },
-      {
-        name: 'Entry',
-        price: '€1,500',
-        priceQualifier: '/ month',
-        description: 'Focused start for teams clarifying where to aim first.',
-        features: [
-          '5 target accounts, fully decoded',
-          'ICP & fit scoring',
-          'Buying-signal monitoring',
-          'Conversation angles per account',
-        ],
-        action: strategyAction,
-      },
-      {
-        name: 'Growth',
-        price: '€3,500',
-        priceQualifier: '/ month',
-        description: 'An operating rhythm for repeatable account-based growth.',
-        features: [
-          '25 target accounts, fully decoded',
-          'Everything in Entry',
-          'Asset generation: email, LinkedIn ads, landing pages',
-          'Quarterly campaign cadence (10–20 campaigns)',
-          'Knowledge transfer sessions',
-        ],
-        badgeLabel: 'RECOMMENDED',
-        action: strategyAction,
+        action: partnershipAction,
         highlighted: true,
-      },
-      {
-        name: 'Enterprise',
-        price: 'Custom',
-        description: 'A tailored intelligence layer for mature GTM teams.',
-        features: [
-          'Custom account volume & tiers',
-          'Everything in Growth',
-          'CRM & data integration',
-          'Dedicated intelligence cadence',
-        ],
-        action: strategyAction,
       },
     ],
   },

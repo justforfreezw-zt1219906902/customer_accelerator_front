@@ -735,3 +735,18 @@ notes:
   - Tom re-approved the Phase 5 Account Intelligence contract-hardening revision on 2026-08-14; API-CONTRACT-R2 remains current, Pages 16–18 backend integration remains deferred, and release/deployment remain unauthorized.
   - A subsequent focused edge-case fix changed null semantics, API row typing, byType validation, source rendering, and ScoreIndicator accessibility; prior approvals remain historical and this revision requires human re-review.
   - Tom approved and froze the post-hotfix Phase 5 Account Intelligence integration on 2026-08-14 at frontend revision ebd8059f9673ccef8277cff466a8bf5454bdd33d; Pages 13–15 are accepted, Pages 16–18 remain deferred, and no release or deployment was authorized.
+
+landing_partnership_section:
+  status: landing_partnership_section_complete_pending_human_review
+  outcome: landing_partnership_section_complete_pending_human_review
+  date: "2026-08-20"
+  figma_file: vyr3TvF5lAUOnuuxdW8iRb
+  figma_node: "697:1062"
+  underlying_component: "696:1292"
+  scope: landing_developer_partner_pricing_section
+  api_contract: API-CONTRACT-R2
+  frontend_version: 0.2.0
+  figma_design_system: 1.2.0
+  human_approval: pending
+  release_authorized: false
+  next_gate: Landing Partnership Visual Review

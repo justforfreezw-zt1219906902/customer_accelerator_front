@@ -18,7 +18,7 @@ const props = withDefaults(
     intro: SectionIntro;
     packages: PackageOption[];
     sectionId?: string;
-    variant?: 'standard' | 'featured-center';
+    variant?: 'standard' | 'featured-center' | 'developer-partner';
     sectionAction?: SectionAction;
   }>(),
   {
@@ -62,6 +62,7 @@ const headingTag = computed(() => `h${props.intro.headingLevel ?? 2}`);
           :variant="option.highlighted ? 'selected' : 'default'"
         >
           <div
+            v-if="variant !== 'developer-partner'"
             class="packages-section__badge-region"
             :aria-hidden="option.badgeLabel ? undefined : 'true'"
           >
@@ -81,7 +82,8 @@ const headingTag = computed(() => `h${props.intro.headingLevel ?? 2}`);
           <p class="packages-section__description">{{ option.description }}</p>
           <ul class="packages-section__features">
             <li v-for="feature in option.features" :key="feature">
-              {{ feature }}
+              <template v-if="variant === 'developer-partner'"><span aria-hidden="true">—</span>{{ feature }}</template>
+              <template v-else>{{ feature }}</template>
             </li>
           </ul>
           <div class="packages-section__action">
@@ -183,5 +185,79 @@ const headingTag = computed(() => `h${props.intro.headingLevel ?? 2}`);
 
 .packages-section--featured-center :deep(.landing-section__grid) {
   align-items: stretch;
+}
+
+.packages-section--developer-partner {
+  padding-block: var(--spacing-76, 76px);
+}
+.packages-section--developer-partner :deep(.landing-section__content) {
+  gap: var(--spacing-34, 34px);
+}
+.packages-section--developer-partner .landing-section__intro {
+  width: 100%;
+  max-width: none;
+}
+.packages-section--developer-partner :deep(.landing-section__grid) {
+  min-height: 780px;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+.packages-section--developer-partner .packages-section__card {
+  width: min(520px, 100%);
+  min-height: 732px;
+  box-sizing: border-box;
+  padding: 0;
+  text-align: start;
+  border: var(--stroke-2) solid var(--color-border-brand);
+  border-radius: var(--radius-xl);
+}
+.packages-section--developer-partner .packages-section__card :deep(.app-card__body) {
+  display: grid;
+  grid-template-rows: auto auto auto 1fr auto;
+  gap: var(--spacing-32);
+  height: 100%;
+  padding: var(--spacing-48);
+  text-align: start;
+}
+.packages-section--developer-partner .packages-section__heading { gap: var(--spacing-10); }
+.packages-section--developer-partner .packages-section__heading h3 {
+  font-size: var(--font-size-28);
+  line-height: 36px;
+}
+.packages-section--developer-partner .packages-section__price {
+  font-size: var(--font-size-44);
+  line-height: 54px;
+}
+.packages-section--developer-partner .packages-section__description {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-21);
+  line-height: 32px;
+}
+.packages-section--developer-partner .packages-section__features {
+  display: grid;
+  gap: var(--spacing-24);
+  padding: 0;
+  list-style: none;
+}
+.packages-section--developer-partner .packages-section__features li {
+  display: flex;
+  gap: var(--spacing-12);
+  font-size: var(--font-size-18);
+  line-height: 29px;
+}
+.packages-section--developer-partner .packages-section__features li span {
+  color: var(--color-brand-primary);
+  font-size: var(--font-size-19);
+}
+.packages-section--developer-partner .packages-section__action :deep(.app-button) {
+  width: 100%;
+  border-radius: var(--radius-md);
+}
+@media (max-width: 767px) {
+  .packages-section--developer-partner { padding-block: var(--spacing-48); }
+  .packages-section--developer-partner :deep(.landing-section__grid) { min-height: 0; }
+  .packages-section--developer-partner .packages-section__card { min-height: 0; }
+  .packages-section--developer-partner .packages-section__card :deep(.app-card__body) { padding: var(--spacing-24); }
 }
 </style>

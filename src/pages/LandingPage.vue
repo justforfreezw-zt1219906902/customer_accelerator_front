@@ -99,7 +99,7 @@ import { landingContentEn as content } from '../content/landing/en';
     <PackagesSection
       :intro="content.packages.intro"
       :packages="content.packages.packages"
-      variant="featured-center"
+      variant="developer-partner"
     />
     <TeamSection
       :intro="content.team.intro"

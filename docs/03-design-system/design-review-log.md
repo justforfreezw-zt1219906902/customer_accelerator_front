@@ -122,3 +122,17 @@ automated evidence cannot create approval.
   - `DEV-2026-009` was accepted as a known responsive difference.
   - Approval evidence:
     `docs/08-quality/test-reports/phase-4c-task-p6-001-approval-2026-07-25.md`.
+
+### DR-015 — Landing Developer Partner partnership pricing
+
+- Date: 2026-08-20
+- Human reviewer: Tom (pending)
+- Figma version: `1.2.0`
+- Frontend version: `0.2.0`
+- Figma source: `697:1062`, component `696:1292`
+- Scope: Landing `#packages` single-offer partnership section
+- Result: `pending`
+- Outcome: `landing_partnership_section_complete_pending_human_review`
+- Notes: The old multi-package capability remains available in
+  `PackagesSection`; only the Landing composition uses the Developer Partner
+  variant. Product Pages 13–18 and backend/API behavior are unchanged.
