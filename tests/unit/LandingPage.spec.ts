@@ -40,8 +40,7 @@ describe('Phase 6A Landing Page', () => {
     );
     expect(wrapper.findAll('h2')).toHaveLength(10);
     expect(wrapper.text()).toContain('1.3–8%');
-    expect(wrapper.text()).toContain('€1,500');
-    expect(wrapper.text()).toContain('€3,500');
+    expect(wrapper.text()).toContain("Let's talk");
     expect(wrapper.text()).toContain('The people behind the intelligence');
     expect(wrapper.text()).toContain('Before you book a call');
   });
@@ -102,9 +101,22 @@ describe('Phase 6A Landing Page', () => {
   it('keeps approved content external to the Page component', () => {
     expect(landingContentEn.team.members).toHaveLength(4);
     expect(landingContentEn.faq.items).toHaveLength(6);
-    expect(
-      landingContentEn.packages.packages.map((item) => item.price),
-    ).toEqual(['On request', '€1,500', '€3,500', 'Custom']);
+    expect(landingContentEn.packages.packages.map((item) => item.name)).toEqual([
+      'Developer Partner',
+    ]);
+  });
+
+  it('renders the single Developer Partner offer and removes legacy packages', () => {
+    const wrapper = mount(LandingPage);
+    const packages = wrapper.get('#packages');
+    expect(packages.text()).toContain('PARTNERSHIP');
+    expect(packages.text()).toContain('Build the intelligence layer your workflow actually needs');
+    expect(packages.text()).toContain('Developer Partner');
+    expect(packages.text()).toContain('PARTNERSHIP DISCUSSION');
+    expect(packages.findAll('.packages-section__card')).toHaveLength(1);
+    for (const legacy of ['Pilot', 'Entry', 'Growth', 'Enterprise']) {
+      expect(packages.text()).not.toContain(legacy);
+    }
   });
 
   it('keeps insufficient-data content inside its intended cards', () => {

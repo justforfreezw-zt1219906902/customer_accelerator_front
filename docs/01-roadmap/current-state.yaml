@@ -878,3 +878,18 @@ communication_dna_categorical_color_coverage:
   human_approval: pending
   release_authorized: false
   next_gate: Communication DNA Categorical Color Human Visual Review
+
+landing_partnership_section:
+  status: landing_partnership_section_complete_pending_human_review
+  outcome: landing_partnership_section_complete_pending_human_review
+  date: "2026-08-20"
+  figma_file: vyr3TvF5lAUOnuuxdW8iRb
+  figma_node: "697:1062"
+  underlying_component: "696:1292"
+  scope: landing_developer_partner_pricing_section
+  api_contract: API-CONTRACT-R2
+  frontend_version: 0.2.0
+  figma_design_system: 1.2.0
+  human_approval: pending
+  release_authorized: false
+  next_gate: Landing Partnership Visual Review

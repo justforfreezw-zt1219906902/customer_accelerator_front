@@ -43,3 +43,11 @@ separately regression-tested and remains unchanged.
 - [x] Keep TASK-MAINT-004 open for human review.
 
 final result: passed
+
+## Landing partnership categorical color note — 2026-08-20
+
+The repository has no `DESIGN.md`; this addendum records the applicable design
+rule in the existing QA document. The Landing partnership update uses a dark
+base with restrained colorful details, preserves semantic/state color meaning,
+and keeps the Developer Partner section independent from Product categorical
+color work. Existing tokens only; no new raw colors or large colored surfaces.
