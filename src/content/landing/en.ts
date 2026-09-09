@@ -232,10 +232,10 @@ export const landingContentEn: LandingContentEn = {
         variant: 'emphasized',
       },
       {
-        value: '3 Cybersecurity vendors',
+        value: '3 vendors',
         label: 'Distinct DNA',
         explanation:
-          'CrowdStrike, SentinelOne and Secunet decoded side by side — clearly distinguishable DNA, proving the signal is real, not generic.',
+          '3 Cybersecurity vendors decoded side by side — clearly distinguishable DNA, proving the signal is real, not generic.',
       },
     ],
   },
