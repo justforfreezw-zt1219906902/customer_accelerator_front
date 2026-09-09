@@ -39,17 +39,13 @@ describe('AppFooter', () => {
     expect(wrapper.find('.app-footer__contact').exists()).toBe(false);
   });
 
-  it('renders confirmed links and emits unresolved navigation choices', async () => {
+  it('renders confirmed external links', async () => {
     const wrapper = mount(AppFooter);
     const email = wrapper.get('a[href="mailto:hello@mi-goto.com"]');
-    const unresolvedLink = wrapper
-      .findAll('button')
-      .find((item) => item.text().includes('LinkedIn'));
+    const linkedIn = wrapper.get('a[href="https://www.linkedin.com/company/mi-goto"]');
 
     expect(email.attributes('href')).toBe('mailto:hello@mi-goto.com');
-    expect(unresolvedLink).toBeDefined();
-    await unresolvedLink?.trigger('click');
-    expect(wrapper.emitted('navigate')).toHaveLength(1);
+    expect(linkedIn.attributes('target')).toBe('_blank');
   });
 
   it('preserves approved column and link order in the landing-width container', () => {

@@ -68,7 +68,7 @@ export const landingContentEn: LandingContentEn = {
     primaryAction: strategyAction,
     secondaryAction: { label: 'SEE THE METHOD', href: '#method' },
     metrics: [
-      { value: '3 hrs', label: 'to decode an enterprise account' },
+      { value: '1 hr', label: 'to decode an enterprise account' },
       { value: '100%', label: 'of claims source-attributed' },
       { value: '1.3–8%', label: 'ad engagement in live campaigns' },
     ],
@@ -232,7 +232,7 @@ export const landingContentEn: LandingContentEn = {
         variant: 'emphasized',
       },
       {
-        value: '3 vendors',
+        value: '3 Cybersecurity vendors',
         label: 'Distinct DNA',
         explanation:
           'CrowdStrike, SentinelOne and Secunet decoded side by side — clearly distinguishable DNA, proving the signal is real, not generic.',

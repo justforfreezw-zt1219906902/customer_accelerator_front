@@ -48,7 +48,12 @@ export const defaultFooterContent: FooterContent = {
           label: 'hello@mi-goto.com',
           href: 'mailto:hello@mi-goto.com',
         },
-        { id: 'linkedin', label: 'LinkedIn', external: true },
+        {
+          id: 'linkedin',
+          label: 'LinkedIn',
+          href: 'https://www.linkedin.com/company/mi-goto',
+          external: true,
+        },
       ],
     },
     {

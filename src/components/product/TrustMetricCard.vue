@@ -30,7 +30,12 @@ const headingTag = computed(() => `h${props.headingLevel}`);
     :class="`trust-metric-card--${variant}`"
     :variant="variant === 'emphasized' ? 'selected' : 'default'"
   >
-    <p class="trust-metric-card__value">{{ value }}</p>
+    <p
+      class="trust-metric-card__value"
+      :class="{ 'trust-metric-card__value--long': value.length > 12 }"
+    >
+      {{ value }}
+    </p>
     <component :is="headingTag" class="trust-metric-card__label">
       {{ label }}
     </component>
@@ -42,9 +47,13 @@ const headingTag = computed(() => `h${props.headingLevel}`);
 
 <style scoped>
 .trust-metric-card {
+  display: grid;
+  align-content: start;
+  gap: var(--spacing-8);
   height: 100%;
   min-width: 0;
   padding: var(--spacing-24) var(--spacing-32);
+  background: linear-gradient(145deg, var(--color-card-default), color-mix(in srgb, var(--color-card-default) 82%, var(--color-brand-primary)));
 }
 
 .trust-metric-card__value,
@@ -56,17 +65,27 @@ const headingTag = computed(() => `h${props.headingLevel}`);
 
 .trust-metric-card__value {
   color: var(--color-brand-light);
-  font-size: var(--typography-heading-h2-font-size);
+  font-size: clamp(1.15rem, 3.2vw, var(--typography-heading-h2-font-size));
   font-weight: var(--font-weight-semibold);
-  line-height: var(--typography-heading-h2-line-height);
+  line-height: 1.08;
+  white-space: nowrap;
+}
+
+.trust-metric-card__value--long {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  letter-spacing: -0.02em;
 }
 
 .trust-metric-card__label {
-  font-size: var(--typography-body-lg-font-size);
-  line-height: var(--typography-body-lg-line-height);
+  color: var(--color-text-primary);
+  font-size: var(--typography-body-sm-font-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.25;
 }
 
 .trust-metric-card__explanation {
   color: var(--color-text-muted);
+  font-size: var(--typography-body-sm-font-size);
+  line-height: 1.45;
 }
 </style>

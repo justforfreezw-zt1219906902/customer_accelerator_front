@@ -178,7 +178,7 @@ describe('Phase 6A Landing Page', () => {
         Node.DOCUMENT_POSITION_FOLLOWING,
     ).toBeTruthy();
     expect(validation.find('dl').exists()).toBe(true);
-    expect(validation.text()).toContain('3 hrs');
+    expect(validation.text()).toContain('1 hr');
     expect(validation.text()).toContain('100%');
     expect(validation.text()).toContain('1.3–8%');
   });
