@@ -10,7 +10,11 @@ import type {
   LeadFormValues,
 } from '../../types/lead';
 import { ApiRequestError, toApiRequestError } from '../../utils/apiErrors';
-import { validateLead, validateLeadField } from '../../utils/leadValidation';
+import {
+  leadRequiredFields,
+  validateLead,
+  validateLeadField,
+} from '../../utils/leadValidation';
 
 type FormContent = (typeof contactContentEn)['form'];
 type SubmitAdapter = (values: LeadFormValues) => Promise<void>;
@@ -30,12 +34,15 @@ const emit = defineEmits<{
   submissionState: [isSubmitting: boolean];
 }>();
 
-const fieldOrder: LeadFieldName[] = [
-  'firstName',
-  'familyName',
-  'company',
-  'workEmail',
-];
+const fieldInputAttributes: Record<
+  LeadFieldName,
+  { type: 'email' | 'text'; autocomplete: string }
+> = {
+  firstName: { type: 'text', autocomplete: 'given-name' },
+  familyName: { type: 'text', autocomplete: 'family-name' },
+  company: { type: 'text', autocomplete: 'organization' },
+  workEmail: { type: 'email', autocomplete: 'email' },
+};
 
 const values = reactive<LeadFormValues>({
   firstName: '',
@@ -51,24 +58,25 @@ const errorSummary = ref<HTMLElement>();
 const submissionError = ref<string>();
 
 const errorEntries = computed(() =>
-  fieldOrder
+  leadRequiredFields
     .filter((field) => errors[field])
     .map((field) => ({ field, message: errors[field] as string })),
 );
 
-const setFieldError = (field: LeadFieldName) => {
-  submissionError.value = undefined;
-  const message = validateLeadField(field, values[field]);
+const updateFieldError = (field: LeadFieldName, message?: string) => {
   if (message) errors[field] = message;
   else delete errors[field];
 };
 
+const setFieldError = (field: LeadFieldName) => {
+  submissionError.value = undefined;
+  updateFieldError(field, validateLeadField(field, values[field]));
+};
+
 const validateAll = () => {
   const nextErrors = validateLead(values);
-  fieldOrder.forEach((field) => {
-    const message = nextErrors[field];
-    if (message) errors[field] = message;
-    else delete errors[field];
+  leadRequiredFields.forEach((field) => {
+    updateFieldError(field, nextErrors[field]);
   });
   return Object.keys(nextErrors).length === 0;
 };
@@ -103,8 +111,7 @@ const handleSubmit = async () => {
       error instanceof ApiRequestError ? error : toApiRequestError(error);
     if (requestError.category !== 'cancelled') {
       submissionError.value = requestError.message;
-      await nextTick();
-      errorSummary.value?.focus();
+      await focusValidation();
     }
   } finally {
     isSubmitting.value = false;
@@ -149,7 +156,7 @@ const handleSubmit = async () => {
 
     <div class="lead-form__fields">
       <AppFormField
-        v-for="field in fieldOrder"
+        v-for="field in leadRequiredFields"
         :id="`lead-${field}`"
         :key="field"
         v-slot="{ controlId, describedBy, invalid }"
@@ -162,17 +169,9 @@ const handleSubmit = async () => {
           :id="controlId"
           v-model="values[field]"
           :name="field"
-          :type="field === 'workEmail' ? 'email' : 'text'"
+          :type="fieldInputAttributes[field].type"
           :placeholder="content.fields[field].placeholder"
-          :autocomplete="
-            field === 'firstName'
-              ? 'given-name'
-              : field === 'familyName'
-                ? 'family-name'
-                : field === 'company'
-                  ? 'organization'
-                  : 'email'
-          "
+          :autocomplete="fieldInputAttributes[field].autocomplete"
           :aria-describedby="describedBy"
           :invalid="invalid"
           :disabled="isSubmitting"

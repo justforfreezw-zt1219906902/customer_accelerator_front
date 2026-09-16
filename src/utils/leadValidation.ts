@@ -6,6 +6,13 @@ import type {
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+export const leadRequiredFields = [
+  'firstName',
+  'familyName',
+  'company',
+  'workEmail',
+] as const satisfies readonly LeadFieldName[];
+
 export const leadValidationMessages: Record<LeadFieldName, string> = {
   firstName: 'First name is required.',
   familyName: 'Family name is required.',
@@ -30,7 +37,7 @@ export const validateLeadField = (
 export const validateLead = (values: LeadFormValues): LeadFieldErrors => {
   const errors: LeadFieldErrors = {};
 
-  (Object.keys(values) as LeadFieldName[]).forEach((field) => {
+  leadRequiredFields.forEach((field) => {
     const error = validateLeadField(field, values[field]);
     if (error) errors[field] = error;
   });

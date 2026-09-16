@@ -34,6 +34,7 @@ const emit = defineEmits<{
 }>();
 
 const headingTag = computed(() => `h${props.intro.headingLevel ?? 2}`);
+const isDeveloperPartner = computed(() => props.variant === 'developer-partner');
 </script>
 
 <template>
@@ -62,7 +63,7 @@ const headingTag = computed(() => `h${props.intro.headingLevel ?? 2}`);
           :variant="option.highlighted ? 'selected' : 'default'"
         >
           <div
-            v-if="variant !== 'developer-partner'"
+            v-if="!isDeveloperPartner"
             class="packages-section__badge-region"
             :aria-hidden="option.badgeLabel ? undefined : 'true'"
           >
@@ -79,7 +80,7 @@ const headingTag = computed(() => `h${props.intro.headingLevel ?? 2}`);
               }}</span>
             </p>
           </div>
-          <template v-if="variant === 'developer-partner'">
+          <template v-if="isDeveloperPartner">
             <div class="packages-section__partner-body">
               <div class="packages-section__preview" aria-label="Account Discovery prototype preview">
                 <div class="packages-section__preview-image">
@@ -110,13 +111,13 @@ const headingTag = computed(() => `h${props.intro.headingLevel ?? 2}`);
           </template>
           <div class="packages-section__action">
             <div
-              v-if="variant === 'developer-partner' && option.supportingNote"
+              v-if="isDeveloperPartner && option.supportingNote"
               class="packages-section__supporting-message"
             >
               <p class="packages-section__supporting-note">{{ option.supportingNote }}</p>
             </div>
             <AppButton
-              v-if="option.action && variant !== 'developer-partner'"
+              v-if="option.action && !isDeveloperPartner"
               :href="option.action.href"
               :variant="option.highlighted ? 'primary' : 'secondary'"
               @click="emit('packageAction', option.name, $event)"
@@ -282,7 +283,6 @@ const headingTag = computed(() => `h${props.intro.headingLevel ?? 2}`);
   justify-self: center;
 }
 .packages-section--developer-partner .packages-section__partner-copy { display: grid; gap: var(--spacing-16); }
-.packages-section--developer-partner .packages-section__features { gap: var(--spacing-8); }
 .packages-section--developer-partner .packages-section__action {
   display: grid;
   grid-template-columns: 1fr;
@@ -324,9 +324,6 @@ const headingTag = computed(() => `h${props.intro.headingLevel ?? 2}`);
 .packages-section--developer-partner .packages-section__action :deep(.app-button) {
   width: 100%;
   border-radius: var(--radius-md);
-}
-.packages-section--developer-partner .packages-section__supporting-note {
-  color: var(--color-text-muted);
 }
 .packages-section--developer-partner .packages-section__supporting-message {
   display: flex;
