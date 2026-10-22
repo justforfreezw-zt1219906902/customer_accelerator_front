@@ -257,6 +257,7 @@ requirements:
       - docs/02-inputs/content-inventory.yaml#CONTENT-LANDING
       - docs/07-change-control/instructions/TASK-P6A-002-content-approval-and-gate-resolution.md
       - docs/03-design-system/phase-6a-landing-regression-audit.md
+      - docs/07-change-control/change-requests/CR-2026-007-landing-team-membership-update.md
     figma_source:
       page: 06 Landing Page
       node_id: "212:2"
@@ -271,7 +272,12 @@ requirements:
       - tests/unit/Phase6ASections.spec.ts
       - tests/unit/LandingSections.spec.ts
       - tests/e2e/phase-6a-visual-fidelity.spec.ts
-    status: verified
+    current_maintenance_change:
+      change_request: CR-2026-007
+      implementation_status: implemented_needs_review
+      figma_sync_status: pending
+      human_review_status: pending
+    status: implemented_change_pending_review
     introduced_version: 0.0.1
     verified_version: 0.0.1
     approval: approved
@@ -280,6 +286,7 @@ requirements:
     source:
       - docs/02-inputs/content-inventory.yaml#CONTENT-LANDING
       - docs/04-frontend/content-architecture.md
+      - docs/07-change-control/change-requests/CR-2026-007-landing-team-membership-update.md
     figma_source:
       page: 06 Landing Page
       node_id: "212:2"
@@ -297,7 +304,13 @@ requirements:
     tests:
       - tests/unit/LandingPage.spec.ts
       - tests/unit/Phase6ASections.spec.ts
-    status: implemented
+    current_maintenance_change:
+      removed_members: [Longfei Li, Bharghav BK]
+      retained_members: [Miroslav Stanojevic, Wei Zhao]
+      implementation_status: implemented_needs_review
+      figma_sync_status: pending
+      human_review_status: pending
+    status: implemented_change_pending_review
     introduced_version: 0.0.1
     verified_version: 0.0.1
     approval: approved

@@ -99,11 +99,21 @@ describe('Phase 6A Landing Page', () => {
   });
 
   it('keeps approved content external to the Page component', () => {
-    expect(landingContentEn.team.members).toHaveLength(4);
+    expect(landingContentEn.team.members.map(({ name }) => name)).toEqual([
+      'Miroslav Stanojevic',
+      'Wei Zhao',
+    ]);
     expect(landingContentEn.faq.items).toHaveLength(6);
     expect(landingContentEn.packages.packages.map((item) => item.name)).toEqual([
       'Developer Partner',
     ]);
+  });
+
+  it('excludes former Team members from the published Landing content', () => {
+    const wrapper = mount(LandingPage);
+
+    expect(wrapper.get('#team').text()).not.toContain('Longfei Li');
+    expect(wrapper.get('#team').text()).not.toContain('Bharghav BK');
   });
 
   it('renders the single Developer Partner offer and removes legacy packages', () => {

@@ -15,8 +15,13 @@ describe('Phase 6A sections', () => {
     });
 
     expect(wrapper.attributes('id')).toBe('team');
-    expect(wrapper.findAll('h3')).toHaveLength(4);
+    expect(wrapper.findAll('h3').map((heading) => heading.text())).toEqual([
+      'Miroslav Stanojevic',
+      'Wei Zhao',
+    ]);
     expect(wrapper.find('.team-section__grid').exists()).toBe(true);
+    expect(wrapper.text()).not.toContain('Longfei Li');
+    expect(wrapper.text()).not.toContain('Bharghav BK');
   });
 
   it('uses accessible FAQ disclosure controls', async () => {

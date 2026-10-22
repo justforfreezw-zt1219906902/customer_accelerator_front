@@ -324,20 +324,6 @@ export const landingContentEn: LandingContentEn = {
         description:
           'Backend and data science. Builds the Knowledge Graph that keeps every claim traceable.',
       },
-      {
-        initials: 'LL',
-        name: 'Longfei Li',
-        role: 'CO-FOUNDER · AI',
-        description:
-          'AI and Industry 4.0 engineering behind the Communication DNA Engine.',
-      },
-      {
-        initials: 'BB',
-        name: 'Bharghav BK',
-        role: 'SALES',
-        description:
-          'Makes sure the method translates into your sales motion — MBA, FLAME University.',
-      },
     ],
   },
   faq: {

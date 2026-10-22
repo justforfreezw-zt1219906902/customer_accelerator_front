@@ -102,7 +102,11 @@ content_items:
     approver: Tom
     approval_date: "2026-07-27"
     approval_task: TASK-P6A-002
-    status: approved
+    status: implemented_change_pending_review
+    active_change_request: CR-2026-007
+    current_team_members: [Miroslav Stanojevic, Wei Zhao]
+    team_figma_sync_status: pending
+    team_human_review_status: pending
     code_destination: src/content/landing/en.ts
     locked_or_editable: locked_to_approved_baseline
     preservation_required: false
@@ -152,6 +156,8 @@ content_items:
       - Exact prices, currencies, billing periods, and qualifiers are commercially confirmed.
       - EN is the only active Frontend 1.0 language; DE and CN remain visible but unavailable.
       - No translations may be invented.
+      - CR-2026-007 removes Longfei Li and Bharghav BK from the public Team content through a code-first maintenance change.
+      - Figma Team node 212:615 and named human visual approval remain pending for CR-2026-007.
   - id: CONTENT-WHY
     name: Why mi-goTo copy
     source: Figma 07 Why Mi-goTo Page

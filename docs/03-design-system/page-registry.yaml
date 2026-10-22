@@ -17,7 +17,11 @@ pages:
     implementation_status: implemented
     implementation_scope: phase_6a_final_page
     design_review_status: approved
-    content_status: approved
+    content_status: implemented_change_pending_review
+    active_content_change_request: CR-2026-007
+    current_team_members: [Miroslav Stanojevic, Wei Zhao]
+    team_figma_sync_status: pending
+    team_human_review_status: pending
     content_owner: Tom
     content_approver: Tom
     content_approval_task: TASK-P6A-002

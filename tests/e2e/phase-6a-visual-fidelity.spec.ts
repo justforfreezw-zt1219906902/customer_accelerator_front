@@ -56,6 +56,39 @@ test('resolves Landing Team and FAQ anchors without duplicate IDs', async ({
   await expect(page.locator('#team')).toBeInViewport();
 });
 
+test('renders the current two-person Team in the approved responsive tracks', async ({
+  page,
+}) => {
+  for (const { width, columns } of [
+    { width: 1440, columns: 4 },
+    { width: 1024, columns: 2 },
+    { width: 390, columns: 1 },
+  ]) {
+    await page.setViewportSize({ width, height: width === 390 ? 844 : 900 });
+    await page.goto('/#team');
+
+    const team = page.locator('#team');
+    const grid = team.locator('.team-section__grid');
+    const cards = grid.locator('.team-section__card');
+
+    await expect(cards).toHaveCount(2);
+    await expect(cards.nth(0)).toContainText('Miroslav Stanojevic');
+    await expect(cards.nth(1)).toContainText('Wei Zhao');
+    await expect(team).not.toContainText('Longfei Li');
+    await expect(team).not.toContainText('Bharghav BK');
+    await expect(grid).toHaveJSProperty(
+      'scrollWidth',
+      await grid.evaluate((node) => node.clientWidth),
+    );
+
+    const resolvedColumns = await grid.evaluate((node) =>
+      getComputedStyle(node).gridTemplateColumns.split(' ').filter(Boolean)
+        .length,
+    );
+    expect(resolvedColumns).toBe(columns);
+  }
+});
+
 test('captures shared Header and Footer mobile evidence', async ({
   page,
 }, testInfo) => {

@@ -58,10 +58,7 @@ const headingTag = computed(() => `h${props.intro.headingLevel ?? 2}`);
 @import './sections.css';
 
 .team-section__grid {
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(min(100%, calc(var(--spacing-64) * 3)), 1fr)
-  );
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .team-section__card {
@@ -90,5 +87,17 @@ const headingTag = computed(() => `h${props.intro.headingLevel ?? 2}`);
   color: var(--color-accent-amber);
   font-family: var(--font-family-mono), monospace;
   font-size: var(--typography-label-mono-kicker-font-size);
+}
+
+@media (max-width: 64rem) {
+  .team-section__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 40rem) {
+  .team-section__grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

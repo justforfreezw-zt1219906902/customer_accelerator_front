@@ -913,3 +913,22 @@ marketing_figma_sync_contact_partnership:
   human_approval: pending
   release_authorized: false
   next_gate: Contact context contract decision and Marketing Figma visual review
+
+landing_team_membership_update:
+  status: implemented_needs_review
+  outcome: two_member_left_aligned_team_implemented_pending_figma_and_human_review
+  date: "2026-10-23"
+  branch: awesome_design_v1_master_v2
+  change_request: CR-2026-007
+  retained_members: [Miroslav Stanojevic, Wei Zhao]
+  removed_members: [Longfei Li, Bharghav BK]
+  desktop_layout: four_tracks_first_two_populated
+  tablet_layout: two_tracks_at_or_below_1024px
+  mobile_layout: one_track_at_or_below_640px
+  figma_node: "212:615"
+  figma_sync_status: pending
+  human_approval: pending
+  validation_status: focused_checks_passed_full_suites_retain_unrelated_failures
+  validation_evidence: docs/08-quality/test-reports/CR-2026-007-landing-team-membership-update-2026-10-23.md
+  release_authorized: false
+  next_gate: Landing Team Figma Sync and Named Human Visual Review

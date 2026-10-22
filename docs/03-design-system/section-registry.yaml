@@ -116,21 +116,27 @@ sections:
     code_name: TeamSection
     planned_path: src/components/sections/TeamSection.vue
     dependencies: [core, composite, product]
-    variants: [Four Column]
+    variants: [Four Column, Two Members Left-Aligned]
     figma_version: 1.0.0
     implementation_status: implemented
     design_review_status: approved
-    content_status: approved
+    content_status: implemented_change_pending_review
+    active_change_request: CR-2026-007
+    current_members: [Miroslav Stanojevic, Wei Zhao]
+    current_change_review_status: pending
+    figma_sync_status: pending
     content_owner: Tom
     asset_approval: confirmed
     publication_permission: confirmed
-    tests: [tests/unit/Phase6ASections.spec.ts]
+    tests: [tests/unit/Phase6ASections.spec.ts, tests/e2e/phase-6a-visual-fidelity.spec.ts]
     tests_status: passed
     notes:
       - The active Figma baseline uses text initials; no binary photograph nodes were found.
       - Implemented under TASK-P6A-003; final Page-instance review was approved under TASK-P6A-006.
       - Landing Page binds the unique stable anchor `team` explicitly; shared Footer target is `/#team`.
       - Tom approved Team anchor and responsive behavior under TASK-P6A-006.
+      - CR-2026-007 keeps four desktop tracks with two populated left-aligned cards, then uses two tracks at 1024px and one at 640px.
+      - The historical Figma node remains Four Column; the two-member maintenance presentation awaits Figma sync and named human visual approval.
   - section_id: SEC-LANDING-010
     figma_name: Section / FAQ / Default
     figma_node_id: "212:666"
